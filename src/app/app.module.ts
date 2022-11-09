@@ -9,6 +9,7 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormEsopComponent } from './components/form-esop/form-esop.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     EmployeeCreateComponent,
     EmployeeEditComponent,
     EmployeeListComponent,
+    FormEsopComponent,
   ],
   imports: [
     BrowserModule,

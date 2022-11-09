@@ -24,8 +24,8 @@ app.use(
   }),
 )
 app.use(cors())
-app.use(express.static(path.join(__dirname, 'dist/mean-stack-crud-app')))
-app.use('/', express.static(path.join(__dirname, 'dist/mean-stack-crud-app')))
+app.use(express.static(path.join(__dirname, 'dist/cimplyfema-app')))
+app.use('/', express.static(path.join(__dirname, 'dist/cimplyfema-app')))
 app.use('/api', employeeRoute)
 
 // Create port

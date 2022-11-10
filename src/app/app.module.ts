@@ -10,6 +10,7 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormEsopComponent } from './components/form-esop/form-esop.component';
+import { FormFcComponent } from './components/form-fc/form-fc.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormEsopComponent } from './components/form-esop/form-esop.component';
     EmployeeEditComponent,
     EmployeeListComponent,
     FormEsopComponent,
+    FormFcComponent,
   ],
   imports: [
     BrowserModule,

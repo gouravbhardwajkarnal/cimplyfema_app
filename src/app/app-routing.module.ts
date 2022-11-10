@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'create-employee', component: EmployeeCreateComponent },
   { path: 'edit-employee/:id', component: EmployeeEditComponent },
   { path: 'employees-list', component: EmployeeListComponent },
-  { path: 'form-fc',component: FormFcComponent}
+  { path: 'form-fc',component: FormFcComponent},
   { path: 'form-esop', component: FormEsopComponent },
 ];
 

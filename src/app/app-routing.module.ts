@@ -14,6 +14,18 @@ const routes: Routes = [
   { path: 'employees-list', component: EmployeeListComponent },
   { path: 'form-fc',component: FormFcComponent},
   { path: 'form-esop', component: FormEsopComponent },
+  {
+    path: 'books',
+    component: FormFcComponent,
+  },
+  {
+    path: 'cars',
+    component: FormFcComponent
+  },
+  {
+    path: 'chickens',
+    component: FormFcComponent,
+  },
 ];
 
 @NgModule({

@@ -1,1 +1,658 @@
-<p>form-fc works!</p>
+<div class="container">
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Form FC: UIN No - XXXXXXXXXXX
+            <!-- <small class="text-muted">
+        your source of news about frontend development!
+      </small> -->
+        </a>
+    </div>
+
+    <div class="container-fluid position-relative d-flex p-0">
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-12 col-xl-4">
+                    <label class="form-label">Investment Route
+
+                    </label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-sm-12 col-xl-4">
+                    <label class="form-label">Investment Type
+
+                    </label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-sm-12 col-xl-4">
+                    <label class="form-label">CIN/LLPIN IF COMPANY/LLP/PAN
+
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-sm-12 col-xl-4">
+                    <label class="form-label">USD Amount (IN FCY)
+
+
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-sm-12 col-xl-4">
+                    <label class="form-label">Rs. Amount (IN INR)
+
+
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-sm-12 col-xl-4">
+                    <label class="form-label"> Investment Type (Section C)
+
+
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron mt-3">
+        <h5>Instructions</h5>
+
+        Instructions for filling up the Form FC
+        <ul>
+            <li>1) The Form FC is required to be submitted to the designated AD bank by the person resident in India
+                seeking to invest in the foreign entity, whether under Automatic Route or Approval Route. </li>
+            <li> 2) Under Approval Route, the Form FC after scrutiny, should be submitted by the AD bank, to the Reserve
+                Bank as per the instructions in Para 3 of FEM (Overseas Investment) Directions, 2022.</li>
+            <li>3) The Form FC is to be submitted while undertaking financial commitment in a foreign entity, at the
+                time of sending outward remittance or making a financial commitment, whichever is earlier. </li>
+            <li>4) In case of acquisition of equity capital on deferred payment basis in accordance with Regulation 7 of
+                OI Regulations, the part of the consideration, payment of which is deferred by the person resident in
+                India shall be treated as non-fund-based commitment and shall be reported accordingly. Subsequent
+                remittance towards the payment of deferred consideration shall be reported in Form FC as conversion of 
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="container-fluid position-relative d-flex p-0">
+
+        <div class="container-fluid pt-4 px-4">
+            <!-- <div class="row mb-3">
+                <h2 class="text-center mb-3">SECTION A - Investor Details</h2>
+            </div> -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button [ngClass]="div1==true? 'nav-link active' : 'nav-link'" id="home-tab"
+                        (click)="div1Function()" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab"
+                        aria-controls="home" aria-selected="true">A - Investor Details</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button [ngClass]="div2==true? 'nav-link active' : 'nav-link'" id="profile-tab"
+                        (click)="div2Function()" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab"
+                        aria-controls="profile" aria-selected="false">B & C - JV/WOS DETAILS</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button [ngClass]="div3==true? 'nav-link active' : 'nav-link'" id="messages-tab"
+                        (click)="div3Function()" data-bs-toggle="tab" data-bs-target="#messages" type="button"
+                        role="tab" aria-controls="messages" aria-selected="false">B - SDS DETAILS</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button [ngClass]="div4==true? 'nav-link active' : 'nav-link'" id="messages1-tab"
+                        (click)="div4Function()" data-bs-toggle="tab" data-bs-target="#messages1" type="button"
+                        role="tab" aria-controls="messages1" aria-selected="false">B - SHAREHOLDING IN FOREIGN
+                        ENTITY</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button [ngClass]="div5==true? 'nav-link active' : 'nav-link'" id="declaration-tab"
+                        (click)="div5Function()" data-bs-toggle="tab" data-bs-target="#declaration" type="button"
+                        role="tab" aria-controls="declaration" aria-selected="false"> D - DECLARATION</button>
+                </li>
+
+
+            </ul>
+
+
+            <div class="tab-content">
+                <div [ngClass]="div1==true? 'tab-pane mt-3 active' : 'mt-3 tab-pane'" id="home" role="tabpanel"
+                    aria-labelledby="home-tab">
+                    <form [formGroup]="reactiveForm" #form="ngForm">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-xl-4">
+                            <label for="investment_name" class="form-label">Name of IE/ RI/ Trust/ Society
+                            </label>
+                            <input type="text" id="investment_name" name="investment_name" formControlName="investment_name" placeholder="Name of IE/ RI/ Trust/ Society"
+                             required minlength="1" maxlength="250" class="form-control form-control-sm"
+                             [class.is-invalid]="investment_name.invalid && (investment_name.dirty || investment_name.touched)">
+                            <div *ngIf="investment_name.invalid && (investment_name.dirty || investment_name.touched)" class="invalid-feedback">
+                              <div *ngIf="investment_name.errors?.['required']">
+                                This field is required.
+                              </div>
+                              <div *ngIf="investment_name.errors?.['minlength']">
+                                This field must have at least 1 character.
+                              </div>
+                              <div *ngIf="investment_name.errors?.['maxlength']">
+                                This field must have at most 250 characters.
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-sm-12 col-xl-4">
+                            <label for="investment_pan" class="form-label">PAN
+                            </label>
+                            <input type="text" id="investment_pan" name="investment_pan" formControlName="investment_pan" placeholder="PAN"
+                            required minlength="10" maxlength="10" class="form-control form-control-sm" pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]$"
+                            [class.is-invalid]="investment_pan.invalid && (investment_pan.dirty || investment_pan.touched)">
+                           <div *ngIf="investment_pan.invalid && (investment_pan.dirty || investment_pan.touched)" class="invalid-feedback">
+                             <div *ngIf="investment_pan.errors?.['required']">
+                               This field is required.
+                             </div>
+                             <div *ngIf="investment_pan.errors?.['pattern']">
+                                Invalid PAN Number Format  
+                              </div>
+                             <div *ngIf="investment_pan.errors?.['maxlength']">
+                               This field must have at most 10 characters.
+                             </div>
+                           </div>
+                        </div>
+
+
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label for="investment_LEI" class="form-label">Legal Entity Identifier (LEI)
+                            </label>
+                            <input type="text" id="investment_LEI" name="investment_LEI" formControlName="investment_LEI" placeholder="Legal Entity Identifier (LEI)"
+                            required minlength="1" maxlength="250" class="form-control form-control-sm"
+                            [class.is-invalid]="investment_LEI.invalid && (investment_LEI.dirty || investment_LEI.touched)">
+                           <div *ngIf="investment_LEI.invalid && (investment_LEI.dirty || investment_LEI.touched)" class="invalid-feedback">
+                             <div *ngIf="investment_LEI.errors?.['required']">
+                               This field is required.
+                             </div>
+                             <div *ngIf="investment_LEI.errors?.['minlength']">
+                               This field must have at least 1 character.
+                             </div>
+                             <div *ngIf="investment_LEI.errors?.['maxlength']">
+                               This field must have at most 250 characters.
+                             </div>
+                           </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">Group company of IE (where the guarantee is extended by a group
+                                company)
+                            </label>
+                            <input type="text" class="form-control">
+
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">Address of IE/ RI/ Trust/ Society
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">City
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">PIN code
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">Contact Person
+
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">Designation of the contact person
+
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">Telephone Number
+
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">Mobile Number
+
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">E-mail ID
+
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">Net worth in INR as on last audited balance sheet of the IE
+
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">Amount (in INR)
+
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">Networth date
+
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">City
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">City
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4 mb-3">
+                            <label class="form-label">City
+
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <table class="table caption-top table-responsive">
+                            <caption>Sum of the Financial Commitment (FC) w.r.t. all foreign entities of the IE/ RI/
+                                group
+                                company/ Trust/ Society made until the date of the current transaction and FC being
+                                undertaken
+                                currently
+                            </caption>
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">NAME of the Entity </th>
+                                    <th scope="col">in Foreign Currency (FCY) </th>
+                                    <th scope="col">in INR </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                    <td>Mark</td>
+                                    <td>$1000</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>$1000</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>$1000</td>
+                                    <td>1000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table caption-top table-responsive">
+                            <caption>Whether IE/ RI/ group company/ Trust/ Society making FC or undertaking
+                                disinvestment is
+                                under:
+                            </caption>
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">Investigation /
+                                        Wilful Defaulter /
+                                        NPA account
+                                    </th>
+                                    <th scope="col">From Date
+                                    </th>
+                                    <th scope="col">To Date (if applicable)
+                                    </th>
+                                    <th scope="col">Name of Regulator/ Agency/ Lender
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                    <td> <select class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select></td>
+                                    <td>15/12/2022</td>
+                                    <td>14/12/2022</td>
+                                    <td>Test</td>
+                                </tr>
+                                <tr>
+                                    <td> <select class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select></td>
+                                    <td>15/12/2022</td>
+                                    <td>14/12/2022</td>
+                                    <td>Test</td>
+                                </tr>
+                                <tr>
+                                    <td> <select class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select></td>
+                                    <td>15/12/2022</td>
+                                    <td>14/12/2022</td>
+                                    <td>Test</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table caption-top table-responsive">
+                            <caption>Particulars of existing foreign entities of the IE/ RI/ group company/ Trust/
+                                Society
+                                already in operation or under implementation
+                            </caption>
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">Name of foreign entity
+
+                                    </th>
+                                    <th scope="col">Unique Identification Number (UIN) allotted by Reserve Bank
+
+                                    </th>
+                                    <th scope="col"> Name of the designated AD bank
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Test</td>
+                                    <td>qawert3456</td>
+                                    <td>Test</td>
+                                </tr>
+                                <tr>
+                                    <td>Test</td>
+                                    <td>qawert3456</td>
+                                    <td>Test</td>
+                                </tr>
+                                <tr>
+                                    <td>Test</td>
+                                    <td>qawert3456</td>
+                                    <td>Test</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">Activity code of IE (1987)
+                                        Class + Description
+
+
+                                    </th>
+                                    <th scope="col">Activity code of IE (2008)
+                                        Class + Description
+
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Test</td>
+                                    <td>qawert3456</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Test</td>
+                                    <td>qawert3456</td>
+                                </tr>
+                                <tr>
+                                    <td>Test</td>
+                                    <td>qawert3456</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-primary" (click)="validate()">Validate</button>
+                    </form>
+                </div>
+                <div [ngClass]="div2==true? 'tab-pane mt-3 active' : 'mt-3 tab-pane'" id="profile" role="tabpanel"
+                    aria-labelledby="profile-tab">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-xl-4">
+                            <label class="form-label">Name of foreign entity
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4">
+                            <label class="form-label">Country/ jurisdiction
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4">
+                            <label class="form-label">Startup
+                                Strategic sector
+                                Financial Services
+                                Others
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4">
+                            <label class="form-label">Date of incorporation of the foreign entity
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4">
+                            <label class="form-label">Legal Entity Identifier (LEI) of the foreign entity
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4">
+                            <label class="form-label">Whether the person resident in India has control in the foreign
+                                entity (Refer to the definition of "control" in the OI Rules)
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-sm-12 col-xl-4">
+                            <label class="form-label">Country/ jurisdiction
+                            </label>
+                            <input type="text" class="form-control">
+                        </div>
+
+                    </div>
+                </div>
+                <div [ngClass]="div3==true? 'tab-pane mt-3 active' : 'mt-3 tab-pane'" id="messages" role="tabpanel"
+                    aria-labelledby="messages-tab">
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <ul class="list-group list-group-horizontal-sm">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <ul class="list-group list-group-horizontal-md">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <ul class="list-group list-group-horizontal-lg">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <ul class="list-group list-group-horizontal-xl">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <ul class="list-group list-group-horizontal-xxl">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                </div>
+                <div [ngClass]="div4==true? 'tab-pane mt-3 active' : 'mt-3 tab-pane'" id="messages1" role="tabpanel"
+                    aria-labelledby="messages1-tab">
+                    <table class="table caption-top table-responsive">
+                        <caption>Whether IE/ RI/ group company/ Trust/ Society making FC or undertaking
+                            disinvestment is
+                            under:
+                        </caption>
+                        <thead>
+                            <tr>
+
+                                <th scope="col">  Person resident in India
+                                </th>
+                                <th scope="col">%stake
+                                </th>
+                                <th scope="col">Foreign partner(s)  
+                                </th>
+                                <th scope="col">%stake
+                                </th>
+                                <th scope="col">Total
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td> test1</td>
+                                <td>5%</td>
+                                <td>test2</td>
+                                <td>95%</td>
+                                <td>100%</td>
+                            </tr>
+                            <tr>
+                                <td> test1</td>
+                                <td>5%</td>
+                                <td>test2</td>
+                                <td>95%</td>
+                                <td>100%</td>
+                            </tr>
+                            <tr>
+                                <td> test1</td>
+                                <td>5%</td>
+                                <td>test2</td>
+                                <td>95%</td>
+                                <td>100%</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <td>Total</td>
+                            <td>100%</td>
+                            <td></td>
+                            <td>100%</td>
+                            <td>100%</td>
+                        </tfoot>
+                    </table>
+                </div>
+                <div [ngClass]="div5==true? 'tab-pane mt-3 active' : 'mt-3 tab-pane'" id="declaration" role="tabpanel"
+                aria-labelledby="declaration-tab">
+                <table class="table table-borderless">
+                    <thead>
+                      <!-- <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr> -->
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">A</th>
+                        <td>(a) I/ We have an account appearing as Non-Performing Asset (NPA)/wilful defaulter, or am/ are under investigation by a financial sector regulator, or am/ are under investigation by investigative agencies in India, viz., Central Bureau of Investigation or Directorate of Enforcement or Serious Frauds Investigation Office 
+                            Accordingly, 
+                            i. NOC has been obtained & enclosed herewith as prescribed under Rule 10 of the OI Rules, or
+                            ii. The lender bank(s)/regulatory body/investigative agency concerned failed to furnish the objection(s) within sixty days from the date of receipt of application for NOC. 
+                            	
+                            </td>
+                        <td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                    
+                      </tr>
+                      <tr>
+                        <th scope="row">B</th>
+                        <td>(b) Wherever applicable, the Share certificate/ other evidence as required in Regulation 9 and other reporting requirement as required in terms of Regulation 10 of OI Regulations, as stipulated by the Reserve Bank from time to time, in respect of the foreign entity under this UIN has been submitted/completed.		
+                        </td>
+                        <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                       
+                      </tr>
+                      <tr>
+                        <th scope="row">C</th>
+                        <td>(c) Financial commitment undertaken by means of debt is in compliance with OI Rules and OI Regulations, or corresponding extant Regulations in case where the transaction has been done under the earlier overseas investment framework**, as stipulated by the Reserve Bank from time to time.		
+                        </td>
+                        <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">D</th>
+                        <td>(d) Pricing and valuation norms as per OI Rules and OI Regulations, or corresponding extant Regulations in case where the transaction has been done under the earlier overseas investment framework**, as stipulated by the Reserve Bank from time to time, wherever applicable, have been complied with.  		
+                        </td>
+                        <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">E</th>
+                        <td>(e) It is certified that no delay in reporting is pending for regularization as required under Regulation 12 of OI Regulations. 		
+                        </td>
+                        <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">F</th>
+                        <td>(f) The foreign securities acquired by way of gift from a person resident outside India, is in accordance with the provisions contained in Foreign Contribution (Regulation) Act, 2010, and the rules and regulations made thereunder and Para 2 of Schedule III of OI Rules.		
+                        </td>
+                        <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                        <th scope="row">List of Enclosure 
+                        </th>
+                        <td>XXXXXXXXXXXXXXXXXXXXXX		
+                        </td>
+                        <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                    </tfoot>
+                  </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

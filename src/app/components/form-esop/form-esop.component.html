@@ -154,11 +154,11 @@
                             <input class="form-control" formControlName="Country" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." 
                             [class.is-invalid]="esopFormlist.get('Country').invalid && (esopFormlist.get('Country').dirty ||esopFormlist.get('Country').touched)">
                             <datalist id="datalistOptions">
-                              <option value="San Francisco">
-                              <option value="New York">
+                              <option *ngFor="let list of CountryList">{{list.name}}</option>
+                              <!-- <option value="New York">
                               <option value="Seattle">
                               <option value="Los Angeles">
-                              <option value="Chicago">
+                              <option value="Chicago"> -->
                             </datalist>
                         </div>
                         <div class="col-4 mb-2">

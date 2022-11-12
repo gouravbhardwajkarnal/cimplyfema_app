@@ -9,16 +9,19 @@ import { ApiService } from './../../service/api.service';
 
 export class EmployeeListComponent implements OnInit {
   Employee: any = [];
+  CountryList: any=[];
 
   constructor(private apiService: ApiService) {
-    this.readEmployee();
+    this.readCountry();
   }
 
   ngOnInit() {}
 
-  readEmployee() {
-    this.apiService.getEmployees().subscribe((data) => {
-      this.Employee = data;
+  readCountry() {
+    debugger;
+    this.apiService.getCountry().subscribe((data) => {
+    
+      this.CountryList = data;
     });
   }
 

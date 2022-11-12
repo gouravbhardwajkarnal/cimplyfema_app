@@ -27,6 +27,10 @@ export class ApiService {
     return this.http.get(`${this.baseUri}`);
   }
 
+  getCountry() {
+    debugger;
+    return this.http.get(`${this.baseUri}/master`);
+  }
   // Get employee
   getEmployee(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;

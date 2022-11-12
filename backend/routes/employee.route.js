@@ -16,6 +16,7 @@ employeeRoute.route('/create').post((req, res, next) => {
   })
 })
 
+
 // Get All Employees
 employeeRoute.route('/').get((req, res) => {
   Employee.find((error, data) => {

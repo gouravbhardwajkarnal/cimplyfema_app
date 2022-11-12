@@ -12,6 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormEsopComponent } from './components/form-esop/form-esop.component';
 import { FormFcComponent } from './components/form-fc/form-fc.component';
+import { InstructionsComponent } from './Common/instructions/instructions.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormFcComponent } from './components/form-fc/form-fc.component';
     EmployeeListComponent,
     FormEsopComponent,
     FormFcComponent,
+    InstructionsComponent,
   ],
   imports: [
     BrowserModule,

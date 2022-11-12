@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
   selector: 'app-form-esop',
@@ -9,7 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormEsopComponent implements OnInit {
  esopFormlist:FormGroup
-  constructor(private readonly route: ActivatedRoute) { }
+ CountryList: any=[];
+  constructor(private readonly route: ActivatedRoute,private apiService: ApiService) {
+    this.readCountry();
+  }
   foreigninvestmentProject=[
     {id:'1',Type:'Yes'},
     {id:'2',Type:'No'}
@@ -54,7 +58,13 @@ export class FormEsopComponent implements OnInit {
       }
     )
   }
-
+  readCountry() {
+    debugger;
+    this.apiService.getCountry().subscribe((data) => {
+    
+      this.CountryList = data;
+    });
+  }
   CounEquivalentEquityShares()
   {
      if(this.esopFormlist.value.Number_ESOP_Granted !='' && this.esopFormlist.value.Conversion_ratio !='')
@@ -75,12 +85,12 @@ export class FormEsopComponent implements OnInit {
 
   onSubmitESOPFrom()
   {
-    /* if (this.esopFormlist.invalid) {
+    if (this.esopFormlist.invalid) {
       for (const control of Object.keys(this.esopFormlist.controls)) {
         this.esopFormlist.controls[control].markAsTouched();
       }
       return;
-    } */
+    } 
     
     console.log(this.esopFormlist);
     

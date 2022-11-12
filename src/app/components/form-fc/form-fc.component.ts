@@ -6,8 +6,9 @@ interface Iinvestment {
   investment_name: string;
   investment_pan: string;
   investment_LEI: string;
-  password: string;
-  showPassword: boolean;
+  investment_pin: number;
+  investment_Address: string;
+  investment_City:string
 }
 @Component({
   selector: 'app-form-fc',
@@ -96,10 +97,22 @@ constructor(private readonly route: ActivatedRoute) {
         Validators.maxLength(250),
         // emailValidator(),
       ]),
-      password: new FormControl(this.investment_model.password, [
+      investment_pin: new FormControl(this.investment_model.investment_pin, [
         Validators.required,
-        Validators.minLength(15),
+        Validators.minLength(6),
+        Validators.maxLength(6),
       ]),
+      investment_Address: new FormControl(this.investment_model.investment_Address, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      investment_City: new FormControl(this.investment_model.investment_City, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      
     });
   }
   get investment_name() {
@@ -114,8 +127,16 @@ constructor(private readonly route: ActivatedRoute) {
     return this.reactiveForm.get('investment_LEI')!;
   }
 
-  get password() {
-    return this.reactiveForm.get('password')!;
+  get investment_pin() {
+    return this.reactiveForm.get('investment_pin')!;
+  }
+  get investment_Address()
+  {
+    return this.reactiveForm.get('investment_Address')!;
+  }
+  get investment_City()
+  {
+    return this.reactiveForm.get('investment_City')!;
   }
   public validate(): void {
     if (this.reactiveForm.invalid) {

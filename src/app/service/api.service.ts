@@ -14,7 +14,7 @@ export class ApiService {
   baseUri: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Create
   createEmployee(data): Observable<any> {
@@ -57,6 +57,14 @@ export class ApiService {
       .delete(url, { headers: this.headers })
       .pipe(catchError(this.errorMgmt));
   }
+
+  // Create
+  createFormEsop(data): Observable<any> {
+    console.log(data);
+    let url = `${this.baseUri}/createEsop`;
+    return this.http.post(url, data).pipe(catchError(this.errorMgmt));
+  }
+
 
   // Error handling
   errorMgmt(error: HttpErrorResponse) {

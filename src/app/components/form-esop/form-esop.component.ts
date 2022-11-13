@@ -47,21 +47,19 @@ export class FormEsopComponent implements OnInit {
         'Equivalent_equity_shares':new FormControl('',Validators.required),
         'Facevalue_equity_shares':new FormControl('',Validators.required),
         'Value_of_Shares':new FormControl('',Validators.required),
-        'Non_Debt_Instruments':new FormControl(''),
-        'sectoral_cap_statutory':new FormControl(''),
-        'Indian_companies_reconstruction':new FormControl(''),
-        'PMLA_UAPA':new FormControl(''),
-        'enclose_documents':new FormControl(''),
-        'certificate_Company_Secretary':new FormControl(''),
-        'SEBI_registered':new FormControl(''),
-        'necessary_documents':new FormControl('')
+        'Non_Debt_Instruments':new FormControl('false'),
+        'sectoral_cap_statutory':new FormControl('false'),
+        'Indian_companies_reconstruction':new FormControl('false'),
+        'PMLA_UAPA':new FormControl('false'),
+        'enclose_documents':new FormControl('false'),
+        'certificate_Company_Secretary':new FormControl('false'),
+        'SEBI_registered':new FormControl('false'),
+        'necessary_documents':new FormControl('false')
       }
     )
   }
   readCountry() {
-    debugger;
     this.apiService.getCountry().subscribe((data) => {
-    
       this.CountryList = data;
     });
   }
@@ -69,18 +67,32 @@ export class FormEsopComponent implements OnInit {
   {
      if(this.esopFormlist.value.Number_ESOP_Granted !='' && this.esopFormlist.value.Conversion_ratio !='')
      {
+      var Number_ESOP=this.esopFormlist.value.Number_ESOP_Granted;
+      var Conversion_ratio=this.esopFormlist.value.Conversion_ratio;
+      var result=Number_ESOP*Conversion_ratio;
       
-      //document.getElementById('txt3').value = result;
-      var result=this.esopFormlist.value.Number_ESOP_Granted*this.esopFormlist.value.Conversion_ratio;
-      /* this.esopFormlist.setValue({
-        'Equivalent_equity_shares':'30'
-      }) */
+      setTimeout(()=>{  
+      this.esopFormlist
+      .valueChanges
+      .subscribe( _ => {
+          this.esopFormlist.get( 'Equivalent_equity_shares' ).patchValue( result, {emitEvent: false} );
+      } );
+    }, 1000);
       
-      
-      //document.getElementById('Equivalent_equity_shares').value =result;
-      //this.esopFormlist.controls('Equivalent_equity_shares').value=result;
-      console.log(result); 
     }
+
+    //this.CountValueofShares();
+  }
+
+  CountValueofShares()
+  {
+    if(this.esopFormlist.value.Equivalent_equity_shares !='' && this.esopFormlist.value.Facevalue_equity_shares !='')
+    {
+     var resultJ=this.esopFormlist.value.Equivalent_equity_shares*this.esopFormlist.value.Facevalue_equity_shares;
+     /* this.esopFormlist.patchValue({
+       'Value_of_Shares':resultJ
+     }); */
+   }
   }
 
   onSubmitESOPFrom()
@@ -91,6 +103,17 @@ export class FormEsopComponent implements OnInit {
       }
       return;
     } 
+    else{
+      return this.apiService.createFormEsop(this.esopFormlist.value).subscribe({
+        complete: () => {
+          console.log('FromEsop successfully created!');
+            //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
+        },
+        error: (e) => {
+          console.log(e);
+        },
+      });
+    }
     
     console.log(this.esopFormlist);
     

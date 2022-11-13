@@ -17,6 +17,7 @@ mongoose
 // Setting up port with express js
 const employeeRoute = require('../backend/routes/employee.route')
 const masterRoute = require('../backend/routes/master.route')
+const esopRoute = require('../backend/routes/FormEsop.route')
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'dist/cimplyfema-app')))
 app.use('/', express.static(path.join(__dirname, 'dist/cimplyfema-app')))
 app.use('/api', employeeRoute)
 app.use('/api', masterRoute)
+app.use('/api', esopRoute)
 
 // Create port
 const port = process.env.PORT || 4000

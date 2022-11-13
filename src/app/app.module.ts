@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormEsopComponent } from './components/form-esop/form-esop.component';
 import { FormFcComponent } from './components/form-fc/form-fc.component';
 import { InstructionsComponent } from './Common/instructions/instructions.component';
+import { FormAprComponent } from './components/form-apr/form-apr.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { InstructionsComponent } from './Common/instructions/instructions.compon
     FormEsopComponent,
     FormFcComponent,
     InstructionsComponent,
+    FormAprComponent,
   ],
   imports: [
     BrowserModule,

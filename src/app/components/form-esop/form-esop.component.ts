@@ -47,14 +47,14 @@ export class FormEsopComponent implements OnInit {
         'Equivalent_equity_shares':new FormControl('',Validators.required),
         'Facevalue_equity_shares':new FormControl('',Validators.required),
         'Value_of_Shares':new FormControl('',Validators.required),
-        'Non_Debt_Instruments':new FormControl('false'),
-        'sectoral_cap_statutory':new FormControl('false'),
-        'Indian_companies_reconstruction':new FormControl('false'),
-        'PMLA_UAPA':new FormControl('false'),
-        'enclose_documents':new FormControl('false'),
-        'certificate_Company_Secretary':new FormControl('false'),
-        'SEBI_registered':new FormControl('false'),
-        'necessary_documents':new FormControl('false')
+        'Non_Debt_Instruments':new FormControl(''),
+        'sectoral_cap_statutory':new FormControl(''),
+        'Indian_companies_reconstruction':new FormControl(''),
+        'PMLA_UAPA':new FormControl(''),
+        'enclose_documents':new FormControl(''),
+        'certificate_Company_Secretary':new FormControl(''),
+        'SEBI_registered':new FormControl(''),
+        'necessary_documents':new FormControl('')
       }
     )
   }

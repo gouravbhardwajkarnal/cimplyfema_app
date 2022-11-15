@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit ,ViewChild} from '@angular/core';
+import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
 
 @Component({
   selector: 'app-form-opi',
@@ -8,15 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormOpiComponent implements OnInit {
 
+  @ViewChild('tabset') tabset: TabsetComponent;
   constructor() { }
 
   ngOnInit(): void {
   }
- /*  ngAfterViewInit(){
+  ngAfterViewInit(){
     console.log(this.tabset.tabs);
   }
 
-  goto(id){
+  NextTab(id)
+  {
     this.tabset.tabs[id].active = true;
-  } */
+  } 
+ 
+    
 }

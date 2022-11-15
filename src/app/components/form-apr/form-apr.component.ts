@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class FormAprComponent implements OnInit {
 
-  esopFormlist:FormGroup
+  aprFormlist:FormGroup
  CountryList: any=[];
   constructor(private readonly route: ActivatedRoute,private apiService: ApiService) {
     this.readCountry();
@@ -24,18 +24,19 @@ export class FormAprComponent implements OnInit {
   ]
   submitted=false;
   ngOnInit(): void {
-    this.esopFormlist=new FormGroup(
+    this.aprFormlist=new FormGroup(
       {
-        'NameofinvesteeCompany':new FormControl('',Validators.required),
-        'CIN_LIP':new FormControl('',Validators.required),
-        'PanNo':new FormControl('',[Validators.required,Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
-        'ESOP_Scheme_Name':new FormControl('',Validators.required),
-        'BR_EGM_Circular':new FormControl('',Validators.required),
-        'Date_Resolution':new FormControl('',Validators.required),
-        'Entry_Route':new FormControl('Automatic Route',Validators.required),
-        'Applicable_Sectoral_Cap':new FormControl('20',Validators.required),
-        'foreigninvestmentproject':new FormControl('',Validators.required),
-        'Shareholdingpattern':new FormControl('',Validators.required),
+        'From_Date':new FormControl('',Validators.required),
+        'To_Date':new FormControl('',Validators.required),
+        'Unique_Identification_Number':new FormControl('',Validators.required),
+        'Indian_Amount':new FormControl('',Validators.required),
+        'Indian_Share':new FormControl('',Validators.required),
+        'Foreign_Amount':new FormControl('',Validators.required),             
+        'Foreign_Share':new FormControl('',Validators.required),
+        'IndianEntityResidentIndividualTrust':new FormControl('',Validators.required),
+        'Person_resident_India_1':new FormControl('',Validators.required),
+        'Indian_Stake_1':new FormControl('',Validators.required),
+        
         'Full_Name_Grantee':new FormControl('',Validators.required),
         'Date_of_Issue':new FormControl('',Validators.required),
         'Number_ESOP_Granted':new FormControl('',Validators.required),
@@ -65,17 +66,17 @@ export class FormAprComponent implements OnInit {
   }
   CounEquivalentEquityShares()
   {
-     if(this.esopFormlist.value.Number_ESOP_Granted !='' && this.esopFormlist.value.Conversion_ratio !='')
+     if(this.aprFormlist.value.Number_ESOP_Granted !='' && this.aprFormlist.value.Conversion_ratio !='')
      {
-      var Number_ESOP=this.esopFormlist.value.Number_ESOP_Granted;
-      var Conversion_ratio=this.esopFormlist.value.Conversion_ratio;
+      var Number_ESOP=this.aprFormlist.value.Number_ESOP_Granted;
+      var Conversion_ratio=this.aprFormlist.value.Conversion_ratio;
       var result=Number_ESOP*Conversion_ratio;
       
       setTimeout(()=>{  
-      this.esopFormlist
+      this.aprFormlist
       .valueChanges
       .subscribe( _ => {
-          this.esopFormlist.get( 'Equivalent_equity_shares' ).patchValue( result, {emitEvent: false} );
+          this.aprFormlist.get( 'Equivalent_equity_shares' ).patchValue( result, {emitEvent: false} );
       } );
     }, 1000);
       
@@ -86,25 +87,25 @@ export class FormAprComponent implements OnInit {
 
   CountValueofShares()
   {
-    if(this.esopFormlist.value.Equivalent_equity_shares !='' && this.esopFormlist.value.Facevalue_equity_shares !='')
+    if(this.aprFormlist.value.Equivalent_equity_shares !='' && this.aprFormlist.value.Facevalue_equity_shares !='')
     {
-     var resultJ=this.esopFormlist.value.Equivalent_equity_shares*this.esopFormlist.value.Facevalue_equity_shares;
-     /* this.esopFormlist.patchValue({
+     var resultJ=this.aprFormlist.value.Equivalent_equity_shares*this.aprFormlist.value.Facevalue_equity_shares;
+     /* this.aprFormlist.patchValue({
        'Value_of_Shares':resultJ
      }); */
    }
   }
 
-  onSubmitESOPFrom()
+  onSubmitAPRFrom()
   {
-    if (this.esopFormlist.invalid) {
-      for (const control of Object.keys(this.esopFormlist.controls)) {
-        this.esopFormlist.controls[control].markAsTouched();
+    if (this.aprFormlist.invalid) {
+      for (const control of Object.keys(this.aprFormlist.controls)) {
+        this.aprFormlist.controls[control].markAsTouched();
       }
       return;
     } 
     else{
-      return this.apiService.createFormEsop(this.esopFormlist.value).subscribe({
+      return this.apiService.createFormEsop(this.aprFormlist.value).subscribe({
         complete: () => {
           console.log('FromEsop successfully created!');
             //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
@@ -115,7 +116,7 @@ export class FormAprComponent implements OnInit {
       });
     }
     
-    console.log(this.esopFormlist);
+    console.log(this.aprFormlist);
     
   }
 

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card mt-2">
         <div class="card-header p-2">
-            <h5> Form ESOP</h5>
+            <h5> Form APR</h5>
         </div>
     </div>
 
@@ -10,268 +10,594 @@
 
         Instructions for filling up the Form FC
         <ul>
-            <li>1) The Form FC is required to be submitted to the designated AD bank by the person resident in India
-                seeking to invest in the foreign entity, whether under Automatic Route or Approval Route. </li>
-            <li> 2) Under Approval Route, the Form FC after scrutiny, should be submitted by the AD bank, to the Reserve
-                Bank as per the instructions in Para 3 of FEM (Overseas Investment) Directions, 2022.</li>
-            <li>3) The Form FC is to be submitted while undertaking financial commitment in a foreign entity, at the
-                time of sending outward remittance or making a financial commitment, whichever is earlier. </li>
-            <li>4) In case of acquisition of equity capital on deferred payment basis in accordance with Regulation 7 of
-                OI Regulations, the part of the consideration, payment of which is deferred by the person resident in
-                India shall be treated as non-fund-based commitment and shall be reported accordingly. Subsequent
-                remittance towards the payment of deferred consideration shall be reported in Form FC as conversion of 
+            <li>1) A person resident in India acquiring equity capital in a foreign entity which is reckoned as ODI, 
+                shall submit an APR with respect to each foreign entity every year till the person resident in India is invested in such foreign entity,
+                 by December 31st and where the accounting year of the foreign entity ends on December 31st, the APR shall be submitted by December 31st of the next year. </li>
+            <li> 2)	The APRs shall not be submitted in the following cases.<br>
+                    (i)	If a person resident in India is holding less than 10 per cent of the equity capital without control in the foreign entity and
+                     there is no other financial commitment other than by way of equity capital.<br>
+                    (ii)	When the foreign entity is under liquidation, from the date of initiation of the liquidation process.<br> 
+                    (iii)	For the broken period (i.e. full year not completed) at the time of disinvestment. However, the details of transactions if any that had been undertaken during the time from the date of submission of
+                     the last APR till the date of disinvestment/initiation of liquidation process may be duly reported in the Form FC.      
             </li>
+            <li>3)The APR shall be based on the audited financial statements of the foreign entity. Where the person resident in India does not have ‘control’ in the foreign entity and the laws of the host jurisdiction does not provide for mandatory auditing of the books of accounts, the APR may be submitted based on unaudited financial statements certified as such by the statutory auditor of the Indian entity or by a chartered accountant where the statutory audit is not applicableincluding in case of resident individuals.
+            <li>4)In case more than one person resident in India have made ODI in the same foreign entity, the person resident in India holding the highest stake in the foreign entity shall be required to submit APR. In case of holdings being equal, APR may be filed jointly by such persons resident in India. It is also clarified that where APR is required to be filed jointly, either one investor may be authorized by other investors, or such persons may jointly file the APR. 
+            </li>
+            <li>5)The person resident in India shall report the details regarding acquisition/ setting up /winding up/ transfer of an SDS or alteration in the shareholding pattern in the foreign entity during the reporting year in the APR, failing which it shall amount to non-submission of APR.</li>
+            <li>6)The person resident in India shall ensure that all the previous year APRs have been submitted to the designated AD bank. </li>
+            <li>7)	Capital structure (para III of form APR) should be in cumulative and the % stake should be a total of all the persons resident in India in the foreign entity </li>
+            <li>8)	In Para VII the figures under “since commencement of business” should be equal to or more than the figure mentioned under current year</li>
+            <li>9)	In Para VII (ii), Redemption of preference shares (not in the nature of compulsorily convertible preference shares (CCPS)) should also be reported. </li>
+            <li>10)	In Para VII (vii), other receipts which are not mentioned in the table like interest on loan or license fee etc. shall be mentioned. </li>
+            <li>11)	In Para IX, the part of the profits of the foreign entity which is retained and reinvested in such foreign entity shall be mentioned. The retained earnings are to be calculated as per the procedure laid down by the International Monetary Fund in the latest version of their publication “Balance of Payments and International Investment Position Manual”. It is to be noted that the negative retained earnings is to be treated as ‘0’ (zero).</li>
+            <li>12)	The level of step-down subsidiary (SDS) shall be calculated treating the foreign entity as the parent. So, an SDS directly under the foreign entity should be treated as first level SDS. Accordingly, an SDS under the first level SDS would be treated as second level SDS and so on and so forth. </li>
+            <li>13)	In case of ParaXII, the structure of SDS should be in compliance with the structural requirements of the foreign entity i.e the structure of such subsidiary/SDS shall also have limited liability where the foreign entity’s core activity is not in strategic sector. The investee entities of the foreign entity where such foreign entity does not have control may not be treated as SDSs and therefore may not be reported.</li>
+            <li>14)	In case of Para XII (vi), if the SDS is engaged in the activity of financial services, the investment shall be in compliance to the provisions contained in Para 2 of Schedule I of OI rules.</li>
+            <li>15)	The activity code as per NIC 1987 and NIC 2008 shall be furnished. </li>
+            <li>16)	The date may be mentioned in format DD/MM/YYYY format. </li>
+            <li>17)	The name of the foreign currency (FCY) shall be indicated as per SWIFT code.</li>
+            <li>18)	Each page of the Form FC should be duly signed and stamped with date by the person resident in India submitting the same. </li>
+            <li>19)	All amounts of foreign currency (FCY) and Indian Rupees (INR) should be in actuals only. </li>
+            <li>Note: All amounts should be in actuals. All the figures should be in a single foreign currency (FCY).</li>
         </ul>
     </div>
     <div class="card p-2 mt-1">
         <div class="card-header">
-            ESOP Details
+            APR Details
         </div>
         <div class="container-fluid position-relative d-flex p-0">
-            <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()">
+            <form [formGroup]="aprFormlist" (ngSubmit)="onSubmitAPRFrom()">
                 <div class="container-fluid pt-2">
                     <div class="row">
-
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Name of the Investee Company
-                            </label>
-                            <!-- ngClass="is-invalid:submitted && esopFormlist.controls.NameofinvesteeCompany.errors" -->
-                            <input type="text" class="form-control" formControlName="NameofinvesteeCompany" 
-                                [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                            <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-                                class="invalid-feedback">
-                                This field is required.
-                            </div>
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Corporate Identification Number (CIN/LLP) </label>
-                            <input type="text" class="form-control" formControlName="CIN_LIP" [class.is-invalid]="esopFormlist.get('CIN_LIP').invalid && (esopFormlist.get('CIN_LIP').dirty ||esopFormlist.get('CIN_LIP').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">PAN Number
-                            </label>
-                            <input type="text" class="form-control" formControlName="PanNo"
-                                [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
-                            <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="esopFormlist.get('PanNo').errors['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
-                                    Invalid PAN Number Format
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">ESOP Scheme Name
-                            </label>
-                            <input type="text" class="form-control" formControlName="ESOP_Scheme_Name" [class.is-invalid]="esopFormlist.get('ESOP_Scheme_Name').invalid && (esopFormlist.get('ESOP_Scheme_Name').dirty ||esopFormlist.get('ESOP_Scheme_Name').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">BR / EGM / Circular Resolution No.
-                            </label>
-                            <input type="text" class="form-control" formControlName="BR_EGM_Circular" [class.is-invalid]="esopFormlist.get('BR_EGM_Circular').invalid && (esopFormlist.get('BR_EGM_Circular').dirty ||esopFormlist.get('BR_EGM_Circular').touched)">
-                        </div>
-
-
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Date of Resolution
-                            </label>
-                            <input type="date" class="form-control" name="date-field"
-                                formControlName="Date_Resolution" [class.is-invalid]="esopFormlist.get('Date_Resolution').invalid && (esopFormlist.get('Date_Resolution').dirty ||esopFormlist.get('Date_Resolution').touched)"/>
-                        </div>
-
-
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Entry Route
-                            </label>
-                            <select class="form-select" formControlName="Entry_Route" [class.is-invalid]="esopFormlist.get('Entry_Route').invalid && (esopFormlist.get('Entry_Route').dirty ||esopFormlist.get('Entry_Route').touched)">
-                                <option value="Automatic Route">Automatic Route</option>
-                                <option value="Government Route">Government Route(Attach Copy Of Government Approval)
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Applicable Sectoral cap/ Statutory ceiling
-                            </label>
-                            <select class="form-select" formControlName="Applicable_Sectoral_Cap" [class.is-invalid]="esopFormlist.get('Applicable_Sectoral_Cap').invalid && (esopFormlist.get('Applicable_Sectoral_Cap').dirty ||esopFormlist.get('Applicable_Sectoral_Cap').touched)">
-                                <option value="20">20%</option>
-                                <option value="26">26%</option>
-                                <option value="49">49%</option>
-                                <option value="51">51%</option>
-                                <option value="74">74%</option>
-                                <option value="100">100%</option>
-                                <option value="Others">Others</option>
-                            </select>
-                        </div>
                         <div class="col-12 mb-2">
+                            <label class="form-label">APR for the period </label> <br>
+                        </div>
+                        <div class="col-4 mb-2">
+                           
+                            <label class="form-label">From Date </label>                          
+                            <input type="date" class="form-control" name="date-field"
+                                formControlName="From_Date" [class.is-invalid]="aprFormlist.get('From_Date').invalid && (aprFormlist.get('From_Date').dirty ||aprFormlist.get('From_Date').touched)"/>
+                        </div><div class="col-4 mb-2">
+                            <label class="form-label">To Date </label>                          
+                            <input type="date" class="form-control" name="date-field"
+                            formControlName="To_Date" [class.is-invalid]="aprFormlist.get('To_Date').invalid && (aprFormlist.get('To_Date').dirty ||aprFormlist.get('To_Date').touched)"/>
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Unique Identification Number (UIN)
+                            </label>                       
+                            <input type="number" class="form-control" formControlName="Unique_Identification_Number" 
+                                [class.is-invalid]="aprFormlist.get('Unique_Identification_Number').invalid && (aprFormlist.get('Unique_Identification_Number').dirty ||aprFormlist.get('Unique_Identification_Number').touched)">  
+                        
+                        </div> 
+                        <hr>
+                        <div class="col-12 mb-2">
+                            <label class="form-label">Capital structure as on the last day of the accounting year of theforeign entity </label><br>
+                        </div>
+                        <div class="col-2 mb-2">
                             
+                        </div>
+                        <div class="col-5 mb-2">
+                            <label class="form-label">Amount
+                            </label>                          
+                        </div>
+                        <div class="col-5 mb-2">
+                            <label class="form-label">Share(%)
+                            </label>
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">i)Indian
+                            </label>                          
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="number" class="form-control" formControlName="Indian_Amount" [class.is-invalid]="aprFormlist.get('Indian_Amount').invalid && (aprFormlist.get('Indian_Amount').dirty ||aprFormlist.get('Indian_Amount').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                           
+                            <input type="number" class="form-control" formControlName="Indian_Share" [class.is-invalid]="aprFormlist.get('Indian_Share').invalid && (aprFormlist.get('Indian_Share').dirty ||aprFormlist.get('Indian_Share').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">ii)Foreign
+                            </label>                          
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="number" class="form-control" formControlName="Foreign_Amount" [class.is-invalid]="aprFormlist.get('Foreign_Amount').invalid && (aprFormlist.get('Foreign_Amount').dirty ||aprFormlist.get('Foreign_Amount').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                           
+                            <input type="number" class="form-control" formControlName="Foreign_Share" [class.is-invalid]="aprFormlist.get('Foreign_Share').invalid && (aprFormlist.get('Foreign_Share').dirty ||aprFormlist.get('Foreign_Share').touched)">
+                        </div>
+                        <hr>
+                        <div class="col-12 mb-2">
+                                <input class="form-check-input" formControlName="IndianEntityResidentIndividualTrust" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  Yes
+                                </label>
+                                <input class="form-check-input" type="radio" formControlName="IndianEntityResidentIndividualTrust" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                  No
+                                </label>                        
+                            <div class="form-check form-check-inline" >
+                                <label class="form-check-label" for="inlineRadio3">Whether the Indian Entity (IE)/ Resident Individual (RI)/Trust/ Society has control in the foreign entity </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-12 mb-2">
+                            <label class="form-label">Change in the share holding pattern during the reporting year (Furnish the updated share holding pattern, if applicable, in the foreign entity)
+                            </label>
+                           
+                        </div>
+                        <div class="col-3 mb-2">
+                            <label class="form-label">Person resident in India
+                            </label>                         
+                        </div>
+                        <div class="col-3 mb-2">
+                            <label class="form-label">Stake(%)
+                            </label>                           
+                        </div>
+                        <div class="col-3 mb-2">
+                            <label class="form-label"> Foreign partner(s)
+                            </label>                       
+                        </div>
+                        <div class="col-3 mb-2">
+                            <label class="form-label">Stake(%)
+                        </label>              
+                        </div>
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="Person_resident_India_1" 
+                            [class.is-invalid]="aprFormlist.get('Person_resident_India_1').invalid && (aprFormlist.get('Person_resident_India_1').dirty ||aprFormlist.get('Person_resident_India_1').touched)">
+                        </div>  
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="India_Stake_1" 
+                            [class.is-invalid]="aprFormlist.get('India_Stake_1').invalid && (aprFormlist.get('India_Stake_1').dirty ||aprFormlist.get('India_Stake_1').touched)">
+                        </div> 
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="Foreign_partner_1" 
+                            [class.is-invalid]="aprFormlist.get('Foreign_partner_1').invalid && (aprFormlist.get('Foreign_partner_1').dirty ||aprFormlist.get('Foreign_partner_1').touched)">
+                        </div> 
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="Foreign_Stake_1" 
+                            [class.is-invalid]="aprFormlist.get('Foreign_Stake_1').invalid && (aprFormlist.get('Foreign_Stake_1').dirty ||aprFormlist.get('Foreign_Stake_1').touched)">
+                        </div>    
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="Person_resident_India_2" 
+                            [class.is-invalid]="aprFormlist.get('Person_resident_India_2').invalid && (aprFormlist.get('Person_resident_India_2').dirty ||aprFormlist.get('Person_resident_India_2').touched)">
+                        </div>  
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="India_Stake_2" 
+                            [class.is-invalid]="aprFormlist.get('India_Stake_2').invalid && (aprFormlist.get('India_Stake_2').dirty ||aprFormlist.get('India_Stake_2').touched)">
+                        </div>  
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="Foreign_partner_2" 
+                            [class.is-invalid]="aprFormlist.get('Foreign_partner_2').invalid && (aprFormlist.get('Foreign_partner_2').dirty ||aprFormlist.get('Foreign_partner_2').touched)">
+                        </div>  
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="Foreign_Stake_2" 
+                            [class.is-invalid]="aprFormlist.get('Foreign_Stake_2').invalid && (aprFormlist.get('Foreign_Stake_2').dirty ||aprFormlist.get('Foreign_Stake_2').touched)">
+                        </div>   
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="Person_resident_India_3" 
+                            [class.is-invalid]="aprFormlist.get('Person_resident_India_3').invalid && (aprFormlist.get('Person_resident_India_3').dirty ||aprFormlist.get('Person_resident_India_3').touched)">
+                        </div>  
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="India_Stake_3" 
+                            [class.is-invalid]="aprFormlist.get('India_Stake_3').invalid && (aprFormlist.get('India_Stake_3').dirty ||aprFormlist.get('India_Stake_3').touched)">
+                        </div>  
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="Foreign_partner_3" 
+                            [class.is-invalid]="aprFormlist.get('Foreign_partner_3').invalid && (aprFormlist.get('Foreign_partner_3').dirty ||aprFormlist.get('Foreign_partner_3').touched)">
+                        </div>  
+                        <div class="col-3 mb-2">                           
+                            <input type="text" class="form-control" formControlName="Foreign_Stake_3" 
+                            [class.is-invalid]="aprFormlist.get('Foreign_Stake_3').invalid && (aprFormlist.get('Foreign_Stake_3').dirty ||aprFormlist.get('Foreign_Stake_3').touched)">
+                        </div>   
+                        <hr>
+                        <div class="col-12 mb-2">
+                            <label class="form-label">Financial Position of the foreign entity for the last two years
+                            </label>    
+                        </div>
+                        <div class="col-2 mb-2">         
+                        </div>
+                        <div class="col-5 mb-2">
+                            <label class="form-label">Previous Year
+                           </label>                          
+                        </div>
+                        <div class="col-5 mb-2">
+                            <label class="form-label"> Current Year
+                            </label>
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">i)Net Profit/ (Loss) 
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                           
+                            <input type="text" class="form-control" formControlName="FP_NetProfit_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_NetProfit_Previous_Year').invalid && (aprFormlist.get('FP_NetProfit_Previous_Year').dirty ||aprFormlist.get('FP_NetProfit_Previous_Year').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                           
+                            <input type="number" class="form-control" formControlName="FP_NetProfit_Current_Year"
+                            [class.is-invalid]="aprFormlist.get('FP_NetProfit_Current_Year').invalid && (aprFormlist.get('FP_NetProfit_Current_Year').dirty ||aprFormlist.get('FP_NetProfit_Current_Year').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">ii)Dividend
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                           
+                            <input type="text" class="form-control" formControlName="FP_Dividend_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_Dividend_Previous_Year').invalid && (aprFormlist.get('FP_Dividend_Previous_Year').dirty ||aprFormlist.get('FP_Dividend_Previous_Year').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                           
+                            <input type="number" class="form-control" formControlName="FP_Dividend_Current_Year" 
+                            [class.is-invalid]="aprFormlist.get('FP_Dividend_Current_Year').invalid && (aprFormlist.get('FP_Dividend_Current_Year').dirty ||aprFormlist.get('FP_Dividend_Current_Year').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">iii)Net worth 
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                           
+                            <input type="text" class="form-control" formControlName="FP_Networth_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_Networth_Previous_Year').invalid && (aprFormlist.get('FP_Networth_Previous_Year').dirty )">
+                        </div>
+                        <div class="col-5 mb-2">                          
+                            <input type="number" class="form-control" formControlName="FP_Networth_Current_Year"
+                            [class.is-invalid]="aprFormlist.get('FP_Networth_Current_Year').invalid && (aprFormlist.get('FP_Networth_Current_Year').dirty ||aprFormlist.get('FP_Networth_Current_Year').touched)">
+                        </div>
+                        <hr>
+                        <div class="col-12 mb-2">
+                            <label class="form-label">Repatriation from the foreign entity
+                            </label>
+                           
+                        </div>
+                        <div class="col-2 mb-2">
+                             
+                        </div>
+                        <div class="col-5 mb-2">
+                            <label class="form-label">Current Year
+                            </label>  
+                        </div>
+                        <div class="col-5 mb-2">
+                            <label class="form-label"> Since commencement of business
+                            </label>                         
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">i)Dividend 
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Dividend_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Dividend_CurYear').invalid && (aprFormlist.get('Repat_Dividend_CurYear').dirty ||aprFormlist.get('Repat_Dividend_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Dividend_commencement" [class.is-invalid]="aprFormlist.get('Repat_Dividend_commencement').invalid && (aprFormlist.get('Repat_Dividend_commencement').dirty ||aprFormlist.get('Repat_Dividend_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">ii)Repayment of loan
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Repayment_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Repayment_CurYear').invalid && (aprFormlist.get('Repat_Repayment_CurYear').dirty ||aprFormlist.get('Repat_Repayment_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Repayment_commencement" [class.is-invalid]="aprFormlist.get('Repat_Repayment_commencement').invalid && (aprFormlist.get('Repat_Repayment_commencement').dirty ||aprFormlist.get('Repat_Repayment_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">iii)Non-Equity Exports Realised (in INR)  
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_EquityExport_CurYear" [class.is-invalid]="aprFormlist.get('Repat_EquityExport_CurYear').invalid && (aprFormlist.get('Repat_EquityExport_CurYear').dirty ||aprFormlist.get('Repat_EquityExport_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_EquityExport_commencement" [class.is-invalid]="aprFormlist.get('Repat_EquityExport_commencement').invalid && (aprFormlist.get('Repat_EquityExport_commencement').dirty ||aprFormlist.get('Repat_EquityExport_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">iv)Royalties 
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Royalties_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Royalties_CurYear').invalid && (aprFormlist.get('Repat_Royalties_CurYear').dirty ||aprFormlist.get('Repat_Royalties_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Royalties_commencement" [class.is-invalid]="aprFormlist.get('Repat_Royalties_commencement').invalid && (aprFormlist.get('Repat_Royalties_commencement').dirty ||aprFormlist.get('Repat_Royalties_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">v)Technical know-how Fees     
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Technical_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Technical_CurYear').invalid && (aprFormlist.get('Repat_Technical_CurYear').dirty ||aprFormlist.get('Repat_Technical_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Technical_commencement" [class.is-invalid]="aprFormlist.get('Repat_Technical_commencement').invalid && (aprFormlist.get('Repat_Technical_commencement').dirty ||aprFormlist.get('Repat_Technical_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">vi)Consultancy fees     
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Consultancyfee_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Consultancyfee_CurYear').invalid && (aprFormlist.get('Repat_Consultancyfee_CurYear').dirty ||aprFormlist.get('Repat_Consultancyfee_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Consultancyfee_commencement" [class.is-invalid]="aprFormlist.get('Repat_Consultancyfee_commencement').invalid && (aprFormlist.get('Repat_Consultancyfee_commencement').dirty ||aprFormlist.get('Repat_Consultancyfee_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">vii)Others (please specify)
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Others_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Others_CurYear').invalid && (aprFormlist.get('Repat_Others_CurYear').dirty ||aprFormlist.get('Repat_Others_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Others_commencement" [class.is-invalid]="aprFormlist.get('Repat_Others_commencement').invalid && (aprFormlist.get('Repat_Others_commencement').dirty ||aprFormlist.get('Repat_Others_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">viii)Profit 
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Profit_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Profit_CurYear').invalid && (aprFormlist.get('Repat_Profit_CurYear').dirty ||aprFormlist.get('Repat_Profit_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Profit_commencement" [class.is-invalid]="aprFormlist.get('Repat_Profit_commencement').invalid && (aprFormlist.get('Repat_Profit_commencement').dirty ||aprFormlist.get('Repat_Profit_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">ix)Retained earnings
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Retained_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Retained_CurYear').invalid && (aprFormlist.get('Repat_Retained_CurYear').dirty ||aprFormlist.get('Repat_Retained_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_Retained_commencement" [class.is-invalid]="aprFormlist.get('Repat_Retained_commencement').invalid && (aprFormlist.get('Repat_Retained_commencement').dirty ||aprFormlist.get('Repat_Retained_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">x)FDI by foreign entity/ SDS into India 
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_FDIforeign_CurYear" [class.is-invalid]="aprFormlist.get('Repat_FDIforeign_CurYear').invalid && (aprFormlist.get('Repat_FDIforeign_CurYear').dirty ||aprFormlist.get('Repat_FDIforeign_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_FDIforeign_commencement" [class.is-invalid]="aprFormlist.get('Repat_FDIforeign_commencement').invalid && (aprFormlist.get('Repat_FDIforeign_commencement').dirty ||aprFormlist.get('Repat_FDIforeign_commencement').touched)">
+                        </div>
+                        <div class="col-2 mb-2">
+                            <label class="form-label">xi)Refund of excess share application money 
+                                @Transaction No.
+                                
+                            </label>   
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_exces_sshare_CurYear" [class.is-invalid]="aprFormlist.get('Repat_exces_sshare_CurYear').invalid && (aprFormlist.get('Repat_exces_sshare_CurYear').dirty ||aprFormlist.get('Repat_exces_sshare_CurYear').touched)">
+                        </div>
+                        <div class="col-5 mb-2">                            
+                            <input type="text" class="form-control" formControlName="Repat_exces_sshare_commencement" [class.is-invalid]="aprFormlist.get('Repat_exces_sshare_commencement').invalid && (aprFormlist.get('Repat_exces_sshare_commencement').dirty ||aprFormlist.get('Repat_exces_sshare_commencement').touched)">
+                        </div>
+                       <hr>
+                       <div class="col-12 mb-2">  
+                        <label class="form-label">@ Furnish 15 / 17-digit transaction number allotted by Reserve Bank allotted at the time of reporting of remittance in the online OID application.</label>
+                         </div>
+                         <hr>
+                         <div class="col-12 mb-2">  
+                            <label class="form-label">Furnish the details of acquisition or setting up or winding up or transfer of step-down subsidiary or subsidiaries of foreign entity during the reporting year in the format as provided, if applicable (attach separate sheet if the number of SDS is more than one).</label>
+                             </div>
+                             <div class="col-4 mb-2">
+                                <label class="form-label">i)Name, level and country/jurisdiction name of SDS                                   
+                                </label>   
+                            </div>
+                            <div class="col-8 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-4 mb-2">
+                                <label class="form-label">ii)Name, level and country/jurisdictionname of the parent of SDS                                  
+                                </label>   
+                            </div>
+                            <div class="col-8 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-4 mb-2">
+                                <label class="form-label">iii)Investment amount and date of investment (if any)                                  
+                                </label>   
+                            </div>
+                            <div class="col-4 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-4 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="form-label">iv)                            
+                                </label>   
+                            </div>
+                            <div class="col-4 mb-2">
+                                <label class="form-label">a)Activity code as per 1987                            
+                                </label>   
+                            </div>
+                            <div class="col-8 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-4 mb-2">
+                                <label class="form-label">b)Activity code as per 1987                            
+                                </label>   
+                            </div>
+                            <div class="col-8 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-4 mb-2">
+                                <label class="form-label">v)% Stake held in SDS                                  
+                                </label>   
+                            </div>
+                            <div class="col-8 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-4 mb-2">
+                                <label class="form-label">vi)Is the activity of SDS into financial services (tick) 
+                                                                    
+                                </label>   
+                            </div>
+                            <div class="col-4 mb-2">
                             <div class="form-check form-check-inline" *ngFor="let fd of foreigninvestmentProject" >
-                                <input class="form-check-input" type="radio" id="{{fd.id}}" formControlName="foreigninvestmentproject" [class.is-invalid]="esopFormlist.get('foreigninvestmentproject').invalid && (esopFormlist.get('foreigninvestmentproject').dirty ||esopFormlist.get('foreigninvestmentproject').touched)"
+                                <input class="form-check-input" type="radio" id="{{fd.id}}" formControlName="foreigninvestmentproject" [class.is-invalid]="aprFormlist.get('foreigninvestmentproject').invalid && (aprFormlist.get('foreigninvestmentproject').dirty ||aprFormlist.get('foreigninvestmentproject').touched)"
                                     value="{{fd.Type}}" style="cursor:pointer;">
                                 <label class="form-check-label" for="{{fd.id}}">{{fd.Type}}</label>
                             </div>
-                        
-                            <div class="form-check form-check-inline" >
-                                <label class="form-check-label" for="inlineRadio3">Whether the foreign investment is
-                                    received for a specific project/manufacturing unit or manufacturing plant</label>
                             </div>
-                        </div>
-                        <div class="col-12 mb-2">
-                            <div class="form-check form-check-inline" *ngFor="let fd of Shareholding">
-                                <input class="form-check-input" type="radio" id="{{fd.id}}" formControlName="Shareholdingpattern"  [class.is-invalid]="esopFormlist.get('Shareholdingpattern').invalid && (esopFormlist.get('Shareholdingpattern').dirty ||esopFormlist.get('Shareholdingpattern').touched)"
-                                value="{{fd.Type}}" style="cursor:pointer;">
-                                <label class="form-check-label" for="{{fd.id}}">{{fd.Type}}</label>
+                            <div class="col-8 mb-2">
+                                <label class="form-label">vii)Name, level and country/jurisdiction of SDS wound up during the reporting period, wherever applicable                              
+                                </label>   
                             </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label" for="inlineRadio3">Whether the change in the
-                                    shareholding pattern due to this transaction being reported has already been
-                                    accounted in the pre transaction shareholding pattern:*</label>
+                            <div class="col-4 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
                             </div>
-                        </div>
-                        <hr>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Full Name of the Grantee
-                            </label>
-                            <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="esopFormlist.get('Full_Name_Grantee').invalid && (esopFormlist.get('Full_Name_Grantee').dirty ||esopFormlist.get('Full_Name_Grantee').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Date of Issue
-                            </label>
-                            <input type="date" class="form-control" formControlName="Date_of_Issue" 
-                            [class.is-invalid]="esopFormlist.get('Date_of_Issue').invalid && (esopFormlist.get('Date_of_Issue').dirty ||esopFormlist.get('Date_of_Issue').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Number of ESOPs Granted
-                            </label>
-                            <input type="number" class="form-control" formControlName="Number_ESOP_Granted" (ngModelChange)="CounEquivalentEquityShares()"
-                            [class.is-invalid]="esopFormlist.get('Number_ESOP_Granted').invalid && (esopFormlist.get('Number_ESOP_Granted').dirty ||esopFormlist.get('Number_ESOP_Granted').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Country
-                            </label>
-                            <input class="form-control" formControlName="Country" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." 
-                            [class.is-invalid]="esopFormlist.get('Country').invalid && (esopFormlist.get('Country').dirty ||esopFormlist.get('Country').touched)">
-                            <datalist id="datalistOptions">
-                              <option *ngFor="let list of CountryList">{{list.name}}</option>
-                              <!-- <option value="New York">
-                              <option value="Seattle">
-                              <option value="Los Angeles">
-                              <option value="Chicago"> -->
-                            </datalist>
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Residential Status
-                            </label>
-                            <input type="text" class="form-control" formControlName="ResidentialStatus" 
-                            [class.is-invalid]="esopFormlist.get('ResidentialStatus').invalid && (esopFormlist.get('ResidentialStatus').dirty ||esopFormlist.get('ResidentialStatus').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Name of the Subsidiary . SDS
-                            </label>
-                            <input type="text" class="form-control" formControlName="SubsidiarySDS" 
-                            [class.is-invalid]="esopFormlist.get('SubsidiarySDS').invalid && (esopFormlist.get('SubsidiarySDS').dirty ||esopFormlist.get('SubsidiarySDS').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Pre-determined issue price
-                            </label>
-                            <input type="number" class="form-control" formControlName="Pre_determined_issue_price" 
-                            [class.is-invalid]="esopFormlist.get('Pre_determined_issue_price').invalid && (esopFormlist.get('Pre_determined_issue_price').dirty ||esopFormlist.get('Pre_determined_issue_price').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Conversion ratio
-                            </label>
-                            <input type="number" class="form-control" formControlName="Conversion_ratio" (ngModelChange)="CounEquivalentEquityShares()"
-                            [class.is-invalid]="esopFormlist.get('Conversion_ratio').invalid && (esopFormlist.get('Conversion_ratio').dirty ||esopFormlist.get('Conversion_ratio').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Equivalent equity shares on fully diluted basis
-                            </label>
-                            <input type="number" class="form-control" formControlName="Equivalent_equity_shares" (ngModelChange)="CounEquivalentEquityShares()"
-                            [class.is-invalid]="esopFormlist.get('Equivalent_equity_shares').invalid && (esopFormlist.get('Equivalent_equity_shares').dirty ||esopFormlist.get('Equivalent_equity_shares').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Face value of equity shares
-                            </label>
-                            <input type="number" class="form-control" formControlName="Facevalue_equity_shares" maxlength="20" (ngModelChange)="CounEquivalentEquityShares()"
-                            [class.is-invalid]="esopFormlist.get('Facevalue_equity_shares').invalid && (esopFormlist.get('Facevalue_equity_shares').dirty ||esopFormlist.get('Facevalue_equity_shares').touched)">
-                        </div>
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Value of Shares in Rs
-                            </label>
-                            <input type="number" class="form-control" formControlName="Value_of_Shares"  maxlength="10"
-                            [class.is-invalid]="esopFormlist.get('Value_of_Shares').invalid && (esopFormlist.get('Value_of_Shares').dirty ||esopFormlist.get('Value_of_Shares').touched)">
-                        </div>
-                        <div class="card-header">
-                            Declaration
-                        </div>
-                        <div class="col-lg-10 mb-3">
-                            1. We comply with the procedure for issue of equity instruments as laid down under Foreign
-                            Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17, 2019 and as amended
-                            from time to time.
-                        </div>
-                        <div class="col-lg-2">
-                            <input class="form-check-input me-1" type="checkbox"  formControlName="Non_Debt_Instruments" style="cursor:pointer;">
-                        </div>
-                        <div class="col-lg-10 mb-3">
-                            2. The investment is within the sectoral cap / statutory ceiling permissible under the
-                            rules, ibid and in compliance with the attendant conditions.
-                        </div>
-                        <div class="col-lg-2">
-                            <input class="form-check-input me-1" type="checkbox" formControlName="sectoral_cap_statutory" style="cursor:pointer;">
-                        </div>
-                        <div class="col-lg-10 mb-3">
-                            3. The equity instruments issued under a scheme of merger and amalgamation of two or more
-                            Indian companies or reconstruction by way of de-merger or otherwise of an Indian company is
-                            duly approved by a court in India. (Strike- out if not applicable).
-                        </div>
-                        <div class="col-lg-2">
-                            <input class="form-check-input me-1" type="checkbox" formControlName="Indian_companies_reconstruction" style="cursor:pointer;">
-                        </div>
-                        <div class="col-lg-10 mb-3">
-                            4. The foreign investment received and reported now will be utilized in compliance with the
-                            provision of a Prevention of Money Laundering Act 2002 (PMLA) and Unlawful Activities
-                            (Prevention) Act, 1967 (UAPA). We confirm that the investment complies with the provisions
-                            of all applicable Rules and Regulations.
-                        </div>
-                        <div class="col-lg-2">
-                            <input class="form-check-input me-1" type="checkbox" formControlName="PMLA_UAPA" style="cursor:pointer;">
-                        </div>
-                        <div class="col-lg-10 mb-3">
-                            5. We enclose the following documents in compliance with these rules/regulations:
-                        </div>
-                        <div class="col-lg-2">
-                            <input class="form-check-input me-1" type="checkbox"  formControlName="enclose_documents" style="cursor:pointer;">
-                        </div>
-                        <div class="row justify-content-md-center">
-                            <div class="col-md-auto col-lg-10 mb-3">
-                                i. A certificate from our Company Secretary as in the specified format.
+                            <div class="card-header">
+                                Declaration from Indian entity/ resident individual (Strike out whichever is not applicable)
                             </div>
-                            <div class="col col-lg-1">
-                                <input class="form-check-input me-1" type="checkbox" formControlName="certificate_Company_Secretary" style="cursor:pointer;">
+                            <div class="card p-2">                              
+                                I/We the Indian entity/ resident individual (wherever applicable) further confirm that:
+                                <ul>
+                                    <li>i) Acquisition/ setting up/ winding up/transfer of the SDS and changes in the shareholding pattern of the foreign entity since last APR have been reported as required in terms of Regulation 10(4)(c) of OI Regulations or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time. </li>
+                                    <li>ii) The structure of SDS is in compliance with the structural requirements of the foreign entity as provided in OI Rules.    
+                                    </li>
+                                    <li>iii) We have received share certificate/s (or any other evidence of investment as per the applicable laws of the host jurisdiction) and submitted the same to the designated AD bank for verification within 6 months of making the remittance/s for all investments/ capitalization which are reckoned as ODI in the foreign entity under this UIN, as per Regulation 9 (1) of OI Regulations or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time.</li>
+                                    <li>iv) The previous APRs for the foreign entity under this UIN, have been filed.</li>
+                                    <li>v) Repatriated to India, all dues receivable from the foreign entity under this UIN, as required under Regulation 9 (4) of OI Regulations or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time..</li>
+                                    <li>iv) I/ We hereby certify that the information furnished above are true and correct. I/We also duly. </li>
+                                    <li><h5>acknowledge that if any information furnished by me/us is found to be false and/or incorrect, it shall be construed that the reporting requirements under FEMA, 1999 have not been complied with.</h5></li>
+                                </ul>
                             </div>
-                            <div class="col-md-auto col-lg-10 mb-3">
-                                ii. A certificate from SEBI registered Merchant Banker / Chartered Accountant / cost
-                                accountant or any other person as authorized under Foreign Exchange Management (Non-Debt
-                                Instruments) Rules, 2019 dated October 17, 2019 and as amended from time to time,
-                                indicating the manner of arriving at the price of the shares issued to the persons
-                                resident outside India (wherever applicable).
+                            <hr>
+                            <div class="col-8 mb-2">
+                                <label class="form-label">Investment amount and date of investment (if any)Signature of the authorized official of the IE approved by the Board/ RI                                  
+                                </label>   
                             </div>
-                            <div class="col col-lg-1">
-                                <input class="form-check-input me-1" type="checkbox" formControlName="SEBI_registered" style="cursor:pointer;">
+                            <div class="col-4 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
                             </div>
-                            <div class="col-md-auto col-lg-10 mb-3">
-                                iii. All other necessary documents as applicable to the issue.
+                            <div class="col-8 mb-2">
+                                <label class="form-label">Name & Designation of the Authorized Official of the IE/ RI </label>
                             </div>
-                            <div class="col col-lg-1">
-                                <input class="form-check-input me-1" type="checkbox" formControlName="necessary_documents" style="cursor:pointer;">
+                            <div class="col-4 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
                             </div>
-                        </div>
-                        <hr>
-                        <div class="col-lg-12 text-center">
-                            <input type="submit" value="Submit" class="btn btn-primary">
-                        </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Place </label>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Date </label>
+                            </div>
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>                           
+                            <div class="col-6 mb-2">                                                      
+                                <input type="date" class="form-control" name="date-field"
+                                formControlName="To_Date" [class.is-invalid]="aprFormlist.get('To_Date').invalid && (aprFormlist.get('To_Date').dirty ||aprFormlist.get('To_Date').touched)"/>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Telephone </label>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Email</label>
+                            </div>
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>                           
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-4 mb-2">
+                                <textarea class="form-control" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
+                            </div>
+                            <div class="card-header">
+                                <div class="card-header">
+                                    Certificate of the Statutory Auditor (in case of Indian entity) / Chartered Accountant in case of resident individuals (strike out whichever is not applicable)
+                                </div>
+                            </div>
+                            <div class="card p-2">                              
+                                I/We the Indian entity/ resident individual (wherever applicable) further confirm that:
+                                <ul>
+                                    <li>i.APR for the year ended _______is prepared on the basis of audited/ unaudited balance sheet of the foreign entity for the year ended _________. </li>
+                                    <li>ii.APR for the year ended _______is prepared on the basis of unaudited balance sheet of the foreign entity since audit is not mandatory in host country/jurisdiction and the IE/RI does not have ‘control’ in the foreign entity in compliance with explanation (a) to Regulation 10(4) of Foreign Exchange Management (Overseas Investment) Regulations, 2022..    
+                                    </li>
+                                    <li>iii.The IE/RI repatriated to India, all dues receivable from the foreign entity under this UIN, as required under Regulation 9 (4) of Foreign Exchange Management (Overseas Investment) Regulations, 2022 or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time, and it has been verified from the Foreign Inward Remittance Certificate issued by the AD bank/s.</li>    
+                                </ul>
+                            </div>
+                            <hr>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Signature of the Statutory Auditors /Chartered Accountant                                  
+                                </label>   
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Name of the audit firm, Registration number and UDIN</label>
+                            </div>
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>                           
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Place </label>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Date </label>
+                            </div>
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>                           
+                            <div class="col-6 mb-2">                                                      
+                                <input type="date" class="form-control" name="date-field"
+                                formControlName="To_Date" [class.is-invalid]="aprFormlist.get('To_Date').invalid && (aprFormlist.get('To_Date').dirty ||aprFormlist.get('To_Date').touched)"/>
+                            </div>           
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Email</label>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Seal/Stamp</label>
+                            </div>
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>                                                     
+                            <div class="col-4 mb-2">
+                                <textarea class="form-control" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
+                            </div>
+                            <div class="card-header">
+                                <div class="card-header">
+                                    Certificate by the Authorized Dealer bank
+                                </div>
+                            </div>
+                            <div class="card p-2">                              
+                                I/We the Indian entity/ resident individual (wherever applicable) further confirm that:
+                                <ul>
+                                    <li>i.In terms of Regulation 9 (1) of OI Regulations, the AD Bank has received the share certificate/s or any other document as evidence of investment as per the applicable laws of the host jurisdiction and we are satisfied about the bonafides of the documents so received. </li>
+                                    <li>ii.The duly filled in Form (Annual Performance Report) was submitted by the Indian entity/resident individual on ___________ day of ___________ (month) ________________________ (year).    
+                                    </li>
+                                    <li>iii.All the previous year APRs submitted by the(Name of theIndian entity/ resident individual) have been reported in the online OID application.</li>    
+                                </ul>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Signature of the Authorized Official of the AD bank                                  
+                                </label>   
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Name and designation of the AD bank official</label>
+                            </div>
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>                           
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Place </label>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="form-label">Date </label>
+                            </div>
+                            <div class="col-6 mb-2">                            
+                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                            </div>                           
+                            <div class="col-6 mb-2">                                                      
+                                <input type="date" class="form-control" name="date-field"
+                                formControlName="To_Date" [class.is-invalid]="aprFormlist.get('To_Date').invalid && (aprFormlist.get('To_Date').dirty ||aprFormlist.get('To_Date').touched)"/>
+                            </div> 
+                            <div class="col-4 mb-2">
+                                <textarea class="form-control" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <input type="submit" value="Submit" class="btn btn-primary">
+                            </div>        
                     </div>
                 </div>
             </form>

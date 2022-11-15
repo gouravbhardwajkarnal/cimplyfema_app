@@ -9,7 +9,7 @@ import { FormEsopComponent } from './components/form-esop/form-esop.component';
 import { FormOpiComponent } from './components/form-opi/form-opi.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'create-employee' },
+  { path: '', pathMatch: 'full', redirectTo: 'form-fc' },
   { path: 'create-employee', component: EmployeeCreateComponent },
   { path: 'edit-employee/:id', component: EmployeeEditComponent },
   { path: 'employees-list', component: EmployeeListComponent },

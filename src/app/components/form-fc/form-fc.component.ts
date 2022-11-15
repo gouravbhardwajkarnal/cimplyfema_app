@@ -1,85 +1,66 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Iinvestment } from 'src/app/model/iinvestment';
+import { ApiService } from 'src/app/service/api.service';
+import { CodeClassGrid, DynamicGrid, FCDisinvestmentGrid, PEFEntityGrid, SumFCGrid } from 'src/app/model/gridmodel';
+import { DisinvetmentType } from 'src/app/model/common.model';
+import { CommonService } from "src/app/service/common.service";
 
-interface Iinvestment {
-  investment_name: string;
-  investment_pan: string;
-  investment_LEI: string;
-  investment_pin: number;
-  investment_Address: string;
-  investment_City:string
-}
 @Component({
   selector: 'app-form-fc',
   templateUrl: './form-fc.component.html',
   styleUrls: ['./form-fc.component.css']
 })
 export class FormFcComponent implements OnInit {
-
-reactiveForm!: FormGroup;
-investment_model:Iinvestment; 
+  disinvetmenttype: DisinvetmentType[];
+  CityList: any = [];
+  reactiveForm!: FormGroup;
+  investment_model: Iinvestment;
   @Input() name: string;
   activeTab: any;
-IsActive: any;
-div1:boolean=true;
-div2:boolean=false;
-div3:boolean=false;
-div4:boolean=false;
-div5:boolean=false;
+  IsActive: any;
+  div1: boolean = true;
+  div2: boolean = false;
+  div3: boolean = false;
+  div4: boolean = false;
+  div5: boolean = false;
 
-div1Function(){
-    this.div1=true;
-    this.div2=false;
-    this.div3=false;
-    this.div4=false;
-    this.div5=false;
-}
 
-div2Function(){
-    this.div2=true;
-    this.div1=false;
-    this.div3=false;
-    this.div4=false;
-    this.div5=false;
-}
 
-div3Function(){
-    this.div3=true;
-    this.div2=false;
-    this.div1=false
-    this.div4=false;
-    this.div5=false;
-}
-div4Function(){
-  this.div4=true;
-  this.div3=false;
-  this.div2=false;
-  this.div1=false
-  this.div5=false;
-}
-div5Function(){
-  this.div4=false;
-  this.div3=false;
-  this.div2=false;
-  this.div1=false;
-  this.div5=true;
-}
-tabOpen(id) {
-  debugger
-  if(id=1)
-  {
-  this.IsActive="tab-pane active";
+  dynamicArray: Array<DynamicGrid> = [];
+  sumFCArray: Array<SumFCGrid> = [];
+  FCDisinvestmentArray: Array<FCDisinvestmentGrid> = [];
+  PEFEntityArray: Array<PEFEntityGrid> = [];
+  CodeClassArray: Array<CodeClassGrid> = [];
+  codeClass: any = {};
+  codeClasslength: number = 0;
+  sumFC: any = {};
+  sumFClength: number = 0;
+  FCDisinvestment: any = {};
+  FCDisinvestmentlength: number = 0;
+  PEFEntity: any = {};
+  PEFEntitylength: number = 0;
+  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private commonservice: CommonService,) {
+    this.disinvetmenttype = commonservice.getAllDisinvestmentTypes();
+    console.log(this.disinvetmenttype);
+    this.investment_model = {} as Iinvestment;
+    this.readCity();
   }
-}
-
-
-constructor(private readonly route: ActivatedRoute) {
-
-  this.investment_model = {} as Iinvestment;
-}
 
   ngOnInit(): void {
+    this.codeClass = { Description1987: "", Description2008: "" };
+    this.CodeClassArray.push(this.codeClass);
+    this.codeClasslength = this.CodeClassArray.length;
+    this.sumFC = { EntityName: "", FCY: "", INR: "" }
+    this.sumFCArray.push(this.sumFC);
+    this.sumFClength = this.sumFCArray.length;
+    this.FCDisinvestment = { DisinvestmentType: "", FromDate: "", ToDate: "",Name:"" }
+    this.FCDisinvestmentArray.push(this.FCDisinvestment);
+    this.FCDisinvestmentlength = this.FCDisinvestmentArray.length;
+    this.PEFEntity = { NameFE: "", UIN: "",BankName:"" }
+    this.PEFEntityArray.push(this.PEFEntity);
+    this.PEFEntitylength = this.PEFEntityArray.length;
     this.reactiveForm = new FormGroup({
       investment_name: new FormControl(this.investment_model.investment_name, [
         Validators.required,
@@ -112,31 +93,132 @@ constructor(private readonly route: ActivatedRoute) {
         Validators.minLength(1),
         Validators.maxLength(250),
       ]),
-      
+      investment_GroupIE: new FormControl(this.investment_model.investment_GroupIE, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      investment_ContactPerson: new FormControl(this.investment_model.investment_GroupIE, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      investment_CPDesignation: new FormControl(this.investment_model.investment_GroupIE, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      investment_TelephoneNumber: new FormControl(this.investment_model.investment_GroupIE, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      investment_MobileNumber: new FormControl(this.investment_model.investment_GroupIE, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      investment_Email: new FormControl(this.investment_model.investment_GroupIE, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      investment_NetWorth: new FormControl(this.investment_model.investment_GroupIE, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      investment_AmountINR: new FormControl(this.investment_model.investment_AmountINR, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      investment_NetWorthDate: new FormControl(this.investment_model.investment_NetWorthDate, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+
+
     });
   }
-  get investment_name() {
-    return this.reactiveForm.get('investment_name')!;
+ 
+  addPEFEntity() {
+    this.PEFEntity = { NameFE: "", UIN: "",BankName:"" }
+    this.PEFEntityArray.push(this.PEFEntity);
+    console.log(this.PEFEntityArray);
+    this.PEFEntitylength = this.PEFEntityArray.length;
+    return true;
+  }
+  deletePEFEntity(index) {
+    if (this.PEFEntityArray.length == 1) {
+      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+      return false;
+    } else {
+      this.PEFEntityArray.splice(index, 1);
+      this.PEFEntitylength = this.PEFEntityArray.length;
+      //this.toastr.warning('Row deleted successfully', 'Delete row');  
+      return true;
+    }
+    
+  }
+  addFCDisinvestment() {
+    this.FCDisinvestment = { DisinvestmentType: "", FromDate: "", ToDate: "",Name:"" }
+    this.FCDisinvestmentArray.push(this.FCDisinvestment);
+    console.log(this.FCDisinvestmentArray);
+    this.FCDisinvestmentlength = this.FCDisinvestmentArray.length;
+    return true;
+  }
+  deleteFCDisinvestment(index) {
+    if (this.FCDisinvestmentArray.length == 1) {
+      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+      return false;
+    } else {
+      this.FCDisinvestmentArray.splice(index, 1);
+      this.FCDisinvestmentlength = this.FCDisinvestmentArray.length;
+      //this.toastr.warning('Row deleted successfully', 'Delete row');  
+      return true;
+    }
+    
+  }
+  addsumFC() {
+    debugger;
+    this.sumFC = { EntityName: "", FCY: "", INR: "" }
+    this.sumFCArray.push(this.sumFC);
+    console.log(this.sumFCArray);
+    this.sumFClength = this.sumFCArray.length;
+    return true;
+  }
+  deletesumFC(index) {
+    if (this.sumFCArray.length == 1) {
+      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+      return false;
+    } else {
+      this.sumFCArray.splice(index, 1);
+      this.sumFClength = this.sumFCArray.length;
+      //this.toastr.warning('Row deleted successfully', 'Delete row');  
+      return true;
+    }
+  
+  }
+  
+  addCodeClassRow() {
+    this.codeClass = { Description1987: "", Description2008: "" };
+    this.CodeClassArray.push(this.codeClass);
+    console.log(this.CodeClassArray);
+    this.codeClasslength = this.CodeClassArray.length;
+    return true;
   }
 
-  get investment_pan() {
-    return this.reactiveForm.get('investment_pan')!;
-  }
-
-  get investment_LEI() {
-    return this.reactiveForm.get('investment_LEI')!;
-  }
-
-  get investment_pin() {
-    return this.reactiveForm.get('investment_pin')!;
-  }
-  get investment_Address()
-  {
-    return this.reactiveForm.get('investment_Address')!;
-  }
-  get investment_City()
-  {
-    return this.reactiveForm.get('investment_City')!;
+  deleteCodeClassRow(index) {
+    if (this.CodeClassArray.length == 1) {
+      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+      return false;
+    } else {
+      this.CodeClassArray.splice(index, 1);
+      //this.toastr.warning('Row deleted successfully', 'Delete row');  
+      return true;
+    }
   }
   public validate(): void {
     if (this.reactiveForm.invalid) {
@@ -148,5 +230,98 @@ constructor(private readonly route: ActivatedRoute) {
 
     this.investment_model = this.reactiveForm.value;
   }
+  div1Function() {
+    this.div1 = true;
+    this.div2 = false;
+    this.div3 = false;
+    this.div4 = false;
+    this.div5 = false;
+  }
+  div2Function() {
+    this.div2 = true;
+    this.div1 = false;
+    this.div3 = false;
+    this.div4 = false;
+    this.div5 = false;
+  }
+  div3Function() {
+    this.div3 = true;
+    this.div2 = false;
+    this.div1 = false
+    this.div4 = false;
+    this.div5 = false;
+  }
+  div4Function() {
+    this.div4 = true;
+    this.div3 = false;
+    this.div2 = false;
+    this.div1 = false
+    this.div5 = false;
+  }
+  div5Function() {
+    this.div4 = false;
+    this.div3 = false;
+    this.div2 = false;
+    this.div1 = false;
+    this.div5 = true;
+  }
+  tabOpen(id) {
+    debugger
+    if (id = 1) {
+      this.IsActive = "tab-pane active";
+    }
+  }
+  get investment_name() {
+    return this.reactiveForm.get('investment_name')!;
+  }
+  get investment_pan() {
+    return this.reactiveForm.get('investment_pan')!;
+  }
+  get investment_LEI() {
+    return this.reactiveForm.get('investment_LEI')!;
+  }
+  get investment_pin() {
+    return this.reactiveForm.get('investment_pin')!;
+  }
+  get investment_Address() {
+    return this.reactiveForm.get('investment_Address')!;
+  }
+  get investment_City() {
+    return this.reactiveForm.get('investment_City')!;
+  }
+  get investment_CPDesignation() {
+    return this.reactiveForm.get('investment_CPDesignation')!;
+  }
+  get investment_ContactPerson() {
+    return this.reactiveForm.get('investment_ContactPerson')!;
+  }
+  get investment_TelephoneNumber() {
+    return this.reactiveForm.get('investment_GroupIE')!;
+  }
+  get investment_MobileNumber() {
+    return this.reactiveForm.get('investment_MobileNumber')!;
+  }
+  get investment_Email() {
+    return this.reactiveForm.get('investment_Email')!;
+  }
+  get investment_GroupIE() {
+    return this.reactiveForm.get('investment_GroupIE')!;
+  }
+  get investment_NetWorth() {
+    return this.reactiveForm.get('investment_NetWorth');
+  }
+  get investment_AmountINR() {
+    return this.reactiveForm.get('investment_AmountINR');
+  }
+  get investment_NetWorthDate() {
+    return this.reactiveForm.get('investment_NetWorthDate');
+  }
+  readCity() {
+    this.apiService.getCity().subscribe((data) => {
+
+      this.CityList = data;
+    });
+  }
+  
 
 }

@@ -28,8 +28,10 @@ export class ApiService {
   }
 
   getCountry() {
-    debugger;
     return this.http.get(`${this.baseUri}/master`);
+  }
+  getCity() {
+    return this.http.get(`${this.baseUri}/master/City`);
   }
   // Get employee
   getEmployee(id): Observable<any> {

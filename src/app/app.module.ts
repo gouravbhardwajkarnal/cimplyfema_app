@@ -14,6 +14,11 @@ import { FormEsopComponent } from './components/form-esop/form-esop.component';
 import { FormFcComponent } from './components/form-fc/form-fc.component';
 import { InstructionsComponent } from './Common/instructions/instructions.component';
 import { FormAprComponent } from './components/form-apr/form-apr.component';
+import { CommonService } from './service/common.service';
+import { FormFcWosComponent } from './Partial_Components/form-fc-wos/form-fc-wos.component';
+import { FormOpiComponent } from './components/form-opi/form-opi.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { TabsModule} from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,8 @@ import { FormAprComponent } from './components/form-apr/form-apr.component';
     FormFcComponent,
     InstructionsComponent,
     FormAprComponent,
+    FormFcWosComponent,
+    FormOpiComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,8 +39,10 @@ import { FormAprComponent } from './components/form-apr/form-apr.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    // TabsModule.forRoot()
   ],
-  providers: [],
+  providers: [CommonService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,280 @@
+<div class="container">
+    <div class="card mt-2">
+        <div class="card-header p-2">
+            <h5> Form ESOP</h5>
+        </div>
+    </div>
+
+    <div class="card p-2">
+        <h5>Instructions</h5>
+
+        Instructions for filling up the Form FC
+        <ul>
+            <li>1) The Form FC is required to be submitted to the designated AD bank by the person resident in India
+                seeking to invest in the foreign entity, whether under Automatic Route or Approval Route. </li>
+            <li> 2) Under Approval Route, the Form FC after scrutiny, should be submitted by the AD bank, to the Reserve
+                Bank as per the instructions in Para 3 of FEM (Overseas Investment) Directions, 2022.</li>
+            <li>3) The Form FC is to be submitted while undertaking financial commitment in a foreign entity, at the
+                time of sending outward remittance or making a financial commitment, whichever is earlier. </li>
+            <li>4) In case of acquisition of equity capital on deferred payment basis in accordance with Regulation 7 of
+                OI Regulations, the part of the consideration, payment of which is deferred by the person resident in
+                India shall be treated as non-fund-based commitment and shall be reported accordingly. Subsequent
+                remittance towards the payment of deferred consideration shall be reported in Form FC as conversion of 
+            </li>
+        </ul>
+    </div>
+    <div class="card p-2 mt-1">
+        <div class="card-header">
+            ESOP Details
+        </div>
+        <div class="container-fluid position-relative d-flex p-0">
+            <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()">
+                <div class="container-fluid pt-2">
+                    <div class="row">
+
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Name of the Investee Company
+                            </label>
+                            <!-- ngClass="is-invalid:submitted && esopFormlist.controls.NameofinvesteeCompany.errors" -->
+                            <input type="text" class="form-control" formControlName="NameofinvesteeCompany" 
+                                [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                            <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                                class="invalid-feedback">
+                                This field is required.
+                            </div>
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Corporate Identification Number (CIN/LLP) </label>
+                            <input type="text" class="form-control" formControlName="CIN_LIP" [class.is-invalid]="esopFormlist.get('CIN_LIP').invalid && (esopFormlist.get('CIN_LIP').dirty ||esopFormlist.get('CIN_LIP').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">PAN Number
+                            </label>
+                            <input type="text" class="form-control" formControlName="PanNo"
+                                [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
+                            <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                                    This field is required.
+                                </div>
+                                <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                                    Invalid PAN Number Format
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">ESOP Scheme Name
+                            </label>
+                            <input type="text" class="form-control" formControlName="ESOP_Scheme_Name" [class.is-invalid]="esopFormlist.get('ESOP_Scheme_Name').invalid && (esopFormlist.get('ESOP_Scheme_Name').dirty ||esopFormlist.get('ESOP_Scheme_Name').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">BR / EGM / Circular Resolution No.
+                            </label>
+                            <input type="text" class="form-control" formControlName="BR_EGM_Circular" [class.is-invalid]="esopFormlist.get('BR_EGM_Circular').invalid && (esopFormlist.get('BR_EGM_Circular').dirty ||esopFormlist.get('BR_EGM_Circular').touched)">
+                        </div>
+
+
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Date of Resolution
+                            </label>
+                            <input type="date" class="form-control" name="date-field"
+                                formControlName="Date_Resolution" [class.is-invalid]="esopFormlist.get('Date_Resolution').invalid && (esopFormlist.get('Date_Resolution').dirty ||esopFormlist.get('Date_Resolution').touched)"/>
+                        </div>
+
+
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Entry Route
+                            </label>
+                            <select class="form-select" formControlName="Entry_Route" [class.is-invalid]="esopFormlist.get('Entry_Route').invalid && (esopFormlist.get('Entry_Route').dirty ||esopFormlist.get('Entry_Route').touched)">
+                                <option value="Automatic Route">Automatic Route</option>
+                                <option value="Government Route">Government Route(Attach Copy Of Government Approval)
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Applicable Sectoral cap/ Statutory ceiling
+                            </label>
+                            <select class="form-select" formControlName="Applicable_Sectoral_Cap" [class.is-invalid]="esopFormlist.get('Applicable_Sectoral_Cap').invalid && (esopFormlist.get('Applicable_Sectoral_Cap').dirty ||esopFormlist.get('Applicable_Sectoral_Cap').touched)">
+                                <option value="20">20%</option>
+                                <option value="26">26%</option>
+                                <option value="49">49%</option>
+                                <option value="51">51%</option>
+                                <option value="74">74%</option>
+                                <option value="100">100%</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-2">
+                            
+                            <div class="form-check form-check-inline" *ngFor="let fd of foreigninvestmentProject" >
+                                <input class="form-check-input" type="radio" id="{{fd.id}}" formControlName="foreigninvestmentproject" [class.is-invalid]="esopFormlist.get('foreigninvestmentproject').invalid && (esopFormlist.get('foreigninvestmentproject').dirty ||esopFormlist.get('foreigninvestmentproject').touched)"
+                                    value="{{fd.Type}}" style="cursor:pointer;">
+                                <label class="form-check-label" for="{{fd.id}}">{{fd.Type}}</label>
+                            </div>
+                        
+                            <div class="form-check form-check-inline" >
+                                <label class="form-check-label" for="inlineRadio3">Whether the foreign investment is
+                                    received for a specific project/manufacturing unit or manufacturing plant</label>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <div class="form-check form-check-inline" *ngFor="let fd of Shareholding">
+                                <input class="form-check-input" type="radio" id="{{fd.id}}" formControlName="Shareholdingpattern"  [class.is-invalid]="esopFormlist.get('Shareholdingpattern').invalid && (esopFormlist.get('Shareholdingpattern').dirty ||esopFormlist.get('Shareholdingpattern').touched)"
+                                value="{{fd.Type}}" style="cursor:pointer;">
+                                <label class="form-check-label" for="{{fd.id}}">{{fd.Type}}</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="inlineRadio3">Whether the change in the
+                                    shareholding pattern due to this transaction being reported has already been
+                                    accounted in the pre transaction shareholding pattern:*</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Full Name of the Grantee
+                            </label>
+                            <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="esopFormlist.get('Full_Name_Grantee').invalid && (esopFormlist.get('Full_Name_Grantee').dirty ||esopFormlist.get('Full_Name_Grantee').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Date of Issue
+                            </label>
+                            <input type="date" class="form-control" formControlName="Date_of_Issue" 
+                            [class.is-invalid]="esopFormlist.get('Date_of_Issue').invalid && (esopFormlist.get('Date_of_Issue').dirty ||esopFormlist.get('Date_of_Issue').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Number of ESOPs Granted
+                            </label>
+                            <input type="number" class="form-control" formControlName="Number_ESOP_Granted" (ngModelChange)="CounEquivalentEquityShares()"
+                            [class.is-invalid]="esopFormlist.get('Number_ESOP_Granted').invalid && (esopFormlist.get('Number_ESOP_Granted').dirty ||esopFormlist.get('Number_ESOP_Granted').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Country
+                            </label>
+                            <input class="form-control" formControlName="Country" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." 
+                            [class.is-invalid]="esopFormlist.get('Country').invalid && (esopFormlist.get('Country').dirty ||esopFormlist.get('Country').touched)">
+                            <datalist id="datalistOptions">
+                              <option *ngFor="let list of CountryList">{{list.name}}</option>
+                              <!-- <option value="New York">
+                              <option value="Seattle">
+                              <option value="Los Angeles">
+                              <option value="Chicago"> -->
+                            </datalist>
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Residential Status
+                            </label>
+                            <input type="text" class="form-control" formControlName="ResidentialStatus" 
+                            [class.is-invalid]="esopFormlist.get('ResidentialStatus').invalid && (esopFormlist.get('ResidentialStatus').dirty ||esopFormlist.get('ResidentialStatus').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Name of the Subsidiary . SDS
+                            </label>
+                            <input type="text" class="form-control" formControlName="SubsidiarySDS" 
+                            [class.is-invalid]="esopFormlist.get('SubsidiarySDS').invalid && (esopFormlist.get('SubsidiarySDS').dirty ||esopFormlist.get('SubsidiarySDS').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Pre-determined issue price
+                            </label>
+                            <input type="number" class="form-control" formControlName="Pre_determined_issue_price" 
+                            [class.is-invalid]="esopFormlist.get('Pre_determined_issue_price').invalid && (esopFormlist.get('Pre_determined_issue_price').dirty ||esopFormlist.get('Pre_determined_issue_price').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Conversion ratio
+                            </label>
+                            <input type="number" class="form-control" formControlName="Conversion_ratio" (ngModelChange)="CounEquivalentEquityShares()"
+                            [class.is-invalid]="esopFormlist.get('Conversion_ratio').invalid && (esopFormlist.get('Conversion_ratio').dirty ||esopFormlist.get('Conversion_ratio').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Equivalent equity shares on fully diluted basis
+                            </label>
+                            <input type="number" class="form-control" formControlName="Equivalent_equity_shares" (ngModelChange)="CounEquivalentEquityShares()"
+                            [class.is-invalid]="esopFormlist.get('Equivalent_equity_shares').invalid && (esopFormlist.get('Equivalent_equity_shares').dirty ||esopFormlist.get('Equivalent_equity_shares').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Face value of equity shares
+                            </label>
+                            <input type="number" class="form-control" formControlName="Facevalue_equity_shares" maxlength="20" (ngModelChange)="CounEquivalentEquityShares()"
+                            [class.is-invalid]="esopFormlist.get('Facevalue_equity_shares').invalid && (esopFormlist.get('Facevalue_equity_shares').dirty ||esopFormlist.get('Facevalue_equity_shares').touched)">
+                        </div>
+                        <div class="col-4 mb-2">
+                            <label class="form-label">Value of Shares in Rs
+                            </label>
+                            <input type="number" class="form-control" formControlName="Value_of_Shares"  maxlength="10"
+                            [class.is-invalid]="esopFormlist.get('Value_of_Shares').invalid && (esopFormlist.get('Value_of_Shares').dirty ||esopFormlist.get('Value_of_Shares').touched)">
+                        </div>
+                        <div class="card-header">
+                            Declaration
+                        </div>
+                        <div class="col-lg-10 mb-3">
+                            1. We comply with the procedure for issue of equity instruments as laid down under Foreign
+                            Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17, 2019 and as amended
+                            from time to time.
+                        </div>
+                        <div class="col-lg-2">
+                            <input class="form-check-input me-1" type="checkbox"  formControlName="Non_Debt_Instruments" style="cursor:pointer;">
+                        </div>
+                        <div class="col-lg-10 mb-3">
+                            2. The investment is within the sectoral cap / statutory ceiling permissible under the
+                            rules, ibid and in compliance with the attendant conditions.
+                        </div>
+                        <div class="col-lg-2">
+                            <input class="form-check-input me-1" type="checkbox" formControlName="sectoral_cap_statutory" style="cursor:pointer;">
+                        </div>
+                        <div class="col-lg-10 mb-3">
+                            3. The equity instruments issued under a scheme of merger and amalgamation of two or more
+                            Indian companies or reconstruction by way of de-merger or otherwise of an Indian company is
+                            duly approved by a court in India. (Strike- out if not applicable).
+                        </div>
+                        <div class="col-lg-2">
+                            <input class="form-check-input me-1" type="checkbox" formControlName="Indian_companies_reconstruction" style="cursor:pointer;">
+                        </div>
+                        <div class="col-lg-10 mb-3">
+                            4. The foreign investment received and reported now will be utilized in compliance with the
+                            provision of a Prevention of Money Laundering Act 2002 (PMLA) and Unlawful Activities
+                            (Prevention) Act, 1967 (UAPA). We confirm that the investment complies with the provisions
+                            of all applicable Rules and Regulations.
+                        </div>
+                        <div class="col-lg-2">
+                            <input class="form-check-input me-1" type="checkbox" formControlName="PMLA_UAPA" style="cursor:pointer;">
+                        </div>
+                        <div class="col-lg-10 mb-3">
+                            5. We enclose the following documents in compliance with these rules/regulations:
+                        </div>
+                        <div class="col-lg-2">
+                            <input class="form-check-input me-1" type="checkbox"  formControlName="enclose_documents" style="cursor:pointer;">
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-auto col-lg-10 mb-3">
+                                i. A certificate from our Company Secretary as in the specified format.
+                            </div>
+                            <div class="col col-lg-1">
+                                <input class="form-check-input me-1" type="checkbox" formControlName="certificate_Company_Secretary" style="cursor:pointer;">
+                            </div>
+                            <div class="col-md-auto col-lg-10 mb-3">
+                                ii. A certificate from SEBI registered Merchant Banker / Chartered Accountant / cost
+                                accountant or any other person as authorized under Foreign Exchange Management (Non-Debt
+                                Instruments) Rules, 2019 dated October 17, 2019 and as amended from time to time,
+                                indicating the manner of arriving at the price of the shares issued to the persons
+                                resident outside India (wherever applicable).
+                            </div>
+                            <div class="col col-lg-1">
+                                <input class="form-check-input me-1" type="checkbox" formControlName="SEBI_registered" style="cursor:pointer;">
+                            </div>
+                            <div class="col-md-auto col-lg-10 mb-3">
+                                iii. All other necessary documents as applicable to the issue.
+                            </div>
+                            <div class="col col-lg-1">
+                                <input class="form-check-input me-1" type="checkbox" formControlName="necessary_documents" style="cursor:pointer;">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-lg-12 text-center">
+                            <input type="submit" value="Submit" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

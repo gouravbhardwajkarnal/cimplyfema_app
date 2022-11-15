@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define collection and schema
-let FormEsop = new Schema({
+let FormAPR = new Schema({
    NameofinvesteeCompany: {
       type: String
    },
@@ -89,7 +89,7 @@ let FormEsop = new Schema({
    }
 
 }, {
-   collection: 'formesop'
+   collection: 'formAPR'
 })
 
-module.exports = mongoose.model('FormEsop', FormEsop)
+module.exports = mongoose.model('FormAPR', FormAPR)

@@ -6,7 +6,11 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { FormFcComponent } from './components/form-fc/form-fc.component';
 import { FormEsopComponent } from './components/form-esop/form-esop.component';
+<<<<<<< HEAD
 import { FormOpiComponent } from './components/form-opi/form-opi.component';
+=======
+import { FormAprComponent } from './components/form-apr/form-apr.component';
+>>>>>>> 2d96c0311f78b25816d6a69ecea5738d426dbbbc
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'create-employee' },
@@ -15,6 +19,7 @@ const routes: Routes = [
   { path: 'employees-list', component: EmployeeListComponent },
   { path: 'form-fc',component: FormFcComponent},
   { path: 'form-esop', component: FormEsopComponent },
+<<<<<<< HEAD
   { path: 'form-opi', component: FormOpiComponent },
   {
     path: 'books',
@@ -28,6 +33,9 @@ const routes: Routes = [
     path: 'chickens',
     component: FormFcComponent,
   },
+=======
+  { path: 'form-apr', component: FormAprComponent },
+>>>>>>> 2d96c0311f78b25816d6a69ecea5738d426dbbbc
 ];
 
 @NgModule({

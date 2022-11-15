@@ -6,7 +6,7 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { FormFcComponent } from './components/form-fc/form-fc.component';
 import { FormEsopComponent } from './components/form-esop/form-esop.component';
-import { FormAprComponent } from './components/form-apr/form-apr.component';
+import { FormOpiComponent } from './components/form-opi/form-opi.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'form-fc' },
@@ -15,7 +15,19 @@ const routes: Routes = [
   { path: 'employees-list', component: EmployeeListComponent },
   { path: 'form-fc',component: FormFcComponent},
   { path: 'form-esop', component: FormEsopComponent },
-  { path: 'form-apr', component: FormAprComponent },
+  { path: 'form-opi', component: FormOpiComponent },
+  {
+    path: 'books',
+    component: FormFcComponent,
+  },
+  {
+    path: 'cars',
+    component: FormFcComponent
+  },
+  {
+    path: 'chickens',
+    component: FormFcComponent,
+  },
 ];
 
 @NgModule({

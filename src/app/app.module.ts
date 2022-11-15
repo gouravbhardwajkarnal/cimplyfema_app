@@ -16,6 +16,9 @@ import { InstructionsComponent } from './Common/instructions/instructions.compon
 import { FormAprComponent } from './components/form-apr/form-apr.component';
 import { CommonService } from './service/common.service';
 import { FormFcWosComponent } from './Partial_Components/form-fc-wos/form-fc-wos.component';
+import { FormOpiComponent } from './components/form-opi/form-opi.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { TabsModule} from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { FormFcWosComponent } from './Partial_Components/form-fc-wos/form-fc-wos
     InstructionsComponent,
     FormAprComponent,
     FormFcWosComponent,
+    FormOpiComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,8 @@ import { FormFcWosComponent } from './Partial_Components/form-fc-wos/form-fc-wos
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    // TabsModule.forRoot()
   ],
   providers: [CommonService],
   bootstrap: [AppComponent],

@@ -14,6 +14,8 @@ import { FormEsopComponent } from './components/form-esop/form-esop.component';
 import { FormFcComponent } from './components/form-fc/form-fc.component';
 import { InstructionsComponent } from './Common/instructions/instructions.component';
 import { FormAprComponent } from './components/form-apr/form-apr.component';
+import { CommonService } from './service/common.service';
+import { FormFcWosComponent } from './Partial_Components/form-fc-wos/form-fc-wos.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { FormAprComponent } from './components/form-apr/form-apr.component';
     FormFcComponent,
     InstructionsComponent,
     FormAprComponent,
+    FormFcWosComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { FormAprComponent } from './components/form-apr/form-apr.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [CommonService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

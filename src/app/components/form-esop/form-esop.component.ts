@@ -106,7 +106,8 @@ export class FormEsopComponent implements OnInit {
     else{
       return this.apiService.createFormEsop(this.esopFormlist.value).subscribe({
         complete: () => {
-          console.log('FromEsop successfully created!');
+          alert('FromEsop successfully created!');
+          //console.log('FromEsop successfully created!');
             //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
         },
         error: (e) => {

@@ -1,0 +1,133 @@
+<div class="flex-nowrap my-2 overflow-auto row mt-3">
+    <div class="col-4">
+        <div class="col mb-4">
+            Name of SDS
+        </div>
+        <div class="col mb-4">
+            Level of SDS
+        </div>
+        <div class="col mb-4">
+            Country/Jurisdiction of SDS
+        </div>
+        <div class="col mb-4">
+            Name of parent SDS/ foreign entity
+        </div>
+        <div class="col mb-4">
+            Level of parent SDS/ foreign entity
+        </div>
+        <div class="col mb-4">
+            Country/Jurisdiction of parent SDS/ foreign entity
+        </div>
+        <div class="col mb-4">
+            Investment amount (if any):
+        </div>
+        <div class="col mb-4">
+            Date of investment (if any):
+        </div>
+        <div class="col mb-4">
+            Legal Entity Identifier (LEI) of the SDS
+        </div>
+        <div class="col mb-4">
+            Type of SDS
+        </div>
+        <div class="col mb-4">
+            Activity code of SDS as per 1987 NIC code
+        </div>
+        <div class="col mb-4">
+            Activity code of SDS as per 2008 NIC code
+        </div>
+        <div class="col mb-4">
+            % stake held by the parent in the SDS
+        </div>
+    </div>
+    <div class="col-3" *ngFor="let dynamic of SDSArray; let i = index;">
+        <div class="col mb-2">
+            <input [(ngModel)]="SDSArray[i].investment_SDS_Name"
+            [ngModelOptions]="{standalone: true}" class="form-control"
+            type="text" />
+        </div>
+        <div class="col mb-2">
+            
+            <select class="form-control"
+            [(ngModel)]="SDSArray[i].investment_SDS_Level"
+            [ngModelOptions]="{standalone: true}">
+            <option *ngFor=" let object of sdsleveltypes" value="{{object.id}}">
+                {{object.name}}
+            </option>
+        </select>
+        </div>
+        <div class="col mb-2">
+            <select class="form-control"
+            [(ngModel)]="SDSArray[i].investment_SDS_Jurisdiction"
+            [ngModelOptions]="{standalone: true}">
+            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
+                {{object.name}}
+            </option>
+        </select>
+        </div>
+        
+        <div class="col mb-2">
+            <input [(ngModel)]="SDSArray[i].investment_SDS_ParentName"
+            [ngModelOptions]="{standalone: true}" class="form-control"
+            type="text" />
+        </div>
+        <div class="col mb-2">
+            <input [(ngModel)]="SDSArray[i].investment_SDS_ParentLevel"
+            [ngModelOptions]="{standalone: true}" class="form-control"
+            type="text" />
+        </div>
+        <div class="col mb-2">
+            <select class="form-control"
+            [(ngModel)]="SDSArray[i].investment_SDS_ParentJurisdiction"
+            [ngModelOptions]="{standalone: true}">
+            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
+                {{object.name}}
+            </option>
+        </select>
+        </div>
+        <div class="col mb-2">
+            <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentAmount"
+            [ngModelOptions]="{standalone: true}" class="form-control"
+            type="text" />
+        </div>
+        <div class="col mb-2">
+            <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentDate"
+            [ngModelOptions]="{standalone: true}" class="form-control"
+            type="date" />
+        </div>
+        <div class="col mb-2">
+            <input [(ngModel)]="SDSArray[i].investment_SDS_LEI"
+            [ngModelOptions]="{standalone: true}" class="form-control"
+            type="text" />
+        </div>
+        <div class="col mb-2">
+            <select class="form-control"
+                            [(ngModel)]="SDSArray[i].investment_SDS_Type"
+                            [ngModelOptions]="{standalone: true}">
+                            <option *ngFor=" let object of sdstypes" value="{{object.id}}">
+                                {{object.name}}
+                            </option>
+                        </select>
+        </div>
+        <div class="col mb-2">
+            <input [(ngModel)]="SDSArray[i].investment_SDS_1987NIC"
+            [ngModelOptions]="{standalone: true}" class="form-control"
+            type="text" />
+        </div>
+        <div class="col mb-2">
+            <input [(ngModel)]="SDSArray[i].investment_SDS_2008NIC"
+            [ngModelOptions]="{standalone: true}" class="form-control"
+            type="text" />
+        </div>
+        <div class="col mb-2">
+            <input [(ngModel)]="SDSArray[i].investment_SDS_Stake"
+            [ngModelOptions]="{standalone: true}" class="form-control"
+            type="number" />
+        </div>
+        <div>
+            <button type="button" (click)="addSDS()"
+            class="btn btn-outline-primary me-2">+</button>
+        <button type="button" *ngIf="SDSlength>1" (click)="deleteSDS(i)"
+            class="btn btn-outline-primary me-2">-</button></div>
+    </div>
+</div>

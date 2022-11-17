@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Iinvestment } from 'src/app/model/iinvestment';
 import { ApiService } from 'src/app/service/api.service';
-import { CodeClassGrid, DynamicGrid, FCDisinvestmentGrid, PEFEntityGrid, SumFCGrid } from 'src/app/model/gridmodel';
+import { CodeClassGrid, DynamicGrid, FCDisinvestmentGrid, PEFEntityGrid, ShareHoldingFEGrid, SumFCGrid } from 'src/app/model/gridmodel';
 import { DisinvetmentType } from 'src/app/model/common.model';
 import { CommonService } from "src/app/service/common.service";
 
@@ -18,21 +18,16 @@ export class FormFcComponent implements OnInit {
   reactiveForm!: FormGroup;
   investment_model: Iinvestment;
   @Input() name: string;
-  activeTab: any;
-  IsActive: any;
-  div1: boolean = true;
-  div2: boolean = false;
-  div3: boolean = false;
-  div4: boolean = false;
-  div5: boolean = false;
-
-
-
+ 
   dynamicArray: Array<DynamicGrid> = [];
   sumFCArray: Array<SumFCGrid> = [];
   FCDisinvestmentArray: Array<FCDisinvestmentGrid> = [];
   PEFEntityArray: Array<PEFEntityGrid> = [];
   CodeClassArray: Array<CodeClassGrid> = [];
+  ShareHoldingFEArray: Array<ShareHoldingFEGrid> = [];
+  ShareHoldingFE: any = {};
+  ShareHoldingFElength: number = 0;
+
   codeClass: any = {};
   codeClasslength: number = 0;
   sumFC: any = {};
@@ -49,6 +44,10 @@ export class FormFcComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.ShareHoldingFE = { Person:"",Pstake:0,ForeignPartner:"",FPstake:0,Total: 0 };
+    this.ShareHoldingFEArray.push(this.ShareHoldingFE);
+    this.ShareHoldingFElength = this.ShareHoldingFEArray.length;
+
     this.codeClass = { Description1987: "", Description2008: "" };
     this.CodeClassArray.push(this.codeClass);
     this.codeClasslength = this.CodeClassArray.length;
@@ -201,7 +200,6 @@ export class FormFcComponent implements OnInit {
     }
   
   }
-  
   addCodeClassRow() {
     this.codeClass = { Description1987: "", Description2008: "" };
     this.CodeClassArray.push(this.codeClass);
@@ -209,13 +207,30 @@ export class FormFcComponent implements OnInit {
     this.codeClasslength = this.CodeClassArray.length;
     return true;
   }
-
   deleteCodeClassRow(index) {
     if (this.CodeClassArray.length == 1) {
       //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
       return false;
     } else {
       this.CodeClassArray.splice(index, 1);
+      //this.toastr.warning('Row deleted successfully', 'Delete row');  
+      return true;
+    }
+  }
+  addShareHoldingFE() {
+    this.ShareHoldingFE = { Person:"",Pstake:0,ForeignPartner:"",FPstake:0,Total: 0 };
+    this.ShareHoldingFEArray.push(this.ShareHoldingFE);
+    console.log(this.ShareHoldingFEArray);
+    this.ShareHoldingFElength = this.ShareHoldingFEArray.length;
+    return true;
+  }
+
+  deleteShareHoldingFE(index) {
+    if (this.ShareHoldingFEArray.length == 1) {
+      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+      return false;
+    } else {
+      this.ShareHoldingFEArray.splice(index, 1);
       //this.toastr.warning('Row deleted successfully', 'Delete row');  
       return true;
     }
@@ -230,47 +245,7 @@ export class FormFcComponent implements OnInit {
 
     this.investment_model = this.reactiveForm.value;
   }
-  div1Function() {
-    this.div1 = true;
-    this.div2 = false;
-    this.div3 = false;
-    this.div4 = false;
-    this.div5 = false;
-  }
-  div2Function() {
-    this.div2 = true;
-    this.div1 = false;
-    this.div3 = false;
-    this.div4 = false;
-    this.div5 = false;
-  }
-  div3Function() {
-    this.div3 = true;
-    this.div2 = false;
-    this.div1 = false
-    this.div4 = false;
-    this.div5 = false;
-  }
-  div4Function() {
-    this.div4 = true;
-    this.div3 = false;
-    this.div2 = false;
-    this.div1 = false
-    this.div5 = false;
-  }
-  div5Function() {
-    this.div4 = false;
-    this.div3 = false;
-    this.div2 = false;
-    this.div1 = false;
-    this.div5 = true;
-  }
-  tabOpen(id) {
-    debugger
-    if (id = 1) {
-      this.IsActive = "tab-pane active";
-    }
-  }
+ 
   get investment_name() {
     return this.reactiveForm.get('investment_name')!;
   }

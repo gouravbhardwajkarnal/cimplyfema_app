@@ -24,4 +24,19 @@ export interface IinvestmentWOS {
     investment_AccountingYear:string;
     investment_Email: string; 
 }
+export interface IinvestmentSDS {
+    investment_SDS_Name: string;
+    investment_SDS_Level: string;
+    investment_SDS_Jurisdiction: string;
+    investment_SDS_ParentName: number;
+    investment_SDS_ParentLevel: string;
+    investment_SDS_ParentJurisdiction: string;
+    investment_SDS_InvestmentAmount: string; 
+    investment_SDS_InvestmentDate: Date; 
+    investment_SDS_LEI: string; 
+    investment_SDS_Type: string; 
+    investment_SDS_1987NIC: string; 
+    investment_SDS_2008NIC: string; 
+    investment_SDS_Stake: number; 
+}
 

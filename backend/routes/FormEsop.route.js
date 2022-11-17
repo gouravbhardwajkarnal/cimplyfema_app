@@ -9,6 +9,7 @@ let FromEsop = require('../models/FormEsop')
 esopRoute.route('/createEsop').post((req, res, next) => {
   console.log(req.body);
     FromEsop.create(req.body, (error, data) => {
+      console.log(data);
     if (error) {
       return next(error)
     } else {

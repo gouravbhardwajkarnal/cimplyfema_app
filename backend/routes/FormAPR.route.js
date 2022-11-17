@@ -6,9 +6,10 @@ const aprRoute = express.Router()
 let FormAPR = require('../models/FormAPR')
 
 // Add AprModel
-aprRoute.route('/createApr').post((req, res, next) => {
+aprRoute.route('/createAPR').post((req, res, next) => {
   console.log(req.body);
     FormAPR.create(req.body, (error, data) => {
+      console.log('abc');
     if (error) {
       return next(error)
     } else {

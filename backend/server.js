@@ -18,6 +18,7 @@ mongoose
 const employeeRoute = require('../backend/routes/employee.route')
 const masterRoute = require('../backend/routes/master.route')
 const esopRoute = require('../backend/routes/FormEsop.route')
+const aprRoute = require('../backend/routes/FormApr.route')
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -31,7 +32,7 @@ app.use('/', express.static(path.join(__dirname, 'dist/cimplyfema-app')))
 app.use('/api', employeeRoute)
 app.use('/api', masterRoute)
 app.use('/api', esopRoute)
-
+app.use('/api', aprRoute)
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {

@@ -56,11 +56,11 @@
                            
                             <label class="form-label">From Date </label>                          
                             <input type="date" class="form-control" name="date-field"
-                                formControlName="From_Date" [class.is-invalid]="aprFormlist.get('From_Date').invalid && (aprFormlist.get('From_Date').dirty ||aprFormlist.get('From_Date').touched)"/>
+                                formControlName="APR_From_Date" [class.is-invalid]="aprFormlist.get('APR_From_Date').invalid && (aprFormlist.get('APR_From_Date').dirty ||aprFormlist.get('APR_From_Date').touched)"/>
                         </div><div class="col-4 mb-2">
                             <label class="form-label">To Date </label>                          
                             <input type="date" class="form-control" name="date-field"
-                            formControlName="To_Date" [class.is-invalid]="aprFormlist.get('To_Date').invalid && (aprFormlist.get('To_Date').dirty ||aprFormlist.get('To_Date').touched)"/>
+                            formControlName="APR_tO_Date" [class.is-invalid]="aprFormlist.get('APR_tO_Date').invalid && (aprFormlist.get('APR_tO_Date').dirty ||aprFormlist.get('APR_tO_Date').touched)"/>
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">Unique Identification Number (UIN)
@@ -106,11 +106,14 @@
                         </div>
                         <hr>
                         <div class="col-12 mb-2">
-                                <input class="form-check-input" formControlName="IndianEntityResidentIndividualTrust" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <input class="form-check-input" formControlName="IndianEntityResidentIndividualTrust"
+                                 type="radio" id="IndianEntityResidentIndividualTrust" value="Yes">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                   Yes
                                 </label>
-                                <input class="form-check-input" type="radio" formControlName="IndianEntityResidentIndividualTrust" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                <br>
+                                <input class="form-check-input" type="radio" formControlName="IndianEntityResidentIndividualTrust"
+                                 id="IndianEntityResidentIndividualTrust" value="No" checked>
                                 <label class="form-check-label" for="flexRadioDefault2">
                                   No
                                 </label>                        
@@ -145,15 +148,15 @@
                             [class.is-invalid]="aprFormlist.get('Person_resident_India_1').invalid && (aprFormlist.get('Person_resident_India_1').dirty ||aprFormlist.get('Person_resident_India_1').touched)">
                         </div>  
                         <div class="col-3 mb-2">                           
-                            <input type="text" class="form-control" formControlName="India_Stake_1" 
-                            [class.is-invalid]="aprFormlist.get('India_Stake_1').invalid && (aprFormlist.get('India_Stake_1').dirty ||aprFormlist.get('India_Stake_1').touched)">
+                            <input type="number" class="form-control" formControlName="Indian_Stake_1" 
+                            [class.is-invalid]="aprFormlist.get('Indian_Stake_1').invalid && (aprFormlist.get('Indian_Stake_1').dirty ||aprFormlist.get('Indian_Stake_1').touched)">
                         </div> 
                         <div class="col-3 mb-2">                           
                             <input type="text" class="form-control" formControlName="Foreign_partner_1" 
                             [class.is-invalid]="aprFormlist.get('Foreign_partner_1').invalid && (aprFormlist.get('Foreign_partner_1').dirty ||aprFormlist.get('Foreign_partner_1').touched)">
                         </div> 
                         <div class="col-3 mb-2">                           
-                            <input type="text" class="form-control" formControlName="Foreign_Stake_1" 
+                            <input type="number" class="form-control" formControlName="Foreign_Stake_1" 
                             [class.is-invalid]="aprFormlist.get('Foreign_Stake_1').invalid && (aprFormlist.get('Foreign_Stake_1').dirty ||aprFormlist.get('Foreign_Stake_1').touched)">
                         </div>    
                         <div class="col-3 mb-2">                           
@@ -161,7 +164,7 @@
                             [class.is-invalid]="aprFormlist.get('Person_resident_India_2').invalid && (aprFormlist.get('Person_resident_India_2').dirty ||aprFormlist.get('Person_resident_India_2').touched)">
                         </div>  
                         <div class="col-3 mb-2">                           
-                            <input type="text" class="form-control" formControlName="India_Stake_2" 
+                            <input type="number" class="form-control" formControlName="India_Stake_2" 
                             [class.is-invalid]="aprFormlist.get('India_Stake_2').invalid && (aprFormlist.get('India_Stake_2').dirty ||aprFormlist.get('India_Stake_2').touched)">
                         </div>  
                         <div class="col-3 mb-2">                           
@@ -169,7 +172,7 @@
                             [class.is-invalid]="aprFormlist.get('Foreign_partner_2').invalid && (aprFormlist.get('Foreign_partner_2').dirty ||aprFormlist.get('Foreign_partner_2').touched)">
                         </div>  
                         <div class="col-3 mb-2">                           
-                            <input type="text" class="form-control" formControlName="Foreign_Stake_2" 
+                            <input type="number" class="form-control" formControlName="Foreign_Stake_2" 
                             [class.is-invalid]="aprFormlist.get('Foreign_Stake_2').invalid && (aprFormlist.get('Foreign_Stake_2').dirty ||aprFormlist.get('Foreign_Stake_2').touched)">
                         </div>   
                         <div class="col-3 mb-2">                           
@@ -177,7 +180,7 @@
                             [class.is-invalid]="aprFormlist.get('Person_resident_India_3').invalid && (aprFormlist.get('Person_resident_India_3').dirty ||aprFormlist.get('Person_resident_India_3').touched)">
                         </div>  
                         <div class="col-3 mb-2">                           
-                            <input type="text" class="form-control" formControlName="India_Stake_3" 
+                            <input type="number" class="form-control" formControlName="India_Stake_3" 
                             [class.is-invalid]="aprFormlist.get('India_Stake_3').invalid && (aprFormlist.get('India_Stake_3').dirty ||aprFormlist.get('India_Stake_3').touched)">
                         </div>  
                         <div class="col-3 mb-2">                           
@@ -185,7 +188,7 @@
                             [class.is-invalid]="aprFormlist.get('Foreign_partner_3').invalid && (aprFormlist.get('Foreign_partner_3').dirty ||aprFormlist.get('Foreign_partner_3').touched)">
                         </div>  
                         <div class="col-3 mb-2">                           
-                            <input type="text" class="form-control" formControlName="Foreign_Stake_3" 
+                            <input type="number" class="form-control" formControlName="Foreign_Stake_3" 
                             [class.is-invalid]="aprFormlist.get('Foreign_Stake_3').invalid && (aprFormlist.get('Foreign_Stake_3').dirty ||aprFormlist.get('Foreign_Stake_3').touched)">
                         </div>   
                         <hr>
@@ -211,7 +214,7 @@
                             <input type="text" class="form-control" formControlName="FP_NetProfit_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_NetProfit_Previous_Year').invalid && (aprFormlist.get('FP_NetProfit_Previous_Year').dirty ||aprFormlist.get('FP_NetProfit_Previous_Year').touched)">
                         </div>
                         <div class="col-5 mb-2">                           
-                            <input type="number" class="form-control" formControlName="FP_NetProfit_Current_Year"
+                            <input type="text" class="form-control" formControlName="FP_NetProfit_Current_Year"
                             [class.is-invalid]="aprFormlist.get('FP_NetProfit_Current_Year').invalid && (aprFormlist.get('FP_NetProfit_Current_Year').dirty ||aprFormlist.get('FP_NetProfit_Current_Year').touched)">
                         </div>
                         <div class="col-2 mb-2">
@@ -222,7 +225,7 @@
                             <input type="text" class="form-control" formControlName="FP_Dividend_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_Dividend_Previous_Year').invalid && (aprFormlist.get('FP_Dividend_Previous_Year').dirty ||aprFormlist.get('FP_Dividend_Previous_Year').touched)">
                         </div>
                         <div class="col-5 mb-2">                           
-                            <input type="number" class="form-control" formControlName="FP_Dividend_Current_Year" 
+                            <input type="text" class="form-control" formControlName="FP_Dividend_Current_Year" 
                             [class.is-invalid]="aprFormlist.get('FP_Dividend_Current_Year').invalid && (aprFormlist.get('FP_Dividend_Current_Year').dirty ||aprFormlist.get('FP_Dividend_Current_Year').touched)">
                         </div>
                         <div class="col-2 mb-2">
@@ -230,10 +233,10 @@
                             </label>   
                         </div>
                         <div class="col-5 mb-2">                           
-                            <input type="text" class="form-control" formControlName="FP_Networth_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_Networth_Previous_Year').invalid && (aprFormlist.get('FP_Networth_Previous_Year').dirty )">
+                            <input type="text" class="form-control" formControlName="FP_Networth_Previous_Year"  [class.is-invalid]="aprFormlist.get('FP_Networth_Previous_Year').invalid && (aprFormlist.get('FP_Networth_Previous_Year').dirty ||aprFormlist.get('FP_Networth_Previous_Year').touched)">
                         </div>
                         <div class="col-5 mb-2">                          
-                            <input type="number" class="form-control" formControlName="FP_Networth_Current_Year"
+                            <input type="text" class="form-control" formControlName="FP_Networth_Current_Year"
                             [class.is-invalid]="aprFormlist.get('FP_Networth_Current_Year').invalid && (aprFormlist.get('FP_Networth_Current_Year').dirty ||aprFormlist.get('FP_Networth_Current_Year').touched)">
                         </div>
                         <hr>
@@ -258,7 +261,7 @@
                             </label>   
                         </div>
                         <div class="col-5 mb-2">                            
-                            <input type="text" class="form-control" formControlName="Repat_Dividend_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Dividend_CurYear').invalid && (aprFormlist.get('Repat_Dividend_CurYear').dirty ||aprFormlist.get('Repat_Dividend_CurYear').touched)">
+                            <input type="number" class="form-control" formControlName="Repat_Dividend_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Dividend_CurYear').invalid && (aprFormlist.get('Repat_Dividend_CurYear').dirty ||aprFormlist.get('Repat_Dividend_CurYear').touched)">
                         </div>
                         <div class="col-5 mb-2">                            
                             <input type="text" class="form-control" formControlName="Repat_Dividend_commencement" [class.is-invalid]="aprFormlist.get('Repat_Dividend_commencement').invalid && (aprFormlist.get('Repat_Dividend_commencement').dirty ||aprFormlist.get('Repat_Dividend_commencement').touched)">
@@ -422,24 +425,30 @@
                             <div class="col-8 mb-2">                            
                                 <input type="text" class="form-control" formControlName="Furnish_Stake_SDS" [class.is-invalid]="aprFormlist.get('Furnish_Stake_SDS').invalid && (aprFormlist.get('Furnish_Stake_SDS').dirty ||aprFormlist.get('Furnish_Stake_SDS').touched)">
                             </div>
-                            <div class="col-4 mb-2">
+                            <div class="col-8 mb-2">
                                 <label class="form-label">vi)Is the activity of SDS into financial services (tick) 
                                                                     
                                 </label>   
                             </div>
                             <div class="col-4 mb-2">
-                            <div class="form-check form-check-inline" *ngFor="let fd of foreigninvestmentProject" >
-                                <input class="form-check-input" type="radio" id="{{fd.id}}" formControlName="foreigninvestmentproject" [class.is-invalid]="aprFormlist.get('foreigninvestmentproject').invalid && (aprFormlist.get('foreigninvestmentproject').dirty ||aprFormlist.get('foreigninvestmentproject').touched)"
-                                    value="{{fd.Type}}" style="cursor:pointer;">
-                                <label class="form-check-label" for="{{fd.id}}">{{fd.Type}}</label>
-                            </div>
-                            </div>
+                                <input class="form-check-input" formControlName="SDS_financial_services"
+                                type="radio" id="SDS_financial_services" value="Yes">
+                               <label class="form-check-label" for="flexRadioDefault1">
+                                 Yes
+                               </label>
+                               <br>
+                               <input class="form-check-input" type="radio" formControlName="SDS_financial_services"
+                                id="SDS_financial_services" value="No" checked>
+                               <label class="form-check-label" for="flexRadioDefault2">
+                                 No
+                               </label> 
+                            </div>  
                             <div class="col-8 mb-2">
                                 <label class="form-label">vii)Name, level and country/jurisdiction of SDS wound up during the reporting period, wherever applicable                              
                                 </label>   
                             </div>
                             <div class="col-4 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="Furnish_jurisdiction_SDSwoundup" [class.is-invalid]="aprFormlist.get('Furnish_jurisdiction_SDSwoundup').invalid && (aprFormlist.get('Furnish_jurisdiction_SDSwoundup').dirty ||aprFormlist.get('Furnish_jurisdiction_SDSwoundup').touched)">
                             </div>
                             <div class="card-header">
                                 Declaration from Indian entity/ resident individual (Strike out whichever is not applicable)
@@ -453,23 +462,23 @@
                                     <li>iii) We have received share certificate/s (or any other evidence of investment as per the applicable laws of the host jurisdiction) and submitted the same to the designated AD bank for verification within 6 months of making the remittance/s for all investments/ capitalization which are reckoned as ODI in the foreign entity under this UIN, as per Regulation 9 (1) of OI Regulations or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time.</li>
                                     <li>iv) The previous APRs for the foreign entity under this UIN, have been filed.</li>
                                     <li>v) Repatriated to India, all dues receivable from the foreign entity under this UIN, as required under Regulation 9 (4) of OI Regulations or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time..</li>
-                                    <li>iv) I/ We hereby certify that the information furnished above are true and correct. I/We also duly. </li>
+                                    <li>vi) I/ We hereby certify that the information furnished above are true and correct. I/We also duly. </li>
                                     <li><h5>acknowledge that if any information furnished by me/us is found to be false and/or incorrect, it shall be construed that the reporting requirements under FEMA, 1999 have not been complied with.</h5></li>
                                 </ul>
                             </div>
                             <hr>
                             <div class="col-8 mb-2">
-                                <label class="form-label">Investment amount and date of investment (if any)Signature of the authorized official of the IE approved by the Board/ RI                                  
+                                <label class="form-label">Signature of the authorized official of the IE approved by the Board/ RI
                                 </label>   
                             </div>
                             <div class="col-4 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="authorized_official_Signature" [class.is-invalid]="aprFormlist.get('authorized_official_Signature').invalid && (aprFormlist.get('authorized_official_Signature').dirty ||aprFormlist.get('authorized_official_Signature').touched)">
                             </div>
                             <div class="col-8 mb-2">
                                 <label class="form-label">Name & Designation of the Authorized Official of the IE/ RI </label>
                             </div>
                             <div class="col-4 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="authorized_official_NameDesign" [class.is-invalid]="aprFormlist.get('authorized_official_NameDesign').invalid && (aprFormlist.get('authorized_official_NameDesign').dirty ||aprFormlist.get('authorized_official_NameDesign').touched)">
                             </div>
                             <div class="col-6 mb-2">
                                 <label class="form-label">Place </label>
@@ -478,11 +487,11 @@
                                 <label class="form-label">Date </label>
                             </div>
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="authorized_official_Place" [class.is-invalid]="aprFormlist.get('authorized_official_Place').invalid && (aprFormlist.get('authorized_official_Place').dirty ||aprFormlist.get('authorized_official_Place').touched)">
                             </div>                           
                             <div class="col-6 mb-2">                                                      
                                 <input type="date" class="form-control" name="date-field"
-                                formControlName="To_Date" [class.is-invalid]="aprFormlist.get('To_Date').invalid && (aprFormlist.get('To_Date').dirty ||aprFormlist.get('To_Date').touched)"/>
+                                formControlName="authorized_official_To_Date" [class.is-invalid]="aprFormlist.get('authorized_official_To_Date').invalid && (aprFormlist.get('authorized_official_To_Date').dirty ||aprFormlist.get('authorized_official_To_Date').touched)"/>
                             </div>
                             <div class="col-6 mb-2">
                                 <label class="form-label">Telephone </label>
@@ -491,13 +500,13 @@
                                 <label class="form-label">Email</label>
                             </div>
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="authorized_official_Telephone" [class.is-invalid]="aprFormlist.get('authorized_official_Telephone').invalid && (aprFormlist.get('authorized_official_Telephone').dirty ||aprFormlist.get('authorized_official_Telephone').touched)">
                             </div>                           
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="authorized_official_Email" [class.is-invalid]="aprFormlist.get('authorized_official_Email').invalid && (aprFormlist.get('authorized_official_Email').dirty ||aprFormlist.get('authorized_official_Email').touched)">
                             </div>
                             <div class="col-4 mb-2">
-                                <textarea class="form-control" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
+                                <textarea class="form-control" formControlName="authorized_official_Stamp" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
                             </div>
                             <div class="card-header">
                                 <div class="card-header">
@@ -522,10 +531,10 @@
                                 <label class="form-label">Name of the audit firm, Registration number and UDIN</label>
                             </div>
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="Signature_Statutory_Auditors" [class.is-invalid]="aprFormlist.get('Signature_Statutory_Auditors').invalid && (aprFormlist.get('Signature_Statutory_Auditors').dirty ||aprFormlist.get('Signature_Statutory_Auditors').touched)">
                             </div>                           
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="Name_Audit_Firm_UDIN" [class.is-invalid]="aprFormlist.get('Name_Audit_Firm_UDIN').invalid && (aprFormlist.get('Name_Audit_Firm_UDIN').dirty ||aprFormlist.get('Name_Audit_Firm_UDIN').touched)">
                             </div>
                             <div class="col-6 mb-2">
                                 <label class="form-label">Place </label>
@@ -534,11 +543,11 @@
                                 <label class="form-label">Date </label>
                             </div>
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="Statutory_Auditors_Place" [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Place').invalid && (aprFormlist.get('Statutory_Auditors_Place').dirty ||aprFormlist.get('Statutory_Auditors_Place').touched)">
                             </div>                           
                             <div class="col-6 mb-2">                                                      
                                 <input type="date" class="form-control" name="date-field"
-                                formControlName="To_Date" [class.is-invalid]="aprFormlist.get('To_Date').invalid && (aprFormlist.get('To_Date').dirty ||aprFormlist.get('To_Date').touched)"/>
+                                formControlName="Statutory_Auditors_Date" [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Date').invalid && (aprFormlist.get('Statutory_Auditors_Date').dirty ||aprFormlist.get('Statutory_Auditors_Date').touched)"/>
                             </div>           
                             <div class="col-6 mb-2">
                                 <label class="form-label">Email</label>
@@ -547,10 +556,10 @@
                                 <label class="form-label">Seal/Stamp</label>
                             </div>
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="Statutory_Auditors_Email" [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Email').invalid && (aprFormlist.get('Statutory_Auditors_Email').dirty ||aprFormlist.get('Statutory_Auditors_Email').touched)">
                             </div>                                                     
                             <div class="col-4 mb-2">
-                                <textarea class="form-control" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
+                                <textarea class="form-control" formControlName="Statutory_Auditors_Stamp" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
                             </div>
                             <div class="card-header">
                                 <div class="card-header">
@@ -574,10 +583,10 @@
                                 <label class="form-label">Name and designation of the AD bank official</label>
                             </div>
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="Authorized_Signature_ADBank" [class.is-invalid]="aprFormlist.get('Authorized_Signature_ADBank').invalid && (aprFormlist.get('Authorized_Signature_ADBank').dirty ||aprFormlist.get('Authorized_Signature_ADBank').touched)">
                             </div>                           
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="Authorized_designation_ADBank" [class.is-invalid]="aprFormlist.get('Authorized_designation_ADBank').invalid && (aprFormlist.get('Authorized_designation_ADBank').dirty ||aprFormlist.get('Authorized_designation_ADBank').touched)">
                             </div>
                             <div class="col-6 mb-2">
                                 <label class="form-label">Place </label>
@@ -586,14 +595,14 @@
                                 <label class="form-label">Date </label>
                             </div>
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Full_Name_Grantee" [class.is-invalid]="aprFormlist.get('Full_Name_Grantee').invalid && (aprFormlist.get('Full_Name_Grantee').dirty ||aprFormlist.get('Full_Name_Grantee').touched)">
+                                <input type="text" class="form-control" formControlName="Authorized_Place_ADBank" [class.is-invalid]="aprFormlist.get('Authorized_Place_ADBank').invalid && (aprFormlist.get('Authorized_Place_ADBank').dirty ||aprFormlist.get('Authorized_Place_ADBank').touched)">
                             </div>                           
                             <div class="col-6 mb-2">                                                      
                                 <input type="date" class="form-control" name="date-field"
-                                formControlName="To_Date" [class.is-invalid]="aprFormlist.get('To_Date').invalid && (aprFormlist.get('To_Date').dirty ||aprFormlist.get('To_Date').touched)"/>
+                                formControlName="Authorized_Place_Date" [class.is-invalid]="aprFormlist.get('Authorized_Place_Date').invalid && (aprFormlist.get('Authorized_Place_Date').dirty ||aprFormlist.get('Authorized_Place_Date').touched)"/>
                             </div> 
                             <div class="col-4 mb-2">
-                                <textarea class="form-control" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
+                                <textarea class="form-control" formControlName="Authorized_Stamp_ADBank" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
                             </div>
                             <div class="col-lg-12 text-center">
                                 <input type="submit" value="Submit" class="btn btn-primary">

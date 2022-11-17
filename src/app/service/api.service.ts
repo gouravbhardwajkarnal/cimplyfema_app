@@ -66,7 +66,11 @@ export class ApiService {
     let url = `${this.baseUri}/createEsop`;
     return this.http.post(url, data).pipe(catchError(this.errorMgmt));
   }
-
+  createFormAPR(data): Observable<any> {
+    console.log(data);
+    let url = `${this.baseUri}/createAPR`;
+    return this.http.post(url, data).pipe(catchError(this.errorMgmt));
+  }
 
   // Error handling
   errorMgmt(error: HttpErrorResponse) {

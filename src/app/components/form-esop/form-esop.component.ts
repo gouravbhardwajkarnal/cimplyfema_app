@@ -12,7 +12,7 @@ export class FormEsopComponent implements OnInit {
  esopFormlist:FormGroup
  CountryList: any=[];
   constructor(private readonly route: ActivatedRoute,private apiService: ApiService) {
-    this.readCountry();
+    // this.readCountry();
   }
   foreigninvestmentProject=[
     {id:'1',Type:'Yes'},

@@ -27,3 +27,19 @@ export class CodeClassGrid
     Description1987:string;
     Description2008:string;
 }
+export class FinancialCommitmentGrid
+{
+    InvestSource:string;
+    CategoryType:string;
+    Date:Date;
+    AmountFCY:number;
+    AmountINR: number;
+}
+export class ShareHoldingFEGrid
+{
+    Person:string;
+    Pstake:number;
+    ForeignPartner:string;
+    FPstake:number;
+    Total: number;
+}

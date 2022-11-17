@@ -19,6 +19,8 @@ import { FormFcWosComponent } from './Partial_Components/form-fc-wos/form-fc-wos
 import { FormOpiComponent } from './components/form-opi/form-opi.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule} from 'ngx-bootstrap/tabs';
+import { FormFcSdsComponent } from './Partial_Components/form-fc-sds/form-fc-sds.component';
+import { FormFcDisinvestmentComponent } from './Partial_Components/form-fc-disinvestment/form-fc-disinvestment.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { TabsModule} from 'ngx-bootstrap/tabs';
     FormAprComponent,
     FormFcWosComponent,
     FormOpiComponent,
+    FormFcSdsComponent,
+    FormFcDisinvestmentComponent,
   ],
   imports: [
     BrowserModule,

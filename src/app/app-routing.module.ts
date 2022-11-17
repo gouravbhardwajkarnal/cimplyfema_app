@@ -11,9 +11,9 @@ import { FormAprComponent } from './components/form-apr/form-apr.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'form-fc' },
-  { path: 'create-employee', component: EmployeeCreateComponent },
-  { path: 'edit-employee/:id', component: EmployeeEditComponent },
-  { path: 'employees-list', component: EmployeeListComponent },
+  // { path: 'create-employee', component: EmployeeCreateComponent },
+  // { path: 'edit-employee/:id', component: EmployeeEditComponent },
+  // { path: 'employees-list', component: EmployeeListComponent },
   { path: 'form-fc',component: FormFcComponent},
   { path: 'form-esop', component: FormEsopComponent },
   { path: 'form-opi', component: FormOpiComponent },

@@ -47,14 +47,14 @@ export class FormEsopComponent implements OnInit {
         'Equivalent_equity_shares':new FormControl('',Validators.required),
         'Facevalue_equity_shares':new FormControl('',Validators.required),
         'Value_of_Shares':new FormControl('',Validators.required),
-        'Non_Debt_Instruments':new FormControl(''),
-        'sectoral_cap_statutory':new FormControl(''),
-        'Indian_companies_reconstruction':new FormControl(''),
-        'PMLA_UAPA':new FormControl(''),
-        'enclose_documents':new FormControl(''),
-        'certificate_Company_Secretary':new FormControl(''),
-        'SEBI_registered':new FormControl(''),
-        'necessary_documents':new FormControl('')
+        'Non_Debt_Instruments':new FormControl('true'),
+        'sectoral_cap_statutory':new FormControl('true'),
+        'Indian_companies_reconstruction':new FormControl('true'),
+        'PMLA_UAPA':new FormControl('true'),
+        'enclose_documents':new FormControl('true'),
+        'certificate_Company_Secretary':new FormControl('true'),
+        'SEBI_registered':new FormControl('true'),
+        'necessary_documents':new FormControl('true')
       }
     )
   }
@@ -114,8 +114,6 @@ export class FormEsopComponent implements OnInit {
         },
       });
     }
-    
-    console.log(this.esopFormlist);
     
   }
 

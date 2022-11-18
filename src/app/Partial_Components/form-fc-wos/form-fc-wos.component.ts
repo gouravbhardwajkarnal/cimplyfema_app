@@ -11,7 +11,8 @@ import { CommonService } from 'src/app/service/common.service';
   styleUrls: ['./form-fc-wos.component.css']
 })
 export class FormFcWosComponent implements OnInit {
-  reactiveForm!: FormGroup;
+  //reactiveForm!: FormGroup;
+  @Input() reactiveForm: FormGroup;
   investment_model: IinvestmentWOS;
   Jurisdictiontypes: DisinvetmentType[];
   accountingtypes: DisinvetmentType[];
@@ -37,66 +38,66 @@ export class FormFcWosComponent implements OnInit {
     this.FinancialCommitment = { InvestSource: "", CategoryType: "",Date:"",AmountFCY:"",AmountINR: ""}
     this.FinancialCommitmentArray.push(this.FinancialCommitment);
     this.FinancialCommitmentlength = this.FinancialCommitmentArray.length;
-    this.reactiveForm = new FormGroup({
-      investment_ForeignEntity: new FormControl(this.investment_model.investment_ForeignEntity, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_Jurisdiction: new FormControl(this.investment_model.investment_Jurisdiction, [
-        Validators.required,
-        Validators.maxLength(10),
-        Validators.minLength(1),
-      ]),
-      investment_DateIncorpation: new FormControl(this.investment_model.investment_DateIncorpation, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-        // emailValidator(),
-      ]),
-      investment_LEI: new FormControl(this.investment_model.investment_LEI, [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(6),
-      ]),
-      investment_ControlFE: new FormControl(this.investment_model.investment_ControlFE, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_AccountingYear: new FormControl(this.investment_model.investment_AccountingYear, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_Email: new FormControl(this.investment_model.investment_Email, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-    });
+    // this.reactiveForm = new FormGroup({
+    //   investment_ForeignEntity: new FormControl(this.investment_model.investment_ForeignEntity, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_Jurisdiction: new FormControl(this.investment_model.investment_Jurisdiction, [
+    //     Validators.required,
+    //     Validators.maxLength(10),
+    //     Validators.minLength(1),
+    //   ]),
+    //   investment_DateIncorpation: new FormControl(this.investment_model.investment_DateIncorpation, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //     // emailValidator(),
+    //   ]),
+    //   investment_LEI: new FormControl(this.investment_model.investment_LEI, [
+    //     Validators.required,
+    //     Validators.minLength(6),
+    //     Validators.maxLength(6),
+    //   ]),
+    //   investment_ControlFE: new FormControl(this.investment_model.investment_ControlFE, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_AccountingYear: new FormControl(this.investment_model.investment_AccountingYear, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_Email: new FormControl(this.investment_model.investment_Email, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    // });
   }
-   get investment_ForeignEntity() {
-    return this.reactiveForm.get('investment_ForeignEntity')!;
-  }
-  get investment_Jurisdiction() {
-    return this.reactiveForm.get('investment_Jurisdiction')!;
-  }
-  get investment_DateIncorpation() {
-    return this.reactiveForm.get('investment_DateIncorpation');
-  }
-  get investment_LEI() {
-    return this.reactiveForm.get('investment_LEI');
-  }
-  get investment_ControlFE() {
-    return this.reactiveForm.get('investment_ControlFE');
-  }
-  get investment_AccountingYear  () {
-    return this.reactiveForm.get('investment_AccountingYear');
-  }
-  get investment_Email() {
-    return this.reactiveForm.get('investment_Email');
-  }
+  //  get investment_ForeignEntity() {
+  //   return this.reactiveForm.get('investment_ForeignEntity')!;
+  // }
+  // get investment_Jurisdiction() {
+  //   return this.reactiveForm.get('investment_Jurisdiction')!;
+  // }
+  // get investment_DateIncorpation() {
+  //   return this.reactiveForm.get('investment_DateIncorpation');
+  // }
+  // get investment_LEI() {
+  //   return this.reactiveForm.get('investment_LEI');
+  // }
+  // get investment_ControlFE() {
+  //   return this.reactiveForm.get('investment_ControlFE');
+  // }
+  // get investment_AccountingYear  () {
+  //   return this.reactiveForm.get('investment_AccountingYear');
+  // }
+  // get investment_Email() {
+  //   return this.reactiveForm.get('investment_Email');
+  // }
   public validate(): void {
     if (this.reactiveForm.invalid) {
       for (const control of Object.keys(this.reactiveForm.controls)) {

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Iinvestment } from 'src/app/model/iinvestment';
 import { ApiService } from 'src/app/service/api.service';
@@ -15,7 +15,9 @@ import { CommonService } from "src/app/service/common.service";
 export class FormFcComponent implements OnInit {
   disinvetmenttype: DisinvetmentType[];
   CityList: any = [];
-  reactiveForm!: FormGroup;
+  // reactiveForm!: FormGroup;
+  public reactiveForm: FormGroup;
+ 
   investment_model: Iinvestment;
   @Input() name: string;
  
@@ -36,7 +38,31 @@ export class FormFcComponent implements OnInit {
   FCDisinvestmentlength: number = 0;
   PEFEntity: any = {};
   PEFEntitylength: number = 0;
-  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private commonservice: CommonService,) {
+  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private commonservice: CommonService,private fb: FormBuilder) {
+    this.reactiveForm = this.fb.group({
+      investment_name: ['',Validators.required,Validators.minLength(1),Validators.maxLength(250)],
+      investment_pan: ['',Validators.required,Validators.maxLength(10),Validators.minLength(1)],
+      investment_LEI: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_GroupIE: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_Address: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_City: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_pin: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_ContactPerson: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_CPDesignation: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_TelephoneNumber: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_MobileNumber: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_Email: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_NetWorth: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_AmountINR: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_NetWorthDate: ['',Validators.required,Validators.maxLength(250),Validators.minLength(1)],
+      investment_ForeignEntity: ['',Validators.required,Validators.minLength(1),Validators.maxLength(250)],
+      investment_Jurisdiction: ['',Validators.required,Validators.minLength(1),Validators.maxLength(250)],
+      investment_DateIncorpation: ['',Validators.required,Validators.minLength(1),Validators.maxLength(250)],
+      investment_WOS_LEI: ['',Validators.required,Validators.minLength(1),Validators.maxLength(250)],
+      investment_ControlFE: ['',Validators.required,Validators.minLength(1),Validators.maxLength(250)],
+      investment_AccountingYear: ['',Validators.required,Validators.minLength(1),Validators.maxLength(250)],
+      investment_WOS_Email: ['',Validators.required,Validators.minLength(1),Validators.maxLength(250)]
+    });
     this.disinvetmenttype = commonservice.getAllDisinvestmentTypes();
     console.log(this.disinvetmenttype);
     this.investment_model = {} as Iinvestment;
@@ -60,86 +86,77 @@ export class FormFcComponent implements OnInit {
     this.PEFEntity = { NameFE: "", UIN: "",BankName:"" }
     this.PEFEntityArray.push(this.PEFEntity);
     this.PEFEntitylength = this.PEFEntityArray.length;
-    this.reactiveForm = new FormGroup({
-      investment_name: new FormControl(this.investment_model.investment_name, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_pan: new FormControl(this.investment_model.investment_pan, [
-        Validators.required,
-        Validators.maxLength(10),
-        Validators.minLength(1),
-      ]),
-      investment_LEI: new FormControl(this.investment_model.investment_LEI, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-        // emailValidator(),
-      ]),
-      investment_pin: new FormControl(this.investment_model.investment_pin, [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(6),
-      ]),
-      investment_Address: new FormControl(this.investment_model.investment_Address, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_City: new FormControl(this.investment_model.investment_City, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_GroupIE: new FormControl(this.investment_model.investment_GroupIE, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_ContactPerson: new FormControl(this.investment_model.investment_GroupIE, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_CPDesignation: new FormControl(this.investment_model.investment_GroupIE, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_TelephoneNumber: new FormControl(this.investment_model.investment_GroupIE, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_MobileNumber: new FormControl(this.investment_model.investment_GroupIE, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_Email: new FormControl(this.investment_model.investment_GroupIE, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_NetWorth: new FormControl(this.investment_model.investment_GroupIE, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_AmountINR: new FormControl(this.investment_model.investment_AmountINR, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      investment_NetWorthDate: new FormControl(this.investment_model.investment_NetWorthDate, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
+    // this.reactiveForm = new FormGroup({
+    
+    //   investment_LEI: new FormControl(this.investment_model.investment_LEI, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //     // emailValidator(),
+    //   ]),
+    //   investment_pin: new FormControl(this.investment_model.investment_pin, [
+    //     Validators.required,
+    //     Validators.minLength(6),
+    //     Validators.maxLength(6),
+    //   ]),
+    //   investment_Address: new FormControl(this.investment_model.investment_Address, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_City: new FormControl(this.investment_model.investment_City, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_GroupIE: new FormControl(this.investment_model.investment_GroupIE, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_ContactPerson: new FormControl(this.investment_model.investment_GroupIE, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_CPDesignation: new FormControl(this.investment_model.investment_GroupIE, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_TelephoneNumber: new FormControl(this.investment_model.investment_GroupIE, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_MobileNumber: new FormControl(this.investment_model.investment_GroupIE, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_Email: new FormControl(this.investment_model.investment_GroupIE, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_NetWorth: new FormControl(this.investment_model.investment_GroupIE, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_AmountINR: new FormControl(this.investment_model.investment_AmountINR, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
+    //   investment_NetWorthDate: new FormControl(this.investment_model.investment_NetWorthDate, [
+    //     Validators.required,
+    //     Validators.minLength(1),
+    //     Validators.maxLength(250),
+    //   ]),
 
 
-    });
+    // });
   }
  
   addPEFEntity() {
@@ -297,6 +314,16 @@ export class FormFcComponent implements OnInit {
       this.CityList = data;
     });
   }
-  
+  public submit() {
+    debugger;
+    console.log('value: ', this.reactiveForm.value);
+    console.log('the whole form and its controls: ', this.reactiveForm)
+    if (this.reactiveForm.invalid) {
+      for (const control of Object.keys(this.reactiveForm.controls)) {
+        this.reactiveForm.controls[control].markAsTouched();
+      }
+      return;
+    }
+  }
 
 }

@@ -1,72 +1,73 @@
 <div class="container">
-    <div class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Form FC: UIN No - XXXXXXXXXXX
-            <!-- <small class="text-muted">
+    <form [formGroup]="reactiveForm" #form="ngForm" (ngSubmit)="submit()">
+        <div class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Form FC: UIN No - XXXXXXXXXXX
+                <!-- <small class="text-muted">
         your source of news about frontend development!
       </small> -->
-        </a>
-    </div>
-    <div class="container-fluid position-relative d-flex p-0">
-        <div class="container-fluid pt-4 px-4">
-            <div class="row g-4">
-                <div class="col-sm-12 col-xl-4">
-                    <label class="form-label">Investment Route
+            </a>
+        </div>
+        <div class="container-fluid position-relative d-flex p-0">
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-4">
+                        <label class="form-label">Investment Route
 
-                    </label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="col-sm-12 col-xl-4">
-                    <label class="form-label">Investment Type
+                        </label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-xl-4">
+                        <label class="form-label">Investment Type
 
-                    </label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="col-sm-12 col-xl-4">
-                    <label class="form-label">CIN/LLPIN IF COMPANY/LLP/PAN
+                        </label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-xl-4">
+                        <label class="form-label">CIN/LLPIN IF COMPANY/LLP/PAN
 
-                    </label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-sm-12 col-xl-4">
-                    <label class="form-label">USD Amount (IN FCY)
-
-
-                    </label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-sm-12 col-xl-4">
-                    <label class="form-label">Rs. Amount (IN INR)
-                    </label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-sm-12 col-xl-4">
-                    <label class="form-label"> Investment Type (Section C)
+                        </label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-12 col-xl-4">
+                        <label class="form-label">USD Amount (IN FCY)
 
 
-                    </label>
-                    <input type="text" class="form-control">
+                        </label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-12 col-xl-4">
+                        <label class="form-label">Rs. Amount (IN INR)
+                        </label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-12 col-xl-4">
+                        <label class="form-label"> Investment Type (Section C)
+
+
+                        </label>
+                        <input type="text" class="form-control">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid position-relative d-flex p-0">
-        <div class="container-fluid pt-4 px-4">
-            <tabset #tabset>
-                <tab heading="Instructions">
-                    <app-instructions></app-instructions>
-                </tab>
-                <tab heading="Investor Details">
-                    <form [formGroup]="reactiveForm" #form="ngForm">
+        <div class="container-fluid position-relative d-flex p-0">
+            <div class="container-fluid pt-4 px-4">
+                <tabset #tabset>
+                    <tab heading="Instructions">
+                        <app-instructions></app-instructions>
+                    </tab>
+                    <tab heading="Investor Details">
+
                         <div class="row g-4">
                             <div class="col-sm-12 col-xl-4">
                                 <label for="investment_name" class="form-label">Name of IE/ RI/ Trust/ Society
@@ -109,6 +110,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="col-sm-12 col-xl-4 mb-3">
                                 <label for="investment_LEI" class="form-label">Legal Entity Identifier (LEI)
                                 </label>
@@ -227,8 +229,6 @@
                             </div>
                             <div class="col-sm-12 col-xl-4 mb-3">
                                 <label class="form-label">Contact Person
-
-
                                 </label>
                                 <input type="text" id="investment_ContactPerson" name="investment_ContactPerson"
                                     formControlName="investment_ContactPerson" placeholder="Contact Person" required
@@ -564,716 +564,759 @@
                             </table>
                         </div>
                         <button type="button" class="btn btn-sm btn-primary" (click)="validate()">Next</button>
-                    </form>
-                </tab>
-                <tab heading="JV/WOS DETAILS">
-                    <app-form-fc-wos></app-form-fc-wos>
-                </tab>
-                <tab heading="SDS Details">
-                    <app-form-fc-sds></app-form-fc-sds>
-                </tab>
-                <tab heading="SHAREHOLDING IN FOREIGN ENTITY">
-                    <table class="table caption-top table-responsive">
-                        <caption>Whether IE/ RI/ group company/ Trust/ Society making FC or undertaking
-                            disinvestment is
-                            under:
-                        </caption>
-                        <thead>
-                            <tr>
 
-                                <th scope="col"> Person resident in India
-                                </th>
-                                <th scope="col">%stake
-                                </th>
-                                <th scope="col">Foreign partner(s)
-                                </th>
-                                <th scope="col">%stake
-                                </th>
-                                <th scope="col">Total
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let dynamic of ShareHoldingFEArray; let i = index;">
-
-                                <td>
-                                    <input [(ngModel)]="ShareHoldingFEArray[i].Person"
-                                        [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                </td>
-                                <td>
-                                    <input [(ngModel)]="ShareHoldingFEArray[i].Pstake"
-                                        [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                </td>
-                                <td>
-                                    <input [(ngModel)]="ShareHoldingFEArray[i].ForeignPartner"
-                                        [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                </td>
-                                <td>
-                                    <input [(ngModel)]="ShareHoldingFEArray[i].FPstake"
-                                        [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                </td>
-                                <td>
-                                    <input [(ngModel)]="ShareHoldingFEArray[i].Total"
-                                        [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                </td>
-
-                                <td>
-                                    <button type="button" (click)="addShareHoldingFE()"
-                                        class="btn btn-outline-primary me-2">+</button>
-                                    <button type="button" *ngIf="ShareHoldingFElength>1"
-                                        (click)="deleteShareHoldingFE(i)"
-                                        class="btn btn-outline-primary me-2">-</button>
-
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <td>Total</td>
-                            <td>100%</td>
-                            <td></td>
-                            <td>100%</td>
-                            <td>100%</td>
-                        </tfoot>
-                    </table>
-                </tab>
-                <tab heading="DECLARATION">
-                    <table class="caption-top table table-borderless">
-                        <caption> Declaration by the Indian entity (IE)/ Resident Individual (RI)</caption>
-                        <thead>
-                            <!-- <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr> -->
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A</th>
-                                <td>(a) I/ We have an account appearing as Non-Performing Asset (NPA)/wilful defaulter,
-                                    or am/ are under investigation by a financial sector regulator, or am/ are under
-                                    investigation by investigative agencies in India, viz., Central Bureau of
-                                    Investigation or Directorate of Enforcement or Serious Frauds Investigation Office
-                                    Accordingly,
-                                    i. NOC has been obtained & enclosed herewith as prescribed under Rule 10 of the OI
-                                    Rules, or
-                                    ii. The lender bank(s)/regulatory body/investigative agency concerned failed to
-                                    furnish the objection(s) within sixty days from the date of receipt of application
-                                    for NOC.
-
-                                </td>
-                                <td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">B</th>
-                                <td>(b) Wherever applicable, the Share certificate/ other evidence as required in
-                                    Regulation 9 and other reporting requirement as required in terms of Regulation 10
-                                    of OI Regulations, as stipulated by the Reserve Bank from time to time, in respect
-                                    of the foreign entity under this UIN has been submitted/completed.
-                                </td>
-                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">C</th>
-                                <td>(c) Financial commitment undertaken by means of debt is in compliance with OI Rules
-                                    and OI Regulations, or corresponding extant Regulations in case where the
-                                    transaction has been done under the earlier overseas investment framework**, as
-                                    stipulated by the Reserve Bank from time to time.
-                                </td>
-                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">D</th>
-                                <td>(d) Pricing and valuation norms as per OI Rules and OI Regulations, or corresponding
-                                    extant Regulations in case where the transaction has been done under the earlier
-                                    overseas investment framework**, as stipulated by the Reserve Bank from time to
-                                    time, wherever applicable, have been complied with.
-                                </td>
-                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">E</th>
-                                <td>(e) It is certified that no delay in reporting is pending for regularization as
-                                    required under Regulation 12 of OI Regulations.
-                                </td>
-                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">F</th>
-                                <td>(f) The foreign securities acquired by way of gift from a person resident outside
-                                    India, is in accordance with the provisions contained in Foreign Contribution
-                                    (Regulation) Act, 2010, and the rules and regulations made thereunder and Para 2 of
-                                    Schedule III of OI Rules.
-                                </td>
-                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">G</th>
-                                <td>This remittance/transaction amount together with earlier remittances/transactions
-                                    relating to
-                                    all the current and capital account transactions under the Liberalised Remittance
-                                    Scheme during this Financial Year
-                                    is within the limit as provided under the scheme. The total amount of
-                                    remittances/transactions done by me during the
-                                    Financial Year until the date of this certificate is ___________(in FCY) the INR
-                                    equivalent of which works out to INR __________.
-                                </td>
-                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td>
-                                    I/ We hereby certify that the information furnished above are true and correct.
-                                    I/We also duly acknowledge that if any information furnished by me/us is found to be
-                                    false and/or
-                                    incorrect, it shall be construed that the reporting requirements under FEMA, 1999,
-                                    have not been
-                                    complied with.
-                                    <div class="row">
-                                        <div class="col-sm-12 col-xl-8">
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Place
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label">
-                                                        Date
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Telephone
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Email
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-12 col-xl-4">
-                                            <label for="investment_Email" class="form-label"> Stamp/Seal
-                                            </label>
-                                            <input type="text" class="form-control">
-                                        </div>
-
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <th scope="row">List of Enclosure
-                            </th>
-                            <td>XXXXXXXXXXXXXXXXXXXXXX
-                            </td>
-                            <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                        </tfoot>
-                    </table>
-                    <table class="caption-top table table-borderless">
-                        <caption>Certificate by the Statutory Auditors of the Indian Entity (IE)/ Group Company, as
-                            applicable
-                        </caption>
-                        <thead>
-                            <!-- <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr> -->
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row"></th>
-                                <td>It is certified that the terms and conditions contained in OI Rules and OI
-                                    Regulations
-                                    have been complied with by the Indian Entity/ Group Company, as applicable,
-                                    _____________________________________
-                                    (Name of the Indian Entity/ Group Company) in respect of the investment under
-                                    report. In particular, it is certified that
-                                    (strike out whichever is not applicable):
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">i</th>
-                                <td>i. The investment is not in violation of the provisions contained in Rule 19 of
-                                    Foreign Exchange Management
-                                    (Overseas Investment) Rules, 2022 or corresponding extant Regulations in case where
-                                    the transaction has been
-                                    done under the earlier overseas investment framework**,
-                                    as stipulated by the Reserve Bank from time to time.
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">ii</th>
-                                <td>ii. The NOC as required in terms of Rule 10 of Foreign Exchange Management (Overseas
-                                    Investment) Rules,
-                                    2022 has been obtained, wherever applicable.
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">iii</th>
-                                <td>iii. The remittance/transaction amount towards the investment together with earlier
-                                    Financial Commitment is within the
-                                    limit as stipulated by the Reserve Bank from time to time. The total financial
-                                    commitment of the Indian entity __________________________ (Name of the Indian
-                                    entity) is _______(in foreign currency) the INR equivalent^ of which works out to
-                                    INR______that works out to ____%
-                                    of its Net Worth which is INR ___________/-, as on the date of last audited balance
-                                    sheet, i.e., (date ________)
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">iv</th>
-                                <td>iv. Indian entity has complied with the pricing/valuation norms prescribed in
-                                    Foreign Exchange Management (Overseas Investment)
-                                    Rules, 2022, or corresponding extant Regulations in case where the transaction has
-                                    been done under the earlier overseas investment
-                                    framework**, as stipulated by the Reserve Bank from time to time.
-                                    The valuation for the investment in _______ (no of shares/% stake) is arrived at
-                                    _________ (amount in FCY).@
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">v</th>
-                                <td>v. Indian entity has complied with the conditions prescribed in para 2 of Schedule I
-                                    of Foreign Exchange Management
-                                    (Overseas Investment) Rules, 2022 on ODI in Financial services activity, or
-                                    corresponding extant Regulations in case where
-                                    the transaction has been done under the earlier overseas
-                                    investment framework**, as stipulated by the Reserve Bank from time to time,
-                                    wherever applicable.
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">vi</th>
-                                <td>vi. We have verified the records and certify that no delay in reporting is pending
-                                    for regularization as required under Regulation 12 of Foreign Exchange Management
-                                    (Overseas Investment) Regulations, 2022.
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">vii</th>
-                                <td>vii. vii. The amount of the guarantee(s) given by the group company of the Indian
-                                    entity
-                                    (as holding/ subsidiary/ promoter group company), together with the Financial
-                                    Commitment/s of the
-                                    group company, if any, are within the limit as provided in Foreign Exchange
-                                    Management
-                                    (Overseas Investment) Rules, 2022 read with the provisions contained in Foreign
-                                    Exchange Management
-                                    (Overseas Investment) Regulations, 2022 and Foreign Exchange Management (Overseas
-                                    Investment)
-                                    Directions, 2022. The total financial commitment of the Indian
-                                    entity __________________________ (Name of the Indian entity) is -------(in foreign
-                                    currency)
-                                    the INR equivalent^ of which works out to INR that works out to ____% of
-                                    its Net Worth which is INR ___________/-, as on the date of last audited balance
-                                    sheet, i.e.,
-                                    (date ________) </td>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <td>Note: @ Valuation certificate is attached
-                                    * Please refer to Regulation 5(2) of OI Regulations, in case of a guarantee extended
-                                    by a group company.
-                                    ^ Exchange rate of INR shall be taken on the date of financial commitment or this
-                                    certificate, whichever is earlier
-                                    ** Notification No. FEMA.19/RB-2000 dated 3rd May 2000 and Notification
-                                    No.FEMA.120/RB-2004 dated July 7, 2004, as amended from time to time
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-xl-8">
-                                            <div class="col-sm-12 col-xl-12">
-                                                <label for="investment_Email" class="form-label"> Signature of the
-                                                    Statutory Auditors of the Indian entity
-                                                </label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="col-sm-12 col-xl-12">
-                                                <label for="investment_Email" class="form-label"> Name of the audit
-                                                    firm, Registration number and UDIN
-                                                </label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Place
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label">
-                                                        Date
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Telephone
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Email
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-12 col-xl-4">
-                                            <label for="investment_Email" class="form-label"> Stamp/Seal
-                                            </label>
-                                            <input type="text" class="form-control">
-                                        </div>
-
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <th scope="row">List of Enclosure
-                            </th>
-                            <td>XXXXXXXXXXXXXXXXXXXXXX
-                            </td>
-                            <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                        </tfoot>
-                    </table>
-                </tab>
-                <tab heading="Restructring">
-                    <h4>Reporting of restructuring of the balance sheet of the foreign entity involving diminution in
-                        the total value of the outstanding dues towards person resident in India on account of
-                        investment in equity and debt</h4>
-                    <h5 class="mt-3">Note: All amounts should be in a single foreign currency and in actuals</h5>
-                    <div class="col-sm-12 col-xl-12">
-                        <label for="investment_Email" class="form-label"> 13 digit Unique Identification Number allotted
-                            by the Reserve Bank
-                        </label>
-                        <input type="text" class="form-control">
-                        <h6>
-                            Name, AD Code and branch of the designated AD bank
-                        </h6>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>S.No</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span><b>Particulars</b></span>
-                        </div>
-                        <div class="col-sm-3">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>I</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>PAN and Name of the Indian Entity (IE)</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>II</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>Name of the foreign entity
-                            </span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>III</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>% Stake held by IE in the foreign entity</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>IV</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>Total amount of Financial Commitment undertaken by IE in this UIN till date</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>V</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>Total accumulated losses (based on latest audited financial statements)</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>VI</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>Proportionate amount of accumulated losses based on share of the IE</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>VII</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>Date of restructuring</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="date" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>VIII</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>Total outstanding dues towards the IE as on date of restructuring</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="date" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>IX</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>Amount of diminution in the total value of the outstanding dues</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>X</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>Date of the valuation certificate </span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="date" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>XI</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>Total amount of financial commitment post restructuring </span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-1">
-                            <span><b>XII</b></span>
-                        </div>
-                        <div class="col-sm-8">
-                            <span>% stake held by IE post restructuring </span>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="container">
-                        <h5 style="text-align: center;">Declaration by the Indian Entity (IE)<br>
-                            (Strike out whichever is not applicable)
-                        </h5>
-                        <table class="table table-borderless">
+                    </tab>
+                    <tab heading="JV/WOS DETAILS">
+                        <app-form-fc-wos [reactiveForm]="reactiveForm"></app-form-fc-wos>
+                    </tab>
+                    <tab heading="SDS Details">
+                        <app-form-fc-sds></app-form-fc-sds>
+                    </tab>
+                    <tab heading="SHAREHOLDING IN FOREIGN ENTITY">
+                        <table class="table caption-top table-responsive">
+                            <caption>Whether IE/ RI/ group company/ Trust/ Society making FC or undertaking
+                                disinvestment is
+                                under:
+                            </caption>
                             <thead>
+                                <tr>
+
+                                    <th scope="col"> Person resident in India
+                                    </th>
+                                    <th scope="col">%stake
+                                    </th>
+                                    <th scope="col">Foreign partner(s)
+                                    </th>
+                                    <th scope="col">%stake
+                                    </th>
+                                    <th scope="col">Total
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let dynamic of ShareHoldingFEArray; let i = index;">
+
+                                    <td>
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].Person"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </td>
+                                    <td>
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].Pstake"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </td>
+                                    <td>
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].ForeignPartner"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </td>
+                                    <td>
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].FPstake"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </td>
+                                    <td>
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].Total"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </td>
+
+                                    <td>
+                                        <button type="button" (click)="addShareHoldingFE()"
+                                            class="btn btn-outline-primary me-2">+</button>
+                                        <button type="button" *ngIf="ShareHoldingFElength>1"
+                                            (click)="deleteShareHoldingFE(i)"
+                                            class="btn btn-outline-primary me-2">-</button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <td>Total</td>
+                                <td>100%</td>
+                                <td></td>
+                                <td>100%</td>
+                                <td>100%</td>
+                            </tfoot>
+                        </table>
+                    </tab>
+                    <tab heading="DECLARATION">
+                        <table class="caption-top table table-borderless">
+                            <caption> Declaration by the Indian entity (IE)/ Resident Individual (RI)</caption>
+                            <thead>
+                                <!-- <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr> -->
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">A.</th>
-                                    <td> The foreign entity has been incurring losses for last 2 years
+                                    <th scope="row">A</th>
+                                    <td>(a) I/ We have an account appearing as Non-Performing Asset (NPA)/wilful
+                                        defaulter,
+                                        or am/ are under investigation by a financial sector regulator, or am/ are under
+                                        investigation by investigative agencies in India, viz., Central Bureau of
+                                        Investigation or Directorate of Enforcement or Serious Frauds Investigation
+                                        Office
+                                        Accordingly,
+                                        i. NOC has been obtained & enclosed herewith as prescribed under Rule 10 of the
+                                        OI
+                                        Rules, or
+                                        ii. The lender bank(s)/regulatory body/investigative agency concerned failed to
+                                        furnish the objection(s) within sixty days from the date of receipt of
+                                        application
+                                        for NOC.
+
                                     </td>
+                                    <td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+
                                 </tr>
                                 <tr>
                                     <th scope="row">B</th>
-                                    <td>The amount of original investment is less than USD 10 million
-                                        OR
-                                        The amount of original investment is more than USD 10 million and the diminution
-                                        in value has been duly certified on an arm’s length basis by a registered valuer
-                                        as per the Companies Act, 2013 (18 of 2013) or corresponding valuer registered
-                                        with the regulatory authority or certified public accountant in the host
-                                        jurisdiction and the certificate is dated not more than six months before the
-                                        date of restructuring
+                                    <td>(b) Wherever applicable, the Share certificate/ other evidence as required in
+                                        Regulation 9 and other reporting requirement as required in terms of Regulation
+                                        10
+                                        of OI Regulations, as stipulated by the Reserve Bank from time to time, in
+                                        respect
+                                        of the foreign entity under this UIN has been submitted/completed.
+                                    </td>
+                                    <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">C</th>
+                                    <td>(c) Financial commitment undertaken by means of debt is in compliance with OI
+                                        Rules
+                                        and OI Regulations, or corresponding extant Regulations in case where the
+                                        transaction has been done under the earlier overseas investment framework**, as
+                                        stipulated by the Reserve Bank from time to time.
+                                    </td>
+                                    <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">D</th>
+                                    <td>(d) Pricing and valuation norms as per OI Rules and OI Regulations, or
+                                        corresponding
+                                        extant Regulations in case where the transaction has been done under the earlier
+                                        overseas investment framework**, as stipulated by the Reserve Bank from time to
+                                        time, wherever applicable, have been complied with.
+                                    </td>
+                                    <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">E</th>
+                                    <td>(e) It is certified that no delay in reporting is pending for regularization as
+                                        required under Regulation 12 of OI Regulations.
+                                    </td>
+                                    <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">F</th>
+                                    <td>(f) The foreign securities acquired by way of gift from a person resident
+                                        outside
+                                        India, is in accordance with the provisions contained in Foreign Contribution
+                                        (Regulation) Act, 2010, and the rules and regulations made thereunder and Para 2
+                                        of
+                                        Schedule III of OI Rules.
+                                    </td>
+                                    <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">G</th>
+                                    <td>This remittance/transaction amount together with earlier
+                                        remittances/transactions
+                                        relating to
+                                        all the current and capital account transactions under the Liberalised
+                                        Remittance
+                                        Scheme during this Financial Year
+                                        is within the limit as provided under the scheme. The total amount of
+                                        remittances/transactions done by me during the
+                                        Financial Year until the date of this certificate is ___________(in FCY) the INR
+                                        equivalent of which works out to INR __________.
+                                    </td>
+                                    <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>
+                                        I/ We hereby certify that the information furnished above are true and correct.
+                                        I/We also duly acknowledge that if any information furnished by me/us is found
+                                        to be
+                                        false and/or
+                                        incorrect, it shall be construed that the reporting requirements under FEMA,
+                                        1999,
+                                        have not been
+                                        complied with.
+                                        <div class="row">
+                                            <div class="col-sm-12 col-xl-8">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Place
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label">
+                                                            Date
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Telephone
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Email
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-xl-4">
+                                                <label for="investment_Email" class="form-label"> Stamp/Seal
+                                                </label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <th scope="row">List of Enclosure
+                                </th>
+                                <td>XXXXXXXXXXXXXXXXXXXXXX
+                                </td>
+                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                            </tfoot>
+                        </table>
+                        <table class="caption-top table table-borderless">
+                            <caption>Certificate by the Statutory Auditors of the Indian Entity (IE)/ Group Company, as
+                                applicable
+                            </caption>
+                            <thead>
+                                <!-- <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr> -->
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>It is certified that the terms and conditions contained in OI Rules and OI
+                                        Regulations
+                                        have been complied with by the Indian Entity/ Group Company, as applicable,
+                                        _____________________________________
+                                        (Name of the Indian Entity/ Group Company) in respect of the investment under
+                                        report. In particular, it is certified that
+                                        (strike out whichever is not applicable):
 
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">C</th>
-                                    <td>The amount of diminution in value of the outstanding dues is less than twenty
-                                        per cent of the total value of the outstanding dues towards the IE
-                                        OR
-                                        The amount of diminution in value of the outstanding dues is more than twenty
-                                        per cent. of the total value of the outstanding dues towards the IE and the
-                                        diminution in value has been duly certified on an arm’s length basis by a
-                                        registered valuer as per the Companies Act, 2013 (18 of 2013) or corresponding
-                                        valuer registered with the regulatory authority or certified public accountant
-                                        in the host jurisdiction and the certificate is dated not more than six months
-                                        before the date of restructuring
+                                    <th scope="row">i</th>
+                                    <td>i. The investment is not in violation of the provisions contained in Rule 19 of
+                                        Foreign Exchange Management
+                                        (Overseas Investment) Rules, 2022 or corresponding extant Regulations in case
+                                        where
+                                        the transaction has been
+                                        done under the earlier overseas investment framework**,
+                                        as stipulated by the Reserve Bank from time to time.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">ii</th>
+                                    <td>ii. The NOC as required in terms of Rule 10 of Foreign Exchange Management
+                                        (Overseas
+                                        Investment) Rules,
+                                        2022 has been obtained, wherever applicable.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">iii</th>
+                                    <td>iii. The remittance/transaction amount towards the investment together with
+                                        earlier
+                                        Financial Commitment is within the
+                                        limit as stipulated by the Reserve Bank from time to time. The total financial
+                                        commitment of the Indian entity __________________________ (Name of the Indian
+                                        entity) is _______(in foreign currency) the INR equivalent^ of which works out
+                                        to
+                                        INR______that works out to ____%
+                                        of its Net Worth which is INR ___________/-, as on the date of last audited
+                                        balance
+                                        sheet, i.e., (date ________)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">iv</th>
+                                    <td>iv. Indian entity has complied with the pricing/valuation norms prescribed in
+                                        Foreign Exchange Management (Overseas Investment)
+                                        Rules, 2022, or corresponding extant Regulations in case where the transaction
+                                        has
+                                        been done under the earlier overseas investment
+                                        framework**, as stipulated by the Reserve Bank from time to time.
+                                        The valuation for the investment in _______ (no of shares/% stake) is arrived at
+                                        _________ (amount in FCY).@
+                                    </td>
 
+                                </tr>
+                                <tr>
+                                    <th scope="row">v</th>
+                                    <td>v. Indian entity has complied with the conditions prescribed in para 2 of
+                                        Schedule I
+                                        of Foreign Exchange Management
+                                        (Overseas Investment) Rules, 2022 on ODI in Financial services activity, or
+                                        corresponding extant Regulations in case where
+                                        the transaction has been done under the earlier overseas
+                                        investment framework**, as stipulated by the Reserve Bank from time to time,
+                                        wherever applicable.
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">vi</th>
+                                    <td>vi. We have verified the records and certify that no delay in reporting is
+                                        pending
+                                        for regularization as required under Regulation 12 of Foreign Exchange
+                                        Management
+                                        (Overseas Investment) Regulations, 2022.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">vii</th>
+                                    <td>vii. vii. The amount of the guarantee(s) given by the group company of the
+                                        Indian
+                                        entity
+                                        (as holding/ subsidiary/ promoter group company), together with the Financial
+                                        Commitment/s of the
+                                        group company, if any, are within the limit as provided in Foreign Exchange
+                                        Management
+                                        (Overseas Investment) Rules, 2022 read with the provisions contained in Foreign
+                                        Exchange Management
+                                        (Overseas Investment) Regulations, 2022 and Foreign Exchange Management
+                                        (Overseas
+                                        Investment)
+                                        Directions, 2022. The total financial commitment of the Indian
+                                        entity __________________________ (Name of the Indian entity) is -------(in
+                                        foreign
+                                        currency)
+                                        the INR equivalent^ of which works out to INR that works out to ____% of
+                                        its Net Worth which is INR ___________/-, as on the date of last audited balance
+                                        sheet, i.e.,
+                                        (date ________) </td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td>Note: @ Valuation certificate is attached
+                                        * Please refer to Regulation 5(2) of OI Regulations, in case of a guarantee
+                                        extended
+                                        by a group company.
+                                        ^ Exchange rate of INR shall be taken on the date of financial commitment or
+                                        this
+                                        certificate, whichever is earlier
+                                        ** Notification No. FEMA.19/RB-2000 dated 3rd May 2000 and Notification
+                                        No.FEMA.120/RB-2004 dated July 7, 2004, as amended from time to time
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row"></th>
                                     <td>
                                         <div class="row">
-                                            I/ We hereby certify that the information furnished above are true and
-                                            correct. I/We also duly acknowledge that if any information furnished by
-                                            me/us is found to be false and/or incorrect,
-                                            it shall be construed that the reporting requirements under FEMA, 1999, have
-                                            not been complied with.
+                                            <div class="col-sm-12 col-xl-8">
+                                                <div class="col-sm-12 col-xl-12">
+                                                    <label for="investment_Email" class="form-label"> Signature of the
+                                                        Statutory Auditors of the Indian entity
+                                                    </label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div class="col-sm-12 col-xl-12">
+                                                    <label for="investment_Email" class="form-label"> Name of the audit
+                                                        firm, Registration number and UDIN
+                                                    </label>
+                                                    <input type="text" class="form-control">
+                                                </div>
 
 
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Place
-                                                    </label>
-                                                    <input type="text" class="form-control">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Place
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label">
+                                                            Date
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label">
-                                                        Date
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Place
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label">
-                                                        Date
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> (Signature and
-                                                        seal of authorised official of the IE/ RI)
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> (Signature and
-                                                        seal of authorised official of the AD)
-                                                    </label>
-                                                    <input type="text" class="form-control">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Telephone
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Email
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Name
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label">
-                                                        Name
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
+
+                                            <div class="col-sm-12 col-xl-4">
+                                                <label for="investment_Email" class="form-label"> Stamp/Seal
+                                                </label>
+                                                <input type="text" class="form-control">
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Designation
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label">
-                                                        Designation
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Tel. No.
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label">
-                                                        Tel. No.
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label"> Email
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-12 col-xl-6">
-                                                    <label for="investment_Email" class="form-label">
-                                                        Email
-                                                    </label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <h6>Note: AD bank may ensure that the certificate furnished is in accordance
-                                                with Para 14 of FEM (Overseas Investment) Directions. </h6>
 
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
+                            <tfoot>
+                                <th scope="row">List of Enclosure
+                                </th>
+                                <td>XXXXXXXXXXXXXXXXXXXXXX
+                                </td>
+                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                            </tfoot>
                         </table>
-                    </div>
-                </tab>
-                <tab heading="Disinvestment">
-                    <app-form-fc-disinvestment></app-form-fc-disinvestment>
-                </tab>
-            </tabset>
+                    </tab>
+                    <tab heading="Restructring">
+                        <h4>Reporting of restructuring of the balance sheet of the foreign entity involving diminution
+                            in
+                            the total value of the outstanding dues towards person resident in India on account of
+                            investment in equity and debt</h4>
+                        <h5 class="mt-3">Note: All amounts should be in a single foreign currency and in actuals</h5>
+                        <div class="col-sm-12 col-xl-12">
+                            <label for="investment_Email" class="form-label"> 13 digit Unique Identification Number
+                                allotted
+                                by the Reserve Bank
+                            </label>
+                            <input type="text" class="form-control">
+                            <h6>
+                                Name, AD Code and branch of the designated AD bank
+                            </h6>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>S.No</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span><b>Particulars</b></span>
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>I</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>PAN and Name of the Indian Entity (IE)</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>II</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>Name of the foreign entity
+                                </span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>III</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>% Stake held by IE in the foreign entity</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>IV</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>Total amount of Financial Commitment undertaken by IE in this UIN till date</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>V</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>Total accumulated losses (based on latest audited financial statements)</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>VI</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>Proportionate amount of accumulated losses based on share of the IE</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>VII</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>Date of restructuring</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>VIII</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>Total outstanding dues towards the IE as on date of restructuring</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>IX</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>Amount of diminution in the total value of the outstanding dues</span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>X</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>Date of the valuation certificate </span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>XI</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>Total amount of financial commitment post restructuring </span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-1">
+                                <span><b>XII</b></span>
+                            </div>
+                            <div class="col-sm-8">
+                                <span>% stake held by IE post restructuring </span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="container">
+                            <h5 style="text-align: center;">Declaration by the Indian Entity (IE)<br>
+                                (Strike out whichever is not applicable)
+                            </h5>
+                            <table class="table table-borderless">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A.</th>
+                                        <td> The foreign entity has been incurring losses for last 2 years
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">B</th>
+                                        <td>The amount of original investment is less than USD 10 million
+                                            OR
+                                            The amount of original investment is more than USD 10 million and the
+                                            diminution
+                                            in value has been duly certified on an arm’s length basis by a registered
+                                            valuer
+                                            as per the Companies Act, 2013 (18 of 2013) or corresponding valuer
+                                            registered
+                                            with the regulatory authority or certified public accountant in the host
+                                            jurisdiction and the certificate is dated not more than six months before
+                                            the
+                                            date of restructuring
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">C</th>
+                                        <td>The amount of diminution in value of the outstanding dues is less than
+                                            twenty
+                                            per cent of the total value of the outstanding dues towards the IE
+                                            OR
+                                            The amount of diminution in value of the outstanding dues is more than
+                                            twenty
+                                            per cent. of the total value of the outstanding dues towards the IE and the
+                                            diminution in value has been duly certified on an arm’s length basis by a
+                                            registered valuer as per the Companies Act, 2013 (18 of 2013) or
+                                            corresponding
+                                            valuer registered with the regulatory authority or certified public
+                                            accountant
+                                            in the host jurisdiction and the certificate is dated not more than six
+                                            months
+                                            before the date of restructuring
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>
+                                            <div class="row">
+                                                I/ We hereby certify that the information furnished above are true and
+                                                correct. I/We also duly acknowledge that if any information furnished by
+                                                me/us is found to be false and/or incorrect,
+                                                it shall be construed that the reporting requirements under FEMA, 1999,
+                                                have
+                                                not been complied with.
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Place
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label">
+                                                            Date
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Place
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label">
+                                                            Date
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> (Signature and
+                                                            seal of authorised official of the IE/ RI)
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> (Signature and
+                                                            seal of authorised official of the AD)
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Name
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label">
+                                                            Name
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Designation
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label">
+                                                            Designation
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Tel. No.
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label">
+                                                            Tel. No.
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label"> Email
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12 col-xl-6">
+                                                        <label for="investment_Email" class="form-label">
+                                                            Email
+                                                        </label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <h6>Note: AD bank may ensure that the certificate furnished is in
+                                                    accordance
+                                                    with Para 14 of FEM (Overseas Investment) Directions. </h6>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </tab>
+                    <tab heading="Disinvestment">
+                        <app-form-fc-disinvestment></app-form-fc-disinvestment>
+                    </tab>
+                </tabset>
+            </div>
         </div>
-    </div>
+        <button type="submit">Submit</button>
+    </form>
 </div>

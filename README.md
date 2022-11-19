@@ -12,3 +12,6 @@ App with Bootstrap, MongoDB, NodeJS and Express JS from scratch.
   - `cd backend` to enter into the backend folder
   - `nodemon server` to start the nodemon server
   - `mongod` to start the mongoDB shell
+## Command For PDF Generate................
+npm install --save pdfmake
+

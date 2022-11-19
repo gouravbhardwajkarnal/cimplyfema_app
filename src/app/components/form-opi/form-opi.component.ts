@@ -248,17 +248,16 @@ export class FormOpiComponent implements OnInit {
       return;
     } 
     else{
-      console.log('Fromopi successfully created!');
-      /* return this.apiService.createFormEsop(this.OpiFormlist.value).subscribe({
+      return this.apiService.createFormOpi(this.OpiFormlist.value).subscribe({
         complete: () => {
-          alert('FromEsop successfully created!');
+          alert('Fromopi successfully created!');
           //console.log('FromEsop successfully created!');
             //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
         },
         error: (e) => {
           console.log(e);
         },
-      }); */
+      });
     }
     
   }

@@ -60,23 +60,31 @@ export class ApiService {
       .pipe(catchError(this.errorMgmt));
   }
 
-  // Create
+  // Create ESOP
   createFormEsop(data): Observable<any> {
     console.log(data);
     let url = `${this.baseUri}/createEsop`;
     return this.http.post(url, data).pipe(catchError(this.errorMgmt));
   }
+  //Create FromFC
   createFormFC(data): Observable<any> {
     console.log(data);
     let url = `${this.baseUri}/createFC`;
     return this.http.post(url, data).pipe(catchError(this.errorMgmt));
   }
-  
+  //Create FromAPR
   createFormAPR(data): Observable<any> {
     console.log(data);
     let url = `${this.baseUri}/createAPR`;
     return this.http.post(url, data).pipe(catchError(this.errorMgmt));
   }
+//Create FromOPI
+createFormOpi(data): Observable<any> {
+  console.log(data);
+  let url = `${this.baseUri}/createOpi`;
+  return this.http.post(url, data).pipe(catchError(this.errorMgmt));
+}
+
 
   // Error handling
   errorMgmt(error: HttpErrorResponse) {

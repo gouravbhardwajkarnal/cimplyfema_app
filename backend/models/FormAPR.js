@@ -87,23 +87,23 @@ let FormAPR = new Schema({
    },
    Furnish_ActivityCd_1987:
    {
-      type: String
+      type: Number
    },
    Furnish_ActivityCd_2008:
    {
-      type: String
+      type: Number
    },
    Furnish_Investment_Amount:
    {
-      type: String
+      type: Number
    },
    Furnish_Investment_Date:
    {
-      type: String
+      type: Date
    },
    Furnish_Stake_SDS:
    {
-      type: String
+      type: Number
    },
    Furnish_jurisdiction_ParentSDS:
    {
@@ -167,7 +167,7 @@ let FormAPR = new Schema({
    },
    Repat_Dividend_CurYear:
    {
-      type: Number
+      type: String
    },
    Repat_Dividend_commencement:
    {
@@ -295,7 +295,7 @@ let FormAPR = new Schema({
    },
    authorized_official_Telephone:
    {
-      type: String
+      type: Number
    },
    authorized_official_To_Date:
    {

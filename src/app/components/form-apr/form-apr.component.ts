@@ -67,15 +67,15 @@ export class FormAprComponent implements OnInit {
             {table: {  
                 headerRows: 1,  
                 widths: ['10%','30%','10%','10%','30%','10%'],  
-                body: [['I',this.aprFormlist.value.Person_resident_India_1,this.aprFormlist.value.Indian_Stake_1,'I',this.aprFormlist.value.Foreign_partner_1, this.aprFormlist.value.Foreign_Stake_1],],}},
+                body: [['(1)',this.aprFormlist.value.Person_resident_India_1,this.aprFormlist.value.Indian_Stake_1,'(1)',this.aprFormlist.value.Foreign_partner_1, this.aprFormlist.value.Foreign_Stake_1],],}},
                 {table: {  
                   headerRows: 1,  
                   widths: ['10%','30%','10%','10%','30%','10%'],  
-                  body: [['II',this.aprFormlist.value.Person_resident_India_2,this.aprFormlist.value.India_Stake_2,'I',this.aprFormlist.value.Foreign_partner_2, this.aprFormlist.value.Foreign_Stake_2],],}},
+                  body: [['(2)',this.aprFormlist.value.Person_resident_India_2,this.aprFormlist.value.India_Stake_2,'(2)',this.aprFormlist.value.Foreign_partner_2, this.aprFormlist.value.Foreign_Stake_2],],}},
                   {table: {  
                     headerRows: 1,  
                     widths: ['10%','30%','10%','10%','30%','10%'],  
-                    body: [['III',this.aprFormlist.value.Person_resident_India_3,this.aprFormlist.value.India_Stake_3,'I',this.aprFormlist.value.Foreign_partner_3, this.aprFormlist.value.Foreign_Stake_3],],}},
+                    body: [['(3)',this.aprFormlist.value.Person_resident_India_3,this.aprFormlist.value.India_Stake_3,'(3)',this.aprFormlist.value.Foreign_partner_3, this.aprFormlist.value.Foreign_Stake_3],],}},
             {table: {  
                 headerRows: 1,  
                 widths: ['100%'],  
@@ -175,11 +175,11 @@ export class FormAprComponent implements OnInit {
                 {table: {  
                 headerRows: 1,  
                 widths: ['5%','55%','40%'],  
-                body: [['(a)','Activity code as per 1987',this.aprFormlist.value.Furnish_ActivityCd_1987],],}},
+                body: [['(iV)','Activity code as per 1987',this.aprFormlist.value.Furnish_ActivityCd_1987],],}},
                 {table: {  
                 headerRows: 1,  
                 widths: ['5%','55%','40%'],  
-                body: [['(b)','Activity code as per 2008',this.aprFormlist.value.Furnish_ActivityCd_2008],],}},
+                body: [[{},'Activity code as per 2008',this.aprFormlist.value.Furnish_ActivityCd_2008],],}},
                 {table: {  
                 headerRows: 1,  
                 widths: ['5%','85%','10%'],  
@@ -406,6 +406,7 @@ aprFormlist:FormGroup
       this.CountryList = data;
     });
   }
+ 
   onSubmitAPRFrom()
   {
     debugger;

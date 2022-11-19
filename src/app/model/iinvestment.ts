@@ -1,3 +1,5 @@
+import { CodeClassGrid, FCDisinvestmentGrid, PEFEntityGrid, SumFCGrid } from "./gridmodel";
+
 export interface Iinvestment extends IinvestmentWOS,IinvestmentSDS {
     investment_name: string;
     investment_pan: string;
@@ -15,6 +17,10 @@ export interface Iinvestment extends IinvestmentWOS,IinvestmentSDS {
     investment_NetWorth: string;
     investment_NetWorthDate: string;  
     investment_ForeignEntity: string;
+    investment_SumFC: SumFCGrid[];
+    investment_FCDisinvestment: FCDisinvestmentGrid[];
+    investment_PEFEntity: PEFEntityGrid[];
+    investment_ActivityCode: CodeClassGrid[];
 }
 export interface IinvestmentWOS {
     investment_ForeignEntity: string;

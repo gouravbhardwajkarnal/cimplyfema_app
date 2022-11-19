@@ -317,7 +317,7 @@
                                 <label for="investment_NetWorth" class="form-label">Net worth in INR as on last audited
                                     balance sheet of the IE
                                 </label>
-                                <input type="text" id="investment_NetWorth" name="investment_NetWorth"
+                                <input type="date" id="investment_NetWorth" name="investment_NetWorth"
                                     formControlName="investment_NetWorth" placeholder="Net Worth in INR" required
                                     minlength="1" maxlength="250" class="form-control form-control-sm"
                                     [class.is-invalid]="investment_NetWorth.invalid && (investment_NetWorth.dirty || investment_NetWorth.touched)">
@@ -1317,6 +1317,6 @@
                 </tabset>
             </div>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-primary" *ngIf="!this.reactiveForm.invalid">Submit</button>
     </form>
 </div>

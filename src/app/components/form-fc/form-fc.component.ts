@@ -261,6 +261,11 @@ export class FormFcComponent implements OnInit {
     }
 
     this.investment_model = this.reactiveForm.value;
+    this.investment_model.investment_SumFC=this.sumFCArray;
+    this.investment_model.investment_FCDisinvestment=this.FCDisinvestmentArray;
+    this.investment_model.investment_PEFEntity=this.PEFEntityArray;
+    this.investment_model.investment_ActivityCode=this.CodeClassArray;
+    console.log(this.investment_model);
   }
  
   get investment_name() {

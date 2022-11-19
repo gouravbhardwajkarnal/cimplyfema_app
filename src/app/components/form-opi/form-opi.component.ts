@@ -21,7 +21,7 @@ export class FormOpiComponent implements OnInit {
       {
         'OPI_Sec_A_Name':new FormControl('',Validators.required),
         'OPI_Sec_A_LEI':new FormControl('',Validators.required),
-        'OPI_Sec_A_PAN':new FormControl('',Validators.required),
+        'OPI_Sec_A_PAN':new FormControl('',[Validators.required,Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
         'OPI_Sec_A_Address':new FormControl('',Validators.required),
         'OPI_Sec_A_City':new FormControl('',Validators.required),
         'OPI_Sec_A_State':new FormControl('',Validators.required),
@@ -35,6 +35,8 @@ export class FormOpiComponent implements OnInit {
         'OPI_Sec_A_NetAmount_INR':new FormControl('',Validators.required),
         'OPI_Sec_A_Investments_USD':new FormControl('',Validators.required),
         'OPI_Sec_A_Investments_INR':new FormControl('',Validators.required),
+        'OPI_Sec_A_Sale_USD':new FormControl('',Validators.required),
+        'OPI_Sec_A_Sale_INR':new FormControl('',Validators.required),
         'OPI_Sec_A_NetAmountClosing_USD':new FormControl('',Validators.required),
         'OPI_Sec_A_NetAmountClosing_INR':new FormControl('',Validators.required),
         'OPI_Sec_A_RemittanceAmt_USD':new FormControl('',Validators.required),
@@ -140,7 +142,7 @@ export class FormOpiComponent implements OnInit {
 
         'OPI_Sec_B_Name':new FormControl('',Validators.required),
         'OPI_Sec_B_LEI':new FormControl('',Validators.required),
-        'OPI_Sec_B_PAN':new FormControl('',Validators.required),
+        'OPI_Sec_B_PAN':new FormControl('',[Validators.required,Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
         'OPI_Sec_B_Group':new FormControl('',Validators.required),
         'OPI_Sec_B_Activity':new FormControl('',Validators.required),
         'OPI_Sec_B_Address':new FormControl('',Validators.required),
@@ -154,7 +156,7 @@ export class FormOpiComponent implements OnInit {
         'OPI_Sec_B_FaxNo':new FormControl('',Validators.required),
         'OPI_Sec_B_Email':new FormControl('',Validators.required),
         'OPI_Sec_B_VCF_Name':new FormControl('',Validators.required),
-        'OPI_Sec_B_VCF_PAN':new FormControl('',Validators.required),
+        'OPI_Sec_B_VCF_PAN':new FormControl('',[Validators.required,Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
         'OPI_Sec_B_VCF_Group':new FormControl('',Validators.required),
         'OPI_Sec_B_VCF_Activity':new FormControl('',Validators.required),
         'OPI_Sec_B_VCF_Address':new FormControl('',Validators.required),
@@ -223,7 +225,7 @@ export class FormOpiComponent implements OnInit {
 
         'OPI_Sec_C_Signature':new FormControl('',Validators.required),
         'OPI_Sec_C_Name':new FormControl('',Validators.required),
-        'OPI_Sec_C_Stamp':new FormControl('',Validators.required),
+        'OPI_Sec_C_Stamp':new FormControl(''),
         'OPI_Sec_C_Place':new FormControl('',Validators.required),
         'OPI_Sec_C_Date':new FormControl('',Validators.required),
         'OPI_Sec_C_Telephone':new FormControl('',Validators.required),
@@ -237,7 +239,29 @@ export class FormOpiComponent implements OnInit {
     {id:'2',Type:'No'}
   ]
 
-  
+  onSubmitOPIFrom()
+  {
+    if (this.OpiFormlist.invalid) {
+      for (const control of Object.keys(this.OpiFormlist.controls)) {
+        this.OpiFormlist.controls[control].markAsTouched();
+      }
+      return;
+    } 
+    else{
+      console.log('Fromopi successfully created!');
+      /* return this.apiService.createFormEsop(this.OpiFormlist.value).subscribe({
+        complete: () => {
+          alert('FromEsop successfully created!');
+          //console.log('FromEsop successfully created!');
+            //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
+        },
+        error: (e) => {
+          console.log(e);
+        },
+      }); */
+    }
+    
+  }
 
   ngAfterViewInit(){
     console.log(this.tabset.tabs);

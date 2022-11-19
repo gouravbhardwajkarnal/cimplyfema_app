@@ -14,4 +14,6 @@ App with Bootstrap, MongoDB, NodeJS and Express JS from scratch.
   - `mongod` to start the mongoDB shell
 ## Command For PDF Generate................
 npm install --save pdfmake
+## Command For Tab bootstrap................
+npm install ngx-bootstrap
 

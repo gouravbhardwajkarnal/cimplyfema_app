@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { DisinvetmentType } from 'src/app/model/common.model';
-import { IinvestmentSDS } from 'src/app/model/iinvestment';
+import { Iinvestment, IinvestmentSDS } from 'src/app/model/iinvestment';
 import { CommonService } from 'src/app/service/common.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { CommonService } from 'src/app/service/common.service';
   styleUrls: ['./form-fc-sds.component.css']
 })
 export class FormFcSdsComponent implements OnInit {
-  investment_model: IinvestmentSDS;
+  @Input() reactiveForm: FormGroup;
+  model: IinvestmentSDS;
+  investment_model: Iinvestment;
   sdstypes: DisinvetmentType[];
   Jurisdictiontypes: DisinvetmentType[];
   sdsleveltypes: DisinvetmentType[];
@@ -17,6 +20,7 @@ export class FormFcSdsComponent implements OnInit {
   SDS: any = {};
   SDSlength: number = 0;
   constructor(private commonservice: CommonService,) {
+    this.investment_model = {} as Iinvestment;
     this.sdstypes = commonservice.getAllsdstypes();
     this.Jurisdictiontypes = commonservice.getAllJurisdictiontypes();
     this.sdsleveltypes = commonservice.getAllsdsleveltypes();
@@ -70,6 +74,17 @@ export class FormFcSdsComponent implements OnInit {
       return true;
     }
     
+  }
+  public validate(): void {
+    if (this.reactiveForm.invalid) {
+      for (const control of Object.keys(this.reactiveForm.controls)) {
+        this.reactiveForm.controls[control].markAsTouched();
+      }
+      return;
+    }
+
+    this.investment_model = this.reactiveForm.value;
+    this.investment_model.investment_SDSModel=this.SDSArray;
   }
 
 }

@@ -1,12 +1,28 @@
+<div [formGroup]="reactiveForm">
 <h6>Reporting of restructuring of the balance sheet of the foreign entity involving diminution in
     the total value of the outstanding dues towards person resident in India on account of
     investment in equity and debt</h6>
 <h5 class="mt-3">Note: All amounts should be in a single foreign currency and in actuals</h5>
 <div class="col-sm-12 col-xl-12">
-    <label for="investment_Email" class="form-label"> 13 digit Unique Identification Number allotted
+    <label for="disinvestment_UIN" class="form-label"> 13 digit Unique Identification Number allotted
         by the Reserve Bank
     </label>
-    <input type="text" class="form-control">
+    <!-- <input type="text" id="disinvestment_UIN" name="investment_Group_Stamp"
+    formControlName="investment_Group_Stamp" placeholder=" Stamp/Seal"
+    required minlength="1" maxlength="250" class="form-control form-control-sm"
+    [class.is-invalid]="investment_Group_Stamp.invalid && (investment_Group_Stamp.dirty || investment_Group_Stamp.touched)">
+<div *ngIf="investment_Group_Stamp.invalid && (investment_Group_Stamp.dirty || investment_Group_Stamp.touched)"
+    class="invalid-feedback">
+    <div *ngIf="investment_Group_Stamp.errors?.['required']">
+        This field is required.
+    </div>
+    <div *ngIf="investment_Group_Stamp.errors?.['minlength']">
+        This field must have at least 1 character.
+    </div>
+    <div *ngIf="investment_Group_Stamp.errors?.['maxlength']">
+        This field must have at most 250 characters.
+    </div>
+</div> -->
     <h6>
         Name, AD Code and branch of the designated AD bank
     </h6>
@@ -553,4 +569,6 @@
             </tr>
         </tbody>
     </table>
+</div>
+<button type="button" class="btn btn-sm btn-primary col-sm-1 col-xl-1 mb-3" (click)="validate()">Next</button>
 </div>

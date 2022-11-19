@@ -19,6 +19,7 @@ const employeeRoute = require('../backend/routes/employee.route')
 const masterRoute = require('../backend/routes/master.route')
 const esopRoute = require('../backend/routes/FormEsop.route')
 const aprRoute = require('../backend/routes/FormApr.route')
+const opiRoute = require('../backend/routes/FormOpi.route')
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -33,6 +34,7 @@ app.use('/api', employeeRoute)
 app.use('/api', masterRoute)
 app.use('/api', esopRoute)
 app.use('/api', aprRoute)
+app.use('/api', opiRoute)
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {

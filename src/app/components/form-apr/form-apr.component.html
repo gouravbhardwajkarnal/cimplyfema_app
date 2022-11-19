@@ -152,7 +152,7 @@
                                     [class.is-invalid]="aprFormlist.get('Person_resident_India_1').invalid && (aprFormlist.get('Person_resident_India_1').dirty ||aprFormlist.get('Person_resident_India_1').touched)">
                                 </div>  
                                 <div class="col-3 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="Indian_Stake_1" 
+                                    <input type="number" class="form-control" formControlName="Indian_Stake_1"
                                     [class.is-invalid]="aprFormlist.get('Indian_Stake_1').invalid && (aprFormlist.get('Indian_Stake_1').dirty ||aprFormlist.get('Indian_Stake_1').touched)">
                                 </div> 
                                 <div class="col-3 mb-2">                           
@@ -215,10 +215,10 @@
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="FP_NetProfit_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_NetProfit_Previous_Year').invalid && (aprFormlist.get('FP_NetProfit_Previous_Year').dirty ||aprFormlist.get('FP_NetProfit_Previous_Year').touched)">
+                                    <input type="number" class="form-control" formControlName="FP_NetProfit_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_NetProfit_Previous_Year').invalid && (aprFormlist.get('FP_NetProfit_Previous_Year').dirty ||aprFormlist.get('FP_NetProfit_Previous_Year').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="FP_NetProfit_Current_Year"
+                                    <input type="number" class="form-control" formControlName="FP_NetProfit_Current_Year"
                                     [class.is-invalid]="aprFormlist.get('FP_NetProfit_Current_Year').invalid && (aprFormlist.get('FP_NetProfit_Current_Year').dirty ||aprFormlist.get('FP_NetProfit_Current_Year').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
@@ -226,10 +226,10 @@
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="FP_Dividend_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_Dividend_Previous_Year').invalid && (aprFormlist.get('FP_Dividend_Previous_Year').dirty ||aprFormlist.get('FP_Dividend_Previous_Year').touched)">
+                                    <input type="number" class="form-control" formControlName="FP_Dividend_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_Dividend_Previous_Year').invalid && (aprFormlist.get('FP_Dividend_Previous_Year').dirty ||aprFormlist.get('FP_Dividend_Previous_Year').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="FP_Dividend_Current_Year" 
+                                    <input type="number" class="form-control" formControlName="FP_Dividend_Current_Year" 
                                     [class.is-invalid]="aprFormlist.get('FP_Dividend_Current_Year').invalid && (aprFormlist.get('FP_Dividend_Current_Year').dirty ||aprFormlist.get('FP_Dividend_Current_Year').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
@@ -237,10 +237,10 @@
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="FP_Networth_Previous_Year"  [class.is-invalid]="aprFormlist.get('FP_Networth_Previous_Year').invalid && (aprFormlist.get('FP_Networth_Previous_Year').dirty ||aprFormlist.get('FP_Networth_Previous_Year').touched)">
+                                    <input type="number" class="form-control" formControlName="FP_Networth_Previous_Year"  [class.is-invalid]="aprFormlist.get('FP_Networth_Previous_Year').invalid && (aprFormlist.get('FP_Networth_Previous_Year').dirty ||aprFormlist.get('FP_Networth_Previous_Year').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                          
-                                    <input type="text" class="form-control" formControlName="FP_Networth_Current_Year"
+                                    <input type="number" class="form-control" formControlName="FP_Networth_Current_Year"
                                     [class.is-invalid]="aprFormlist.get('FP_Networth_Current_Year').invalid && (aprFormlist.get('FP_Networth_Current_Year').dirty ||aprFormlist.get('FP_Networth_Current_Year').touched)">
                                 </div>
                                 <hr>
@@ -399,10 +399,12 @@
                                         </label>   
                                     </div>
                                     <div class="col-4 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_Investment_Amount" [class.is-invalid]="aprFormlist.get('Furnish_Investment_Amount').invalid && (aprFormlist.get('Furnish_Investment_Amount').dirty ||aprFormlist.get('Furnish_Investment_Amount').touched)">
+                                        <input type="number" class="form-control" formControlName="Furnish_Investment_Amount" [class.is-invalid]="aprFormlist.get('Furnish_Investment_Amount').invalid && (aprFormlist.get('Furnish_Investment_Amount').dirty ||aprFormlist.get('Furnish_Investment_Amount').touched)">
                                     </div>
-                                    <div class="col-4 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_Investment_Date" [class.is-invalid]="aprFormlist.get('Furnish_Investment_Date').invalid && (aprFormlist.get('Furnish_Investment_Date').dirty ||aprFormlist.get('Furnish_Investment_Date').touched)">
+                                    <div class="col-4 mb-2">                                                                 
+                                    <input type="date" class="form-control" name="date-field"
+                                        formControlName="Furnish_Investment_Date" [class.is-invalid]="aprFormlist.get('Furnish_Investment_Date').invalid && (aprFormlist.get('Furnish_Investment_Date').dirty ||aprFormlist.get('Furnish_Investment_Date').touched)"/>
+                                </div><div class="col-4 mb-2">
                                     </div>
                                     <div class="col-12 mb-2">
                                         <label class="form-label">iv)                            
@@ -413,21 +415,21 @@
                                         </label>   
                                     </div>
                                     <div class="col-8 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_ActivityCd_1987" [class.is-invalid]="aprFormlist.get('Furnish_ActivityCd_1987').invalid && (aprFormlist.get('Furnish_ActivityCd_1987').dirty ||aprFormlist.get('Furnish_ActivityCd_1987').touched)">
+                                        <input type="number" class="form-control" formControlName="Furnish_ActivityCd_1987" [class.is-invalid]="aprFormlist.get('Furnish_ActivityCd_1987').invalid && (aprFormlist.get('Furnish_ActivityCd_1987').dirty ||aprFormlist.get('Furnish_ActivityCd_1987').touched)">
                                     </div>
                                     <div class="col-4 mb-2">
                                         <label class="form-label">b)Activity code as per 2008                            
                                         </label>   
                                     </div>
                                     <div class="col-8 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_ActivityCd_2008" [class.is-invalid]="aprFormlist.get('Furnish_ActivityCd_2008').invalid && (aprFormlist.get('Furnish_ActivityCd_2008').dirty ||aprFormlist.get('Furnish_ActivityCd_2008').touched)">
+                                        <input type="number" class="form-control" formControlName="Furnish_ActivityCd_2008" [class.is-invalid]="aprFormlist.get('Furnish_ActivityCd_2008').invalid && (aprFormlist.get('Furnish_ActivityCd_2008').dirty ||aprFormlist.get('Furnish_ActivityCd_2008').touched)">
                                     </div>
                                     <div class="col-4 mb-2">
                                         <label class="form-label">v)% Stake held in SDS                                  
                                         </label>   
                                     </div>
                                     <div class="col-8 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_Stake_SDS" [class.is-invalid]="aprFormlist.get('Furnish_Stake_SDS').invalid && (aprFormlist.get('Furnish_Stake_SDS').dirty ||aprFormlist.get('Furnish_Stake_SDS').touched)">
+                                        <input type="number" class="form-control" formControlName="Furnish_Stake_SDS" [class.is-invalid]="aprFormlist.get('Furnish_Stake_SDS').invalid && (aprFormlist.get('Furnish_Stake_SDS').dirty ||aprFormlist.get('Furnish_Stake_SDS').touched)">
                                     </div>
                                     <div class="col-8 mb-2">
                                         <label class="form-label">vi)Is the activity of SDS into financial services (tick) 
@@ -510,7 +512,7 @@
                                 <label class="form-label">Email</label>
                             </div>
                             <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="authorized_official_Telephone" [class.is-invalid]="aprFormlist.get('authorized_official_Telephone').invalid && (aprFormlist.get('authorized_official_Telephone').dirty ||aprFormlist.get('authorized_official_Telephone').touched)">
+                                <input type="number" class="form-control" formControlName="authorized_official_Telephone" [class.is-invalid]="aprFormlist.get('authorized_official_Telephone').invalid && (aprFormlist.get('authorized_official_Telephone').dirty ||aprFormlist.get('authorized_official_Telephone').touched)">
                             </div>                           
                             <div class="col-6 mb-2">                            
                                 <input type="text" class="form-control" maxlength="250" minlength="1" formControlName="authorized_official_Email" [class.is-invalid]="aprFormlist.get('authorized_official_Email').invalid && (aprFormlist.get('authorized_official_Email').dirty ||aprFormlist.get('authorized_official_Email').touched)">

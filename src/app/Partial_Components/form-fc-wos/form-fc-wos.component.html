@@ -1,38 +1,44 @@
-<form [formGroup]="reactiveForm" #form="ngForm">
-    <div class="row g-4 mt-2">
+
+    <div class="row g-4 mt-2" [formGroup]="reactiveForm" >
         <div class="col-sm-12 col-xl-4">
             <label for="investment_ForeignEntity" class="form-label">Name of foreign entity
             </label>
+          
             <input type="text" id="investment_ForeignEntity" name="investment_ForeignEntity"
                 formControlName="investment_ForeignEntity" placeholder="Name of foreign entity" required minlength="1"
                 maxlength="250" class="form-control form-control-sm"
-                [class.is-invalid]="investment_ForeignEntity.invalid && (investment_ForeignEntity.dirty || investment_ForeignEntity.touched)">
-            <div *ngIf="investment_ForeignEntity.invalid && (investment_ForeignEntity.dirty || investment_ForeignEntity.touched)"
-                class="invalid-feedback">
-                <div *ngIf="investment_ForeignEntity.errors?.['required']">
-                    This field is required.
-                </div>
-                <div *ngIf="investment_ForeignEntity.errors?.['minlength']">
-                    This field must have at least 1 character.
-                </div>
-                <div *ngIf="investment_ForeignEntity.errors?.['maxlength']">
-                    This field must have at most 250 characters.
-                </div>
-            </div>
+                [class.is-invalid]="reactiveForm.controls['investment_ForeignEntity'].invalid && (reactiveForm.controls['investment_ForeignEntity'].dirty || 
+                reactiveForm.controls['investment_ForeignEntity'].touched)">
+            
+                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].invalid && 
+                                (reactiveForm.controls['investment_ForeignEntity'].dirty || 
+                                reactiveForm.controls['investment_ForeignEntity'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['required']">
+                                        This field is required.
+                                    </div>
+                                    <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['minlength']">
+                                        This field must have at least 1 character.
+                                    </div>
+                                    <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['maxlength']">
+                                        This field must have at most 250 characters.
+                                    </div>
+                                </div>
         </div>
         <div class="col-sm-12 col-xl-4">
             <label for="investment_Jurisdiction" class="form-label">Country/ jurisdiction
             </label>
             <select class="form-control"
-                [class.is-invalid]="investment_Jurisdiction.invalid && (investment_Jurisdiction.dirty || investment_Jurisdiction.touched)"
+                [class.is-invalid]="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty ||
+                reactiveForm.controls['investment_Jurisdiction'].touched)"
                 formControlName="investment_Jurisdiction" placeholder="Please Select">
                 <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
                     {{object.name}}
                 </option>
             </select>
-            <div *ngIf="investment_Jurisdiction.invalid && (investment_Jurisdiction.dirty || investment_Jurisdiction.touched)"
+            <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty || reactiveForm.controls['investment_Jurisdiction'].touched)"
                 class="invalid-feedback">
-                <div *ngIf="investment_Jurisdiction.errors?.['required']">
+                <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].errors?.['required']">
                     This field is required.
                 </div>
             </div>
@@ -43,33 +49,38 @@
             <input type="date" id="investment_DateIncorpation" name="investment_DateIncorpation"
                 formControlName="investment_DateIncorpation" placeholder="Date of incorporation of the foreign entity"
                 required minlength="1" maxlength="250" class="form-control form-control-sm"
-                [class.is-invalid]="investment_DateIncorpation.invalid && (investment_DateIncorpation.dirty || investment_DateIncorpation.touched)">
-            <div *ngIf="investment_DateIncorpation.invalid && (investment_DateIncorpation.dirty || investment_DateIncorpation.touched)"
+                [class.is-invalid]="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || reactiveForm.controls['investment_DateIncorpation'].touched)">
+            <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || 
+            reactiveForm.controls['investment_DateIncorpation'].touched)"
                 class="invalid-feedback">
-                <div *ngIf="investment_DateIncorpation.errors?.['required']">
+                <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].errors?.['required']">
                     This field is required.
                 </div>
             </div>
         </div>
         <div class="col-sm-12 col-xl-4">
-            <label for="investment_LEI" class="form-label">Legal Entity Identifier (LEI) of the foreign entity
+            <label for="investment_WOS_LEI" class="form-label">Legal Entity Identifier (LEI) of the foreign entity
             </label>
-            <input type="text" id="investment_LEI" name="investment_LEI" formControlName="investment_LEI"
+            <input type="text" id="investment_WOS_LEI" name="investment_WOS_LEI" formControlName="investment_WOS_LEI"
                 placeholder="Legal Entity Identifier (LEI) of the foreign entity" required minlength="1" maxlength="250"
                 class="form-control form-control-sm"
-                [class.is-invalid]="investment_LEI.invalid && (investment_LEI.dirty || investment_LEI.touched)">
-            <div *ngIf="investment_LEI.invalid && (investment_LEI.dirty || investment_LEI.touched)"
-                class="invalid-feedback">
-                <div *ngIf="investment_LEI.errors?.['required']">
-                    This field is required.
-                </div>
-                <div *ngIf="investment_LEI.errors?.['minlength']">
-                    This field must have at least 1 character.
-                </div>
-                <div *ngIf="investment_LEI.errors?.['maxlength']">
-                    This field must have at most 250 characters.
-                </div>
-            </div>
+                [class.is-invalid]="reactiveForm.controls['investment_WOS_LEI'].invalid && (reactiveForm.controls['investment_WOS_LEI'].dirty || 
+                reactiveForm.controls['investment_WOS_LEI'].touched)">
+            
+                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].invalid && 
+                                (reactiveForm.controls['investment_WOS_LEI'].dirty || 
+                                reactiveForm.controls['investment_WOS_LEI'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['required']">
+                                        This field is required.
+                                    </div>
+                                    <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['minlength']">
+                                        This field must have at least 1 character.
+                                    </div>
+                                    <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['maxlength']">
+                                        This field must have at most 250 characters.
+                                    </div>
+                                </div>
         </div>
         <div class="col-sm-12 col-xl-8">
             <label class="form-label">Whether the person resident in India has control in foreign
@@ -78,16 +89,18 @@
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" required formControlName="investment_ControlFE"
                  id="investment_ControlFE" name="investment_ControlFE" value="Yes"
-                 [class.is-invalid]="investment_ControlFE.invalid && (investment_ControlFE.dirty || investment_ControlFE.touched)">
+                 [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
+                 reactiveForm.controls['investment_ControlFE'].touched)">
                 <label class="form-check-label" for="inlineRadio1">Yes</label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" required formControlName="investment_ControlFE" id="investment_ControlFE"
                  name="investment_ControlFE" value="No"
-                 [class.is-invalid]="investment_ControlFE.invalid && (investment_ControlFE.dirty || investment_ControlFE.touched)">
+                 [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
+                 reactiveForm.controls['investment_ControlFE'].touched)">
                 <label class="form-check-label" for="inlineRadio2">No</label>
               </div>
-              <div *ngIf="investment_ControlFE.invalid && (investment_ControlFE.dirty || investment_ControlFE .touched)"
+              <div *ngIf="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || reactiveForm.controls['investment_ControlFE'] .touched)"
               class="invalid-feedback">
               <div *ngIf="investment_ControlFE.errors?.['required']">
                   This field is required.
@@ -98,39 +111,42 @@
             <label class="form-label"> Accounting year followed by the foreign entity
             </label>
             <select class="form-control"
-                [class.is-invalid]="investment_AccountingYear.invalid && (investment_AccountingYear.dirty || investment_AccountingYear.touched)"
+                [class.is-invalid]="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty || 
+                reactiveForm.controls['investment_AccountingYear'].touched)"
                 formControlName="investment_AccountingYear">
                 <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
                     {{object.name}}
                 </option>
             </select>
-            <div *ngIf="investment_AccountingYear.invalid && (investment_AccountingYear.dirty || investment_AccountingYear.touched)"
+            <div *ngIf="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty
+             || reactiveForm.controls['investment_AccountingYear'].touched)"
                 class="invalid-feedback">
-                <div *ngIf="investment_AccountingYear.errors?.['required']">
+                <div *ngIf="reactiveForm.controls['investment_AccountingYear'].errors?.['required']">
                     This field is required.
                 </div>
             </div>
         </div>
         <div class="col-sm-12 col-xl-4">
-            <label for="investment_Email" class="form-label"> E-mail ID of the foreign entity
+            <label for="investment_WOS_Email" class="form-label"> E-mail ID of the foreign entity
             </label>
-            <input type="text" id="investment_Email" name="investment_Email" formControlName="investment_Email"
+            <input type="text" id="investment_WOS_Email" name="investment_WOS_Email" formControlName="investment_WOS_Email"
                 placeholder="E-mail ID of the foreign entity" required minlength="1" maxlength="250"
                 class="form-control form-control-sm"
-                [class.is-invalid]="investment_Email.invalid && (investment_Email.dirty || investment_Email.touched)">
-            <div *ngIf="investment_Email.invalid && (investment_Email.dirty || investment_Email.touched)"
+                [class.is-invalid]="reactiveForm.controls['investment_WOS_Email'].invalid &&
+                 (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)">
+            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].invalid && (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)"
                 class="invalid-feedback">
-                <div *ngIf="investment_Email.errors?.['required']">
+                <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['required']">
                     This field is required.
                 </div>
-                <div *ngIf="investment_Email.errors?.['minlength']">
+                <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['minlength']">
                     This field must have at least 1 character.
                 </div>
-                <div *ngIf="investment_Email.errors?.['maxlength']">
+                <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['maxlength']">
                     This field must have at most 250 characters.
                 </div>
             </div>
-        </div>
+        </div> 
         <div class="container">
             <table class="table table-striped table-bordered mt-3">
                 <thead>
@@ -242,4 +258,3 @@
         </div>
         <button type="button" class="btn btn-sm btn-primary col-sm-1 col-xl-1 mb-3" (click)="validate()">Next</button>
     </div>
-</form>

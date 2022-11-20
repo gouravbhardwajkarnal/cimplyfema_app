@@ -47,11 +47,11 @@ export class FormAprComponent implements OnInit {
             {table: {  
                 headerRows: 1,  
                 widths: ['40%','30%','30%'],  
-                body: [['I.Indian',this.aprFormlist.value.Indian_Amount,this.aprFormlist.value.Indian_Share],],}},
+                body: [['I.Indian',this.aprFormlist.value.Cap_Struct_Indian_Amount,this.aprFormlist.value.Cap_Struct_Indian_Share],],}},
             {table: {  
                 headerRows: 1,  
                 widths: ['40%','30%','30%'],  
-                body: [['II.Foreign',this.aprFormlist.value.Foreign_Amount,this.aprFormlist.value.Foreign_Share],],}},
+                body: [['II.Foreign',this.aprFormlist.value.Cap_Struct_Foreign_Amount,this.aprFormlist.value.Cap_Struct_Foreign_Share],],}},
             {table: {  
                 headerRows: 1,  
                 widths: ['90%','10%'],  
@@ -214,7 +214,7 @@ export class FormAprComponent implements OnInit {
                 widths: ['40%','40%','20%'],  
                 body: [
                   ['Signature of the authorized official of the IE approved by the Board/ RI',this.aprFormlist.value.authorized_official_Signature,'Seal/Stamp'],
-                  ['Name & Designation of the Authorized Official of the IE/ RI ',this.aprFormlist.value.authorized_official_NameDesign,this.aprFormlist.value.authorized_official_Stamp]
+                  ['Name & Designation of the Authorized Official of the IE/ RI ',this.aprFormlist.value.authorized_official_NameDesignation,this.aprFormlist.value.authorized_official_Stamp]
               ],}},
               {table: {  
                 headerRows: 1,  
@@ -272,14 +272,14 @@ export class FormAprComponent implements OnInit {
                   headerRows: 1,  
                   widths: ['40%','40%','20%'],  
                   body: [
-                    ['Signature of the Authorized Official of the AD bank',this.aprFormlist.value.Authorized_Signature_ADBank,'Seal/Stamp'],
-                    ['Name and designation of the AD bank official',this.aprFormlist.value.Authorized_designation_ADBank,this.aprFormlist.value.Authorized_Stamp_ADBank]
+                    ['Signature of the Authorized Official of the AD bank',{},'Seal/Stamp'],
+                    ['Name and designation of the AD bank official',{},{}]
                 ],}},
                 {table: {  
                   headerRows: 1,  
                   widths: ['10%','40%','10%','40%'],  
                   body: [
-                    ['Place',this.aprFormlist.value.Authorized_Place_ADBank,'Date',this.aprFormlist.value.Authorized_Place_Date],                 
+                    ['Place',{},'Date',{}],                 
                 ],}},
                 {table: {  
                   headerRows: 1,  
@@ -326,10 +326,10 @@ aprFormlist:FormGroup
         'APR_From_Date':new FormControl('',Validators.required),
         'APR_tO_Date':new FormControl('',Validators.required),
         'Unique_Identification_Number':new FormControl('',Validators.required),
-        'Indian_Amount':new FormControl('',Validators.required),
-        'Indian_Share':new FormControl('',Validators.required),
-        'Foreign_Amount':new FormControl('',Validators.required),             
-        'Foreign_Share':new FormControl('',Validators.required),
+        'Cap_Struct_Indian_Amount':new FormControl('',Validators.required),
+        'Cap_Struct_Indian_Share':new FormControl('',Validators.required),
+        'Cap_Struct_Foreign_Amount':new FormControl('',Validators.required),             
+        'Cap_Struct_Foreign_Share':new FormControl('',Validators.required),
         'IndianEntityResidentIndividualTrust':new FormControl('',Validators.required),
         'Person_resident_India_1':new FormControl('',Validators.required),
         'Indian_Stake_1':new FormControl('',Validators.required),       
@@ -347,7 +347,6 @@ aprFormlist:FormGroup
         'FP_NetProfit_Current_Year':new FormControl('',Validators.required),
         'FP_Dividend_Previous_Year':new FormControl('',Validators.required),
         'FP_Dividend_Current_Year':new FormControl('',Validators.required),
-        'Authorized_Place_Date':new FormControl('',Validators.required),
         'FP_Networth_Previous_Year':new FormControl('',Validators.required),
         'FP_Networth_Current_Year':new FormControl('',Validators.required),
         'Repat_Dividend_CurYear':new FormControl('',Validators.required),
@@ -382,7 +381,7 @@ aprFormlist:FormGroup
         'SDS_financial_services':new FormControl('',Validators.required),
         'Furnish_jurisdiction_SDSwoundup':new FormControl('',Validators.required),
         'authorized_official_Signature':new FormControl('',Validators.required),
-        'authorized_official_NameDesign':new FormControl('',Validators.required),
+        'authorized_official_NameDesignation':new FormControl('',Validators.required),
         'authorized_official_Place':new FormControl('',Validators.required),
         'authorized_official_To_Date':new FormControl('',Validators.required),
         'authorized_official_Telephone':new FormControl('',Validators.required),
@@ -393,11 +392,7 @@ aprFormlist:FormGroup
         'Statutory_Auditors_Place':new FormControl('',Validators.required),
         'Statutory_Auditors_Date':new FormControl('',Validators.required),
         'Statutory_Auditors_Email':new FormControl('',Validators.required),
-        'Statutory_Auditors_Stamp':new FormControl('',Validators.required),
-        'Authorized_Signature_ADBank':new FormControl('',Validators.required),
-        'Authorized_designation_ADBank':new FormControl('',Validators.required),
-        'Authorized_Place_ADBank':new FormControl('',Validators.required),
-        'Authorized_Stamp_ADBank':new FormControl('',Validators.required)   
+        'Statutory_Auditors_Stamp':new FormControl('',Validators.required),     
       }
     )
   }
@@ -406,7 +401,7 @@ aprFormlist:FormGroup
       this.CountryList = data;
     });
   }
- 
+  
   onSubmitAPRFrom()
   {
     debugger;

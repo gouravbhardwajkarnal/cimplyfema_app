@@ -4,8 +4,9 @@
             <h5> Form ESOP</h5>
         </div>
     </div>
+
     <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()">
-        <tabset #tabset>
+        <tabset #tabset (click)="confirmTabSwitch($event)">
             <tab heading="Instructions">
                 <div class="card p-2">
                     <h5>Instructions</h5>
@@ -238,7 +239,7 @@
                                         maxlength="10"
                                         [class.is-invalid]="esopFormlist.get('Value_of_Shares').invalid && (esopFormlist.get('Value_of_Shares').dirty ||esopFormlist.get('Value_of_Shares').touched)">
                                 </div>
-                               <!--  <div class="col-lg-12 text-center">
+                                <!--  <div class="col-lg-12 text-center">
                                     <button (click)='NextTab(0)'>Next</button>
                                    
                                 </div> -->
@@ -348,5 +349,10 @@
                 </div>
             </tab>
         </tabset>
+
     </form>
+    <div class="col-lg-12 text-center mt-2 mb-3">
+        <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1" value="Back">
+        <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
+    </div>
 </div>

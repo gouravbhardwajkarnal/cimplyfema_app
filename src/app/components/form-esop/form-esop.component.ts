@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormArray,FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
@@ -12,9 +12,9 @@ import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
 })
 export class FormEsopComponent implements OnInit {
   @ViewChild('tabset') tabset: any;
-  esopFormlist: FormGroup
+  public esopFormlist: FormGroup;
   CountryList: any = [];
-  constructor(private readonly route: ActivatedRoute, private apiService: ApiService) {
+  constructor(private readonly route: ActivatedRoute, private apiService: ApiService,private fb: FormBuilder) {
     // this.readCountry();
   }
   foreigninvestmentProject = [
@@ -28,40 +28,74 @@ export class FormEsopComponent implements OnInit {
   submitted = false;
   ngOnInit(): void {
    
-    this.esopFormlist = new FormGroup(
+    this.esopFormlist = this.fb.group(
       {
-        'NameofinvesteeCompany': new FormControl('', Validators.required),
-        'CIN_LIP': new FormControl('', Validators.required),
-        'PanNo': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
-        'ESOP_Scheme_Name': new FormControl('', Validators.required),
-        'BR_EGM_Circular': new FormControl('', Validators.required),
-        'Date_Resolution': new FormControl('', Validators.required),
-        'Entry_Route': new FormControl('Automatic Route', Validators.required),
-        'Applicable_Sectoral_Cap': new FormControl('20', Validators.required),
-        'foreigninvestmentproject': new FormControl('', Validators.required),
-        'Shareholdingpattern': new FormControl('', Validators.required),
-        'Full_Name_Grantee': new FormControl('', Validators.required),
-        'Date_of_Issue': new FormControl('', Validators.required),
-        'Number_ESOP_Granted': new FormControl('', Validators.required),
-        'Country': new FormControl('', Validators.required),
-        'ResidentialStatus': new FormControl('', Validators.required),
-        'SubsidiarySDS': new FormControl('', Validators.required),
-        'Pre_determined_issue_price': new FormControl('', Validators.required),
-        'Conversion_ratio': new FormControl('', Validators.required),
-        'Equivalent_equity_shares': new FormControl('', Validators.required),
-        'Facevalue_equity_shares': new FormControl('', Validators.required),
-        'Value_of_Shares': new FormControl('', Validators.required),
-        'Non_Debt_Instruments': new FormControl('true'),
-        'sectoral_cap_statutory': new FormControl('true'),
-        'Indian_companies_reconstruction': new FormControl('true'),
-        'PMLA_UAPA': new FormControl('true'),
-        'enclose_documents': new FormControl('true'),
-        'certificate_Company_Secretary': new FormControl('true'),
-        'SEBI_registered': new FormControl('true'),
-        'necessary_documents': new FormControl('true')
+        NameofinvesteeCompany: new FormControl('', Validators.required),
+        CIN_LIP: new FormControl('', Validators.required),
+        PanNo: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
+        ESOP_Scheme_Name: new FormControl('', Validators.required),
+        BR_EGM_Circular: new FormControl('', Validators.required),
+        Date_Resolution: new FormControl('', Validators.required),
+        Entry_Route: new FormControl('Automatic Route', Validators.required),
+        Applicable_Sectoral_Cap: new FormControl('20', Validators.required),
+        foreigninvestmentproject: new FormControl('', Validators.required),
+        Shareholdingpattern: new FormControl('', Validators.required),
+        Full_Name_Grantee: new FormControl('', Validators.required),
+        Date_of_Issue: new FormControl('', Validators.required),
+        Number_ESOP_Granted: new FormControl('', Validators.required),
+        Country: new FormControl('', Validators.required),
+        ResidentialStatus: new FormControl('', Validators.required),
+        SubsidiarySDS: new FormControl('', Validators.required),
+        Pre_determined_issue_price: new FormControl('', Validators.required),
+        Conversion_ratio: new FormControl('', Validators.required),
+        Equivalent_equity_shares: new FormControl('', Validators.required),
+        Facevalue_equity_shares: new FormControl('', Validators.required),
+        Value_of_Shares: new FormControl('', Validators.required),
+        Non_Debt_Instruments: new FormControl(''),
+        sectoral_cap_statutory: new FormControl(''),
+        Indian_companies_reconstruction: new FormControl(''),
+        PMLA_UAPA: new FormControl(''),
+        enclose_documents: new FormControl(''),
+        certificate_Company_Secretary: new FormControl(''),
+        SEBI_registered: new FormControl(''),
+        necessary_documents: new FormControl('')
       }
     )
   }
+
+  get Non_Debt_Instruments()
+  {
+    return this.esopFormlist.get('Non_Debt_Instruments');
+  }
+  get sectoral_cap_statutory()
+  {
+    return this.esopFormlist.get('sectoral_cap_statutory');
+  }
+  get Indian_companies_reconstruction()
+  {
+    return this.esopFormlist.get('Indian_companies_reconstruction');
+  }
+  get PMLA_UAPA()
+  {
+    return this.esopFormlist.get('PMLA_UAPA');
+  }
+  get enclose_documents()
+  {
+    return this.esopFormlist.get('enclose_documents');
+  }
+  get certificate_Company_Secretary()
+  {
+    return this.esopFormlist.get('certificate_Company_Secretary');
+  }
+  get SEBI_registered()
+  {
+    return this.esopFormlist.get('SEBI_registered');
+  }
+  get necessary_documents()
+  {
+    return this.esopFormlist.get('necessary_documents');
+  }
+
   readCountry() {
     this.apiService.getCountry().subscribe((data) => {
       this.CountryList = data;
@@ -118,7 +152,6 @@ export class FormEsopComponent implements OnInit {
  
   Tabindexc:number=0;
   confirmTabSwitch(event) {
-    debugger
     this.tabset.tabs.forEach((item, index) => {
       if (item.heading == event.target.innerText) {
         localStorage.setItem("tabIndex", JSON.stringify(index));
@@ -131,7 +164,6 @@ export class FormEsopComponent implements OnInit {
   btnNext:boolean=true;
   btnBack:boolean=false;
   changeTab() {
-    debugger
     if(this.Tabindexc==0)
     {
       this.tabset.tabs[1].active = true;
@@ -153,7 +185,6 @@ export class FormEsopComponent implements OnInit {
  }
  btnBackchange()
  {
-  debugger
     if(this.Tabindexc==0)
     {
       this.tabset.tabs[1].active = true;
@@ -169,7 +200,6 @@ export class FormEsopComponent implements OnInit {
         {
           this.btnBack=false;
           this.btnNext=true;
-
         }
       }
     } 

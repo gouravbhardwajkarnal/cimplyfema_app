@@ -212,7 +212,7 @@ let FormAPR = new Schema({
    },
    Furnish_ActivityCd_1987:
    {
-      type: string
+      type: String
    },
    Furnish_ActivityCd_2008:
    {

@@ -97,14 +97,16 @@
                                     <input type="number" class="form-control" formControlName="Cap_Struct_Indian_Amount" [class.is-invalid]="aprFormlist.get('Cap_Struct_Indian_Amount').invalid && (aprFormlist.get('Cap_Struct_Indian_Amount').dirty ||aprFormlist.get('Cap_Struct_Indian_Amount').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="Cap_Struct_Indian_Share" [class.is-invalid]="aprFormlist.get('Cap_Struct_Indian_Share').invalid && (aprFormlist.get('Cap_Struct_Indian_Share').dirty ||aprFormlist.get('Cap_Struct_Indian_Share').touched)">
+                                    <input type="number" class="form-control" formControlName="Cap_Struct_Indian_Share"
+                                    [class.is-invalid]="aprFormlist.get('Cap_Struct_Indian_Share').invalid && (aprFormlist.get('Cap_Struct_Indian_Share').dirty ||aprFormlist.get('Cap_Struct_Indian_Share').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">ii)Foreign
                                     </label>                          
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Cap_Struct_Foreign_Amount" [class.is-invalid]="aprFormlist.get('Cap_Struct_Foreign_Amount').invalid && (aprFormlist.get('Cap_Struct_Foreign_Amount').dirty ||aprFormlist.get('Cap_Struct_Foreign_Amount').touched)">
+                                    <input type="number" class="form-control"  formControlName="Cap_Struct_Foreign_Amount"  (blur)="CapitalstructureFE()"
+                                     [class.is-invalid]="aprFormlist.get('Cap_Struct_Foreign_Amount').invalid && (aprFormlist.get('Cap_Struct_Foreign_Amount').dirty ||aprFormlist.get('Cap_Struct_Foreign_Amount').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                           
                                     <input type="number" class="form-control" formControlName="Cap_Struct_Foreign_Share" [class.is-invalid]="aprFormlist.get('Cap_Struct_Foreign_Share').invalid && (aprFormlist.get('Cap_Struct_Foreign_Share').dirty ||aprFormlist.get('Cap_Struct_Foreign_Share').touched)">
@@ -266,100 +268,100 @@
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Dividend_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Dividend_CurYear').invalid && (aprFormlist.get('Repat_Dividend_CurYear').dirty ||aprFormlist.get('Repat_Dividend_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Dividend_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Dividend_CurYear').invalid && (aprFormlist.get('Repat_Dividend_CurYear').dirty ||aprFormlist.get('Repat_Dividend_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Dividend_commencement" [class.is-invalid]="aprFormlist.get('Repat_Dividend_commencement').invalid && (aprFormlist.get('Repat_Dividend_commencement').dirty ||aprFormlist.get('Repat_Dividend_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Dividend_commencement" [class.is-invalid]="aprFormlist.get('Repat_Dividend_commencement').invalid && (aprFormlist.get('Repat_Dividend_commencement').dirty ||aprFormlist.get('Repat_Dividend_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">ii)Repayment of loan
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Repayment_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Repayment_CurYear').invalid && (aprFormlist.get('Repat_Repayment_CurYear').dirty ||aprFormlist.get('Repat_Repayment_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Repayment_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Repayment_CurYear').invalid && (aprFormlist.get('Repat_Repayment_CurYear').dirty ||aprFormlist.get('Repat_Repayment_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Repayment_commencement" [class.is-invalid]="aprFormlist.get('Repat_Repayment_commencement').invalid && (aprFormlist.get('Repat_Repayment_commencement').dirty ||aprFormlist.get('Repat_Repayment_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Repayment_commencement" [class.is-invalid]="aprFormlist.get('Repat_Repayment_commencement').invalid && (aprFormlist.get('Repat_Repayment_commencement').dirty ||aprFormlist.get('Repat_Repayment_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">iii)Non-Equity Exports Realised (in INR)  
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_EquityExport_CurYear" [class.is-invalid]="aprFormlist.get('Repat_EquityExport_CurYear').invalid && (aprFormlist.get('Repat_EquityExport_CurYear').dirty ||aprFormlist.get('Repat_EquityExport_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_EquityExport_CurYear" [class.is-invalid]="aprFormlist.get('Repat_EquityExport_CurYear').invalid && (aprFormlist.get('Repat_EquityExport_CurYear').dirty ||aprFormlist.get('Repat_EquityExport_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_EquityExport_commencement" [class.is-invalid]="aprFormlist.get('Repat_EquityExport_commencement').invalid && (aprFormlist.get('Repat_EquityExport_commencement').dirty ||aprFormlist.get('Repat_EquityExport_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_EquityExport_commencement" [class.is-invalid]="aprFormlist.get('Repat_EquityExport_commencement').invalid && (aprFormlist.get('Repat_EquityExport_commencement').dirty ||aprFormlist.get('Repat_EquityExport_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">iv)Royalties 
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Royalties_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Royalties_CurYear').invalid && (aprFormlist.get('Repat_Royalties_CurYear').dirty ||aprFormlist.get('Repat_Royalties_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Royalties_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Royalties_CurYear').invalid && (aprFormlist.get('Repat_Royalties_CurYear').dirty ||aprFormlist.get('Repat_Royalties_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Royalties_commencement" [class.is-invalid]="aprFormlist.get('Repat_Royalties_commencement').invalid && (aprFormlist.get('Repat_Royalties_commencement').dirty ||aprFormlist.get('Repat_Royalties_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Royalties_commencement" [class.is-invalid]="aprFormlist.get('Repat_Royalties_commencement').invalid && (aprFormlist.get('Repat_Royalties_commencement').dirty ||aprFormlist.get('Repat_Royalties_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">v)Technical know-how Fees     
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Technical_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Technical_CurYear').invalid && (aprFormlist.get('Repat_Technical_CurYear').dirty ||aprFormlist.get('Repat_Technical_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Technical_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Technical_CurYear').invalid && (aprFormlist.get('Repat_Technical_CurYear').dirty ||aprFormlist.get('Repat_Technical_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Technical_commencement" [class.is-invalid]="aprFormlist.get('Repat_Technical_commencement').invalid && (aprFormlist.get('Repat_Technical_commencement').dirty ||aprFormlist.get('Repat_Technical_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Technical_commencement" [class.is-invalid]="aprFormlist.get('Repat_Technical_commencement').invalid && (aprFormlist.get('Repat_Technical_commencement').dirty ||aprFormlist.get('Repat_Technical_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">vi)Consultancy fees     
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Consultancyfee_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Consultancyfee_CurYear').invalid && (aprFormlist.get('Repat_Consultancyfee_CurYear').dirty ||aprFormlist.get('Repat_Consultancyfee_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Consultancyfee_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Consultancyfee_CurYear').invalid && (aprFormlist.get('Repat_Consultancyfee_CurYear').dirty ||aprFormlist.get('Repat_Consultancyfee_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Consultancyfee_commencement" [class.is-invalid]="aprFormlist.get('Repat_Consultancyfee_commencement').invalid && (aprFormlist.get('Repat_Consultancyfee_commencement').dirty ||aprFormlist.get('Repat_Consultancyfee_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Consultancyfee_commencement" [class.is-invalid]="aprFormlist.get('Repat_Consultancyfee_commencement').invalid && (aprFormlist.get('Repat_Consultancyfee_commencement').dirty ||aprFormlist.get('Repat_Consultancyfee_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">vii)Others (please specify)
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Others_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Others_CurYear').invalid && (aprFormlist.get('Repat_Others_CurYear').dirty ||aprFormlist.get('Repat_Others_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Others_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Others_CurYear').invalid && (aprFormlist.get('Repat_Others_CurYear').dirty ||aprFormlist.get('Repat_Others_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Others_commencement" [class.is-invalid]="aprFormlist.get('Repat_Others_commencement').invalid && (aprFormlist.get('Repat_Others_commencement').dirty ||aprFormlist.get('Repat_Others_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Others_commencement" [class.is-invalid]="aprFormlist.get('Repat_Others_commencement').invalid && (aprFormlist.get('Repat_Others_commencement').dirty ||aprFormlist.get('Repat_Others_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">viii)Profit 
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Profit_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Profit_CurYear').invalid && (aprFormlist.get('Repat_Profit_CurYear').dirty ||aprFormlist.get('Repat_Profit_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Profit_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Profit_CurYear').invalid && (aprFormlist.get('Repat_Profit_CurYear').dirty ||aprFormlist.get('Repat_Profit_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Profit_commencement" [class.is-invalid]="aprFormlist.get('Repat_Profit_commencement').invalid && (aprFormlist.get('Repat_Profit_commencement').dirty ||aprFormlist.get('Repat_Profit_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Profit_commencement" [class.is-invalid]="aprFormlist.get('Repat_Profit_commencement').invalid && (aprFormlist.get('Repat_Profit_commencement').dirty ||aprFormlist.get('Repat_Profit_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">ix)Retained earnings
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Retained_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Retained_CurYear').invalid && (aprFormlist.get('Repat_Retained_CurYear').dirty ||aprFormlist.get('Repat_Retained_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Retained_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Retained_CurYear').invalid && (aprFormlist.get('Repat_Retained_CurYear').dirty ||aprFormlist.get('Repat_Retained_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_Retained_commencement" [class.is-invalid]="aprFormlist.get('Repat_Retained_commencement').invalid && (aprFormlist.get('Repat_Retained_commencement').dirty ||aprFormlist.get('Repat_Retained_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_Retained_commencement" [class.is-invalid]="aprFormlist.get('Repat_Retained_commencement').invalid && (aprFormlist.get('Repat_Retained_commencement').dirty ||aprFormlist.get('Repat_Retained_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">x)FDI by foreign entity/ SDS into India 
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_FDIforeign_CurYear" [class.is-invalid]="aprFormlist.get('Repat_FDIforeign_CurYear').invalid && (aprFormlist.get('Repat_FDIforeign_CurYear').dirty ||aprFormlist.get('Repat_FDIforeign_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_FDIforeign_CurYear" [class.is-invalid]="aprFormlist.get('Repat_FDIforeign_CurYear').invalid && (aprFormlist.get('Repat_FDIforeign_CurYear').dirty ||aprFormlist.get('Repat_FDIforeign_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_FDIforeign_commencement" [class.is-invalid]="aprFormlist.get('Repat_FDIforeign_commencement').invalid && (aprFormlist.get('Repat_FDIforeign_commencement').dirty ||aprFormlist.get('Repat_FDIforeign_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_FDIforeign_commencement" [class.is-invalid]="aprFormlist.get('Repat_FDIforeign_commencement').invalid && (aprFormlist.get('Repat_FDIforeign_commencement').dirty ||aprFormlist.get('Repat_FDIforeign_commencement').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">xi)Refund of excess share application money 
@@ -368,10 +370,10 @@
                                     </label>   
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_exces_sshare_CurYear" [class.is-invalid]="aprFormlist.get('Repat_exces_sshare_CurYear').invalid && (aprFormlist.get('Repat_exces_sshare_CurYear').dirty ||aprFormlist.get('Repat_exces_sshare_CurYear').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_exces_sshare_CurYear" [class.is-invalid]="aprFormlist.get('Repat_exces_sshare_CurYear').invalid && (aprFormlist.get('Repat_exces_sshare_CurYear').dirty ||aprFormlist.get('Repat_exces_sshare_CurYear').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="text" class="form-control" formControlName="Repat_exces_sshare_commencement" [class.is-invalid]="aprFormlist.get('Repat_exces_sshare_commencement').invalid && (aprFormlist.get('Repat_exces_sshare_commencement').dirty ||aprFormlist.get('Repat_exces_sshare_commencement').touched)">
+                                    <input type="number" class="form-control" formControlName="Repat_exces_sshare_commencement" [class.is-invalid]="aprFormlist.get('Repat_exces_sshare_commencement').invalid && (aprFormlist.get('Repat_exces_sshare_commencement').dirty ||aprFormlist.get('Repat_exces_sshare_commencement').touched)">
                                 </div>
                                <hr>
                                <div class="col-12 mb-2">  

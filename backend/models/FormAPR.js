@@ -108,91 +108,91 @@ let FormAPR = new Schema({
    },
    Repat_Dividend_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_Dividend_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_Repayment_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_Repayment_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_EquityExport_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_EquityExport_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_Royalties_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_Royalties_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_Technical_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_Technical_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_Consultancyfee_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_Consultancyfee_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_Others_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_Others_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_Profit_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_Profit_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_Retained_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_Retained_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_FDIforeign_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_FDIforeign_commencement:
    {
-      type: String
+      type: Number
    },
    Repat_exces_sshare_CurYear:
    {
-      type: String
+      type: Number
    },
    Repat_exces_sshare_commencement:
    {
-      type: String
+      type: Number
    },
    Furnish_jurisdiction_SDS:
    {

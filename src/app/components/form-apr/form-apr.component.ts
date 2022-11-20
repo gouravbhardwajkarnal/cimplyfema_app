@@ -320,6 +320,28 @@ aprFormlist:FormGroup
   constructor(private readonly route: ActivatedRoute,private apiService: ApiService) {
     // this.readCountry();
   }
+  
+  CapitalstructureFE() {
+    debugger; 
+   // console.log(values);
+    
+   let a=this.aprFormlist.value.Cap_Struct_Indian_Amount;
+   let b =this.aprFormlist.value.Cap_Struct_Foreign_Amount;
+   let d=a+b;
+   let cDadDdSD=a*100/d;
+   let f=b*100/d;
+   
+   this.aprFormlist.value.Cap_Struct_Foreign_Share=f;
+   // values.Total = values.FPstake + values.Pstake;
+    //this.TotalPstake=0;
+    //this.TotalFPstake=0;
+    //this.Totalstake =0; 
+    ///this.ShareHoldingFEArray.forEach(element => {
+      //this.TotalPstake += element.Pstake;
+      ///this.TotalFPstake +=  element.FPstake;
+      //this.Totalstake +=  element.Total;
+   // });
+  }
   ngOnInit(): void {
     this.aprFormlist=new FormGroup(
       {

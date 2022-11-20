@@ -8,6 +8,7 @@ import { FormFcComponent } from './components/form-fc/form-fc.component';
 import { FormEsopComponent } from './components/form-esop/form-esop.component';
 import { FormOpiComponent } from './components/form-opi/form-opi.component';
 import { FormAprComponent } from './components/form-apr/form-apr.component';
+import { OpiPdfComponent } from './components/form-opi/opi-pdf/opi-pdf.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'form-fc' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'form-esop', component: FormEsopComponent },
   { path: 'form-opi', component: FormOpiComponent },
   { path: 'form-apr', component: FormAprComponent },
+  { path: 'opi-pdf', component: OpiPdfComponent },
 ];
 
 @NgModule({

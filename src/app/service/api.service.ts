@@ -85,6 +85,11 @@ createFormOpi(data): Observable<any> {
   return this.http.post(url, data).pipe(catchError(this.errorMgmt));
 }
 
+// Get all OpiFormData
+getopiData() {
+  return this.http.get(`${this.baseUri}/getOpi`);
+}
+
 
   // Error handling
   errorMgmt(error: HttpErrorResponse) {

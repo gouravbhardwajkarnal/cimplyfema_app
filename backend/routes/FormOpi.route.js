@@ -20,7 +20,8 @@ opiRoute.route('/createOpi').post((req, res, next) => {
 
 
 // Get All opiModel
-opiRoute.route('/').get((req, res) => {
+opiRoute.route('/getOpi').get((req, res) => {
+  debugger
     FormOpi.find((error, data) => {
     if (error) {
       return next(error)

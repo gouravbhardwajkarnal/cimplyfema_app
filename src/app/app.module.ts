@@ -21,6 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule} from 'ngx-bootstrap/tabs';
 import { FormFcSdsComponent } from './Partial_Components/form-fc-sds/form-fc-sds.component';
 import { FormFcDisinvestmentComponent } from './Partial_Components/form-fc-disinvestment/form-fc-disinvestment.component';
+import { OpiPdfComponent } from './components/form-opi/opi-pdf/opi-pdf.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { FormFcDisinvestmentComponent } from './Partial_Components/form-fc-disin
     FormOpiComponent,
     FormFcSdsComponent,
     FormFcDisinvestmentComponent,
+    OpiPdfComponent,
   ],
   imports: [
     BrowserModule,

@@ -414,6 +414,8 @@ aprFormlist:FormGroup
     else{
       return this.apiService.createFormAPR(this.aprFormlist.value).subscribe({
         complete: () => {
+          alert('FromAPR successfully created!');
+          this.generatePDF();
           console.log('FromAPR successfully created!');
             //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
         },

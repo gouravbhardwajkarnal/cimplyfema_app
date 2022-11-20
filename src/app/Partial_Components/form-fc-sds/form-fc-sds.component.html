@@ -1,4 +1,4 @@
-<div class="flex-nowrap my-2 overflow-auto row mt-3">
+<div class="flex-nowrap my-2 overflow-auto row mt-3" [formGroup]="reactiveForm">
     <div class="col-4">
         <div class="col mb-4">
             Name of SDS
@@ -51,6 +51,7 @@
             <select class="form-control"
             [(ngModel)]="SDSArray[i].investment_SDS_Level"
             [ngModelOptions]="{standalone: true}">
+            <option ng-option value="">Select Level</option>
             <option *ngFor=" let object of sdsleveltypes" value="{{object.id}}">
                 {{object.name}}
             </option>
@@ -60,6 +61,7 @@
             <select class="form-control"
             [(ngModel)]="SDSArray[i].investment_SDS_Jurisdiction"
             [ngModelOptions]="{standalone: true}">
+            <option ng-option value="">Select Jurisdiction Type</option>
             <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
                 {{object.name}}
             </option>
@@ -72,14 +74,20 @@
             type="text" />
         </div>
         <div class="col mb-2">
-            <input [(ngModel)]="SDSArray[i].investment_SDS_ParentLevel"
-            [ngModelOptions]="{standalone: true}" class="form-control"
-            type="text" />
+            <select class="form-control"
+            [(ngModel)]="SDSArray[i].investment_SDS_ParentLevel"
+            [ngModelOptions]="{standalone: true}">
+            <option ng-option value="">Select Level</option>
+            <option *ngFor=" let object of sdsleveltypes" value="{{object.id}}">
+                {{object.name}}
+            </option>
+        </select>
         </div>
         <div class="col mb-2">
             <select class="form-control"
             [(ngModel)]="SDSArray[i].investment_SDS_ParentJurisdiction"
             [ngModelOptions]="{standalone: true}">
+            <option ng-option value="">Select Jurisdiction Type</option>
             <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
                 {{object.name}}
             </option>
@@ -88,7 +96,7 @@
         <div class="col mb-2">
             <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentAmount"
             [ngModelOptions]="{standalone: true}" class="form-control"
-            type="text" />
+            type="number" />
         </div>
         <div class="col mb-2">
             <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentDate"
@@ -104,6 +112,7 @@
             <select class="form-control"
                             [(ngModel)]="SDSArray[i].investment_SDS_Type"
                             [ngModelOptions]="{standalone: true}">
+                            <option ng-option value="">Select SDS Type</option>
                             <option *ngFor=" let object of sdstypes" value="{{object.id}}">
                                 {{object.name}}
                             </option>
@@ -130,4 +139,7 @@
         <button type="button" *ngIf="SDSlength>1" (click)="deleteSDS(i)"
             class="btn btn-outline-primary me-2">-</button></div>
     </div>
+    <br>
 </div>
+<div class="col-sm-3"><button type="button" class="btn btn-sm btn-primary mb-3" (click)="validate()">Next</button></div>
+    

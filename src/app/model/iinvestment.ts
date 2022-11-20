@@ -1,6 +1,6 @@
-import { CodeClassGrid, FCDisinvestmentGrid, PEFEntityGrid, SumFCGrid } from "./gridmodel";
+import { CodeClassGrid, FCDisinvestmentGrid, FinancialCommitmentGrid, PEFEntityGrid, ShareHoldingFEGrid, SumFCGrid } from "./gridmodel";
 
-export interface Iinvestment extends IinvestmentWOS,IinvestmentSDS {
+export interface Iinvestment extends IinvestmentWOS,IinvestmentSDS,IinvestmentDeclaration {
     investment_name: string;
     investment_pan: string;
     investment_LEI: string;
@@ -21,6 +21,8 @@ export interface Iinvestment extends IinvestmentWOS,IinvestmentSDS {
     investment_FCDisinvestment: FCDisinvestmentGrid[];
     investment_PEFEntity: PEFEntityGrid[];
     investment_ActivityCode: CodeClassGrid[];
+    investment_SDSModel: IinvestmentSDS[];
+    investment_ShareHoldingFE: ShareHoldingFEGrid[];
 }
 export interface IinvestmentWOS {
     investment_ForeignEntity: string;
@@ -30,6 +32,8 @@ export interface IinvestmentWOS {
     investment_ControlFE: string;
     investment_AccountingYear:string;
     investment_WOS_Email: string; 
+    investment_WOS_ActivityCode: CodeClassGrid[];
+    investment_WOS_FinancialCommitment: FinancialCommitmentGrid[];
 }
 export interface IinvestmentSDS {
     investment_SDS_Name: string;
@@ -45,5 +49,33 @@ export interface IinvestmentSDS {
     investment_SDS_1987NIC: string; 
     investment_SDS_2008NIC: string; 
     investment_SDS_Stake: number; 
+}
+export interface IinvestmentDeclaration
+{
+    investment_Individual_Place :string;
+    investment_Individual_Date :Date;
+    investment_Individual_Stamp :string;
+    investment_Individual_Telephone :string;
+    investment_Individual_Email :string;
+    investment_individual_A: boolean;
+    investment_individual_B: boolean;
+    investment_individual_C: boolean;
+    investment_individual_D: boolean;
+    investment_individual_E: boolean;
+    investment_individual_F: boolean;
+    investment_individual_G: boolean;
+
+    investment_Group_Signature :string;
+    investment_Group_Name :string;
+    investment_Group_Place :string;
+    investment_Group_Date :Date;
+    investment_Group_Stamp :string;
+    investment_Group_Telephone :string;
+    investment_Group_Email :string;
+
+}
+export interface Disinvestment
+{
+    disinvestment_UIN: string;
 }
 

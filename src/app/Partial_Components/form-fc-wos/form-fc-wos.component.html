@@ -32,6 +32,7 @@
                 [class.is-invalid]="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty ||
                 reactiveForm.controls['investment_Jurisdiction'].touched)"
                 formControlName="investment_Jurisdiction" placeholder="Please Select">
+                <option ng-option value="">Select Jurisdiction Type</option>
                 <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
                     {{object.name}}
                 </option>
@@ -102,7 +103,7 @@
               </div>
               <div *ngIf="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || reactiveForm.controls['investment_ControlFE'] .touched)"
               class="invalid-feedback">
-              <div *ngIf="investment_ControlFE.errors?.['required']">
+              <div *ngIf="reactiveForm.controls['investment_ControlFE'].errors?.['required']">
                   This field is required.
               </div>
               </div>
@@ -114,6 +115,7 @@
                 [class.is-invalid]="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty || 
                 reactiveForm.controls['investment_AccountingYear'].touched)"
                 formControlName="investment_AccountingYear">
+                <option ng-option value="">Select Type</option>
                 <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
                     {{object.name}}
                 </option>
@@ -220,6 +222,7 @@
                             <select class="form-control"
                             [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
                             [ngModelOptions]="{standalone: true}">
+                            <option ng-option value="">Select Category Type</option>
                             <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
                                 {{object.name}}
                             </option>

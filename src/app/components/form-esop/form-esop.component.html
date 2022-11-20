@@ -4,8 +4,9 @@
             <h5> Form ESOP</h5>
         </div>
     </div>
+
     <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()">
-        <tabset #tabset>
+        <tabset #tabset (click)="confirmTabSwitch($event)">
             <tab heading="Instructions">
                 <div class="card p-2">
                     <h5>Instructions</h5>
@@ -238,7 +239,7 @@
                                         maxlength="10"
                                         [class.is-invalid]="esopFormlist.get('Value_of_Shares').invalid && (esopFormlist.get('Value_of_Shares').dirty ||esopFormlist.get('Value_of_Shares').touched)">
                                 </div>
-                               <!--  <div class="col-lg-12 text-center">
+                                <!--  <div class="col-lg-12 text-center">
                                     <button (click)='NextTab(0)'>Next</button>
                                    
                                 </div> -->
@@ -256,38 +257,44 @@
                     <div class="container-fluid position-relative d-flex p-0">
                         <div class="container-fluid pt-2">
                             <div class="row">
-                                <div class="col-lg-10 mb-3">
+                                <div class="col-lg-10 mb-3" >
+                                   <P  [ngClass]="Non_Debt_Instruments.value == true ? 'del' : 'notdel'">
                                     1. We comply with the procedure for issue of equity instruments as laid down under
                                     Foreign
                                     Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17, 2019 and as
                                     amended
-                                    from time to time.
+                                    from time to time.</P>
                                 </div>
                                 <div class="col-lg-2">
-                                    <input class="form-check-input me-1" type="checkbox"
+                                    <input class="form-check-input me-1" type="checkbox" value="Non_Debt_Instruments"
                                         formControlName="Non_Debt_Instruments" style="cursor:pointer;">
                                 </div>
                                 <div class="col-lg-10 mb-3">
+                                    <P  [ngClass]="sectoral_cap_statutory.value == true ? 'del' : 'notdel'">
                                     2. The investment is within the sectoral cap / statutory ceiling permissible under
                                     the
                                     rules, ibid and in compliance with the attendant conditions.
+                                    </P>
                                 </div>
                                 <div class="col-lg-2">
                                     <input class="form-check-input me-1" type="checkbox"
                                         formControlName="sectoral_cap_statutory" style="cursor:pointer;">
                                 </div>
                                 <div class="col-lg-10 mb-3">
+                                    <P  [ngClass]="Indian_companies_reconstruction.value == true ? 'del' : 'notdel'">
                                     3. The equity instruments issued under a scheme of merger and amalgamation of two or
                                     more
                                     Indian companies or reconstruction by way of de-merger or otherwise of an Indian
                                     company is
                                     duly approved by a court in India. (Strike- out if not applicable).
+                                    </P>
                                 </div>
                                 <div class="col-lg-2">
                                     <input class="form-check-input me-1" type="checkbox"
                                         formControlName="Indian_companies_reconstruction" style="cursor:pointer;">
                                 </div>
                                 <div class="col-lg-10 mb-3">
+                                    <P  [ngClass]="PMLA_UAPA.value == true ? 'del' : 'notdel'">
                                     4. The foreign investment received and reported now will be utilized in compliance
                                     with the
                                     provision of a Prevention of Money Laundering Act 2002 (PMLA) and Unlawful
@@ -295,13 +302,16 @@
                                     (Prevention) Act, 1967 (UAPA). We confirm that the investment complies with the
                                     provisions
                                     of all applicable Rules and Regulations.
+                                    </P>
                                 </div>
                                 <div class="col-lg-2">
                                     <input class="form-check-input me-1" type="checkbox" formControlName="PMLA_UAPA"
                                         style="cursor:pointer;">
                                 </div>
                                 <div class="col-lg-10 mb-3">
+                                    <P  [ngClass]="enclose_documents.value == true ? 'del' : 'notdel'">
                                     5. We enclose the following documents in compliance with these rules/regulations:
+                                    </P>
                                 </div>
                                 <div class="col-lg-2">
                                     <input class="form-check-input me-1" type="checkbox"
@@ -309,13 +319,16 @@
                                 </div>
                                 <div class="row justify-content-md-center">
                                     <div class="col-md-auto col-lg-10 mb-3">
+                                        <P  [ngClass]="certificate_Company_Secretary.value == true ? 'del' : 'notdel'">
                                         i. A certificate from our Company Secretary as in the specified format.
+                                        </P>
                                     </div>
                                     <div class="col col-lg-1">
                                         <input class="form-check-input me-1" type="checkbox"
                                             formControlName="certificate_Company_Secretary" style="cursor:pointer;">
                                     </div>
                                     <div class="col-md-auto col-lg-10 mb-3">
+                                        <P  [ngClass]="SEBI_registered.value == true ? 'del' : 'notdel'">
                                         ii. A certificate from SEBI registered Merchant Banker / Chartered Accountant /
                                         cost
                                         accountant or any other person as authorized under Foreign Exchange Management
@@ -325,13 +338,16 @@
                                         indicating the manner of arriving at the price of the shares issued to the
                                         persons
                                         resident outside India (wherever applicable).
+                                        </P>
                                     </div>
                                     <div class="col col-lg-1">
                                         <input class="form-check-input me-1" type="checkbox"
                                             formControlName="SEBI_registered" style="cursor:pointer;">
                                     </div>
                                     <div class="col-md-auto col-lg-10 mb-3">
+                                        <P  [ngClass]="necessary_documents.value == true ? 'del' : 'notdel'">>
                                         iii. All other necessary documents as applicable to the issue.
+                                        </P>
                                     </div>
                                     <div class="col col-lg-1">
                                         <input class="form-check-input me-1" type="checkbox"
@@ -348,5 +364,10 @@
                 </div>
             </tab>
         </tabset>
+
     </form>
+    <div class="col-lg-12 text-center mt-2 mb-3">
+        <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1" value="Back">
+        <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
+    </div>
 </div>

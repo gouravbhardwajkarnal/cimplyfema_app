@@ -27,6 +27,7 @@ export class FormOpiComponent implements OnInit {
         'OPI_Sec_A_State':new FormControl('',Validators.required),
         'OPI_Sec_A_PIN':new FormControl('',Validators.required),
         'OPI_Sec_A_NetINR':new FormControl('',Validators.required),
+        'OPI_Sec_A_AsOn_Date':new FormControl('',Validators.required),
         'WhetherIElist':new FormControl('',Validators.required),
         'OPI_Sec_A_ContactPerson':new FormControl('',Validators.required),
         'OPI_Sec_A_Mobile':new FormControl('',Validators.required),
@@ -250,6 +251,8 @@ export class FormOpiComponent implements OnInit {
     else{
       return this.apiService.createFormOpi(this.OpiFormlist.value).subscribe({
         complete: () => {
+          console.log();
+          //result.insertedId.toString() 
           alert('Fromopi successfully created!');
           //console.log('FromEsop successfully created!');
             //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
@@ -262,14 +265,61 @@ export class FormOpiComponent implements OnInit {
     
   }
 
-  ngAfterViewInit(){
-    console.log(this.tabset.tabs);
-  }
+  
+  Tabindexc:number=0;
+  confirmTabSwitch(event) {
+    this.tabset.tabs.forEach((item, index) => {
+      if (item.heading == event.target.innerText) {
+        localStorage.setItem("tabIndex", JSON.stringify(index));
+        this.Tabindexc=index;
+      }
 
-  NextTab(id)
-  {
-    this.tabset.tabs[id].active = true;
-  } 
+    });
+
+  }
+  btnNext:boolean=true;
+  btnBack:boolean=false;
+  changeTab() {
+    if(this.Tabindexc==0)
+    {
+      this.tabset.tabs[1].active = true;
+      this.Tabindexc=1;
+      this.btnBack=true;
+    }
+    else
+    {
+      if(this.Tabindexc<3){
+        this.Tabindexc=this.Tabindexc+1;
+        this.tabset.tabs[this.Tabindexc].active = true;
+        this.btnBack=true;
+        if(this.Tabindexc==3)
+        {
+          this.btnNext=false;
+        }
+      }
+    }   
+ }
+ btnBackchange()
+ {
+    if(this.Tabindexc==0)
+    {
+      this.tabset.tabs[1].active = true;
+      this.Tabindexc=1;
+    }
+    else
+    {
+      if(this.Tabindexc<=3){
+        this.btnNext=true;
+        this.Tabindexc=this.Tabindexc-1;
+        this.tabset.tabs[this.Tabindexc].active = true;
+        if(this.Tabindexc==0)
+        {
+          this.btnBack=false;
+          this.btnNext=true;
+        }
+      }
+    } 
+ }
  
     
 }

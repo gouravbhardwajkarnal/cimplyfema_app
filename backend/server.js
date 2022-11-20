@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 // Connecting with mongo db
 mongoose
   .connect('mongodb://127.0.0.1:27017/cimplyfema')
+  //.connect('mongodb://admin:CimplyFema@13.234.13.221/cimplyfema?authSource=admin')
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -15,11 +16,11 @@ mongoose
   })
 
 // Setting up port with express js
-const employeeRoute = require('../backend/routes/employee.route')
-const masterRoute = require('../backend/routes/master.route')
-const esopRoute = require('../backend/routes/FormEsop.route')
-const aprRoute = require('../backend/routes/FormApr.route')
-const opiRoute = require('../backend/routes/FormOpi.route')
+const employeeRoute = require('./routes/employee.route')
+const masterRoute = require('./routes/master.route')
+const esopRoute = require('./routes/FormEsop.route')
+const aprRoute = require('./routes/FormAPR.route')
+const opiRoute = require('./routes/FormOpi.route')
 const app = express()
 app.use(bodyParser.json())
 app.use(

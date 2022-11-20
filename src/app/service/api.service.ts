@@ -11,6 +11,7 @@ import {
   providedIn: 'root',
 })
 export class ApiService {
+  //baseUri: string = 'http://13.234.13.221:4000/api';
   baseUri: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -83,6 +84,11 @@ createFormOpi(data): Observable<any> {
   console.log(data);
   let url = `${this.baseUri}/createOpi`;
   return this.http.post(url, data).pipe(catchError(this.errorMgmt));
+}
+
+// Get all OpiFormData
+getopiData() {
+  return this.http.get(`${this.baseUri}/getOpi`);
 }
 
 

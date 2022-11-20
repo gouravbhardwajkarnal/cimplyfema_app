@@ -4,8 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "start": "NODE_ENV=production node server",
+    "forever": "NODE_ENV=production forever start --id 'cimplyfema' server.js",
+    "stop": "NODE_ENV=production forever stop cimplyfema",
+    "restart": "NODE_ENV=production forever restart server.js",
+    "dev": "nodemon server"
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -107,6 +107,9 @@ export class FormFcWosComponent implements OnInit {
     }
 
     this.investment_model = this.reactiveForm.value;
+    this.investment_model.investment_WOS_ActivityCode=this.CodeClassArray;
+    this.investment_model.investment_WOS_FinancialCommitment=this.FinancialCommitmentArray;
+    console.log(this.investment_model);
   }
   addCodeClassRow() {
     this.codeClass = { Description1987: "", Description2008: "" };

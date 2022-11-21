@@ -81,6 +81,7 @@
                                 <div class="col-2 mb-2">
                                     
                                 </div>
+                                
                                 <div class="col-5 mb-2">
                                     <label class="form-label">Amount
                                     </label>                          
@@ -94,10 +95,10 @@
                                     </label>                          
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Cap_Struct_Indian_Amount" [class.is-invalid]="aprFormlist.get('Cap_Struct_Indian_Amount').invalid && (aprFormlist.get('Cap_Struct_Indian_Amount').dirty ||aprFormlist.get('Cap_Struct_Indian_Amount').touched)">
+                                    <input type="number" class="form-control" (blur)="CapitalstructureFE()" formControlName="Cap_Struct_Indian_Amount" [class.is-invalid]="aprFormlist.get('Cap_Struct_Indian_Amount').invalid && (aprFormlist.get('Cap_Struct_Indian_Amount').dirty ||aprFormlist.get('Cap_Struct_Indian_Amount').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="Cap_Struct_Indian_Share"
+                                    <input type="number" class="form-control" disabled formControlName="Cap_Struct_Indian_Share" 
                                     [class.is-invalid]="aprFormlist.get('Cap_Struct_Indian_Share').invalid && (aprFormlist.get('Cap_Struct_Indian_Share').dirty ||aprFormlist.get('Cap_Struct_Indian_Share').touched)">
                                 </div>
                                 <div class="col-2 mb-2">
@@ -105,11 +106,11 @@
                                     </label>                          
                                 </div>
                                 <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control"  formControlName="Cap_Struct_Foreign_Amount"  (blur)="CapitalstructureFE()"
+                                    <input type="number" class="form-control"  formControlName="Cap_Struct_Foreign_Amount"  (blur)="CapitalstructureFE()" 
                                      [class.is-invalid]="aprFormlist.get('Cap_Struct_Foreign_Amount').invalid && (aprFormlist.get('Cap_Struct_Foreign_Amount').dirty ||aprFormlist.get('Cap_Struct_Foreign_Amount').touched)">
                                 </div>
                                 <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="Cap_Struct_Foreign_Share" [class.is-invalid]="aprFormlist.get('Cap_Struct_Foreign_Share').invalid && (aprFormlist.get('Cap_Struct_Foreign_Share').dirty ||aprFormlist.get('Cap_Struct_Foreign_Share').touched)">
+                                    <input type="number" class="form-control" disabled formControlName="Cap_Struct_Foreign_Share" [class.is-invalid]="aprFormlist.get('Cap_Struct_Foreign_Share').invalid && (aprFormlist.get('Cap_Struct_Foreign_Share').dirty ||aprFormlist.get('Cap_Struct_Foreign_Share').touched)">
                                 </div>
                                 <hr>
                                 <div class="col-12 mb-2">

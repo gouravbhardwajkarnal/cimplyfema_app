@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; 
 import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -12,7 +12,6 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   styleUrls: ['./form-apr.component.css']
 })
 export class FormAprComponent implements OnInit {
- 
     generatePDF() {  
       let docDefinition = {  
         content: [  
@@ -314,34 +313,21 @@ export class FormAprComponent implements OnInit {
      
       pdfMake.createPdf(docDefinition).open();  
     }  
-   
-aprFormlist:FormGroup
- CountryList: any=[];
-  constructor(private readonly route: ActivatedRoute,private apiService: ApiService) {
-    // this.readCountry();
-  }
-  
+  aprFormlist:FormGroup
+  constructor(private readonly route: ActivatedRoute,private apiService: ApiService) { }
+  Cap_StructIndianshare: number = 0;
+  Cap_StructForeignshare: number = 0;
   CapitalstructureFE() {
     debugger; 
-   // console.log(values);
-    
    let a=this.aprFormlist.value.Cap_Struct_Indian_Amount;
    let b =this.aprFormlist.value.Cap_Struct_Foreign_Amount;
    let d=a+b;
-   let cDadDdSD=a*100/d;
-   let f=b*100/d;
-   
-   this.aprFormlist.value.Cap_Struct_Foreign_Share=f;
-   // values.Total = values.FPstake + values.Pstake;
-    //this.TotalPstake=0;
-    //this.TotalFPstake=0;
-    //this.Totalstake =0; 
-    ///this.ShareHoldingFEArray.forEach(element => {
-      //this.TotalPstake += element.Pstake;
-      ///this.TotalFPstake +=  element.FPstake;
-      //this.Totalstake +=  element.Total;
-   // });
+   this.Cap_StructIndianshare=a*100/d;
+   this.Cap_StructForeignshare=b*100/d;
+   this.aprFormlist.get("Cap_Struct_Indian_Share").patchValue(this.Cap_StructIndianshare.toFixed(2));
+   this.aprFormlist.get("Cap_Struct_Foreign_Share").patchValue(this.Cap_StructForeignshare.toFixed(2));
   }
+  
   ngOnInit(): void {
     this.aprFormlist=new FormGroup(
       {
@@ -349,9 +335,9 @@ aprFormlist:FormGroup
         'APR_tO_Date':new FormControl('',Validators.required),
         'Unique_Identification_Number':new FormControl('',Validators.required),
         'Cap_Struct_Indian_Amount':new FormControl('',Validators.required),
-        'Cap_Struct_Indian_Share':new FormControl('',Validators.required),
+        'Cap_Struct_Indian_Share':new FormControl('0',Validators.required),
         'Cap_Struct_Foreign_Amount':new FormControl('',Validators.required),             
-        'Cap_Struct_Foreign_Share':new FormControl('',Validators.required),
+        'Cap_Struct_Foreign_Share':new FormControl('0',Validators.required),
         'IndianEntityResidentIndividualTrust':new FormControl('',Validators.required),
         'Person_resident_India_1':new FormControl('',Validators.required),
         'Indian_Stake_1':new FormControl('',Validators.required),       
@@ -418,12 +404,6 @@ aprFormlist:FormGroup
       }
     )
   }
-  readCountry() {
-    this.apiService.getCountry().subscribe((data) => {
-      this.CountryList = data;
-    });
-  }
-  
   onSubmitAPRFrom()
   {
     debugger;

@@ -1208,6 +1208,9 @@
             <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
         </div>
     </form>
+    <div style="display: none;">
+    <app-opi-pdf #OpiPdfComponent [hero]="datalist" ></app-opi-pdf>
+</div>
     <!--  <button (click)='goto(0)'>Go to 1</button>
       <button (click)='goto(1)'>Go to 2</button>
       <button (click)='goto(2)'>Go to 3</button>

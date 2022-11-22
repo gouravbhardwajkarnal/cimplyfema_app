@@ -3,6 +3,9 @@ import { FormControl, FormGroup, Validators, FormArray,FormBuilder } from '@angu
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
+import pdfMake from "pdfmake/build/pdfmake";  
+import pdfFonts from "pdfmake/build/vfs_fonts";  
+pdfMake.vfs = pdfFonts.pdfMake.vfs; 
 
 
 @Component({
@@ -25,7 +28,8 @@ export class FormEsopComponent implements OnInit {
     { id: '1', Type: 'Yes' },
     { id: '2', Type: 'No' }
   ]
-  submitted = false;
+  
+  
   ngOnInit(): void {
    
     this.esopFormlist = this.fb.group(

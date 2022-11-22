@@ -5,7 +5,7 @@
         </div>
     </div>
 
-    <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()">
+    <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()" >
         <tabset #tabset (click)="confirmTabSwitch($event)">
             <tab heading="Instructions">
                 <div class="card p-2">
@@ -370,4 +370,6 @@
         <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1" value="Back">
         <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
     </div>
+    <app-esop-pdf></app-esop-pdf>
 </div>
+

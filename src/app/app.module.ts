@@ -22,6 +22,7 @@ import { TabsModule} from 'ngx-bootstrap/tabs';
 import { FormFcSdsComponent } from './Partial_Components/form-fc-sds/form-fc-sds.component';
 import { FormFcDisinvestmentComponent } from './Partial_Components/form-fc-disinvestment/form-fc-disinvestment.component';
 import { OpiPdfComponent } from './components/form-opi/opi-pdf/opi-pdf.component';
+import { EsopPdfComponent } from './components/form-esop/esop-pdf/esop-pdf.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { OpiPdfComponent } from './components/form-opi/opi-pdf/opi-pdf.component
     FormFcSdsComponent,
     FormFcDisinvestmentComponent,
     OpiPdfComponent,
+    EsopPdfComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,9 +9,10 @@ import { FormEsopComponent } from './components/form-esop/form-esop.component';
 import { FormOpiComponent } from './components/form-opi/form-opi.component';
 import { FormAprComponent } from './components/form-apr/form-apr.component';
 import { OpiPdfComponent } from './components/form-opi/opi-pdf/opi-pdf.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'form-fc' },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   // { path: 'create-employee', component: EmployeeCreateComponent },
   // { path: 'edit-employee/:id', component: EmployeeEditComponent },
   // { path: 'employees-list', component: EmployeeListComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'form-opi', component: FormOpiComponent },
   { path: 'form-apr', component: FormAprComponent },
   { path: 'opi-pdf', component: OpiPdfComponent },
+  { path: 'home', component: HomeComponent },
 ];
 
 @NgModule({

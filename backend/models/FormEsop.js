@@ -33,6 +33,7 @@ let FormEsop = new Schema({
    Shareholdingpattern: {
       type: String
    },
+   GrantDetails:[{
    Full_Name_Grantee: {
       type: String
    },
@@ -65,7 +66,7 @@ let FormEsop = new Schema({
    },
    Value_of_Shares: {
       type: Number
-   },
+   }}],
    Non_Debt_Instruments: {
       type: Boolean
    },

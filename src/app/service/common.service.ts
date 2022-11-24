@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DisinvetmentType } from "src/app/model/common.model";
+import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { DisinvetmentType, Modules, SubModules } from "src/app/model/common.model";
 
 @Injectable()
 export class CommonService {
@@ -35,6 +36,25 @@ export class CommonService {
         { id: 2, name: "2nd Level" },
         { id: 3, name: "3rd Level" },
     ];
+    modules: Modules[] = [
+        { id: 1, name: "Foreign Direct Investment" },
+        { id: 2, name: "Overseas Direct Investment" }
+    ];
+    submodules: SubModules[] = [
+        { id: 1, name: "Form FCGPR", moduleid: 1 },
+        { id: 2, name: "Form FCTRS", moduleid: 1 },
+        { id: 3, name: "Form ESOP", moduleid: 1 },
+        { id: 4, name: "Form Downstream Investment", moduleid: 1 },
+        { id: 5, name: "Form LLP I", moduleid: 1 },
+        { id: 6, name: "Form LLP II", moduleid: 1 },
+        { id: 7, name: "Form CN", moduleid: 1 },
+        { id: 8, name: "Form INVI", moduleid: 1 },
+        { id: 9, name: "Form DRR", moduleid: 1 },
+        { id: 10, name: "DPIIT Application", moduleid: 1 },
+        { id: 11, name: "Form FC ( Overseas Direct Investment)", moduleid: 2 },
+        { id: 12, name: "Form APR (Annual Performance Report)", moduleid: 2 },
+        { id: 13, name: "Form OPI (Overseas Portfolio Investment)", moduleid: 2 }
+    ];
 
     constructor() { }
     getAllDisinvestmentTypes(): DisinvetmentType[] {
@@ -55,5 +75,11 @@ export class CommonService {
     getAllsdsleveltypes(): DisinvetmentType[] {
         return this.sdsleveltypes;
     }
-    
+    getAllmodules(): Modules[] {
+        return this.modules;
+    }
+    getAllsubmodules(): SubModules[] {
+        return this.submodules;
+    }
+
 }

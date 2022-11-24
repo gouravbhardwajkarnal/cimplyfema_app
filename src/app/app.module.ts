@@ -23,6 +23,7 @@ import { FormFcSdsComponent } from './Partial_Components/form-fc-sds/form-fc-sds
 import { FormFcDisinvestmentComponent } from './Partial_Components/form-fc-disinvestment/form-fc-disinvestment.component';
 import { OpiPdfComponent } from './components/form-opi/opi-pdf/opi-pdf.component';
 import { EsopPdfComponent } from './components/form-esop/esop-pdf/esop-pdf.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { EsopPdfComponent } from './components/form-esop/esop-pdf/esop-pdf.compo
     FormFcDisinvestmentComponent,
     OpiPdfComponent,
     EsopPdfComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray,FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -7,6 +7,8 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";  
 pdfMake.vfs = pdfFonts.pdfMake.vfs; 
 import { GrantDetailsList} from 'src/app/model/Fdi.model';
+import jsPDF from 'jspdf';
+import htmlToPdfmake from 'html-to-pdfmake';
 
 
 @Component({
@@ -229,5 +231,20 @@ export class FormEsopComponent implements OnInit {
       }
     } 
  }
+ 
+ @ViewChild('pdfTable') pdfTable: ElementRef;
+   
+ downloadAsPDF() {
+  debugger;
+  const doc = new jsPDF();
+  
+  const pdfTable = this.pdfTable.nativeElement;
+  
+  var html = htmlToPdfmake(pdfTable.innerHTML);
+    
+  const documentDefinition = { content: html };
+  pdfMake.createPdf(documentDefinition).open(); 
+    
+}
 
 }

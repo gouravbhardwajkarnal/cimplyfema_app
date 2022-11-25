@@ -278,41 +278,41 @@
                         <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
                         
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}" class="form-control"  type="text" />
+                                <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"  type="text" />
                             </td>
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control" type="date" />
+                                <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
                             </td>
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
                             </td>
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
                             </td>
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus" [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
                             </td>
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control" type="text" />
+                                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
                             </td>
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Pre_determined_issue_price" [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                <input [(ngModel)]="GrantDetailsArray[i].Pre_determined_issue_price" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
                             </td>
-                            <td><input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio1" class="form-control" [ngModelOptions]="{standalone: true}" >
+                            <td><input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio1" class="form-control form-control-sm" [ngModelOptions]="{standalone: true}" >
                             </td>
                             <td>
                                 
-                                <input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio" class="form-control" [ngModelOptions]="{standalone: true}" (ngModelChange)="CounEquivalentEquityShares(i)">
+                                <input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio" class="form-control form-control-sm" [ngModelOptions]="{standalone: true}" (ngModelChange)="CounEquivalentEquityShares(i)">
                                 
                             </td>
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Equivalent_equity_shares" [ngModelOptions]="{standalone: true}" class="form-control"  type="text" />
+                                <input [(ngModel)]="GrantDetailsArray[i].Equivalent_equity_shares" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"  type="text" />
                             </td>
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Facevalue_equity_shares" [ngModelOptions]="{standalone: true}" class="form-control"  type="text" (ngModelChange)="CountValueofShares(i)"/>
+                                <input [(ngModel)]="GrantDetailsArray[i].Facevalue_equity_shares" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"  type="text" (ngModelChange)="CountValueofShares(i)"/>
                             </td>
                             <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Value_of_Shares" [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                <input [(ngModel)]="GrantDetailsArray[i].Value_of_Shares" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
                             </td>
                             <td>
                                 <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>

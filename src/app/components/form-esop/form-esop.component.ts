@@ -165,7 +165,7 @@ export class FormEsopComponent implements OnInit {
         this.Tabindexc=index;
         if(this.Tabindexc>0)
         {
-          if(this.Tabindexc==3)
+          if(this.Tabindexc==4)
           {
             this.btnNext=false;
             this.btnBack=true;
@@ -196,11 +196,11 @@ export class FormEsopComponent implements OnInit {
     }
     else
     {
-      if(this.Tabindexc<3){
+      if(this.Tabindexc<4){
         this.Tabindexc=this.Tabindexc+1;
         this.tabset.tabs[this.Tabindexc].active = true;
         this.btnBack=true;
-        if(this.Tabindexc==3)
+        if(this.Tabindexc==4)
         {
           this.btnNext=false;
         }
@@ -217,7 +217,7 @@ export class FormEsopComponent implements OnInit {
     }
     else
     {
-      if(this.Tabindexc<=3){
+      if(this.Tabindexc<=4){
         this.btnNext=true;
         this.Tabindexc=this.Tabindexc-1;
         this.tabset.tabs[this.Tabindexc].active = true;

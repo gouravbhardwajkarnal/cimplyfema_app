@@ -6,26 +6,337 @@
     </a>
   </div>
 </nav>
- <div clas="container" style="margin-left:111px;">
+<style>
+ html {
+	-webkit-font-smoothing: antialiased!important;
+	-moz-osx-font-smoothing: grayscale!important;
+	-ms-font-smoothing: antialiased!important;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size:16px;
+  color:#555555; 
+}
+.md-stepper-horizontal {
+	display:table;
+	width:100%;
+	margin:0 auto;
+	background-color:#FFFFFF;
+	box-shadow: 0 3px 8px -6px rgba(0,0,0,.50);
+}
+.md-stepper-horizontal .md-step {
+	display:table-cell;
+	position:relative;
+	padding:24px;
+}
+.md-stepper-horizontal .md-step:hover,
+.md-stepper-horizontal .md-step:active {
+	background-color:rgba(0,0,0,0.04);
+}
+.md-stepper-horizontal .md-step:active {
+	border-radius: 15% / 75%;
+}
+.md-stepper-horizontal .md-step:first-child:active {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.md-stepper-horizontal .md-step:last-child:active {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.md-stepper-horizontal .md-step:hover .md-step-circle {
+	background-color:#757575;
+}
+.md-stepper-horizontal .md-step:first-child .md-step-bar-left,
+.md-stepper-horizontal .md-step:last-child .md-step-bar-right {
+	display:none;
+}
+.md-stepper-horizontal .md-step .md-step-circle {
+	width:30px;
+	height:30px;
+	margin:0 auto;
+	background-color:#999999;
+	border-radius: 50%;
+	text-align: center;
+	line-height:30px;
+	font-size: 16px;
+	font-weight: 600;
+	color:#FFFFFF;
+}
+.md-stepper-horizontal.green .md-step.active .md-step-circle {
+	background-color:#00AE4D;
+}
+.md-stepper-horizontal.orange .md-step.active .md-step-circle {
+	background-color:#F96302;
+}
+.md-stepper-horizontal .md-step.active .md-step-circle {
+	background-color: rgb(33,150,243);
+}
+.md-stepper-horizontal .md-step.done .md-step-circle:before {
+	font-family:'FontAwesome';
+	font-weight:100;
+	content: "\f00c";
+}
+.md-stepper-horizontal .md-step.done .md-step-circle *,
+.md-stepper-horizontal .md-step.editable .md-step-circle * {
+	display:none;
+}
+.md-stepper-horizontal .md-step.editable .md-step-circle {
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
+.md-stepper-horizontal .md-step.editable .md-step-circle:before {
+	font-family:'FontAwesome';
+	font-weight:100;
+	content: "\f040";
+}
+.md-stepper-horizontal .md-step .md-step-title {
+	margin-top:16px;
+	font-size:16px;
+	font-weight:600;
+}
+.md-stepper-horizontal .md-step .md-step-title,
+.md-stepper-horizontal .md-step .md-step-optional {
+	text-align: center;
+	color:rgba(0,0,0,.26);
+}
+.md-stepper-horizontal .md-step.active .md-step-title {
+	font-weight: 600;
+	color:rgba(0,0,0,.87);
+}
+.md-stepper-horizontal .md-step.active.done .md-step-title,
+.md-stepper-horizontal .md-step.active.editable .md-step-title {
+	font-weight:600;
+}
+.md-stepper-horizontal .md-step .md-step-optional {
+	font-size:12px;
+}
+.md-stepper-horizontal .md-step.active .md-step-optional {
+	color:rgba(0,0,0,.54);
+}
+.md-stepper-horizontal .md-step .md-step-bar-left,
+.md-stepper-horizontal .md-step .md-step-bar-right {
+	position:absolute;
+	top:36px;
+	height:1px;
+	border-top:1px solid #DDDDDD;
+}
+.md-stepper-horizontal .md-step .md-step-bar-right {
+	right:0;
+	left:50%;
+	margin-left:20px;
+}
+.md-stepper-horizontal .md-step .md-step-bar-left {
+	left:0;
+	right:50%;
+	margin-right:20px;
+}
+
+</style>
+
+ <div clas="container" style="margin-left:111px;" >
     <div class="row mt-3">
       <div class="col-sm-12 col-xl-4">
         <label class="form-label"> Select module
         </label>
-        <select #modulelist (change)="onModuleSelect(modulelist.value)" class="form-control">
-          <option ng-option value="">Select Module</option>
-          <option *ngFor="let item of modules" [value]="item.id">
-            {{ item.name }}
-          </option>
-        </select>
+        <ng-multiselect-dropdown
+        [placeholder]="'Select Topic'"
+        [settings]="ModuleSettings"
+        [data]="modules"
+        [(ngModel)]="selectedItems"
+        (onSelect)="onModuleSelect($event)"
+        (onSelectAll)="onSelectAll($event)">
+      </ng-multiselect-dropdown>     
       </div>
       <div class="col-sm-12 col-xl-4">
         <label class="form-label"> Select Submodule
         </label>
-  
-        <select #Submodulelist (change)="onSubModuleSelect(Submodulelist.value)" class="form-control">
-          <option ng-option value="">Select SubModule</option>
-          <option *ngFor="let s of filteredsubmodule" [value]="s.name">{{ s.name }}</option>
-        </select>
+        <ng-multiselect-dropdown
+        [placeholder]="'Select Sub Topic'"
+        [settings]="SubModuleSettings"
+        [data]="filteredsubmodule"
+        [(ngModel)]="SubselectedItems"
+        (onSelect)="onSubModuleSelect($event,filteredsubmodule)"
+        (onSelectAll)="onSelectAll($event)">
+      </ng-multiselect-dropdown>
+        
+      </div>
+ 
+    </div>
+   
+    <table class="table table-striped table-no-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Sub Module</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let Items of SubmodulenameArray; let i = index;">
+         
+          <td>
+            <div>{{Items.Submodulename}}</div>
+          </td>
+          <td>
+            <div>{{Items.SubmodulenameDes}}</div>
+           
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <div class="md-stepper-horizontal orange" >
+      <div class="md-step active "(click)="RBI_FDISubmit('0')">
+        <div class="md-step-circle"><span>1</span></div>
+        <div class="md-step-title">RBI Covering Letter
+          </div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step active" id="Colour" (click)="RBI_FDISubmit('1')">
+        <div class="md-step-circle"><span>2</span></div>
+        <div class="md-step-title">Form for Compounding</div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step active" (click)="RBI_FDISubmit('2')">
+        <div class="md-step-circle"><span>3</span></div>
+        <div class="md-step-title">Submissions
+          </div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step active" (click)="RBI_FDISubmit('3')">
+        <div class="md-step-circle"><span>4</span></div>
+        <div class="md-step-title">Declaration
+        </div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+     
+      <div class="md-step active" (click)="RBI_FDISubmit('4')">
+        <div class="md-step-circle"><span>5</span></div>
+        <div class="md-step-title">Letter of authority
+        </div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step active" (click)="RBI_FDISubmit('5')">
+        <div class="md-step-circle"><span>6</span></div>
+        <div class="md-step-title">Undertaking
+        </div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step active" (click)="RBI_FDISubmit('6')">
+        <div class="md-step-circle"><span>7</span></div>
+        <div class="md-step-title">ECS Mandate Letter
+        </div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
+      <div class="md-step active" (click)="RBI_FDISubmit('7')">
+        <div class="md-step-circle"><span>8</span></div>
+        <div class="md-step-title">Documents Preview & Annexures
+        </div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
       </div>
     </div>
+ 
+ <form [formGroup]="COC_FDIForm" #form="ngForm" *ngIf="COC_FDIFormDiv">
+ <div class="container-fluid position-relative d-flex p-0">
+  <div class="container-fluid pt-4 px-4" *ngIf="COC_FDICoverLetter">
+      
+         <p>
+          Loream Graph networks are a new machine learning (ML) paradigm that supports both relational reasoning and combinatorial generalization. Here, we develop universal MatErials Graph Network (MEGNet) models for accurate property prediction in both molecules and crystals. We demonstrate that the MEGNet models outperform prior ML models such as the SchNet in 11 out of 13 properties of the QM9 molecule data set. Similarly, we show that MEGNet models trained on ∼60 000 crystals in the Materials Project substantially outperform prior ML models in the prediction of the formation energies, band gaps, and elastic moduli of crystals, achieving better than density functional theory accuracy over a much larger data set. We present two new strategies to address data limitations common in materials science and chemistry. First, we demonstrate a physically intuitive approach to unify four separate molecular MEGNet models for the internal energy at 0 K and room temperature, enthalpy, and Gibbs free energy into a single free energy MEGNet model by incorporating the temperature, pressure, and entropy as global state inputs. Second, we show that the learned element embeddings in MEGNet models encode periodic chemical trends and can be transfer-learned from a property model trained on a larger data set (formation energies) to improve property models with smaller amounts of data (band gaps and elastic moduli).
+         </p><br>
+         <p>
+          Graph networks are a new machine learning (ML) paradigm that supports both relational reasoning and combinatorial generalization. Here, we develop universal MatErials Graph Network (MEGNet) models for accurate property prediction in both molecules and crystals. We demonstrate that the MEGNet models outperform prior ML models such as the SchNet in 11 out of 13 properties of the QM9 molecule data set. Similarly, we show that MEGNet models trained on ∼60 000 crystals in the Materials Project substantially outperform prior ML models in the prediction of the formation energies, band gaps, and elastic moduli of crystals, achieving better than density functional theory accuracy over a much larger data set. We present two new strategies to address data limitations common in materials science and chemistry. First, we demonstrate a physically intuitive approach to unify four separate molecular MEGNet models for the internal energy at 0 K and room temperature, enthalpy, and Gibbs free energy into a single free energy MEGNet model by incorporating the temperature, pressure, and entropy as global state inputs. Second, we show that the learned element embeddings in MEGNet models encode periodic chemical trends and can be transfer-learned from a property model trained on a larger data set (formation energies) to improve property models with smaller amounts of data (band gaps and elastic moduli).
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Yes I Agree With your Terms and Conditions
+            </label>
+          </div>
+          <button type="button" (click)="RBI_FDISubmit('1')" class="btn btn-primary">Next</button>
   </div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDICompound">
+  <div class="col-sm-12 col-xl-3 mb-3">
+    <label for="investment_NetWorthDate" class="form-label">Application Creation Date
+    </label>
+    <input type="date" id="investment_NetWorthDate" name="investment_NetWorthDate"
+        formControlName="investment_NetWorthDate" placeholder="Net Worth Date" required
+        minlength="1" maxlength="250" class="form-control form-control-sm"
+        [class.is-invalid]="investment_NetWorthDate.invalid && (investment_NetWorthDate.dirty || investment_NetWorthDate.touched)">
+    <div *ngIf="investment_NetWorthDate.invalid && (investment_NetWorthDate.dirty || investment_NetWorthDate.touched)"
+        class="invalid-feedback">
+        <div *ngIf="investment_NetWorthDate.errors?.['required']">
+            This field is required.
+        </div>
+        <div *ngIf="investment_NetWorthDate.errors?.['minlength']">
+            This field must have at least 1 character.
+        </div>
+        <div *ngIf="investment_NetWorthDate.errors?.['maxlength']">
+            This field must have at most 250 characters.
+        </div>
+    </div>
+   
+    </div>
+    <div class="col-xl-12 mb-2">
+      <p>TO</p>
+      <p>XXXXXXXXXXXXXXThe Compounding Authority<br>
+         XXXXXXXXXXXXXXCell for Effective Implementation of FEMA (CEFA)<br>
+         XXXXXXXXXXXXXXaddress selected in Compounding Authority section – Field Address<br>
+         XXXXXXXXXXXXXX split the text based on comma and show it separate lines
+      </p>      
+</div>
+<div class="col-xl-8 mb-2">
+  <label for="investment_NetWorthDate" class="form-label">Address
+  </label>
+  <input [ngModelOptions]="{standalone: true}" class="form-control"type="text" />
+  <div class="col-xl-12 mb-2">
+    <p>Dear Sir /Madam</p>
+    <p>XSub:	Application for Compounding under the Foreign Exchange Management Act, 1999 for (1) XXXXXXXXXXXXXXXXXXXXXXX (2) XXXXXXXXXXXXXXXXXXXXXXX ([Insert Sub-Topics] – [Insert Company Name].  
+
+      Ref:	[Insert Entire RBI Reference] Dipesh – where do we have to pick this value from
+      
+    </p>      
+</div>
+ 
+</div>
+  <button type="button" (click)="RBI_FDISubmit('2')" class="btn btn-primary">Next</button> 
+</div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDISubmissions"> 
+  <p>3</p>
+  <button type="button" (click)="RBI_FDISubmit('3')" class="btn btn-primary">Next</button>
+</div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIDeclaration">
+  <p>4</p>
+  <button type="button" (click)="RBI_FDISubmit('4')" class="btn btn-primary">Next</button> 
+</div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDILetterauthority"> 
+  <p>5</p>
+  <button type="button" (click)="RBI_FDISubmit('5')" class="btn btn-primary">Next</button>
+</div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIUndertaking">
+  <p>6</p>
+  <button type="button" (click)="RBI_FDISubmit('6')" class="btn btn-primary">Next</button> 
+</div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIECSLetter"> 
+  <p>7</p>
+  <button type="button" (click)="RBI_FDISubmit('7')" class="btn btn-primary">Next</button>
+</div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIPreviewAnnexures"> 
+  <p>8</p>
+  <button type="button" (click)="RBI_FDISubmit('8')" class="btn btn-primary">Next</button>
+</div>
+</div>
+ </form>
+ </div>   
+  
+  

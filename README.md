@@ -18,4 +18,6 @@ npm install html-to-pdfmake
 npm install jspdf --save     
 ## Command For Tab bootstrap................
 npm install ngx-bootstrap
-
+## Command For Tab bootstrap................
+npm i ng-multiselect-dropdown
+npm i tslib

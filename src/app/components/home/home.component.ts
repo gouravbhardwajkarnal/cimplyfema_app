@@ -12,12 +12,14 @@ export class HomeComponent implements OnInit {
   submodules: any[];
   module: string;
   Submodule: string;
-
+  fieldsvalues: Object;
+  
   title = 'cimplyfema';
   filteredsubmodule: any;
   constructor(private commonservice: CommonService) {
     this.modules = commonservice.getAllmodules();
     this.submodules = commonservice.getAllsubmodules();
+    this.fieldsvalues = { dataSource: this.modules, text: "text", value: "value" }
   }
   
 

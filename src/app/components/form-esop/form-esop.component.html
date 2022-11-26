@@ -250,6 +250,11 @@
                 <div class="card p-2 mt-1">
                     <div class="card-header">
                         Grant Details
+                        <a class="btn btn-danger" style="float: right;" href="assets/GrantExcelFormat.xlsx" download="GrantExcelFormat.xlsx"> Download Excel Template </a>
+                    </div>
+                    <div class="col-lg-4 mt-2">
+                        
+                    <input class="form-control" type="file" (change)="onFileChange($event)" multiple="false" />
                     </div>
                     <div class="container-fluid position-relative d-flex p-0">
                         <div class="container-fluid pt-2">
@@ -448,7 +453,7 @@
                     <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable" #pdfTable>
                         <p>
                             To,<br>
-                            [Bank Name]<br>
+                            {{esopFormlist.get('NameofinvesteeCompany').value}}<br>
                             [Bank Address]
                         </p>
                         <p>Dear Sir / Madam,</p>

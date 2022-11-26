@@ -85,7 +85,12 @@ createFormOpi(data): Observable<any> {
   let url = `${this.baseUri}/createOpi`;
   return this.http.post(url, data).pipe(catchError(this.errorMgmt));
 }
-
+ //Create FromAPR
+ createFormcoc(data): Observable<any> {
+  console.log(data);
+  let url = `${this.baseUri}/createcoc`;
+  return this.http.post(url, data).pipe(catchError(this.errorMgmt));
+}
 // Get all OpiFormData
 getopiData() {
   return this.http.get(`${this.baseUri}/getOpi`);

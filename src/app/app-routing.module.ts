@@ -9,6 +9,7 @@ import { FormEsopComponent } from './components/form-esop/form-esop.component';
 import { FormOpiComponent } from './components/form-opi/form-opi.component';
 import { FormAprComponent } from './components/form-apr/form-apr.component';
 import { OpiPdfComponent } from './components/form-opi/opi-pdf/opi-pdf.component';
+import { FormCocComponent } from './components/form-coc/form-coc.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'form-opi', component: FormOpiComponent },
   { path: 'form-apr', component: FormAprComponent },
   { path: 'opi-pdf', component: OpiPdfComponent },
+  { path: 'form-coc', component: FormCocComponent },
   { path: 'home', component: HomeComponent },
 ];
 

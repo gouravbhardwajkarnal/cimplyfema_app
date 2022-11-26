@@ -1,0 +1,31 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      
+      Simplyfema
+    </a>
+  </div>
+</nav>
+ <div clas="container" style="margin-left:111px;">
+    <div class="row mt-3">
+      <div class="col-sm-12 col-xl-4">
+        <label class="form-label"> Select module
+        </label>
+        <select #modulelist (change)="onModuleSelect(modulelist.value)" class="form-control">
+          <option ng-option value="">Select Module</option>
+          <option *ngFor="let item of modules" [value]="item.id">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+      <div class="col-sm-12 col-xl-4">
+        <label class="form-label"> Select Submodule
+        </label>
+  
+        <select #Submodulelist (change)="onSubModuleSelect(Submodulelist.value)" class="form-control">
+          <option ng-option value="">Select SubModule</option>
+          <option *ngFor="let s of filteredsubmodule" [value]="s.name">{{ s.name }}</option>
+        </select>
+      </div>
+    </div>
+  </div>

@@ -11,3 +11,17 @@ export interface SubModules {
     name : string;
     moduleid: number;
 }
+export interface COCmodules {
+    id : number;
+    name : string;
+}
+export interface COCssubmodules {
+    id : number;
+    name : string;
+}
+export interface COCsubmodules {
+    id : number;
+    name : string;
+    Description : string;
+    moduleid: number;
+}

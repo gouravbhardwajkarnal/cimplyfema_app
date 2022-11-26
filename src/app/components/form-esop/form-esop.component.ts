@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray,FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -6,6 +6,9 @@ import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
 import pdfMake from "pdfmake/build/pdfmake";  
 import pdfFonts from "pdfmake/build/vfs_fonts";  
 pdfMake.vfs = pdfFonts.pdfMake.vfs; 
+import { GrantDetailsList} from 'src/app/model/Fdi.model';
+import jsPDF from 'jspdf';
+import htmlToPdfmake from 'html-to-pdfmake';
 
 
 @Component({
@@ -28,9 +31,13 @@ export class FormEsopComponent implements OnInit {
     { id: '1', Type: 'Yes' },
     { id: '2', Type: 'No' }
   ]
-  
+  GrantDetailsArray: Array<GrantDetailsList> = [];
+  GrantDetailsdata:any={};
   
   ngOnInit(): void {
+
+    this.GrantDetailsdata = { Full_Name_Grantee: "", Date_of_Issue: "",Number_ESOP_Granted:"",Country:"",ResidentialStatus: "",SubsidiarySDS:"",Pre_determined_issue_price:"",Conversion_ratio1: "1:",Conversion_ratio:"",Equivalent_equity_shares:"",Facevalue_equity_shares:"",Value_of_Shares:""}
+    this.GrantDetailsArray.push(this.GrantDetailsdata);
    
     this.esopFormlist = this.fb.group(
       {
@@ -41,20 +48,9 @@ export class FormEsopComponent implements OnInit {
         BR_EGM_Circular: new FormControl('', Validators.required),
         Date_Resolution: new FormControl('', Validators.required),
         Entry_Route: new FormControl('Automatic Route', Validators.required),
-        Applicable_Sectoral_Cap: new FormControl('20', Validators.required),
-        foreigninvestmentproject: new FormControl('', Validators.required),
-        Shareholdingpattern: new FormControl('', Validators.required),
-        Full_Name_Grantee: new FormControl('', Validators.required),
-        Date_of_Issue: new FormControl('', Validators.required),
-        Number_ESOP_Granted: new FormControl('', Validators.required),
-        Country: new FormControl('', Validators.required),
-        ResidentialStatus: new FormControl('', Validators.required),
-        SubsidiarySDS: new FormControl('', Validators.required),
-        Pre_determined_issue_price: new FormControl('', Validators.required),
-        Conversion_ratio: new FormControl('', Validators.required),
-        Equivalent_equity_shares: new FormControl('', Validators.required),
-        Facevalue_equity_shares: new FormControl('', Validators.required),
-        Value_of_Shares: new FormControl('', Validators.required),
+        Applicable_Sectoral_Cap: new FormControl('100', Validators.required),
+        foreigninvestmentproject: new FormControl('No', Validators.required),
+        Shareholdingpattern: new FormControl('Yes', Validators.required),
         Non_Debt_Instruments: new FormControl(''),
         sectoral_cap_statutory: new FormControl(''),
         Indian_companies_reconstruction: new FormControl(''),
@@ -62,9 +58,27 @@ export class FormEsopComponent implements OnInit {
         enclose_documents: new FormControl(''),
         certificate_Company_Secretary: new FormControl(''),
         SEBI_registered: new FormControl(''),
-        necessary_documents: new FormControl('')
+        necessary_documents: new FormControl(''),
+        GrantDetails: new FormArray([])
+        
       }
     )
+  }
+
+  addGrantData() {
+    this.GrantDetailsdata = { Full_Name_Grantee: "", Date_of_Issue: "",Number_ESOP_Granted:"",Country:"",ResidentialStatus: "",SubsidiarySDS:"",Pre_determined_issue_price:"",Conversion_ratio1: "1:",Conversion_ratio:"",Equivalent_equity_shares:"",Facevalue_equity_shares:"",Value_of_Shares:""}
+    this.GrantDetailsArray.push(this.GrantDetailsdata);
+    return true;
+  }
+
+  deleteGrantData(index) {
+    if (this.GrantDetailsArray.length == 1) {
+      return false;
+    } else {
+      this.GrantDetailsArray.splice(index, 1);  
+      return true;
+    }
+    
   }
 
   get Non_Debt_Instruments()
@@ -105,35 +119,25 @@ export class FormEsopComponent implements OnInit {
       this.CountryList = data;
     });
   }
-  CounEquivalentEquityShares() {
-    if (this.esopFormlist.value.Number_ESOP_Granted != '' && this.esopFormlist.value.Conversion_ratio != '') {
-      var Number_ESOP = this.esopFormlist.value.Number_ESOP_Granted;
-      var Conversion_ratio = this.esopFormlist.value.Conversion_ratio;
-      var result = Number_ESOP * Conversion_ratio;
-
-      setTimeout(() => {
-        this.esopFormlist
-          .valueChanges
-          .subscribe(_ => {
-            this.esopFormlist.get('Equivalent_equity_shares').patchValue(result, { emitEvent: false });
-          });
-      }, 1000);
+  CounEquivalentEquityShares(i) {
+    if (this.GrantDetailsArray[i].Number_ESOP_Granted != null && this.GrantDetailsArray[i].Conversion_ratio != null) {
+      this.GrantDetailsArray[i].Equivalent_equity_shares=this.GrantDetailsArray[i].Number_ESOP_Granted*this.GrantDetailsArray[i].Conversion_ratio;
 
     }
-
-    //this.CountValueofShares();
+    this.CountValueofShares(i)
   }
 
-  CountValueofShares() {
-    if (this.esopFormlist.value.Equivalent_equity_shares != '' && this.esopFormlist.value.Facevalue_equity_shares != '') {
-      var resultJ = this.esopFormlist.value.Equivalent_equity_shares * this.esopFormlist.value.Facevalue_equity_shares;
-      /* this.esopFormlist.patchValue({
-        'Value_of_Shares':resultJ
-      }); */
+  CountValueofShares(i) {
+    if (this.GrantDetailsArray[i].Equivalent_equity_shares != null && this.GrantDetailsArray[i].Facevalue_equity_shares != null) {
+      this.GrantDetailsArray[i].Value_of_Shares=this.GrantDetailsArray[i].Equivalent_equity_shares*this.GrantDetailsArray[i].Facevalue_equity_shares;
     }
+    
   }
   
   onSubmitESOPFrom() {
+    const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
+    this.esopFormlist.setControl('GrantDetails', grantFormArray);
+    console.log(this.esopFormlist.value);
     if (this.esopFormlist.invalid) {
       for (const control of Object.keys(this.esopFormlist.controls)) {
         this.esopFormlist.controls[control].markAsTouched();
@@ -156,10 +160,27 @@ export class FormEsopComponent implements OnInit {
  
   Tabindexc:number=0;
   confirmTabSwitch(event) {
+    debugger
     this.tabset.tabs.forEach((item, index) => {
       if (item.heading == event.target.innerText) {
         localStorage.setItem("tabIndex", JSON.stringify(index));
         this.Tabindexc=index;
+        if(this.Tabindexc>0)
+        {
+          if(this.Tabindexc==4)
+          {
+            this.btnNext=false;
+            this.btnBack=true;
+          }
+          else{
+          this.btnNext=true;
+          }
+        }
+        else{
+          this.btnBack=true;
+          this.btnNext=false;
+        }
+        
       }
 
     });
@@ -168,6 +189,7 @@ export class FormEsopComponent implements OnInit {
   btnNext:boolean=true;
   btnBack:boolean=false;
   changeTab() {
+    debugger
     if(this.Tabindexc==0)
     {
       this.tabset.tabs[1].active = true;
@@ -176,14 +198,15 @@ export class FormEsopComponent implements OnInit {
     }
     else
     {
-      if(this.Tabindexc<2){
+      if(this.Tabindexc<4){
         this.Tabindexc=this.Tabindexc+1;
         this.tabset.tabs[this.Tabindexc].active = true;
         this.btnBack=true;
-        if(this.Tabindexc==2)
+        if(this.Tabindexc==4)
         {
           this.btnNext=false;
         }
+        
       }
     }   
  }
@@ -196,7 +219,7 @@ export class FormEsopComponent implements OnInit {
     }
     else
     {
-      if(this.Tabindexc<=2){
+      if(this.Tabindexc<=4){
         this.btnNext=true;
         this.Tabindexc=this.Tabindexc-1;
         this.tabset.tabs[this.Tabindexc].active = true;
@@ -208,5 +231,20 @@ export class FormEsopComponent implements OnInit {
       }
     } 
  }
+ 
+ @ViewChild('pdfTable') pdfTable: ElementRef;
+   
+ downloadAsPDF() {
+  debugger;
+  const doc = new jsPDF();
+  
+  const pdfTable = this.pdfTable.nativeElement;
+  
+  var html = htmlToPdfmake(pdfTable.innerHTML);
+    
+  const documentDefinition = { content: html };
+  pdfMake.createPdf(documentDefinition).open(); 
+    
+}
 
 }

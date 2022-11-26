@@ -24,6 +24,7 @@ import { FormFcDisinvestmentComponent } from './Partial_Components/form-fc-disin
 import { OpiPdfComponent } from './components/form-opi/opi-pdf/opi-pdf.component';
 import { EsopPdfComponent } from './components/form-esop/esop-pdf/esop-pdf.component';
 import { HomeComponent } from './components/home/home.component';
+import { FormCocComponent } from './components/form-coc/form-coc.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { HomeComponent } from './components/home/home.component';
     OpiPdfComponent,
     EsopPdfComponent,
     HomeComponent,
+    FormCocComponent,
   ],
   imports: [
     BrowserModule,

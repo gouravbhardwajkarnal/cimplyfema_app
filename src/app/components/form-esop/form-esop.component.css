@@ -4,3 +4,6 @@
   .notdel{
     text-decoration: auto;
   }
+  th {
+    font-size: 12px;
+  }

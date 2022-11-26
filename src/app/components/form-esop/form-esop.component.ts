@@ -9,8 +9,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { GrantDetailsList} from 'src/app/model/Fdi.model';
 import jsPDF from 'jspdf';
 import htmlToPdfmake from 'html-to-pdfmake';
-
-
+import * as XLSX from 'xlsx';
+type AOA = any[][];
 @Component({
   selector: 'app-form-esop',
   templateUrl: './form-esop.component.html',
@@ -246,5 +246,48 @@ export class FormEsopComponent implements OnInit {
   pdfMake.createPdf(documentDefinition).open(); 
     
 }
+Exdata: AOA = [[1, 2], [3, 4]];
+onFileChange(evt: any) {
+  debugger
+  /* wire up file reader */
+  const target: DataTransfer = <DataTransfer>(evt.target);
+  if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+  const reader: FileReader = new FileReader();
+  reader.onload = (e: any) => {
+    /* read workbook */
+    const bstr: string = e.target.result;
+    const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
 
+    /* grab first sheet */
+    const wsname: string = wb.SheetNames[0];
+    const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+    /* save data */
+    this.Exdata = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
+    // this.GrantDetailsArray=this.Exdata;
+    console.log("data:",this.Exdata);
+    for (var i = 1; i < this.Exdata.length; i++) {
+      if(i>1)
+      {
+      this.addGrantData();
+      }
+             this.GrantDetailsArray[i-1].Full_Name_Grantee=this.Exdata[i][0];
+             this.GrantDetailsArray[i-1].Date_of_Issue= this.Exdata[i][1];
+             this.GrantDetailsArray[i-1].Number_ESOP_Granted= this.Exdata[i][2];
+             this.GrantDetailsArray[i-1].Country= this.Exdata[i][3];
+             this.GrantDetailsArray[i-1].ResidentialStatus= this.Exdata[i][4];
+             this.GrantDetailsArray[i-1].SubsidiarySDS= this.Exdata[i][5];
+             this.GrantDetailsArray[i-1].Pre_determined_issue_price= this.Exdata[i][6];
+/*              this.GrantDetailsArray[i].Conversion_ratio1= this.Exdata[i+1][7]; */
+             this.GrantDetailsArray[i-1].Conversion_ratio= this.Exdata[i][7];
+             this.GrantDetailsArray[i-1].Equivalent_equity_shares= this.Exdata[i][8];
+             this.GrantDetailsArray[i-1].Facevalue_equity_shares= this.Exdata[i][9];
+             this.GrantDetailsArray[i-1].Value_of_Shares= this.Exdata[i][10];
+    }
+  };
+  reader.readAsBinaryString(target.files[0]);
+  evt.target.value=null;
 }
+}
+
+

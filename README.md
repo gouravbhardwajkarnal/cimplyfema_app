@@ -19,3 +19,6 @@ npm install jspdf --save
 ## Command For Tab bootstrap................
 npm install ngx-bootstrap
 
+## Upload Excel File
+npm install xlsx
+

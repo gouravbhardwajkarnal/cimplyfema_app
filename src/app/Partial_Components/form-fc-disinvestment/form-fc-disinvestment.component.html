@@ -1,13 +1,13 @@
 <div [formGroup]="reactiveForm">
-<h6>Reporting of restructuring of the balance sheet of the foreign entity involving diminution in
-    the total value of the outstanding dues towards person resident in India on account of
-    investment in equity and debt</h6>
-<h5 class="mt-3">Note: All amounts should be in a single foreign currency and in actuals</h5>
-<div class="col-sm-12 col-xl-12">
-    <label for="disinvestment_UIN" class="form-label"> 13 digit Unique Identification Number allotted
-        by the Reserve Bank
-    </label>
-    <!-- <input type="text" id="disinvestment_UIN" name="investment_Group_Stamp"
+    <h6>Reporting of restructuring of the balance sheet of the foreign entity involving diminution in
+        the total value of the outstanding dues towards person resident in India on account of
+        investment in equity and debt</h6>
+    <h5 class="mt-3">Note: All amounts should be in a single foreign currency and in actuals</h5>
+    <div class="col-sm-12 col-xl-12">
+        <label for="disinvestment_UIN" class="form-label"> 13 digit Unique Identification Number allotted
+            by the Reserve Bank
+        </label>
+        <!-- <input type="text" id="disinvestment_UIN" name="investment_Group_Stamp"
     formControlName="investment_Group_Stamp" placeholder=" Stamp/Seal"
     required minlength="1" maxlength="250" class="form-control form-control-sm"
     [class.is-invalid]="investment_Group_Stamp.invalid && (investment_Group_Stamp.dirty || investment_Group_Stamp.touched)">
@@ -23,552 +23,546 @@
         This field must have at most 250 characters.
     </div>
 </div> -->
-    <h6>
-        Name, AD Code and branch of the designated AD bank
-    </h6>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>S.No</b></span>
+        <h6>
+            Name, AD Code and branch of the designated AD bank
+        </h6>
     </div>
-    <div class="col-sm-8">
-        <span><b>Particulars of transactions</b></span>
-    </div>
-    <div class="col-sm-3">
-    </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>I</b></span>
-    </div>
-    <div class="col-sm-8">
-        <span>Date of submission of last APR and period to which last APR relates</span>
-    </div>
-    <div class="col-sm-3">
-        <input type="text" class="form-control">
-    </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>II</b></span>
-    </div>
-    <div class="col-sm-8">
-        <span>Disinvestment route
-        </span>
-    </div>
-    <div class="col-sm-3">
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">Approval Route</label>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>S.No</b></span>
         </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">Automatic Route</label>
+        <div class="col-sm-8">
+            <span><b>Particulars of transactions</b></span>
         </div>
-
-    </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>III</b></span>
-    </div>
-    <div class="col-sm-8">
-        <span>Disinvestment Type
-        </span>
-    </div>
-    <div class="col-sm-3">
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">Full disinvestment</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">Partial disinvestment</label>
+        <div class="col-sm-3">
         </div>
     </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>IV</b></span>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>I</b></span>
+        </div>
+        <div class="col-sm-8">
+            <span>Date of submission of last APR and period to which last APR relates</span>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control">
+        </div>
     </div>
-    <div class="col-sm-8">
-        <span>Date of disinvestment</span>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>II</b></span>
+        </div>
+        <div class="col-sm-8">
+            <span>Disinvestment route
+            </span>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">Approval Route</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">Automatic Route</label>
+            </div>
+
+        </div>
     </div>
-    <div class="col-sm-3">
-        <input type="date" class="form-control">
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>III</b></span>
+        </div>
+        <div class="col-sm-8">
+            <span>Disinvestment Type
+            </span>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">Full disinvestment</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">Partial disinvestment</label>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>V</b></span>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>IV</b></span>
+        </div>
+        <div class="col-sm-8">
+            <span>Date of disinvestment</span>
+        </div>
+        <div class="col-sm-3">
+            <input type="date" class="form-control">
+        </div>
     </div>
-    <div class="col-sm-8">
-        <span>PAN and name of the disinvesting person resident in India</span>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>V</b></span>
+        </div>
+        <div class="col-sm-8">
+            <span>PAN and name of the disinvesting person resident in India</span>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control">
+        </div>
     </div>
-    <div class="col-sm-3">
-        <input type="text" class="form-control">
-    </div>
-</div>
-<div class="row g-3 mt-3">
-    
-    <div class="col-sm-1">
-        <span><b>IV</b></span>
-    </div>
-    <div class="col-sm-8">
-        <span>Method of disinvestment</span>
-        <br>
-        <b>i </b><span>Sale or transfer of equity capital to another person resident in India/
-            foreign
-            partner/ Individual or merger/ liquidation of IE</span><br>
-        <b>ii </b><span>Closure/voluntary liquidation of the foreign entity</span><br>
-        <b>iii </b><span>Buy back by the foreign entity</span><br>
-        <b>iv</b><span>Merger of two or more foreign entities of the same person resident in
-            India</span><br>
-        <b>v</b><span>Merger of the foreign entity with the step down subsidiaries of the same
-            person resident in India or another</span><br>
-        <b>vi</b><span>Merger of foreign entity with an independent foreign company not having any
-            relation with the IE/ RI/ Trust/ Society</span>
-    </div>
-    <div class="col-sm-3">
-        Details to be furnished as Annex to the Form FC Section G along with relevant documentary
-        evidence
-        (Please strike out whichever method is not applicable)<br>
-        <span>Furnish the details of the entity buying the stake and whether the entity purchasing
-            the stake is an existing foreign partner/ Indian partner in the foreign entity or a
-            foreign party/ person resident in India buying stake in the concerned foreign entity for
-            the first time.</span>
-        <br>
-        <input type="file" class="checkbox">
-        <br>
-        <input type="file" class="checkbox">
-        <br>
-        <span>Furnish details of merging foreign entity and the surviving foreign entity such as
-            name, UIN of the foreign entity and the name of the person resident in India concerned
-            of both the foreign entities.Also furnish details of SDS of those foreign entity which
-            shall merge.
-        </span><br>
-        <span>Furnish UIN of the merging foreign entity, the name of the person resident in India
-            holding indirect stake in SDS, name of the SDS. Level of SDS, name and country/
-            jurisdiction of SDS and immediate parent of SDS</span><br>
-        <span>Furnish the detail of the foreign company such as name and address</span>
+    <div class="row g-3 mt-3">
+
+        <div class="col-sm-1">
+            <span><b>IV</b></span>
+        </div>
+        <div class="col-sm-8">
+            <span>Method of disinvestment</span>
 
 
-    </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>VIII</b></span>
-    </div>
-    <div class="col-sm-11">
+        </div>
+        <div class="col-sm-3">
+            <select class="form-control">
+                <option>Sale or transfer of equity capital to another person resident in India/
+                    foreign partner/ Individual or merger/ liquidation of IE </option>
+                <option>Closure/voluntary liquidation of the foreign entity</option>
+                <option>Buy back by the foreign entity</option>
+                <option value="">Merger of two or more foreign entities of the same person resident in
+                    India</option>
+                <option>Merger of the foreign entity with the step down subsidiaries of the same
+                    person resident in India or another</option>
+                
+                <option>Merger of foreign entity with an independent foreign company not having any
+                    relation with the IE/ RI/ Trust/ Society</option>
 
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Summary of the financial commitment (cumulative amount) in respect of the foreign entity
-            </caption>
+            </select>
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>VIII</b></span>
+        </div>
+        <div class="col-sm-11">
+
+            <table class="table table-striped table-bordered caption-top table-responsive">
+                <caption>Summary of the financial commitment (cumulative amount) in respect of the foreign entity
+                </caption>
+                <thead>
+                    <tr>
+
+                        <th scope="col"> Equity
+                        </th>
+                        <th scope="col">Loan
+                        </th>
+                        <th scope="col"> Guarantees issued/ other non-fund based financial commitment
+                        </th>
+                        <th scope="col">Guarantee invoked/ Other fund based financial commitment
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
+
+                        <td>
+                            <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
+                                [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                        </td>
+                        <td>
+                            <select class="form-control" [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
+                                [ngModelOptions]="{standalone: true}">
+                                <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
+                                    {{object.name}}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <input [(ngModel)]="FinancialCommitmentArray[i].Date" [ngModelOptions]="{standalone: true}"
+                                class="form-control" type="date" />
+                        </td>
+                        <td>
+
+                            <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
+                                [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                        </td>
+                        <td>
+                            <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
+                                [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+
+                        </td>
+                        <td>
+                            <button type="button" (click)="addFinancialCommitment()"
+                                class="btn btn-outline-primary me-2">+</button>
+                            <button type="button" *ngIf="FinancialCommitmentlength>1"
+                                (click)="deleteFinancialCommitment(i)" class="btn btn-outline-primary me-2">-</button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>IX</b></span>
+        </div>
+        <div class="col-sm-11">
+
+            <table class="table table-striped table-bordered caption-top table-responsive">
+                <caption>Date wise details of remittances/ transaction (attach separate sheet if necessary)
+                </caption>
+                <thead>
+                    <tr>
+
+                        <th scope="col"> Date of remittance /transaction
+                        </th>
+                        <th scope="col">Method of investment
+                        </th>
+                        <th scope="col"> Category of investment
+                        </th>
+                        <th scope="col">Amount
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
+
+                        <td>
+                            <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
+                                [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                        </td>
+                        <td>
+                            <select class="form-control" [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
+                                [ngModelOptions]="{standalone: true}">
+                                <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
+                                    {{object.name}}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <input [(ngModel)]="FinancialCommitmentArray[i].Date" [ngModelOptions]="{standalone: true}"
+                                class="form-control" type="date" />
+                        </td>
+                        <td>
+
+                            <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
+                                [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                        </td>
+                        <td>
+                            <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
+                                [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+
+                        </td>
+                        <td>
+                            <button type="button" (click)="addFinancialCommitment()"
+                                class="btn btn-outline-primary me-2">+</button>
+                            <button type="button" *ngIf="FinancialCommitmentlength>1"
+                                (click)="deleteFinancialCommitment(i)" class="btn btn-outline-primary me-2">-</button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>X</b></span>
+        </div>
+        <div class="col-sm-8">
+            <span>Fair value of the total disinvestment as per the valuation report and date of valuation report,
+                wherever
+                applicable</span>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>XI</b></span>
+        </div>
+        <div class="col-sm-11">
+
+            <table class="table table-striped table-bordered caption-top table-responsive">
+                <caption>Whether there is write off (i.e. the difference between the original amount (proportionate
+                    amount
+                    in case of partial disinvestment) of investment made and the amount of consideration received on
+                    account
+                    of disinvestment, where the latter is less than the former)? If yes, please provide the amount of
+                    write
+                    off
+                </caption>
+                <thead>
+                    <tr>
+
+                        <th scope="col">Equity
+                        </th>
+                        <th scope="col">Loan
+                        </th>
+                        <th scope="col">Others(please specify)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>
+                            <input class="form-control" type="text" />
+                        </td>
+
+
+                        <td> <input class="form-control" type="text" /></td>
+                        <td> <input class="form-control" type="text" /></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>XII</b></span>
+        </div>
+        <div class="col-sm-11">
+
+            <table class="table table-striped table-bordered caption-top table-responsive">
+                <caption>Amount repatriated on disinvestment (attach separate sheet if necessary)
+                </caption>
+                <thead>
+                    <tr>
+
+                        <th scope="col">Equity
+                        </th>
+                        <th scope="col">Loan
+                        </th>
+                        <th scope="col">Others(please specify)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>
+                            <input class="form-control" type="text" />
+                        </td>
+
+
+                        <td> <input class="form-control" type="text" /></td>
+                        <td> <input class="form-control" type="text" /></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+        <div class="col-sm-1">
+            <span><b>XIII</b></span>
+        </div>
+        <div class="col-sm-11">
+
+            <table class="table table-striped table-bordered caption-top table-responsive">
+                <caption>Amount repatriated since reporting of the last APR except the disinvestment proceeds
+                </caption>
+                <thead>
+                    <tr>
+
+                        <th scope="col">Equity
+                        </th>
+                        <th scope="col">Loan
+                        </th>
+                        <th scope="col">Others(please specify)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>
+                            <input class="form-control" type="text" />
+                        </td>
+
+
+                        <td> <input class="form-control" type="text" /></td>
+                        <td> <input class="form-control" type="text" /></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <h5 style="text-align: center;">Declaration
+        </h5>
+        <table class="table table-borderless">
             <thead>
-                <tr>
-
-                    <th scope="col"> Equity
-                    </th>
-                    <th scope="col">Loan
-                    </th>
-                    <th scope="col"> Guarantees issued/ other non-fund based financial commitment
-                    </th>
-                    <th scope="col">Guarantee invoked/ Other fund based financial commitment
-                    </th>
-                    <th></th>
-                </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
-
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
-                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                <tr>
+                    <th scope="row">A.</th>
+                    <td> (a) The transfer is subject to a price arrived on an arm’s length basis. Copies of the
+                        necessary
+                        documents/ valuation as required by the AD bank have been furnished to the AD bank.
                     </td>
-                    <td>
-                        <select class="form-control" [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
-                            [ngModelOptions]="{standalone: true}">
-                            <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
-                                {{object.name}}
-                            </option>
-                        </select>
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].Date" [ngModelOptions]="{standalone: true}"
-                            class="form-control" type="date" />
-                    </td>
-                    <td>
-
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY" [ngModelOptions]="{standalone: true}"
-                            class="form-control" type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR" [ngModelOptions]="{standalone: true}"
-                            class="form-control" type="text" />
+                </tr>
+                <tr>
+                    <th scope="row">B</th>
+                    <td>(b) In case the transfer is on account of merger, amalgamation or demerger or on account of
+                        buyback
+                        of foreign securities, such transfer, or liquidation (in case of liquidation of the foreign
+                        entity),
+                        it has the approval of the competent authority as per the laws in India and/or the host
+                        country/jurisdiction, as the case may be
 
                     </td>
-                    <td>
-                        <button type="button" (click)="addFinancialCommitment()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="FinancialCommitmentlength>1" (click)="deleteFinancialCommitment(i)"
-                            class="btn btn-outline-primary me-2">-</button>
+                </tr>
+                <tr>
+                    <th scope="row">C</th>
+                    <td>(c) the transferor, in case of full disinvestment other than by way of liquidation, does not
+                        have
+                        any dues outstanding for receipt, which the transferor is entitled to receive from the foreign
+                        entity as an investor in equity capital and debt.
 
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">D</th>
+                    <td>(d) the transferor has stayed invested for at least a year from the date of making ODI.
+
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">E</th>
+                    <td>(e) All the remittances/ transactions have been reported to Reserve Bank and it reconciles with
+                        the
+                        remittances / transaction details reported to the Reserve Bank.
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">F</th>
+                    <td>(a) All the guarantees issued on behalf of the foreign entity and its SDS are either novated to
+                        another entity or the guarantees are closed.
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">G</th>
+                    <td>
+                        (g) In case any SDS has become the direct foreign entity as a result of disinvestment in the
+                        foreign
+                        entity then it is certified that relevant sections of the Form FC with respect to all such SDS
+                        are
+                        submitted to Reserve Bank through the AD bank for allotment of UIN.
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <td>
+                        <div class="row">
+                            (h) I/ We hereby certify that the information furnished above are true and correct. I/We
+                            also
+                            duly acknowledge that if any information furnished by me/us is found to be false and/or
+                            incorrect, it shall be construed that the reporting requirements under FEMA, 1999 have not
+                            been
+                            complied with.
+
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label"> Place
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label">
+                                        Date
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label"> Place
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label">
+                                        Date
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label"> (Signature and
+                                        seal of authorised official of the IE/ RI)
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label"> (Signature and
+                                        seal of authorised official of the AD)
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label"> Name
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label">
+                                        Name
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label"> Designation
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label">
+                                        Designation
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label"> Tel. No.
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label">
+                                        Tel. No.
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label"> Email
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-sm-12 col-xl-6">
+                                    <label for="investment_Email" class="form-label">
+                                        Email
+                                    </label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>IX</b></span>
-    </div>
-    <div class="col-sm-11">
-
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Date wise details of remittances/ transaction (attach separate sheet if necessary)
-            </caption>
-            <thead>
-                <tr>
-
-                    <th scope="col"> Date of remittance /transaction
-                    </th>
-                    <th scope="col">Method of investment
-                    </th>
-                    <th scope="col"> Category of investment
-                    </th>
-                    <th scope="col">Amount
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
-
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
-                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                    </td>
-                    <td>
-                        <select class="form-control" [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
-                            [ngModelOptions]="{standalone: true}">
-                            <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
-                                {{object.name}}
-                            </option>
-                        </select>
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].Date" [ngModelOptions]="{standalone: true}"
-                            class="form-control" type="date" />
-                    </td>
-                    <td>
-
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY" [ngModelOptions]="{standalone: true}"
-                            class="form-control" type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR" [ngModelOptions]="{standalone: true}"
-                            class="form-control" type="text" />
-
-                    </td>
-                    <td>
-                        <button type="button" (click)="addFinancialCommitment()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="FinancialCommitmentlength>1" (click)="deleteFinancialCommitment(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>X</b></span>
-    </div>
-    <div class="col-sm-8">
-        <span>Fair value of the total disinvestment as per the valuation report and date of valuation report, wherever
-            applicable</span>
-    </div>
-    <div class="col-sm-3">
-        <input type="text" class="form-control">
-    </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>XI</b></span>
-    </div>
-    <div class="col-sm-11">
-
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Whether there is write off (i.e. the difference between the original amount (proportionate amount
-                in case of partial disinvestment) of investment made and the amount of consideration received on account
-                of disinvestment, where the latter is less than the former)? If yes, please provide the amount of write
-                off
-            </caption>
-            <thead>
-                <tr>
-
-                    <th scope="col">Equity
-                    </th>
-                    <th scope="col">Loan
-                    </th>
-                    <th scope="col">Others(please specify)
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-
-                    <td>
-                        <input class="form-control" type="text" />
-                    </td>
-
-
-                    <td> <input class="form-control" type="text" /></td>
-                    <td> <input class="form-control" type="text" /></td>
-
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>XII</b></span>
-    </div>
-    <div class="col-sm-11">
-
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Amount repatriated on disinvestment (attach separate sheet if necessary)
-            </caption>
-            <thead>
-                <tr>
-
-                    <th scope="col">Equity
-                    </th>
-                    <th scope="col">Loan
-                    </th>
-                    <th scope="col">Others(please specify)
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-
-                    <td>
-                        <input class="form-control" type="text" />
-                    </td>
-
-
-                    <td> <input class="form-control" type="text" /></td>
-                    <td> <input class="form-control" type="text" /></td>
-
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="row g-3 mt-3">
-    <div class="col-sm-1">
-        <span><b>XIII</b></span>
-    </div>
-    <div class="col-sm-11">
-
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Amount repatriated since reporting of the last APR except the disinvestment proceeds
-            </caption>
-            <thead>
-                <tr>
-
-                    <th scope="col">Equity
-                    </th>
-                    <th scope="col">Loan
-                    </th>
-                    <th scope="col">Others(please specify)
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-
-                    <td>
-                        <input class="form-control" type="text" />
-                    </td>
-
-
-                    <td> <input class="form-control" type="text" /></td>
-                    <td> <input class="form-control" type="text" /></td>
-
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="container">
-    <h5 style="text-align: center;">Declaration
-    </h5>
-    <table class="table table-borderless">
-        <thead>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">A.</th>
-                <td> (a) The transfer is subject to a price arrived on an arm’s length basis. Copies of the necessary
-                    documents/ valuation as required by the AD bank have been furnished to the AD bank.
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">B</th>
-                <td>(b) In case the transfer is on account of merger, amalgamation or demerger or on account of buyback
-                    of foreign securities, such transfer, or liquidation (in case of liquidation of the foreign entity),
-                    it has the approval of the competent authority as per the laws in India and/or the host
-                    country/jurisdiction, as the case may be
-
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">C</th>
-                <td>(c) the transferor, in case of full disinvestment other than by way of liquidation, does not have
-                    any dues outstanding for receipt, which the transferor is entitled to receive from the foreign
-                    entity as an investor in equity capital and debt.
-
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">D</th>
-                <td>(d) the transferor has stayed invested for at least a year from the date of making ODI.
-
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">E</th>
-                <td>(e) All the remittances/ transactions have been reported to Reserve Bank and it reconciles with the
-                    remittances / transaction details reported to the Reserve Bank.
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">F</th>
-                <td>(a) All the guarantees issued on behalf of the foreign entity and its SDS are either novated to
-                    another entity or the guarantees are closed.
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">G</th>
-                <td>
-                    (g) In case any SDS has become the direct foreign entity as a result of disinvestment in the foreign
-                    entity then it is certified that relevant sections of the Form FC with respect to all such SDS are
-                    submitted to Reserve Bank through the AD bank for allotment of UIN.
-                </td>
-            </tr>
-            <tr>
-                <th scope="row"></th>
-                <td>
-                    <div class="row">
-                        (h) I/ We hereby certify that the information furnished above are true and correct. I/We also
-                        duly acknowledge that if any information furnished by me/us is found to be false and/or
-                        incorrect, it shall be construed that the reporting requirements under FEMA, 1999 have not been
-                        complied with.
-
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label"> Place
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label">
-                                    Date
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label"> Place
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label">
-                                    Date
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label"> (Signature and
-                                    seal of authorised official of the IE/ RI)
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label"> (Signature and
-                                    seal of authorised official of the AD)
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label"> Name
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label">
-                                    Name
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label"> Designation
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label">
-                                    Designation
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label"> Tel. No.
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label">
-                                    Tel. No.
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label"> Email
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-12 col-xl-6">
-                                <label for="investment_Email" class="form-label">
-                                    Email
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                       
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<button type="button" class="btn btn-sm btn-primary col-sm-1 col-xl-1 mb-3" (click)="validate()">Next</button>
+    <button type="button" class="btn btn-sm btn-primary col-sm-1 col-xl-1 mb-3" (click)="validate()">Next</button>
 </div>

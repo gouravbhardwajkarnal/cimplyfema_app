@@ -5,86 +5,160 @@
         </div>
     </div>
 
-    
+
     <div class="card p-2 mt-1">
         <div class="card-header">
             APR Details
         </div>
         <div class="container-fluid position-relative d-flex p-0">
-            <form [formGroup]="aprFormlist" (ngSubmit)="onSubmitAPRFrom()">
+            <form [formGroup]="aprForm">
+             
                 <tabset #tabset>
-                    <tab heading="Instructions" >
+                    <tab heading="Instructions" id="0">
                         <div class="card p-2">
-                            <h5>Instructions</h5>                 
+                            <h5>Instructions</h5>
                             Instructions for filling up the Form FC
                             <ul>
-                                <li>1) A person resident in India acquiring equity capital in a foreign entity which is reckoned as ODI, 
-                                    shall submit an APR with respect to each foreign entity every year till the person resident in India is invested in such foreign entity,
-                                     by December 31st and where the accounting year of the foreign entity ends on December 31st, the APR shall be submitted by December 31st of the next year. </li>
-                                <li> 2)	The APRs shall not be submitted in the following cases.<br>
-                                        (i)	If a person resident in India is holding less than 10 per cent of the equity capital without control in the foreign entity and
-                                         there is no other financial commitment other than by way of equity capital.<br>
-                                        (ii)	When the foreign entity is under liquidation, from the date of initiation of the liquidation process.<br> 
-                                        (iii)	For the broken period (i.e. full year not completed) at the time of disinvestment. However, the details of transactions if any that had been undertaken during the time from the date of submission of
-                                         the last APR till the date of disinvestment/initiation of liquidation process may be duly reported in the Form FC.      
+                                <li>1) A person resident in India acquiring equity capital in a foreign entity which is
+                                    reckoned as ODI,
+                                    shall submit an APR with respect to each foreign entity every year till the person
+                                    resident in India is invested in such foreign entity,
+                                    by December 31st and where the accounting year of the foreign entity ends on
+                                    December 31st, the APR shall be submitted by December 31st of the next year. </li>
+                                <li> 2) The APRs shall not be submitted in the following cases.<br>
+                                    (i) If a person resident in India is holding less than 10 per cent of the equity
+                                    capital without control in the foreign entity and
+                                    there is no other financial commitment other than by way of equity capital.<br>
+                                    (ii) When the foreign entity is under liquidation, from the date of initiation of
+                                    the liquidation process.<br>
+                                    (iii) For the broken period (i.e. full year not completed) at the time of
+                                    disinvestment. However, the details of transactions if any that had been undertaken
+                                    during the time from the date of submission of
+                                    the last APR till the date of disinvestment/initiation of liquidation process may be
+                                    duly reported in the Form FC.
                                 </li>
-                                <li>3)The APR shall be based on the audited financial statements of the foreign entity. Where the person resident in India does not have ‘control’ in the foreign entity and the laws of the host jurisdiction does not provide for mandatory auditing of the books of accounts, the APR may be submitted based on unaudited financial statements certified as such by the statutory auditor of the Indian entity or by a chartered accountant where the statutory audit is not applicableincluding in case of resident individuals.
-                                <li>4)In case more than one person resident in India have made ODI in the same foreign entity, the person resident in India holding the highest stake in the foreign entity shall be required to submit APR. In case of holdings being equal, APR may be filed jointly by such persons resident in India. It is also clarified that where APR is required to be filed jointly, either one investor may be authorized by other investors, or such persons may jointly file the APR. 
+                                <li>3)The APR shall be based on the audited financial statements of the foreign entity.
+                                    Where the person resident in India does not have ‘control’ in the foreign entity and
+                                    the laws of the host jurisdiction does not provide for mandatory auditing of the
+                                    books of accounts, the APR may be submitted based on unaudited financial statements
+                                    certified as such by the statutory auditor of the Indian entity or by a chartered
+                                    accountant where the statutory audit is not applicableincluding in case of resident
+                                    individuals.
+                                <li>4)In case more than one person resident in India have made ODI in the same foreign
+                                    entity, the person resident in India holding the highest stake in the foreign entity
+                                    shall be required to submit APR. In case of holdings being equal, APR may be filed
+                                    jointly by such persons resident in India. It is also clarified that where APR is
+                                    required to be filed jointly, either one investor may be authorized by other
+                                    investors, or such persons may jointly file the APR.
                                 </li>
-                                <li>5)The person resident in India shall report the details regarding acquisition/ setting up /winding up/ transfer of an SDS or alteration in the shareholding pattern in the foreign entity during the reporting year in the APR, failing which it shall amount to non-submission of APR.</li>
-                                <li>6)The person resident in India shall ensure that all the previous year APRs have been submitted to the designated AD bank. </li>
-                                <li>7)	Capital structure (para III of form APR) should be in cumulative and the % stake should be a total of all the persons resident in India in the foreign entity </li>
-                                <li>8)	In Para VII the figures under “since commencement of business” should be equal to or more than the figure mentioned under current year</li>
-                                <li>9)	In Para VII (ii), Redemption of preference shares (not in the nature of compulsorily convertible preference shares (CCPS)) should also be reported. </li>
-                                <li>10)	In Para VII (vii), other receipts which are not mentioned in the table like interest on loan or license fee etc. shall be mentioned. </li>
-                                <li>11)	In Para IX, the part of the profits of the foreign entity which is retained and reinvested in such foreign entity shall be mentioned. The retained earnings are to be calculated as per the procedure laid down by the International Monetary Fund in the latest version of their publication “Balance of Payments and International Investment Position Manual”. It is to be noted that the negative retained earnings is to be treated as ‘0’ (zero).</li>
-                                <li>12)	The level of step-down subsidiary (SDS) shall be calculated treating the foreign entity as the parent. So, an SDS directly under the foreign entity should be treated as first level SDS. Accordingly, an SDS under the first level SDS would be treated as second level SDS and so on and so forth. </li>
-                                <li>13)	In case of ParaXII, the structure of SDS should be in compliance with the structural requirements of the foreign entity i.e the structure of such subsidiary/SDS shall also have limited liability where the foreign entity’s core activity is not in strategic sector. The investee entities of the foreign entity where such foreign entity does not have control may not be treated as SDSs and therefore may not be reported.</li>
-                                <li>14)	In case of Para XII (vi), if the SDS is engaged in the activity of financial services, the investment shall be in compliance to the provisions contained in Para 2 of Schedule I of OI rules.</li>
-                                <li>15)	The activity code as per NIC 1987 and NIC 2008 shall be furnished. </li>
-                                <li>16)	The date may be mentioned in format DD/MM/YYYY format. </li>
-                                <li>17)	The name of the foreign currency (FCY) shall be indicated as per SWIFT code.</li>
-                                <li>18)	Each page of the Form FC should be duly signed and stamped with date by the person resident in India submitting the same. </li>
-                                <li>19)	All amounts of foreign currency (FCY) and Indian Rupees (INR) should be in actuals only. </li>
-                                <li>Note: All amounts should be in actuals. All the figures should be in a single foreign currency (FCY).</li>
+                                <li>5)The person resident in India shall report the details regarding acquisition/
+                                    setting up /winding up/ transfer of an SDS or alteration in the shareholding pattern
+                                    in the foreign entity during the reporting year in the APR, failing which it shall
+                                    amount to non-submission of APR.</li>
+                                <li>6)The person resident in India shall ensure that all the previous year APRs have
+                                    been submitted to the designated AD bank. </li>
+                                <li>7) Capital structure (para III of form APR) should be in cumulative and the % stake
+                                    should be a total of all the persons resident in India in the foreign entity </li>
+                                <li>8) In Para VII the figures under “since commencement of business” should be equal to
+                                    or more than the figure mentioned under current year</li>
+                                <li>9) In Para VII (ii), Redemption of preference shares (not in the nature of
+                                    compulsorily convertible preference shares (CCPS)) should also be reported. </li>
+                                <li>10) In Para VII (vii), other receipts which are not mentioned in the table like
+                                    interest on loan or license fee etc. shall be mentioned. </li>
+                                <li>11) In Para IX, the part of the profits of the foreign entity which is retained and
+                                    reinvested in such foreign entity shall be mentioned. The retained earnings are to
+                                    be calculated as per the procedure laid down by the International Monetary Fund in
+                                    the latest version of their publication “Balance of Payments and International
+                                    Investment Position Manual”. It is to be noted that the negative retained earnings
+                                    is to be treated as ‘0’ (zero).</li>
+                                <li>12) The level of step-down subsidiary (SDS) shall be calculated treating the foreign
+                                    entity as the parent. So, an SDS directly under the foreign entity should be treated
+                                    as first level SDS. Accordingly, an SDS under the first level SDS would be treated
+                                    as second level SDS and so on and so forth. </li>
+                                <li>13) In case of ParaXII, the structure of SDS should be in compliance with the
+                                    structural requirements of the foreign entity i.e the structure of such
+                                    subsidiary/SDS shall also have limited liability where the foreign entity’s core
+                                    activity is not in strategic sector. The investee entities of the foreign entity
+                                    where such foreign entity does not have control may not be treated as SDSs and
+                                    therefore may not be reported.</li>
+                                <li>14) In case of Para XII (vi), if the SDS is engaged in the activity of financial
+                                    services, the investment shall be in compliance to the provisions contained in Para
+                                    2 of Schedule I of OI rules.</li>
+                                <li>15) The activity code as per NIC 1987 and NIC 2008 shall be furnished. </li>
+                                <li>16) The date may be mentioned in format DD/MM/YYYY format. </li>
+                                <li>17) The name of the foreign currency (FCY) shall be indicated as per SWIFT code.
+                                </li>
+                                <li>18) Each page of the Form FC should be duly signed and stamped with date by the
+                                    person resident in India submitting the same. </li>
+                                <li>19) All amounts of foreign currency (FCY) and Indian Rupees (INR) should be in
+                                    actuals only. </li>
+                                <li>Note: All amounts should be in actuals. All the figures should be in a single
+                                    foreign currency (FCY).</li>
                             </ul>
                         </div>
-                        
+
                     </tab>
-                    <tab heading="APR Detail">
+                    <tab heading="APR Detail" id="1">
                         <div class="container-fluid pt-2">
                             <div class="row">
                                 <div class="col-12 mb-2">
                                     <label class="form-label">APR for the period </label> <br>
                                 </div>
                                 <div class="col-4 mb-2">
-                                   
-                                    <label class="form-label">From Date </label>                          
-                                    <input type="date" class="form-control" name="date-field"
-                                        formControlName="APR_From_Date" [class.is-invalid]="aprFormlist.get('APR_From_Date').invalid && (aprFormlist.get('APR_From_Date').dirty ||aprFormlist.get('APR_From_Date').touched)"/>
-                                </div><div class="col-4 mb-2">
-                                    <label class="form-label">To Date </label>                          
-                                    <input type="date" class="form-control" name="date-field"
-                                    formControlName="APR_tO_Date" [class.is-invalid]="aprFormlist.get('APR_tO_Date').invalid && (aprFormlist.get('APR_tO_Date').dirty ||aprFormlist.get('APR_tO_Date').touched)"/>
+
+                                    <label class="form-label">From Date </label>
+                                    <input type="date" class="form-control" name="APR_From_Date"
+                                        formControlName="APR_From_Date"
+                                        [class.is-invalid]="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)">
+                                    <div *ngIf="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_From_Date.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <label class="form-label">To Date </label>
+                                    <input type="date" class="form-control" name="APR_To_Date"
+                                        formControlName="APR_To_Date"
+                                        [class.is-invalid]="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)">
+                                    <div *ngIf="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_To_Date.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-4 mb-2">
                                     <label class="form-label">Unique Identification Number (UIN)
-                                    </label>                       
-                                    <input type="number" class="form-control" formControlName="Unique_Identification_Number" 
-                                        [class.is-invalid]="aprFormlist.get('Unique_Identification_Number').invalid && (aprFormlist.get('Unique_Identification_Number').dirty ||aprFormlist.get('Unique_Identification_Number').touched)">  
-                                
-                                </div> 
+                                    </label>
+                                    <input type="text" class="form-control" name="APR_UIN" formControlName="APR_UIN"
+                                        [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
+                                    <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_UIN.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                        <div *ngIf="APR_UIN.errors?.['minlength']">
+                                            This field must have at least 10 character.
+                                        </div>
+                                        <div *ngIf="APR_UIN.errors?.['maxlength']">
+                                            This field must have at most 20 characters.
+                                        </div>
+                                    </div>
+                                </div>
                                 <hr>
-                                <div class="col-12 mb-2">
-                                    <label class="form-label">Capital structure as on the last day of the accounting year of theforeign entity </label><br>
+                                <div class="row">
+                                    <label class="form-label">Capital structure as on the last day of the accounting
+                                        year of theforeign entity </label><br>
                                 </div>
                                 <div class="col-2 mb-2">
-                                    
+
                                 </div>
-                                
+
                                 <div class="col-5 mb-2">
                                     <label class="form-label">Amount
-                                    </label>                          
+                                    </label>
                                 </div>
                                 <div class="col-5 mb-2">
                                     <label class="form-label">Share(%)
@@ -92,561 +166,1151 @@
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">i)Indian
-                                    </label>                          
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" (blur)="CapitalstructureFE()" formControlName="Cap_Struct_Indian_Amount" [class.is-invalid]="aprFormlist.get('Cap_Struct_Indian_Amount').invalid && (aprFormlist.get('Cap_Struct_Indian_Amount').dirty ||aprFormlist.get('Cap_Struct_Indian_Amount').touched)">
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" (blur)="CapitalstructureFE()"
+                                        formControlName="APR_Indian_Amount" name="APR_Indian_Amount"
+                                        [class.is-invalid]="APR_Indian_Amount.invalid && (APR_Indian_Amount.dirty || APR_Indian_Amount.touched)">
+                                    <div *ngIf="APR_Indian_Amount.invalid && (APR_Indian_Amount.dirty || APR_Indian_Amount.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Indian_Amount.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" disabled formControlName="Cap_Struct_Indian_Share" 
-                                    [class.is-invalid]="aprFormlist.get('Cap_Struct_Indian_Share').invalid && (aprFormlist.get('Cap_Struct_Indian_Share').dirty ||aprFormlist.get('Cap_Struct_Indian_Share').touched)">
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" disabled name="APR_Indian_Share"
+                                        formControlName="APR_Indian_Share"
+                                        [class.is-invalid]="APR_Indian_Share.invalid && (APR_Indian_Share.dirty || APR_Indian_Share.touched)">
+                                    <div *ngIf="APR_Indian_Share.invalid && (APR_Indian_Share.dirty || APR_Indian_Share.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Indian_Share.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="col-2 mb-2">
                                     <label class="form-label">ii)Foreign
-                                    </label>                          
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control"  formControlName="Cap_Struct_Foreign_Amount"  (blur)="CapitalstructureFE()" 
-                                     [class.is-invalid]="aprFormlist.get('Cap_Struct_Foreign_Amount').invalid && (aprFormlist.get('Cap_Struct_Foreign_Amount').dirty ||aprFormlist.get('Cap_Struct_Foreign_Amount').touched)">
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" (blur)="CapitalstructureFE()"
+                                        formControlName="APR_Foreign_Amount" name="APR_Foreign_Amount"
+                                        [class.is-invalid]="APR_Foreign_Amount.invalid && (APR_Foreign_Amount.dirty || APR_Foreign_Amount.touched)">
+                                    <div *ngIf="APR_Foreign_Amount.invalid && (APR_Foreign_Amount.dirty || APR_Foreign_Amount.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Foreign_Amount.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" disabled formControlName="Cap_Struct_Foreign_Share" [class.is-invalid]="aprFormlist.get('Cap_Struct_Foreign_Share').invalid && (aprFormlist.get('Cap_Struct_Foreign_Share').dirty ||aprFormlist.get('Cap_Struct_Foreign_Share').touched)">
-                                </div>
-                                <hr>
-                                <div class="col-12 mb-2">
-                                        <input class="form-check-input" formControlName="IndianEntityResidentIndividualTrust"
-                                         type="radio" id="IndianEntityResidentIndividualTrust" value="Yes" [class.is-invalid]="aprFormlist.get('IndianEntityResidentIndividualTrust').invalid && (aprFormlist.get('IndianEntityResidentIndividualTrust').dirty ||aprFormlist.get('IndianEntityResidentIndividualTrust').touched)" style="cursor:pointer;">
-                                        <label for="flexRadioDefault1">
-                                          Yes
-                                        </label>
-                                        <br>
-                                        <input class="form-check-input" type="radio" formControlName="IndianEntityResidentIndividualTrust"
-                                         id="IndianEntityResidentIndividualTrust" value="No" checked>
-                                        <label for="flexRadioDefault2">
-                                          No
-                                        </label>                        
-                                    <div class="form-check form-check-inline" >
-                                        <label class="form-check-label" for="inlineRadio3">Whether the Indian Entity (IE)/ Resident Individual (RI)/Trust/ Society has control in the foreign entity </label>
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" disabled name="APR_Foreign_Share"
+                                        formControlName="APR_Foreign_Share"
+                                        [class.is-invalid]="APR_Foreign_Share.invalid && (APR_Foreign_Share.dirty || APR_Foreign_Share.touched)">
+                                    <div *ngIf="APR_Foreign_Share.invalid && (APR_Foreign_Share.dirty || APR_Foreign_Share.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Foreign_Share.errors?.['required']">
+                                            This field is required.
+                                        </div>
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="col-12 mb-2">
-                                    <label class="form-label">Change in the share holding pattern during the reporting year (Furnish the updated share holding pattern, if applicable, in the foreign entity)
+                                <div class="col-sm-12 col-xl-8">
+                                    <label class="form-label">Whether the Indian Entity (IE)/ Resident Individual
+                                        (RI)/Trust/ Society has control in the foreign entity
                                     </label>
-                                   
+                                    <div class="clearfix"></div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" required
+                                            formControlName="APR_FE_Control" name="APR_FE_Control" value="Yes"
+                                            [class.is-invalid]="APR_FE_Control.invalid && (APR_FE_Control.dirty || APR_FE_Control.touched)">
+
+                                        <label class="form-check-label" for="APR_FE_Control">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" required
+                                            formControlName="APR_FE_Control" name="APR_FE_Control" value="No"
+                                            [class.is-invalid]="APR_FE_Control.invalid && (APR_FE_Control.dirty || APR_FE_Control.touched)">
+                                        <label class="form-check-label" for="APR_FE_Control">No</label>
+                                    </div>
+
+                                    <div *ngIf="APR_FE_Control.invalid && (APR_FE_Control.dirty || APR_FE_Control.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_FE_Control.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-3 mb-2">
-                                    <label class="form-label">Person resident in India
-                                    </label>                         
-                                </div>
-                                <div class="col-3 mb-2">
-                                    <label class="form-label">Stake(%)
-                                    </label>                           
-                                </div>
-                                <div class="col-3 mb-2">
-                                    <label class="form-label"> Foreign partner(s)
-                                    </label>                       
-                                </div>
-                                <div class="col-3 mb-2">
-                                    <label class="form-label">Stake(%)
-                                </label>              
-                                </div>
-                                <div class="col-3 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="Person_resident_India_1" 
-                                    [class.is-invalid]="aprFormlist.get('Person_resident_India_1').invalid && (aprFormlist.get('Person_resident_India_1').dirty ||aprFormlist.get('Person_resident_India_1').touched)">
-                                </div>  
-                                <div class="col-3 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="Indian_Stake_1"
-                                    [class.is-invalid]="aprFormlist.get('Indian_Stake_1').invalid && (aprFormlist.get('Indian_Stake_1').dirty ||aprFormlist.get('Indian_Stake_1').touched)">
-                                </div> 
-                                <div class="col-3 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="Foreign_partner_1" 
-                                    [class.is-invalid]="aprFormlist.get('Foreign_partner_1').invalid && (aprFormlist.get('Foreign_partner_1').dirty ||aprFormlist.get('Foreign_partner_1').touched)">
-                                </div> 
-                                <div class="col-3 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="Foreign_Stake_1" 
-                                    [class.is-invalid]="aprFormlist.get('Foreign_Stake_1').invalid && (aprFormlist.get('Foreign_Stake_1').dirty ||aprFormlist.get('Foreign_Stake_1').touched)">
-                                </div>    
-                                <div class="col-3 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="Person_resident_India_2" 
-                                    [class.is-invalid]="aprFormlist.get('Person_resident_India_2').invalid && (aprFormlist.get('Person_resident_India_2').dirty ||aprFormlist.get('Person_resident_India_2').touched)">
-                                </div>  
-                                <div class="col-3 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="India_Stake_2" 
-                                    [class.is-invalid]="aprFormlist.get('India_Stake_2').invalid && (aprFormlist.get('India_Stake_2').dirty ||aprFormlist.get('India_Stake_2').touched)">
-                                </div>  
-                                <div class="col-3 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="Foreign_partner_2" 
-                                    [class.is-invalid]="aprFormlist.get('Foreign_partner_2').invalid && (aprFormlist.get('Foreign_partner_2').dirty ||aprFormlist.get('Foreign_partner_2').touched)">
-                                </div>  
-                                <div class="col-3 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="Foreign_Stake_2" 
-                                    [class.is-invalid]="aprFormlist.get('Foreign_Stake_2').invalid && (aprFormlist.get('Foreign_Stake_2').dirty ||aprFormlist.get('Foreign_Stake_2').touched)">
-                                </div>   
-                                <div class="col-3 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="Person_resident_India_3" 
-                                    [class.is-invalid]="aprFormlist.get('Person_resident_India_3').invalid && (aprFormlist.get('Person_resident_India_3').dirty ||aprFormlist.get('Person_resident_India_3').touched)">
-                                </div>  
-                                <div class="col-3 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="India_Stake_3" 
-                                    [class.is-invalid]="aprFormlist.get('India_Stake_3').invalid && (aprFormlist.get('India_Stake_3').dirty ||aprFormlist.get('India_Stake_3').touched)">
-                                </div>  
-                                <div class="col-3 mb-2">                           
-                                    <input type="text" class="form-control" formControlName="Foreign_partner_3" 
-                                    [class.is-invalid]="aprFormlist.get('Foreign_partner_3').invalid && (aprFormlist.get('Foreign_partner_3').dirty ||aprFormlist.get('Foreign_partner_3').touched)">
-                                </div>  
-                                <div class="col-3 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="Foreign_Stake_3" 
-                                    [class.is-invalid]="aprFormlist.get('Foreign_Stake_3').invalid && (aprFormlist.get('Foreign_Stake_3').dirty ||aprFormlist.get('Foreign_Stake_3').touched)">
-                                </div>   
+
+
+                                <table class="table caption-top table-responsive">
+                                    <caption>Change in the share holding pattern during the reporting year (Furnish the
+                                        updated share holding pattern, if applicable, in the foreign entity)
+                                    </caption>
+                                    <thead>
+                                        <tr>
+
+                                            <th scope="col"> Person resident in India
+                                            </th>
+                                            <th scope="col">%stake
+                                            </th>
+                                            <th scope="col">Foreign partner(s)
+                                            </th>
+                                            <th scope="col">%stake
+                                            </th>
+                                            <th scope="col">Total
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let dynamic of ShareHoldingFEArray; let i = index;">
+
+                                            <td>
+                                                <input [(ngModel)]="ShareHoldingFEArray[i].Person"
+                                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                                    type="text" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="ShareHoldingFEArray[i].Pstake"
+                                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                                    type="number" (blur)="onBlur(ShareHoldingFEArray[i])" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="ShareHoldingFEArray[i].ForeignPartner"
+                                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                                    type="text" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="ShareHoldingFEArray[i].FPstake"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    (blur)="onBlur(ShareHoldingFEArray[i])" class="form-control"
+                                                    type="number" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="ShareHoldingFEArray[i].Total"
+                                                    [ngModelOptions]="{standalone: true}" disabled class="form-control"
+                                                    type="text" />
+                                            </td>
+
+                                            <td>
+                                                <button type="button" (click)="addShareHoldingFE()"
+                                                    class="btn btn-outline-primary me-2">+</button>
+                                                <button type="button" *ngIf="ShareHoldingFElength>1"
+                                                    (click)="deleteShareHoldingFE(i)"
+                                                    class="btn btn-outline-primary me-2">-</button>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <td>Total</td>
+                                        <td>{{TotalPstake}}</td>
+                                        <td></td>
+                                        <td>{{TotalFPstake}}</td>
+                                        <td>{{Totalstake}}</td>
+                                    </tfoot>
+                                </table>
+
                                 <hr>
                                 <div class="col-12 mb-2">
-                                    <label class="form-label">Financial Position of the foreign entity for the last two years
-                                    </label>    
+                                    <label class="form-label">Financial Position of the foreign entity for the last two
+                                        years
+                                    </label>
                                 </div>
-                                <div class="col-2 mb-2">         
+                                <div class="col-2 mb-2">
                                 </div>
                                 <div class="col-5 mb-2">
                                     <label class="form-label">Previous Year
-                                   </label>                          
+                                    </label>
                                 </div>
                                 <div class="col-5 mb-2">
                                     <label class="form-label"> Current Year
                                     </label>
                                 </div>
                                 <div class="col-2 mb-2">
-                                    <label class="form-label">i)Net Profit/ (Loss) 
-                                    </label>   
+                                    <label class="form-label">i)Net Profit/ (Loss)
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="FP_NetProfit_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_NetProfit_Previous_Year').invalid && (aprFormlist.get('FP_NetProfit_Previous_Year').dirty ||aprFormlist.get('FP_NetProfit_Previous_Year').touched)">
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" name="APR_Profit_Current"
+                                        formControlName="APR_Profit_Current"
+                                        [class.is-invalid]="APR_Profit_Current.invalid && (APR_Profit_Current.dirty || APR_Profit_Current.touched)">
+                                    <div *ngIf="APR_Profit_Current.invalid && (APR_Profit_Current.dirty || APR_Profit_Current.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Profit_Current.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="FP_NetProfit_Current_Year"
-                                    [class.is-invalid]="aprFormlist.get('FP_NetProfit_Current_Year').invalid && (aprFormlist.get('FP_NetProfit_Current_Year').dirty ||aprFormlist.get('FP_NetProfit_Current_Year').touched)">
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" name="APR_Profit_Last"
+                                        formControlName="APR_Profit_Last"
+                                        [class.is-invalid]="APR_Profit_Last.invalid && (APR_Profit_Last.dirty || APR_Profit_Last.touched)">
+                                    <div *ngIf="APR_Profit_Last.invalid && (APR_Profit_Last.dirty || APR_Profit_Last.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Profit_Last.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-2 mb-2">
                                     <label class="form-label">ii)Dividend
-                                    </label>   
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="FP_Dividend_Previous_Year" [class.is-invalid]="aprFormlist.get('FP_Dividend_Previous_Year').invalid && (aprFormlist.get('FP_Dividend_Previous_Year').dirty ||aprFormlist.get('FP_Dividend_Previous_Year').touched)">
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" name="APR_Dividend_Current"
+                                        formControlName="APR_Dividend_Current"
+                                        [class.is-invalid]="APR_Dividend_Current.invalid && (APR_Dividend_Current.dirty || APR_Dividend_Current.touched)">
+                                    <div *ngIf="APR_Dividend_Current.invalid && (APR_Dividend_Current.dirty || APR_Dividend_Current.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Dividend_Current.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="FP_Dividend_Current_Year" 
-                                    [class.is-invalid]="aprFormlist.get('FP_Dividend_Current_Year').invalid && (aprFormlist.get('FP_Dividend_Current_Year').dirty ||aprFormlist.get('FP_Dividend_Current_Year').touched)">
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" name="APR_Dividend_Last"
+                                        formControlName="APR_Dividend_Last"
+                                        [class.is-invalid]="APR_Dividend_Last.invalid && (APR_Dividend_Last.dirty || APR_Dividend_Last.touched)">
+                                    <div *ngIf="APR_Dividend_Last.invalid && (APR_Dividend_Last.dirty || APR_Dividend_Last.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Dividend_Last.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-2 mb-2">
-                                    <label class="form-label">iii)Net worth 
-                                    </label>   
+                                    <label class="form-label">iii)Net worth
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                           
-                                    <input type="number" class="form-control" formControlName="FP_Networth_Previous_Year"  [class.is-invalid]="aprFormlist.get('FP_Networth_Previous_Year').invalid && (aprFormlist.get('FP_Networth_Previous_Year').dirty ||aprFormlist.get('FP_Networth_Previous_Year').touched)">
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" name="APR_Worth_Current"
+                                        formControlName="APR_Worth_Current"
+                                        [class.is-invalid]="APR_Worth_Current.invalid && (APR_Worth_Current.dirty || APR_Worth_Current.touched)">
+                                    <div *ngIf="APR_Worth_Current.invalid && (APR_Worth_Current.dirty || APR_Worth_Current.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Worth_Current.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                          
-                                    <input type="number" class="form-control" formControlName="FP_Networth_Current_Year"
-                                    [class.is-invalid]="aprFormlist.get('FP_Networth_Current_Year').invalid && (aprFormlist.get('FP_Networth_Current_Year').dirty ||aprFormlist.get('FP_Networth_Current_Year').touched)">
+                                <div class="col-5 mb-2">
+                                    <input type="number" class="form-control" name="APR_Worth_Last"
+                                        formControlName="APR_Worth_Last"
+                                        [class.is-invalid]="APR_Worth_Last.invalid && (APR_Worth_Last.dirty || APR_Worth_Last.touched)">
+                                    <div *ngIf="APR_Worth_Last.invalid && (APR_Worth_Last.dirty || APR_Worth_Last.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Worth_Last.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr>
                                 <div class="col-12 mb-2">
                                     <label class="form-label">Repatriation from the foreign entity
                                     </label>
-                                   
+
                                 </div>
-                                <div class="col-2 mb-2">
-                                     
+                                <div class="col-4 mb-2">
+
                                 </div>
-                                <div class="col-5 mb-2">
+                                <div class="col-4 mb-2">
                                     <label class="form-label">Current Year
-                                    </label>  
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">
+                                <div class="col-4 mb-2">
                                     <label class="form-label"> Since commencement of business
-                                    </label>                         
+                                    </label>
                                 </div>
-                                <div class="col-2 mb-2">
-                                    <label class="form-label">i)Dividend 
-                                    </label>   
+                                <div class="col-4 mb-2">
+                                    <label class="form-label">i)Dividend
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Dividend_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Dividend_CurYear').invalid && (aprFormlist.get('Repat_Dividend_CurYear').dirty ||aprFormlist.get('Repat_Dividend_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" name="APR_Dividend_CurYear"
+                                        formControlName="APR_Dividend_CurYear"
+                                        [class.is-invalid]="APR_Dividend_CurYear.invalid && (APR_Dividend_CurYear.dirty || APR_Dividend_CurYear.touched)">
+                                    <div *ngIf="APR_Dividend_CurYear.invalid && (APR_Dividend_CurYear.dirty || APR_Dividend_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Dividend_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Dividend_commencement" [class.is-invalid]="aprFormlist.get('Repat_Dividend_commencement').invalid && (aprFormlist.get('Repat_Dividend_commencement').dirty ||aprFormlist.get('Repat_Dividend_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_Dividend_commencement" name="APR_Dividend_commencement"
+                                        [class.is-invalid]="APR_Dividend_commencement.invalid && (APR_Dividend_commencement.dirty || APR_Dividend_commencement.touched)">
+                                    <div *ngIf="APR_Dividend_commencement.invalid && (APR_Dividend_commencement.dirty || APR_Dividend_commencement.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Dividend_commencement.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
+                                <div class="col-4 mb-2">
                                     <label class="form-label">ii)Repayment of loan
-                                    </label>   
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Repayment_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Repayment_CurYear').invalid && (aprFormlist.get('Repat_Repayment_CurYear').dirty ||aprFormlist.get('Repat_Repayment_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" name="APR_Repayment_CurYear"
+                                        formControlName="APR_Repayment_CurYear"
+                                        [class.is-invalid]="APR_Repayment_CurYear.invalid && (APR_Repayment_CurYear.dirty || APR_Repayment_CurYear.touched)">
+                                    <div *ngIf="APR_Repayment_CurYear.invalid && (APR_Repayment_CurYear.dirty || APR_Repayment_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Repayment_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Repayment_commencement" [class.is-invalid]="aprFormlist.get('Repat_Repayment_commencement').invalid && (aprFormlist.get('Repat_Repayment_commencement').dirty ||aprFormlist.get('Repat_Repayment_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_Repayment_commencement" name="APR_Repayment_commencement"
+                                        [class.is-invalid]="APR_Repayment_commencement.invalid && (APR_Repayment_commencement.dirty || APR_Repayment_commencement.touched)">
+                                    <div *ngIf="APR_Repayment_commencement.invalid && (APR_Repayment_commencement.dirty || APR_Repayment_commencement.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Repayment_commencement.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
-                                    <label class="form-label">iii)Non-Equity Exports Realised (in INR)  
-                                    </label>   
+                                <div class="col-4 mb-2">
+                                    <label class="form-label">iii)Non-Equity Exports Realised (in INR)
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_EquityExport_CurYear" [class.is-invalid]="aprFormlist.get('Repat_EquityExport_CurYear').invalid && (aprFormlist.get('Repat_EquityExport_CurYear').dirty ||aprFormlist.get('Repat_EquityExport_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_EquityExport_CurYear"
+                                        name="APR_EquityExport_CurYear"
+                                        [class.is-invalid]="APR_EquityExport_CurYear.invalid && (APR_EquityExport_CurYear.dirty || APR_EquityExport_CurYear.touched)">
+                                    <div *ngIf="APR_EquityExport_CurYear.invalid && (APR_EquityExport_CurYear.dirty || APR_EquityExport_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_EquityExport_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_EquityExport_commencement" [class.is-invalid]="aprFormlist.get('Repat_EquityExport_commencement').invalid && (aprFormlist.get('Repat_EquityExport_commencement').dirty ||aprFormlist.get('Repat_EquityExport_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_EquityExport_commencement"
+                                        name="APR_EquityExport_commencement"
+                                        [class.is-invalid]="APR_EquityExport_commencement.invalid && (APR_EquityExport_commencement.dirty || APR_EquityExport_commencement.touched)">
+                                    <div *ngIf="APR_EquityExport_commencement.invalid && (APR_EquityExport_commencement.dirty || APR_EquityExport_commencement.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_EquityExport_commencement.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
-                                    <label class="form-label">iv)Royalties 
-                                    </label>   
+                                <div class="col-4 mb-2">
+                                    <label class="form-label">iv)Royalties
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Royalties_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Royalties_CurYear').invalid && (aprFormlist.get('Repat_Royalties_CurYear').dirty ||aprFormlist.get('Repat_Royalties_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_Royalties_CurYear"
+                                        name="APR_Royalties_CurYear"
+                                        [class.is-invalid]="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)">
+                                    <div *ngIf="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Royalties_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Royalties_commencement" [class.is-invalid]="aprFormlist.get('Repat_Royalties_commencement').invalid && (aprFormlist.get('Repat_Royalties_commencement').dirty ||aprFormlist.get('Repat_Royalties_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_Royalties_commencement" name="APR_Royalties_commencement"
+                                        [class.is-invalid]="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)">
+                                    <div *ngIf="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Royalties_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
-                                    <label class="form-label">v)Technical know-how Fees     
-                                    </label>   
+                                <div class="col-4 mb-2">
+                                    <label class="form-label">v)Technical know-how Fees
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Technical_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Technical_CurYear').invalid && (aprFormlist.get('Repat_Technical_CurYear').dirty ||aprFormlist.get('Repat_Technical_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_Technical_CurYear"
+                                        name="APR_Royalties_commencement"
+                                        [class.is-invalid]="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)">
+                                    <div *ngIf="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Technical_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Technical_commencement" [class.is-invalid]="aprFormlist.get('Repat_Technical_commencement').invalid && (aprFormlist.get('Repat_Technical_commencement').dirty ||aprFormlist.get('Repat_Technical_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_Technical_commencement" name="APR_Technical_commencement"
+                                        [class.is-invalid]="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)">
+                                    <div *ngIf="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Technical_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
-                                    <label class="form-label">vi)Consultancy fees     
-                                    </label>   
+                                <div class="col-4 mb-2">
+                                    <label class="form-label">vi)Consultancy fees
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Consultancyfee_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Consultancyfee_CurYear').invalid && (aprFormlist.get('Repat_Consultancyfee_CurYear').dirty ||aprFormlist.get('Repat_Consultancyfee_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_Consultancyfee_CurYear" name="APR_Consultancyfee_CurYear"
+                                        [class.is-invalid]="APR_Consultancyfee_CurYear.invalid && (APR_Consultancyfee_CurYear.dirty || APR_Consultancyfee_CurYear.touched)">
+                                    <div *ngIf="APR_Consultancyfee_CurYear.invalid && (APR_Consultancyfee_CurYear.dirty || APR_Consultancyfee_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Consultancyfee_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Consultancyfee_commencement" [class.is-invalid]="aprFormlist.get('Repat_Consultancyfee_commencement').invalid && (aprFormlist.get('Repat_Consultancyfee_commencement').dirty ||aprFormlist.get('Repat_Consultancyfee_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_Consultancyfee_commencement"
+                                        name="APR_Consultancyfee_commencement"
+                                        [class.is-invalid]="APR_Consultancyfee_commencement.invalid && (APR_Consultancyfee_commencement.dirty || APR_Consultancyfee_commencement.touched)">
+                                    <div *ngIf="APR_Consultancyfee_commencement.invalid && (APR_Consultancyfee_commencement.dirty || APR_Consultancyfee_commencement.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Consultancyfee_commencement.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
+                                <div class="col-4 mb-2">
                                     <label class="form-label">vii)Others (please specify)
-                                    </label>   
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Others_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Others_CurYear').invalid && (aprFormlist.get('Repat_Others_CurYear').dirty ||aprFormlist.get('Repat_Others_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_Others_CurYear"
+                                        name="APR_Others_CurYear"
+                                        [class.is-invalid]="APR_Others_CurYear.invalid && (APR_Others_CurYear.dirty || APR_Others_CurYear.touched)">
+                                    <div *ngIf="APR_Others_CurYear.invalid && (APR_Others_CurYear.dirty || APR_Others_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Others_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Others_commencement" [class.is-invalid]="aprFormlist.get('Repat_Others_commencement').invalid && (aprFormlist.get('Repat_Others_commencement').dirty ||aprFormlist.get('Repat_Others_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_Others_commencement"
+                                        name="APR_Others_commencement"
+                                        [class.is-invalid]="APR_Others_commencement.invalid && (APR_Others_commencement.dirty || APR_Others_commencement.touched)">
+                                    <div *ngIf="APR_Others_commencement.invalid && (APR_Others_commencement.dirty || APR_Others_commencement.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Others_commencement.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
-                                    <label class="form-label">viii)Profit 
-                                    </label>   
+                                <div class="col-4 mb-2">
+                                    <label class="form-label">viii)Profit
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Profit_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Profit_CurYear').invalid && (aprFormlist.get('Repat_Profit_CurYear').dirty ||aprFormlist.get('Repat_Profit_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_Profit_CurYear"
+                                        name="APR_Profit_CurYear"
+                                        [class.is-invalid]="APR_Profit_CurYear.invalid && (APR_Profit_CurYear.dirty || APR_Profit_CurYear.touched)">
+                                    <div *ngIf="APR_Profit_CurYear.invalid && (APR_Profit_CurYear.dirty || APR_Profit_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Profit_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Profit_commencement" [class.is-invalid]="aprFormlist.get('Repat_Profit_commencement').invalid && (aprFormlist.get('Repat_Profit_commencement').dirty ||aprFormlist.get('Repat_Profit_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_Profit_commencement"
+                                        name="APR_Profit_commencement"
+                                        [class.is-invalid]="APR_Profit_commencement.invalid && (APR_Profit_commencement.dirty || APR_Profit_commencement.touched)">
+                                    <div *ngIf="APR_Profit_commencement.invalid && (APR_Profit_commencement.dirty || APR_Profit_commencement.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Profit_commencement.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
+                                <div class="col-4 mb-2">
                                     <label class="form-label">ix)Retained earnings
-                                    </label>   
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Retained_CurYear" [class.is-invalid]="aprFormlist.get('Repat_Retained_CurYear').invalid && (aprFormlist.get('Repat_Retained_CurYear').dirty ||aprFormlist.get('Repat_Retained_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_Retained_CurYear"
+                                        name="APR_Retained_CurYear"
+                                        [class.is-invalid]="APR_Retained_CurYear.invalid && (APR_Retained_CurYear.dirty || APR_Retained_CurYear.touched)">
+                                    <div *ngIf="APR_Retained_CurYear.invalid && (APR_Retained_CurYear.dirty || APR_Retained_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Retained_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_Retained_commencement" [class.is-invalid]="aprFormlist.get('Repat_Retained_commencement').invalid && (aprFormlist.get('Repat_Retained_commencement').dirty ||aprFormlist.get('Repat_Retained_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_Retained_commencement" name="APR_Retained_commencement"
+                                        [class.is-invalid]="APR_Retained_commencement.invalid && (APR_Retained_commencement.dirty || APR_Retained_commencement.touched)">
+                                    <div *ngIf="APR_Retained_commencement.invalid && (APR_Retained_commencement.dirty || APR_Retained_commencement.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_Retained_commencement.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
-                                    <label class="form-label">x)FDI by foreign entity/ SDS into India 
-                                    </label>   
+                                <div class="col-4 mb-2">
+                                    <label class="form-label">x)FDI by foreign entity/ SDS into India
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_FDIforeign_CurYear" [class.is-invalid]="aprFormlist.get('Repat_FDIforeign_CurYear').invalid && (aprFormlist.get('Repat_FDIforeign_CurYear').dirty ||aprFormlist.get('Repat_FDIforeign_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_FDIforeign_CurYear"
+                                        name="APR_Retained_commencement"
+                                        [class.is-invalid]="APR_FDIforeign_CurYear.invalid && (APR_FDIforeign_CurYear.dirty || APR_FDIforeign_CurYear.touched)">
+                                    <div *ngIf="APR_FDIforeign_CurYear.invalid && (APR_FDIforeign_CurYear.dirty || APR_FDIforeign_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_FDIforeign_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_FDIforeign_commencement" [class.is-invalid]="aprFormlist.get('Repat_FDIforeign_commencement').invalid && (aprFormlist.get('Repat_FDIforeign_commencement').dirty ||aprFormlist.get('Repat_FDIforeign_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_FDIforeign_commencement" name="APR_FDIforeign_commencement"
+                                        [class.is-invalid]="APR_FDIforeign_commencement.invalid && (APR_FDIforeign_commencement.dirty || APR_FDIforeign_commencement.touched)">
+                                    <div *ngIf="APR_FDIforeign_commencement.invalid && (APR_FDIforeign_commencement.dirty || APR_FDIforeign_commencement.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_FDIforeign_commencement.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2 mb-2">
-                                    <label class="form-label">xi)Refund of excess share application money 
+                                <div class="col-4 mb-2">
+                                    <label class="form-label">xi)Refund of excess share application money
                                         @Transaction No.
-                                        
-                                    </label>   
+
+                                    </label>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_exces_sshare_CurYear" [class.is-invalid]="aprFormlist.get('Repat_exces_sshare_CurYear').invalid && (aprFormlist.get('Repat_exces_sshare_CurYear').dirty ||aprFormlist.get('Repat_exces_sshare_CurYear').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control" formControlName="APR_exces_sshare_CurYear"
+                                        name="APR_exces_sshare_CurYear"
+                                        [class.is-invalid]="APR_exces_sshare_CurYear.invalid && (APR_exces_sshare_CurYear.dirty || APR_exces_sshare_CurYear.touched)">
+                                    <div *ngIf="APR_exces_sshare_CurYear.invalid && (APR_exces_sshare_CurYear.dirty || APR_exces_sshare_CurYear.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_exces_sshare_CurYear.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-5 mb-2">                            
-                                    <input type="number" class="form-control" formControlName="Repat_exces_sshare_commencement" [class.is-invalid]="aprFormlist.get('Repat_exces_sshare_commencement').invalid && (aprFormlist.get('Repat_exces_sshare_commencement').dirty ||aprFormlist.get('Repat_exces_sshare_commencement').touched)">
+                                <div class="col-4 mb-2">
+                                    <input type="number" class="form-control"
+                                        formControlName="APR_exces_sshare_commencement"
+                                        name="APR_exces_sshare_commencement"
+                                        [class.is-invalid]="APR_exces_sshare_commencement.invalid && (APR_exces_sshare_commencement.dirty || APR_exces_sshare_commencement.touched)">
+                                    <div *ngIf="APR_exces_sshare_commencement.invalid && (APR_exces_sshare_commencement.dirty || APR_exces_sshare_commencement.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="APR_exces_sshare_commencement.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                    </div>
                                 </div>
-                               <hr>
-                               <div class="col-12 mb-2">  
-                                <label class="form-label">@ Furnish 15 / 17-digit transaction number allotted by Reserve Bank allotted at the time of reporting of remittance in the online OID application.</label>
-                                 </div>
-                                 <hr>
-                                 <div class="col-12 mb-2">  
-                                    <label class="form-label">Furnish the details of acquisition or setting up or winding up or transfer of step-down subsidiary or subsidiaries of foreign entity during the reporting year in the format as provided, if applicable (attach separate sheet if the number of SDS is more than one).</label>
-                                     </div>
-                                     <div class="col-4 mb-2">
-                                        <label class="form-label">i)Name, level and country/jurisdiction name of SDS                                   
-                                        </label>   
+                                <hr>
+
+
+
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="APR SDS" id="2">
+                        <div class="clearfix"></div>
+                        <div class="col-sm-12 mb-2 mt-2">
+                            <label class="form-label">@ Furnish 15 / 17-digit transaction number allotted by Reserve
+                                Bank allotted at the time of reporting of remittance in the online OID
+                                application.</label>
+                        </div>
+                        <hr>
+                        <div class="flex-nowrap my-2 overflow-auto row mt-3">
+                            <div class="col-4">
+                                <div class="col mb-4">
+                                    Name of SDS
+                                </div>
+                                <div class="col mb-4">
+                                    Level of SDS
+                                </div>
+                                <div class="col mb-4">
+                                    Country/Jurisdiction of SDS
+                                </div>
+                                <div class="col mb-4">
+                                    Name of parent SDS/ foreign entity
+                                </div>
+                                <div class="col mb-4">
+                                    Level of parent SDS/ foreign entity
+                                </div>
+                                <div class="col mb-4">
+                                    Country/Jurisdiction of parent SDS/ foreign entity
+                                </div>
+                                <div class="col mb-4">
+                                    Investment amount (if any):
+                                </div>
+                                <div class="col mb-4">
+                                    Date of investment (if any):
+                                </div>
+                                <div class="col mb-4">
+                                    Legal Entity Identifier (LEI) of the SDS
+                                </div>
+                                <div class="col mb-4">
+                                    Type of SDS
+                                </div>
+                                <div class="col mb-4">
+                                    Activity code of SDS as per 1987 NIC code
+                                </div>
+                                <div class="col mb-4">
+                                    Activity code of SDS as per 2008 NIC code
+                                </div>
+                                <div class="col mb-4">
+                                    % stake held by the parent in the SDS
+                                </div>
+                            </div>
+                            <div class="col-3" *ngFor="let dynamic of SDSArray; let i = index;">
+                                <div class="col mb-2">
+                                    <input [(ngModel)]="SDSArray[i].investment_SDS_Name"
+                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                    type="text" />
+                                </div>
+                                <div class="col mb-2">
+                                    
+                                    <select class="form-control"
+                                    [(ngModel)]="SDSArray[i].investment_SDS_Level"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option ng-option value="">Select Level</option>
+                                    <option *ngFor=" let object of sdsleveltypes" value="{{object.id}}">
+                                        {{object.name}}
+                                    </option>
+                                </select>
+                                </div>
+                                <div class="col mb-2">
+                                    <select class="form-control"
+                                    [(ngModel)]="SDSArray[i].investment_SDS_Jurisdiction"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option ng-option value="">Select Jurisdiction Type</option>
+                                    <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
+                                        {{object.name}}
+                                    </option>
+                                </select>
+                                </div>
+                                
+                                <div class="col mb-2">
+                                    <input [(ngModel)]="SDSArray[i].investment_SDS_ParentName"
+                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                    type="text" />
+                                </div>
+                                <div class="col mb-2">
+                                    <select class="form-control"
+                                    [(ngModel)]="SDSArray[i].investment_SDS_ParentLevel"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option ng-option value="">Select Level</option>
+                                    <option *ngFor=" let object of sdsleveltypes" value="{{object.id}}">
+                                        {{object.name}}
+                                    </option>
+                                </select>
+                                </div>
+                                <div class="col mb-2">
+                                    <select class="form-control"
+                                    [(ngModel)]="SDSArray[i].investment_SDS_ParentJurisdiction"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option ng-option value="">Select Jurisdiction Type</option>
+                                    <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
+                                        {{object.name}}
+                                    </option>
+                                </select>
+                                </div>
+                                <div class="col mb-2">
+                                    <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentAmount"
+                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                    type="number" />
+                                </div>
+                                <div class="col mb-2">
+                                    <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentDate"
+                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                    type="date" />
+                                </div>
+                                <div class="col mb-2">
+                                    <input [(ngModel)]="SDSArray[i].investment_SDS_LEI"
+                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                    type="text" />
+                                </div>
+                                <div class="col mb-2">
+                                    <select class="form-control"
+                                                    [(ngModel)]="SDSArray[i].investment_SDS_Type"
+                                                    [ngModelOptions]="{standalone: true}">
+                                                    <option ng-option value="">Select SDS Type</option>
+                                                    <option *ngFor=" let object of sdstypes" value="{{object.id}}">
+                                                        {{object.name}}
+                                                    </option>
+                                                </select>
+                                </div>
+                                <div class="col mb-2">
+                                    <input [(ngModel)]="SDSArray[i].investment_SDS_1987NIC"
+                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                    type="text" />
+                                </div>
+                                <div class="col mb-2">
+                                    <input [(ngModel)]="SDSArray[i].investment_SDS_2008NIC"
+                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                    type="text" />
+                                </div>
+                                <div class="col mb-2">
+                                    <input [(ngModel)]="SDSArray[i].investment_SDS_Stake"
+                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                    type="number" />
+                                </div>
+                                <div>
+                                    <button type="button" (click)="addSDS()"
+                                    class="btn btn-outline-primary me-2">+</button>
+                                <button type="button" *ngIf="SDSlength>1" (click)="deleteSDS(i)"
+                                    class="btn btn-outline-primary me-2">-</button></div>
+                            </div>
+                            <br>
+                        </div>
+                    </tab>
+                    <tab heading="APR Declaration" id="3">
+                        <table class="caption-top table table-borderless">
+                            <caption> Declaration by the Indian entity (IE)/ Resident Individual (RI)</caption>
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">A</th>
+                                    <td [ngClass]="APR_Dec_A.value == true ? 'del' : 'notdel'">
+                                        Acquisition/ setting up/ winding up/transfer of the SDS and changes in the
+                                        shareholding pattern of the foreign entity since last APR have been reported as
+                                        required in terms of Regulation 10(4)(c) of OI Regulations or corresponding
+                                        extant Regulations in case where the reporting is being done under the earlier
+                                        overseas investment framework** as stipulated by the Reserve Bank from time to
+                                        time.
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" value="APR_Dec_A" class="form-check-input" id="APR_Dec_A"
+                                            formControlName="APR_Dec_A"
+                                            [class.is-invalid]="APR_Dec_A.invalid && (APR_Dec_A.dirty || APR_Dec_A.touched)">
+                                        <div *ngIf="APR_Dec_A.invalid && (APR_Dec_A.dirty || APR_Dec_A.touched)"
+                                            class="invalid-feedback">
+                                            <div *ngIf="APR_Dec_A.errors?.['required']">
+                                                This field is required.
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">B</th>
+                                    <td [ngClass]="APR_Dec_B.value == true ? 'del' : 'notdel'"> The structure of SDS is
+                                        in compliance with the structural requirements of the foreign entity as provided
+                                        in OI Rules.
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" value="APR_Dec_B" class="form-check-input" id="APR_Dec_B"
+                                            formControlName="APR_Dec_B"
+                                            [class.is-invalid]="APR_Dec_B.invalid && (APR_Dec_B.dirty || APR_Dec_B.touched)">
+                                        <div *ngIf="APR_Dec_B.invalid && (APR_Dec_B.dirty || APR_Dec_B.touched)"
+                                            class="invalid-feedback">
+                                            <div *ngIf="APR_Dec_B.errors?.['required']">
+                                                This field is required.
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">C</th>
+                                    <td [ngClass]="APR_Dec_C.value == true ? 'del' : 'notdel'">We have received share
+                                        certificate/s (or any other evidence of investment as per the applicable laws of
+                                        the host jurisdiction) and submitted the same to the designated AD bank for
+                                        verification within 6 months of making the remittance/s for all investments/
+                                        capitalization which are reckoned as ODI in the foreign entity under this UIN,
+                                        as per Regulation 9 (1) of OI Regulations or corresponding extant Regulations in
+                                        case where the reporting is being done under the earlier overseas investment
+                                        framework** as stipulated by the Reserve Bank from time to time.
+                                    </td>
+                                    <td> <input type="checkbox" value="APR_Dec_C" class="form-check-input"
+                                            id="APR_Dec_C" formControlName="APR_Dec_C" [class.is-invalid]="APR_Dec_C.invalid && (APR_Dec_C.dirty 
+                                    || APR_Dec_C.touched)">
+                                        <div *ngIf="APR_Dec_C.invalid && (APR_Dec_C.dirty || APR_Dec_C.touched)"
+                                            class="invalid-feedback">
+                                            <div *ngIf="APR_Dec_C.errors?.['required']">
+                                                This field is required.
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">D</th>
+                                    <td [ngClass]="APR_Dec_D.value == true ? 'del' : 'notdel'"> The previous APRs for
+                                        the foreign entity under this UIN, have been filed.
+                                    </td>
+                                    <td> <input type="checkbox" value="APR_Dec_D" class="form-check-input"
+                                            id="APR_Dec_D" formControlName="APR_Dec_D" [class.is-invalid]="APR_Dec_D.invalid && (APR_Dec_D.dirty 
+                                        || APR_Dec_D.touched)">
+                                        <div *ngIf="APR_Dec_D.invalid && (APR_Dec_D.dirty || APR_Dec_D.touched)"
+                                            class="invalid-feedback">
+                                            <div *ngIf="APR_Dec_D.errors?.['required']">
+                                                This field is required.
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">E</th>
+                                    <td [ngClass]="APR_Dec_E.value == true ? 'del' : 'notdel'">Repatriated to India, all
+                                        dues receivable from the foreign entity under this UIN, as required under
+                                        Regulation 9 (4) of OI Regulations or corresponding extant Regulations in case
+                                        where the reporting is being done under the earlier overseas investment
+                                        framework** as stipulated by the Reserve Bank from time to time
+                                    </td>
+                                    <td> <input type="checkbox" value="APR_Dec_E" class="form-check-input"
+                                            id="APR_Dec_E" formControlName="APR_Dec_E" [class.is-invalid]="APR_Dec_E.invalid && (APR_Dec_E.dirty 
+                                        || APR_Dec_E.touched)">
+                                        <div *ngIf="APR_Dec_E.invalid && (APR_Dec_E.dirty || APR_Dec_E.touched)"
+                                            class="invalid-feedback">
+                                            <div *ngIf="APR_Dec_E.errors?.['required']">
+                                                This field is required.
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>
+                                        I/ We hereby certify that the information furnished above are true and correct.
+                                        I/We also duly acknowledge that if any information furnished by me/us is found
+                                        to be false and/or incorrect, it shall be construed that the reporting
+                                        requirements under FEMA, 1999 have not been complied with.
+                                        <div class="row mt-3">
+
+                                            <div class="col-sm-6 col-xl-6">
+                                                <label class="form-label">Signature of the authorized official
+                                                    of the IE approved by
+                                                    the Board/ RI
+                                                </label>
+
+                                                <input type="text" id="APR_Authorized_Signature"
+                                                    name="APR_Authorized_Signature"
+                                                    formControlName="APR_Authorized_Signature"
+                                                    placeholder="Authorized Signature" required minlength="5"
+                                                    maxlength="250" class="form-control form-control-sm"
+                                                    [class.is-invalid]="APR_Authorized_Signature.invalid && (APR_Authorized_Signature.dirty || APR_Authorized_Signature.touched)">
+                                                <div *ngIf="APR_Authorized_Signature.invalid && (APR_Authorized_Signature.dirty || APR_Authorized_Signature.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_Authorized_Signature.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                    <div *ngIf="APR_Authorized_Signature.errors?.['minlength']">
+                                                        This field must have at least 5 character.
+                                                    </div>
+                                                    <div *ngIf="APR_Authorized_Signature.errors?.['maxlength']">
+                                                        This field must have at most 250 characters.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-xl-6">
+                                                <label class="form-label">Name & Designation of the Authorized
+                                                    Official of the IE/
+                                                    RI </label>
+
+                                                <input type="text" id="APR_Authorized_NameDes"
+                                                    name="APR_Authorized_NameDes"
+                                                    formControlName="APR_Authorized_NameDes"
+                                                    placeholder="Authorized Name" required minlength="5" maxlength="250"
+                                                    class="form-control form-control-sm"
+                                                    [class.is-invalid]="APR_Authorized_NameDes.invalid && (APR_Authorized_NameDes.dirty || APR_Authorized_NameDes.touched)">
+                                                <div *ngIf="APR_Authorized_NameDes.invalid && (APR_Authorized_NameDes.dirty || APR_Authorized_NameDes.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_Authorized_NameDes.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                    <div *ngIf="APR_Authorized_NameDes.errors?.['minlength']">
+                                                        This field must have at least 5 character.
+                                                    </div>
+                                                    <div *ngIf="APR_Authorized_NameDes.errors?.['maxlength']">
+                                                        This field must have at most 250 characters.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-xl-6">
+                                                <label for="investment_Individual_Place" class="form-label">
+                                                    Place
+                                                </label>
+                                                <input type="text" id="APR_Dec_Place" name="APR_Dec_Place"
+                                                    formControlName="APR_Dec_Place" placeholder="Place" required
+                                                    minlength="1" maxlength="250" class="form-control form-control-sm"
+                                                    [class.is-invalid]="APR_Dec_Place.invalid && (APR_Dec_Place.dirty || APR_Dec_Place.touched)">
+                                                <div *ngIf="APR_Dec_Place.invalid && (APR_Dec_Place.dirty || APR_Dec_Place.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_Dec_Place.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                    <div *ngIf="APR_Dec_Place.errors?.['minlength']">
+                                                        This field must have at least 1 character.
+                                                    </div>
+                                                    <div *ngIf="APR_Dec_Place.errors?.['maxlength']">
+                                                        This field must have at most 250 characters.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-xl-6">
+                                                <label for="investment_Individual_Date" class="form-label">
+                                                    Date
+                                                </label>
+                                                <input type="date" id="APR_Dec_Date" name="APR_Dec_Date"
+                                                    formControlName="APR_Dec_Date" placeholder="Date" required
+                                                    class="form-control form-control-sm"
+                                                    [class.is-invalid]="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)">
+                                                <div *ngIf="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_Dec_Date.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 col-xl-6">
+                                                <label for="APR_Dec_Telephone" class="form-label">
+                                                    Telephone
+                                                </label>
+                                                <input type="text" id="APR_Dec_Telephone" name="APR_Dec_Telephone"
+                                                    formControlName="APR_Dec_Telephone" placeholder="Telephone" required
+                                                    minlength="1" maxlength="250" class="form-control form-control-sm"
+                                                    [class.is-invalid]="APR_Dec_Telephone.invalid && (APR_Dec_Telephone.dirty || APR_Dec_Telephone.touched)">
+                                                <div *ngIf="APR_Dec_Telephone.invalid && (APR_Dec_Telephone.dirty || APR_Dec_Telephone.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_Dec_Telephone.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                    <div *ngIf="APR_Dec_Telephone.errors?.['minlength']">
+                                                        This field must have at least 10 character.
+                                                    </div>
+                                                    <div *ngIf="investment_Individual_Telephone.errors?.['maxlength']">
+                                                        This field must have at most 250 characters.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-xl-6">
+                                                <label for="APR_Dec_Email" class="form-label">
+                                                    Email
+                                                </label>
+                                                <input type="text" id="APR_Dec_Email" name="APR_Dec_Email"
+                                                    formControlName="APR_Dec_Email" placeholder="Email" required
+                                                    minlength="1" maxlength="250" class="form-control form-control-sm"
+                                                    [class.is-invalid]="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)">
+                                                <div *ngIf="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_Dec_Email.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                    <div *ngIf="investment_Individual_Email.errors?.['minlength']">
+                                                        This field must have at least 1 character.
+                                                    </div>
+                                                    <div *ngIf="investment_Individual_Email.errors?.['maxlength']">
+                                                        This field must have at most 250 characters.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-xl-6">
+                                                <label for="APR_Dec_Stamp" class="form-label"> Stamp/Seal
+                                                </label>
+                                                <input type="text" id="APR_Dec_Stamp" name="APR_Dec_Stamp"
+                                                    formControlName="APR_Dec_Stamp" placeholder="Stamp/Seal" required
+                                                    minlength="1" maxlength="250" class="form-control form-control-sm"
+                                                    [class.is-invalid]="APR_Dec_Stamp.invalid && (APR_Dec_Stamp.dirty || APR_Dec_Stamp.touched)">
+                                                <div *ngIf="APR_Dec_Stamp.invalid && (APR_Dec_Stamp.dirty || APR_Dec_Stamp.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_Dec_Stamp.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                    <div *ngIf="APR_Dec_Stamp.errors?.['minlength']">
+                                                        This field must have at least 1 character.
+                                                    </div>
+                                                    <div *ngIf="APR_Dec_Stamp.errors?.['maxlength']">
+                                                        This field must have at most 250 characters.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                    </tab>
+                    <tab heading="Statutory Auditor/CA Certificate" id="4">
+                        <div class="container-fluid pt-2">
+                            <div class="row">
+                                <div class="card-header">
+                                    <div class="card-header">
+                                        Certificate of the Statutory Auditor (in case of Indian entity) / Chartered
+                                        Accountant in case of resident individuals (strike out whichever is not
+                                        applicable)
                                     </div>
-                                    <div class="col-8 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_jurisdiction_SDS" [class.is-invalid]="aprFormlist.get('Furnish_jurisdiction_SDS').invalid && (aprFormlist.get('Furnish_jurisdiction_SDS').dirty ||aprFormlist.get('Furnish_jurisdiction_SDS').touched)">
-                                    </div>
-                                    <div class="col-4 mb-2">
-                                        <label class="form-label">ii)Name, level and country/jurisdictionname of the parent of SDS                                  
-                                        </label>   
-                                    </div>
-                                    <div class="col-8 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_jurisdiction_ParentSDS" [class.is-invalid]="aprFormlist.get('Furnish_jurisdiction_ParentSDS').invalid && (aprFormlist.get('Furnish_jurisdiction_ParentSDS').dirty ||aprFormlist.get('Furnish_jurisdiction_ParentSDS').touched)">
-                                    </div>
-                                    <div class="col-4 mb-2">
-                                        <label class="form-label">iii)Investment amount and date of investment (if any)                                  
-                                        </label>   
-                                    </div>
-                                    <div class="col-4 mb-2">                            
-                                        <input type="number" class="form-control" formControlName="Furnish_Investment_Amount" [class.is-invalid]="aprFormlist.get('Furnish_Investment_Amount').invalid && (aprFormlist.get('Furnish_Investment_Amount').dirty ||aprFormlist.get('Furnish_Investment_Amount').touched)">
-                                    </div>
-                                    <div class="col-4 mb-2">                                                                 
+                                </div>
+                                <div class="card p-2">
+                                    I/We the Indian entity/ resident individual (wherever applicable) further confirm
+                                    that:
+                                    <ul>
+                                        <li>i.APR for the year ended _______is prepared on the basis of audited/
+                                            unaudited balance sheet of the foreign entity for the year ended _________.
+                                        </li>
+                                        <li>ii.APR for the year ended _______is prepared on the basis of unaudited
+                                            balance sheet of the foreign entity since audit is not mandatory in host
+                                            country/jurisdiction and the IE/RI does not have ‘control’ in the foreign
+                                            entity in compliance with explanation (a) to Regulation 10(4) of Foreign
+                                            Exchange Management (Overseas Investment) Regulations, 2022..
+                                        </li>
+                                        <li>iii.The IE/RI repatriated to India, all dues receivable from the foreign
+                                            entity under this UIN, as required under Regulation 9 (4) of Foreign
+                                            Exchange Management (Overseas Investment) Regulations, 2022 or corresponding
+                                            extant Regulations in case where the reporting is being done under the
+                                            earlier overseas investment framework** as stipulated by the Reserve Bank
+                                            from time to time, and it has been verified from the Foreign Inward
+                                            Remittance Certificate issued by the AD bank/s.</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Signature of the Statutory Auditors /Chartered Accountant
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Name of the audit firm, Registration number and
+                                        UDIN</label>
+                                </div>
+                                <!-- <div class="col-6 mb-2">
+                                    <input type="text" class="form-control"
+                                        formControlName="Signature_Statutory_Auditors"
+                                        [class.is-invalid]="aprFormlist.get('Signature_Statutory_Auditors').invalid && (aprFormlist.get('Signature_Statutory_Auditors').dirty ||aprFormlist.get('Signature_Statutory_Auditors').touched)">
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <input type="text" class="form-control" formControlName="Name_Audit_Firm_UDIN"
+                                        [class.is-invalid]="aprFormlist.get('Name_Audit_Firm_UDIN').invalid && (aprFormlist.get('Name_Audit_Firm_UDIN').dirty ||aprFormlist.get('Name_Audit_Firm_UDIN').touched)">
+                                </div> -->
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Place </label>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Date </label>
+                                </div>
+                                <!-- <div class="col-6 mb-2">
+                                    <input type="text" class="form-control" formControlName="Statutory_Auditors_Place"
+                                        [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Place').invalid && (aprFormlist.get('Statutory_Auditors_Place').dirty ||aprFormlist.get('Statutory_Auditors_Place').touched)">
+                                </div>
+                                <div class="col-6 mb-2">
                                     <input type="date" class="form-control" name="date-field"
-                                        formControlName="Furnish_Investment_Date" [class.is-invalid]="aprFormlist.get('Furnish_Investment_Date').invalid && (aprFormlist.get('Furnish_Investment_Date').dirty ||aprFormlist.get('Furnish_Investment_Date').touched)"/>
-                                </div><div class="col-4 mb-2">
-                                    </div>
-                                    <div class="col-12 mb-2">
-                                        <label class="form-label">iv)                            
-                                        </label>   
-                                    </div>
-                                    <div class="col-4 mb-2">
-                                        <label class="form-label">a)Activity code as per 1987                            
-                                        </label>   
-                                    </div>
-                                    <div class="col-8 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_ActivityCd_1987" [class.is-invalid]="aprFormlist.get('Furnish_ActivityCd_1987').invalid && (aprFormlist.get('Furnish_ActivityCd_1987').dirty ||aprFormlist.get('Furnish_ActivityCd_1987').touched)">
-                                    </div>
-                                    <div class="col-4 mb-2">
-                                        <label class="form-label">b)Activity code as per 2008                            
-                                        </label>   
-                                    </div>
-                                    <div class="col-8 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_ActivityCd_2008" [class.is-invalid]="aprFormlist.get('Furnish_ActivityCd_2008').invalid && (aprFormlist.get('Furnish_ActivityCd_2008').dirty ||aprFormlist.get('Furnish_ActivityCd_2008').touched)">
-                                    </div>
-                                    <div class="col-4 mb-2">
-                                        <label class="form-label">v)% Stake held in SDS                                  
-                                        </label>   
-                                    </div>
-                                    <div class="col-8 mb-2">                            
-                                        <input type="number" class="form-control" formControlName="Furnish_Stake_SDS" [class.is-invalid]="aprFormlist.get('Furnish_Stake_SDS').invalid && (aprFormlist.get('Furnish_Stake_SDS').dirty ||aprFormlist.get('Furnish_Stake_SDS').touched)">
-                                    </div>
-                                    <div class="col-8 mb-2">
-                                        <label class="form-label">vi)Is the activity of SDS into financial services (tick) 
-                                                                            
-                                        </label>   
-                                    </div>
-                                    <div class="col-4 mb-2">
-                                        <input class="form-check-input" formControlName="SDS_financial_services"
-                                        type="radio" id="SDS_financial_services" value="Yes"[class.is-invalid]="aprFormlist.get('SDS_financial_services').invalid && (aprFormlist.get('SDS_financial_services').dirty ||aprFormlist.get('SDS_financial_services').touched)" style="cursor:pointer;">
-                                       <label  for="flexRadioDefault1">
-                                         Yes
-                                       </label>
-                                       <br>
-                                       <input class="form-check-input" type="radio" formControlName="SDS_financial_services"
-                                        id="SDS_financial_services" value="No" checked>
-                                       <label  for="flexRadioDefault2">
-                                         No
-                                       </label> 
-                                    </div>  
-                                    <div class="col-8 mb-2">
-                                        <label class="form-label">vii)Name, level and country/jurisdiction of SDS wound up during the reporting period, wherever applicable                              
-                                        </label>   
-                                    </div>
-                                    <div class="col-4 mb-2">                            
-                                        <input type="text" class="form-control" formControlName="Furnish_jurisdiction_SDSwoundup" [class.is-invalid]="aprFormlist.get('Furnish_jurisdiction_SDSwoundup').invalid && (aprFormlist.get('Furnish_jurisdiction_SDSwoundup').dirty ||aprFormlist.get('Furnish_jurisdiction_SDSwoundup').touched)">
-                                    </div>
-                            </div>
-                        </div>                     
-                    </tab>
-                    <tab heading="APR Declaration">
-                    <div class="container-fluid pt-2">
-                        <div class="row">
-                            <div class="card-header">
-                                Declaration from Indian entity/ resident individual (Strike out whichever is not applicable)
-                            </div>
-                            <div class="card p-2">                              
-                                I/We the Indian entity/ resident individual (wherever applicable) further confirm that:
-                                <ul>
-                                    <li>i) Acquisition/ setting up/ winding up/transfer of the SDS and changes in the shareholding pattern of the foreign entity since last APR have been reported as required in terms of Regulation 10(4)(c) of OI Regulations or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time. </li>
-                                    <li>ii) The structure of SDS is in compliance with the structural requirements of the foreign entity as provided in OI Rules.    
-                                    </li>
-                                    <li>iii) We have received share certificate/s (or any other evidence of investment as per the applicable laws of the host jurisdiction) and submitted the same to the designated AD bank for verification within 6 months of making the remittance/s for all investments/ capitalization which are reckoned as ODI in the foreign entity under this UIN, as per Regulation 9 (1) of OI Regulations or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time.</li>
-                                    <li>iv) The previous APRs for the foreign entity under this UIN, have been filed.</li>
-                                    <li>v) Repatriated to India, all dues receivable from the foreign entity under this UIN, as required under Regulation 9 (4) of OI Regulations or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time..</li>
-                                    <li>vi) I/ We hereby certify that the information furnished above are true and correct. I/We also duly. </li>
-                                    <li><h5>acknowledge that if any information furnished by me/us is found to be false and/or incorrect, it shall be construed that the reporting requirements under FEMA, 1999 have not been complied with.</h5></li>
-                                </ul>
-                            </div>
-                            <hr>
-                            <div class="col-8 mb-2">
-                                <label class="form-label">Signature of the authorized official of the IE approved by the Board/ RI
-                                </label>   
-                            </div>
-                            <div class="col-4 mb-2">                            
-                                <input type="text" class="form-control" formControlName="authorized_official_Signature" [class.is-invalid]="aprFormlist.get('authorized_official_Signature').invalid && (aprFormlist.get('authorized_official_Signature').dirty ||aprFormlist.get('authorized_official_Signature').touched)">
-                            </div>
-                            <div class="col-8 mb-2">
-                                <label class="form-label">Name & Designation of the Authorized Official of the IE/ RI </label>
-                            </div>
-                            <div class="col-4 mb-2">                            
-                                <input type="text" class="form-control" formControlName="authorized_official_NameDesignation" [class.is-invalid]="aprFormlist.get('authorized_official_NameDesignation').invalid && (aprFormlist.get('authorized_official_NameDesignation').dirty ||aprFormlist.get('authorized_official_NameDesignation').touched)">
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Place </label>
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Date </label>
-                            </div>
-                            <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="authorized_official_Place" [class.is-invalid]="aprFormlist.get('authorized_official_Place').invalid && (aprFormlist.get('authorized_official_Place').dirty ||aprFormlist.get('authorized_official_Place').touched)">
-                            </div>                           
-                            <div class="col-6 mb-2">                                                      
-                                <input type="date" class="form-control" name="date-field"
-                                formControlName="authorized_official_To_Date" [class.is-invalid]="aprFormlist.get('authorized_official_To_Date').invalid && (aprFormlist.get('authorized_official_To_Date').dirty ||aprFormlist.get('authorized_official_To_Date').touched)"/>
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Telephone </label>
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Email</label>
-                            </div>
-                            <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="authorized_official_Telephone" [class.is-invalid]="aprFormlist.get('authorized_official_Telephone').invalid && (aprFormlist.get('authorized_official_Telephone').dirty ||aprFormlist.get('authorized_official_Telephone').touched)">
-                            </div>                           
-                            <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" maxlength="250" minlength="1" formControlName="authorized_official_Email" [class.is-invalid]="aprFormlist.get('authorized_official_Email').invalid && (aprFormlist.get('authorized_official_Email').dirty ||aprFormlist.get('authorized_official_Email').touched)">
-                            </div>
-                            <div class="col-8 mb-2">
-                                <label class="form-label">Stamp/seal</label>
-                            </div>
-                            <div class="col-4 mb-2">
-                                <textarea class="form-control" formControlName="authorized_official_Stamp" [class.is-invalid]="aprFormlist.get('authorized_official_Stamp').invalid && (aprFormlist.get('authorized_official_Stamp').dirty ||aprFormlist.get('authorized_official_Stamp').touched)" placeholder="Stamp/ seal" id="floatingTextarea"></textarea>                               
+                                        formControlName="Statutory_Auditors_Date"
+                                        [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Date').invalid && (aprFormlist.get('Statutory_Auditors_Date').dirty ||aprFormlist.get('Statutory_Auditors_Date').touched)" />
+                                </div> -->
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Email</label>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Seal/Stamp</label>
+                                </div>
+                                <!-- <div class="col-6 mb-2">
+                                    <input type="text" class="form-control" formControlName="Statutory_Auditors_Email"
+                                        [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Email').invalid && (aprFormlist.get('Statutory_Auditors_Email').dirty ||aprFormlist.get('Statutory_Auditors_Email').touched)">
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <textarea class="form-control" formControlName="Statutory_Auditors_Stamp"
+                                        [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Stamp').invalid && (aprFormlist.get('Statutory_Auditors_Stamp').dirty ||aprFormlist.get('Statutory_Auditors_Stamp').touched)"
+                                        placeholder="Stamp/seal" id="floatingTextarea"></textarea>
+                                </div> -->
                             </div>
                         </div>
-                    </div>
                     </tab>
-                    <tab heading="Statutory Auditor/CA Certificate" >
+                    <tab heading="AD bank Certificate" id="5">
                         <div class="container-fluid pt-2">
                             <div class="row">
-                            <div class="card-header">
                                 <div class="card-header">
-                                    Certificate of the Statutory Auditor (in case of Indian entity) / Chartered Accountant in case of resident individuals (strike out whichever is not applicable)
+                                    <div class="card-header">
+                                        Certificate by the Authorized Dealer bank
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card p-2">                              
-                                I/We the Indian entity/ resident individual (wherever applicable) further confirm that:
-                                <ul>
-                                    <li>i.APR for the year ended _______is prepared on the basis of audited/ unaudited balance sheet of the foreign entity for the year ended _________. </li>
-                                    <li>ii.APR for the year ended _______is prepared on the basis of unaudited balance sheet of the foreign entity since audit is not mandatory in host country/jurisdiction and the IE/RI does not have ‘control’ in the foreign entity in compliance with explanation (a) to Regulation 10(4) of Foreign Exchange Management (Overseas Investment) Regulations, 2022..    
-                                    </li>
-                                    <li>iii.The IE/RI repatriated to India, all dues receivable from the foreign entity under this UIN, as required under Regulation 9 (4) of Foreign Exchange Management (Overseas Investment) Regulations, 2022 or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time, and it has been verified from the Foreign Inward Remittance Certificate issued by the AD bank/s.</li>    
-                                </ul>
-                            </div>
-                            <hr>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Signature of the Statutory Auditors /Chartered Accountant                                  
-                                </label>   
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Name of the audit firm, Registration number and UDIN</label>
-                            </div>
-                            <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Signature_Statutory_Auditors" [class.is-invalid]="aprFormlist.get('Signature_Statutory_Auditors').invalid && (aprFormlist.get('Signature_Statutory_Auditors').dirty ||aprFormlist.get('Signature_Statutory_Auditors').touched)">
-                            </div>                           
-                            <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Name_Audit_Firm_UDIN" [class.is-invalid]="aprFormlist.get('Name_Audit_Firm_UDIN').invalid && (aprFormlist.get('Name_Audit_Firm_UDIN').dirty ||aprFormlist.get('Name_Audit_Firm_UDIN').touched)">
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Place </label>
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Date </label>
-                            </div>
-                            <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Statutory_Auditors_Place" [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Place').invalid && (aprFormlist.get('Statutory_Auditors_Place').dirty ||aprFormlist.get('Statutory_Auditors_Place').touched)">
-                            </div>                           
-                            <div class="col-6 mb-2">                                                      
-                                <input type="date" class="form-control" name="date-field"
-                                formControlName="Statutory_Auditors_Date" [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Date').invalid && (aprFormlist.get('Statutory_Auditors_Date').dirty ||aprFormlist.get('Statutory_Auditors_Date').touched)"/>
-                            </div>           
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Email</label>
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Seal/Stamp</label>
-                            </div>
-                            <div class="col-6 mb-2">                            
-                                <input type="text" class="form-control" formControlName="Statutory_Auditors_Email" [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Email').invalid && (aprFormlist.get('Statutory_Auditors_Email').dirty ||aprFormlist.get('Statutory_Auditors_Email').touched)">
-                            </div>                                                     
-                            <div class="col-4 mb-2">
-                                <textarea class="form-control" formControlName="Statutory_Auditors_Stamp" [class.is-invalid]="aprFormlist.get('Statutory_Auditors_Stamp').invalid && (aprFormlist.get('Statutory_Auditors_Stamp').dirty ||aprFormlist.get('Statutory_Auditors_Stamp').touched)" placeholder="Stamp/seal" id="floatingTextarea"></textarea>                               
-                            </div>
+                                <div class="card p-2">
+                                    I/We the Indian entity/ resident individual (wherever applicable) further confirm
+                                    that:
+                                    <ul>
+                                        <li>i.In terms of Regulation 9 (1) of OI Regulations, the AD Bank has received
+                                            the share certificate/s or any other document as evidence of investment as
+                                            per the applicable laws of the host jurisdiction and we are satisfied about
+                                            the bonafides of the documents so received. </li>
+                                        <li>ii.The duly filled in Form (Annual Performance Report) was submitted by the
+                                            Indian entity/resident individual on ___________ day of ___________ (month)
+                                            ________________________ (year).
+                                        </li>
+                                        <li>iii.All the previous year APRs submitted by the(Name of theIndian entity/
+                                            resident individual) have been reported in the online OID application.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Signature of the Authorized Official of the AD
+                                        bank...................................................................
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Name and designation of the AD bank
+                                        official...................................................................
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-2">
+
+                                </div>
+                                <div class="col-6 mb-2">
+
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label
+                                        class="form-label">Place...................................................................
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label class="form-label">Date
+                                        ................................................................... </label>
+                                </div>
+                                <div class="col-6 mb-2">
+
+                                </div>
+                                <div class="col-6 mb-2">
+
+                                </div>
+                                <div class="col-8 mb-2">
+                                    <label
+                                        class="form-label">Stamp/seal...................................................................
+                                    </label>
+                                </div>
+                                <div class="col-4 mb-2">
+
+                                </div>
+                                <div class="col-lg-10 text-center">
+                                    <input type="button" value="Submit" (click)="onSubmitAPRFrom()" class="btn btn-primary">
+                                </div>
+
                             </div>
                         </div>
                     </tab>
-                    <tab heading="AD bank Certificate" >
-                        <div class="container-fluid pt-2">
-                            <div class="row">
-                            <div class="card-header">
-                                <div class="card-header">
-                                    Certificate by the Authorized Dealer bank
-                                </div>
-                            </div>
-                            <div class="card p-2">                              
-                                I/We the Indian entity/ resident individual (wherever applicable) further confirm that:
-                                <ul>
-                                    <li>i.In terms of Regulation 9 (1) of OI Regulations, the AD Bank has received the share certificate/s or any other document as evidence of investment as per the applicable laws of the host jurisdiction and we are satisfied about the bonafides of the documents so received. </li>
-                                    <li>ii.The duly filled in Form (Annual Performance Report) was submitted by the Indian entity/resident individual on ___________ day of ___________ (month) ________________________ (year).    
-                                    </li>
-                                    <li>iii.All the previous year APRs submitted by the(Name of theIndian entity/ resident individual) have been reported in the online OID application.</li>    
-                                </ul>
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Signature of the Authorized Official of the AD bank...................................................................                                  
-                                </label>   
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Name and designation of the AD bank official................................................................... </label>
-                            </div>
-                            <div class="col-6 mb-2">                            
-                               
-                            </div>                           
-                            <div class="col-6 mb-2">                            
-                               
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Place...................................................................  </label>
-                            </div>
-                            <div class="col-6 mb-2">
-                                <label class="form-label">Date ................................................................... </label>
-                            </div>
-                            <div class="col-6 mb-2">                            
-                                
-                            </div>                           
-                            <div class="col-6 mb-2">                                                      
-                                
-                            </div> 
-                            <div class="col-8 mb-2">
-                                <label class="form-label">Stamp/seal................................................................... </label>
-                            </div>
-                            <div class="col-4 mb-2">
-                               
-                            </div>                          
-                            <div class="col-lg-10 text-center">
-                                <input type="submit" value="Submit" class="btn btn-primary">
-                            </div> 
-                            <div class="col-lg-10 text-right">
-                                <input  value="Generate PDF" (click)="generatePDF()" class="btn btn-primary">
-                            </div>
-                            </div>
+                    <tab heading="Preview" id="6">
+                        <div class="col-lg-10 text-right">
+                            <!-- <input value="Generate PDF" (click)="generatePDF()" class="btn btn-primary"> -->
                         </div>
-                    </tab>                      
+                    </tab>
                 </tabset>
+                <div>
+                   
+                    <button class="btn btn-sm btn-primary mb-3" *ngIf="btnShow" (click)="updatePrev()"> Previous </button>
+                    <button class="btn btn-sm btn-primary mb-3" *ngIf="btnShowNext" (click)="updateNext()"> Next </button>
+                    </div>
             </form>
         </div>
     </div>

@@ -18,13 +18,9 @@ npm install html-to-pdfmake
 npm install jspdf --save     
 ## Command For Tab bootstrap................
 npm install ngx-bootstrap
-<<<<<<< HEAD
+
 ## Command For Tab bootstrap................
 npm i ng-multiselect-dropdown
-npm i tslib
-=======
-
 ## Upload Excel File
 npm install xlsx
 
->>>>>>> c9cf4aef1435b2e69934152335d849cc4f822d3f

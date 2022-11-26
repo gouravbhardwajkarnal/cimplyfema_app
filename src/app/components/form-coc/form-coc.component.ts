@@ -69,7 +69,12 @@ export class FormCocComponent implements OnInit {
   filteredsubmodule: any;
   onModuleSelect(selectedModule) {
     debugger;
-    this.COC_FDIFormDiv=true;
+    if(selectedModule.id==1)
+    {
+    this.COC_FDIFormDiv=true;}
+    else{
+    this.COC_FDIFormDiv=false;
+    }
     this.filteredsubmodule = this.submodules.filter(item => item.moduleid === Number(selectedModule.id));
   }
   onSubModuleSelect(selectedSubModule,val)

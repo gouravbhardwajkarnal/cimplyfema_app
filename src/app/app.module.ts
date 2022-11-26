@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { EmployeeCreateComponent } from './components/employee-create/employee-create.component';
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -53,7 +53,8 @@ import { FormCocComponent } from './components/form-coc/form-coc.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [CommonService],
   bootstrap: [AppComponent],

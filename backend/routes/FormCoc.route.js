@@ -1,22 +1,22 @@
 const express = require('express')
 const app = express()
-const esopRoute = express.Router()
+const CocRoute = express.Router()
 
 // CocModel model
-let FromCoc = require('../models/FormCoc')
+ let FromCoc = require('../models/FormCoc')
 
-// Add CocModel
-esopRoute.route('/createCoc').post((req, res, next) => {
-  console.log(req.body);
-    FromEsop.create(req.body, (error, data) => {
-      console.log(data);
-    if (error) {
-      return next(error)
-    } else {
-      res.json(data)
-    }
-  })
-})
+// // Add CocModel
+// cocRoute.route('/createCoc').post((req, res, next) => {
+//   console.log(req.body);
+//   cocRoute.create(req.body, (error, data) => {
+//       console.log(data);
+//     if (error) {
+//       return next(error)
+//     } else {
+//       res.json(data)
+//     }
+//   })
+// })
 
 
 // Get All CocModel

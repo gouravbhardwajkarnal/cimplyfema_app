@@ -8,6 +8,6 @@ let FormCoc = new Schema({
     OPI_Sec_A_PAN: { type: String},
     
 }, {
-    collection: 'formopi'
+    collection: 'FormCoc'
  })
- module.exports = mongoose.model('FormOpi', FormOpi)
+ module.exports = mongoose.model('FormCoc', FormCoc)

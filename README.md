@@ -23,4 +23,6 @@ npm install ngx-bootstrap
 npm i ng-multiselect-dropdown
 ## Upload Excel File
 npm install xlsx
+## Command For Stepper
+npm i angular-material
 

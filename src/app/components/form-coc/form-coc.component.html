@@ -1,4 +1,5 @@
-<div clas="container" style="margin-left: 20px;margin-right: -6px;" >
+ 
+ <div clas="container" style="margin-left: 20px;margin-right: -6px;" >
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,136 +23,6 @@
   </div>
 </nav>
 </div>
-<style>
- html {
-	-webkit-font-smoothing: antialiased!important;
-	-moz-osx-font-smoothing: grayscale!important;
-	-ms-font-smoothing: antialiased!important;
-}
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-size:16px;
-  color:#555555; 
-}
-.md-stepper-horizontal {
-	display:table;
-	width:100%;
-	margin:0 auto;
-	background-color:#FFFFFF;
-	box-shadow: 0 3px 8px -6px rgba(0,0,0,.50);
-}
-.md-stepper-horizontal .md-step {
-	display:table-cell;
-	position:relative;
-	padding:24px;
-}
-.md-stepper-horizontal .md-step:hover,
-.md-stepper-horizontal .md-step:active {
-	background-color:rgba(0,0,0,0.04);
-}
-.md-stepper-horizontal .md-step:active {
-	border-radius: 15% / 75%;
-}
-.md-stepper-horizontal .md-step:first-child:active {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-}
-.md-stepper-horizontal .md-step:last-child:active {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-.md-stepper-horizontal .md-step:hover .md-step-circle {
-	background-color:#757575;
-}
-.md-stepper-horizontal .md-step:first-child .md-step-bar-left,
-.md-stepper-horizontal .md-step:last-child .md-step-bar-right {
-	display:none;
-}
-.md-stepper-horizontal .md-step .md-step-circle {
-	width:30px;
-	height:30px;
-	margin:0 auto;
-	background-color:#999999;
-	border-radius: 50%;
-	text-align: center;
-	line-height:30px;
-	font-size: 16px;
-	font-weight: 600;
-	color:#FFFFFF;
-}
-.md-stepper-horizontal.green .md-step.active .md-step-circle {
-	background-color:#00AE4D;
-}
-.md-stepper-horizontal.orange .md-step.active .md-step-circle {
-	background-color:#F96302;
-}
-.md-stepper-horizontal .md-step.active .md-step-circle {
-	background-color: rgb(33,150,243);
-}
-.md-stepper-horizontal .md-step.done .md-step-circle:before {
-	font-family:'FontAwesome';
-	font-weight:100;
-	content: "\f00c";
-}
-.md-stepper-horizontal .md-step.done .md-step-circle *,
-.md-stepper-horizontal .md-step.editable .md-step-circle * {
-	display:none;
-}
-.md-stepper-horizontal .md-step.editable .md-step-circle {
-	-moz-transform: scaleX(-1);
-	-o-transform: scaleX(-1);
-	-webkit-transform: scaleX(-1);
-	transform: scaleX(-1);
-}
-.md-stepper-horizontal .md-step.editable .md-step-circle:before {
-	font-family:'FontAwesome';
-	font-weight:100;
-	content: "\f040";
-}
-.md-stepper-horizontal .md-step .md-step-title {
-	margin-top:16px;
-	font-size:16px;
-	font-weight:600;
-}
-.md-stepper-horizontal .md-step .md-step-title,
-.md-stepper-horizontal .md-step .md-step-optional {
-	text-align: center;
-	color:rgba(0,0,0,.26);
-}
-.md-stepper-horizontal .md-step.active .md-step-title {
-	font-weight: 600;
-	color:rgba(0,0,0,.87);
-}
-.md-stepper-horizontal .md-step.active.done .md-step-title,
-.md-stepper-horizontal .md-step.active.editable .md-step-title {
-	font-weight:600;
-}
-.md-stepper-horizontal .md-step .md-step-optional {
-	font-size:12px;
-}
-.md-stepper-horizontal .md-step.active .md-step-optional {
-	color:rgba(0,0,0,.54);
-}
-.md-stepper-horizontal .md-step .md-step-bar-left,
-.md-stepper-horizontal .md-step .md-step-bar-right {
-	position:absolute;
-	top:36px;
-	height:1px;
-	border-top:1px solid #DDDDDD;
-}
-.md-stepper-horizontal .md-step .md-step-bar-right {
-	right:0;
-	left:50%;
-	margin-left:20px;
-}
-.md-stepper-horizontal .md-step .md-step-bar-left {
-	left:0;
-	right:50%;
-	margin-right:20px;
-}
-
-</style>
-
  <div clas="container" style="margin-left:111px;" >
     <div class="row mt-3">
       <div class="col-sm-12 col-xl-4">
@@ -181,7 +52,6 @@ body {
       </div>
  
     </div>
-   
     <table class="table table-striped table-no-bordered table-hover">
       <thead>
         <tr>
@@ -206,1771 +76,731 @@ body {
     <br>
     <br>
     <div class="md-stepper-horizontal orange" >
-      <div class="md-step active "(click)="RBI_FDISubmit('0')">
+      <div class=" md-step active"(click)="RBI_FDISubmit('1')">
         <div class="md-step-circle"><span>1</span></div>
-        <div class="md-step-title">RBI Covering Letter
+        <div class="md-step-title">Instructions/Checklist
           </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-      <div class="md-step active" id="Colour" (click)="RBI_FDISubmit('1')">
+      <div class="md-step active" id="Colour" (click)="RBI_FDISubmit('2')">
         <div class="md-step-circle"><span>2</span></div>
-        <div class="md-step-title">Form for Compounding</div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
-      </div>
-      <div class="md-step active" (click)="RBI_FDISubmit('2')">
-        <div class="md-step-circle"><span>3</span></div>
-        <div class="md-step-title">Submissions
-          </div>
+        <div class="md-step-title">Applicant Details</div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
       <div class="md-step active" (click)="RBI_FDISubmit('3')">
-        <div class="md-step-circle"><span>4</span></div>
-        <div class="md-step-title">Declaration
-        </div>
+        <div class="md-step-circle"><span>3</span></div>
+        <div class="md-step-title">Compounding Details
+          </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
-     
       <div class="md-step active" (click)="RBI_FDISubmit('4')">
-        <div class="md-step-circle"><span>5</span></div>
-        <div class="md-step-title">Letter of authority
+        <div class="md-step-circle"><span>4</span></div>
+        <div class="md-step-title">Compounding Submissions
         </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
       <div class="md-step active" (click)="RBI_FDISubmit('5')">
-        <div class="md-step-circle"><span>6</span></div>
-        <div class="md-step-title">Undertaking
+        <div class="md-step-circle"><span>5</span></div>
+        <div class="md-step-title">FDI/ODI/ECB/LO BO PO Form Details
         </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
       <div class="md-step active" (click)="RBI_FDISubmit('6')">
-        <div class="md-step-circle"><span>7</span></div>
-        <div class="md-step-title">ECS Mandate Letter
-        </div>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
-      </div>
-      <div class="md-step active" (click)="RBI_FDISubmit('7')">
-        <div class="md-step-circle"><span>8</span></div>
+        <div class="md-step-circle"><span>6</span></div>
         <div class="md-step-title">Documents Preview & Annexures
         </div>
         <div class="md-step-bar-left"></div>
         <div class="md-step-bar-right"></div>
       </div>
+      <div class="md-step active" (click)="RBI_FDISubmit('7')">
+        <div class="md-step-circle"><span>7</span></div>
+        <div class="md-step-title">Other Annexures
+        </div>
+        <div class="md-step-bar-left"></div>
+        <div class="md-step-bar-right"></div>
+      </div>
     </div>
- 
  <form [formGroup]="COC_FDIForm" #form="ngForm" *ngIf="COC_FDIFormDiv">
  <div class="container-fluid position-relative d-flex p-0">
-  <div class="container-fluid pt-4 px-4" *ngIf="COC_FDICoverLetter">
+  <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIInstructions">
     <p>Loream Graph networks are a new machine learning (ML) paradigm that supports both relational reasoning and combinatorial generalization. Here, we develop universal MatErials Graph Network (MEGNet) models for accurate property prediction in both molecules and crystals. We demonstrate that the MEGNet models outperform prior ML models such as the SchNet in 11 out of 13 properties of the QM9 molecule data set. Similarly, we show that MEGNet models trained on ∼60 000 crystals in the Materials Project substantially outperform prior ML models in the prediction of the formation energies, band gaps, and elastic moduli of crystals, achieving better than density functional theory accuracy over a much larger data set. We present two new strategies to address data limitations common in materials science and chemistry. First, we demonstrate a physically intuitive approach to unify four separate molecular MEGNet models for the internal energy at 0 K and room temperature, enthalpy, and Gibbs free energy into a single free energy MEGNet model by incorporating the temperature, pressure, and entropy as global state inputs. Second, we show that the learned element embeddings in MEGNet models encode periodic chemical trends and can be transfer-learned from a property model trained on a larger data set (formation energies) to improve property models with smaller amounts of data (band gaps and elastic moduli).</p>
-          <button type="button" (click)="RBI_FDISubmit('1')" class="btn btn-primary">Next</button>
+    <p>Graph networks are a new machine learning (ML) paradigm that supports both relational reasoning and combinatorial generalization. Here, we develop universal MatErials Graph Network (MEGNet) models for accurate property prediction in both molecules and crystals. We demonstrate that the MEGNet models outperform prior ML models such as the SchNet in 11 out of 13 properties of the QM9 molecule data set. Similarly, we show that MEGNet models trained on ∼60 000 crystals in the Materials Project substantially outperform prior ML models in the prediction of the formation energies, band gaps, and elastic moduli of crystals, achieving better than density functional theory accuracy over a much larger data set. We present two new strategies to address data limitations common in materials science and chemistry. First, we demonstrate a physically intuitive approach to unify four separate molecular MEGNet models for the internal energy at 0 K and room temperature, enthalpy, and Gibbs free energy into a single free energy MEGNet model by incorporating the temperature, pressure, and entropy as global state inputs. Second, we show that the learned element embeddings in MEGNet models encode periodic chemical trends and can be transfer-learned from a property model trained on a larger data set (formation energies) to improve property models with smaller amounts of data (band gaps and elastic moduli).</p>
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">
+        Yes I Agree With your Terms and Conditions.
+    </label><br>
+    <button type="button" (click)="RBI_FDISubmit('2')" class="btn btn-primary">Next</button>
+  </div> 
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIApplicantDetails">
+    <div class="container-fluid position-relative d-flex p-0">
+        <div class="container-fluid pt-2">
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">A.Business Profile</li>
+                  </ul>              
+                <div class="col-4 mb-2">
+                    <label class="form-label">Company/Entity/Individual Name
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div> 
+                <div class="col-4 mb-2">
+                    <label class="form-label">Date of Incorporation/Registration
+                    </label>
+                    <input type="date" class="form-control" name="date-field"
+                        formControlName="Date_Resolution"
+                        [class.is-invalid]="esopFormlist.get('Date_Resolution').invalid && (esopFormlist.get('Date_Resolution').dirty ||esopFormlist.get('Date_Resolution').touched)" />
+                </div>  
+                <div class="col-4 mb-2">
+                    <label class="form-label">PAN Number
+                    </label>
+                    <input type="text" class="form-control" formControlName="PanNo"
+                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
+                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                            This field is required.
+                        </div>
+                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                            Invalid PAN Number Format
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 mb-2">
+                    <label class="form-label">CIN Number
+                    </label>
+                    <input type="text" class="form-control" formControlName="PanNo"
+                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
+                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                            This field is required.
+                        </div>
+                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                            Invalid PAN Number Format
+                        </div>
+                    </div>
+                </div>                  
+            </div>
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">B.Registered Office Address</li>
+                  </ul>              
+                <div class="col-4 mb-2">
+                    <label class="form-label">Flat/Building Number
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div>            
+                <div class="col-4 mb-2">
+                    <label class="form-label">Floor Number
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div>    
+                <div class="col-4 mb-2">
+                    <label class="form-label">Name of the Premises/Building
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div>    
+                <div class="col-4 mb-2">
+                    <label class="form-label">Road / Street
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div>    
+                <div class="col-4 mb-2">
+                    <label class="form-label">City/Town/Locality/Village
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div>    
+                <div class="col-4 mb-2">
+                    <label class="form-label">State
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div>    
+                <div class="col-4 mb-2">
+                    <label class="form-label">Pin-code
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div>  
+            </div>                          
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">C.Contact Information</li>
+                  </ul>              
+                <div class="col-4 mb-2">
+                    <label class="form-label">Office Email Address
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div>               
+                <div class="col-4 mb-2">
+                    <label class="form-label">Mobile Number
+                    </label>
+                    <input type="text" class="form-control" formControlName="PanNo"
+                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
+                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                            This field is required.
+                        </div>
+                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                            Invalid PAN Number Format
+                        </div>
+                    </div>
+                </div>  
+                <div class="col-4 mb-2">
+                    <label class="form-label">Office Telephone Number (with STD Code)
+                    </label>
+                    <input type="text" class="form-control" formControlName="PanNo"
+                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
+                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                            This field is required.
+                        </div>
+                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                            Invalid PAN Number Format
+                        </div>
+                    </div>
+                </div>                    
+                <div class="col-4 mb-2">
+                    <label class="form-label">Office FAX Number (with STD Code)
+                    </label>
+                    <input type="text" class="form-control" formControlName="PanNo"
+                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
+                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                            This field is required.
+                        </div>
+                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                            Invalid PAN Number Format
+                        </div>
+                    </div>
+                </div>    
+            </div>
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">D.Authorised Signatory</li>
+                  </ul>              
+                <div class="col-4 mb-2">
+                    <label class="form-label">Name of the Person
+                    </label>
+                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                        class="invalid-feedback">
+                        This field is required.
+                    </div>
+                </div> 
+                <div class="col-4 mb-2">
+                    <label class="form-label">Address of the Person
+                    </label>
+                    <input type="text" class="form-control" formControlName="PanNo"
+                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
+                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                            This field is required.
+                        </div>
+                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                            Invalid PAN Number Format
+                        </div>
+                    </div>
+                </div>      
+                <div class="col-4 mb-2">
+                    <label class="form-label">PAN Number
+                    </label>
+                    <input type="text" class="form-control" formControlName="PanNo"
+                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
+                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                            This field is required.
+                        </div>
+                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                            Invalid PAN Number Format
+                        </div>
+                    </div>
+                </div>      
+                
+                <div class="col-4 mb-2">
+                    <label class="form-label">Designation / Status
+                    </label>
+                    <select class="form-select" formControlName="Applicable_Sectoral_Cap"
+                        [class.is-invalid]="esopFormlist.get('Applicable_Sectoral_Cap').invalid && (esopFormlist.get('Applicable_Sectoral_Cap').dirty ||esopFormlist.get('Applicable_Sectoral_Cap').touched)">
+                        <option value="Director">Director</option>
+                        <option value="Managing Director">Managing Director</option>
+                        <option value="Company Secretary">Company Secretary</option>
+                        <option value="Chief Legal Officer">Chief Legal Officer</option>
+                        <option value="Chief Executive Officer">Chief Executive Officer</option>
+                        <option value="Chief Operations Officer">Chief Operations Officer</option>
+                        <option value="Chief Financial Officer">Chief Financial Officer</option>
+                        <option value="Finance Manager">Finance Manager</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Authorised Signatory">Authorised Signatory</option>
+                    </select>
+                </div>          
+            </div>
+        </div>
+    </div>
+<button type="button" (click)="RBI_FDISubmit('3')" class="btn btn-primary">Next</button> 
+</div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDICompoundingDetails">
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">A.Business Activities with NIC Code</li>
+          </ul>  
+          <div class="col-2 mb-2">
+            <label class="form-check-label" for="flexSwitchCheckChecked">NIC Code & Description</label>
+          </div>        
+        <div class="col-4 mb-2">
+           <!-- Button trigger modal -->
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   </div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDICompound">
-  
-  <table class="table table-striped table-bordered caption-top table-responsive">
-    <caption>Particulars of existing foreign entities of the IE/ RI/ group company/ Trust/
-        Society
-        already in operation or under implementation
-    </caption>
-    <thead>
-        <tr>
-
-            <th scope="col">Name of foreign entity
-
-            </th>
-            <th scope="col">Unique Identification Number (UIN) allotted by Reserve Bank
-
-            </th>
-            <th scope="col"> Name of the designated AD bank
-
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let dynamic of PEFEntityArray; let i = index;">
-
-            <td>
-                <input [(ngModel)]="PEFEntityArray[i].NameFE"
-                    [ngModelOptions]="{standalone: true}" class="form-control"
-                    type="text" />
-            </td>
-            <td>
-                <input [(ngModel)]="PEFEntityArray[i].UIN"
-                    [ngModelOptions]="{standalone: true}" class="form-control"
-                    type="text" />
-            </td>
-            <td>
-                <input [(ngModel)]="PEFEntityArray[i].BankName"
-                    [ngModelOptions]="{standalone: true}" class="form-control"
-                    type="text" />
-            </td>
-            <td>
-                <button type="button" (click)="addPEFEntity()"
-                    class="btn btn-outline-primary me-2">+</button>
-                <button type="button" *ngIf="PEFEntitylength>1" (click)="deletePEFEntity(i)"
-                    class="btn btn-outline-primary me-2">-</button>
-
-            </td>
-        </tr>
-    </tbody>
-</table>
-<table class="table table-striped table-bordered">
-  <thead>
-      <tr>
-
-          <th scope="col">Activity code of IE (1987)
-              Class + Description
-
-
-          </th>
-          <th scope="col">Activity code of IE (2008)
-              Class + Description
-
-
-          </th>
-          <th></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
-
-          <td>
-              <input [(ngModel)]="CodeClassArray[i].Description1987"
-                  [ngModelOptions]="{standalone: true}" class="form-control"
-                  type="text" />
-          </td>
-          <td>
-              <input [(ngModel)]="CodeClassArray[i].Description2008"
-                  [ngModelOptions]="{standalone: true}" class="form-control"
-                  type="text" />
-          </td>
-          <td>
-              <button type="button" (click)="addCodeClassRow()"
-                  class="btn btn-outline-primary me-2">+</button>
-              <button type="button" *ngIf="codeClasslength>1"
-                  (click)="deleteCodeClassRow(i)"
-                  class="btn btn-outline-primary me-2">-</button>
-
-          </td>
-      </tr>
-  </tbody>
-</table>
-  <button type="button" (click)="RBI_FDISubmit('2')" class="btn btn-primary">Next</button> 
+ <br>
 </div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDISubmissions">
-  
-  <div class="row g-4 mt-2" [formGroup]="reactiveForm" >
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_ForeignEntity" class="form-label">Name of foreign entity
-        </label>
-      
-        <input type="text" id="investment_ForeignEntity" name="investment_ForeignEntity"
-            formControlName="investment_ForeignEntity" placeholder="Name of foreign entity" required minlength="1"
-            maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_ForeignEntity'].invalid && (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-            reactiveForm.controls['investment_ForeignEntity'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].invalid && 
-                            (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-                            reactiveForm.controls['investment_ForeignEntity'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_Jurisdiction" class="form-label">Country/ jurisdiction
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty ||
-            reactiveForm.controls['investment_Jurisdiction'].touched)"
-            formControlName="investment_Jurisdiction" placeholder="Please Select">
-            <option ng-option value="">Select Jurisdiction Type</option>
-            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty || reactiveForm.controls['investment_Jurisdiction'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].errors?.['required']">
-                This field is required.
-            </div>
+<div class="col-4 mb-2">
+                    <label class="form-label">Business Activities
+                    </label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Business Activities" required>
+                </div>      
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">NIC Code & Description</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_DateIncorpation" class="form-label">Date of incorporation of the foreign entity
-        </label>
-        <input type="date" id="investment_DateIncorpation" name="investment_DateIncorpation"
-            formControlName="investment_DateIncorpation" placeholder="Date of incorporation of the foreign entity"
-            required minlength="1" maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || reactiveForm.controls['investment_DateIncorpation'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || 
-        reactiveForm.controls['investment_DateIncorpation'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].errors?.['required']">
-                This field is required.
-            </div>
+        <div class="modal-body">
+           
+                <div class="row mt-3">
+                    <div class="col-4 mb-2">
+                    <label class="form-label"> Select NIC CODE 
+                    </label>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">                 
+                  </div>   
+                  <div class="col-4 mb-2">
+                    <label class="form-label"> Select NIC CODE 
+                    </label>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">              
+                  </div> 
+                  <div class="col-4 mb-2">
+                    <label class="form-label"> Search NIC CODE 
+                    </label>
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>  
+                  </div>
+                </div>   
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_LEI" class="form-label">Legal Entity Identifier (LEI) of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_LEI" name="investment_WOS_LEI" formControlName="investment_WOS_LEI"
-            placeholder="Legal Entity Identifier (LEI) of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_LEI'].invalid && (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-            reactiveForm.controls['investment_WOS_LEI'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].invalid && 
-                            (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-                            reactiveForm.controls['investment_WOS_LEI'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-8">
-        <label class="form-label">Whether the person resident in India has control in foreign
-            entity (Refer to the definition of "control" in the OI Rules)
-        </label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE"
-             id="investment_ControlFE" name="investment_ControlFE" value="Yes"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio1">Yes</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE" id="investment_ControlFE"
-             name="investment_ControlFE" value="No"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio2">No</label>
-          </div>
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || reactiveForm.controls['investment_ControlFE'] .touched)"
-          class="invalid-feedback">
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].errors?.['required']">
-              This field is required.
-          </div>
-          </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label class="form-label"> Accounting year followed by the foreign entity
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty || 
-            reactiveForm.controls['investment_AccountingYear'].touched)"
-            formControlName="investment_AccountingYear">
-            <option ng-option value="">Select Type</option>
-            <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty
-         || reactiveForm.controls['investment_AccountingYear'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_AccountingYear'].errors?.['required']">
-                This field is required.
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_Email" class="form-label"> E-mail ID of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_Email" name="investment_WOS_Email" formControlName="investment_WOS_Email"
-            placeholder="E-mail ID of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_Email'].invalid &&
-             (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_WOS_Email'].invalid && (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['required']">
-                This field is required.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['minlength']">
-                This field must have at least 1 character.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['maxlength']">
-                This field must have at most 250 characters.
-            </div>
-        </div>
-    </div> 
-    <div class="container">
-        <table class="table table-striped table-bordered mt-3">
+        <table class="table table-striped table-no-bordered table-hover">
             <thead>
-                <tr>
-                   
-                    <th scope="col">Activity code of IE (1987)
-                        Class + Description
-
-
-                    </th>
-                    <th scope="col">Activity code of IE (2008)
-                        Class + Description
-
-
-                    </th>
-                    <th></th>
-                </tr>
+              <tr>
+                <th scope="col">Selected Code</th>
+                <th scope="col">Description Class</th>
+              </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
-                    
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description1987"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description2008"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <button type="button" (click)="addCodeClassRow()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="codeClasslength>1"
-                            (click)="deleteCodeClassRow(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY) 
-                SECTION C OF FORM-FC TO BE IMPLEMENTED                    
-            </caption>
-            <thead>
-                <tr>
-                  
-                    <th scope="col">Method or source of investments
-                    </th>
-                    <th scope="col">Category of investments
-                    </th>
-                    <th scope="col"> Date
-                    </th>
-                    <th scope="col">Amount (in FCY)</th>
-                        <th> Amount (in INR)                         
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
+              <tr  *ngFor="let Items of SubmodulenameArray; let i = index;">
+               
+                <td>
+                  <div>{{Items.Submodulename}}</div>
+                </td>
+                <td>
+                  <div>{{Items.SubmodulenameDes}}</div>
+                 
+                </td>
                 
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <select class="form-control"
-                        [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
-                        [ngModelOptions]="{standalone: true}">
-                        <option ng-option value="">Select Category Type</option>
-                        <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
-                            {{object.name}}
-                        </option>
-                    </select>
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].Date"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="date" />
-                    </td>
-                    <td>
-                       
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                   
-                    </td>
-                    <td>
-                        <button type="button" (click)="addFinancialCommitment()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="FinancialCommitmentlength>1" (click)="deleteFinancialCommitment(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
+              </tr>
             </tbody>
-        </table>
-      
-
-
+          </table>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Done</button>
+        </div>
+      </div>
     </div>
-    
-</div>
-
-
-  <button type="button" (click)="RBI_FDISubmit('3')" class="btn btn-primary">Next</button>
-</div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIDeclaration">
   
-  <div class="row g-4 mt-2" [formGroup]="reactiveForm" >
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_ForeignEntity" class="form-label">Name of foreign entity
-        </label>
-      
-        <input type="text" id="investment_ForeignEntity" name="investment_ForeignEntity"
-            formControlName="investment_ForeignEntity" placeholder="Name of foreign entity" required minlength="1"
-            maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_ForeignEntity'].invalid && (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-            reactiveForm.controls['investment_ForeignEntity'].touched)">
+        </div> 
         
-                            <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].invalid && 
-                            (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-                            reactiveForm.controls['investment_ForeignEntity'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
     </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_Jurisdiction" class="form-label">Country/ jurisdiction
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty ||
-            reactiveForm.controls['investment_Jurisdiction'].touched)"
-            formControlName="investment_Jurisdiction" placeholder="Please Select">
-            <option ng-option value="">Select Jurisdiction Type</option>
-            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty || reactiveForm.controls['investment_Jurisdiction'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].errors?.['required']">
-                This field is required.
-            </div>
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">B.Nature of Contravention</li>
+          </ul>  
+          <div class="col-2 mb-2">
+            <label class="form-check-label" for="flexSwitchCheck">FEMA Regulation Number Description</label>
+          </div>            
+        <div class="col-4 mb-2">
+           <!-- Button trigger modal -->
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+  </div>
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_DateIncorpation" class="form-label">Date of incorporation of the foreign entity
-        </label>
-        <input type="date" id="investment_DateIncorpation" name="investment_DateIncorpation"
-            formControlName="investment_DateIncorpation" placeholder="Date of incorporation of the foreign entity"
-            required minlength="1" maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || reactiveForm.controls['investment_DateIncorpation'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || 
-        reactiveForm.controls['investment_DateIncorpation'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].errors?.['required']">
-                This field is required.
-            </div>
+        <div class="col-4 mb-2">
+           
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_LEI" class="form-label">Legal Entity Identifier (LEI) of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_LEI" name="investment_WOS_LEI" formControlName="investment_WOS_LEI"
-            placeholder="Legal Entity Identifier (LEI) of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_LEI'].invalid && (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-            reactiveForm.controls['investment_WOS_LEI'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].invalid && 
-                            (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-                            reactiveForm.controls['investment_WOS_LEI'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-8">
-        <label class="form-label">Whether the person resident in India has control in foreign
-            entity (Refer to the definition of "control" in the OI Rules)
-        </label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE"
-             id="investment_ControlFE" name="investment_ControlFE" value="Yes"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio1">Yes</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE" id="investment_ControlFE"
-             name="investment_ControlFE" value="No"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio2">No</label>
-          </div>
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || reactiveForm.controls['investment_ControlFE'] .touched)"
-          class="invalid-feedback">
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].errors?.['required']">
-              This field is required.
-          </div>
-          </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label class="form-label"> Accounting year followed by the foreign entity
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty || 
-            reactiveForm.controls['investment_AccountingYear'].touched)"
-            formControlName="investment_AccountingYear">
-            <option ng-option value="">Select Type</option>
-            <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty
-         || reactiveForm.controls['investment_AccountingYear'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_AccountingYear'].errors?.['required']">
-                This field is required.
-            </div>
+  <div class="col-4 mb-2">
+    <label class="form-label">Topic
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Topic" required>
+</div> 
+<div class="col-4 mb-2">
+    <label class="form-label">FEMA Regulation No. (Sub-topics)
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Sub-topics" required>
+</div> 
+<div class="col-4 mb-2">
+    <label class="form-label">Background 1.1
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Background 1.1" required>
+</div> 
+<div class="col-4 mb-2">
+    <label class="form-label">Background 1.2
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Background 1.2" required>
+</div> 
+ <br>
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdrop1">FEMA Regulation Number Description</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_Email" class="form-label"> E-mail ID of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_Email" name="investment_WOS_Email" formControlName="investment_WOS_Email"
-            placeholder="E-mail ID of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_Email'].invalid &&
-             (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_WOS_Email'].invalid && (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['required']">
-                This field is required.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['minlength']">
-                This field must have at least 1 character.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['maxlength']">
-                This field must have at most 250 characters.
-            </div>
+        <div class="modal-body">
+           
+                <div class="row mt-3">
+                    <div class="col-4 mb-2">
+                    <label class="form-label"> FEMA Topic
+                    </label>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">                 
+                  </div>   
+                  <div class="col-4 mb-2">
+                    <label class="form-label">Sub FEMA Topic 
+                    </label>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">               
+                  </div> 
+                  <div class="col-4 mb-2">
+                    <label class="form-label"> Search Topics 
+                    </label>
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>  
+                  </div>
+                </div>   
         </div>
-    </div> 
-    <div class="container">
-        <table class="table table-striped table-bordered mt-3">
+        <table class="table table-striped table-no-bordered table-hover">
             <thead>
-                <tr>
-                   
-                    <th scope="col">Activity code of IE (1987)
-                        Class + Description
-
-
-                    </th>
-                    <th scope="col">Activity code of IE (2008)
-                        Class + Description
-
-
-                    </th>
-                    <th></th>
-                </tr>
+              <tr>
+                <th scope="col">Selected Code</th>
+                <th scope="col">Description Class</th>
+              </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
-                    
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description1987"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description2008"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <button type="button" (click)="addCodeClassRow()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="codeClasslength>1"
-                            (click)="deleteCodeClassRow(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY) 
-                SECTION C OF FORM-FC TO BE IMPLEMENTED                    
-            </caption>
-            <thead>
-                <tr>
-                  
-                    <th scope="col">Method or source of investments
-                    </th>
-                    <th scope="col">Category of investments
-                    </th>
-                    <th scope="col"> Date
-                    </th>
-                    <th scope="col">Amount (in FCY)</th>
-                        <th> Amount (in INR)                         
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
+              <tr  *ngFor="let Items of SubmodulenameArray; let i = index;">
+               
+                <td>
+                  <div>{{Items.Submodulename}}</div>
+                </td>
+                <td>
+                  <div>{{Items.SubmodulenameDes}}</div>
+                 
+                </td>
                 
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <select class="form-control"
-                        [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
-                        [ngModelOptions]="{standalone: true}">
-                        <option ng-option value="">Select Category Type</option>
-                        <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
-                            {{object.name}}
-                        </option>
-                    </select>
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].Date"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="date" />
-                    </td>
-                    <td>
-                       
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                   
-                    </td>
-                    <td>
-                        <button type="button" (click)="addFinancialCommitment()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="FinancialCommitmentlength>1" (click)="deleteFinancialCommitment(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
+              </tr>
             </tbody>
-        </table>
-      
-
-
-    </div>
-    
-</div>
-
-  <button type="button" (click)="RBI_FDISubmit('4')" class="btn btn-primary">Next</button> 
-</div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDILetterauthority">
-  
-  <div class="row g-4 mt-2" [formGroup]="reactiveForm" >
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_ForeignEntity" class="form-label">Name of foreign entity
-        </label>
-      
-        <input type="text" id="investment_ForeignEntity" name="investment_ForeignEntity"
-            formControlName="investment_ForeignEntity" placeholder="Name of foreign entity" required minlength="1"
-            maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_ForeignEntity'].invalid && (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-            reactiveForm.controls['investment_ForeignEntity'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].invalid && 
-                            (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-                            reactiveForm.controls['investment_ForeignEntity'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_Jurisdiction" class="form-label">Country/ jurisdiction
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty ||
-            reactiveForm.controls['investment_Jurisdiction'].touched)"
-            formControlName="investment_Jurisdiction" placeholder="Please Select">
-            <option ng-option value="">Select Jurisdiction Type</option>
-            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty || reactiveForm.controls['investment_Jurisdiction'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].errors?.['required']">
-                This field is required.
-            </div>
+          </table>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Done</button>
         </div>
+      </div>
     </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_DateIncorpation" class="form-label">Date of incorporation of the foreign entity
-        </label>
-        <input type="date" id="investment_DateIncorpation" name="investment_DateIncorpation"
-            formControlName="investment_DateIncorpation" placeholder="Date of incorporation of the foreign entity"
-            required minlength="1" maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || reactiveForm.controls['investment_DateIncorpation'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || 
-        reactiveForm.controls['investment_DateIncorpation'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].errors?.['required']">
-                This field is required.
-            </div>
+        </div> 
+    </div>
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">C.Compounding Authority</li>
+          </ul>  
+          <div class="col-2 mb-2">
+            <label class="form-check-label" for="flexSwitchCheck">Central/Regional–with Full Address</label>
+          </div>            
+        <div class="col-4 mb-2">
+           <!-- Button trigger modal -->
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+  </div>
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_LEI" class="form-label">Legal Entity Identifier (LEI) of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_LEI" name="investment_WOS_LEI" formControlName="investment_WOS_LEI"
-            placeholder="Legal Entity Identifier (LEI) of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_LEI'].invalid && (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-            reactiveForm.controls['investment_WOS_LEI'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].invalid && 
-                            (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-                            reactiveForm.controls['investment_WOS_LEI'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-8">
-        <label class="form-label">Whether the person resident in India has control in foreign
-            entity (Refer to the definition of "control" in the OI Rules)
-        </label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE"
-             id="investment_ControlFE" name="investment_ControlFE" value="Yes"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio1">Yes</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE" id="investment_ControlFE"
-             name="investment_ControlFE" value="No"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio2">No</label>
-          </div>
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || reactiveForm.controls['investment_ControlFE'] .touched)"
-          class="invalid-feedback">
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].errors?.['required']">
-              This field is required.
-          </div>
-          </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label class="form-label"> Accounting year followed by the foreign entity
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty || 
-            reactiveForm.controls['investment_AccountingYear'].touched)"
-            formControlName="investment_AccountingYear">
-            <option ng-option value="">Select Type</option>
-            <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty
-         || reactiveForm.controls['investment_AccountingYear'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_AccountingYear'].errors?.['required']">
-                This field is required.
-            </div>
+        <div class="col-4 mb-2">
+            
+        </div> 
+  <div class="col-4 mb-2">
+    <label class="form-label">Regional/Central
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Regional/Central" required>
+</div> 
+<div class="col-4 mb-2">
+    <label class="form-label">Regional Offices
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Regional Offices" required>
+</div> 
+<div class="col-4 mb-2">
+    <label class="form-label">Topic
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Topic" required>
+</div>  
+<div class="col-4 mb-2">
+    <label class="form-label">Regional Director
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Regional Director" required>
+</div> 
+<div class="col-4 mb-2">
+    <label class="form-label">Telephone Number
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Telephone Number" required>
+</div> 
+<div class="col-4 mb-2">
+    <label class="form-label">Fax
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Fax" required>
+</div> 
+<div class="col-4 mb-2">
+    <label class="form-label">Email Id
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Email Id" required>
+</div> 
+ <br>
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop2" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdrop2">Central/Regional with Full Address</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_Email" class="form-label"> E-mail ID of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_Email" name="investment_WOS_Email" formControlName="investment_WOS_Email"
-            placeholder="E-mail ID of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_Email'].invalid &&
-             (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_WOS_Email'].invalid && (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['required']">
-                This field is required.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['minlength']">
-                This field must have at least 1 character.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['maxlength']">
-                This field must have at most 250 characters.
-            </div>
+        <div class="modal-body">
+           
+                <div class="row mt-3">
+                    <div class="col-4 mb-2">
+                    <label class="form-label"> Regional/Central
+                    </label>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">                 
+                  </div>   
+                  <div class="col-4 mb-2">
+                    <label class="form-label">Regional Offices 
+                    </label>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">             
+                  </div> 
+                  <div class="col-4 mb-2">
+                    <label class="form-label"> Search Topics 
+                    </label>
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>  
+                  </div>
+                </div>   
         </div>
-    </div> 
-    <div class="container">
-        <table class="table table-striped table-bordered mt-3">
+        <table class="table table-striped table-no-bordered table-hover">
             <thead>
-                <tr>
-                   
-                    <th scope="col">Activity code of IE (1987)
-                        Class + Description
-
-
-                    </th>
-                    <th scope="col">Activity code of IE (2008)
-                        Class + Description
-
-
-                    </th>
-                    <th></th>
-                </tr>
+              <tr>
+                <th scope="col">Selected Code</th>
+                <th scope="col">Description Class</th>
+              </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
-                    
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description1987"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description2008"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <button type="button" (click)="addCodeClassRow()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="codeClasslength>1"
-                            (click)="deleteCodeClassRow(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY) 
-                SECTION C OF FORM-FC TO BE IMPLEMENTED                    
-            </caption>
-            <thead>
-                <tr>
-                  
-                    <th scope="col">Method or source of investments
-                    </th>
-                    <th scope="col">Category of investments
-                    </th>
-                    <th scope="col"> Date
-                    </th>
-                    <th scope="col">Amount (in FCY)</th>
-                        <th> Amount (in INR)                         
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
+              <tr  *ngFor="let Items of SubmodulenameArray; let i = index;">
+               
+                <td>
+                  <div>{{Items.Submodulename}}</div>
+                </td>
+                <td>
+                  <div>{{Items.SubmodulenameDes}}</div>
+                 
+                </td>
                 
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <select class="form-control"
-                        [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
-                        [ngModelOptions]="{standalone: true}">
-                        <option ng-option value="">Select Category Type</option>
-                        <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
-                            {{object.name}}
-                        </option>
-                    </select>
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].Date"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="date" />
-                    </td>
-                    <td>
-                       
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                   
-                    </td>
-                    <td>
-                        <button type="button" (click)="addFinancialCommitment()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="FinancialCommitmentlength>1" (click)="deleteFinancialCommitment(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
+              </tr>
             </tbody>
-        </table>
-      
-
-
+          </table>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Done</button>
+        </div>
+      </div>
     </div>
-    
+
+        </div> 
+    </div>
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">D.Compounding Subject and Reference(Whether the Applicant is resident in India or resident outside India? (please refer to Section 2 (v) of the Act))</li>
+          </ul>  
+          <div class="col-4 mb-2">
+            <label class="form-label">Subject
+            </label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Subject" required>
+        </div> 
+        <div class="col-4 mb-2">
+            <label class="form-label">Reference
+            </label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Reference" required>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">E.Compounding Application Fee Details</li>
+          </ul>  
+          <div class="col-4 mb-2">
+            <label class="form-label">Amount 
+            </label>
+            <input type="text" class="form-control" id="validationCustom01" value="INR 5000" required>
+        </div> 
+        <div class="col-4 mb-2">
+            <label class="form-label">Demand Draft Number 
+            </label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Demand Draft Number " required>
+        </div>
+        <div class="col-4 mb-2">
+            <label class="form-label">Demand Draft Date
+            </label>
+            <input type="date" class="form-control" />
+        </div> 
+        <div class="col-4 mb-2">
+            <label class="form-label">Payable at
+            </label>
+            <select class="form-select" formControlName="Applicable_Sectoral_Cap"
+                [class.is-invalid]="esopFormlist.get('Applicable_Sectoral_Cap').invalid && (esopFormlist.get('Applicable_Sectoral_Cap').dirty ||esopFormlist.get('Applicable_Sectoral_Cap').touched)">
+                <option value="">City Name</option>
+                <option value="Managing Director">Mumbai</option>
+                <option value="Company Secretary">Delhi</option>
+                <option value="Chief Legal Officer">Chandigarh</option>
+                <option value="Chief Executive Officer"></option>
+            </select>
+        </div>   
+    </div>
+  <button type="button" (click)="RBI_FDISubmit('4')" class="btn btn-primary">Next</button>
 </div>
-
-  <button type="button" (click)="RBI_FDISubmit('5')" class="btn btn-primary">Next</button>
-</div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIUndertaking">
-  
-  <div class="row g-4 mt-2" [formGroup]="reactiveForm" >
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_ForeignEntity" class="form-label">Name of foreign entity
-        </label>
-      
-        <input type="text" id="investment_ForeignEntity" name="investment_ForeignEntity"
-            formControlName="investment_ForeignEntity" placeholder="Name of foreign entity" required minlength="1"
-            maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_ForeignEntity'].invalid && (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-            reactiveForm.controls['investment_ForeignEntity'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].invalid && 
-                            (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-                            reactiveForm.controls['investment_ForeignEntity'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_Jurisdiction" class="form-label">Country/ jurisdiction
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty ||
-            reactiveForm.controls['investment_Jurisdiction'].touched)"
-            formControlName="investment_Jurisdiction" placeholder="Please Select">
-            <option ng-option value="">Select Jurisdiction Type</option>
-            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty || reactiveForm.controls['investment_Jurisdiction'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].errors?.['required']">
-                This field is required.
-            </div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDICompoundingSubmissions">
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">Compounding Submissions</li>
+          </ul>  
+          <div class="col-4 mb-2">
+            <label class="form-label">Background 
+            </label>
+            <input type="text" class="form-control" id="validationCustom01" value="INR 5000" required>
+        </div> 
+        <div class="col-4 mb-2">
+            <label class="form-label">Transaction Details 
+            </label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Transaction Details" required>
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_DateIncorpation" class="form-label">Date of incorporation of the foreign entity
-        </label>
-        <input type="date" id="investment_DateIncorpation" name="investment_DateIncorpation"
-            formControlName="investment_DateIncorpation" placeholder="Date of incorporation of the foreign entity"
-            required minlength="1" maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || reactiveForm.controls['investment_DateIncorpation'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || 
-        reactiveForm.controls['investment_DateIncorpation'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].errors?.['required']">
-                This field is required.
-            </div>
+        <div class="col-4 mb-2">
+            <label class="form-label">Nature of Contraventions
+            </label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Nature of Contraventions" required>
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_LEI" class="form-label">Legal Entity Identifier (LEI) of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_LEI" name="investment_WOS_LEI" formControlName="investment_WOS_LEI"
-            placeholder="Legal Entity Identifier (LEI) of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_LEI'].invalid && (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-            reactiveForm.controls['investment_WOS_LEI'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].invalid && 
-                            (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-                            reactiveForm.controls['investment_WOS_LEI'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-8">
-        <label class="form-label">Whether the person resident in India has control in foreign
-            entity (Refer to the definition of "control" in the OI Rules)
-        </label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE"
-             id="investment_ControlFE" name="investment_ControlFE" value="Yes"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio1">Yes</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE" id="investment_ControlFE"
-             name="investment_ControlFE" value="No"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio2">No</label>
-          </div>
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || reactiveForm.controls['investment_ControlFE'] .touched)"
-          class="invalid-feedback">
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].errors?.['required']">
-              This field is required.
-          </div>
-          </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label class="form-label"> Accounting year followed by the foreign entity
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty || 
-            reactiveForm.controls['investment_AccountingYear'].touched)"
-            formControlName="investment_AccountingYear">
-            <option ng-option value="">Select Type</option>
-            <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty
-         || reactiveForm.controls['investment_AccountingYear'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_AccountingYear'].errors?.['required']">
-                This field is required.
-            </div>
+        <div class="col-4 mb-2">
+            <label class="form-label">Delay Reasons
+            </label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Delay Reasons" required>
         </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_Email" class="form-label"> E-mail ID of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_Email" name="investment_WOS_Email" formControlName="investment_WOS_Email"
-            placeholder="E-mail ID of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_Email'].invalid &&
-             (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_WOS_Email'].invalid && (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['required']">
-                This field is required.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['minlength']">
-                This field must have at least 1 character.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['maxlength']">
-                This field must have at most 250 characters.
-            </div>
+        <div class="col-4 mb-2">
+            <label class="form-label">Petition Request
+            </label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Petition Request" required>
         </div>
-    </div> 
-    <div class="container">
-        <table class="table table-striped table-bordered mt-3">
-            <thead>
-                <tr>
-                   
-                    <th scope="col">Activity code of IE (1987)
-                        Class + Description
-
-
-                    </th>
-                    <th scope="col">Activity code of IE (2008)
-                        Class + Description
-
-
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
-                    
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description1987"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description2008"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <button type="button" (click)="addCodeClassRow()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="codeClasslength>1"
-                            (click)="deleteCodeClassRow(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY) 
-                SECTION C OF FORM-FC TO BE IMPLEMENTED                    
-            </caption>
-            <thead>
-                <tr>
-                  
-                    <th scope="col">Method or source of investments
-                    </th>
-                    <th scope="col">Category of investments
-                    </th>
-                    <th scope="col"> Date
-                    </th>
-                    <th scope="col">Amount (in FCY)</th>
-                        <th> Amount (in INR)                         
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
-                
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <select class="form-control"
-                        [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
-                        [ngModelOptions]="{standalone: true}">
-                        <option ng-option value="">Select Category Type</option>
-                        <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
-                            {{object.name}}
-                        </option>
-                    </select>
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].Date"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="date" />
-                    </td>
-                    <td>
-                       
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                   
-                    </td>
-                    <td>
-                        <button type="button" (click)="addFinancialCommitment()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="FinancialCommitmentlength>1" (click)="deleteFinancialCommitment(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      
-
-
-    </div>
-   
-</div>
-
-  
-  <button type="button" (click)="RBI_FDISubmit('6')" class="btn btn-primary">Next</button> 
-</div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIECSLetter"> 
-  
-  <div class="row g-4 mt-2" [formGroup]="reactiveForm" >
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_ForeignEntity" class="form-label">Name of foreign entity
-        </label>
-      
-        <input type="text" id="investment_ForeignEntity" name="investment_ForeignEntity"
-            formControlName="investment_ForeignEntity" placeholder="Name of foreign entity" required minlength="1"
-            maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_ForeignEntity'].invalid && (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-            reactiveForm.controls['investment_ForeignEntity'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].invalid && 
-                            (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-                            reactiveForm.controls['investment_ForeignEntity'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_Jurisdiction" class="form-label">Country/ jurisdiction
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty ||
-            reactiveForm.controls['investment_Jurisdiction'].touched)"
-            formControlName="investment_Jurisdiction" placeholder="Please Select">
-            <option ng-option value="">Select Jurisdiction Type</option>
-            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty || reactiveForm.controls['investment_Jurisdiction'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].errors?.['required']">
-                This field is required.
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_DateIncorpation" class="form-label">Date of incorporation of the foreign entity
-        </label>
-        <input type="date" id="investment_DateIncorpation" name="investment_DateIncorpation"
-            formControlName="investment_DateIncorpation" placeholder="Date of incorporation of the foreign entity"
-            required minlength="1" maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || reactiveForm.controls['investment_DateIncorpation'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || 
-        reactiveForm.controls['investment_DateIncorpation'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].errors?.['required']">
-                This field is required.
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_LEI" class="form-label">Legal Entity Identifier (LEI) of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_LEI" name="investment_WOS_LEI" formControlName="investment_WOS_LEI"
-            placeholder="Legal Entity Identifier (LEI) of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_LEI'].invalid && (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-            reactiveForm.controls['investment_WOS_LEI'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].invalid && 
-                            (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-                            reactiveForm.controls['investment_WOS_LEI'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-8">
-        <label class="form-label">Whether the person resident in India has control in foreign
-            entity (Refer to the definition of "control" in the OI Rules)
-        </label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE"
-             id="investment_ControlFE" name="investment_ControlFE" value="Yes"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio1">Yes</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE" id="investment_ControlFE"
-             name="investment_ControlFE" value="No"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio2">No</label>
-          </div>
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || reactiveForm.controls['investment_ControlFE'] .touched)"
-          class="invalid-feedback">
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].errors?.['required']">
-              This field is required.
-          </div>
-          </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label class="form-label"> Accounting year followed by the foreign entity
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty || 
-            reactiveForm.controls['investment_AccountingYear'].touched)"
-            formControlName="investment_AccountingYear">
-            <option ng-option value="">Select Type</option>
-            <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty
-         || reactiveForm.controls['investment_AccountingYear'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_AccountingYear'].errors?.['required']">
-                This field is required.
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_Email" class="form-label"> E-mail ID of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_Email" name="investment_WOS_Email" formControlName="investment_WOS_Email"
-            placeholder="E-mail ID of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_Email'].invalid &&
-             (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_WOS_Email'].invalid && (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['required']">
-                This field is required.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['minlength']">
-                This field must have at least 1 character.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['maxlength']">
-                This field must have at most 250 characters.
-            </div>
-        </div>
-    </div> 
-    <div class="container">
-        <table class="table table-striped table-bordered mt-3">
-            <thead>
-                <tr>
-                   
-                    <th scope="col">Activity code of IE (1987)
-                        Class + Description
-
-
-                    </th>
-                    <th scope="col">Activity code of IE (2008)
-                        Class + Description
-
-
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
-                    
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description1987"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description2008"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <button type="button" (click)="addCodeClassRow()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="codeClasslength>1"
-                            (click)="deleteCodeClassRow(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY) 
-                SECTION C OF FORM-FC TO BE IMPLEMENTED                    
-            </caption>
-            <thead>
-                <tr>
-                  
-                    <th scope="col">Method or source of investments
-                    </th>
-                    <th scope="col">Category of investments
-                    </th>
-                    <th scope="col"> Date
-                    </th>
-                    <th scope="col">Amount (in FCY)</th>
-                        <th> Amount (in INR)                         
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
-                
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <select class="form-control"
-                        [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
-                        [ngModelOptions]="{standalone: true}">
-                        <option ng-option value="">Select Category Type</option>
-                        <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
-                            {{object.name}}
-                        </option>
-                    </select>
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].Date"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="date" />
-                    </td>
-                    <td>
-                       
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                   
-                    </td>
-                    <td>
-                        <button type="button" (click)="addFinancialCommitment()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="FinancialCommitmentlength>1" (click)="deleteFinancialCommitment(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      
-
-
-    </div>
-    
-</div>
-
- 
-  <button type="button" (click)="RBI_FDISubmit('7')" class="btn btn-primary">Next</button>
-</div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIPreviewAnnexures"> 
-  
-  <div class="row g-4 mt-2" [formGroup]="reactiveForm" >
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_ForeignEntity" class="form-label">Name of foreign entity
-        </label>
-      
-        <input type="text" id="investment_ForeignEntity" name="investment_ForeignEntity"
-            formControlName="investment_ForeignEntity" placeholder="Name of foreign entity" required minlength="1"
-            maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_ForeignEntity'].invalid && (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-            reactiveForm.controls['investment_ForeignEntity'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].invalid && 
-                            (reactiveForm.controls['investment_ForeignEntity'].dirty || 
-                            reactiveForm.controls['investment_ForeignEntity'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_ForeignEntity'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_Jurisdiction" class="form-label">Country/ jurisdiction
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty ||
-            reactiveForm.controls['investment_Jurisdiction'].touched)"
-            formControlName="investment_Jurisdiction" placeholder="Please Select">
-            <option ng-option value="">Select Jurisdiction Type</option>
-            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].invalid && (reactiveForm.controls['investment_Jurisdiction'].dirty || reactiveForm.controls['investment_Jurisdiction'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_Jurisdiction'].errors?.['required']">
-                This field is required.
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_DateIncorpation" class="form-label">Date of incorporation of the foreign entity
-        </label>
-        <input type="date" id="investment_DateIncorpation" name="investment_DateIncorpation"
-            formControlName="investment_DateIncorpation" placeholder="Date of incorporation of the foreign entity"
-            required minlength="1" maxlength="250" class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || reactiveForm.controls['investment_DateIncorpation'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].invalid && (reactiveForm.controls['investment_DateIncorpation'].dirty || 
-        reactiveForm.controls['investment_DateIncorpation'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_DateIncorpation'].errors?.['required']">
-                This field is required.
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_LEI" class="form-label">Legal Entity Identifier (LEI) of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_LEI" name="investment_WOS_LEI" formControlName="investment_WOS_LEI"
-            placeholder="Legal Entity Identifier (LEI) of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_LEI'].invalid && (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-            reactiveForm.controls['investment_WOS_LEI'].touched)">
-        
-                            <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].invalid && 
-                            (reactiveForm.controls['investment_WOS_LEI'].dirty || 
-                            reactiveForm.controls['investment_WOS_LEI'].touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['required']">
-                                    This field is required.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="reactiveForm.controls['investment_WOS_LEI'].errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div>
-                            </div>
-    </div>
-    <div class="col-sm-12 col-xl-8">
-        <label class="form-label">Whether the person resident in India has control in foreign
-            entity (Refer to the definition of "control" in the OI Rules)
-        </label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE"
-             id="investment_ControlFE" name="investment_ControlFE" value="Yes"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio1">Yes</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" required formControlName="investment_ControlFE" id="investment_ControlFE"
-             name="investment_ControlFE" value="No"
-             [class.is-invalid]="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || 
-             reactiveForm.controls['investment_ControlFE'].touched)">
-            <label class="form-check-label" for="inlineRadio2">No</label>
-          </div>
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].invalid && (reactiveForm.controls['investment_ControlFE'].dirty || reactiveForm.controls['investment_ControlFE'] .touched)"
-          class="invalid-feedback">
-          <div *ngIf="reactiveForm.controls['investment_ControlFE'].errors?.['required']">
-              This field is required.
-          </div>
-          </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label class="form-label"> Accounting year followed by the foreign entity
-        </label>
-        <select class="form-control"
-            [class.is-invalid]="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty || 
-            reactiveForm.controls['investment_AccountingYear'].touched)"
-            formControlName="investment_AccountingYear">
-            <option ng-option value="">Select Type</option>
-            <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
-        <div *ngIf="reactiveForm.controls['investment_AccountingYear'].invalid && (reactiveForm.controls['investment_AccountingYear'].dirty
-         || reactiveForm.controls['investment_AccountingYear'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_AccountingYear'].errors?.['required']">
-                This field is required.
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-xl-4">
-        <label for="investment_WOS_Email" class="form-label"> E-mail ID of the foreign entity
-        </label>
-        <input type="text" id="investment_WOS_Email" name="investment_WOS_Email" formControlName="investment_WOS_Email"
-            placeholder="E-mail ID of the foreign entity" required minlength="1" maxlength="250"
-            class="form-control form-control-sm"
-            [class.is-invalid]="reactiveForm.controls['investment_WOS_Email'].invalid &&
-             (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)">
-        <div *ngIf="reactiveForm.controls['investment_WOS_Email'].invalid && (reactiveForm.controls['investment_WOS_Email'].dirty || reactiveForm.controls['investment_WOS_Email'].touched)"
-            class="invalid-feedback">
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['required']">
-                This field is required.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['minlength']">
-                This field must have at least 1 character.
-            </div>
-            <div *ngIf="reactiveForm.controls['investment_WOS_Email'].errors?.['maxlength']">
-                This field must have at most 250 characters.
-            </div>
-        </div>
-    </div> 
-    <div class="container">
-        <table class="table table-striped table-bordered mt-3">
-            <thead>
-                <tr>
-                   
-                    <th scope="col">Activity code of IE (1987)
-                        Class + Description
-
-
-                    </th>
-                    <th scope="col">Activity code of IE (2008)
-                        Class + Description
-
-
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
-                    
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description1987"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="CodeClassArray[i].Description2008"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <button type="button" (click)="addCodeClassRow()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="codeClasslength>1"
-                            (click)="deleteCodeClassRow(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-striped table-bordered caption-top table-responsive">
-            <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY) 
-                SECTION C OF FORM-FC TO BE IMPLEMENTED                    
-            </caption>
-            <thead>
-                <tr>
-                  
-                    <th scope="col">Method or source of investments
-                    </th>
-                    <th scope="col">Category of investments
-                    </th>
-                    <th scope="col"> Date
-                    </th>
-                    <th scope="col">Amount (in FCY)</th>
-                        <th> Amount (in INR)                         
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
-                
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="text" />
-                    </td>
-                    <td>
-                        <select class="form-control"
-                        [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
-                        [ngModelOptions]="{standalone: true}">
-                        <option ng-option value="">Select Category Type</option>
-                        <option *ngFor=" let object of invetmentsCategorytypes" value="{{object.id}}">
-                            {{object.name}}
-                        </option>
-                    </select>
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].Date"
-                            [ngModelOptions]="{standalone: true}" class="form-control"
-                            type="date" />
-                    </td>
-                    <td>
-                       
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                    </td>
-                    <td>
-                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
-                        [ngModelOptions]="{standalone: true}" class="form-control"
-                        type="text" />
-                   
-                    </td>
-                    <td>
-                        <button type="button" (click)="addFinancialCommitment()"
-                            class="btn btn-outline-primary me-2">+</button>
-                        <button type="button" *ngIf="FinancialCommitmentlength>1" (click)="deleteFinancialCommitment(i)"
-                            class="btn btn-outline-primary me-2">-</button>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      
-
-
     </div>
   
+  <button type="button" (click)="RBI_FDISubmit('5')" class="btn btn-primary">Next</button> 
 </div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIODIECB">
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">FDI/ODI/ECB/LO BO PO Form Details</li>
+          </ul>  
+      <p>As per Respective Forms. In the event some information is already filled in any of the above TABS, the same can be captured in TAB 4. Please see the link below
 
-
-  <button type="button" (click)="RBI_FDISubmit('8')" class="btn btn-primary">Next</button>
+        https://rbidocs.rbi.org.in/rdocs/content/pdfs/13MDR020616_A2.pdf
+        </p>
+    </div>
+  <button type="button" (click)="RBI_FDISubmit('6')" class="btn btn-primary">Next</button>
 </div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIDocPreviewg">
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">Documents Preview & Annexures</li>
+          </ul>  
+      
+    </div>
+  <button type="button" (click)="RBI_FDISubmit('7')" class="btn btn-primary">Next</button> 
+</div>
+<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIOtherAnnexures">
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">OtherAnnexuresAnnexures</li>
+          </ul>  
+      
+    </div>
+    <button type="button" (click)="RBI_FDISubmit('8')" class="btn btn-primary">Submit</button> 
+  </div>
+
 </div>
  </form>
  </div>   
   
-  
+ 

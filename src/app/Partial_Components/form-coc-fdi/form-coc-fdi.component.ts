@@ -3,17 +3,16 @@ import { CommonService } from 'src/app/service/common.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
-  selector: 'app-form-coc',
-  templateUrl: './form-coc.component.html',
-  styleUrls: ['./form-coc.component.css']
+  selector: 'app-form-coc-fdi',
+  templateUrl: './form-coc-fdi.component.html',
+  styleUrls: ['./form-coc-fdi.component.css']
 })
-export class FormCocComponent implements OnInit {
+export class FormCocFdiComponent implements OnInit {
+
   public COC_FDIForm: FormGroup;
-  NICCodeselectedItems = [];
   selectedItems = [];
   SubselectedItems = [];
   SubmodulenameArray = [];
-  NICCodeSettings:IDropdownSettings;
   ModuleSettings:IDropdownSettings;
   SubModuleSettings:IDropdownSettings;
  modules: any[];
@@ -22,17 +21,15 @@ export class FormCocComponent implements OnInit {
  Submodule: string;
  Submodulename: string;
  SubmodulenameDes: string;
- COC_FDIInstructions:boolean=true;
- COC_FDIApplicantDetails:boolean=false;
- COC_FDICompoundingDetails:boolean=false;
- COC_FDICompoundingSubmissions:boolean=false;
- COC_FDIODIECB:boolean=false;
- COC_FDIOtherAnnexures:boolean=false;
- COC_FDIDocPreviewg:boolean=false;
  COC_FDIFormDiv:boolean=false;
- firstFormGroup:FormGroup;
- secondFormGroup:FormGroup;
-isLinear = false;
+ COC_FDICoverLetter:boolean=true;
+ COC_FDICompound:boolean=false;
+ COC_FDISubmissions:boolean=false;
+ COC_FDIDeclaration:boolean=false;
+ COC_FDILetterauthority:boolean=false;
+ COC_FDIUndertaking:boolean=false;
+ COC_FDIECSLetter:boolean=false;
+ COC_FDIPreviewAnnexures:boolean=false;
   constructor(private commonservice: CommonService,private fb: FormBuilder) {
     this.modules = commonservice.getCOCmodules();
     this.submodules = commonservice.getCOCsubmodules();
@@ -41,15 +38,6 @@ isLinear = false;
     })
    }   
   ngOnInit(): void { 
-    this.NICCodeSettings= {
-      singleSelection: true,
-      idField: 'id',
-      textField: 'name',
-      closeDropDownOnSelection:true,
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',     
-      allowSearchFilter: true
-    };
     this.ModuleSettings= {
       singleSelection: true,
       idField: 'id',
@@ -68,27 +56,13 @@ isLinear = false;
       itemsShowLimit: 1,
       allowSearchFilter: true
     };
-   this.firstFormGroup = this.fb.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this.fb.group({
-      secondCtrl: ['', Validators.required],
-    });
   }
- 
   onSelectAll(items: any) {
     debugger;
     console.log(items);
   }
   title = 'cimplyfema';
   filteredsubmodule: any;
-  NICCodeSelect(selectedSubModule,val)
-  {
-    this.Submodule=selectedSubModule;
-    this.SubmodulenameDes=val.filter(x =>x.id===Number(selectedSubModule.id))[0].Description;
-    this.Submodulename= val.filter(x =>x.id===Number(selectedSubModule.id))[0].name;
-    this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
-  }
   onModuleSelect(selectedModule) {
     debugger;
     if(selectedModule.id==1)
@@ -108,16 +82,17 @@ isLinear = false;
   }
   RBI_FDISubmit(Val) {
     debugger; 
-    this.COC_FDIInstructions=false;
-    this.COC_FDIApplicantDetails=false;
-    this.COC_FDICompoundingDetails=false;
-    this.COC_FDICompoundingSubmissions=false;
-    this.COC_FDIODIECB=false;
-    this.COC_FDIOtherAnnexures=false;
-    this.COC_FDIDocPreviewg=false;
-    if(Val=='1'){this.COC_FDIInstructions=true;}
-    if(Val=='2'){this.COC_FDIApplicantDetails=true;};if(Val=='3'){this.COC_FDICompoundingDetails=true;};if(Val=='4'){this.COC_FDICompoundingSubmissions=true;};
-    if(Val=='5'){this.COC_FDIODIECB=true;};if(Val=='6'){this.COC_FDIDocPreviewg=true;};if(Val=='7'){this.COC_FDIOtherAnnexures=true;};
+    this.COC_FDICoverLetter=false;
+    this.COC_FDICompound=false;
+    this.COC_FDISubmissions=false;
+    this.COC_FDIDeclaration=false;
+    this.COC_FDILetterauthority=false;
+    this.COC_FDIUndertaking=false;
+    this.COC_FDIECSLetter=false;
+    this.COC_FDIPreviewAnnexures=false;
+    if(Val=='0'){this.COC_FDICoverLetter=true;}
+    if(Val=='1'){this.COC_FDICompound=true;};if(Val=='2'){this.COC_FDISubmissions=true;};if(Val=='3'){this.COC_FDIDeclaration=true;};
+    if(Val=='4'){this.COC_FDILetterauthority=true;};if(Val=='5'){this.COC_FDIUndertaking=true;};if(Val=='6'){this.COC_FDIECSLetter=true;};if(Val=='7'){this.COC_FDIPreviewAnnexures=true;}
     console.log(Val);
   }
 }

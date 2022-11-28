@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeCreateComponent } from './components/employee-create/employee-create.component';
-import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
-import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -31,9 +28,6 @@ import { FormCocFdiComponent } from './Partial_Components/form-coc-fdi/form-coc-
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeCreateComponent,
-    EmployeeEditComponent,
-    EmployeeListComponent,
     FormEsopComponent,
     FormFcComponent,
     InstructionsComponent,

@@ -721,31 +721,41 @@
         <ul class="list-group">
             <li class="list-group-item list-group-item-info">Compounding Submissions</li>
           </ul>  
-          <div class="col-4 mb-2">
+          <div class="col-12 mb-2">
             <label class="form-label">Background 
             </label>
-            <input type="text" class="form-control" id="validationCustom01" value="INR 5000" required>
+            <div class="mb-3">  
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
         </div> 
-        <div class="col-4 mb-2">
-            <label class="form-label">Transaction Details 
-            </label>
-            <input type="text" class="form-control" id="validationCustom01" placeholder="Transaction Details" required>
+        <div class="col-12 mb-2">
+          <label class="form-label">Transaction Details
+          </label>
+          <div class="mb-3">  
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+      </div> 
+      <div class="col-12 mb-2">
+        <label class="form-label">Nature of Contraventions
+        </label>
+        <div class="mb-3">  
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <div class="col-4 mb-2">
-            <label class="form-label">Nature of Contraventions
-            </label>
-            <input type="text" class="form-control" id="validationCustom01" placeholder="Nature of Contraventions" required>
-        </div>
-        <div class="col-4 mb-2">
-            <label class="form-label">Delay Reasons
-            </label>
-            <input type="text" class="form-control" id="validationCustom01" placeholder="Delay Reasons" required>
-        </div>
-        <div class="col-4 mb-2">
-            <label class="form-label">Petition Request
-            </label>
-            <input type="text" class="form-control" id="validationCustom01" placeholder="Petition Request" required>
-        </div>
+    </div> 
+    <div class="col-12 mb-2">
+      <label class="form-label">Delay Reasons
+      </label>
+      <div class="mb-3">  
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+  </div> 
+  <div class="col-12 mb-2">
+    <label class="form-label">Petition Request
+    </label>
+    <div class="mb-3">  
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+</div> 
     </div>
   
   <button type="button" (click)="RBI_FDISubmit('5')" class="btn btn-primary">Next</button> 

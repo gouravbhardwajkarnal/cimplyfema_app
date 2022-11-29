@@ -88,13 +88,6 @@ let FormEsop = new Schema({
    necessary_documents: {
       type: Boolean
    },
-   ShareHoldingFE:[{
-      Person:{type:String},
-      Pstake:{type:Number},
-      ForeignPartner:{type:String},
-      FPstake:{type:Number},
-      Total: {type:Number},
-   }]
 
 }, {
    collection: 'formesop'

@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { EmployeeCreateComponent } from './components/employee-create/employee-create.component';
-import { EmployeeListComponent } from './components/employee-list/employee-list.component';
-import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { FormFcComponent } from './components/form-fc/form-fc.component';
 import { FormEsopComponent } from './components/form-esop/form-esop.component';
 import { FormOpiComponent } from './components/form-opi/form-opi.component';

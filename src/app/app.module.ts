@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeCreateComponent } from './components/employee-create/employee-create.component';
-import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
-import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -25,14 +22,12 @@ import { OpiPdfComponent } from './components/form-opi/opi-pdf/opi-pdf.component
 import { EsopPdfComponent } from './components/form-esop/esop-pdf/esop-pdf.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormCocComponent } from './components/form-coc/form-coc.component';
+import { FormCocFdiComponent } from './Partial_Components/form-coc-fdi/form-coc-fdi.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeCreateComponent,
-    EmployeeEditComponent,
-    EmployeeListComponent,
     FormEsopComponent,
     FormFcComponent,
     InstructionsComponent,
@@ -45,6 +40,7 @@ import { FormCocComponent } from './components/form-coc/form-coc.component';
     EsopPdfComponent,
     HomeComponent,
     FormCocComponent,
+    FormCocFdiComponent,
   ],
   imports: [
     BrowserModule,

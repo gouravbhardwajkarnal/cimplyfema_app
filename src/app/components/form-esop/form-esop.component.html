@@ -5,7 +5,7 @@
         </div>
     </div>
 
-    <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()" >
+    <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()">
         <tabset #tabset (click)="confirmTabSwitch($event)">
             <tab heading="Instructions">
                 <div class="card p-2">
@@ -62,7 +62,7 @@
                                         This field is required.
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-4 mb-2">
                                     <label class="form-label">PAN Number
                                     </label>
@@ -97,7 +97,7 @@
                                     <label class="form-label">Date of Resolution
                                     </label>
                                     <input type="date" class="form-control" name="date-field"
-                                        formControlName="Date_Resolution" 
+                                        formControlName="Date_Resolution"
                                         [class.is-invalid]="esopFormlist.get('Date_Resolution').invalid && (esopFormlist.get('Date_Resolution').dirty ||esopFormlist.get('Date_Resolution').touched)" />
                                 </div>
 
@@ -250,86 +250,114 @@
                 <div class="card p-2 mt-1">
                     <div class="card-header">
                         Grant Details
-                        <a class="btn btn-danger" style="float: right;" href="assets/GrantExcelFormat.xlsx" download="GrantExcelFormat.xlsx"> Download Excel Template </a>
+                        <a class="btn btn-danger" style="float: right;" href="assets/GrantExcelFormat.xlsx"
+                            download="GrantExcelFormat.xlsx"> Download Excel Template </a>
                     </div>
                     <div class="col-lg-4 mt-2">
-                        
-                    <input class="form-control" type="file" (change)="onFileChange($event)" multiple="false" />
+
+                        <input class="form-control" type="file" (change)="onFileChange($event)" multiple="false" />
                     </div>
                     <div class="container-fluid position-relative d-flex p-0">
                         <div class="container-fluid pt-2">
                             <div class="row">
-                <table class="table table-striped table-bordered caption-top table-responsive">
-                    <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY) 
-                        SECTION C OF FORM-FC TO BE IMPLEMENTED                    
-                    </caption>
-                    <thead>
-                        <tr>
-                            <th>Full Name of the Grantee</th>
-                            <th>Date of Issue</th>
-                            <th>Number of ESOPs Granted</th>
-                            <th>Country</th>
-                            <th>Residential Status</th>
-                            <th>Name of the Subsidiary . SDS</th>
-                            <th>Pre-determined issue price</th>
-                            <th colspan="2">Conversion ratio</th>
-                            <th>Equivalent equity shares on fully diluted basis</th>
-                            <th>Face value of equity shares</th>
-                            <th>Value of Shares in Rs</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
-                        
-                            <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm"  type="text" />
-                            </td>
-                            <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
-                            </td>
-                            <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-                            </td>
-                            <td>
-                                <select class="form-control" search></select>
-                                <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-                            </td>
-                            <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-                            </td>
-                            <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
-                            </td>
-                            <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Pre_determined_issue_price" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-                            </td>
-                            <td><input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio1" class="form-control form-control-sm" [ngModelOptions]="{standalone: true}" >
-                            </td>
-                            <td>
-                                
-                                <input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio" class="form-control form-control-sm" [ngModelOptions]="{standalone: true}" (ngModelChange)="CounEquivalentEquityShares(i)">
-                                
-                            </td>
-                            <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Equivalent_equity_shares" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"  type="text" />
-                            </td>
-                            <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Facevalue_equity_shares" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"  type="text" (ngModelChange)="CountValueofShares(i)"/>
-                            </td>
-                            <td>
-                                <input [(ngModel)]="GrantDetailsArray[i].Value_of_Shares" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-                            </td>
-                            <td>
-                                <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>
-                                <button type="button" *ngIf="GrantDetailsArray.length>1" class="btn btn-outline-primary me-2" (click)="deleteGrantData(i)">-</button>
-    
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <table class="table table-striped table-bordered caption-top table-responsive">
+                                    <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY)
+                                        SECTION C OF FORM-FC TO BE IMPLEMENTED
+                                    </caption>
+                                    <thead>
+                                        <tr>
+                                            <th>Full Name of the Grantee</th>
+                                            <th>Date of Issue</th>
+                                            <th>Number of ESOPs Granted</th>
+                                            <th>Country</th>
+                                            <th>Residential Status</th>
+                                            <th>Name of the Subsidiary . SDS</th>
+                                            <th>Pre-determined issue price</th>
+                                            <th colspan="2">Conversion ratio</th>
+                                            <th>Equivalent equity shares on fully diluted basis</th>
+                                            <th>Face value of equity shares</th>
+                                            <th>Value of Shares in Rs</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+
+                                            <td>
+                                                <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm" type="text" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm" type="date" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm" type="text" />
+                                            </td>
+                                            <td>
+                                                <!--  <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" /> -->
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm" type="text" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm" type="text" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="GrantDetailsArray[i].Pre_determined_issue_price"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm" type="text" />
+                                            </td>
+                                            <td><input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio1"
+                                                    class="form-control form-control-sm"
+                                                    [ngModelOptions]="{standalone: true}">
+                                            </td>
+                                            <td>
+
+                                                <input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio"
+                                                    class="form-control form-control-sm"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    (ngModelChange)="CounEquivalentEquityShares(i)">
+
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="GrantDetailsArray[i].Equivalent_equity_shares"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm" type="text" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="GrantDetailsArray[i].Facevalue_equity_shares"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm" type="text"
+                                                    (ngModelChange)="CountValueofShares(i)" />
+                                            </td>
+                                            <td>
+                                                <input [(ngModel)]="GrantDetailsArray[i].Value_of_Shares"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm" type="text" />
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary me-2"
+                                                    (click)="addGrantData()">+</button>
+                                                <button type="button" *ngIf="GrantDetailsArray.length>1"
+                                                    class="btn btn-outline-primary me-2"
+                                                    (click)="deleteGrantData(i)">-</button>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                        </div></div>
+                        </div>
+                    </div>
                 </div>
             </tab>
             <tab heading="Declaration">
@@ -340,23 +368,26 @@
                     <div class="container-fluid position-relative d-flex p-0">
                         <div class="container-fluid pt-2">
                             <div class="row">
-                                <div class="col-lg-10 mb-3" >
-                                   <P  [ngClass]="Non_Debt_Instruments.value == true ? 'del' : 'notdel'">
-                                    1. We comply with the procedure for issue of equity instruments as laid down under
-                                    Foreign
-                                    Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17, 2019 and as
-                                    amended
-                                    from time to time.</P>
+                                <div class="col-lg-10 mb-3">
+                                    <P [ngClass]="Non_Debt_Instruments.value == true ? 'del' : 'notdel'">
+                                        1. We comply with the procedure for issue of equity instruments as laid down
+                                        under
+                                        Foreign
+                                        Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17, 2019
+                                        and as
+                                        amended
+                                        from time to time.</P>
                                 </div>
                                 <div class="col-lg-2">
                                     <input class="form-check-input me-1" type="checkbox" value="Non_Debt_Instruments"
                                         formControlName="Non_Debt_Instruments" style="cursor:pointer;">
                                 </div>
                                 <div class="col-lg-10 mb-3">
-                                    <P  [ngClass]="sectoral_cap_statutory.value == true ? 'del' : 'notdel'">
-                                    2. The investment is within the sectoral cap / statutory ceiling permissible under
-                                    the
-                                    rules, ibid and in compliance with the attendant conditions.
+                                    <P [ngClass]="sectoral_cap_statutory.value == true ? 'del' : 'notdel'">
+                                        2. The investment is within the sectoral cap / statutory ceiling permissible
+                                        under
+                                        the
+                                        rules, ibid and in compliance with the attendant conditions.
                                     </P>
                                 </div>
                                 <div class="col-lg-2">
@@ -364,12 +395,13 @@
                                         formControlName="sectoral_cap_statutory" style="cursor:pointer;">
                                 </div>
                                 <div class="col-lg-10 mb-3">
-                                    <P  [ngClass]="Indian_companies_reconstruction.value == true ? 'del' : 'notdel'">
-                                    3. The equity instruments issued under a scheme of merger and amalgamation of two or
-                                    more
-                                    Indian companies or reconstruction by way of de-merger or otherwise of an Indian
-                                    company is
-                                    duly approved by a court in India. (Strike- out if not applicable).
+                                    <P [ngClass]="Indian_companies_reconstruction.value == true ? 'del' : 'notdel'">
+                                        3. The equity instruments issued under a scheme of merger and amalgamation of
+                                        two or
+                                        more
+                                        Indian companies or reconstruction by way of de-merger or otherwise of an Indian
+                                        company is
+                                        duly approved by a court in India. (Strike- out if not applicable).
                                     </P>
                                 </div>
                                 <div class="col-lg-2">
@@ -377,14 +409,15 @@
                                         formControlName="Indian_companies_reconstruction" style="cursor:pointer;">
                                 </div>
                                 <div class="col-lg-10 mb-3">
-                                    <P  [ngClass]="PMLA_UAPA.value == true ? 'del' : 'notdel'">
-                                    4. The foreign investment received and reported now will be utilized in compliance
-                                    with the
-                                    provision of a Prevention of Money Laundering Act 2002 (PMLA) and Unlawful
-                                    Activities
-                                    (Prevention) Act, 1967 (UAPA). We confirm that the investment complies with the
-                                    provisions
-                                    of all applicable Rules and Regulations.
+                                    <P [ngClass]="PMLA_UAPA.value == true ? 'del' : 'notdel'">
+                                        4. The foreign investment received and reported now will be utilized in
+                                        compliance
+                                        with the
+                                        provision of a Prevention of Money Laundering Act 2002 (PMLA) and Unlawful
+                                        Activities
+                                        (Prevention) Act, 1967 (UAPA). We confirm that the investment complies with the
+                                        provisions
+                                        of all applicable Rules and Regulations.
                                     </P>
                                 </div>
                                 <div class="col-lg-2">
@@ -392,8 +425,9 @@
                                         style="cursor:pointer;">
                                 </div>
                                 <div class="col-lg-10 mb-3">
-                                    <P  [ngClass]="enclose_documents.value == true ? 'del' : 'notdel'">
-                                    5. We enclose the following documents in compliance with these rules/regulations:
+                                    <P [ngClass]="enclose_documents.value == true ? 'del' : 'notdel'">
+                                        5. We enclose the following documents in compliance with these
+                                        rules/regulations:
                                     </P>
                                 </div>
                                 <div class="col-lg-2">
@@ -402,8 +436,8 @@
                                 </div>
                                 <div class="row justify-content-md-center">
                                     <div class="col-md-auto col-lg-10 mb-3">
-                                        <P  [ngClass]="certificate_Company_Secretary.value == true ? 'del' : 'notdel'">
-                                        i. A certificate from our Company Secretary as in the specified format.
+                                        <P [ngClass]="certificate_Company_Secretary.value == true ? 'del' : 'notdel'">
+                                            i. A certificate from our Company Secretary as in the specified format.
                                         </P>
                                     </div>
                                     <div class="col col-lg-1">
@@ -411,16 +445,18 @@
                                             formControlName="certificate_Company_Secretary" style="cursor:pointer;">
                                     </div>
                                     <div class="col-md-auto col-lg-10 mb-3">
-                                        <P  [ngClass]="SEBI_registered.value == true ? 'del' : 'notdel'">
-                                        ii. A certificate from SEBI registered Merchant Banker / Chartered Accountant /
-                                        cost
-                                        accountant or any other person as authorized under Foreign Exchange Management
-                                        (Non-Debt
-                                        Instruments) Rules, 2019 dated October 17, 2019 and as amended from time to
-                                        time,
-                                        indicating the manner of arriving at the price of the shares issued to the
-                                        persons
-                                        resident outside India (wherever applicable).
+                                        <P [ngClass]="SEBI_registered.value == true ? 'del' : 'notdel'">
+                                            ii. A certificate from SEBI registered Merchant Banker / Chartered
+                                            Accountant /
+                                            cost
+                                            accountant or any other person as authorized under Foreign Exchange
+                                            Management
+                                            (Non-Debt
+                                            Instruments) Rules, 2019 dated October 17, 2019 and as amended from time to
+                                            time,
+                                            indicating the manner of arriving at the price of the shares issued to the
+                                            persons
+                                            resident outside India (wherever applicable).
                                         </P>
                                     </div>
                                     <div class="col col-lg-1">
@@ -428,8 +464,8 @@
                                             formControlName="SEBI_registered" style="cursor:pointer;">
                                     </div>
                                     <div class="col-md-auto col-lg-10 mb-3">
-                                        <P  [ngClass]="necessary_documents.value == true ? 'del' : 'notdel'">>
-                                        iii. All other necessary documents as applicable to the issue.
+                                        <P [ngClass]="necessary_documents.value == true ? 'del' : 'notdel'">>
+                                            iii. All other necessary documents as applicable to the issue.
                                         </P>
                                     </div>
                                     <div class="col col-lg-1">
@@ -461,29 +497,31 @@
                         <!-- <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td style="width:40px;"> -->
-                                    <!-- <p style="margin: 0px;">
+                        <!-- <p style="margin: 0px;">
                                         Sub:
                                     </p> -->
-                                <!-- </td>
+                        <!-- </td>
                                 <td> -->
-                                    <p style="margin: 0px;">
-                                        Sub:  Filing of form ESOP for granting Employee Stock Option
-                                        XXXXXXXXXXXXXXXXXXXXXXXX (“the company”)
-                                    </p>
-                                <!-- </td>
+                        <p style="margin: 0px;">
+                            Sub: Filing of form ESOP for granting Employee Stock Option
+                            XXXXXXXXXXXXXXXXXXXXXXXX (“the company”)
+                        </p>
+                        <!-- </td>
                             </tr>
                            
                         </table> -->
-                    
-                        <p>With regards to the above cited subject <u>XXXXXXXXXXXXXXXXXXXXXXXX</u> (hereinafter referred to
+
+                        <p>With regards to the above cited subject <u>XXXXXXXXXXXXXXXXXXXXXXXX</u> (hereinafter referred
+                            to
                             the
                             “company”) had granted XXXXXXXX ESOPs under its Employee Stock Option Plan
-                            (XXXXXXXXXXXXXXXXXXXXXXXX) at INR XXXXXX/- per option to its various employees who are resident
+                            (XXXXXXXXXXXXXXXXXXXXXXXX) at INR XXXXXX/- per option to its various employees who are
+                            resident
                             outside India (as per Annexure). The Board / EGM / Circular Resolution No: XXXXXXXXXX for
                             granting the said ESOPs was passed on <u>XX-XX-XXXX</u>.</p>
                         <p>Enclosed is the documentation for submission of ESOP:</p>
-                    
-                        <table  border="1" cellspacing="0" cellpadding="5">
+
+                        <table border="1" cellspacing="0" cellpadding="5">
                             <thead>
                                 <th align="left">Sl. No.</th>
                                 <th align="left">Documentation</th>
@@ -507,7 +545,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    
+
                         <p>Kindly accept the same and oblige.</p>
                         <br>
                         <br>
@@ -552,7 +590,7 @@
                                     XX-XX-XXXX
                                 </td>
                             </tr>
-                        
+
                         </table>
 
                         <p align="center">
@@ -579,7 +617,7 @@
                             office at XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, has granted XXXXXXXXX ESOPs
                             under its XXXXXXXXXXXXXXXXXXXXXXXXXXX “ESOP Scheme” at an exercise price of
-                            <br/>
+                            <br />
                             INR XXXXX/- per option on XX-XX-XXXX. <strong></strong>
                         </p>
                         <p>
@@ -635,7 +673,7 @@
                             Date : XXXXXXXXX
                         </p>
                         <em>
-                            <br clear="all"/>
+                            <br clear="all" />
                         </em>
                         <p>
                             <em></em>
@@ -706,7 +744,7 @@
                             Date : XX-XX-XXXX
                         </p>
                     </div>
-            </div>
+                </div>
             </tab>
         </tabset>
 
@@ -715,6 +753,5 @@
         <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1" value="Back">
         <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
     </div>
-    
-</div>
 
+</div>

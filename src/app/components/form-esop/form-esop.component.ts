@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, VERSION, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray,FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -11,6 +11,7 @@ import jsPDF from 'jspdf';
 import htmlToPdfmake from 'html-to-pdfmake';
 import * as XLSX from 'xlsx';
 import { formatDate } from '@angular/common';
+
 type AOA = any[][];
 @Component({
   selector: 'app-form-esop',
@@ -18,11 +19,16 @@ type AOA = any[][];
   styleUrls: ['./form-esop.component.css']
 })
 export class FormEsopComponent implements OnInit {
+  @ViewChild('country') country: ElementRef
+  @ViewChild('city') city: ElementRef
+  @ViewChild('state') state: ElementRef
+  @ViewChild('selectpicker') selectPicker: ElementRef;
+  
   @ViewChild('tabset') tabset: any;
   public esopFormlist: FormGroup;
   CountryList: any = [];
   constructor(private readonly route: ActivatedRoute, private apiService: ApiService,private fb: FormBuilder) {
-    // this.readCountry();
+    this.readCountry();
   }
   foreigninvestmentProject = [
     { id: '1', Type: 'Yes' },
@@ -116,8 +122,10 @@ export class FormEsopComponent implements OnInit {
   }
 
   readCountry() {
+    debugger
     this.apiService.getCountry().subscribe((data) => {
       this.CountryList = data;
+      console.log(this.CountryList);
     });
   }
   CounEquivalentEquityShares(i) {

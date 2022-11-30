@@ -207,7 +207,7 @@ let FormAPR = new Schema({
        investment_SDS_Name: {type:String},
     investment_SDS_Level: {type:String},
     investment_SDS_Jurisdiction: {type:String},
-    investment_SDS_ParentName: {type:Number},
+    investment_SDS_ParentName: {type:String},
     investment_SDS_ParentLevel: {type:String},
     investment_SDS_ParentJurisdiction: {type:String},
     investment_SDS_InvestmentAmount: {type:Number},

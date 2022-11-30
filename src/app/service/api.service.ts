@@ -11,8 +11,8 @@ import {
   providedIn: 'root',
 })
 export class ApiService {
-  baseUri: string = 'http://13.234.13.221:4000/api';
-  //baseUri: string = 'http://localhost:4000/api';
+  //baseUri: string = 'http://13.234.13.221:4000/api';
+  baseUri: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -29,10 +29,10 @@ export class ApiService {
   }
 
   getCountry() {
-    return this.http.get(`${this.baseUri}/master`);
+    return this.http.get(`${this.baseUri}/Country`);
   }
   getCity() {
-    return this.http.get(`${this.baseUri}/master/City`);
+    return this.http.get(`${this.baseUri}/City`);
   }
   // Get employee
   getEmployee(id): Observable<any> {

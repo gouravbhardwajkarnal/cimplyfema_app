@@ -178,11 +178,12 @@
                             <div class="col-sm-12 col-xl-4 mb-3">
                                 <label for="investment_City" class="form-label">City
                                 </label>
+                                
                                 <input class="form-control" formControlName="investment_City" list="datalistOptions"
                                     id="exampleDataList" placeholder="Type to search..."
                                     [class.is-invalid]="investment_City.invalid && (investment_City.dirty || investment_City.touched)"><datalist
                                     id="datalistOptions">
-                                    <option *ngFor="let list of CityList">{{list.name}}</option>
+                                    <option *ngFor="let list of CityList">{{list.city}}</option>
                                 </datalist>
                                 <!-- <input type="text" id="investment_City" name="investment_City"
                                     formControlName="investment_City" list="datalistOptions" id="exampleDataList" placeholder="Type to search..."  class="form-control form-control-sm"

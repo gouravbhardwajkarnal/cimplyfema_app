@@ -10,6 +10,7 @@ import { GrantDetailsList} from 'src/app/model/Fdi.model';
 import jsPDF from 'jspdf';
 import htmlToPdfmake from 'html-to-pdfmake';
 import * as XLSX from 'xlsx';
+import { formatDate } from '@angular/common';
 type AOA = any[][];
 @Component({
   selector: 'app-form-esop',
@@ -133,10 +134,21 @@ export class FormEsopComponent implements OnInit {
     }
     
   }
+
+  private formatDate(date) {
+    const d = new Date(date);
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    const year = d.getFullYear();
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    return [year, month, day].join('-');
+  }
   
   onSubmitESOPFrom() {
     const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
     this.esopFormlist.setControl('GrantDetails', grantFormArray);
+    
     console.log(this.esopFormlist.value);
     if (this.esopFormlist.invalid) {
       for (const control of Object.keys(this.esopFormlist.controls)) {
@@ -273,6 +285,7 @@ onFileChange(evt: any) {
       }
              this.GrantDetailsArray[i-1].Full_Name_Grantee=this.Exdata[i][0];
              this.GrantDetailsArray[i-1].Date_of_Issue= this.Exdata[i][1];
+             
              this.GrantDetailsArray[i-1].Number_ESOP_Granted= this.Exdata[i][2];
              this.GrantDetailsArray[i-1].Country= this.Exdata[i][3];
              this.GrantDetailsArray[i-1].ResidentialStatus= this.Exdata[i][4];
@@ -283,6 +296,7 @@ onFileChange(evt: any) {
              this.GrantDetailsArray[i-1].Equivalent_equity_shares= this.Exdata[i][8];
              this.GrantDetailsArray[i-1].Facevalue_equity_shares= this.Exdata[i][9];
              this.GrantDetailsArray[i-1].Value_of_Shares= this.Exdata[i][10];
+             //this.esopFormlist.get('grantFormArra').get('Date_of_Issue').patchValue(this.formatDate(new Date()));
     }
   };
   reader.readAsBinaryString(target.files[0]);

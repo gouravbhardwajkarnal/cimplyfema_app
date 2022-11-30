@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import * as XLSX from 'xlsx';
+import { GrantDetailsList} from 'src/app/model/Fdi.model';
+type AOA = any[][];
 @Component({
   selector: 'app-form-coc',
   templateUrl: './form-coc.component.html',
@@ -120,4 +123,78 @@ isLinear = false;
     if(Val=='5'){this.COC_FDIODIECB=true;};if(Val=='6'){this.COC_FDIDocPreviewg=true;};if(Val=='7'){this.COC_FDIOtherAnnexures=true;};
     console.log(Val);
   }
+  
+      
+    Full_Name_Grantee:string;  
+    Date_of_Issue:Date;  
+    Number_ESOP_Granted:number;  
+    Country:string;
+    ResidentialStatus:string;
+    SubsidiarySDS:number;
+    Pre_determined_issue_price:number;
+    Conversion_ratio1:string;
+    Conversion_ratio:number;
+    Equivalent_equity_shares:number;
+    Facevalue_equity_shares:number;
+    Value_of_Shares:number;
+  
+  GrantDetailsArray: Array<GrantDetailsList> = [];
+  GrantDetailsdata:any={};
+  deleteGrantData(index) {
+    if (this.GrantDetailsArray.length == 1) {
+      return false;
+    } else {
+      this.GrantDetailsArray.splice(index, 1);  
+      return true;
+    }
+    
+  }
+  addGrantData() {
+    this.GrantDetailsdata = { Full_Name_Grantee: "", Date_of_Issue: "",Number_ESOP_Granted:"",Country:"",ResidentialStatus: "",SubsidiarySDS:"",Pre_determined_issue_price:"",Conversion_ratio1: "1:",Conversion_ratio:"",Equivalent_equity_shares:"",Facevalue_equity_shares:"",Value_of_Shares:""}
+    this.GrantDetailsArray.push(this.GrantDetailsdata);
+    return true;
+  }
+  Exdata: AOA = [[1, 2], [3, 4]];
+onFileChange(evt: any) {
+  debugger
+  /* wire up file reader */
+  const target: DataTransfer = <DataTransfer>(evt.target);
+  if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+  const reader: FileReader = new FileReader();
+  reader.onload = (e: any) => {
+    /* read workbook */
+    const bstr: string = e.target.result;
+    const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
+
+    /* grab first sheet */
+    const wsname: string = wb.SheetNames[0];
+    const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+    /* save data */
+    this.Exdata = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
+    // this.GrantDetailsArray=this.Exdata;
+    console.log("data:",this.Exdata);
+    for (var i = 1; i < this.Exdata.length; i++) {
+      if(i>1)
+      {
+      this.addGrantData();
+      }
+             this.GrantDetailsArray[i-1].Full_Name_Grantee=this.Exdata[i][0];
+             this.GrantDetailsArray[i-1].Date_of_Issue= this.Exdata[i][1];
+             this.GrantDetailsArray[i-1].Number_ESOP_Granted= this.Exdata[i][2];
+             this.GrantDetailsArray[i-1].Country= this.Exdata[i][3];
+             this.GrantDetailsArray[i-1].ResidentialStatus= this.Exdata[i][4];
+             this.GrantDetailsArray[i-1].SubsidiarySDS= this.Exdata[i][5];
+             this.GrantDetailsArray[i-1].Pre_determined_issue_price= this.Exdata[i][6];
+/*              this.GrantDetailsArray[i].Conversion_ratio1= this.Exdata[i+1][7]; */
+             this.GrantDetailsArray[i-1].Conversion_ratio= this.Exdata[i][7];
+             this.GrantDetailsArray[i-1].Equivalent_equity_shares= this.Exdata[i][8];
+             this.GrantDetailsArray[i-1].Facevalue_equity_shares= this.Exdata[i][9];
+             this.GrantDetailsArray[i-1].Value_of_Shares= this.Exdata[i][10];
+    }
+  };
+  reader.readAsBinaryString(target.files[0]);
+  evt.target.value=null;
 }
+}
+

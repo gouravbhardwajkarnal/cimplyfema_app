@@ -559,41 +559,7 @@
         <div class="col-4 mb-2">
             
         </div> 
-  <div class="col-4 mb-2">
-    <label class="form-label">Regional/Central
-    </label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Regional/Central" required>
-</div> 
-<div class="col-4 mb-2">
-    <label class="form-label">Regional Offices
-    </label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Regional Offices" required>
-</div> 
-<div class="col-4 mb-2">
-    <label class="form-label">Topic
-    </label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Topic" required>
-</div>  
-<div class="col-4 mb-2">
-    <label class="form-label">Regional Director
-    </label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Regional Director" required>
-</div> 
-<div class="col-4 mb-2">
-    <label class="form-label">Telephone Number
-    </label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Telephone Number" required>
-</div> 
-<div class="col-4 mb-2">
-    <label class="form-label">Fax
-    </label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Fax" required>
-</div> 
-<div class="col-4 mb-2">
-    <label class="form-label">Email Id
-    </label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Email Id" required>
-</div> 
+
  <br>
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop2" aria-hidden="true">
@@ -765,11 +731,276 @@
         <ul class="list-group">
             <li class="list-group-item list-group-item-info">FDI/ODI/ECB/LO BO PO Form Details</li>
           </ul>  
-      <p>As per Respective Forms. In the event some information is already filled in any of the above TABS, the same can be captured in TAB 4. Please see the link below
-
-        https://rbidocs.rbi.org.in/rdocs/content/pdfs/13MDR020616_A2.pdf
-        </p>
+     <p>Details to be furnished a foreign-direct-investment along with application for compounding of contravention relating to Foreign Direct Investment in India</p><br>
+     <div class="col-4 mb-2">
+      <label class="form-label">Name of Applicent
+      </label>
+      <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+          [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+      <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+          class="invalid-feedback">
+          This field is required.
+      </div>
+  </div> 
+     <div class="col-4 mb-2">
+      <label class="form-label">Date 
+      </label>
+      <input type="date" class="form-control" name="date-field"
+          formControlName="Date_Resolution" />
+  </div> 
+  <div class="col-4 mb-2">
+    <label class="form-label">Income Tax PAN Number
+    </label>
+    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+        class="invalid-feedback">
+        This field is required.
     </div>
+</div> 
+<div class="col-6 mb-2">
+  <label class="form-label">Nature of Activities Undertaken(Please give nic code-1987/2008)
+  </label>
+  <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+      [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+  <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+      class="invalid-feedback">
+      This field is required.
+  </div>
+</div> 
+
+<div class="col-6 mb-2">
+  <label class="form-label">Brief Perticulars about the foreign Insvestor
+  </label>
+  <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+      [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+  <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+      class="invalid-feedback">
+      This field is required.
+  </div>
+</div> 
+<div class="col-4 mb-2"></div>
+<div class="col-12 mb-2">
+  <label class="form-label">Details of foreign inward remittances received by Applicant Company from date of incorporation till date
+  </label>
+  <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
+      [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+  <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+      class="invalid-feedback">
+      This field is required.
+  </div>
+</div> 
+    </div>
+    <table class="table table-striped table-bordered caption-top table-responsive">
+      <caption> <ul class="list-group">
+        <li class="list-group-item list-group-item-info">TABLE A</li>
+      </ul>                  
+      </caption>
+      <thead>
+          <tr>
+              <th>SI No.</th>
+              <th>Name of Remitter</th>
+              <th>Total Amount (INR)</th>
+              <th>Date of Receipt</th>
+              <th>Reported to RBI on*</th>
+              <th>Delay if any</th>
+              <th>Total</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+          
+              <td>
+                  <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm"  type="text" />
+              </td>
+            
+              <td>
+                  <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+              </td>
+              <td>
+                  <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+              </td>
+
+              <td>
+                  <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+              </td>
+              <td>
+                  <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
+              </td>
+              <td>
+                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
+            </td>
+            <td>
+              <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
+          </td>
+              <td>
+                  <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>
+                  <button type="button" *ngIf="GrantDetailsArray.length>1" class="btn btn-outline-primary me-2" (click)="deleteGrantData(i)">-</button>
+
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  <br>
+  <table class="table table-striped table-bordered caption-top table-responsive">
+    <caption> <ul class="list-group">
+      <li class="list-group-item list-group-item-info">TABLE A</li>
+    </ul>                  
+    </caption>
+    <thead>
+        <tr>
+            <th>Name of Investor</th>
+            <th>Date of allotment of shares</th>
+            <th>Number of shares allotted</th>
+            <th>Amount for which shares allotted</th>
+            <th>Date of reporting to RBI*</th>
+            <th>Delay if any</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+        
+            <td>
+                <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm"  type="text" />
+            </td>
+            <td>
+              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
+             </td>
+            <td>
+              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
+             </td>
+            <td>
+                <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+            </td>
+           
+            <td>
+                <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
+            </td>
+            
+            <td>
+                <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>
+                <button type="button" *ngIf="GrantDetailsArray.length>1" class="btn btn-outline-primary me-2" (click)="deleteGrantData(i)">-</button>
+  
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  <table class="table table-striped table-bordered caption-top table-responsive">
+    <caption> <ul class="list-group">
+      <li class="list-group-item list-group-item-info">TABLE C</li>
+    </ul>                  
+    </caption>
+    <thead>
+        <tr>
+           
+            <th>SI No</th>
+            <th>Name of Remitter</th>
+            <th>Total Amount (INR)</th>
+            <th>Date of Receipt</th>
+            <th>Excess share application money</th>
+            <th>Date of refund of share application money</th>
+            <th>Amount in forex</th>
+            <th>RBI approval letter and date</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+        
+            <td>
+                <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm"  type="text" />
+            </td>
+           
+            <td>
+                <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+            </td>
+            <td>
+                <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+            </td>
+            <td>
+              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
+            </td>
+            <td>
+              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
+             </td>
+             <td>
+              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
+            </td>
+            <td>
+                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
+            </td>
+            <td>
+              <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
+          </td>
+          <td>
+            <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
+        </td>
+            <td>
+                <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>
+                <button type="button" *ngIf="GrantDetailsArray.length>1" class="btn btn-outline-primary me-2" (click)="deleteGrantData(i)">-</button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered caption-top table-responsive">
+  <caption> <ul class="list-group">
+    <li class="list-group-item list-group-item-info">Authorised Capital</li>
+  </ul>                  
+  </caption>
+  <thead>
+      <tr>
+          <th>Sl.No.</th>
+          <th>Date</th>
+          <th>Authorised Capital</th>
+          <th>With effect from</th>
+          <th>Date of Board meeting</th>
+          <th>Date of filing with ROC</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+      
+          <td>
+              <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm"  type="text" />
+          </td>
+        
+          <td>
+              <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+          </td>
+          <td>
+              <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+          </td>
+          <td>
+            <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
+           </td>
+          <td>
+              <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
+          </td>
+          <td>
+              <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
+          </td>
+          
+          <td>
+              <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>
+              <button type="button" *ngIf="GrantDetailsArray.length>1" class="btn btn-outline-primary me-2" (click)="deleteGrantData(i)">-</button>
+
+          </td>
+      </tr>
+  </tbody>
+</table>
   <button type="button" (click)="RBI_FDISubmit('6')" class="btn btn-primary">Next</button>
 </div>
 <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIDocPreviewg">
@@ -777,7 +1008,6 @@
         <ul class="list-group">
             <li class="list-group-item list-group-item-info">Documents Preview & Annexures</li>
           </ul>  
-          
     </div>
   <button type="button" (click)="RBI_FDISubmit('7')" class="btn btn-primary">Next</button> 
 </div>

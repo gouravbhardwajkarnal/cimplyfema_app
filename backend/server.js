@@ -16,7 +16,7 @@ mongoose
   })
 
 // Setting up port with express js
-const employeeRoute = require('./routes/employee.route')
+// const employeeRoute = require('./routes/employee.route')
 const masterRoute = require('./routes/master.route')
 const esopRoute = require('./routes/FormEsop.route')
 const aprRoute = require('./routes/FormAPR.route')
@@ -32,7 +32,7 @@ app.use(
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'dist/cimplyfema-app')))
 app.use('/', express.static(path.join(__dirname, 'dist/cimplyfema-app')))
-app.use('/api', employeeRoute)
+// app.use('/api', employeeRoute)
 app.use('/api', masterRoute)
 app.use('/api', esopRoute)
 app.use('/api', aprRoute)

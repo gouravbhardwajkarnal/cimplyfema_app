@@ -29,10 +29,10 @@ export class ApiService {
   }
 
   getCountry() {
-    return this.http.get(`${this.baseUri}/master`);
+    return this.http.get(`${this.baseUri}/Country`);
   }
   getCity() {
-    return this.http.get(`${this.baseUri}/master/City`);
+    return this.http.get(`${this.baseUri}/City`);
   }
   // Get employee
   getEmployee(id): Observable<any> {

@@ -299,6 +299,15 @@
                                                     class="form-control form-control-sm" type="text" />
                                             </td>
                                             <td>
+                                                <ng-select [items]="accounts" bindLabel="name" bindValue="name"
+                                                    groupBy="country" [searchable]="false" [(ngModel)]="selectedAccount"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    class="form-control form-control-sm">
+                                                    <ng-template ng-optgroup-tmp let-item="item">
+                                                        {{item.country || 'Unnamed group'}}
+                                                    </ng-template>
+                                                </ng-select>
+
                                                 <!--  <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" /> -->
                                             </td>
                                             <td>
@@ -488,37 +497,30 @@
                         <button type="button" (click)="downloadAsPDF()" class="btn btn-primary">Genrate Pdf</button>
                     </div>
                     <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable" #pdfTable>
+                        <p style="text-align: center;">
+                            <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
+                            </em>
+                        </p>
                         <p>
                             To,<br>
-                            {{esopFormlist.get('NameofinvesteeCompany').value}}<br>
-                            {{esopFormlist.get('ESOP_Scheme_Name').value}}
+                            [Bank Name]<br>
+                            [Bank Address]
                         </p>
-                        <p>Dear Sir / Madam,</p>
-                        <!-- <table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td style="width:40px;"> -->
-                        <!-- <p style="margin: 0px;">
-                                        Sub:
-                                    </p> -->
-                        <!-- </td>
-                                <td> -->
+                        
+                       
                         <p style="margin: 0px;">
                             Sub: Filing of form ESOP for granting Employee Stock Option
-                            XXXXXXXXXXXXXXXXXXXXXXXX (“the company”)
+                        <b>{{esopFormlist.get('NameofinvesteeCompany').value}} </b>
                         </p>
-                        <!-- </td>
-                            </tr>
-                           
-                        </table> -->
-
-                        <p>With regards to the above cited subject <u>XXXXXXXXXXXXXXXXXXXXXXXX</u> (hereinafter referred
+                   
+                        <p>With regards to the above cited subject <u><b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b></u> (hereinafter referred
                             to
                             the
-                            “company”) had granted XXXXXXXX ESOPs under its Employee Stock Option Plan
-                            (XXXXXXXXXXXXXXXXXXXXXXXX) at INR XXXXXX/- per option to its various employees who are
+                            “company”) had granted <b>{{esopFormlist.get('GrantDetails').get('Number_ESOP_Granted')}}</b> ESOPs under its Employee Stock Option Plan
+                            (<b>{{esopFormlist.get('ESOP_Scheme_Name')}}</b>) at INR <b>{{esopFormlist.get('GrantDetails').get('Pre_determined_issue_price')}}</b>/- per option to its various employees who are
                             resident
-                            outside India (as per Annexure). The Board / EGM / Circular Resolution No: XXXXXXXXXX for
-                            granting the said ESOPs was passed on <u>XX-XX-XXXX</u>.</p>
+                            outside India (as per Annexure). The Board / EGM / Circular Resolution No: <b>{{esopFormlist.get('BR_EGM_Circular')}}</b> for
+                            granting the said ESOPs was passed on <u><b>{{esopFormlist.get('Date_Resolution').value}}</b> </u>.</p>
                         <p>Enclosed is the documentation for submission of ESOP:</p>
 
                         <table border="1" cellspacing="0" cellpadding="5">
@@ -549,7 +551,7 @@
                         <p>Kindly accept the same and oblige.</p>
                         <br>
                         <br>
-                        <p>For XXXXXXXXXXXXXXXXXXXXXXXX</p>
+                        <p>For {{esopFormlist.get('NameofinvesteeCompany').value}}</p>
                         <br>
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
@@ -593,10 +595,8 @@
 
                         </table>
 
-                        <p align="center">
-                            <em>
-                                &lt;&lt;To be executed on the letter head of Practicing Company
-                                Secretary&gt;&gt;
+                        <p style="text-align: center;">
+                            <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
                             </em>
                         </p>
                         <p>
@@ -612,13 +612,13 @@
                             <strong></strong>
                         </p>
                         <p>
-                            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX<strong> (CIN - </strong>
-                            XXXXXXXXXXXXXXXXXX<strong>)</strong>, (the Company) having its registered
-                            office at XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, has granted XXXXXXXXX ESOPs
-                            under its XXXXXXXXXXXXXXXXXXXXXXXXXXX “ESOP Scheme” at an exercise price of
+                            <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b><strong> (CIN - </strong>
+                            <b>{{esopFormlist.get('CIN_LIP').value}}</b><strong>)</strong>, (the Company) having its registered
+                            office at <b>{{esopFormlist.get('CIN_LIP').value}}</b>
+                            , has granted <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b> ESOPs
+                            under its <b>{{esopFormlist.get('ESOP_Scheme_Name').value}}</b> “ESOP Scheme” at an exercise price of
                             <br />
-                            INR XXXXX/- per option on XX-XX-XXXX. <strong></strong>
+                            INR <b>{{esopFormlist.get('NameofinvesteeCompany').value}</b>/- per option on <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b>. <strong></strong>
                         </p>
                         <p>
                             <strong></strong>
@@ -678,13 +678,14 @@
                         <p>
                             <em></em>
                         </p>
-                        <p align="center">
-                            <em>&lt;&lt;To be executed on the letter head of XXXXXXXXXXXX&gt;&gt;</em>
+                        <p style="text-align: center;">
+                            <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
+                            </em>
                         </p>
                         <p>
                             <strong><u></u></strong>
                         </p>
-                        <p align="center">
+                        <p style="text-align: center;">
                             <strong>
                                 <u>
                                     DECLARATION TO BE FILED BY THE AUTHORISED REPRESENTATIVE OF THE
@@ -729,7 +730,7 @@
                             (iii) All other necessary documents as applicable to the issue.
                         </p>
                         <p>
-                            Signature of the Applicant
+                            For <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b>
                         </p>
                         <p>
                             __________________________________
@@ -743,6 +744,127 @@
                         <p>
                             Date : XX-XX-XXXX
                         </p>
+
+                        <p style="text-align: center;">
+                            <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
+                            </em>
+                        </p>
+                        <p>
+                            To,
+                        </p>
+                        <p>
+                            [Bank Name]
+                        </p>
+                        <p>
+                            [Bank Address]
+                        </p>
+                        <p>
+                            Dear Sir / Madam,
+                        </p>
+                        <p>
+                            <strong>
+                                Sub:
+                                <u>
+                        Filing of form ESOP for granting Employee Stock Option -<em>{{esopFormlist.get('NameofinvesteeCompany').value}}</em> (“the company”)
+                                </u>
+                            </strong>
+                        </p>
+                        <div>
+                            <p>
+                                <strong></strong>
+                            </p>
+                        </div>
+                        <p>
+                            We confirm that the options granted to employees who are person resident
+                            outside India are not from a country, which shares land border with India
+                            or the Significant Beneficial Owner (jointly or severely) of an investment
+                            into India who is situated in or is a citizen of any such country
+                            (Pakistan, Bangladesh, Afghanistan, Nepal, Bhutan, Myanmar, and China.
+                            (China includes Hong Kong and Macau).
+                        </p>
+                        <p>
+                            Herewith we confirm we are in compliance to Press Note No. 3(2020 Series)
+                            dated 17/04/2020
+                        </p>
+                        <p>
+                            We are hereby sharing the shareholding pattern of our company for your
+                            reference (Optional)
+                        </p>
+                        <table border="1" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="208" valign="top">
+                                        <p>
+                                            Investor category (Company,
+                                        </p>
+                                        <p>
+                                            LLP, Individual etc)
+                                        </p>
+                                    </td>
+                                    <td width="208" valign="top">
+                                        <p>
+                                            Investor country
+                                        </p>
+                                    </td>
+                                    <td width="208" valign="top">
+                                        <p>
+                                            Percentage holding as of ___
+                                        </p>
+                                        <p>
+                                            (date)
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="208" valign="top">
+                                        <p style="text-align: center;">
+                                            ----------------
+                                        </p>
+                                    </td>
+                                    <td width="208" valign="top">
+                                        <p style="text-align: center;">
+                                            ----------------
+                                        </p>
+                                    </td>
+                                    <td width="208" valign="top">
+                                        <p style="text-align: center;">
+                                            ----------------
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            For <strong><em><u>{{esopFormlist.get('NameofinvesteeCompany').value}}</u></em></strong>
+                        </p>
+                        <p>
+                            _________________________
+                        </p>
+                        <p>
+                            Name : <strong>Authorised_Signatory_Name</strong>
+                        </p>
+                        <p>
+                            Designation : <strong><em>Authorised_Signatory_Designation</em></strong>
+                        </p>
+                        <p>
+                            Email ID :
+                        </p>
+                        <p>
+                            Date : <a>XX-XX-XXXX</a>
+                            
+                        </p>
+                        <div>
+                            <hr align="left" size="1" width="33%"/>
+                            <div>
+                                <div id="_com_1">
+                                    <a name="_msocom_1"></a>
+                                    <p>
+                                        Default Insertion - Current Date
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </tab>

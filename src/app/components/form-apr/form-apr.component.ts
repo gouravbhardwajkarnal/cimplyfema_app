@@ -19,7 +19,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class FormAprComponent implements OnInit {
   public aprForm: FormGroup;
-  investment_model: Iinvestment;  
+  investment_model: Iinvestment;
   @ViewChild('tabset') tabset: TabsetComponent;
   ShareHoldingFEArray: Array<ShareHoldingFEGrid> = [];
   ShareHoldingFE: any = {};
@@ -332,62 +332,62 @@ export class FormAprComponent implements OnInit {
   //   pdfMake.createPdf(docDefinition).open();  
   // }  
   // aprFormlist:FormGroup
-  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private fb: FormBuilder,private commonservice: CommonService) {
+  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private fb: FormBuilder, private commonservice: CommonService) {
     this.investment_model = {} as Iinvestment;
     this.sdstypes = commonservice.getAllsdstypes();
     this.Jurisdictiontypes = commonservice.getAllJurisdictiontypes();
     this.sdsleveltypes = commonservice.getAllsdsleveltypes();
     this.aprForm = this.fb.group({
-      APR_From_Date: new FormControl('',Validators.required),
-      APR_To_Date: new FormControl('',Validators.required),
-      APR_UIN: new FormControl('',Validators.required),
-      APR_Indian_Amount: new FormControl('',Validators.required),
-      APR_Indian_Share: new FormControl('',Validators.required),
-      APR_Foreign_Amount: new FormControl('',Validators.required),
-      APR_Foreign_Share: new FormControl('',Validators.required),
-      APR_FE_Control: new FormControl('',Validators.required),
-      APR_Profit_Current: new FormControl('',Validators.required),
-      APR_Profit_Last: new FormControl('',Validators.required),
-      APR_Dividend_Current: new FormControl('',Validators.required),
-      APR_Dividend_Last: new FormControl('',Validators.required),
-      APR_Worth_Current: new FormControl('',Validators.required),
-      APR_Worth_Last: new FormControl('',Validators.required),
-      APR_Dividend_CurYear: new FormControl('',Validators.required),
-      APR_Dividend_commencement: new FormControl('',Validators.required),
-      APR_Repayment_CurYear: new FormControl('',Validators.required),
-      APR_Repayment_commencement: new FormControl('',Validators.required),
-      APR_EquityExport_CurYear: new FormControl('',Validators.required),
-      APR_EquityExport_commencement: new FormControl('',Validators.required),
-      APR_Royalties_CurYear: new FormControl('',Validators.required),
-      APR_Royalties_commencement: new FormControl('',Validators.required),
-      APR_Technical_CurYear: new FormControl('',Validators.required),
-      APR_Technical_commencement: new FormControl('',Validators.required),
-      APR_Consultancyfee_CurYear: new FormControl('',Validators.required),
-      APR_Consultancyfee_commencement: new FormControl('',Validators.required),
-      APR_Others_CurYear: new FormControl('',Validators.required),
-      APR_Others_commencement: new FormControl('',Validators.required),
-      APR_Profit_CurYear: new FormControl('',Validators.required),
-      APR_Profit_commencement: new FormControl('',Validators.required),
-      APR_Retained_CurYear: new FormControl('',Validators.required),
-      APR_Retained_commencement: new FormControl('',Validators.required),
-      APR_FDIforeign_CurYear: new FormControl('',Validators.required),
-      APR_FDIforeign_commencement: new FormControl('',Validators.required),
-      APR_exces_sshare_CurYear: new FormControl('',Validators.required),
-      APR_exces_sshare_commencement: new FormControl('',Validators.required),
+      APR_From_Date: new FormControl('', Validators.required),
+      APR_To_Date: new FormControl('', Validators.required),
+      APR_UIN: new FormControl('', Validators.required),
+      APR_Indian_Amount: new FormControl('', Validators.required),
+      APR_Indian_Share: new FormControl('', Validators.required),
+      APR_Foreign_Amount: new FormControl('', Validators.required),
+      APR_Foreign_Share: new FormControl('', Validators.required),
+      APR_FE_Control: new FormControl('', Validators.required),
+      APR_Profit_Current: new FormControl('', Validators.required),
+      APR_Profit_Last: new FormControl('', Validators.required),
+      APR_Dividend_Current: new FormControl('', Validators.required),
+      APR_Dividend_Last: new FormControl('', Validators.required),
+      APR_Worth_Current: new FormControl('', Validators.required),
+      APR_Worth_Last: new FormControl('', Validators.required),
+      APR_Dividend_CurYear: new FormControl('', Validators.required),
+      APR_Dividend_commencement: new FormControl('', Validators.required),
+      APR_Repayment_CurYear: new FormControl('', Validators.required),
+      APR_Repayment_commencement: new FormControl('', Validators.required),
+      APR_EquityExport_CurYear: new FormControl('', Validators.required),
+      APR_EquityExport_commencement: new FormControl('', Validators.required),
+      APR_Royalties_CurYear: new FormControl('', Validators.required),
+      APR_Royalties_commencement: new FormControl('', Validators.required),
+      APR_Technical_CurYear: new FormControl('', Validators.required),
+      APR_Technical_commencement: new FormControl('', Validators.required),
+      APR_Consultancyfee_CurYear: new FormControl('', Validators.required),
+      APR_Consultancyfee_commencement: new FormControl('', Validators.required),
+      APR_Others_CurYear: new FormControl('', Validators.required),
+      APR_Others_commencement: new FormControl('', Validators.required),
+      APR_Profit_CurYear: new FormControl('', Validators.required),
+      APR_Profit_commencement: new FormControl('', Validators.required),
+      APR_Retained_CurYear: new FormControl('', Validators.required),
+      APR_Retained_commencement: new FormControl('', Validators.required),
+      APR_FDIforeign_CurYear: new FormControl('', Validators.required),
+      APR_FDIforeign_commencement: new FormControl('', Validators.required),
+      APR_exces_sshare_CurYear: new FormControl('', Validators.required),
+      APR_exces_sshare_commencement: new FormControl('', Validators.required),
       APR_Dec_A: new FormControl(false),
       APR_Dec_B: new FormControl(false),
       APR_Dec_C: new FormControl(false),
       APR_Dec_D: new FormControl(false),
       APR_Dec_E: new FormControl(false),
-      APR_Authorized_Signature: new FormControl('',Validators.required),
-      APR_Authorized_NameDes: new FormControl('',Validators.required),
-      APR_Dec_Place: new FormControl('',Validators.required),
-      APR_Dec_Date: new FormControl('',Validators.required),
-      APR_Dec_Telephone: new FormControl('',Validators.required),
-      APR_Dec_Email: new FormControl('',Validators.required),
-      APR_Dec_Stamp: new FormControl('',Validators.required),
+      APR_Authorized_Signature: new FormControl('', Validators.required),
+      APR_Authorized_NameDes: new FormControl('', Validators.required),
+      APR_Dec_Place: new FormControl('', Validators.required),
+      APR_Dec_Date: new FormControl('', Validators.required),
+      APR_Dec_Telephone: new FormControl('', Validators.required),
+      APR_Dec_Email: new FormControl('', Validators.required),
+      APR_Dec_Stamp: new FormControl('', Validators.required),
       SDSDetails: new FormArray([]),
-      ShareHoldingFE:  new FormArray([]),     
+      ShareHoldingFE: new FormArray([]),
 
     });
   }
@@ -411,21 +411,23 @@ export class FormAprComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.SDS = {  investment_SDS_Name: "",
-    investment_SDS_Level: "",
-    investment_SDS_Jurisdiction: "",
-    investment_SDS_ParentName: "",
-    investment_SDS_ParentLevel: "",
-    investment_SDS_ParentJurisdiction: "",
-    investment_SDS_InvestmentAmount: "",
-    investment_SDS_InvestmentDate: "", 
-    investment_SDS_LEI: "",
-    investment_SDS_Type: "", 
-    investment_SDS_1987NIC: "", 
-    investment_SDS_2008NIC: "", 
-    investment_SDS_Stake: ""}
-  this.SDSArray.push(this.SDS);
-  this.SDSlength = this.SDSArray.length;
+    this.SDS = {
+      investment_SDS_Name: "",
+      investment_SDS_Level: "",
+      investment_SDS_Jurisdiction: "",
+      investment_SDS_ParentName: "",
+      investment_SDS_ParentLevel: "",
+      investment_SDS_ParentJurisdiction: "",
+      investment_SDS_InvestmentAmount: "",
+      investment_SDS_InvestmentDate: "",
+      investment_SDS_LEI: "",
+      investment_SDS_Type: "",
+      investment_SDS_1987NIC: "",
+      investment_SDS_2008NIC: "",
+      investment_SDS_Stake: ""
+    }
+    this.SDSArray.push(this.SDS);
+    this.SDSlength = this.SDSArray.length;
     this.btnShow = false;
     this.btnShowNext = true;
     this.ShareHoldingFE = { Person: "", Pstake: 0, ForeignPartner: "", FPstake: 0, Total: 0 };
@@ -514,17 +516,27 @@ export class FormAprComponent implements OnInit {
     // )
   }
   addShareHoldingFE() {
+    if (this.Totalstake == 100) {
+      return false;
+    }
     this.ShareHoldingFE = { Person: "", Pstake: 0, ForeignPartner: "", FPstake: 0, Total: 0 };
     this.ShareHoldingFEArray.push(this.ShareHoldingFE);
     this.ShareHoldingFElength = this.ShareHoldingFEArray.length;
     this.TotalPstake = 0;
     this.TotalFPstake = 0;
     this.Totalstake = 0;
+   
     this.ShareHoldingFEArray.forEach(element => {
       this.TotalPstake += element.Pstake;
       this.TotalFPstake += element.FPstake;
       this.Totalstake += element.Total;
-
+      if (this.Totalstake > 100) {
+        element.Pstake=0;
+        element.FPstake=0;
+        return false;
+      }
+     
+      
     });
     return true;
   }
@@ -550,6 +562,13 @@ export class FormAprComponent implements OnInit {
   onBlur(values) {
     console.log(values);
     values.Total = values.FPstake + values.Pstake;
+    if(values.Total>100)
+    {
+      values.FPstake=0;
+      values.Pstake=0;
+      values.Total=0;
+      return false;
+    }
     this.TotalPstake = 0;
     this.TotalFPstake = 0;
     this.Totalstake = 0;
@@ -558,6 +577,13 @@ export class FormAprComponent implements OnInit {
       this.TotalFPstake += element.FPstake;
       this.Totalstake += element.Total;
     });
+    if(this.Totalstake >100)
+    {
+      values.FPstake=0;
+      values.Pstake=0;
+      values.Total=0;
+      return false;
+    }
   }
   onSubmitAPRFrom() {
     debugger;
@@ -567,12 +593,12 @@ export class FormAprComponent implements OnInit {
         this.aprForm.controls[control].markAsTouched();
       }
       return;
-    }  
-    else{
+    }
+    else {
 
-      const ShareHoldingFE:FormArray=this.fb.array(this.ShareHoldingFEArray);
+      const ShareHoldingFE: FormArray = this.fb.array(this.ShareHoldingFEArray);
       this.aprForm.setControl('ShareHoldingFE', ShareHoldingFE);
-      const SDSArray:FormArray=this.fb.array(this.SDSArray);
+      const SDSArray: FormArray = this.fb.array(this.SDSArray);
       this.aprForm.setControl('SDSDetails', SDSArray);
       // this.aprForm.setControl('SDSDetails', this.fb.array(this.investment_model.investment_SDSModel || []));
       return this.apiService.createFormAPR(this.aprForm.value).subscribe({
@@ -580,7 +606,7 @@ export class FormAprComponent implements OnInit {
           alert('FromAPR successfully created!');
           // this.generatePDF();
           console.log('FromAPR successfully created!');
-            //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
+          //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
         },
         error: (e) => {
           console.log(e);
@@ -740,7 +766,7 @@ export class FormAprComponent implements OnInit {
     return this.aprForm.get('APR_Dec_Stamp')!;
   }
   addSDS() {
-    this.SDS = {  
+    this.SDS = {
       investment_SDS_Name: "",
       investment_SDS_Level: "",
       investment_SDS_Jurisdiction: "",
@@ -748,12 +774,13 @@ export class FormAprComponent implements OnInit {
       investment_SDS_ParentLevel: "",
       investment_SDS_ParentJurisdiction: "",
       investment_SDS_InvestmentAmount: "",
-      investment_SDS_InvestmentDate: "", 
+      investment_SDS_InvestmentDate: "",
       investment_SDS_LEI: "",
-      investment_SDS_Type: "", 
-      investment_SDS_1987NIC: "", 
-      investment_SDS_2008NIC: "", 
-      investment_SDS_Stake: ""};
+      investment_SDS_Type: "",
+      investment_SDS_1987NIC: "",
+      investment_SDS_2008NIC: "",
+      investment_SDS_Stake: ""
+    };
     this.SDSArray.push(this.SDS)
     console.log(this.SDSArray);
     this.SDSlength = this.SDSArray.length;
@@ -769,7 +796,7 @@ export class FormAprComponent implements OnInit {
       //this.toastr.warning('Row deleted successfully', 'Delete row');  
       return true;
     }
-    
+
   }
   updatePrev() {
     this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;

@@ -1,879 +1,1025 @@
-<div class="container">
-    <div class="card mt-2">
-        <div class="card-header p-2">
-            <h5> Form ESOP</h5>
+<div class="hpanel sub-sector-main">
+    <h2 class="topic_title">FORM ESOP</h2>
+    <div class="panel-body topic_drop p-0">
+        <div class="act-sec">
+            <div class="fema_tabs">
+                <nav>
+                    <div id="myTab" role="tablist" class="nav nav-tabs">
+                        <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()">
+                            <!-- (click)="confirmTabSwitch($event)" -->
+                            <tabset #tabset >
+                                <tab heading="Instructions">
+                                    <div class="card p-2">
+                                        <h5>Instructions</h5>
+
+                                        Instructions for filling up the Form FC
+                                        <ul>
+                                            <li>1) The Form FC is required to be submitted to the designated AD bank by
+                                                the person
+                                                resident
+                                                in India
+                                                seeking to invest in the foreign entity, whether under Automatic Route
+                                                or Approval
+                                                Route.
+                                            </li>
+                                            <li> 2) Under Approval Route, the Form FC after scrutiny, should be
+                                                submitted by the AD
+                                                bank, to
+                                                the Reserve
+                                                Bank as per the instructions in Para 3 of FEM (Overseas Investment)
+                                                Directions,
+                                                2022.</li>
+                                            <li>3) The Form FC is to be submitted while undertaking financial commitment
+                                                in a
+                                                foreign
+                                                entity, at the
+                                                time of sending outward remittance or making a financial commitment,
+                                                whichever is
+                                                earlier.
+                                            </li>
+                                            <li>4) In case of acquisition of equity capital on deferred payment basis in
+                                                accordance
+                                                with
+                                                Regulation 7 of
+                                                OI Regulations, the part of the consideration, payment of which is
+                                                deferred by the
+                                                person
+                                                resident in
+                                                India shall be treated as non-fund-based commitment and shall be
+                                                reported
+                                                accordingly.
+                                                Subsequent
+                                                remittance towards the payment of deferred consideration shall be
+                                                reported in Form
+                                                FC
+                                                as conversion of 
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </tab>
+                                <tab heading="ESOP Details" disabled="disabled">
+                                    <div class="card p-2 mt-1">
+                                        <div class="card-header">
+                                            ESOP Details
+                                        </div>
+                                        <div class="container-fluid position-relative d-flex p-0">
+
+                                            <div class="container-fluid pt-2">
+                                                <div class="row">
+
+                                                    <div class="col-4 input-block mb-2">
+                                                        <!-- <label class="form-label">Corporate Identification Number (CIN/LLP) </label> -->
+                                                        <input type="text" spellcheck="false" required
+                                                            class="form-control" formControlName="CIN_LIP"
+                                                            [class.is-invalid]="esopFormlist.get('CIN_LIP').invalid && (esopFormlist.get('CIN_LIP').dirty ||esopFormlist.get('CIN_LIP').touched)">
+                                                        <span class="placeholder">Corporate Identification Number
+                                                            (CIN/LLP)</span>
+                                                    </div>
+                                                    <div class="col-4 input-block mb-2">
+                                                        <input type="text" spellcheck="false" required
+                                                            class="form-control" formControlName="NameofinvesteeCompany"
+                                                            [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
+                                                        <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                                                            class="invalid-feedback">
+                                                            This field is required.
+                                                        </div>
+                                                        <span class="placeholder">Name of the Investee Company</span>
+                                                    </div>
+
+                                                    <div class="col-4 input-block  mb-2">
+                                                        <!-- <label class="form-label">PAN Number
+                                            </label> -->
+                                                        <input type="text" spellcheck="false" required
+                                                            class="form-control" formControlName="PanNo"
+                                                            [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
+                                                        <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                                                                Invalid PAN Number Format
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">PAN Number</span>
+                                                    </div>
+                                                    <div class="col-4 input-block mb-2">
+                                                        <!-- <label class="form-label">ESOP Scheme Name
+                                            </label> -->
+                                                        <input type="text" spellcheck="true" required=""
+                                                            class="form-control" formControlName="ESOP_Scheme_Name"
+                                                            [class.is-invalid]="esopFormlist.get('ESOP_Scheme_Name').invalid && (esopFormlist.get('ESOP_Scheme_Name').dirty ||esopFormlist.get('ESOP_Scheme_Name').touched)">
+                                                        <span class="placeholder">ESOP Scheme Name</span>
+                                                    </div>
+                                                    <div class="col-4 input-block mb-2">
+                                                        <!-- <label class="form-label">BR / EGM / Circular Resolution No.
+                                            </label> -->
+                                                        <input type="text" spellcheck="true" required
+                                                            class="form-control" formControlName="BR_EGM_Circular"
+                                                            [class.is-invalid]="esopFormlist.get('BR_EGM_Circular').invalid && (esopFormlist.get('BR_EGM_Circular').dirty ||esopFormlist.get('BR_EGM_Circular').touched)">
+                                                        <span class="placeholder">BR / EGM / Circular Resolution
+                                                            No.</span>
+                                                    </div>
+
+
+                                                    <div class="col-4 input-block mb-2">
+                                                        <!-- <label class="form-label">Date of Resolution
+                                            </label> -->
+                                                        <input type="date" spellcheck="true" required
+                                                            class="form-control" name="date-field"
+                                                            formControlName="Date_Resolution"
+                                                            [class.is-invalid]="esopFormlist.get('Date_Resolution').invalid && (esopFormlist.get('Date_Resolution').dirty ||esopFormlist.get('Date_Resolution').touched)" />
+                                                        <span class="placeholder">Date of Resolution</span>
+                                                    </div>
+
+
+                                                    <div class="col-4 input-block mb-2">
+                                                        <!-- <label class="form-label">Entry Route
+                                            </label> -->
+                                                        <select class="form-select" spellcheck="true" required
+                                                            formControlName="Entry_Route"
+                                                            [class.is-invalid]="esopFormlist.get('Entry_Route').invalid && (esopFormlist.get('Entry_Route').dirty ||esopFormlist.get('Entry_Route').touched)">
+                                                            <option value="Automatic Route">Automatic Route</option>
+                                                            <option value="Government Route">Approval Route
+                                                            </option>
+                                                        </select>
+                                                        <span class="placeholder">Entry Route</span>
+                                                    </div>
+                                                    <div class="col-4 input-block mb-2">
+                                                        <!-- <label class="form-label">Applicable Sectoral cap/ Statutory ceiling
+                                            </label> -->
+                                                        <select class="form-select" spellcheck="true" required
+                                                            formControlName="Applicable_Sectoral_Cap"
+                                                            [class.is-invalid]="esopFormlist.get('Applicable_Sectoral_Cap').invalid && (esopFormlist.get('Applicable_Sectoral_Cap').dirty ||esopFormlist.get('Applicable_Sectoral_Cap').touched)">
+                                                            <option value="20">20%</option>
+                                                            <option value="26">26%</option>
+                                                            <option value="49">49%</option>
+                                                            <option value="51">51%</option>
+                                                            <option value="74">74%</option>
+                                                            <option value="100">100%</option>
+                                                            <option value="Others">Others</option>
+                                                        </select>
+                                                        <span class="placeholder">Applicable Sectoral cap/ Statutory
+                                                            ceiling</span>
+                                                    </div>
+                                                    <div class="col-12 mb-2">
+
+                                                        <div class="form-check form-check-inline"
+                                                            *ngFor="let fd of foreigninvestmentProject">
+                                                            <input class="form-check-input" type="radio" id="{{fd.id}}"
+                                                                formControlName="foreigninvestmentproject"
+                                                                [class.is-invalid]="esopFormlist.get('foreigninvestmentproject').invalid && (esopFormlist.get('foreigninvestmentproject').dirty ||esopFormlist.get('foreigninvestmentproject').touched)"
+                                                                value="{{fd.Type}}" style="cursor:pointer;">
+                                                            <label class="form-check-label"
+                                                                for="{{fd.id}}">{{fd.Type}}</label>
+                                                        </div>
+
+                                                        <div class="form-check form-check-inline">
+                                                            <label class="form-check-label" for="inlineRadio3">Whether
+                                                                the foreign
+                                                                investment is
+                                                                received for a specific project/manufacturing unit or
+                                                                manufacturing
+                                                                plant</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mb-2">
+                                                        <div class="form-check form-check-inline"
+                                                            *ngFor="let fd of Shareholding">
+                                                            <input class="form-check-input" type="radio" id="{{fd.id}}"
+                                                                formControlName="Shareholdingpattern"
+                                                                [class.is-invalid]="esopFormlist.get('Shareholdingpattern').invalid && (esopFormlist.get('Shareholdingpattern').dirty ||esopFormlist.get('Shareholdingpattern').touched)"
+                                                                value="{{fd.Type}}" style="cursor:pointer;">
+                                                            <label class="form-check-label"
+                                                                for="{{fd.id}}">{{fd.Type}}</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <label class="form-check-label" for="inlineRadio3">Whether
+                                                                the change in
+                                                                the
+                                                                shareholding pattern due to this transaction being
+                                                                reported has
+                                                                already been
+                                                                accounted in the pre transaction shareholding
+                                                                pattern:*</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr class="p-4">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+
+                                <tab heading="Grant Details" disabled="disabled">
+                                    <div class="card p-2 mt-1">
+                                        <div class="card-header">
+                                            Grant Details
+                                            <a class="btn btn-danger" style="float: right;"
+                                                href="assets/GrantExcelFormat.xlsx" download="GrantExcelFormat.xlsx">
+                                                Download Excel Template </a>
+                                        </div>
+                                        <div class="col-lg-4 mt-2">
+
+                                            <input class="form-control" type="file" (change)="onFileChange($event)"
+                                                multiple="false" />
+                                        </div>
+                                        <div class="container-fluid position-relative d-flex p-0">
+                                            <div class="container-fluid pt-2">
+                                                <div class="row">
+                                                    <table
+                                                        class="table table-striped table-bordered caption-top table-responsive">
+                                                        <caption>Financial commitment being made w.r.t above foreign
+                                                            entity (in INR
+                                                            and FCY)
+                                                            SECTION C OF FORM-FC TO BE IMPLEMENTED
+                                                        </caption>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Full Name of the Grantee</th>
+                                                                <th>Date of Issue</th>
+                                                                <th>Number of ESOPs Granted</th>
+                                                                <th style="width: 200px;">Country</th>
+                                                                <th>Residential Status</th>
+                                                                <th>Name of the Subsidiary . SDS</th>
+                                                                <th>Pre-determined issue price</th>
+                                                                <th colspan="2">Conversion ratio</th>
+                                                                <th>Equivalent equity shares on fully diluted basis</th>
+                                                                <th>Face value of equity shares</th>
+                                                                <th>Value of Shares in Rs</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr
+                                                                *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+
+                                                                <td>
+                                                                    <input
+                                                                        [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        class="form-control form-control-sm"
+                                                                        type="text" />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        class="form-control form-control-sm"
+                                                                        type="date" />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        class="form-control form-control-sm"
+                                                                        type="text" />
+                                                                </td>
+                                                                <td>
+                                                                    <ng-multiselect-dropdown class="container"
+                                                                        [placeholder]="'Select Topic'"
+                                                                        [settings]="CountrySettings"
+                                                                        [data]="CountryList"
+                                                                        [(ngModel)]="GrantDetailsArray[i].Country"
+                                                                        class="singleselect"
+                                                                        [ngModelOptions]="{standalone: true}">
+                                                                    </ng-multiselect-dropdown>
+
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control form-control-sm"
+                                                                        [(ngModel)]="GrantDetailsArray[i].ResidentialStatus"
+                                                                        [ngModelOptions]="{standalone: true}">
+                                                                        <option value="">--select--</option>
+                                                                        <option value="Resident">Resident</option>
+                                                                        <option value="Non-Resident">Non-Resident</option>
+                                                                        <option value="Resident">Non-Resident Indian
+                                                                        </option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        class="form-control form-control-sm"
+                                                                        type="text" />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        [(ngModel)]="GrantDetailsArray[i].Pre_determined_issue_price"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        class="form-control form-control-sm"
+                                                                        type="text" />
+                                                                </td>
+                                                                <td><input type="text"
+                                                                        [(ngModel)]="GrantDetailsArray[i].Conversion_ratio1"
+                                                                        class="form-control form-control-sm"
+                                                                        [ngModelOptions]="{standalone: true}">
+                                                                </td>
+                                                                <td>
+
+                                                                    <input type="text"
+                                                                        [(ngModel)]="GrantDetailsArray[i].Conversion_ratio"
+                                                                        class="form-control form-control-sm"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        (ngModelChange)="CounEquivalentEquityShares(i)">
+
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        [(ngModel)]="GrantDetailsArray[i].Equivalent_equity_shares"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        class="form-control form-control-sm"
+                                                                        type="text" />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        [(ngModel)]="GrantDetailsArray[i].Facevalue_equity_shares"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        class="form-control form-control-sm" type="text"
+                                                                        (ngModelChange)="CountValueofShares(i)" />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        [(ngModel)]="GrantDetailsArray[i].Value_of_Shares"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        class="form-control form-control-sm"
+                                                                        type="text" />
+                                                                </td>
+                                                                <td>
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-primary me-2"
+                                                                        (click)="addGrantData()">+</button>
+                                                                    <button type="button"
+                                                                        *ngIf="GrantDetailsArray.length>1"
+                                                                        class="btn btn-outline-primary me-2"
+                                                                        (click)="deleteGrantData(i)">-</button>
+
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab heading="Declaration" disabled="disabled">
+                                    <div class="card p-2 mt-1">
+                                        <div class="card-header">
+                                            Declaration
+                                        </div>
+                                        <div class="container-fluid position-relative d-flex p-0">
+                                            <div class="container-fluid pt-2">
+                                                <div class="row">
+                                                    <div class="col-lg-10 mb-3">
+                                                        <P
+                                                            [ngClass]="Non_Debt_Instruments.value == true ? 'del' : 'notdel'">
+                                                            1. We comply with the procedure for issue of equity
+                                                            instruments as laid
+                                                            down
+                                                            under
+                                                            Foreign
+                                                            Exchange Management (Non-Debt Instruments) Rules, 2019 dated
+                                                            October 17,
+                                                            2019
+                                                            and as
+                                                            amended
+                                                            from time to time.</P>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <input class="form-check-input me-1" type="checkbox"
+                                                            value="Non_Debt_Instruments"
+                                                            formControlName="Non_Debt_Instruments"
+                                                            style="cursor:pointer;">
+                                                    </div>
+                                                    <div class="col-lg-10 mb-3">
+                                                        <P
+                                                            [ngClass]="sectoral_cap_statutory.value == true ? 'del' : 'notdel'">
+                                                            2. The investment is within the sectoral cap / statutory
+                                                            ceiling
+                                                            permissible
+                                                            under
+                                                            the
+                                                            rules, ibid and in compliance with the attendant conditions.
+                                                        </P>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <input class="form-check-input me-1" type="checkbox"
+                                                            formControlName="sectoral_cap_statutory"
+                                                            style="cursor:pointer;">
+                                                    </div>
+                                                    <div class="col-lg-10 mb-3">
+                                                        <P
+                                                            [ngClass]="Indian_companies_reconstruction.value == true ? 'del' : 'notdel'">
+                                                            3. The equity instruments issued under a scheme of merger
+                                                            and
+                                                            amalgamation of
+                                                            two or
+                                                            more
+                                                            Indian companies or reconstruction by way of de-merger or
+                                                            otherwise of
+                                                            an Indian
+                                                            company is
+                                                            duly approved by a court in India. (Strike- out if not
+                                                            applicable).
+                                                        </P>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <input class="form-check-input me-1" type="checkbox"
+                                                            formControlName="Indian_companies_reconstruction"
+                                                            style="cursor:pointer;">
+                                                    </div>
+                                                    <div class="col-lg-10 mb-3">
+                                                        <P [ngClass]="PMLA_UAPA.value == true ? 'del' : 'notdel'">
+                                                            4. The foreign investment received and reported now will be
+                                                            utilized in
+                                                            compliance
+                                                            with the
+                                                            provision of a Prevention of Money Laundering Act 2002
+                                                            (PMLA) and
+                                                            Unlawful
+                                                            Activities
+                                                            (Prevention) Act, 1967 (UAPA). We confirm that the
+                                                            investment complies
+                                                            with the
+                                                            provisions
+                                                            of all applicable Rules and Regulations.
+                                                        </P>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <input class="form-check-input me-1" type="checkbox"
+                                                            formControlName="PMLA_UAPA" style="cursor:pointer;">
+                                                    </div>
+                                                    <div class="col-lg-10 mb-3">
+                                                        <P
+                                                            [ngClass]="enclose_documents.value == true ? 'del' : 'notdel'">
+                                                            5. We enclose the following documents in compliance with
+                                                            these
+                                                            rules/regulations:
+                                                        </P>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <input class="form-check-input me-1" type="checkbox"
+                                                            formControlName="enclose_documents" style="cursor:pointer;">
+                                                    </div>
+                                                    <div class="row justify-content-md-center">
+                                                        <div class="col-md-auto col-lg-10 mb-3">
+                                                            <P
+                                                                [ngClass]="certificate_Company_Secretary.value == true ? 'del' : 'notdel'">
+                                                                i. A certificate from our Company Secretary as in the
+                                                                specified
+                                                                format.
+                                                            </P>
+                                                        </div>
+                                                        <div class="col col-lg-1">
+                                                            <input class="form-check-input me-1" type="checkbox"
+                                                                formControlName="certificate_Company_Secretary"
+                                                                style="cursor:pointer;">
+                                                        </div>
+                                                        <div class="col-md-auto col-lg-10 mb-3">
+                                                            <P
+                                                                [ngClass]="SEBI_registered.value == true ? 'del' : 'notdel'">
+                                                                ii. A certificate from SEBI registered Merchant Banker /
+                                                                Chartered
+                                                                Accountant /
+                                                                cost
+                                                                accountant or any other person as authorized under
+                                                                Foreign Exchange
+                                                                Management
+                                                                (Non-Debt
+                                                                Instruments) Rules, 2019 dated October 17, 2019 and as
+                                                                amended from
+                                                                time to
+                                                                time,
+                                                                indicating the manner of arriving at the price of the
+                                                                shares issued
+                                                                to the
+                                                                persons
+                                                                resident outside India (wherever applicable).
+                                                            </P>
+                                                        </div>
+                                                        <div class="col col-lg-1">
+                                                            <input class="form-check-input me-1" type="checkbox"
+                                                                formControlName="SEBI_registered"
+                                                                style="cursor:pointer;">
+                                                        </div>
+                                                        <div class="col-md-auto col-lg-10 mb-3">
+                                                            <P
+                                                                [ngClass]="necessary_documents.value == true ? 'del' : 'notdel'">
+                                                                >
+                                                                iii. All other necessary documents as applicable to the
+                                                                issue.
+                                                            </P>
+                                                        </div>
+                                                        <div class="col col-lg-1">
+                                                            <input class="form-check-input me-1" type="checkbox"
+                                                                formControlName="necessary_documents"
+                                                                style="cursor:pointer;">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="col-lg-12 text-center">
+                                                        <input type="submit" value="Submit" class="btn btn-primary">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab heading="Preview" disabled="disabled">
+                                    
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 90%;">
+                                                    <h6>Particulars</h6>
+                                                </th>
+                                                <th style="width: 15%;">
+                                                    <h6 >Word</h6>
+                                                </th>
+                                                <th style="width: 15%;">
+                                                    <h6>Pdf</h6>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr >
+                                                <th  scope="row">
+                                                    <h6 >A. RBI Covering Letter</h6>
+                                                </th>
+                                                <td ><img  src="assets/images/word.png" style="cursor:pointer"></td>
+                                                <td ><img  src="assets/images/pdf.png" (click)="downloadAsPDF1()" style="cursor:pointer"></td>
+                                            </tr>
+                                            <tr >
+                                                <th  scope="row">
+                                                    <h6 >B. Compounding Application </h6>
+                                                </th>
+                                                <td ><img 
+                                                        src="assets/images/word.png" style="cursor:pointer"></td>
+                                                <td ><img 
+                                                        src="assets/images/pdf.png" (click)="downloadAsPDF2()"style="cursor:pointer"></td>
+                                            </tr>
+                                            <tr >
+                                                <th  scope="row">
+                                                    <h6 >C. PAN Card Copy</h6>
+                                                </th>
+                                                <td ><img 
+                                                        src="assets/images/word.png" style="cursor:pointer"></td>
+                                                <td ><img 
+                                                        src="assets/images/pdf.png" (click)="downloadAsPDF3()" style="cursor:pointer"></td>
+                                            </tr>
+                                            <tr >
+                                                <th  scope="row">
+                                                    <h6 >D. Demand Draft </h6>
+                                                </th>
+                                                <td ><img 
+                                                        src="assets/images/word.png" style="cursor:pointer"></td>
+                                                <td ><img 
+                                                        src="assets/images/pdf.png" (click)="downloadAsPDF4()" style="cursor:pointer"></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+
+                                    <div class="card p-2" style="display: none;">
+                                        <!-- <div class="col-lg-12">
+                                            <button type="button" (click)="downloadAsPDF()"
+                                                class="btn btn-primary">Genrate
+                                                Pdf</button>
+                                        </div> -->
+                                        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable1" #pdfTable1>
+                                            <p style="text-align: center;">
+                                                <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
+                                                </em>
+                                            </p>
+                                            <p>
+                                                To,<br>
+                                                [Bank Name]<br>
+                                                [Bank Address]
+                                            </p>
+
+
+                                            <p style="margin: 0px;">
+                                                Sub: Filing of form ESOP for granting Employee Stock Option
+                                                <b>{{esopFormlist.get('NameofinvesteeCompany').value}} </b>
+                                            </p>
+
+                                            <p>With regards to the above cited subject
+                                                <u><b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b></u>
+                                                (hereinafter
+                                                referred
+                                                to
+                                                the
+                                                “company”) had granted
+                                                <b>{{esopFormlist.get('GrantDetails').get('Number_ESOP_Granted')}}</b>
+                                                ESOPs under
+                                                its Employee Stock Option Plan
+                                                (<b>{{esopFormlist.get('ESOP_Scheme_Name')}}</b>) at INR
+                                                <b>{{esopFormlist.get('GrantDetails').get('Pre_determined_issue_price')}}</b>/-
+                                                per
+                                                option to its various employees who are
+                                                resident
+                                                outside India (as per Annexure). The Board / EGM / Circular Resolution
+                                                No:
+                                                <b>{{esopFormlist.get('BR_EGM_Circular')}}</b> for
+                                                granting the said ESOPs was passed on
+                                                <u><b>{{esopFormlist.get('Date_Resolution').value}}</b> </u>.
+                                            </p>
+                                            <p>Enclosed is the documentation for submission of ESOP:</p>
+
+                                            <table border="1" cellspacing="0" cellpadding="5">
+                                                <thead>
+                                                    <th align="left">Sl. No.</th>
+                                                    <th align="left">Documentation</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1.</td>
+                                                        <td>ESOP Scheme</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2.</td>
+                                                        <td>Resolution granting ESOPs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3.</td>
+                                                        <td>Authorized Representative Declaration</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.</td>
+                                                        <td>Certificate from the Practicing Company Secretary of the
+                                                            Indian company
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <p>Kindly accept the same and oblige.</p>
+                                            <br>
+                                            <br>
+                                            <p>For {{esopFormlist.get('NameofinvesteeCompany').value}}</p>
+                                            <br>
+                                            <table border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td colspan="3">
+                                                        __________________________
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Name
+                                                    </td>
+                                                    <td style="width: 30px; text-align:center;">
+                                                        :
+                                                    </td>
+                                                    <td>
+                                                        XXXXXXXXXXX
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Designation
+                                                    </td>
+                                                    <td style="width: 30px; text-align:center;">
+                                                        :
+                                                    </td>
+                                                    <td>
+                                                        XXXXXXXXXXX
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Date
+                                                    </td>
+                                                    <td style="width: 30px; text-align:center;">
+                                                        :
+                                                    </td>
+                                                    <td>
+                                                        XX-XX-XXXX
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+                                        </div>
+                                        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable2" #pdfTable2>
+                                            <p style="text-align: center;">
+                                                <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
+                                                </em>
+                                            </p>
+                                            <p>
+                                                To,
+                                            </p>
+                                            <p>
+                                                The Reserve Bank of India,
+                                            </p>
+                                            <p>
+                                                Mumbai
+                                            </p>
+                                            <p>
+                                                <strong></strong>
+                                            </p>
+                                            <p>
+                                                <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b><strong> (CIN
+                                                    - </strong>
+                                                <b>{{esopFormlist.get('CIN_LIP').value}}</b><strong>)</strong>, (the
+                                                Company) having
+                                                its registered
+                                                office at <b>{{esopFormlist.get('CIN_LIP').value}}</b>
+                                                , has granted <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b>
+                                                ESOPs
+                                                under its <b>{{esopFormlist.get('ESOP_Scheme_Name').value}}</b> “ESOP
+                                                Scheme” at an
+                                                exercise price of
+                                                <br />
+                                                INR <b>{{esopFormlist.get('NameofinvesteeCompany').value}</b>/- per
+                                                option on
+                                                <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b>.
+                                                <strong></strong>
+                                            </p>
+                                            <p>
+                                                <strong></strong>
+                                            </p>
+                                            <p>
+                                                In respect of the details as mentioned above, we certify the following:
+                                            </p>
+                                            <p>
+                                                (i) all the requirements of the Companies Act, 2013 have been complied
+                                                with;
+                                            </p>
+                                            <p>
+                                                (ii) terms and conditions of the Government approval, if any, have been
+                                                complied with;
+                                            </p>
+                                            <p>
+                                                (iii) The company is eligible to issue equity instruments/receive equity
+                                                instruments under Foreign Exchange Management (Non-Debt Instruments)
+                                                Rules,
+                                                2019 dated October 17, 2019 and as amended from time.
+                                            </p>
+                                            <p>
+                                                (iv) The company has all certificates issued by authorized dealers in
+                                                India
+                                                evidencing receipt of amount of consideration in accordance with Foreign
+                                                Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17,
+                                                2019 and as amended from time.
+                                            </p>
+                                            <p>
+                                                (v) The Investment Agreement/ Shareholder Agreement between the investor
+                                                and the investee company is in compliance with the provisions of Foreign
+                                                Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17,
+                                                2019 and as amended from time.
+                                            </p>
+                                            <p>
+                                                For and on Behalf of
+                                            </p>
+                                            <p>
+                                                ____________ Associate
+                                            </p>
+                                            <p>
+                                                Name : XXXXXXXXX
+                                            </p>
+                                            <p>
+                                                Designation : XXXXXXXXX
+                                            </p>
+                                            <p>
+                                                C.P. No. : XXXXXXXXX
+                                            </p>
+                                            <p>
+                                                Place : XXXXXXXXX
+                                            </p>
+                                            <p>
+                                                Date : XXXXXXXXX
+                                            </p>
+                                            <em>
+                                                <br clear="all" />
+                                            </em>
+                                            <p>
+                                                <em></em>
+                                            </p>
+                                        </div>
+                                        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable3" #pdfTable3>
+                                            <p style="text-align: center;">
+                                                <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
+                                                </em>
+                                            </p>
+                                            <p>
+                                                <strong><u></u></strong>
+                                            </p>
+                                            <p style="text-align: center;">
+                                                <strong>
+                                                    <u>
+                                                        DECLARATION TO BE FILED BY THE AUTHORISED REPRESENTATIVE OF THE
+                                                        INDIAN COMPANY
+                                                    </u>
+                                                </strong>
+                                            </p>
+                                            <p>
+                                                We hereby declare that:
+                                            </p>
+                                            <p>
+                                                1. We comply with the procedure for issue of equity instruments as laid
+                                                down under Foreign Exchange Management (Non-Debt Instruments) Rules,
+                                                2019
+                                                dated October 17, 2019 and as amended from time to time.
+                                            </p>
+                                            <p>
+                                                2. The investment is within the sectoral cap/ statutory ceiling
+                                                permissible
+                                                under the regulation, ibid and in compliance with the attendant
+                                                conditions.
+                                            </p>
+                                            <p>
+                                                3. The foreign investment received and reported now will be utilized in
+                                                compliance with the provision of a Prevention of Money Laundering Act
+                                                2002
+                                                (PMLA) and Unlawful Activities (Prevention) Act, 1976 (UAPA). We confirm
+                                                that the investment complies with the provision of all applicable Rules
+                                                and
+                                                Regulations.
+                                            </p>
+                                            <p>
+                                                4. We enclose the following documents in compliance with these
+                                                regulations:
+                                            </p>
+                                            <p>
+                                                (i) A certificate from our company Secretary as in the specified format.
+                                            </p>
+                                            <p>
+                                                (ii) A certificate from SEBI registered Merchant Banker / Chartered
+                                                Accountant / cost accountant or any other person as authorized under
+                                                Foreign Exchange Management (Non-Debt Instruments) Rules, 2019 dated
+                                                October 17, 2019 and as amended from time to time, indicating the manner
+                                                of
+                                                arriving at the price of the shares issued to the persons resident
+                                                outside
+                                                India (wherever applicable).
+                                            </p>
+                                            <p>
+                                                (iii) All other necessary documents as applicable to the issue.
+                                            </p>
+                                            <p>
+                                                For <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b>
+                                            </p>
+                                            <p>
+                                                __________________________________
+                                            </p>
+                                            <p>
+                                                Name : XXXXXXXXXXX
+                                            </p>
+                                            <p>
+                                                Designation : XXXXXXXXXXX
+                                            </p>
+                                            <p>
+                                                Date : XX-XX-XXXX
+                                            </p>
+                                        </div>
+                                        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable4" #pdfTable4>
+
+                                            <p style="text-align: center;">
+                                                <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
+                                                </em>
+                                            </p>
+                                            <p>
+                                                To,
+                                            </p>
+                                            <p>
+                                                [Bank Name]
+                                            </p>
+                                            <p>
+                                                [Bank Address]
+                                            </p>
+                                            <p>
+                                                Dear Sir / Madam,
+                                            </p>
+                                            <p>
+                                                <strong>
+                                                    Sub:
+                                                    <u>
+                                                        Filing of form ESOP for granting Employee Stock Option
+                                                        -<em>{{esopFormlist.get('NameofinvesteeCompany').value}}</em>
+                                                        (“the
+                                                        company”)
+                                                    </u>
+                                                </strong>
+                                            </p>
+                                            <div>
+                                                <p>
+                                                    <strong></strong>
+                                                </p>
+                                            </div>
+                                            <p>
+                                                We confirm that the options granted to employees who are person resident
+                                                outside India are not from a country, which shares land border with
+                                                India
+                                                or the Significant Beneficial Owner (jointly or severely) of an
+                                                investment
+                                                into India who is situated in or is a citizen of any such country
+                                                (Pakistan, Bangladesh, Afghanistan, Nepal, Bhutan, Myanmar, and China.
+                                                (China includes Hong Kong and Macau).
+                                            </p>
+                                            <p>
+                                                Herewith we confirm we are in compliance to Press Note No. 3(2020
+                                                Series)
+                                                dated 17/04/2020
+                                            </p>
+                                            <p>
+                                                We are hereby sharing the shareholding pattern of our company for your
+                                                reference (Optional)
+                                            </p>
+                                            <table border="1" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="208" valign="top">
+                                                            <p>
+                                                                Investor category (Company,
+                                                            </p>
+                                                            <p>
+                                                                LLP, Individual etc)
+                                                            </p>
+                                                        </td>
+                                                        <td width="208" valign="top">
+                                                            <p>
+                                                                Investor country
+                                                            </p>
+                                                        </td>
+                                                        <td width="208" valign="top">
+                                                            <p>
+                                                                Percentage holding as of ___
+                                                            </p>
+                                                            <p>
+                                                                (date)
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="208" valign="top">
+                                                            <p style="text-align: center;">
+                                                                ----------------
+                                                            </p>
+                                                        </td>
+                                                        <td width="208" valign="top">
+                                                            <p style="text-align: center;">
+                                                                ----------------
+                                                            </p>
+                                                        </td>
+                                                        <td width="208" valign="top">
+                                                            <p style="text-align: center;">
+                                                                ----------------
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p>
+                                                For
+                                                <strong><em><u>{{esopFormlist.get('NameofinvesteeCompany').value}}</u></em></strong>
+                                            </p>
+                                            <p>
+                                                _________________________
+                                            </p>
+                                            <p>
+                                                Name : <strong>Authorised_Signatory_Name</strong>
+                                            </p>
+                                            <p>
+                                                Designation : <strong><em>Authorised_Signatory_Designation</em></strong>
+                                            </p>
+                                            <p>
+                                                Email ID :
+                                            </p>
+                                            <p>
+                                                Date : <a>XX-XX-XXXX</a>
+
+                                            </p>
+                                            <div>
+                                                <hr align="left" size="1" width="33%" />
+                                                <div>
+                                                    <div id="_com_1">
+                                                        <a name="_msocom_1"></a>
+                                                        <p>
+                                                            Default Insertion - Current Date
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </tab>
+                            </tabset>
+
+                        </form>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-12 mt-2 mb-3">
+                <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1"
+                    value="Previous">
+                <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
+            </div>
         </div>
+
     </div>
-
-    <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()">
-        <tabset #tabset (click)="confirmTabSwitch($event)">
-            <tab heading="Instructions">
-                <div class="card p-2">
-                    <h5>Instructions</h5>
-
-                    Instructions for filling up the Form FC
-                    <ul>
-                        <li>1) The Form FC is required to be submitted to the designated AD bank by the person resident
-                            in India
-                            seeking to invest in the foreign entity, whether under Automatic Route or Approval Route.
-                        </li>
-                        <li> 2) Under Approval Route, the Form FC after scrutiny, should be submitted by the AD bank, to
-                            the Reserve
-                            Bank as per the instructions in Para 3 of FEM (Overseas Investment) Directions, 2022.</li>
-                        <li>3) The Form FC is to be submitted while undertaking financial commitment in a foreign
-                            entity, at the
-                            time of sending outward remittance or making a financial commitment, whichever is earlier.
-                        </li>
-                        <li>4) In case of acquisition of equity capital on deferred payment basis in accordance with
-                            Regulation 7 of
-                            OI Regulations, the part of the consideration, payment of which is deferred by the person
-                            resident in
-                            India shall be treated as non-fund-based commitment and shall be reported accordingly.
-                            Subsequent
-                            remittance towards the payment of deferred consideration shall be reported in Form FC
-                            as conversion of 
-                        </li>
-                    </ul>
-                </div>
-            </tab>
-            <tab heading="ESOP Details">
-                <div class="card p-2 mt-1">
-                    <div class="card-header">
-                        ESOP Details
-                    </div>
-                    <div class="container-fluid position-relative d-flex p-0">
-
-                        <div class="container-fluid pt-2">
-                            <div class="row">
-
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Corporate Identification Number (CIN/LLP) </label>
-                                    <input type="text" class="form-control" formControlName="CIN_LIP"
-                                        [class.is-invalid]="esopFormlist.get('CIN_LIP').invalid && (esopFormlist.get('CIN_LIP').dirty ||esopFormlist.get('CIN_LIP').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Name of the Investee Company
-                                    </label>
-                                    <!-- ngClass="is-invalid:submitted && esopFormlist.controls.NameofinvesteeCompany.errors" -->
-                                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-                                        class="invalid-feedback">
-                                        This field is required.
-                                    </div>
-                                </div>
-
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">PAN Number
-                                    </label>
-                                    <input type="text" class="form-control" formControlName="PanNo"
-                                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
-                                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
-                                        class="invalid-feedback">
-                                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
-                                            This field is required.
-                                        </div>
-                                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
-                                            Invalid PAN Number Format
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">ESOP Scheme Name
-                                    </label>
-                                    <input type="text" class="form-control" formControlName="ESOP_Scheme_Name"
-                                        [class.is-invalid]="esopFormlist.get('ESOP_Scheme_Name').invalid && (esopFormlist.get('ESOP_Scheme_Name').dirty ||esopFormlist.get('ESOP_Scheme_Name').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">BR / EGM / Circular Resolution No.
-                                    </label>
-                                    <input type="text" class="form-control" formControlName="BR_EGM_Circular"
-                                        [class.is-invalid]="esopFormlist.get('BR_EGM_Circular').invalid && (esopFormlist.get('BR_EGM_Circular').dirty ||esopFormlist.get('BR_EGM_Circular').touched)">
-                                </div>
-
-
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Date of Resolution
-                                    </label>
-                                    <input type="date" class="form-control" name="date-field"
-                                        formControlName="Date_Resolution"
-                                        [class.is-invalid]="esopFormlist.get('Date_Resolution').invalid && (esopFormlist.get('Date_Resolution').dirty ||esopFormlist.get('Date_Resolution').touched)" />
-                                </div>
-
-
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Entry Route
-                                    </label>
-                                    <select class="form-select" formControlName="Entry_Route"
-                                        [class.is-invalid]="esopFormlist.get('Entry_Route').invalid && (esopFormlist.get('Entry_Route').dirty ||esopFormlist.get('Entry_Route').touched)">
-                                        <option value="Automatic Route">Automatic Route</option>
-                                        <option value="Government Route">Approval Route
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Applicable Sectoral cap/ Statutory ceiling
-                                    </label>
-                                    <select class="form-select" formControlName="Applicable_Sectoral_Cap"
-                                        [class.is-invalid]="esopFormlist.get('Applicable_Sectoral_Cap').invalid && (esopFormlist.get('Applicable_Sectoral_Cap').dirty ||esopFormlist.get('Applicable_Sectoral_Cap').touched)">
-                                        <option value="20">20%</option>
-                                        <option value="26">26%</option>
-                                        <option value="49">49%</option>
-                                        <option value="51">51%</option>
-                                        <option value="74">74%</option>
-                                        <option value="100">100%</option>
-                                        <option value="Others">Others</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 mb-2">
-
-                                    <div class="form-check form-check-inline"
-                                        *ngFor="let fd of foreigninvestmentProject">
-                                        <input class="form-check-input" type="radio" id="{{fd.id}}"
-                                            formControlName="foreigninvestmentproject"
-                                            [class.is-invalid]="esopFormlist.get('foreigninvestmentproject').invalid && (esopFormlist.get('foreigninvestmentproject').dirty ||esopFormlist.get('foreigninvestmentproject').touched)"
-                                            value="{{fd.Type}}" style="cursor:pointer;">
-                                        <label class="form-check-label" for="{{fd.id}}">{{fd.Type}}</label>
-                                    </div>
-
-                                    <div class="form-check form-check-inline">
-                                        <label class="form-check-label" for="inlineRadio3">Whether the foreign
-                                            investment is
-                                            received for a specific project/manufacturing unit or manufacturing
-                                            plant</label>
-                                    </div>
-                                </div>
-                                <div class="col-12 mb-2">
-                                    <div class="form-check form-check-inline" *ngFor="let fd of Shareholding">
-                                        <input class="form-check-input" type="radio" id="{{fd.id}}"
-                                            formControlName="Shareholdingpattern"
-                                            [class.is-invalid]="esopFormlist.get('Shareholdingpattern').invalid && (esopFormlist.get('Shareholdingpattern').dirty ||esopFormlist.get('Shareholdingpattern').touched)"
-                                            value="{{fd.Type}}" style="cursor:pointer;">
-                                        <label class="form-check-label" for="{{fd.id}}">{{fd.Type}}</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <label class="form-check-label" for="inlineRadio3">Whether the change in the
-                                            shareholding pattern due to this transaction being reported has already been
-                                            accounted in the pre transaction shareholding pattern:*</label>
-                                    </div>
-                                </div>
-                                <!-- <div class="col-4 mb-2">
-                                    <label class="form-label">Full Name of the Grantee
-                                    </label>
-                                    <input type="text" class="form-control" formControlName="Full_Name_Grantee"
-                                        [class.is-invalid]="esopFormlist.get('Full_Name_Grantee').invalid && (esopFormlist.get('Full_Name_Grantee').dirty ||esopFormlist.get('Full_Name_Grantee').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Date of Issue
-                                    </label>
-                                    <input type="date" class="form-control" formControlName="Date_of_Issue"
-                                        [class.is-invalid]="esopFormlist.get('Date_of_Issue').invalid && (esopFormlist.get('Date_of_Issue').dirty ||esopFormlist.get('Date_of_Issue').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Number of ESOPs Granted
-                                    </label>
-                                    <input type="number" class="form-control" formControlName="Number_ESOP_Granted"
-                                        (ngModelChange)="CounEquivalentEquityShares()"
-                                        [class.is-invalid]="esopFormlist.get('Number_ESOP_Granted').invalid && (esopFormlist.get('Number_ESOP_Granted').dirty ||esopFormlist.get('Number_ESOP_Granted').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Country
-                                    </label>
-                                    <input class="form-control" formControlName="Country" list="datalistOptions"
-                                        id="exampleDataList" placeholder="Type to search..."
-                                        [class.is-invalid]="esopFormlist.get('Country').invalid && (esopFormlist.get('Country').dirty ||esopFormlist.get('Country').touched)">
-                                    <datalist id="datalistOptions">
-                                        <option *ngFor="let list of CountryList">{{list.name}}</option>
-                                        
-                                    </datalist>
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Residential Status
-                                    </label>
-                                    <input type="text" class="form-control" formControlName="ResidentialStatus"
-                                        [class.is-invalid]="esopFormlist.get('ResidentialStatus').invalid && (esopFormlist.get('ResidentialStatus').dirty ||esopFormlist.get('ResidentialStatus').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Name of the Subsidiary . SDS
-                                    </label>
-                                    <input type="text" class="form-control" formControlName="SubsidiarySDS"
-                                        [class.is-invalid]="esopFormlist.get('SubsidiarySDS').invalid && (esopFormlist.get('SubsidiarySDS').dirty ||esopFormlist.get('SubsidiarySDS').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Pre-determined issue price
-                                    </label>
-                                    <input type="number" class="form-control"
-                                        formControlName="Pre_determined_issue_price"
-                                        [class.is-invalid]="esopFormlist.get('Pre_determined_issue_price').invalid && (esopFormlist.get('Pre_determined_issue_price').dirty ||esopFormlist.get('Pre_determined_issue_price').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Conversion ratio
-                                    </label>
-                                    <input type="number" class="form-control" formControlName="Conversion_ratio"
-                                        (ngModelChange)="CounEquivalentEquityShares()"
-                                        [class.is-invalid]="esopFormlist.get('Conversion_ratio').invalid && (esopFormlist.get('Conversion_ratio').dirty ||esopFormlist.get('Conversion_ratio').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Equivalent equity shares on fully diluted basis
-                                    </label>
-                                    <input type="number" class="form-control" formControlName="Equivalent_equity_shares"
-                                        (ngModelChange)="CounEquivalentEquityShares()"
-                                        [class.is-invalid]="esopFormlist.get('Equivalent_equity_shares').invalid && (esopFormlist.get('Equivalent_equity_shares').dirty ||esopFormlist.get('Equivalent_equity_shares').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Face value of equity shares
-                                    </label>
-                                    <input type="number" class="form-control" formControlName="Facevalue_equity_shares"
-                                        maxlength="20" (ngModelChange)="CounEquivalentEquityShares()"
-                                        [class.is-invalid]="esopFormlist.get('Facevalue_equity_shares').invalid && (esopFormlist.get('Facevalue_equity_shares').dirty ||esopFormlist.get('Facevalue_equity_shares').touched)">
-                                </div>
-                                <div class="col-4 mb-2">
-                                    <label class="form-label">Value of Shares in Rs
-                                    </label>
-                                    <input type="number" class="form-control" formControlName="Value_of_Shares"
-                                        maxlength="10"
-                                        [class.is-invalid]="esopFormlist.get('Value_of_Shares').invalid && (esopFormlist.get('Value_of_Shares').dirty ||esopFormlist.get('Value_of_Shares').touched)">
-                                </div> -->
-                                <!--  <div class="col-lg-12 text-center">
-                                    <button (click)='NextTab(0)'>Next</button>
-                                   
-                                </div> -->
-                                <hr class="p-4">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </tab>
-
-            <tab heading="Grant Details">
-                <div class="card p-2 mt-1">
-                    <div class="card-header">
-                        Grant Details
-                        <a class="btn btn-danger" style="float: right;" href="assets/GrantExcelFormat.xlsx"
-                            download="GrantExcelFormat.xlsx"> Download Excel Template </a>
-                    </div>
-                    <div class="col-lg-4 mt-2">
-
-                        <input class="form-control" type="file" (change)="onFileChange($event)" multiple="false" />
-                    </div>
-                    <div class="container-fluid position-relative d-flex p-0">
-                        <div class="container-fluid pt-2">
-                            <div class="row">
-                                <table class="table table-striped table-bordered caption-top table-responsive">
-                                    <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY)
-                                        SECTION C OF FORM-FC TO BE IMPLEMENTED
-                                    </caption>
-                                    <thead>
-                                        <tr>
-                                            <th>Full Name of the Grantee</th>
-                                            <th>Date of Issue</th>
-                                            <th>Number of ESOPs Granted</th>
-                                            <th>Country</th>
-                                            <th>Residential Status</th>
-                                            <th>Name of the Subsidiary . SDS</th>
-                                            <th>Pre-determined issue price</th>
-                                            <th colspan="2">Conversion ratio</th>
-                                            <th>Equivalent equity shares on fully diluted basis</th>
-                                            <th>Face value of equity shares</th>
-                                            <th>Value of Shares in Rs</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
-
-                                            <td>
-                                                <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm" type="text" />
-                                            </td>
-                                            <td>
-                                                <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm" type="date" />
-                                            </td>
-                                            <td>
-                                                <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm" type="text" />
-                                            </td>
-                                            <td>
-                                                <ng-select [items]="accounts" bindLabel="name" bindValue="name"
-                                                    groupBy="country" [searchable]="false" [(ngModel)]="selectedAccount"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm">
-                                                    <ng-template ng-optgroup-tmp let-item="item">
-                                                        {{item.country || 'Unnamed group'}}
-                                                    </ng-template>
-                                                </ng-select>
-
-                                                <!--  <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" /> -->
-                                            </td>
-                                            <td>
-                                                <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm" type="text" />
-                                            </td>
-                                            <td>
-                                                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm" type="text" />
-                                            </td>
-                                            <td>
-                                                <input [(ngModel)]="GrantDetailsArray[i].Pre_determined_issue_price"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm" type="text" />
-                                            </td>
-                                            <td><input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio1"
-                                                    class="form-control form-control-sm"
-                                                    [ngModelOptions]="{standalone: true}">
-                                            </td>
-                                            <td>
-
-                                                <input type="text" [(ngModel)]="GrantDetailsArray[i].Conversion_ratio"
-                                                    class="form-control form-control-sm"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    (ngModelChange)="CounEquivalentEquityShares(i)">
-
-                                            </td>
-                                            <td>
-                                                <input [(ngModel)]="GrantDetailsArray[i].Equivalent_equity_shares"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm" type="text" />
-                                            </td>
-                                            <td>
-                                                <input [(ngModel)]="GrantDetailsArray[i].Facevalue_equity_shares"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm" type="text"
-                                                    (ngModelChange)="CountValueofShares(i)" />
-                                            </td>
-                                            <td>
-                                                <input [(ngModel)]="GrantDetailsArray[i].Value_of_Shares"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    class="form-control form-control-sm" type="text" />
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-outline-primary me-2"
-                                                    (click)="addGrantData()">+</button>
-                                                <button type="button" *ngIf="GrantDetailsArray.length>1"
-                                                    class="btn btn-outline-primary me-2"
-                                                    (click)="deleteGrantData(i)">-</button>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </tab>
-            <tab heading="Declaration">
-                <div class="card p-2 mt-1">
-                    <div class="card-header">
-                        Declaration
-                    </div>
-                    <div class="container-fluid position-relative d-flex p-0">
-                        <div class="container-fluid pt-2">
-                            <div class="row">
-                                <div class="col-lg-10 mb-3">
-                                    <P [ngClass]="Non_Debt_Instruments.value == true ? 'del' : 'notdel'">
-                                        1. We comply with the procedure for issue of equity instruments as laid down
-                                        under
-                                        Foreign
-                                        Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17, 2019
-                                        and as
-                                        amended
-                                        from time to time.</P>
-                                </div>
-                                <div class="col-lg-2">
-                                    <input class="form-check-input me-1" type="checkbox" value="Non_Debt_Instruments"
-                                        formControlName="Non_Debt_Instruments" style="cursor:pointer;">
-                                </div>
-                                <div class="col-lg-10 mb-3">
-                                    <P [ngClass]="sectoral_cap_statutory.value == true ? 'del' : 'notdel'">
-                                        2. The investment is within the sectoral cap / statutory ceiling permissible
-                                        under
-                                        the
-                                        rules, ibid and in compliance with the attendant conditions.
-                                    </P>
-                                </div>
-                                <div class="col-lg-2">
-                                    <input class="form-check-input me-1" type="checkbox"
-                                        formControlName="sectoral_cap_statutory" style="cursor:pointer;">
-                                </div>
-                                <div class="col-lg-10 mb-3">
-                                    <P [ngClass]="Indian_companies_reconstruction.value == true ? 'del' : 'notdel'">
-                                        3. The equity instruments issued under a scheme of merger and amalgamation of
-                                        two or
-                                        more
-                                        Indian companies or reconstruction by way of de-merger or otherwise of an Indian
-                                        company is
-                                        duly approved by a court in India. (Strike- out if not applicable).
-                                    </P>
-                                </div>
-                                <div class="col-lg-2">
-                                    <input class="form-check-input me-1" type="checkbox"
-                                        formControlName="Indian_companies_reconstruction" style="cursor:pointer;">
-                                </div>
-                                <div class="col-lg-10 mb-3">
-                                    <P [ngClass]="PMLA_UAPA.value == true ? 'del' : 'notdel'">
-                                        4. The foreign investment received and reported now will be utilized in
-                                        compliance
-                                        with the
-                                        provision of a Prevention of Money Laundering Act 2002 (PMLA) and Unlawful
-                                        Activities
-                                        (Prevention) Act, 1967 (UAPA). We confirm that the investment complies with the
-                                        provisions
-                                        of all applicable Rules and Regulations.
-                                    </P>
-                                </div>
-                                <div class="col-lg-2">
-                                    <input class="form-check-input me-1" type="checkbox" formControlName="PMLA_UAPA"
-                                        style="cursor:pointer;">
-                                </div>
-                                <div class="col-lg-10 mb-3">
-                                    <P [ngClass]="enclose_documents.value == true ? 'del' : 'notdel'">
-                                        5. We enclose the following documents in compliance with these
-                                        rules/regulations:
-                                    </P>
-                                </div>
-                                <div class="col-lg-2">
-                                    <input class="form-check-input me-1" type="checkbox"
-                                        formControlName="enclose_documents" style="cursor:pointer;">
-                                </div>
-                                <div class="row justify-content-md-center">
-                                    <div class="col-md-auto col-lg-10 mb-3">
-                                        <P [ngClass]="certificate_Company_Secretary.value == true ? 'del' : 'notdel'">
-                                            i. A certificate from our Company Secretary as in the specified format.
-                                        </P>
-                                    </div>
-                                    <div class="col col-lg-1">
-                                        <input class="form-check-input me-1" type="checkbox"
-                                            formControlName="certificate_Company_Secretary" style="cursor:pointer;">
-                                    </div>
-                                    <div class="col-md-auto col-lg-10 mb-3">
-                                        <P [ngClass]="SEBI_registered.value == true ? 'del' : 'notdel'">
-                                            ii. A certificate from SEBI registered Merchant Banker / Chartered
-                                            Accountant /
-                                            cost
-                                            accountant or any other person as authorized under Foreign Exchange
-                                            Management
-                                            (Non-Debt
-                                            Instruments) Rules, 2019 dated October 17, 2019 and as amended from time to
-                                            time,
-                                            indicating the manner of arriving at the price of the shares issued to the
-                                            persons
-                                            resident outside India (wherever applicable).
-                                        </P>
-                                    </div>
-                                    <div class="col col-lg-1">
-                                        <input class="form-check-input me-1" type="checkbox"
-                                            formControlName="SEBI_registered" style="cursor:pointer;">
-                                    </div>
-                                    <div class="col-md-auto col-lg-10 mb-3">
-                                        <P [ngClass]="necessary_documents.value == true ? 'del' : 'notdel'">>
-                                            iii. All other necessary documents as applicable to the issue.
-                                        </P>
-                                    </div>
-                                    <div class="col col-lg-1">
-                                        <input class="form-check-input me-1" type="checkbox"
-                                            formControlName="necessary_documents" style="cursor:pointer;">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="col-lg-12 text-center">
-                                    <input type="submit" value="Submit" class="btn btn-primary">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </tab>
-            <tab heading="Preview">
-                <div class="card p-2">
-                    <div class="col-lg-12">
-                        <button type="button" (click)="downloadAsPDF()" class="btn btn-primary">Genrate Pdf</button>
-                    </div>
-                    <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable" #pdfTable>
-                        <p style="text-align: center;">
-                            <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
-                            </em>
-                        </p>
-                        <p>
-                            To,<br>
-                            [Bank Name]<br>
-                            [Bank Address]
-                        </p>
-                        
-                       
-                        <p style="margin: 0px;">
-                            Sub: Filing of form ESOP for granting Employee Stock Option
-                        <b>{{esopFormlist.get('NameofinvesteeCompany').value}} </b>
-                        </p>
-                   
-                        <p>With regards to the above cited subject <u><b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b></u> (hereinafter referred
-                            to
-                            the
-                            “company”) had granted <b>{{esopFormlist.get('GrantDetails').get('Number_ESOP_Granted')}}</b> ESOPs under its Employee Stock Option Plan
-                            (<b>{{esopFormlist.get('ESOP_Scheme_Name')}}</b>) at INR <b>{{esopFormlist.get('GrantDetails').get('Pre_determined_issue_price')}}</b>/- per option to its various employees who are
-                            resident
-                            outside India (as per Annexure). The Board / EGM / Circular Resolution No: <b>{{esopFormlist.get('BR_EGM_Circular')}}</b> for
-                            granting the said ESOPs was passed on <u><b>{{esopFormlist.get('Date_Resolution').value}}</b> </u>.</p>
-                        <p>Enclosed is the documentation for submission of ESOP:</p>
-
-                        <table border="1" cellspacing="0" cellpadding="5">
-                            <thead>
-                                <th align="left">Sl. No.</th>
-                                <th align="left">Documentation</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>ESOP Scheme</td>
-                                </tr>
-                                <tr>
-                                    <td>2.</td>
-                                    <td>Resolution granting ESOPs</td>
-                                </tr>
-                                <tr>
-                                    <td>3.</td>
-                                    <td>Authorized Representative Declaration</td>
-                                </tr>
-                                <tr>
-                                    <td>4.</td>
-                                    <td>Certificate from the Practicing Company Secretary of the Indian company</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <p>Kindly accept the same and oblige.</p>
-                        <br>
-                        <br>
-                        <p>For {{esopFormlist.get('NameofinvesteeCompany').value}}</p>
-                        <br>
-                        <table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td colspan="3">
-                                    __________________________
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Name
-                                </td>
-                                <td style="width: 30px; text-align:center;">
-                                    :
-                                </td>
-                                <td>
-                                    XXXXXXXXXXX
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Designation
-                                </td>
-                                <td style="width: 30px; text-align:center;">
-                                    :
-                                </td>
-                                <td>
-                                    XXXXXXXXXXX
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Date
-                                </td>
-                                <td style="width: 30px; text-align:center;">
-                                    :
-                                </td>
-                                <td>
-                                    XX-XX-XXXX
-                                </td>
-                            </tr>
-
-                        </table>
-
-                        <p style="text-align: center;">
-                            <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
-                            </em>
-                        </p>
-                        <p>
-                            To,
-                        </p>
-                        <p>
-                            The Reserve Bank of India,
-                        </p>
-                        <p>
-                            Mumbai
-                        </p>
-                        <p>
-                            <strong></strong>
-                        </p>
-                        <p>
-                            <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b><strong> (CIN - </strong>
-                            <b>{{esopFormlist.get('CIN_LIP').value}}</b><strong>)</strong>, (the Company) having its registered
-                            office at <b>{{esopFormlist.get('CIN_LIP').value}}</b>
-                            , has granted <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b> ESOPs
-                            under its <b>{{esopFormlist.get('ESOP_Scheme_Name').value}}</b> “ESOP Scheme” at an exercise price of
-                            <br />
-                            INR <b>{{esopFormlist.get('NameofinvesteeCompany').value}</b>/- per option on <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b>. <strong></strong>
-                        </p>
-                        <p>
-                            <strong></strong>
-                        </p>
-                        <p>
-                            In respect of the details as mentioned above, we certify the following:
-                        </p>
-                        <p>
-                            (i) all the requirements of the Companies Act, 2013 have been complied
-                            with;
-                        </p>
-                        <p>
-                            (ii) terms and conditions of the Government approval, if any, have been
-                            complied with;
-                        </p>
-                        <p>
-                            (iii) The company is eligible to issue equity instruments/receive equity
-                            instruments under Foreign Exchange Management (Non-Debt Instruments) Rules,
-                            2019 dated October 17, 2019 and as amended from time.
-                        </p>
-                        <p>
-                            (iv) The company has all certificates issued by authorized dealers in India
-                            evidencing receipt of amount of consideration in accordance with Foreign
-                            Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17,
-                            2019 and as amended from time.
-                        </p>
-                        <p>
-                            (v) The Investment Agreement/ Shareholder Agreement between the investor
-                            and the investee company is in compliance with the provisions of Foreign
-                            Exchange Management (Non-Debt Instruments) Rules, 2019 dated October 17,
-                            2019 and as amended from time.
-                        </p>
-                        <p>
-                            For and on Behalf of
-                        </p>
-                        <p>
-                            ____________ Associate
-                        </p>
-                        <p>
-                            Name : XXXXXXXXX
-                        </p>
-                        <p>
-                            Designation : XXXXXXXXX
-                        </p>
-                        <p>
-                            C.P. No. : XXXXXXXXX
-                        </p>
-                        <p>
-                            Place : XXXXXXXXX
-                        </p>
-                        <p>
-                            Date : XXXXXXXXX
-                        </p>
-                        <em>
-                            <br clear="all" />
-                        </em>
-                        <p>
-                            <em></em>
-                        </p>
-                        <p style="text-align: center;">
-                            <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
-                            </em>
-                        </p>
-                        <p>
-                            <strong><u></u></strong>
-                        </p>
-                        <p style="text-align: center;">
-                            <strong>
-                                <u>
-                                    DECLARATION TO BE FILED BY THE AUTHORISED REPRESENTATIVE OF THE
-                                    INDIAN COMPANY
-                                </u>
-                            </strong>
-                        </p>
-                        <p>
-                            We hereby declare that:
-                        </p>
-                        <p>
-                            1. We comply with the procedure for issue of equity instruments as laid
-                            down under Foreign Exchange Management (Non-Debt Instruments) Rules, 2019
-                            dated October 17, 2019 and as amended from time to time.
-                        </p>
-                        <p>
-                            2. The investment is within the sectoral cap/ statutory ceiling permissible
-                            under the regulation, ibid and in compliance with the attendant conditions.
-                        </p>
-                        <p>
-                            3. The foreign investment received and reported now will be utilized in
-                            compliance with the provision of a Prevention of Money Laundering Act 2002
-                            (PMLA) and Unlawful Activities (Prevention) Act, 1976 (UAPA). We confirm
-                            that the investment complies with the provision of all applicable Rules and
-                            Regulations.
-                        </p>
-                        <p>
-                            4. We enclose the following documents in compliance with these regulations:
-                        </p>
-                        <p>
-                            (i) A certificate from our company Secretary as in the specified format.
-                        </p>
-                        <p>
-                            (ii) A certificate from SEBI registered Merchant Banker / Chartered
-                            Accountant / cost accountant or any other person as authorized under
-                            Foreign Exchange Management (Non-Debt Instruments) Rules, 2019 dated
-                            October 17, 2019 and as amended from time to time, indicating the manner of
-                            arriving at the price of the shares issued to the persons resident outside
-                            India (wherever applicable).
-                        </p>
-                        <p>
-                            (iii) All other necessary documents as applicable to the issue.
-                        </p>
-                        <p>
-                            For <b>{{esopFormlist.get('NameofinvesteeCompany').value}}</b>
-                        </p>
-                        <p>
-                            __________________________________
-                        </p>
-                        <p>
-                            Name : XXXXXXXXXXX
-                        </p>
-                        <p>
-                            Designation : XXXXXXXXXXX
-                        </p>
-                        <p>
-                            Date : XX-XX-XXXX
-                        </p>
-
-                        <p style="text-align: center;">
-                            <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
-                            </em>
-                        </p>
-                        <p>
-                            To,
-                        </p>
-                        <p>
-                            [Bank Name]
-                        </p>
-                        <p>
-                            [Bank Address]
-                        </p>
-                        <p>
-                            Dear Sir / Madam,
-                        </p>
-                        <p>
-                            <strong>
-                                Sub:
-                                <u>
-                        Filing of form ESOP for granting Employee Stock Option -<em>{{esopFormlist.get('NameofinvesteeCompany').value}}</em> (“the company”)
-                                </u>
-                            </strong>
-                        </p>
-                        <div>
-                            <p>
-                                <strong></strong>
-                            </p>
-                        </div>
-                        <p>
-                            We confirm that the options granted to employees who are person resident
-                            outside India are not from a country, which shares land border with India
-                            or the Significant Beneficial Owner (jointly or severely) of an investment
-                            into India who is situated in or is a citizen of any such country
-                            (Pakistan, Bangladesh, Afghanistan, Nepal, Bhutan, Myanmar, and China.
-                            (China includes Hong Kong and Macau).
-                        </p>
-                        <p>
-                            Herewith we confirm we are in compliance to Press Note No. 3(2020 Series)
-                            dated 17/04/2020
-                        </p>
-                        <p>
-                            We are hereby sharing the shareholding pattern of our company for your
-                            reference (Optional)
-                        </p>
-                        <table border="1" cellspacing="0" cellpadding="0">
-                            <tbody>
-                                <tr>
-                                    <td width="208" valign="top">
-                                        <p>
-                                            Investor category (Company,
-                                        </p>
-                                        <p>
-                                            LLP, Individual etc)
-                                        </p>
-                                    </td>
-                                    <td width="208" valign="top">
-                                        <p>
-                                            Investor country
-                                        </p>
-                                    </td>
-                                    <td width="208" valign="top">
-                                        <p>
-                                            Percentage holding as of ___
-                                        </p>
-                                        <p>
-                                            (date)
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="208" valign="top">
-                                        <p style="text-align: center;">
-                                            ----------------
-                                        </p>
-                                    </td>
-                                    <td width="208" valign="top">
-                                        <p style="text-align: center;">
-                                            ----------------
-                                        </p>
-                                    </td>
-                                    <td width="208" valign="top">
-                                        <p style="text-align: center;">
-                                            ----------------
-                                        </p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p>
-                            For <strong><em><u>{{esopFormlist.get('NameofinvesteeCompany').value}}</u></em></strong>
-                        </p>
-                        <p>
-                            _________________________
-                        </p>
-                        <p>
-                            Name : <strong>Authorised_Signatory_Name</strong>
-                        </p>
-                        <p>
-                            Designation : <strong><em>Authorised_Signatory_Designation</em></strong>
-                        </p>
-                        <p>
-                            Email ID :
-                        </p>
-                        <p>
-                            Date : <a>XX-XX-XXXX</a>
-                            
-                        </p>
-                        <div>
-                            <hr align="left" size="1" width="33%"/>
-                            <div>
-                                <div id="_com_1">
-                                    <a name="_msocom_1"></a>
-                                    <p>
-                                        Default Insertion - Current Date
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </tab>
-        </tabset>
-
-    </form>
-    <div class="col-lg-12 text-center mt-2 mb-3">
-        <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1" value="Back">
-        <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
-    </div>
-
 </div>

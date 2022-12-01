@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,7 +22,7 @@ import { EsopPdfComponent } from './components/form-esop/esop-pdf/esop-pdf.compo
 import { HomeComponent } from './components/home/home.component';
 import { FormCocComponent } from './components/form-coc/form-coc.component';
 import { FormCocFdiComponent } from './Partial_Components/form-coc-fdi/form-coc-fdi.component';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -43,6 +42,7 @@ import { FormCocFdiComponent } from './Partial_Components/form-coc-fdi/form-coc-
     FormCocFdiComponent,
   ],
   imports: [
+    NgMultiSelectDropDownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -50,7 +50,7 @@ import { FormCocFdiComponent } from './Partial_Components/form-coc-fdi/form-coc-
     HttpClientModule,
     BrowserAnimationsModule,
     TabsModule.forRoot(),
-    NgMultiSelectDropDownModule.forRoot()
+   
   ],
   providers: [CommonService],
   bootstrap: [AppComponent],

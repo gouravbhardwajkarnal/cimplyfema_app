@@ -578,7 +578,7 @@ input:focus {
     margin-left: -2px;
 }
 
-.inner_frm   select , input {
+.inner_frm   select {
     background: #f2f2f2 !important;
 }
 

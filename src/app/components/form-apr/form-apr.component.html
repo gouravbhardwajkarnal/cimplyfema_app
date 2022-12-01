@@ -1,18 +1,5 @@
 <div class="hpanel sub-sector-main">
     <h2 class="topic_title">FORM APR</h2>
-    <div class="">
-	
-        <div class="field">
-        <input type="text" required autocomplete="off" id="username" value="tayfunerbilen">
-        <label for="username" title="Kullan hello girin" data-title="Kullan hskee"></label>
-    </div>
-    
-    <div class="field">
-        <input type="password" required autocomplete="off" id="password">
-        <label for="password" title="Şifrenizi girin" data-title="Şifre"></label>
-    </div>
-        
-    </div>
     <div class="panel-body topic_drop p-0">
         <div class="act-sec">
             <div class="fema_tabs">
@@ -160,10 +147,17 @@
                                             <div class="col-12 mb-2">
                                                 <label class="form-label">APR for the period </label> <br>
                                             </div>
-                                            <div class="col-4 mb-2">
-
-                                                <label class="form-label">From Date </label>
-                                                <input type="date" class="form-control" name="APR_From_Date"
+                                            <div class="field">
+                                                <input type="text"  id="username" value="tayfunerbilen">
+                                                <label for="username" title="Kullan hello girin" data-title="Kullan hskee"></label>
+                                            </div>                                            
+                                            <div class="field">
+                                                <input type="password" required autocomplete="off" id="password">
+                                                <label for="password" title="Şifrenizi girin" data-title="Şifre"></label>
+                                            </div>
+                                            <div class="col-4 mb-2 field">
+                                                <input type="date" class="form-control" id="APR_From_Date" 
+                                                name="APR_From_Date"
                                                     formControlName="APR_From_Date"
                                                     [class.is-invalid]="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)">
                                                 <div *ngIf="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)"
@@ -172,10 +166,10 @@
                                                         This field is required.
                                                     </div>
                                                 </div>
+                                                <label class="form-label" for="APR_From_Date" title="From Date" data-title="From Date"> </label>
                                             </div>
-                                            <div class="col-4 mb-2">
-                                                <label class="form-label">To Date </label>
-                                                <input type="date" class="form-control" name="APR_To_Date"
+                                            <div class="col-4 mb-2 field">
+                                                <input type="date" class="form-control" id="APR_To_Date" name="APR_To_Date"
                                                     formControlName="APR_To_Date"
                                                     [class.is-invalid]="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)">
                                                 <div *ngIf="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)"
@@ -184,11 +178,11 @@
                                                         This field is required.
                                                     </div>
                                                 </div>
+                                                <label class="form-label" for="APR_To_Date" title="To Date" data-title="To Date"> </label>
+                                          
                                             </div>
-                                            <div class="col-4 mb-2">
-                                                <label class="form-label">Unique Identification Number (UIN)
-                                                </label>
-                                                <input type="text" class="form-control" name="APR_UIN"
+                                            <div class="col-4 mb-2 field">                                             
+                                                <input type="text" id="APR_UIN" class="form-control"
                                                     formControlName="APR_UIN"
                                                     [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
                                                 <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
@@ -203,6 +197,9 @@
                                                         This field must have at most 20 characters.
                                                     </div>
                                                 </div>
+                                                <label for="APR_UIN" title="Unique Identification Number (UIN)"
+                                                data-title="Unique Identification Number (UIN)"> </label>
+                                          
                                             </div>
                                             <hr>
                                             <div class="row">

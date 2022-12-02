@@ -25,6 +25,7 @@ npm i ng-multiselect-dropdown
 npm install xlsx
 ## Command For Stepper
 npm i angular-material
+npm i smart-webcomponents-angular
 ## DropDown With Serach
 npm install --save @ng-select/ng-select
 

@@ -235,86 +235,77 @@
     
     </aside>-->
     <section id="wrapper">
-      <nav class="navbar navbar-expand-md start-0">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-expand-md start-0">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <ul class="align-items-center d-flex">
-              <li class="nav-item dd-none">
-                <a class="nav-link hidden">
-                  <svg class='bar_btn' width="19" height="15" viewBox="0 0 19 15" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <rect width="19" height="2.5" rx="1.25" fill="#11263C" />
-                    <rect y="6" width="19" height="2.5" rx="1.25" fill="#11263C" />
-                    <rect y="12" width="19" height="2.5" rx="1.25" fill="#11263C" />
-                  </svg></a>
-              </li>
-    
-              <li class="nav-item logo">
-                <a href="/home" class="nav-link"><img class="logo" src="assets/images/logo.png" alt="logo"> </a>
-              </li>
-              <li class="nav-item logoname">
-                <a class="nav-link" href="/home"><img class="logoname" src="assets/images/logoname.png" alt="logo"> </a>
-              </li>
-            </ul>
-            <!-- (ngSubmit)="SearchData(frmSearch)" [formGroup]="frmSearch" 
-            [class.searching]="searchAutoCompleteData.length > 0"-->
-            <form class="search_main">
-              <div class="align-items-center d-flex expertrec-form search_box">  
-    
-
-                <!-- *ngIf="searchAutoCompleteData.length > 0" (click)="OnSearchClick(item)" [ngForOf]="searchAutoCompleteData" -->
-                <ul class="filter-select" id="filterSelect">
-                  <ng-template ngFor let-item let-i="index">
-                    <li class="filter-select-list" [class.filter-select-list-selected]="i == arrowkeyLocation"
-                      (mouseover)="arrowkeyLocation =  i" [innerHTML]='item | safeHtml'></li>
-                  </ng-template>
-                </ul>
-              </div>
-            </form>
-          </div>
-          <div id="toggle-navbar" class="collapse navbar-collapse navbar-right">
-            <ul class="align-items-center ms-auto navbar-nav">
+          <a href="/home" class="navbar-brand nav-link"><img class="logo" src="assets/images/logo.png" alt="logo"> </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="align-items-center  ms-auto navbar-nav">
               <li class="nav-item">
-                <!---->
+                <a class="nav-link active" aria-current="page" href="#">Login</a>
               </li>
               <div class="seperator"></div>
-              <li class="nav-item"><a href="#" class="nav-link"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                    xmlns="http://www.w3.org/2000/svg" style="height: 16px;width: 16px;">
-                    <path
-                      d="M5.25141 12.25H8.75135C8.74997 12.7137 8.56516 13.158 8.23728 13.4859C7.90939 13.8138 7.46508 13.9986 7.00138 14C6.53769 13.9986 6.09337 13.8138 5.76548 13.4859C5.4376 13.158 5.25279 12.7137 5.25141 12.25ZM0.876474 11.375C0.75974 11.3821 0.642846 11.3642 0.533508 11.3227C0.42417 11.2813 0.324824 11.217 0.24213 11.1344C0.159437 11.0517 0.0953147 10.9524 0.0538246 10.843C0.0123345 10.7337 -0.00552929 10.6168 0.00148779 10.5001C-0.00552929 10.3833 0.0123345 10.2664 0.0538246 10.1571C0.0953147 10.0477 0.159437 9.94845 0.24213 9.86576C0.324824 9.78306 0.42417 9.71885 0.533508 9.67736C0.642846 9.63587 0.75974 9.61805 0.876474 9.62507H1.31397C1.69542 9.29603 2.00778 8.89462 2.23307 8.44404C2.45835 7.99347 2.59209 7.50269 2.62645 7.00011V4.37515C2.62084 3.79906 2.73018 3.22764 2.94805 2.69431C3.16593 2.16099 3.48798 1.67647 3.89535 1.2691C4.30272 0.861723 4.78719 0.539679 5.32051 0.321806C5.85384 0.103932 6.4253 -0.00539731 7.00138 0.000214309C7.5775 -0.0055163 8.14898 0.103734 8.68235 0.321565C9.21573 0.539397 9.70034 0.861432 10.1077 1.26883C10.5151 1.67623 10.8371 2.1608 11.0549 2.69418C11.2728 3.22756 11.382 3.79903 11.3763 4.37515V7.00011C11.4105 7.50272 11.5442 7.99355 11.7695 8.44414C11.9948 8.89473 12.3072 9.29613 12.6888 9.62507H13.1263C13.243 9.61805 13.3599 9.63587 13.4693 9.67736C13.5786 9.71885 13.6779 9.78306 13.7606 9.86576C13.8433 9.94845 13.9074 10.0477 13.9489 10.1571C13.9904 10.2664 14.0083 10.3833 14.0013 10.5001C14.0083 10.6168 13.9904 10.7337 13.9489 10.843C13.9074 10.9524 13.8433 11.0517 13.7606 11.1344C13.6779 11.217 13.5786 11.2813 13.4693 11.3227C13.3599 11.3642 13.243 11.3821 13.1263 11.375H0.876474Z"
-                      fill="#52616B"></path>
-                  </svg></a></li>
-                  <div class="seperator"></div>
-              <li class="dropdown"> <a routerLink="/form-coc"  class="nav-link loginmodal">Compounding of Contravention </a>
-                 </li>
-                 
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 16px;width: 16px;">
+                    <path d="M5.25141 12.25H8.75135C8.74997 12.7137 8.56516 13.158 8.23728 13.4859C7.90939 13.8138 7.46508 13.9986 7.00138 14C6.53769 13.9986 6.09337 13.8138 5.76548 13.4859C5.4376 13.158 5.25279 12.7137 5.25141 12.25ZM0.876474 11.375C0.75974 11.3821 0.642846 11.3642 0.533508 11.3227C0.42417 11.2813 0.324824 11.217 0.24213 11.1344C0.159437 11.0517 0.0953147 10.9524 0.0538246 10.843C0.0123345 10.7337 -0.00552929 10.6168 0.00148779 10.5001C-0.00552929 10.3833 0.0123345 10.2664 0.0538246 10.1571C0.0953147 10.0477 0.159437 9.94845 0.24213 9.86576C0.324824 9.78306 0.42417 9.71885 0.533508 9.67736C0.642846 9.63587 0.75974 9.61805 0.876474 9.62507H1.31397C1.69542 9.29603 2.00778 8.89462 2.23307 8.44404C2.45835 7.99347 2.59209 7.50269 2.62645 7.00011V4.37515C2.62084 3.79906 2.73018 3.22764 2.94805 2.69431C3.16593 2.16099 3.48798 1.67647 3.89535 1.2691C4.30272 0.861723 4.78719 0.539679 5.32051 0.321806C5.85384 0.103932 6.4253 -0.00539731 7.00138 0.000214309C7.5775 -0.0055163 8.14898 0.103734 8.68235 0.321565C9.21573 0.539397 9.70034 0.861432 10.1077 1.26883C10.5151 1.67623 10.8371 2.1608 11.0549 2.69418C11.2728 3.22756 11.382 3.79903 11.3763 4.37515V7.00011C11.4105 7.50272 11.5442 7.99355 11.7695 8.44414C11.9948 8.89473 12.3072 9.29613 12.6888 9.62507H13.1263C13.243 9.61805 13.3599 9.63587 13.4693 9.67736C13.5786 9.71885 13.6779 9.78306 13.7606 9.86576C13.8433 9.94845 13.9074 10.0477 13.9489 10.1571C13.9904 10.2664 14.0083 10.3833 14.0013 10.5001C14.0083 10.6168 13.9904 10.7337 13.9489 10.843C13.9074 10.9524 13.8433 11.0517 13.7606 11.1344C13.6779 11.217 13.5786 11.2813 13.4693 11.3227C13.3599 11.3642 13.243 11.3821 13.1263 11.375H0.876474Z" fill="#52616B"></path>
+                  </svg>
+                </a>
+              </li>
               <div class="seperator"></div>
-              <li class="dropdown"><a href="#" data-toggle="modal" data-target="#login-modal"
-                  class="nav-link loginmodal">Login</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Register</a>
+              </li>
               <div class="seperator"></div>
-              <li class="dropdown"><a href="#" data-toggle="modal" data-target="#register-modal"
-                  class="nav-link registermodal">Register</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Login</a></li>
+                  <li><a class="dropdown-item" href="#">Register</a></li>
+                  <li class="dropdown dropend">
+                    <a class="dropdown-item dropdown-toggle" href="#" id="multilevelDropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Multilevel Action 1</a>
+                    <ul class="dropdown-menu" aria-labelledby="multilevelDropdownMenu1">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li class="dropdown dropend">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="multilevelDropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Multilevel Action 2</a>
+                            <ul class="dropdown-menu" aria-labelledby="multilevelDropdownMenu2">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                </ul>
+              </li>
               <div class="seperator"></div>
-              <!---->
-              <!---->
-              <!---->
+              <li class="nav-item">
+                <a class="nav-link" href="#">Disabled</a>
+              </li>
+              <div class="seperator"></div>
             </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            
           </div>
         </div>
-        <div class='nav_vertical_border'></div>
       </nav>
     </section>
-    <!-- class="fema_main" -->
-    <section>
-      <div class="container-fluid">
-          <div class="row py-4 guest">
+    <section class="pt-5">
+      <div class="container">
+          <div class="row pt-5 pb-4 guest">
               <div class="welcome">
-                
                       <h1 class="welcome_text">Welcome</h1>
                       <p class="mb-md-5 user_text"> Guest </p>
-
                       <router-outlet></router-outlet>
-                 
               </div>
           </div>
       </div>

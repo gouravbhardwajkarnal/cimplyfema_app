@@ -27,6 +27,7 @@
     "ngx-bootstrap": "^8.0.0",
     "pdfmake": "^0.2.6",
     "rxjs": "~7.5.0",
+    "smart-webcomponents-angular": "^14.4.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"

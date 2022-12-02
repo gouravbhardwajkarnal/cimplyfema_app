@@ -1,4 +1,29 @@
-  <div clas="container">
+ 
+ <div clas="container" style="margin-left: 20px;margin-right: -6px;" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Simplyfema</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+</div>
+ <div clas="container" style="margin-left:111px;" >
     <div class="row mt-3">
       <div class="col-sm-12 col-xl-4">
         <label class="form-label"> Select module
@@ -21,7 +46,7 @@
         [data]="filteredsubmodule"
         [(ngModel)]="SubselectedItems"
         (onSelect)="onSubModuleSelect($event,filteredsubmodule)"
-        (onSelectAll)="onSelectAll($event)">
+        (onSelectAll)="onAllSubModuleSelect($event,filteredsubmodule)">
       </ng-multiselect-dropdown>
         
       </div>
@@ -50,6 +75,8 @@
     </table>
     <br>
     <br>
+    <!--===============================Module and Sub Module Section End================================-->
+    <!--===============================Stepper Section Start============================================-->
     <div class="md-stepper-horizontal orange" >
       <div class=" md-step active"(click)="RBI_FDISubmit('1')">
         <div class="md-step-circle"><span>1</span></div>
@@ -100,7 +127,9 @@
         <div class="md-step-bar-right"></div>
       </div>
     </div>
- <form [formGroup]="COC_FDIForm" #form="ngForm" *ngIf="COC_FDIFormDiv">
+    <!--===============================Stepper Section Start============================================-->
+  <!--===============================FDI Form Section Start============================================-->
+ <form [formGroup]="COC_FDIFormlist" #form="ngForm" *ngIf="COC_FDIFormDiv">
  <div class="container-fluid position-relative d-flex p-0">
   <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIInstructions">
     <p>Loream Graph networks are a new machine learning (ML) paradigm that supports both relational reasoning and combinatorial generalization. Here, we develop universal MatErials Graph Network (MEGNet) models for accurate property prediction in both molecules and crystals. We demonstrate that the MEGNet models outperform prior ML models such as the SchNet in 11 out of 13 properties of the QM9 molecule data set. Similarly, we show that MEGNet models trained on ∼60 000 crystals in the Materials Project substantially outperform prior ML models in the prediction of the formation energies, band gaps, and elastic moduli of crystals, achieving better than density functional theory accuracy over a much larger data set. We present two new strategies to address data limitations common in materials science and chemistry. First, we demonstrate a physically intuitive approach to unify four separate molecular MEGNet models for the internal energy at 0 K and room temperature, enthalpy, and Gibbs free energy into a single free energy MEGNet model by incorporating the temperature, pressure, and entropy as global state inputs. Second, we show that the learned element embeddings in MEGNet models encode periodic chemical trends and can be transfer-learned from a property model trained on a larger data set (formation energies) to improve property models with smaller amounts of data (band gaps and elastic moduli).</p>
@@ -117,54 +146,45 @@
             <div class="row">
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-info">A.Business Profile</li>
-                  </ul>              
-                <div class="col-4 mb-2">
+                  </ul> 
+                  <div class="col-4 mb-2">
+                    <label class="form-label">CIN Number
+                    </label>
+                    <input type="number" placeholder="CIN Number" class="form-control" formControlName="COC_FDICIN"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDICIN').invalid && (COC_FDIFormlist.get('COC_FDICIN').dirty ||COC_FDIFormlist.get('COC_FDICIN').touched)">  
+                   </div>                  
+                  <div class="col-4 mb-2">
                     <label class="form-label">Company/Entity/Individual Name
                     </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                    <input type="text" class="form-control" formControlName="COC_FDI_CompanyName" placeholder="Company/Entity/Individual Name"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_CompanyName').invalid && (COC_FDIFormlist.get('COC_FDI_CompanyName').dirty ||COC_FDIFormlist.get('COC_FDI_CompanyName').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDI_CompanyName').invalid && (COC_FDIFormlist.get('COC_FDI_CompanyName').dirty ||COC_FDIFormlist.get('COC_FDI_CompanyName').touched)"
                         class="invalid-feedback">
                         This field is required.
                     </div>
-                </div> 
-                <div class="col-4 mb-2">
+                  </div> 
+                  <div class="col-4 mb-2">
                     <label class="form-label">Date of Incorporation/Registration
                     </label>
                     <input type="date" class="form-control" name="date-field"
-                        formControlName="Date_Resolution"
-                        [class.is-invalid]="esopFormlist.get('Date_Resolution').invalid && (esopFormlist.get('Date_Resolution').dirty ||esopFormlist.get('Date_Resolution').touched)" />
-                </div>  
-                <div class="col-4 mb-2">
+                        formControlName="COC_FDIIncorporationDate"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDIIncorporationDate').invalid && (COC_FDIFormlist.get('COC_FDIIncorporationDate').dirty ||COC_FDIFormlist.get('COC_FDIIncorporationDate').touched)" />
+                  </div>  
+                  <div class="col-4 mb-2">
                     <label class="form-label">PAN Number
                     </label>
-                    <input type="text" class="form-control" formControlName="PanNo"
-                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
-                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                    <input type="text" class="form-control" placeholder="PAN Number" formControlName="COC_FDIPanNo"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDIPanNo').invalid && (COC_FDIFormlist.get('COC_FDIPanNo').dirty ||COC_FDIFormlist.get('COC_FDIPanNo').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDIPanNo').invalid && (COC_FDIFormlist.get('COC_FDIPanNo').dirty ||COC_FDIFormlist.get('COC_FDIPanNo').touched)"
                         class="invalid-feedback">
-                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                        <div *ngIf="COC_FDIFormlist.get('COC_FDIPanNo').errors['required']">
                             This field is required.
                         </div>
-                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                        <div *ngIf="COC_FDIFormlist.get('COC_FDIPanNo').errors['pattern']">
                             Invalid PAN Number Format
                         </div>
                     </div>
-                </div>
-                <div class="col-4 mb-2">
-                    <label class="form-label">CIN Number
-                    </label>
-                    <input type="text" class="form-control" formControlName="PanNo"
-                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
-                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
-                        class="invalid-feedback">
-                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
-                            This field is required.
-                        </div>
-                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
-                            Invalid PAN Number Format
-                        </div>
-                    </div>
-                </div>                  
+                  </div>              
             </div>
             <div class="row">
                 <ul class="list-group">
@@ -173,9 +193,9 @@
                 <div class="col-4 mb-2">
                     <label class="form-label">Flat/Building Number
                     </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                    <input type="text" class="form-control" placeholder="Flat/Building Number" formControlName="COC_FDIFlatBuildingNumber"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDIFlatBuildingNumber').invalid && (COC_FDIFormlist.get('COC_FDIFlatBuildingNumber').dirty ||COC_FDIFormlist.get('COC_FDIFlatBuildingNumber').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDIFlatBuildingNumber').invalid && (COC_FDIFormlist.get('COC_FDIFlatBuildingNumber').dirty ||COC_FDIFormlist.get('COC_FDIFlatBuildingNumber').touched)"
                         class="invalid-feedback">
                         This field is required.
                     </div>
@@ -183,9 +203,9 @@
                 <div class="col-4 mb-2">
                     <label class="form-label">Floor Number
                     </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                    <input type="number" class="form-control" formControlName="COC_FDIFloorNumber" placeholder="Floor Number"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDIFloorNumber').invalid && (COC_FDIFormlist.get('COC_FDIFloorNumber').dirty ||COC_FDIFormlist.get('COC_FDIFloorNumber').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDIFloorNumber').invalid && (COC_FDIFormlist.get('COC_FDIFloorNumber').dirty ||COC_FDIFormlist.get('COC_FDIFloorNumber').touched)"
                         class="invalid-feedback">
                         This field is required.
                     </div>
@@ -193,49 +213,45 @@
                 <div class="col-4 mb-2">
                     <label class="form-label">Name of the Premises/Building
                     </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                    <input type="text" class="form-control" formControlName="COC_FDIPremisesBuilding" placeholder="Name of the Premises/Building"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDIPremisesBuilding').invalid && (COC_FDIFormlist.get('COC_FDIPremisesBuilding').dirty ||COC_FDIFormlist.get('COC_FDIPremisesBuilding').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDIPremisesBuilding').invalid && (COC_FDIFormlist.get('COC_FDIPremisesBuilding').dirty ||COC_FDIFormlist.get('COC_FDIPremisesBuilding').touched)"
                         class="invalid-feedback">
                         This field is required.
                     </div>
                 </div>    
                 <div class="col-4 mb-2">
-                    <label class="form-label">Road / Street
+                    <label class="form-label">Road/Street
                     </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                    <input type="text" class="form-control" formControlName="COC_FDIRoadStreet" placeholder="Road/Street"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDIRoadStreet').invalid && (COC_FDIFormlist.get('COC_FDIRoadStreet').dirty ||COC_FDIFormlist.get('COC_FDIRoadStreet').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDIRoadStreet').invalid && (COC_FDIFormlist.get('COC_FDIRoadStreet').dirty ||COC_FDIFormlist.get('COC_FDIRoadStreet').touched)"
                         class="invalid-feedback">
                         This field is required.
                     </div>
-                </div>    
+                </div> 
                 <div class="col-4 mb-2">
-                    <label class="form-label">City/Town/Locality/Village
-                    </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-                        class="invalid-feedback">
-                        This field is required.
-                    </div>
-                </div>    
-                <div class="col-4 mb-2">
-                    <label class="form-label">State
-                    </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-                        class="invalid-feedback">
-                        This field is required.
-                    </div>
-                </div>    
+                  <label class="form-label">State
+                  </label>
+                  <input class="form-control" formControlName="COC_FDIState" list="datalistOptions" [class.is-invalid]="COC_FDIFormlist.get('COC_FDIState').invalid && (COC_FDIFormlist.get('COC_FDIState').dirty ||COC_FDIFormlist.get('COC_FDIState').touched)"
+                  id="exampleDataList" placeholder="Type to search..."><datalist
+                  id="datalistOptions">
+                  <option *ngFor="let Statelist of CityList">{{Statelist .State}}</option></datalist>  
+                 </div>     
+                 <div class="col-4 mb-2">
+                  <label class="form-label">City
+                  </label>
+                  <input class="form-control" formControlName="COC_FDICity" list="datalistOptions" [class.is-invalid]="COC_FDIFormlist.get('COC_FDICity').invalid && (COC_FDIFormlist.get('COC_FDICity').dirty ||COC_FDIFormlist.get('COC_FDICity').touched)"
+                  id="exampleDataList" placeholder="Type to search..."><datalist
+                  id="datalistOptions">
+                  <option *ngFor="let Citylist  of CityList">{{Citylist.city}}</option></datalist>  
+                 </div>    
                 <div class="col-4 mb-2">
                     <label class="form-label">Pin-code
                     </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                    <input type="text" class="form-control" formControlName="COC_FDIPincode" placeholder="Pincode"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDIPincode').invalid && (COC_FDIFormlist.get('COC_FDIPincode').dirty ||COC_FDIFormlist.get('COC_FDIPincode').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDIPincode').invalid && (COC_FDIFormlist.get('COC_FDIPincode').dirty ||COC_FDIFormlist.get('COC_FDIPincode').touched)"
                         class="invalid-feedback">
                         This field is required.
                     </div>
@@ -246,57 +262,48 @@
                     <li class="list-group-item list-group-item-info">C.Contact Information</li>
                   </ul>              
                 <div class="col-4 mb-2">
-                    <label class="form-label">Office Email Address
-                    </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-                        class="invalid-feedback">
-                        This field is required.
-                    </div>
-                </div>               
+                  <label class="form-label">Email
+                  </label>
+                  <input type="text" class="form-control" formControlName="COC_FDI_Email" placeholder="Email"
+                      [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_Email').invalid && (COC_FDIFormlist.get('COC_FDI_Email').dirty ||COC_FDIFormlist.get('COC_FDI_Email').touched)">
+                  <div *ngIf="COC_FDIFormlist.get('COC_FDI_Email').invalid && (COC_FDIFormlist.get('COC_FDI_Email').dirty ||COC_FDIFormlist.get('COC_FDI_Email').touched)"
+                      class="invalid-feedback">
+                      This field is required.
+                  </div>
+              </div>                
                 <div class="col-4 mb-2">
                     <label class="form-label">Mobile Number
                     </label>
-                    <input type="text" class="form-control" formControlName="PanNo"
-                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
-                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                    <input type="number" class="form-control" formControlName="COC_FDIMobile" placeholder="Mobile Number"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDIMobile').invalid && (COC_FDIFormlist.get('COC_FDIMobile').dirty ||COC_FDIFormlist.get('COC_FDIMobile').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDIMobile').invalid && (COC_FDIFormlist.get('COC_FDIMobile').dirty ||COC_FDIFormlist.get('COC_FDIMobile').touched)"
                         class="invalid-feedback">
-                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                        <div *ngIf="COC_FDIFormlist.get('COC_FDIMobile').errors['required']">
                             This field is required.
-                        </div>
-                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
-                            Invalid PAN Number Format
                         </div>
                     </div>
                 </div>  
                 <div class="col-4 mb-2">
                     <label class="form-label">Office Telephone Number (with STD Code)
                     </label>
-                    <input type="text" class="form-control" formControlName="PanNo"
-                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
-                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                    <input type="text" class="form-control" formControlName="COC_FDITelephone" placeholder="Office Telephone Number"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDITelephone').invalid && (COC_FDIFormlist.get('COC_FDITelephone').dirty ||COC_FDIFormlist.get('COC_FDITelephone').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDITelephone').invalid && (COC_FDIFormlist.get('COC_FDITelephone').dirty ||COC_FDIFormlist.get('COC_FDITelephone').touched)"
                         class="invalid-feedback">
-                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                        <div *ngIf="COC_FDIFormlist.get('COC_FDITelephone').errors['required']">
                             This field is required.
-                        </div>
-                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
-                            Invalid PAN Number Format
                         </div>
                     </div>
                 </div>                    
                 <div class="col-4 mb-2">
                     <label class="form-label">Office FAX Number (with STD Code)
                     </label>
-                    <input type="text" class="form-control" formControlName="PanNo"
-                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
-                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                    <input type="number" class="form-control" formControlName="COC_FDIFAX" placeholder="Office FAX Number"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDIFAX').invalid && (COC_FDIFormlist.get('COC_FDIFAX').dirty ||COC_FDIFormlist.get('COC_FDIFAX').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDIFAX').invalid && (COC_FDIFormlist.get('COC_FDIFAX').dirty ||COC_FDIFormlist.get('COC_FDIFAX').touched)"
                         class="invalid-feedback">
-                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                        <div *ngIf="COC_FDIFormlist.get('COC_FDIFAX').errors['required']">
                             This field is required.
-                        </div>
-                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
-                            Invalid PAN Number Format
                         </div>
                     </div>
                 </div>    
@@ -308,9 +315,9 @@
                 <div class="col-4 mb-2">
                     <label class="form-label">Name of the Person
                     </label>
-                    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-                        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-                    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
+                    <input type="text" class="form-control" formControlName="COC_FDI_AuthPerson" placeholder="Authorised Signatory"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_AuthPerson').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPerson').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPerson').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPerson').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPerson').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPerson').touched)"
                         class="invalid-feedback">
                         This field is required.
                     </div>
@@ -318,39 +325,37 @@
                 <div class="col-4 mb-2">
                     <label class="form-label">Address of the Person
                     </label>
-                    <input type="text" class="form-control" formControlName="PanNo"
-                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
-                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                    <input type="text" class="form-control" formControlName="COC_FDI_AuthPersonAddress" placeholder="Address of the Person"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').touched)"
                         class="invalid-feedback">
-                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                        <div *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').errors['required']">
                             This field is required.
-                        </div>
-                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
-                            Invalid PAN Number Format
                         </div>
                     </div>
                 </div>      
                 <div class="col-4 mb-2">
                     <label class="form-label">PAN Number
                     </label>
-                    <input type="text" class="form-control" formControlName="PanNo"
-                        [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
-                    <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
+                    <input type="text" class="form-control" formControlName="COC_FDI_AuthPAN" placeholder="PAN Number"
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_AuthPAN').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPAN').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPAN').touched)">
+                    <div *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPAN').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPAN').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPAN').touched)"
                         class="invalid-feedback">
-                        <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                        <div *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPAN').errors['required']">
                             This field is required.
                         </div>
-                        <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
-                            Invalid PAN Number Format
-                        </div>
+                        <div *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPAN').errors['pattern']">
+                          This field is required.
+                      </div>
                     </div>
                 </div>      
                 
                 <div class="col-4 mb-2">
-                    <label class="form-label">Designation / Status
+                    <label class="form-label">Designation/Status
                     </label>
-                    <select class="form-select" formControlName="Applicable_Sectoral_Cap"
-                        [class.is-invalid]="esopFormlist.get('Applicable_Sectoral_Cap').invalid && (esopFormlist.get('Applicable_Sectoral_Cap').dirty ||esopFormlist.get('Applicable_Sectoral_Cap').touched)">
+                    <select class="form-select" formControlName="COC_FDI_AuthDesignation" 
+                        [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_AuthDesignation').invalid && (COC_FDIFormlist.get('COC_FDI_AuthDesignation').dirty ||COC_FDIFormlist.get('COC_FDI_AuthDesignation').touched)">
+                        <option value="">Designation/Status</option>
                         <option value="Director">Director</option>
                         <option value="Managing Director">Managing Director</option>
                         <option value="Company Secretary">Company Secretary</option>
@@ -402,7 +407,12 @@
                     <div class="col-4 mb-2">
                     <label class="form-label"> Select NIC CODE 
                     </label>
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">                 
+                    <div class="col-sm-12 col-xl-4">
+                      <label class="form-label"> Select Submodule
+                      </label>
+                      <smart-grid [sorting]="sorting" [filtering]="filtering" [columns]="columns" [dataSource]="dataSource" id="grid"></smart-grid> 
+                      
+                    </div>               
                   </div>    
                   <div class="col-4 mb-2">
                     <label class="form-label">
@@ -645,358 +655,16 @@
         <div class="col-4 mb-2">
             <label class="form-label">Payable at
             </label>
-            <select class="form-select" formControlName="Applicable_Sectoral_Cap"
-                [class.is-invalid]="esopFormlist.get('Applicable_Sectoral_Cap').invalid && (esopFormlist.get('Applicable_Sectoral_Cap').dirty ||esopFormlist.get('Applicable_Sectoral_Cap').touched)">
-                <option value="">City Name</option>
-                <option value="Managing Director">Mumbai</option>
-                <option value="Company Secretary">Delhi</option>
-                <option value="Chief Legal Officer">Chandigarh</option>
-                <option value="Chief Executive Officer"></option>
-            </select>
+            
         </div>   
     </div>
   <button type="button" (click)="RBI_FDISubmit('4')" class="btn btn-primary">Next</button>
 </div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDICompoundingSubmissions">
-    <div class="row">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Compounding Submissions</li>
-          </ul>  
-          <div class="col-12 mb-2">
-            <label class="form-label">Background 
-            </label>
-            <div class="mb-3">  
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-        </div> 
-        <div class="col-12 mb-2">
-          <label class="form-label">Transaction Details
-          </label>
-          <div class="mb-3">  
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-      </div> 
-      <div class="col-12 mb-2">
-        <label class="form-label">Nature of Contraventions
-        </label>
-        <div class="mb-3">  
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-    </div> 
-    <div class="col-12 mb-2">
-      <label class="form-label">Delay Reasons
-      </label>
-      <div class="mb-3">  
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-  </div> 
-  <div class="col-12 mb-2">
-    <label class="form-label">Petition Request
-    </label>
-    <div class="mb-3">  
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-</div> 
-    </div>
-  
-  <button type="button" (click)="RBI_FDISubmit('5')" class="btn btn-primary">Next</button> 
-</div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIODIECB">
-    <div class="row">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-info">FDI/ODI/ECB/LO BO PO Form Details</li>
-          </ul>  
-     <p>Details to be furnished a foreign-direct-investment along with application for compounding of contravention relating to Foreign Direct Investment in India</p><br>
-     <div class="col-4 mb-2">
-      <label class="form-label">Name of Applicent
-      </label>
-      <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-          [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-      <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-          class="invalid-feedback">
-          This field is required.
-      </div>
-  </div> 
-     <div class="col-4 mb-2">
-      <label class="form-label">Date 
-      </label>
-      <input type="date" class="form-control" name="date-field"
-          formControlName="Date_Resolution" />
-  </div> 
-  <div class="col-4 mb-2">
-    <label class="form-label">Income Tax PAN Number
-    </label>
-    <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-        [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-    <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-        class="invalid-feedback">
-        This field is required.
-    </div>
-</div> 
-<div class="col-6 mb-2">
-  <label class="form-label">Nature of Activities Undertaken(Please give nic code-1987/2008)
-  </label>
-  <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-      [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-  <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-      class="invalid-feedback">
-      This field is required.
-  </div>
-</div> 
 
-<div class="col-6 mb-2">
-  <label class="form-label">Brief Perticulars about the foreign Insvestor
-  </label>
-  <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-      [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-  <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-      class="invalid-feedback">
-      This field is required.
-  </div>
-</div> 
-<div class="col-4 mb-2"></div>
-<div class="col-12 mb-2">
-  <label class="form-label">Details of foreign inward remittances received by Applicant Company from date of incorporation till date
-  </label>
-  <input type="text" class="form-control" formControlName="NameofinvesteeCompany"
-      [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
-  <div *ngIf="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)"
-      class="invalid-feedback">
-      This field is required.
-  </div>
-</div> 
-    </div>
-    <table class="table table-striped table-bordered caption-top table-responsive">
-      <caption> <ul class="list-group">
-        <li class="list-group-item list-group-item-info">TABLE A</li>
-      </ul>                  
-      </caption>
-      <thead>
-          <tr>
-              <th>SI No.</th>
-              <th>Name of Remitter</th>
-              <th>Total Amount (INR)</th>
-              <th>Date of Receipt</th>
-              <th>Reported to RBI on*</th>
-              <th>Delay if any</th>
-              <th>Total</th>
-              <th></th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
-          
-              <td>
-                  <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm"  type="text" />
-              </td>
-            
-              <td>
-                  <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-              </td>
-              <td>
-                  <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-              </td>
-
-              <td>
-                  <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-              </td>
-              <td>
-                  <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
-              </td>
-              <td>
-                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
-            </td>
-            <td>
-              <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
-          </td>
-              <td>
-                  <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>
-                  <button type="button" *ngIf="GrantDetailsArray.length>1" class="btn btn-outline-primary me-2" (click)="deleteGrantData(i)">-</button>
-
-              </td>
-          </tr>
-      </tbody>
-  </table>
-  <br>
-  <table class="table table-striped table-bordered caption-top table-responsive">
-    <caption> <ul class="list-group">
-      <li class="list-group-item list-group-item-info">TABLE A</li>
-    </ul>                  
-    </caption>
-    <thead>
-        <tr>
-            <th>Name of Investor</th>
-            <th>Date of allotment of shares</th>
-            <th>Number of shares allotted</th>
-            <th>Amount for which shares allotted</th>
-            <th>Date of reporting to RBI*</th>
-            <th>Delay if any</th>
-            <th>Total</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
-        
-            <td>
-                <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm"  type="text" />
-            </td>
-            <td>
-              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
-             </td>
-            <td>
-              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
-             </td>
-            <td>
-                <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-            </td>
-            <td>
-                <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-            </td>
-           
-            <td>
-                <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-            </td>
-            <td>
-                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
-            </td>
-            
-            <td>
-                <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>
-                <button type="button" *ngIf="GrantDetailsArray.length>1" class="btn btn-outline-primary me-2" (click)="deleteGrantData(i)">-</button>
-  
-            </td>
-        </tr>
-    </tbody>
-  </table>
-  <table class="table table-striped table-bordered caption-top table-responsive">
-    <caption> <ul class="list-group">
-      <li class="list-group-item list-group-item-info">TABLE C</li>
-    </ul>                  
-    </caption>
-    <thead>
-        <tr>
-           
-            <th>SI No</th>
-            <th>Name of Remitter</th>
-            <th>Total Amount (INR)</th>
-            <th>Date of Receipt</th>
-            <th>Excess share application money</th>
-            <th>Date of refund of share application money</th>
-            <th>Amount in forex</th>
-            <th>RBI approval letter and date</th>
-            <th>Total</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
-        
-            <td>
-                <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm"  type="text" />
-            </td>
-           
-            <td>
-                <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-            </td>
-            <td>
-                <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-            </td>
-            <td>
-              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
-            </td>
-            <td>
-              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
-             </td>
-             <td>
-              <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
-            </td>
-            <td>
-                <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
-            </td>
-            <td>
-              <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
-          </td>
-          <td>
-            <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
-        </td>
-            <td>
-                <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>
-                <button type="button" *ngIf="GrantDetailsArray.length>1" class="btn btn-outline-primary me-2" (click)="deleteGrantData(i)">-</button>
-
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<table class="table table-striped table-bordered caption-top table-responsive">
-  <caption> <ul class="list-group">
-    <li class="list-group-item list-group-item-info">Authorised Capital</li>
-  </ul>                  
-  </caption>
-  <thead>
-      <tr>
-          <th>Sl.No.</th>
-          <th>Date</th>
-          <th>Authorised Capital</th>
-          <th>With effect from</th>
-          <th>Date of Board meeting</th>
-          <th>Date of filing with ROC</th>
-          <th></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
-      
-          <td>
-              <input [(ngModel)]="GrantDetailsArray[i].Full_Name_Grantee" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm"  type="text" />
-          </td>
-        
-          <td>
-              <input [(ngModel)]="GrantDetailsArray[i].Number_ESOP_Granted" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-          </td>
-          <td>
-              <input [(ngModel)]="GrantDetailsArray[i].Country" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-          </td>
-          <td>
-            <input [(ngModel)]="GrantDetailsArray[i].Date_of_Issue"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="date" />
-           </td>
-          <td>
-              <input [(ngModel)]="GrantDetailsArray[i].ResidentialStatus" [ngModelOptions]="{standalone: true}" class="form-control form-control-sm" type="text" />
-          </td>
-          <td>
-              <input [(ngModel)]="GrantDetailsArray[i].SubsidiarySDS" [ngModelOptions]="{standalone: true}"  class="form-control form-control-sm" type="text" />
-          </td>
-          
-          <td>
-              <button type="button"  class="btn btn-outline-primary me-2" (click)="addGrantData()">+</button>
-              <button type="button" *ngIf="GrantDetailsArray.length>1" class="btn btn-outline-primary me-2" (click)="deleteGrantData(i)">-</button>
-
-          </td>
-      </tr>
-  </tbody>
-</table>
-  <button type="button" (click)="RBI_FDISubmit('6')" class="btn btn-primary">Next</button>
-</div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIDocPreviewg">
-    <div class="row">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Documents Preview & Annexures</li>
-          </ul>  
-    </div>
-  <button type="button" (click)="RBI_FDISubmit('7')" class="btn btn-primary">Next</button> 
-</div>
-<div class="container-fluid pt-4 px-4" *ngIf="COC_FDIOtherAnnexures">
-    <div class="row">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-info">OtherAnnexuresAnnexures</li>
-          </ul>  
-    </div>
-    <button type="button" (click)="RBI_FDISubmit('8')" class="btn btn-primary">Submit</button> 
-  </div>
 </div>
 
  </form>
+<!--=============================Stepper Section End==================================================-->
  </div>   
   
  

@@ -972,11 +972,6 @@ p {
 .collapsed_articles_description {
     margin-top: -50px;
 }
-
-.collapsed {
-    display: none
-}
-
 .collapsed_article {
     margin-bottom: -10px;
 }
@@ -986,12 +981,11 @@ p {
     color: white;
 }
 
-.collapsed_dropdown   svg:hover {
+.collapsed_dropdown svg:hover {
     color: white;
 }
 
-.sepera
-tor {
+.seperator {
     
     width: 277px;
     height: 0px;

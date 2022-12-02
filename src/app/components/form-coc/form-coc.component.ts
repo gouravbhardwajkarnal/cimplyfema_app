@@ -3,7 +3,8 @@ import { CommonService } from 'src/app/service/common.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as XLSX from 'xlsx';
-import { GrantDetailsList} from 'src/app/model/Fdi.model';
+import { ApiService } from 'src/app/service/api.service';
+import { COC_FDI_DetailsList} from 'src/app/model/COCFdi.model';
 type AOA = any[][];
 @Component({
   selector: 'app-form-coc',
@@ -11,9 +12,11 @@ type AOA = any[][];
   styleUrls: ['./form-coc.component.css']
 })
 export class FormCocComponent implements OnInit {
-  public COC_FDIForm: FormGroup;
+  public COC_FDIFormlist: FormGroup;
   NICCodeselectedItems = [];
   selectedItems = [];
+  CityList: any = [];
+  FDIStatelist:any=[];
   SubselectedItems = [];
   SubmodulenameArray = [];
   NICCodeSettings:IDropdownSettings;
@@ -36,13 +39,18 @@ export class FormCocComponent implements OnInit {
  firstFormGroup:FormGroup;
  secondFormGroup:FormGroup;
 isLinear = false;
-  constructor(private commonservice: CommonService,private fb: FormBuilder) {
+  constructor(private commonservice: CommonService,private fb: FormBuilder,private apiService: ApiService,) {
     this.modules = commonservice.getCOCmodules();
     this.submodules = commonservice.getCOCsubmodules();
-    this.COC_FDIForm = this.fb.group({
-      investment_name: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)]
-    })
-   }   
+    this.readCity();
+   } 
+   readCity() {
+    debugger;
+    this.apiService.getCity().subscribe((data) => {
+
+      this.CityList = data;
+    });
+  }  
   ngOnInit(): void { 
     this.NICCodeSettings= {
       singleSelection: true,
@@ -77,6 +85,29 @@ isLinear = false;
     this.secondFormGroup = this.fb.group({
       secondCtrl: ['', Validators.required],
     });
+    this.COC_FDIFormlist = this.fb.group({   
+      COC_FDICIN: new FormControl('', Validators.required),
+      COC_FDI_CompanyName: new FormControl('', Validators.required),
+      COC_FDIIncorporationDate: new FormControl('', Validators.required),
+      COC_FDIPanNo: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
+      COC_FDIFlatBuildingNumber: new FormControl('', Validators.required),
+      COC_FDIFloorNumber: new FormControl('', Validators.required),
+      COC_FDIPremisesBuilding: new FormControl('', Validators.required),
+      COC_FDIRoadStreet: new FormControl('', Validators.required),
+      COC_FDICity: new FormControl('', Validators.required),
+      COC_FDIState:new FormControl('', Validators.required),
+      COC_FDIPincode:new FormControl('', Validators.required),
+      COC_FDI_Email:new FormControl('',Validators.required),
+      COC_FDIMobile:new FormControl('', Validators.required),
+      COC_FDITelephone:new FormControl('', Validators.required),
+      COC_FDIFAX:new FormControl('', Validators.required),
+      COC_FDI_AuthPerson:new FormControl('', Validators.required),
+      COC_FDI_AuthPersonAddress:new FormControl('', Validators.required),
+      COC_FDI_AuthPAN:new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
+      COC_FDI_AuthDesignation:new FormControl('', Validators.required),
+      
+
+    })
   }
  
   onSelectAll(items: any) {
@@ -101,6 +132,15 @@ isLinear = false;
     this.COC_FDIFormDiv=false;
     }
     this.filteredsubmodule = this.submodules.filter(item => item.moduleid === Number(selectedModule.id));
+  }
+  onAllSubModuleSelect(items: any,val) {
+    debugger;
+    for(let i=0;i<items.length;i++){
+    this.Submodule=items[i];
+    this.SubmodulenameDes=val.filter(x =>x.id===Number(items[i].id))[0].Description;
+    this.Submodulename= val.filter(x =>x.id===Number(items[i].id))[0].name;
+    this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
+    }
   }
   onSubModuleSelect(selectedSubModule,val)
   {
@@ -138,7 +178,7 @@ isLinear = false;
     Facevalue_equity_shares:number;
     Value_of_Shares:number;
   
-  GrantDetailsArray: Array<GrantDetailsList> = [];
+  GrantDetailsArray: Array<COC_FDI_DetailsList> = [];
   GrantDetailsdata:any={};
   deleteGrantData(index) {
     if (this.GrantDetailsArray.length == 1) {
@@ -179,18 +219,7 @@ onFileChange(evt: any) {
       {
       this.addGrantData();
       }
-             this.GrantDetailsArray[i-1].Full_Name_Grantee=this.Exdata[i][0];
-             this.GrantDetailsArray[i-1].Date_of_Issue= this.Exdata[i][1];
-             this.GrantDetailsArray[i-1].Number_ESOP_Granted= this.Exdata[i][2];
-             this.GrantDetailsArray[i-1].Country= this.Exdata[i][3];
-             this.GrantDetailsArray[i-1].ResidentialStatus= this.Exdata[i][4];
-             this.GrantDetailsArray[i-1].SubsidiarySDS= this.Exdata[i][5];
-             this.GrantDetailsArray[i-1].Pre_determined_issue_price= this.Exdata[i][6];
-/*              this.GrantDetailsArray[i].Conversion_ratio1= this.Exdata[i+1][7]; */
-             this.GrantDetailsArray[i-1].Conversion_ratio= this.Exdata[i][7];
-             this.GrantDetailsArray[i-1].Equivalent_equity_shares= this.Exdata[i][8];
-             this.GrantDetailsArray[i-1].Facevalue_equity_shares= this.Exdata[i][9];
-             this.GrantDetailsArray[i-1].Value_of_Shares= this.Exdata[i][10];
+             
     }
   };
   reader.readAsBinaryString(target.files[0]);

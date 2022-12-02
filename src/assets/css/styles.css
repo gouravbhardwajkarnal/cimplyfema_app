@@ -312,10 +312,6 @@ input:focus,
 textarea:focus {
   box-shadow: none !important;
 }
-button.btn:focus {
-  box-shadow: none !important;
-  color: #fff !important;
-}
 .main-content {
   height: calc(100% - 0px);
 }

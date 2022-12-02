@@ -10,8 +10,12 @@ import { GrantDetailsList } from 'src/app/model/Fdi.model';
 import jsPDF from 'jspdf';
 import htmlToPdfmake from 'html-to-pdfmake';
 import * as XLSX from 'xlsx';
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { asBlob } from 'html-docx-js-typescript';
+// if you want to save the docx file, you need import 'file-saver'
+// @ts-ignore
+import { saveAs } from 'file-saver';
 
 
 
@@ -22,6 +26,7 @@ type AOA = any[][];
   styleUrls: ['./form-esop.component.css']
 })
 export class FormEsopComponent implements OnInit {
+  dateresolution: any;
   @ViewChild('country') country: ElementRef
   @ViewChild('selectpicker') selectPicker: ElementRef;
   CountrySettings: IDropdownSettings;
@@ -67,14 +72,14 @@ export class FormEsopComponent implements OnInit {
         Applicable_Sectoral_Cap: new FormControl('100', Validators.required),
         foreigninvestmentproject: new FormControl('No', Validators.required),
         Shareholdingpattern: new FormControl('Yes', Validators.required),
-        Non_Debt_Instruments: new FormControl(''),
-        sectoral_cap_statutory: new FormControl(''),
-        Indian_companies_reconstruction: new FormControl(''),
-        PMLA_UAPA: new FormControl(''),
-        enclose_documents: new FormControl(''),
-        certificate_Company_Secretary: new FormControl(''),
-        SEBI_registered: new FormControl(''),
-        necessary_documents: new FormControl(''),
+        Non_Debt_Instruments: new FormControl(false),
+        sectoral_cap_statutory: new FormControl(false),
+        Indian_companies_reconstruction: new FormControl(false),
+        PMLA_UAPA: new FormControl(false),
+        enclose_documents: new FormControl(false),
+        certificate_Company_Secretary: new FormControl(false),
+        SEBI_registered: new FormControl(false),
+        necessary_documents: new FormControl(false),
         GrantDetails: new FormArray([])
 
       }
@@ -345,6 +350,47 @@ export class FormEsopComponent implements OnInit {
     reader.readAsBinaryString(target.files[0]);
     evt.target.value = null;
   }
+  async ExportWord1() {
+    const pdfTable = this.pdfTable1.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'landscape',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Covering.docx');
+  }
+
+  async ExportWord2() {
+    const pdfTable = this.pdfTable2.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'landscape',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'CSCertificate.docx');
+  }
+  async ExportWord3() {
+    const pdfTable = this.pdfTable3.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'landscape',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Declaration.docx');
+  }
+
+  get GrantDetails(): FormArray {
+    debugger
+    return this.esopFormlist.get('GrantDetails') as FormArray;
+  }
+
+  DateResolutionChange(e) {
+    debugger
+    const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
+    grantFormArray.value[0].Date_of_Issue=e.target.value;
+
+  }
+
 }
 
 

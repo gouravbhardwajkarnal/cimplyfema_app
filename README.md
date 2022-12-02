@@ -27,4 +27,7 @@ npm install xlsx
 npm i angular-material
 ## DropDown With Serach
 npm install --save @ng-select/ng-select
+## Word File DownLoad
+npm install html-docx-js-typescript
+npm install file-saver
 

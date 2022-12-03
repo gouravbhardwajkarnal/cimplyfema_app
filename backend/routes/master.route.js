@@ -97,7 +97,7 @@ masterRoute.route('/City').get((req, res) => {
 
 // })
 // masterRoute.route('/master/City').get(async (req, res) => {
-//   debugger;
+
 // let stateList = await states.find({country_id:'101'}).select("id").then(res=>{
 //   return res.map((val)=>val.id)
 // })

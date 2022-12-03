@@ -224,7 +224,7 @@ export class FormFcComponent implements OnInit {
 
   }
   addsumFC() {
-    debugger;
+  
     this.sumFC = { EntityName: "", FCY: "", INR: "" }
     this.sumFCArray.push(this.sumFC);
     console.log(this.sumFCArray);
@@ -295,7 +295,7 @@ export class FormFcComponent implements OnInit {
     }
   }
   public validate(): void {
-    debugger;
+    
     this.investment_model = this.reactiveForm.value;
     this.investment_model.investment_SumFC = this.sumFCArray;
     this.investment_model.investment_FCDisinvestment = this.FCDisinvestmentArray;
@@ -427,7 +427,7 @@ get disinvestment_UIN()
   return this.reactiveForm.get('disinvestment_UIN');
 }
   readCity() {
-    debugger;
+    
     this.apiService.getCity().subscribe((data) => {
 
       this.CityList = data;

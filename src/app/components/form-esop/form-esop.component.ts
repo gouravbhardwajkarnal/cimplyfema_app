@@ -128,7 +128,7 @@ export class FormEsopComponent implements OnInit {
   }
 
   readCountry() {
-    debugger
+
     this.apiService.getCountry().subscribe((data) => {
       this.CountryList = data;
       console.log(this.CountryList);
@@ -243,7 +243,7 @@ export class FormEsopComponent implements OnInit {
     }
   }
   btnBackchange() {
-    debugger
+  
     if (this.Tabindexc == 0) {
       this.tabset.tabs[1].active = true;
       this.tabset.tabs[1].disabled = true;
@@ -271,7 +271,7 @@ export class FormEsopComponent implements OnInit {
   @ViewChild('pdfTable4') pdfTable4: ElementRef;
 
   downloadAsPDF1() {
-    debugger;
+  
     const doc = new jsPDF();
     const pdfTable = this.pdfTable1.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML);
@@ -280,7 +280,6 @@ export class FormEsopComponent implements OnInit {
 
   }
   downloadAsPDF2() {
-    debugger;
     const doc = new jsPDF();
     const pdfTable = this.pdfTable2.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML);
@@ -289,7 +288,7 @@ export class FormEsopComponent implements OnInit {
 
   }
   downloadAsPDF3() {
-    debugger;
+    
     const doc = new jsPDF();
     const pdfTable = this.pdfTable3.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML);
@@ -298,7 +297,7 @@ export class FormEsopComponent implements OnInit {
 
   }
   downloadAsPDF4() {
-    debugger;
+    
     const doc = new jsPDF();
     const pdfTable = this.pdfTable4.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML);
@@ -309,7 +308,7 @@ export class FormEsopComponent implements OnInit {
 
   Exdata: AOA = [[1, 2], [3, 4]];
   onFileChange(evt: any) {
-    debugger
+    
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(evt.target);
     if (target.files.length !== 1) throw new Error('Cannot use multiple files');
@@ -379,11 +378,11 @@ export class FormEsopComponent implements OnInit {
     saveAs(converted, 'Declaration.docx');
   }
   get GrantDetails(): FormArray {
-    debugger
+    
     return this.esopFormlist.get('GrantDetails') as FormArray;
   }
   DateResolutionChange(e) {
-    debugger
+  
     const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
     grantFormArray.value[0].Date_of_Issue=e.target.value;
 

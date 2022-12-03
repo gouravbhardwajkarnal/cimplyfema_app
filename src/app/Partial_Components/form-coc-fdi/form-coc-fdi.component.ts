@@ -58,13 +58,13 @@ export class FormCocFdiComponent implements OnInit {
     };
   }
   onSelectAll(items: any) {
-    debugger;
+
     console.log(items);
   }
   title = 'cimplyfema';
   filteredsubmodule: any;
   onModuleSelect(selectedModule) {
-    debugger;
+  
     if(selectedModule.id==1)
     {
     this.COC_FDIFormDiv=true;}
@@ -81,7 +81,7 @@ export class FormCocFdiComponent implements OnInit {
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
   }
   RBI_FDISubmit(Val) {
-    debugger; 
+ 
     this.COC_FDICoverLetter=false;
     this.COC_FDICompound=false;
     this.COC_FDISubmissions=false;

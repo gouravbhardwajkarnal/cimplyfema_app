@@ -426,7 +426,7 @@ export class FormAprComponent implements OnInit {
   SDS: any = {};
   SDSlength: number = 0;
   CapitalstructureFE() {
-    debugger
+  
     let indian = this.aprForm.value.APR_Indian_Amount;
     let foreign = this.aprForm.value.APR_Foreign_Amount;
     let total = indian + foreign;
@@ -610,7 +610,7 @@ export class FormAprComponent implements OnInit {
     }
   }
   onSubmitAPRFrom() {
-    debugger;
+  
     console.log(this.aprForm);
 
     if (this.aprForm.invalid) {
@@ -895,7 +895,7 @@ export class FormAprComponent implements OnInit {
 
     }
     updatePrev() {
-      debugger;
+  
       this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
       if (Number(this.id) - 1 >= 0) {
         this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) - 1)
@@ -912,7 +912,7 @@ export class FormAprComponent implements OnInit {
       }
     }
     updateNext() {
-      debugger;
+  
       let count = this.tabset.tabs.length;
       this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
       if (Number(this.id) == 1) {
@@ -977,7 +977,7 @@ export class FormAprComponent implements OnInit {
     @ViewChild('pdfTableAPR') pdfTableAPR: ElementRef;
     @ViewChild('pdfAPR') pdfAPR: ElementRef;
     downloadAsPDFAPR() {
-      debugger;
+  
       const doc = new jsPDF();
       const pdfTable = this.pdfAPR.nativeElement;
       var html = htmlToPdfmake(pdfTable.innerHTML);

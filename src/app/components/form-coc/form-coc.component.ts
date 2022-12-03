@@ -47,7 +47,7 @@ isLinear = false;
     this.readState();
    } 
    readCity() {
-    debugger;
+
     this.apiService.getCity().subscribe((data) => {
 
       this.CityList = data;
@@ -55,7 +55,6 @@ isLinear = false;
   
   }  
   readState() {
-    debugger;
     this.apiService.getState().subscribe((data) => {
 
       this.StateList = data;
@@ -121,7 +120,7 @@ isLinear = false;
   }
  
   onSelectAll(items: any) {
-    debugger;
+  
     console.log(items);
   }
   title = 'cimplyfema';
@@ -134,7 +133,7 @@ isLinear = false;
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
   }
   onModuleSelect(selectedModule) {
-    debugger;
+    
     if(selectedModule.id==1)
     {
     this.COC_FDIFormDiv=true;}
@@ -144,7 +143,7 @@ isLinear = false;
     this.filteredsubmodule = this.submodules.filter(item => item.moduleid === Number(selectedModule.id));
   }
   onAllSubModuleSelect(items: any,val) {
-    debugger;
+  
     for(let i=0;i<items.length;i++){
     this.Submodule=items[i];
     this.SubmodulenameDes=val.filter(x =>x.id===Number(items[i].id))[0].Description;
@@ -160,7 +159,7 @@ isLinear = false;
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
   }
   RBI_FDISubmit(Val) {
-    debugger; 
+
     this.COC_FDIInstructions=false;
     this.COC_FDIApplicantDetails=false;
     this.COC_FDICompoundingDetails=false;
@@ -206,7 +205,7 @@ isLinear = false;
   }
   Exdata: AOA = [[1, 2], [3, 4]];
 onFileChange(evt: any) {
-  debugger
+
   /* wire up file reader */
   const target: DataTransfer = <DataTransfer>(evt.target);
   if (target.files.length !== 1) throw new Error('Cannot use multiple files');

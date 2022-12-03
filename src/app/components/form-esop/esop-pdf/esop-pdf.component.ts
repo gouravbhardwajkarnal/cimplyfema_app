@@ -20,7 +20,7 @@ export class EsopPdfComponent implements OnInit {
   @ViewChild('pdfTable') pdfTable: ElementRef;
    
    downloadAsPDF() {
-    debugger;
+
     const doc = new jsPDF();
     
     const pdfTable = this.pdfTable.nativeElement;

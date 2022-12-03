@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   onModuleSelect(selectedModule) {
-    debugger;
     this.filteredsubmodule = this.submodules.filter(item => item.moduleid === Number(selectedModule));
   }
   onSubModuleSelect(selectedSubModule)

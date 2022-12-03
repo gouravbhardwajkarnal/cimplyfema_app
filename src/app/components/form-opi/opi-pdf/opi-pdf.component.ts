@@ -23,7 +23,7 @@ export class OpiPdfComponent implements OnInit {
   @ViewChild('pdfTable') pdfTable: ElementRef;
    
    downloadAsPDF() {
-    debugger;
+  
     const doc = new jsPDF();
     
     const pdfTable = this.pdfTable.nativeElement;
@@ -257,7 +257,7 @@ export class OpiPdfComponent implements OnInit {
   }
   /* OpiFormlist=[];
   getOpiData() {
-      debugger;
+    
     this.apiService.getopiData()
     .pipe(map(resData=>{
      const opidataarry=[];

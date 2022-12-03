@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -9,6 +9,8 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Iinvestment, IinvestmentSDS } from 'src/app/model/iinvestment';
 import { DisinvetmentType } from 'src/app/model/common.model';
 import { CommonService } from 'src/app/service/common.service';
+import jsPDF from 'jspdf';
+import htmlToPdfmake from 'html-to-pdfmake';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -18,7 +20,11 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 
 export class FormAprComponent implements OnInit {
+  public aprFormList: FormGroup;
   public aprForm: FormGroup;
+  public declaration: FormGroup;
+  public CAform: FormGroup;
+  dataModel: any = {};
   investment_model: Iinvestment;
   @ViewChild('tabset') tabset: TabsetComponent;
   ShareHoldingFEArray: Array<ShareHoldingFEGrid> = [];
@@ -374,13 +380,16 @@ export class FormAprComponent implements OnInit {
       APR_FDIforeign_commencement: new FormControl('', Validators.required),
       APR_exces_sshare_CurYear: new FormControl('', Validators.required),
       APR_exces_sshare_commencement: new FormControl('', Validators.required),
+    });
+    this.declaration = this.fb.group({
       APR_Dec_A: new FormControl(false),
       APR_Dec_B: new FormControl(false),
       APR_Dec_C: new FormControl(false),
       APR_Dec_D: new FormControl(false),
       APR_Dec_E: new FormControl(false),
       APR_Authorized_Signature: new FormControl('', Validators.required),
-      APR_Authorized_NameDes: new FormControl('', Validators.required),
+      APR_Authorized_Name: new FormControl('', Validators.required),
+      APR_Authorized_Designation: new FormControl('', Validators.required),
       APR_Dec_Place: new FormControl('', Validators.required),
       APR_Dec_Date: new FormControl('', Validators.required),
       APR_Dec_Telephone: new FormControl('', Validators.required),
@@ -388,8 +397,23 @@ export class FormAprComponent implements OnInit {
       APR_Dec_Stamp: new FormControl('', Validators.required),
       SDSDetails: new FormArray([]),
       ShareHoldingFE: new FormArray([]),
-
     });
+    this.CAform = this.fb.group({
+      APR_CA_A: new FormControl(false),
+      APR_CA_B: new FormControl(false),
+      APR_CA_C: new FormControl(false),
+      APR_CA_Signature: new FormControl('', Validators.required),
+      APR_CA_FirmName: new FormControl('', Validators.required),
+      APR_CA_RegNo: new FormControl('', Validators.required),
+      APR_CA_UDIN: new FormControl('', Validators.required),
+      APR_CA_Date: new FormControl('', Validators.required),
+      APR_CA_Place: new FormControl('', Validators.required),
+      APR_CA_Email: new FormControl('', Validators.required),
+      APR_CA_Stamp: new FormControl('', Validators.required),
+      SDSDetails: new FormArray([]),
+      ShareHoldingFE: new FormArray([]),
+    });
+
   }
   Indianshare: number = 0;
   Foreignshare: number = 0;
@@ -525,18 +549,18 @@ export class FormAprComponent implements OnInit {
     this.TotalPstake = 0;
     this.TotalFPstake = 0;
     this.Totalstake = 0;
-   
+
     this.ShareHoldingFEArray.forEach(element => {
       this.TotalPstake += element.Pstake;
       this.TotalFPstake += element.FPstake;
       this.Totalstake += element.Total;
       if (this.Totalstake > 100) {
-        element.Pstake=0;
-        element.FPstake=0;
+        element.Pstake = 0;
+        element.FPstake = 0;
         return false;
       }
-     
-      
+
+
     });
     return true;
   }
@@ -562,11 +586,10 @@ export class FormAprComponent implements OnInit {
   onBlur(values) {
     console.log(values);
     values.Total = values.FPstake + values.Pstake;
-    if(values.Total>100)
-    {
-      values.FPstake=0;
-      values.Pstake=0;
-      values.Total=0;
+    if (values.Total > 100) {
+      values.FPstake = 0;
+      values.Pstake = 0;
+      values.Total = 0;
       return false;
     }
     this.TotalPstake = 0;
@@ -577,17 +600,17 @@ export class FormAprComponent implements OnInit {
       this.TotalFPstake += element.FPstake;
       this.Totalstake += element.Total;
     });
-    if(this.Totalstake >100)
-    {
-      values.FPstake=0;
-      values.Pstake=0;
-      values.Total=0;
+    if (this.Totalstake > 100) {
+      values.FPstake = 0;
+      values.Pstake = 0;
+      values.Total = 0;
       return false;
     }
   }
   onSubmitAPRFrom() {
     debugger;
-    console.log(this.SDSArray);
+    console.log(this.aprForm);
+
     if (this.aprForm.invalid) {
       for (const control of Object.keys(this.aprForm.controls)) {
         this.aprForm.controls[control].markAsTouched();
@@ -595,234 +618,373 @@ export class FormAprComponent implements OnInit {
       return;
     }
     else {
-
-      const ShareHoldingFE: FormArray = this.fb.array(this.ShareHoldingFEArray);
-      this.aprForm.setControl('ShareHoldingFE', ShareHoldingFE);
-      const SDSArray: FormArray = this.fb.array(this.SDSArray);
-      this.aprForm.setControl('SDSDetails', SDSArray);
-      // this.aprForm.setControl('SDSDetails', this.fb.array(this.investment_model.investment_SDSModel || []));
-      return this.apiService.createFormAPR(this.aprForm.value).subscribe({
-        complete: () => {
-          alert('FromAPR successfully created!');
-          // this.generatePDF();
-          console.log('FromAPR successfully created!');
-          //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
-        },
-        error: (e) => {
-          console.log(e);
-        },
-      });
-    }
-
-    // console.log(this.aprFormlist);
-
-  }
-  get APR_From_Date() {
-    return this.aprForm.get('APR_From_Date')!;
-  }
-  get APR_To_Date() {
-    return this.aprForm.get('APR_To_Date')!;
-  }
-  get APR_UIN() {
-    return this.aprForm.get('APR_UIN')!;
-  }
-  get APR_Indian_Amount() {
-    return this.aprForm.get('APR_Indian_Amount')!;
-  }
-  get APR_Indian_Share() {
-    return this.aprForm.get('APR_Indian_Share')!;
-  }
-  get APR_Foreign_Amount() {
-    return this.aprForm.get('APR_Foreign_Amount')!;
-  }
-  get APR_Foreign_Share() {
-    return this.aprForm.get('APR_Foreign_Share')!;
-  }
-  get APR_FE_Control() {
-    return this.aprForm.get('APR_FE_Control')!;
-  }
-  get APR_Profit_Current() {
-    return this.aprForm.get('APR_Profit_Current')!;
-  }
-  get APR_Profit_Last() {
-    return this.aprForm.get('APR_Profit_Last')!;
-  }
-
-  get APR_Dividend_Current() {
-    return this.aprForm.get('APR_Dividend_Current')!;
-  }
-  get APR_Dividend_Last() {
-    return this.aprForm.get('APR_Dividend_Last')!;
-  }
-
-  get APR_Worth_Current() {
-    return this.aprForm.get('APR_Worth_Current')!;
-  }
-  get APR_Worth_Last() {
-    return this.aprForm.get('APR_Worth_Last')!;
-  }
-  get APR_Dividend_CurYear() {
-    return this.aprForm.get('APR_Dividend_CurYear')!;
-  }
-  get APR_Dividend_commencement() {
-    return this.aprForm.get('APR_Dividend_commencement')!;
-  }
-  get APR_Repayment_CurYear() {
-    return this.aprForm.get('APR_Repayment_CurYear')!;
-  }
-  get APR_Repayment_commencement() {
-    return this.aprForm.get('APR_Repayment_commencement')!;
-  }
-  get APR_EquityExport_CurYear() {
-    return this.aprForm.get('APR_EquityExport_CurYear')!;
-  }
-  get APR_EquityExport_commencement() {
-    return this.aprForm.get('APR_EquityExport_commencement')!;
-  }
-  get APR_Royalties_CurYear() {
-    return this.aprForm.get('APR_Royalties_CurYear')!;
-  }
-  get APR_Royalties_commencement() {
-    return this.aprForm.get('APR_Royalties_commencement')!;
-  }
-  get APR_Technical_CurYear() {
-    return this.aprForm.get('APR_Technical_CurYear')!;
-  }
-  get APR_Technical_commencement() {
-    return this.aprForm.get('APR_Technical_commencement')!;
-  }
-  get APR_Consultancyfee_CurYear() {
-    return this.aprForm.get('APR_Consultancyfee_CurYear')!;
-  }
-  get APR_Consultancyfee_commencement() {
-    return this.aprForm.get('APR_Consultancyfee_commencement')!;
-  }
-  get APR_Others_CurYear() {
-    return this.aprForm.get('APR_Others_CurYear')!;
-  }
-  get APR_Others_commencement() {
-    return this.aprForm.get('APR_Others_commencement')!;
-  }
-  get APR_Profit_CurYear() {
-    return this.aprForm.get('APR_Profit_CurYear')!;
-  }
-  get APR_Profit_commencement() {
-    return this.aprForm.get('APR_Profit_commencement')!;
-  }
-  get APR_Retained_CurYear() {
-    return this.aprForm.get('APR_Retained_CurYear')!;
-  }
-  get APR_Retained_commencement() {
-    return this.aprForm.get('APR_Retained_commencement')!;
-  }
-  get APR_FDIforeign_CurYear() {
-    return this.aprForm.get('APR_FDIforeign_CurYear')!;
-  }
-  get APR_FDIforeign_commencement() {
-    return this.aprForm.get('APR_FDIforeign_commencement')!;
-  }
-  get APR_exces_sshare_CurYear() {
-    return this.aprForm.get('APR_exces_sshare_CurYear')!;
-  }
-  get APR_exces_sshare_commencement() {
-    return this.aprForm.get('APR_exces_sshare_commencement')!;
-  }
-
-  get APR_Dec_A() {
-    return this.aprForm.get('APR_Dec_A')!;
-  }
-  get APR_Dec_B() {
-    return this.aprForm.get('APR_Dec_B')!;
-  }
-  get APR_Dec_C() {
-    return this.aprForm.get('APR_Dec_C')!;
-  }
-  get APR_Dec_D() {
-    return this.aprForm.get('APR_Dec_D')!;
-  }
-  get APR_Dec_E() {
-    return this.aprForm.get('APR_Dec_E')!;
-  }
-
-  get APR_Authorized_Signature() {
-    return this.aprForm.get('APR_Authorized_Signature')!;
-  }
-  get APR_Authorized_NameDes() {
-    return this.aprForm.get('APR_Authorized_NameDes')!;
-  }
-  get APR_Dec_Place() {
-    return this.aprForm.get('APR_Dec_Place')!;
-  }
-  get APR_Dec_Date() {
-    return this.aprForm.get('APR_Dec_Date')!;
-  }
-  get APR_Dec_Telephone() {
-    return this.aprForm.get('APR_Dec_Telephone')!;
-  }
-  get APR_Dec_Email() {
-    return this.aprForm.get('APR_Dec_Email')!;
-  }
-  get APR_Dec_Stamp() {
-    return this.aprForm.get('APR_Dec_Stamp')!;
-  }
-  addSDS() {
-    this.SDS = {
-      investment_SDS_Name: "",
-      investment_SDS_Level: "",
-      investment_SDS_Jurisdiction: "",
-      investment_SDS_ParentName: "",
-      investment_SDS_ParentLevel: "",
-      investment_SDS_ParentJurisdiction: "",
-      investment_SDS_InvestmentAmount: "",
-      investment_SDS_InvestmentDate: "",
-      investment_SDS_LEI: "",
-      investment_SDS_Type: "",
-      investment_SDS_1987NIC: "",
-      investment_SDS_2008NIC: "",
-      investment_SDS_Stake: ""
-    };
-    this.SDSArray.push(this.SDS)
-    console.log(this.SDSArray);
-    this.SDSlength = this.SDSArray.length;
-    return true;
-  }
-  deleteSDS(index) {
-    if (this.SDSArray.length == 1) {
-      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
-      return false;
-    } else {
-      this.SDSArray.splice(index, 1);
-      this.SDSlength = this.SDSArray.length;
-      //this.toastr.warning('Row deleted successfully', 'Delete row');  
-      return true;
-    }
-
-  }
-  updatePrev() {
-    this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
-    if (Number(this.id) - 1 >= 0) {
-      this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) - 1)
-      this.tabset.tabs[(Number(this.id)) - 1].active = true;
-      if (Number(this.id) - 1 == 0) {
-        this.btnShow = false;
+      for (const control of Object.keys(this.aprForm.controls)) {
+        this.dataModel[control] = this.aprForm.controls[control].value;
       }
     }
-    if (Number(this.id) <= 5) {
-      this.btnShowNext = true;
+    if (this.declaration.invalid) {
+      for (const control of Object.keys(this.declaration.controls)) {
+        this.declaration.controls[control].markAsTouched();
+      }
+      return;
+    }
+    else {
+      // const ShareHoldingFE: FormArray = this.fb.array(this.ShareHoldingFEArray);
+      // this.declaration.setControl('ShareHoldingFE', ShareHoldingFE);
+      // const SDSArray: FormArray = this.fb.array(this.SDSArray);
+      // this.declaration.setControl('SDSDetails', SDSArray);
+      for (const control of Object.keys(this.declaration.controls)) {
+        this.dataModel[control] = this.declaration.controls[control].value;
+      }
+    }
+    if (this.CAform.invalid) {
+      for (const control of Object.keys(this.CAform.controls)) {
+        this.CAform.controls[control].markAsTouched();
+      }
+      return;
+    }
+    else {
+      for (const control of Object.keys(this.CAform.controls)) {
+        this.dataModel[control] = this.CAform.controls[control].value;
+      }
+    }
+    this.dataModel['SDSDetails']=this.SDSArray;
+    this.dataModel['ShareHoldingFE']=this.ShareHoldingFEArray;
+
+        // this.aprForm.setControl('SDSDetails', this.fb.array(this.investment_model.investment_SDSModel || []));
+
+        return this.apiService.createFormAPR(this.dataModel).subscribe({
+          complete: () => {
+            alert('FromAPR successfully created!');
+            // this.generatePDF();
+            console.log('FromAPR successfully created!');
+            //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
+            this.tabset.tabs[(Number(6))].disabled = false;
+            this.tabset.tabs[(Number(6)) + 1].active = true;
+          },
+          error: (e) => {
+            console.log(e);
+          },
+        });
+      }
+
+      // console.log(this.aprFormlist);
+
+    
+  get APR_From_Date() {
+      return this.aprForm.get('APR_From_Date')!;
+    }
+  get APR_To_Date() {
+      return this.aprForm.get('APR_To_Date')!;
+    }
+  get APR_UIN() {
+      return this.aprForm.get('APR_UIN')!;
+    }
+  get APR_Indian_Amount() {
+      return this.aprForm.get('APR_Indian_Amount')!;
+    }
+  get APR_Indian_Share() {
+      return this.aprForm.get('APR_Indian_Share')!;
+    }
+  get APR_Foreign_Amount() {
+      return this.aprForm.get('APR_Foreign_Amount')!;
+    }
+  get APR_Foreign_Share() {
+      return this.aprForm.get('APR_Foreign_Share')!;
+    }
+  get APR_FE_Control() {
+      return this.aprForm.get('APR_FE_Control')!;
+    }
+  get APR_Profit_Current() {
+      return this.aprForm.get('APR_Profit_Current')!;
+    }
+  get APR_Profit_Last() {
+      return this.aprForm.get('APR_Profit_Last')!;
+    }
+
+  get APR_Dividend_Current() {
+      return this.aprForm.get('APR_Dividend_Current')!;
+    }
+  get APR_Dividend_Last() {
+      return this.aprForm.get('APR_Dividend_Last')!;
+    }
+
+  get APR_Worth_Current() {
+      return this.aprForm.get('APR_Worth_Current')!;
+    }
+  get APR_Worth_Last() {
+      return this.aprForm.get('APR_Worth_Last')!;
+    }
+  get APR_Dividend_CurYear() {
+      return this.aprForm.get('APR_Dividend_CurYear')!;
+    }
+  get APR_Dividend_commencement() {
+      return this.aprForm.get('APR_Dividend_commencement')!;
+    }
+  get APR_Repayment_CurYear() {
+      return this.aprForm.get('APR_Repayment_CurYear')!;
+    }
+  get APR_Repayment_commencement() {
+      return this.aprForm.get('APR_Repayment_commencement')!;
+    }
+  get APR_EquityExport_CurYear() {
+      return this.aprForm.get('APR_EquityExport_CurYear')!;
+    }
+  get APR_EquityExport_commencement() {
+      return this.aprForm.get('APR_EquityExport_commencement')!;
+    }
+  get APR_Royalties_CurYear() {
+      return this.aprForm.get('APR_Royalties_CurYear')!;
+    }
+  get APR_Royalties_commencement() {
+      return this.aprForm.get('APR_Royalties_commencement')!;
+    }
+  get APR_Technical_CurYear() {
+      return this.aprForm.get('APR_Technical_CurYear')!;
+    }
+  get APR_Technical_commencement() {
+      return this.aprForm.get('APR_Technical_commencement')!;
+    }
+  get APR_Consultancyfee_CurYear() {
+      return this.aprForm.get('APR_Consultancyfee_CurYear')!;
+    }
+  get APR_Consultancyfee_commencement() {
+      return this.aprForm.get('APR_Consultancyfee_commencement')!;
+    }
+  get APR_Others_CurYear() {
+      return this.aprForm.get('APR_Others_CurYear')!;
+    }
+  get APR_Others_commencement() {
+      return this.aprForm.get('APR_Others_commencement')!;
+    }
+  get APR_Profit_CurYear() {
+      return this.aprForm.get('APR_Profit_CurYear')!;
+    }
+  get APR_Profit_commencement() {
+      return this.aprForm.get('APR_Profit_commencement')!;
+    }
+  get APR_Retained_CurYear() {
+      return this.aprForm.get('APR_Retained_CurYear')!;
+    }
+  get APR_Retained_commencement() {
+      return this.aprForm.get('APR_Retained_commencement')!;
+    }
+  get APR_FDIforeign_CurYear() {
+      return this.aprForm.get('APR_FDIforeign_CurYear')!;
+    }
+  get APR_FDIforeign_commencement() {
+      return this.aprForm.get('APR_FDIforeign_commencement')!;
+    }
+  get APR_exces_sshare_CurYear() {
+      return this.aprForm.get('APR_exces_sshare_CurYear')!;
+    }
+  get APR_exces_sshare_commencement() {
+      return this.aprForm.get('APR_exces_sshare_commencement')!;
+    }
+
+  get APR_Dec_A() {
+      return this.declaration.get('APR_Dec_A')!;
+    }
+  get APR_Dec_B() {
+      return this.declaration.get('APR_Dec_B')!;
+    }
+  get APR_Dec_C() {
+      return this.declaration.get('APR_Dec_C')!;
+    }
+  get APR_Dec_D() {
+      return this.declaration.get('APR_Dec_D')!;
+    }
+  get APR_Dec_E() {
+      return this.declaration.get('APR_Dec_E')!;
+    }
+
+  get APR_Authorized_Signature() {
+      return this.declaration.get('APR_Authorized_Signature')!;
+    }
+  get APR_Authorized_Name() {
+      return this.declaration.get('APR_Authorized_Name')!;
+    }
+  get APR_Authorized_Designation() {
+      return this.declaration.get('APR_Authorized_Designation')!;
+    }
+  get APR_Dec_Place() {
+      return this.declaration.get('APR_Dec_Place')!;
+    }
+  get APR_Dec_Date() {
+      return this.declaration.get('APR_Dec_Date')!;
+    }
+  get APR_Dec_Telephone() {
+      return this.declaration.get('APR_Dec_Telephone')!;
+    }
+  get APR_Dec_Email() {
+      return this.declaration.get('APR_Dec_Email')!;
+    }
+  get APR_Dec_Stamp() {
+      return this.declaration.get('APR_Dec_Stamp')!;
+    }
+
+  get APR_CA_A() {
+      return this.CAform.get('APR_CA_A')!;
+    }
+  get APR_CA_B() {
+      return this.CAform.get('APR_CA_B')!;
+    }
+  get APR_CA_C() {
+      return this.CAform.get('APR_CA_C')!;
+    }
+  get APR_CA_Signature() {
+      return this.CAform.get('APR_CA_Signature')!;
+    }
+  get APR_CA_FirmName() {
+      return this.CAform.get('APR_CA_FirmName')!;
+    }
+  get APR_CA_RegNo() {
+      return this.CAform.get('APR_CA_RegNo')!;
+    }
+  get APR_CA_UDIN() {
+      return this.CAform.get('APR_CA_UDIN')!;
+    }
+  get APR_CA_Stamp() {
+      return this.CAform.get('APR_CA_Stamp')!;
+    }
+  get APR_CA_Place() {
+      return this.CAform.get('APR_CA_Place')!;
+    }
+  get APR_CA_Date() {
+      return this.CAform.get('APR_CA_Date')!;
+    }
+  get APR_CA_Email() {
+      return this.CAform.get('APR_CA_Email')!;
+    }
+
+
+
+
+
+
+
+    addSDS() {
+      this.SDS = {
+        investment_SDS_Name: "",
+        investment_SDS_Level: "",
+        investment_SDS_Jurisdiction: "",
+        investment_SDS_ParentName: "",
+        investment_SDS_ParentLevel: "",
+        investment_SDS_ParentJurisdiction: "",
+        investment_SDS_InvestmentAmount: "",
+        investment_SDS_InvestmentDate: "",
+        investment_SDS_LEI: "",
+        investment_SDS_Type: "",
+        investment_SDS_1987NIC: "",
+        investment_SDS_2008NIC: "",
+        investment_SDS_Stake: ""
+      };
+      this.SDSArray.push(this.SDS)
+      console.log(this.SDSArray);
+      this.SDSlength = this.SDSArray.length;
+      return true;
+    }
+    deleteSDS(index) {
+      if (this.SDSArray.length == 1) {
+        //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+        return false;
+      } else {
+        this.SDSArray.splice(index, 1);
+        this.SDSlength = this.SDSArray.length;
+        //this.toastr.warning('Row deleted successfully', 'Delete row');  
+        return true;
+      }
+
+    }
+    updatePrev() {
+      debugger;
+      this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
+      if (Number(this.id) - 1 >= 0) {
+        this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) - 1)
+        this.tabset.tabs[(Number(this.id)) - 1].disabled = false;
+        this.tabset.tabs[(Number(this.id)) - 1].active = true;
+
+        if (Number(this.id) - 1 == 0) {
+          this.btnShow = false;
+          this.tabset.tabs[(Number(this.id))].disabled = true;
+        }
+      }
+      if (Number(this.id) <= 5) {
+        this.btnShowNext = true;
+      }
+    }
+
+    updateNext() {
+      debugger;
+      let count = this.tabset.tabs.length;
+      this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
+      if (Number(this.id) == 1) {
+        if (this.aprForm.invalid) {
+
+          for (const control of Object.keys(this.aprForm.controls)) {
+            this.aprForm.controls[control].markAsTouched();
+          }
+          return;
+
+        }
+        else {
+          const ShareHoldingFE: FormArray = this.fb.array(this.ShareHoldingFEArray);
+          this.aprForm.setControl('ShareHoldingFE', ShareHoldingFE);
+
+        }
+      }
+      else if (Number(this.id) == 2) {
+        if (this.SDSArray.length == 0) {
+          for (const control of Object.keys(this.aprForm.controls)) {
+            this.aprForm.controls[control].markAsTouched();
+          }
+          return;
+        }
+        else {
+          const SDSArray: FormArray = this.fb.array(this.SDSArray);
+          this.aprForm.setControl('SDSDetails', SDSArray);
+        }
+      }
+      else if (Number(this.id) == 3) {
+        if (this.declaration.invalid) {
+
+          for (const control of Object.keys(this.declaration.controls)) {
+            this.declaration.controls[control].markAsTouched();
+          }
+          return;
+
+        }
+      }
+      else if (Number(this.id) == 4) {
+        if (this.CAform.invalid) {
+
+          for (const control of Object.keys(this.CAform.controls)) {
+            this.CAform.controls[control].markAsTouched();
+          }
+          return;
+
+        }
+      }
+
+      if (Number(this.id) + 1 < count) {
+        this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) + 1)
+        this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
+        this.tabset.tabs[(Number(this.id)) + 1].active = true;
+
+        this.btnShow = true;
+      }
+      if (Number(this.id) + 1 == 5) {
+        this.btnShowNext = false;
+      }
+    }
+    @ViewChild('pdfTableAPR') pdfTableAPR: ElementRef;
+    downloadAsPDFAPR() {
+      debugger;
+      const doc = new jsPDF();
+      const pdfTable = this.pdfTableAPR.nativeElement;
+      var html = htmlToPdfmake(pdfTable.innerHTML);
+      const documentDefinition = { content: html };
+      pdfMake.createPdf(documentDefinition).open();
+  
     }
   }
-
-  updateNext() {
-    let count = this.tabset.tabs.length;
-    this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
-
-    if (Number(this.id) + 1 < count) {
-      this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) + 1)
-      this.tabset.tabs[(Number(this.id)) + 1].active = true;
-      this.btnShow = true;
-    }
-    if (Number(this.id) + 1 == 5) {
-      this.btnShowNext = false;
-    }
-  }
-}

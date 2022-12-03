@@ -39,7 +39,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     EsopPdfComponent,
     HomeComponent,
     FormCocComponent,
-    FormCocFdiComponent,
+    FormCocFdiComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

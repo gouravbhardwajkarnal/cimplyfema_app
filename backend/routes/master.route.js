@@ -28,6 +28,15 @@ masterRoute.route('/City').get((req, res) => {
       }
     })
   });
+  masterRoute.route('/State').get((req, res) => {
+    Country.find({country: 'India'}, function (error, data) {
+        if (error) {
+          return next(error)
+        } else {
+          res.json(data);
+        }
+      })
+    });
 //    let statesList =  await Country.find({country: "India"}).lean()
 
 //  for(let y in statesList){

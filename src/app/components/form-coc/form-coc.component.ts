@@ -16,6 +16,7 @@ export class FormCocComponent implements OnInit {
   NICCodeselectedItems = [];
   selectedItems = [];
   CityList: any = [];
+  StateList: any = [];
   FDIStatelist:any=[];
   SubselectedItems = [];
   SubmodulenameArray = [];
@@ -43,6 +44,7 @@ isLinear = false;
     this.modules = commonservice.getCOCmodules();
     this.submodules = commonservice.getCOCsubmodules();
     this.readCity();
+    this.readState();
    } 
    readCity() {
     debugger;
@@ -50,7 +52,15 @@ isLinear = false;
 
       this.CityList = data;
     });
+  
   }  
+  readState() {
+    debugger;
+    this.apiService.getState().subscribe((data) => {
+
+      this.StateList = data;
+    });
+  }
   ngOnInit(): void { 
     this.NICCodeSettings= {
       singleSelection: true,

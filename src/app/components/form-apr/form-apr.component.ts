@@ -11,6 +11,8 @@ import { DisinvetmentType } from 'src/app/model/common.model';
 import { CommonService } from 'src/app/service/common.service';
 import jsPDF from 'jspdf';
 import htmlToPdfmake from 'html-to-pdfmake';
+import { asBlob } from 'html-docx-js-typescript';
+import { saveAs } from 'file-saver';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -660,7 +662,10 @@ export class FormAprComponent implements OnInit {
             console.log('FromAPR successfully created!');
             //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
             this.tabset.tabs[(Number(6))].disabled = false;
-            this.tabset.tabs[(Number(6)) + 1].active = true;
+            this.tabset.tabs[(Number(6))].active = true;
+            if (Number(6)==6) {
+              this.btnShowNext = false;
+            }
           },
           error: (e) => {
             console.log(e);
@@ -856,13 +861,6 @@ export class FormAprComponent implements OnInit {
   get APR_CA_Email() {
       return this.CAform.get('APR_CA_Email')!;
     }
-
-
-
-
-
-
-
     addSDS() {
       this.SDS = {
         investment_SDS_Name: "",
@@ -913,7 +911,6 @@ export class FormAprComponent implements OnInit {
         this.btnShowNext = true;
       }
     }
-
     updateNext() {
       debugger;
       let count = this.tabset.tabs.length;
@@ -973,18 +970,29 @@ export class FormAprComponent implements OnInit {
 
         this.btnShow = true;
       }
-      if (Number(this.id) + 1 == 5) {
+      if (Number(this.id) + 1 == 5 || Number(this.id)==6) {
         this.btnShowNext = false;
       }
     }
     @ViewChild('pdfTableAPR') pdfTableAPR: ElementRef;
+    @ViewChild('pdfAPR') pdfAPR: ElementRef;
     downloadAsPDFAPR() {
       debugger;
       const doc = new jsPDF();
-      const pdfTable = this.pdfTableAPR.nativeElement;
+      const pdfTable = this.pdfAPR.nativeElement;
       var html = htmlToPdfmake(pdfTable.innerHTML);
       const documentDefinition = { content: html };
       pdfMake.createPdf(documentDefinition).open();
   
     }
+    async ExportWordAPR() {
+      const pdfTable = this.pdfTableAPR.nativeElement;
+      var converted = await asBlob(pdfTable.innerHTML, {
+        orientation: 'landscape',
+        margins: { top: 720 },
+      });
+      saveAs(converted, 'APRForm.docx');
+    }
   }
+
+

@@ -378,12 +378,10 @@ export class FormEsopComponent implements OnInit {
     });
     saveAs(converted, 'Declaration.docx');
   }
-
   get GrantDetails(): FormArray {
     debugger
     return this.esopFormlist.get('GrantDetails') as FormArray;
   }
-
   DateResolutionChange(e) {
     debugger
     const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);

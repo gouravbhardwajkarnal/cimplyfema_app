@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -23,6 +24,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FormCocComponent } from './components/form-coc/form-coc.component';
 import { FormCocFdiComponent } from './Partial_Components/form-coc-fdi/form-coc-fdi.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     HttpClientModule,
     BrowserAnimationsModule,
     TabsModule.forRoot(),
-   
+    NgSelectModule
   ],
   providers: [CommonService],
   bootstrap: [AppComponent],

@@ -612,16 +612,16 @@
                                                                             (click)="downloadAsPDF3()"
                                                                             style="cursor:pointer"></td>
                                                                 </tr>
-                                                                <!-- <tr>
+                                                                <tr>
                                                                     <th scope="row">
-                                                                        <h6>D. Demand Draft </h6>
+                                                                        <h6>D. Annexure </h6>
                                                                     </th>
                                                                     <td><img src="assets/images/word.png"
-                                                                            style="cursor:pointer"></td>
+                                                                            style="cursor:pointer" (click)="ExportWord4()"></td>
                                                                     <td><img src="assets/images/pdf.png"
                                                                             (click)="downloadAsPDF4()"
                                                                             style="cursor:pointer"></td>
-                                                                </tr> -->
+                                                                </tr>
 
                                                             </tbody>
                                                         </table>
@@ -792,15 +792,15 @@
                                                                     ESOPs
                                                                     under its
                                                                     <b>{{esopFormlist.get('ESOP_Scheme_Name').value}}</b>
-                                                                    “ESOP
-                                                                    Scheme” at an
+                                                                    "ESOP
+                                                                    Scheme" at an
                                                                     exercise price of
                                                                     <br />
                                                                     INR
-                                                                    <b>{{GrantDetailsArray[0].Pre_determined_issue_price}</b>/-
+                                                                    <b>{{GrantDetailsArray[0].Pre_determined_issue_price}}</b>/-
                                                                     per
                                                                     option on
-                                                                    <b>{{GrantDetailsArray[0].Date_of_Issue}}</b>.
+                                                                    <b>{{GrantDetailsArray[0].Date_of_Issue | date: 'dd-MM-yyyy'}}</b>.
                                                                     <strong></strong>
                                                                 </p>
                                                                 <p>
@@ -1078,12 +1078,12 @@
                                                                     {{esopFormlist.get('Authorised_Signatory_Designation').value}}
                                                                 </p>
                                                                 <p>
-                                                                    Date : {{ today | date : "dd-MM-yyyyy" }}
+                                                                    Date : {{ today | date : "dd-MM-yyyy" }}
                                                                 </p>
                                                             </div>
                                                             <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
                                                                 id="pdfTable4" #pdfTable4>
-
+<!-- 
                                                                 <p style="text-align: center;">
                                                                     <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
                                                                     </em>
@@ -1223,8 +1223,69 @@
                                                                             </p>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div> -->
+<div style="width: 500px;">
+                                                                <table border="1" cellspacing="0" cellpadding="0" width="500">
+                                                                    <tbody>
+                                                            <tr>
+                                                                <td width="208" valign="top"><p>Full Name of the</p>
+                                                                    Grantee</td>
+                                                                <td width="208" valign="top"><p>Date of Issue</p></td>
+                                                                <td width="208" valign="top"><p>Number of ESOPs Granted</p></td>
+                                                                <td width="208" valign="top"><p>Country</p></td>
+                                                                <td width="208" valign="top"><p>Residential Status</p></td>
+                                                                <td width="208" valign="top"><p>Name of the Subsidiary . SDS</p></td>
+                                                                <td width="208" valign="top"><p>Pre-determined issue price</p></td>
+                                                                <td width="208" valign="top"><p>Conversion ratio</p></td>
+                                                                <td width="208" valign="top"><p>Equivalent equity shares on fully diluted basis</p></td>
+                                                                <td width="208" valign="top"><p>Face value of equity shares</p></td>
+                                                                <td width="208" valign="top"><p>Value of Shares in Rs</p></td>
+                                                                
+                                                            </tr>
+                                                        
+                                                            <tr
+                                                                *ngFor="let dynamic of GrantDetailsArray; let i = index;">
 
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].Full_Name_Grantee}}
+                                                                </td>
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].Date_of_Issue | date:'dd-MM-yyyy'}}
+                                                                   
+                                                                </td>
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].Number_ESOP_Granted}}
+                                                                </td>
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].Country}}
+                                                                </td>
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].ResidentialStatus}}
+                                                                </td>
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].SubsidiarySDS}}
+                                                                </td>
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].Pre_determined_issue_price}}
+                                                                </td>
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].Conversion_ratio}}
+                                                                </td>
+                                                               
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].Equivalent_equity_shares}}
+                                                                </td>
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].Facevalue_equity_shares}}
+                                                                </td>
+                                                                <td width="208" valign="top">
+                                                                    {{GrantDetailsArray[i].Value_of_Shares}}
+                                                                 </td>
+                                                           
+                                                            </tr>
+                                                                    </tbody>
+                                                    </table>
+                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

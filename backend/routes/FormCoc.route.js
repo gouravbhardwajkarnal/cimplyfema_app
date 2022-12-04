@@ -3,12 +3,12 @@ const app = express()
 const cocRoute = express.Router()
 
 // CocModel model
- let FromCoc = require('../models/FormCoc')
+ let FormCoc = require('../models/FormCoc')
 
 // // Add CocModel
  cocRoute.route('/createcoc').post((req, res, next) => {
    console.log(req.body);
-   cocRoute.create(req.body, (error, data) => {
+   FormCoc.create(req.body, (error, data) => {
        console.log(data);
      if (error) {
        return next(error)
@@ -20,7 +20,7 @@ const cocRoute = express.Router()
 
 
 // Get All CocModel
-cocRoute.route('/').get((req, res) => {
+/* cocRoute.route('/').get((req, res) => {
     FromCoc.find((error, data) => {
     if (error) {
       return next(error)
@@ -28,10 +28,10 @@ cocRoute.route('/').get((req, res) => {
       res.json(data)
     }
   })
-})
+}) */
 
 // Get single CocModel
-cocRoute.route('/read/:id').get((req, res) => {
+/* cocRoute.route('/read/:id').get((req, res) => {
   FromCoc.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)
@@ -39,10 +39,10 @@ cocRoute.route('/read/:id').get((req, res) => {
       res.json(data)
     }
   })
-})
+}) */
 
 // Update CocModel
-cocRoute.route('/update/:id').put((req, res, next) => {
+/* cocRoute.route('/update/:id').put((req, res, next) => {
     FromCoc.findByIdAndUpdate(
     req.params.id,
     {
@@ -58,10 +58,10 @@ cocRoute.route('/update/:id').put((req, res, next) => {
       }
     },
   )
-})
+}) */
 
 // Delete CocModel
-cocRoute.route('/delete/:id').delete((req, res, next) => {
+/* cocRoute.route('/delete/:id').delete((req, res, next) => {
     FromCoc.findOneAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error)
@@ -71,6 +71,6 @@ cocRoute.route('/delete/:id').delete((req, res, next) => {
       })
     }
   })
-})
+}) */
 
 module.exports = cocRoute

@@ -1,4 +1,3 @@
-const { getNumberOfCurrencyDigits } = require('@angular/common');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -23,7 +22,7 @@ let FormCoc = new Schema({
     COC_FDI_AuthPAN: { type: String},
     COC_FDI_AuthDesignation: { type: String}, 
     COC_FDI_BusinessAct: { type: String},
-    SelectCOC_FDINICCodeDesDetails:[{ Year:{type:number},Class:{type:String},DescriptionClass:{type:String}}],
+    SelectCOC_FDINICCodeDesDetails:[{ Year:{type: Number},Class:{type:String},DescriptionClass:{type:String}}],
     COC_FDIFemaRegNoDetails: [{ COC_FDINatContDes:{type:String},COC_FDINatContname:{type:String}}],
     COC_FDIGSTNo: { type: String},
     SelectCOC_FDICenResDetails: [{ RegionalOffice:{type:String},Address:{type:String}}],
@@ -40,7 +39,7 @@ let FormCoc = new Schema({
     TransactionSubmissionDetails: [{ COC_FDI_Transaction:{type:String}}],
     COC_FDIODIName: { type: String},
     COC_FDIODIDate: { type: String},
-    COC_FDIODIDetailforeign:{type:string},
+    COC_FDIODIDetailforeign:{type:String},
     COC_FDIODIPAN: { type: String},
     COC_FDIODIActivities: { type: String},
     COC_FDIODIaboutforegien: { type: String},
@@ -78,6 +77,6 @@ COC_FDIODIAuthorisedCapitalDetails: [{
     
     
 }, {
-    collection: 'FormCoc'
+    collection: 'formcoc'
  })
  module.exports = mongoose.model('FormCoc', FormCoc)

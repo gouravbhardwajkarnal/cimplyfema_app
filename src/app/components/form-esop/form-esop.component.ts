@@ -3,12 +3,15 @@ import { FormControl, FormGroup, Validators, FormArray, FormBuilder } from '@ang
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
+
+import { GrantDetailsList } from 'src/app/model/Fdi.model';
+import jsPDF from 'jspdf';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-import { GrantDetailsList } from 'src/app/model/Fdi.model';
-import jsPDF from 'jspdf';
 import htmlToPdfmake from 'html-to-pdfmake';
+
+
 import * as XLSX from 'xlsx';
 import { DatePipe, formatDate } from '@angular/common';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -16,6 +19,7 @@ import { asBlob } from 'html-docx-js-typescript';
 // if you want to save the docx file, you need import 'file-saver'
 // @ts-ignore
 import { saveAs } from 'file-saver';
+import { ignoreElements } from 'rxjs';
 
 
 
@@ -23,9 +27,12 @@ type AOA = any[][];
 @Component({
   selector: 'app-form-esop',
   templateUrl: './form-esop.component.html',
-  styleUrls: ['./form-esop.component.css']
+  styleUrls: ['./form-esop.component.css'],
+  providers: [DatePipe]
 })
 export class FormEsopComponent implements OnInit {
+  today = new Date();
+  flagStrike: boolean = true;
   dateresolution: any;
   @ViewChild('country') country: ElementRef
   @ViewChild('selectpicker') selectPicker: ElementRef;
@@ -33,7 +40,7 @@ export class FormEsopComponent implements OnInit {
   @ViewChild('tabset') tabset: any;
   public esopFormlist: FormGroup;
   CountryList: any = [];
-  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private fb: FormBuilder) {
+  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private fb: FormBuilder,public datepipe: DatePipe) {
     this.readCountry();
   }
   foreigninvestmentProject = [
@@ -65,6 +72,7 @@ export class FormEsopComponent implements OnInit {
         NameofinvesteeCompany: new FormControl('', Validators.required),
         CIN_LIP: new FormControl('', Validators.required),
         PanNo: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
+        Registered_Office: new FormControl('', Validators.required),
         ESOP_Scheme_Name: new FormControl('', Validators.required),
         BR_EGM_Circular: new FormControl('', Validators.required),
         Date_Resolution: new FormControl('', Validators.required),
@@ -80,6 +88,8 @@ export class FormEsopComponent implements OnInit {
         certificate_Company_Secretary: new FormControl(false),
         SEBI_registered: new FormControl(false),
         necessary_documents: new FormControl(false),
+        Authorised_Signatory_Name: new FormControl(''),
+        Authorised_Signatory_Designation: new FormControl(''),
         GrantDetails: new FormArray([])
 
       }
@@ -128,7 +138,6 @@ export class FormEsopComponent implements OnInit {
   }
 
   readCountry() {
-
     this.apiService.getCountry().subscribe((data) => {
       this.CountryList = data;
       console.log(this.CountryList);
@@ -214,6 +223,7 @@ export class FormEsopComponent implements OnInit {
   btnNext: boolean = true;
   btnBack: boolean = false;
   changeTab() {
+    debugger
     if (this.Tabindexc == 1) {
       if (this.esopFormlist.invalid) {
         for (const control of Object.keys(this.esopFormlist.controls)) {
@@ -324,21 +334,23 @@ export class FormEsopComponent implements OnInit {
 
       /* save data */
       this.Exdata = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
-      // this.GrantDetailsArray=this.Exdata;
-      console.log("data:", this.Exdata);
+      
       for (var i = 1; i < this.Exdata.length; i++) {
+      let RDate = new Date(this.Exdata[i][1]);
+        this.Exdata[i][this.datepipe.transform(RDate, 'MM-dd-yyyy')];
         if (i > 1) {
           this.addGrantData();
         }
         this.GrantDetailsArray[i - 1].Full_Name_Grantee = this.Exdata[i][0];
-        this.GrantDetailsArray[i - 1].Date_of_Issue = this.Exdata[i][1];
+        this.GrantDetailsArray[i - 1].Date_of_Issue = this.datepipe.transform(RDate, 'yyyy-MM-dd');
 
         this.GrantDetailsArray[i - 1].Number_ESOP_Granted = this.Exdata[i][2];
         this.GrantDetailsArray[i - 1].Country = this.Exdata[i][3];
+       
         this.GrantDetailsArray[i - 1].ResidentialStatus = this.Exdata[i][4];
+        this.CountryChange(this.Exdata[i][3]);
         this.GrantDetailsArray[i - 1].SubsidiarySDS = this.Exdata[i][5];
         this.GrantDetailsArray[i - 1].Pre_determined_issue_price = this.Exdata[i][6];
-        /*              this.GrantDetailsArray[i].Conversion_ratio1= this.Exdata[i+1][7]; */
         this.GrantDetailsArray[i - 1].Conversion_ratio = this.Exdata[i][7];
         this.GrantDetailsArray[i - 1].Equivalent_equity_shares = this.Exdata[i][8];
         this.GrantDetailsArray[i - 1].Facevalue_equity_shares = this.Exdata[i][9];
@@ -386,6 +398,21 @@ export class FormEsopComponent implements OnInit {
     const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
     grantFormArray.value[0].Date_of_Issue=e.target.value;
 
+  }
+
+  CountryChange(couname)
+  {
+    debugger
+    const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
+    for (var i = 0; i < grantFormArray.length; i++) {
+    if(couname=="India")
+    {
+    grantFormArray.value[i].ResidentialStatus='Resident';
+    }
+    else{
+      grantFormArray.value[i].ResidentialStatus='Non-Resident';
+    }
+  }
   }
 
 }

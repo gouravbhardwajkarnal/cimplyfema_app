@@ -12,6 +12,9 @@ let FormEsop = new Schema({
    PanNo: {
       type: String
    },
+   Registered_Office: {
+      type: String
+   },
    ESOP_Scheme_Name: {
       type: String
    },
@@ -87,6 +90,12 @@ let FormEsop = new Schema({
    },
    necessary_documents: {
       type: Boolean
+   },
+   Authorised_Signatory_Name: {
+      type: String
+   },
+   Authorised_Signatory_Designation: {
+      type: String
    },
 
 }, {

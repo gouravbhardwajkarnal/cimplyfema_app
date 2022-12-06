@@ -143,26 +143,28 @@
                                                     spellcheck="false" required name="APR_From_Date"
                                                     formControlName="APR_From_Date"
                                                     [class.is-invalid]="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)">
-                                                <div *ngIf="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)"
+                                                    <span class="placeholder">From Date</span>
+                                                    <div *ngIf="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)"
                                                     class="invalid-feedback">
                                                     <div *ngIf="APR_From_Date.errors?.['required']">
                                                         This field is required.
                                                     </div>
                                                 </div>
-                                                <span class="placeholder">From Date</span>
+                                                
                                             </div>
                                             <div class="col-4 input-block mb-2">
                                                 <input type="date" class="form-control" id="APR_To_Date"
                                                     spellcheck="false" required name="APR_To_Date"
                                                     formControlName="APR_To_Date"
                                                     [class.is-invalid]="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)">
-                                                <div *ngIf="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)"
+                                                    <span class="placeholder">To Date </span>
+                                                    <div *ngIf="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)"
                                                     class="invalid-feedback">
                                                     <div *ngIf="APR_To_Date.errors?.['required']">
                                                         This field is required.
                                                     </div>
                                                 </div>
-                                                <span class="placeholder">To Date </span>
+                                                
 
                                             </div>
 

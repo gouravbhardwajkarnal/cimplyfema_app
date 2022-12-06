@@ -91,15 +91,6 @@
     background: #f1f3f6;
 }
 
-select.form-control {
-    font-size: 13px;
-}
-
-select.form-control:focus {
-    outline: none;
-    box-shadow: none;
-}
-
 .fema_inner   .table {
     margin: 0;
     padding: 0;

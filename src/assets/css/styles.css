@@ -379,7 +379,15 @@ ngb-datepicker {
   background: #fff;
   box-shadow: 0 0.2rem 0.5rem hsl(0 0% 0% / 0.15);
 }
+/* input type number remove arrow */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+input[type=number] {
+  -moz-appearance: textfield;
+}
 /*------------------Error-msg--------------------*/
 span.has-error {
   position: absolute;
@@ -388,6 +396,47 @@ span.has-error {
   font-size: 14px;
   color: #f00;
 }
+div.input-block {
+  position: relative;
+}
+div.input-block span.placeholder {
+  position: absolute;
+  padding: 10px 5px 3px 8px;
+  font-family: Roboto, sans-serif;
+  color: black;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  top: 0;
+  left: 17px;
+  transition: all 0.2s;
+  transform-origin: 0% 0%;
+  background: none;
+  pointer-events: none;
+}
+div.input-block input:valid + span.placeholder, div.input-block select + span.placeholder, div.input-block input[type="date"] + span.placeholder,
+div.input-block input:focus + span.placeholder {
+  transform: translateY(-20px);
+  background: #fff;
+  padding: 5px;
+  opacity: 1;
+  height: auto;
+  min-height: auto;
+  line-height: normal;
+}
+div.input-block input:focus{
+  color: #284B63;
+  border-color: #284B63;
+}
+div.input-block input:focus + span.placeholder {
+  color: #284B63;
+}
+
+input::placeholder + span.placeholder{
+  transform: scale(0.8) translateY(-30px);
+  background: #fff;
+}
+
 /*------------------End-Error-msg--------------------*/
 
 /*---------------Scroll-design--------------*/

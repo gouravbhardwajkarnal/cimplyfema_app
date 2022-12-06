@@ -67,7 +67,7 @@
                                             <div class="container-fluid pt-2">
                                                 <div class="row">
 
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">Corporate Identification Number (CIN/LLP) </label> -->
                                                         <input type="text" spellcheck="false" required
                                                             class="form-control" formControlName="CIN_LIP"
@@ -75,7 +75,7 @@
                                                         <span class="placeholder">Corporate Identification Number
                                                             (CIN/LLP)</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="false" required
                                                             class="form-control" formControlName="NameofinvesteeCompany"
                                                             [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
@@ -86,7 +86,7 @@
                                                         <span class="placeholder">Name of the Investee Company</span>
                                                     </div>
 
-                                                    <div class="col-4 input-block  mb-2">
+                                                    <div class="col-4 input-block  mb-4">
                                                         <input type="text" spellcheck="false" required
                                                             class="form-control" formControlName="PanNo"
                                                             [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
@@ -102,19 +102,19 @@
                                                         <span class="placeholder">PAN Number</span>
                                                     </div>
 
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="true" required=""
                                                             class="form-control" formControlName="Registered_Office"
                                                             [class.is-invalid]="esopFormlist.get('Registered_Office').invalid && (esopFormlist.get('Registered_Office').dirty ||esopFormlist.get('Registered_Office').touched)">
                                                         <span class="placeholder">Registered Office</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="true" required=""
                                                             class="form-control" formControlName="ESOP_Scheme_Name"
                                                             [class.is-invalid]="esopFormlist.get('ESOP_Scheme_Name').invalid && (esopFormlist.get('ESOP_Scheme_Name').dirty ||esopFormlist.get('ESOP_Scheme_Name').touched)">
                                                         <span class="placeholder">ESOP Scheme Name</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">BR / EGM / Circular Resolution No.
                                             </label> -->
                                                         <input type="text" spellcheck="true" required
@@ -125,7 +125,7 @@
                                                     </div>
 
 
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">Date of Resolution
                                             </label> -->
                                                         <input type="date" spellcheck="true" required
@@ -137,7 +137,7 @@
                                                     </div>
 
 
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">Entry Route
                                             </label> -->
                                                         <select class="form-select" spellcheck="true" required
@@ -149,7 +149,7 @@
                                                         </select>
                                                         <span class="placeholder">Entry Route</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">Applicable Sectoral cap/ Statutory ceiling
                                             </label> -->
                                                         <select class="form-select" spellcheck="true" required
@@ -166,8 +166,10 @@
                                                         <span class="placeholder">Applicable Sectoral cap/ Statutory
                                                             ceiling</span>
                                                     </div>
-                                                    <div class="col-12 mb-2">
-
+                                                    <div class="col-12 mb-4">
+                                                        <div class="form-check p-0">
+                                                            <label class="form-check-label" for="inlineRadio3">Whether the foreign investment is received for a specific project/manufacturing unit or manufacturing plant</label>
+                                                        </div>
                                                         <div class="form-check form-check-inline"
                                                             *ngFor="let fd of foreigninvestmentProject">
                                                             <input class="form-check-input" type="radio" id="{{fd.id}}"
@@ -176,18 +178,12 @@
                                                                 value="{{fd.Type}}" style="cursor:pointer;">
                                                             <label class="form-check-label"
                                                                 for="{{fd.id}}">{{fd.Type}}</label>
-                                                        </div>
-
-                                                        <div class="form-check form-check-inline">
-                                                            <label class="form-check-label" for="inlineRadio3">Whether
-                                                                the foreign
-                                                                investment is
-                                                                received for a specific project/manufacturing unit or
-                                                                manufacturing
-                                                                plant</label>
-                                                        </div>
+                                                        </div>                                                        
                                                     </div>
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-12 mb-4">
+                                                        <div class="form-check p-0">
+                                                            <label class="form-check-label]" for="inlineRadio3">Whether the shareholding pattern due to this transaction being reported has already been accounted in the pre transaction shareholding pattern:*</label>
+                                                        </div>
                                                         <div class="form-check form-check-inline"
                                                             *ngFor="let fd of Shareholding">
                                                             <input class="form-check-input" type="radio" id="{{fd.id}}"
@@ -196,16 +192,6 @@
                                                                 value="{{fd.Type}}" style="cursor:pointer;">
                                                             <label class="form-check-label"
                                                                 for="{{fd.id}}">{{fd.Type}}</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <label class="form-check-label" for="inlineRadio3">Whether
-                                                                the change in
-                                                                the
-                                                                shareholding pattern due to this transaction being
-                                                                reported has
-                                                                already been
-                                                                accounted in the pre transaction shareholding
-                                                                pattern:*</label>
                                                         </div>
                                                     </div>
 
@@ -386,7 +372,7 @@
                                         <div class="container-fluid position-relative d-flex p-0">
                                             <div class="container-fluid pt-2">
                                                 <div class="row">
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P
                                                             [ngClass]="Non_Debt_Instruments.value == true ? 'del' : 'notdel'">
                                                             1. We comply with the procedure for issue of equity
@@ -407,7 +393,7 @@
                                                             formControlName="Non_Debt_Instruments"
                                                             style="cursor:pointer;">
                                                     </div>
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P
                                                             [ngClass]="sectoral_cap_statutory.value == true ? 'del' : 'notdel'">
                                                             2. The investment is within the sectoral cap / statutory
@@ -423,7 +409,7 @@
                                                             formControlName="sectoral_cap_statutory"
                                                             style="cursor:pointer;">
                                                     </div>
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P
                                                             [ngClass]="Indian_companies_reconstruction.value == true ? 'del' : 'notdel'">
                                                             3. The equity instruments issued under a scheme of merger
@@ -444,7 +430,7 @@
                                                             formControlName="Indian_companies_reconstruction"
                                                             style="cursor:pointer;">
                                                     </div>
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P [ngClass]="PMLA_UAPA.value == true ? 'del' : 'notdel'">
                                                             4. The foreign investment received and reported now will be
                                                             utilized in
@@ -465,7 +451,7 @@
                                                         <input class="form-check-input me-1" type="checkbox"
                                                             formControlName="PMLA_UAPA" style="cursor:pointer;">
                                                     </div>
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P
                                                             [ngClass]="enclose_documents.value == true ? 'del' : 'notdel'">
                                                             5. We enclose the following documents in compliance with
@@ -478,7 +464,7 @@
                                                             formControlName="enclose_documents" style="cursor:pointer;">
                                                     </div>
                                                     <div class="row justify-content-md-center">
-                                                        <div class="col-md-auto col-lg-10 mb-3">
+                                                        <div class="col-md-auto col-lg-10 mb-4">
                                                             <P
                                                                 [ngClass]="certificate_Company_Secretary.value == true ? 'del' : 'notdel'">
                                                                 i. A certificate from our Company Secretary as in the
@@ -491,7 +477,7 @@
                                                                 formControlName="certificate_Company_Secretary"
                                                                 style="cursor:pointer;">
                                                         </div>
-                                                        <div class="col-md-auto col-lg-10 mb-3">
+                                                        <div class="col-md-auto col-lg-10 mb-4">
                                                             <P
                                                                 [ngClass]="SEBI_registered.value == true ? 'del' : 'notdel'">
                                                                 ii. A certificate from SEBI registered Merchant Banker /
@@ -518,7 +504,7 @@
                                                                 formControlName="SEBI_registered"
                                                                 style="cursor:pointer;">
                                                         </div>
-                                                        <div class="col-md-auto col-lg-10 mb-3">
+                                                        <div class="col-md-auto col-lg-10 mb-4">
                                                             <P
                                                                 [ngClass]="necessary_documents.value == true ? 'del' : 'notdel'">
                                                                 iii. All other necessary documents as applicable to the
@@ -532,12 +518,12 @@
                                                         </div>
                                                     </div>
                                                     <hr>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="true" class="form-control"
                                                             formControlName="Authorised_Signatory_Name">
                                                         <span class="placeholder">Authorised Signatory Name</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="true" class="form-control"
                                                             formControlName="Authorised_Signatory_Designation">
                                                         <span class="placeholder">Authorised Signatory
@@ -1302,7 +1288,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="col-lg-12 mt-2 mb-3">
+            <div class="col-lg-12 mt-2 mb-4">
                 <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1"
                     value="Previous">
                 <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">

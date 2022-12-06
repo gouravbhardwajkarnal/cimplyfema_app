@@ -5,8 +5,8 @@ const masterRoute = express.Router()
 
 let Country = require('../data/countries')
 let cities = require('../data/cities')
-let bank = require('../data/commonMasters')
-let currencycode= require('../data/commonMasters')
+let bank = require('../data/banks')
+let currencycode= require('../data/currency')
 let locations = require('../data/locations');
 
 var countryarray = [];

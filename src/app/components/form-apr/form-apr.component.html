@@ -2,13 +2,12 @@
     <h2 class="topic_title">FORM APR</h2>
     <div class="container-fluid pt-2 card p-2">
         <div class="row">
-            
-            <div class="col-4 input-block mb-2">
-                <input type="text" id="APR_UIN" spellcheck="false" required
-                    class="form-control" formControlName="APR_UIN"
+
+            <div class="col-4 input-block mb-4">
+                <input type="text" id="APR_UIN" spellcheck="false" required class="form-control"
+                    formControlName="APR_UIN"
                     [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
-                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
-                    class="invalid-feedback">
+                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)" class="invalid-feedback">
                     <div *ngIf="APR_UIN.errors?.['required']">
                         This field is required.
                     </div>
@@ -23,12 +22,11 @@
                 <span class="placeholder">UIN No</span>
 
             </div>
-            <div class="col-4 input-block mb-2">
-                <input type="text" id="APR_UIN" spellcheck="false" required
-                    class="form-control" formControlName="APR_UIN"
+            <div class="col-4 input-block mb-4">
+                <input type="text" id="APR_UIN" spellcheck="false" required class="form-control"
+                    formControlName="APR_UIN"
                     [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
-                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
-                    class="invalid-feedback">
+                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)" class="invalid-feedback">
                     <div *ngIf="APR_UIN.errors?.['required']">
                         This field is required.
                     </div>
@@ -40,15 +38,14 @@
                     </div>
                 </div>
 
-                <span class="placeholder">Name of the Indian Entity / Resident Individual                </span>
+                <span class="placeholder">Name of the Indian Entity / Resident Individual </span>
 
             </div>
-            <div class="col-4 input-block mb-2">
-                <input type="text" id="APR_UIN" spellcheck="false" required
-                    class="form-control" formControlName="APR_UIN"
+            <div class="col-4 input-block mb-4">
+                <input type="text" id="APR_UIN" spellcheck="false" required class="form-control"
+                    formControlName="APR_UIN"
                     [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
-                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
-                    class="invalid-feedback">
+                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)" class="invalid-feedback">
                     <div *ngIf="APR_UIN.errors?.['required']">
                         This field is required.
                     </div>
@@ -64,35 +61,17 @@
                 </span>
 
             </div>
-            <div class="col-4 input-block mb-2">
-                <ng-select [items]="CurrencyCodeList" bindLabel="Code"
-                placeholder="Select Currency"
-                [(ngModel)]="CurrencyCode"
-                [ngModelOptions]="{standalone: true}">
-            </ng-select>
-
+            <div class="col-4 input-block mb-4">
+                <ng-select [items]="CurrencyCodeList" bindLabel="Code" placeholder="Select Currency"
+                    [(ngModel)]="CurrencyCode" [ngModelOptions]="{standalone: true}">
+                </ng-select>
+                <span class="placeholder">FCY</span>
             </div>
-            <div class="col-4 input-block mb-2">
-                <ng-select [items]="BankList" bindLabel="BankName"
-                placeholder="Select Bank"
-                [(ngModel)]="BankName"
-                [ngModelOptions]="{standalone: true}">
-            </ng-select>
-                <!-- <input type="text" id="APR_UIN" spellcheck="false" required
-                    class="form-control" formControlName="APR_UIN"
-                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
-                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
-                    class="invalid-feedback">
-                    <div *ngIf="APR_UIN.errors?.['required']">
-                        This field is required.
-                    </div>
-                    <div *ngIf="APR_UIN.errors?.['minlength']">
-                        This field must have at least 10 character.
-                    </div>
-                    <div *ngIf="APR_UIN.errors?.['maxlength']">
-                        This field must have at most 20 characters.
-                    </div>
-                </div> -->
+            <div class="col-4 input-block mb-4">
+                <ng-select [items]="BankList" bindLabel="BankName" placeholder="Select Bank" [(ngModel)]="BankName"
+                    [ngModelOptions]="{standalone: true}">
+                </ng-select>
+
 
                 <span class="placeholder">AD Bank</span>
 
@@ -115,10 +94,10 @@
                                 <form [formGroup]="aprForm">
                                     <div class="container-fluid pt-2 card p-2">
                                         <div class="row">
-                                            <div class="col-12 mb-2">
+                                            <div class="col-12 mb-4">
                                                 <label class="form-label">APR for the period </label> <br>
                                             </div>
-                                            <div class="col-4 input-block mb-2">
+                                            <!-- <div class="col-4 input-block mb-4">
                                                 <input type="text" id="APR_UIN" spellcheck="false" required
                                                     class="form-control" formControlName="APR_UIN"
                                                     [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
@@ -137,60 +116,60 @@
 
                                                 <span class="placeholder">Unique Identification Number (UIN)</span>
 
-                                            </div>
-                                            <div class="col-4 input-block mb-2">
+                                            </div> -->
+                                            <div class="col-4 input-block mb-4">
                                                 <input type="date" class="form-control" id="APR_From_Date"
                                                     spellcheck="false" required name="APR_From_Date"
                                                     formControlName="APR_From_Date"
                                                     [class.is-invalid]="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)">
-                                                    <span class="placeholder">From Date</span>
-                                                    <div *ngIf="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)"
+                                                <span class="placeholder">From Date</span>
+                                                <div *ngIf="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)"
                                                     class="invalid-feedback">
                                                     <div *ngIf="APR_From_Date.errors?.['required']">
                                                         This field is required.
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
-                                            <div class="col-4 input-block mb-2">
+                                            <div class="col-4 input-block mb-4">
                                                 <input type="date" class="form-control" id="APR_To_Date"
                                                     spellcheck="false" required name="APR_To_Date"
                                                     formControlName="APR_To_Date"
                                                     [class.is-invalid]="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)">
-                                                    <span class="placeholder">To Date </span>
-                                                    <div *ngIf="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)"
+                                                <span class="placeholder">To Date </span>
+                                                <div *ngIf="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)"
                                                     class="invalid-feedback">
                                                     <div *ngIf="APR_To_Date.errors?.['required']">
                                                         This field is required.
                                                     </div>
                                                 </div>
-                                                
+
 
                                             </div>
 
-                                          
+
                                             <hr>
                                             <div class="row">
                                                 <label class="form-label">Capital structure as on the last day of the
                                                     accounting
                                                     year of theforeign entity </label><br>
                                             </div>
-                                            <div class="col-2 mb-2">
+                                            <div class="col-2 mb-4">
 
                                             </div>
 
-                                            <div class="col-5 mb-2">
+                                            <div class="col-5 mb-4">
 
                                             </div>
-                                            <div class="col-5 mb-2">
+                                            <div class="col-5 mb-4">
                                                 <label class="form-label">Share(%)
                                                 </label>
                                             </div>
-                                            <div class="col-2 mb-2">
+                                            <div class="col-2 mb-4">
                                                 <label class="form-label">i)Indian
                                                 </label>
                                             </div>
-                                            <div class="col-5 input-block mb-2">
+                                            <div class="col-5 input-block mb-4">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     (blur)="CapitalstructureFE()" formControlName="APR_Indian_Amount"
                                                     id="APR_Indian_Amount" name="APR_Indian_Amount"
@@ -204,7 +183,7 @@
                                                 <span class="placeholder">Amount</span>
                                             </div>
 
-                                            <div class="col-5 input-block mb-2">
+                                            <div class="col-5 input-block mb-4">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     disabled name="APR_Indian_Share" formControlName="APR_Indian_Share"
                                                     [class.is-invalid]="APR_Indian_Share.invalid && (APR_Indian_Share.dirty || APR_Indian_Share.touched)">
@@ -218,11 +197,11 @@
 
                                             </div>
 
-                                            <div class="col-2 mb-2">
+                                            <div class="col-2 mb-4">
                                                 <label class="form-label">ii)Foreign
                                                 </label>
                                             </div>
-                                            <div class="col-5 input-block mb-2">
+                                            <div class="col-5 input-block mb-4">
                                                 <input type="number" class="form-control" id="APR_Foreign_Amount"
                                                     spellcheck="false" required (blur)="CapitalstructureFE()"
                                                     formControlName="APR_Foreign_Amount" name="APR_Foreign_Amount"
@@ -236,7 +215,7 @@
                                                 <span class="placeholder">Amount</span>
 
                                             </div>
-                                            <div class="col-5 mb-2 input-block">
+                                            <div class="col-5 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     disabled name="APR_Foreign_Share"
                                                     formControlName="APR_Foreign_Share"
@@ -350,26 +329,26 @@
                                             </table>
 
                                             <hr>
-                                            <div class="col-12 mb-2">
+                                            <div class="col-12 mb-4">
                                                 <label class="form-label">Financial Position of the foreign entity for
                                                     the last two years
                                                 </label>
                                             </div>
-                                            <!-- <div class="col-2 mb-2">
+                                            <!-- <div class="col-2 mb-4">
                                             </div>
-                                            <div class="col-5 mb-2">
+                                            <div class="col-5 mb-4">
                                                 <label class="form-label">Previous Year
                                                 </label>
                                             </div>
-                                            <div class="col-5 mb-2">
+                                            <div class="col-5 mb-4">
                                                 <label class="form-label"> Current Year
                                                 </label>
                                             </div> -->
-                                            <div class="col-2 mb-2">
+                                            <div class="col-2 mb-4">
                                                 <label class="form-label">i)Net Profit/ (Loss)
                                                 </label>
                                             </div>
-                                            <div class="col-5 mb-2 input-block">
+                                            <div class="col-5 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required=""
                                                     name="APR_Profit_Current" formControlName="APR_Profit_Current"
                                                     [class.is-invalid]="APR_Profit_Current.invalid && (APR_Profit_Current.dirty || APR_Profit_Current.touched)">
@@ -381,7 +360,7 @@
                                                 </div>
                                                 <span class="placeholder">Previous Year </span>
                                             </div>
-                                            <div class="col-5 mb-2 input-block">
+                                            <div class="col-5 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required=""
                                                     name="APR_Profit_Last" formControlName="APR_Profit_Last"
                                                     [class.is-invalid]="APR_Profit_Last.invalid && (APR_Profit_Last.dirty || APR_Profit_Last.touched)">
@@ -393,11 +372,11 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-2 mb-2">
+                                            <div class="col-2 mb-4">
                                                 <label class="form-label">ii)Dividend
                                                 </label>
                                             </div>
-                                            <div class="col-5 mb-2 input-block">
+                                            <div class="col-5 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     name="APR_Dividend_Current" formControlName="APR_Dividend_Current"
                                                     [class.is-invalid]="APR_Dividend_Current.invalid && (APR_Dividend_Current.dirty || APR_Dividend_Current.touched)">
@@ -409,7 +388,7 @@
                                                 </div>
                                                 <span class="placeholder">Previous Year </span>
                                             </div>
-                                            <div class="col-5 mb-2 input-block">
+                                            <div class="col-5 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     name="APR_Dividend_Last" formControlName="APR_Dividend_Last"
                                                     [class.is-invalid]="APR_Dividend_Last.invalid && (APR_Dividend_Last.dirty || APR_Dividend_Last.touched)">
@@ -421,11 +400,11 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-2 mb-2">
+                                            <div class="col-2 mb-4">
                                                 <label class="form-label">iii)Net worth
                                                 </label>
                                             </div>
-                                            <div class="col-5 mb-2 input-block">
+                                            <div class="col-5 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     name="APR_Worth_Current" formControlName="APR_Worth_Current"
                                                     [class.is-invalid]="APR_Worth_Current.invalid && (APR_Worth_Current.dirty || APR_Worth_Current.touched)">
@@ -437,7 +416,7 @@
                                                 </div>
                                                 <span class="placeholder">Previous Year </span>
                                             </div>
-                                            <div class="col-5 mb-2 input-block">
+                                            <div class="col-5 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     name="APR_Worth_Last" formControlName="APR_Worth_Last"
                                                     [class.is-invalid]="APR_Worth_Last.invalid && (APR_Worth_Last.dirty || APR_Worth_Last.touched)">
@@ -450,27 +429,27 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <hr>
-                                            <div class="col-12 mb-2">
+                                            <div class="col-12 mb-4">
                                                 <label class="form-label">Repatriation from the foreign entity
                                                 </label>
 
                                             </div>
-                                            <!-- <div class="col-4 mb-2">
+                                            <!-- <div class="col-4 mb-4">
 
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">Current Year
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label"> Since commencement of business
                                                 </label>
                                             </div> -->
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <label class="form-label">i)Dividend
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     name="APR_Dividend_CurYear" formControlName="APR_Dividend_CurYear"
                                                     [class.is-invalid]="APR_Dividend_CurYear.invalid && (APR_Dividend_CurYear.dirty || APR_Dividend_CurYear.touched)">
@@ -483,7 +462,7 @@
 
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Dividend_commencement"
                                                     name="APR_Dividend_commencement"
@@ -496,11 +475,11 @@
                                                 </div>
                                                 <span class="placeholder"> Since commencement of business </span>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">ii)Repayment of loan
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" name="APR_Repayment_CurYear"
                                                     formControlName="APR_Repayment_CurYear" spellcheck="false" required
                                                     [class.is-invalid]="APR_Repayment_CurYear.invalid && (APR_Repayment_CurYear.dirty || APR_Repayment_CurYear.touched)">
@@ -512,7 +491,7 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required=""
                                                     formControlName="APR_Repayment_commencement"
                                                     name="APR_Repayment_commencement"
@@ -525,11 +504,11 @@
                                                 </div>
                                                 <span class="placeholder"> Since commencement of business </span>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">iii)Non-Equity Exports Realised (in INR)
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control"
                                                     formControlName="APR_EquityExport_CurYear" spellcheck="false"
                                                     required name="APR_EquityExport_CurYear"
@@ -542,7 +521,7 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_EquityExport_commencement"
                                                     name="APR_EquityExport_commencement"
@@ -555,11 +534,11 @@
                                                 </div>
                                                 <span class="placeholder"> Since commencement of business </span>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">iv)Royalties
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Royalties_CurYear" name="APR_Royalties_CurYear"
                                                     [class.is-invalid]="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)">
@@ -571,7 +550,7 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Royalties_commencement"
                                                     name="APR_Royalties_commencement"
@@ -584,11 +563,11 @@
                                                 </div>
                                                 <span class="placeholder"> Since commencement of business </span>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">v)Technical know-how Fees
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control"
                                                     formControlName="APR_Technical_CurYear" required spellcheck="false"
                                                     name="APR_Royalties_commencement"
@@ -601,7 +580,7 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Technical_commencement"
                                                     name="APR_Technical_commencement"
@@ -615,11 +594,11 @@
                                                 <span class="placeholder"> Since commencement of business </span>
 
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">vi)Consultancy fees
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Consultancyfee_CurYear"
                                                     name="APR_Consultancyfee_CurYear"
@@ -632,7 +611,7 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Consultancyfee_commencement"
                                                     name="APR_Consultancyfee_commencement"
@@ -645,11 +624,11 @@
                                                 </div>
                                                 <span class="placeholder"> Since commencement of business </span>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">vii)Others (please specify)
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Others_CurYear" name="APR_Others_CurYear"
                                                     [class.is-invalid]="APR_Others_CurYear.invalid && (APR_Others_CurYear.dirty || APR_Others_CurYear.touched)">
@@ -661,7 +640,7 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Others_commencement"
                                                     name="APR_Others_commencement"
@@ -674,11 +653,11 @@
                                                 </div>
                                                 <span class="placeholder"> Since commencement of business </span>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">viii)Profit
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Profit_CurYear" name="APR_Profit_CurYear"
                                                     [class.is-invalid]="APR_Profit_CurYear.invalid && (APR_Profit_CurYear.dirty || APR_Profit_CurYear.touched)">
@@ -690,7 +669,7 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control"
                                                     formControlName="APR_Profit_commencement"
                                                     name="APR_Profit_commencement" required spellcheck="false"
@@ -703,11 +682,11 @@
                                                 </div>
                                                 <span class="placeholder"> Since commencement of business </span>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">ix)Retained earnings
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Retained_CurYear" name="APR_Retained_CurYear"
                                                     [class.is-invalid]="APR_Retained_CurYear.invalid && (APR_Retained_CurYear.dirty || APR_Retained_CurYear.touched)">
@@ -719,7 +698,7 @@
                                                 </div>
                                                 <span class="placeholder">Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Retained_commencement"
                                                     name="APR_Retained_commencement"
@@ -732,11 +711,11 @@
                                                 </div>
                                                 <span class="placeholder"> Since commencement of business </span>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">x)FDI by foreign entity/ SDS into India
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_FDIforeign_CurYear"
                                                     name="APR_Retained_commencement"
@@ -749,7 +728,7 @@
                                                 </div>
                                                 <span class="placeholder"> Current Year </span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_FDIforeign_commencement"
                                                     name="APR_FDIforeign_commencement"
@@ -762,13 +741,13 @@
                                                 </div>
                                                 <span class="placeholder"> Since commencement of business </span>
                                             </div>
-                                            <div class="col-4 mb-2">
+                                            <div class="col-4 mb-4">
                                                 <label class="form-label">xi) Refund of excess share application money
                                                     @Transaction No.
 
                                                 </label>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_exces_sshare_CurYear"
                                                     name="APR_exces_sshare_CurYear"
@@ -781,7 +760,7 @@
                                                 </div>
                                                 <span class="placeholder">Current Year</span>
                                             </div>
-                                            <div class="col-4 mb-2 input-block">
+                                            <div class="col-4 mb-4 input-block">
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_exces_sshare_commencement"
                                                     name="APR_exces_sshare_commencement"
@@ -804,7 +783,7 @@
                             </tab>
                             <tab heading="APR SDS" id="2" disabled="disabled">
                                 <div class="card p-2">
-                                    <div class="col-sm-12 mb-2 mt-2 ">
+                                    <div class="col-sm-12 mb-4 mt-2 ">
                                         <label class="form-label">@ Furnish 15 / 17-digit transaction number
                                             allotted by
                                             Reserve
@@ -855,12 +834,12 @@
                                             </div>
                                         </div>
                                         <div class="col-3" *ngFor="let dynamic of SDSArray; let i = index;">
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <input [(ngModel)]="SDSArray[i].investment_SDS_Name"
                                                     [ngModelOptions]="{standalone: true}" class="form-control"
                                                     type="text" />
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
 
                                                 <select class="form-control"
                                                     [(ngModel)]="SDSArray[i].investment_SDS_Level"
@@ -871,7 +850,7 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <select class="form-control"
                                                     [(ngModel)]="SDSArray[i].investment_SDS_Jurisdiction"
                                                     [ngModelOptions]="{standalone: true}">
@@ -883,12 +862,12 @@
                                                 </select>
                                             </div>
 
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <input [(ngModel)]="SDSArray[i].investment_SDS_ParentName"
                                                     [ngModelOptions]="{standalone: true}" class="form-control"
                                                     type="text" />
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <select class="form-control"
                                                     [(ngModel)]="SDSArray[i].investment_SDS_ParentLevel"
                                                     [ngModelOptions]="{standalone: true}">
@@ -898,7 +877,7 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <select class="form-control"
                                                     [(ngModel)]="SDSArray[i].investment_SDS_ParentJurisdiction"
                                                     [ngModelOptions]="{standalone: true}">
@@ -909,22 +888,22 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentAmount"
                                                     [ngModelOptions]="{standalone: true}" class="form-control"
                                                     type="number" />
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentDate"
                                                     [ngModelOptions]="{standalone: true}" class="form-control"
                                                     type="date" />
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <input [(ngModel)]="SDSArray[i].investment_SDS_LEI"
                                                     [ngModelOptions]="{standalone: true}" class="form-control"
                                                     type="text" />
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <select class="form-control"
                                                     [(ngModel)]="SDSArray[i].investment_SDS_Type"
                                                     [ngModelOptions]="{standalone: true}">
@@ -934,17 +913,17 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <input [(ngModel)]="SDSArray[i].investment_SDS_1987NIC"
                                                     [ngModelOptions]="{standalone: true}" class="form-control"
                                                     type="text" />
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <input [(ngModel)]="SDSArray[i].investment_SDS_2008NIC"
                                                     [ngModelOptions]="{standalone: true}" class="form-control"
                                                     type="text" />
                                             </div>
-                                            <div class="col mb-2">
+                                            <div class="col mb-4">
                                                 <input [(ngModel)]="SDSArray[i].investment_SDS_Stake"
                                                     [ngModelOptions]="{standalone: true}" class="form-control"
                                                     type="number" />
@@ -1658,44 +1637,44 @@
                                                     application.</li>
                                             </ul>
                                         </div>
-                                        <div class="col-6 mb-2">
+                                        <div class="col-6 mb-4">
                                             <label class="form-label">Signature of the Authorized Official of the AD
                                                 bank...................................................................
                                             </label>
                                         </div>
-                                        <div class="col-6 mb-2">
+                                        <div class="col-6 mb-4">
                                             <label class="form-label">Name and designation of the AD bank
                                                 official...................................................................
                                             </label>
                                         </div>
-                                        <div class="col-6 mb-2">
+                                        <div class="col-6 mb-4">
 
                                         </div>
-                                        <div class="col-6 mb-2">
+                                        <div class="col-6 mb-4">
 
                                         </div>
-                                        <div class="col-6 mb-2">
+                                        <div class="col-6 mb-4">
                                             <label
                                                 class="form-label">Place...................................................................
                                             </label>
                                         </div>
-                                        <div class="col-6 mb-2">
+                                        <div class="col-6 mb-4">
                                             <label class="form-label">Date
                                                 ...................................................................
                                             </label>
                                         </div>
-                                        <div class="col-6 mb-2">
+                                        <div class="col-6 mb-4">
 
                                         </div>
-                                        <div class="col-6 mb-2">
+                                        <div class="col-6 mb-4">
 
                                         </div>
-                                        <div class="col-8 mb-2">
+                                        <div class="col-8 mb-4">
                                             <label
                                                 class="form-label">Stamp/seal...................................................................
                                             </label>
                                         </div>
-                                        <div class="col-4 mb-2">
+                                        <div class="col-4 mb-4">
 
                                         </div>
                                         <div class="col-lg-10 text-center">

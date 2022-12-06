@@ -5,37 +5,3 @@
 .notdel{
   text-decoration: auto;
 }
-div.input-block {
-  position: relative;
-}
-div {
-  color: black;
-}
-p {
-  color: black;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    color: black;
-    }
-
-  th {
-    font-size: 12px;
-  }
-
-.ng-select.ng-select-single .ng-select-container {
-  height: 30px !important;
-}
-.ng-select .ng-select-container {
-  color: #333;
-  background-color: #fff;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  min-height: 30px !important;
-  align-items: center;
-}
-
-#pdfTable5{
-  width: 350px;
-  height: 842px;
-}
- 

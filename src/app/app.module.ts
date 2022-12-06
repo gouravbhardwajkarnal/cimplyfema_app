@@ -25,6 +25,7 @@ import { FormCocComponent } from './components/form-coc/form-coc.component';
 import { FormCocFdiComponent } from './Partial_Components/form-coc-fdi/form-coc-fdi.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AprInstructionsComponent } from './Common/apr-instructions/apr-instructions.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     EsopPdfComponent,
     HomeComponent,
     FormCocComponent,
-    FormCocFdiComponent
+    FormCocFdiComponent,
+    AprInstructionsComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

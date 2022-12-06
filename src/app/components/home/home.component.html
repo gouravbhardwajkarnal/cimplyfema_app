@@ -1,6 +1,6 @@
 
 
-<div clas="container">
+<!-- <div clas="container">
   
 
 
@@ -8,7 +8,7 @@
       <div class="col-sm-12 col-xl-4">
         <label class="form-label"> Select module
         </label>
-        <select #modulelist (change)="onModuleSelect(modulelist.value)" class="form-control">
+        <select #modulelist (change)="onModuleSelect(modulelist.value)" class="form-select">
           <option ng-option value="">Select Module</option>
           <option *ngFor="let item of modules" [value]="item.id">{{ item.name }}</option>
         </select>
@@ -17,7 +17,7 @@
         <label class="form-label"> Select Submodule
         </label>
   
-        <select #Submodulelist (change)="onSubModuleSelect(Submodulelist.value)" class="form-control">
+        <select #Submodulelist (change)="onSubModuleSelect(Submodulelist.value)" class="form-select">
           <option ng-option value="">Select SubModule</option>
           <option *ngFor="let s of filteredsubmodule" [value]="s.name">{{ s.name }}</option>
         </select>
@@ -27,4 +27,4 @@
   <app-form-esop *ngIf="Submodule=='Form ESOP'"></app-form-esop>
   <app-form-fc *ngIf="Submodule=='Form FC ( Overseas Direct Investment)'"></app-form-fc>
   <app-form-apr *ngIf="Submodule=='Form APR (Annual Performance Report)'"></app-form-apr>
-  <app-form-opi *ngIf="Submodule=='Form OPI (Overseas Portfolio Investment)'"></app-form-opi>
+  <app-form-opi *ngIf="Submodule=='Form OPI (Overseas Portfolio Investment)'"></app-form-opi> -->

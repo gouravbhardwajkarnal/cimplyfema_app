@@ -1,5 +1,104 @@
 <div class="hpanel sub-sector-main">
     <h2 class="topic_title">FORM APR</h2>
+    <div class="container-fluid pt-2 card p-2">
+        <div class="row">
+            
+            <div class="col-4 input-block mb-2">
+                <input type="text" id="APR_UIN" spellcheck="false" required
+                    class="form-control" formControlName="APR_UIN"
+                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
+                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
+                    class="invalid-feedback">
+                    <div *ngIf="APR_UIN.errors?.['required']">
+                        This field is required.
+                    </div>
+                    <div *ngIf="APR_UIN.errors?.['minlength']">
+                        This field must have at least 10 character.
+                    </div>
+                    <div *ngIf="APR_UIN.errors?.['maxlength']">
+                        This field must have at most 20 characters.
+                    </div>
+                </div>
+
+                <span class="placeholder">UIN No</span>
+
+            </div>
+            <div class="col-4 input-block mb-2">
+                <input type="text" id="APR_UIN" spellcheck="false" required
+                    class="form-control" formControlName="APR_UIN"
+                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
+                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
+                    class="invalid-feedback">
+                    <div *ngIf="APR_UIN.errors?.['required']">
+                        This field is required.
+                    </div>
+                    <div *ngIf="APR_UIN.errors?.['minlength']">
+                        This field must have at least 10 character.
+                    </div>
+                    <div *ngIf="APR_UIN.errors?.['maxlength']">
+                        This field must have at most 20 characters.
+                    </div>
+                </div>
+
+                <span class="placeholder">Name of the Indian Entity / Resident Individual                </span>
+
+            </div>
+            <div class="col-4 input-block mb-2">
+                <input type="text" id="APR_UIN" spellcheck="false" required
+                    class="form-control" formControlName="APR_UIN"
+                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
+                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
+                    class="invalid-feedback">
+                    <div *ngIf="APR_UIN.errors?.['required']">
+                        This field is required.
+                    </div>
+                    <div *ngIf="APR_UIN.errors?.['minlength']">
+                        This field must have at least 10 character.
+                    </div>
+                    <div *ngIf="APR_UIN.errors?.['maxlength']">
+                        This field must have at most 20 characters.
+                    </div>
+                </div>
+
+                <span class="placeholder">Name of the JV/WOS
+                </span>
+
+            </div>
+            <div class="col-4 input-block mb-2">
+                <ng-select [items]="CurrencyCodeList" bindLabel="Code"
+                placeholder="Select Currency"
+                [(ngModel)]="CurrencyCode"
+                [ngModelOptions]="{standalone: true}">
+            </ng-select>
+
+            </div>
+            <div class="col-4 input-block mb-2">
+                <ng-select [items]="BankList" bindLabel="BankName"
+                placeholder="Select Bank"
+                [(ngModel)]="BankName"
+                [ngModelOptions]="{standalone: true}">
+            </ng-select>
+                <!-- <input type="text" id="APR_UIN" spellcheck="false" required
+                    class="form-control" formControlName="APR_UIN"
+                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
+                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
+                    class="invalid-feedback">
+                    <div *ngIf="APR_UIN.errors?.['required']">
+                        This field is required.
+                    </div>
+                    <div *ngIf="APR_UIN.errors?.['minlength']">
+                        This field must have at least 10 character.
+                    </div>
+                    <div *ngIf="APR_UIN.errors?.['maxlength']">
+                        This field must have at most 20 characters.
+                    </div>
+                </div> -->
+
+                <span class="placeholder">AD Bank</span>
+
+            </div>
+        </div>
+    </div>
     <div class="panel-body topic_drop p-0">
         <div class="act-sec">
             <div class="fema_tabs">
@@ -8,137 +107,8 @@
 
                         <tabset #tabset>
                             <tab heading="Instructions" id="0" disabled="disabled">
-                                <div class="card p-2">
-                                    <h5>Instructions</h5>
-                                    Instructions for filling up the Form FC
-                                    <ul>
-                                        <li>1) A person resident in India acquiring equity capital in a foreign
-                                            entity which is
-                                            reckoned as ODI,
-                                            shall submit an APR with respect to each foreign entity every year till
-                                            the person
-                                            resident in India is invested in such foreign entity,
-                                            by December 31st and where the accounting year of the foreign entity
-                                            ends on
-                                            December 31st, the APR shall be submitted by December 31st of the next
-                                            year. </li>
-                                        <li> 2) The APRs shall not be submitted in the following cases.<br>
-                                            (i) If a person resident in India is holding less than 10 per cent of
-                                            the equity
-                                            capital without control in the foreign entity and
-                                            there is no other financial commitment other than by way of equity
-                                            capital.<br>
-                                            (ii) When the foreign entity is under liquidation, from the date of
-                                            initiation of
-                                            the liquidation process.<br>
-                                            (iii) For the broken period (i.e. full year not completed) at the time
-                                            of
-                                            disinvestment. However, the details of transactions if any that had been
-                                            undertaken
-                                            during the time from the date of submission of
-                                            the last APR till the date of disinvestment/initiation of liquidation
-                                            process may be
-                                            duly reported in the Form FC.
-                                        </li>
-                                        <li>3)The APR shall be based on the audited financial statements of the
-                                            foreign entity.
-                                            Where the person resident in India does not have ‘control’ in the
-                                            foreign entity and
-                                            the laws of the host jurisdiction does not provide for mandatory
-                                            auditing of the
-                                            books of accounts, the APR may be submitted based on unaudited financial
-                                            statements
-                                            certified as such by the statutory auditor of the Indian entity or by a
-                                            chartered
-                                            accountant where the statutory audit is not applicableincluding in case
-                                            of resident
-                                            individuals.
-                                        <li>4)In case more than one person resident in India have made ODI in the
-                                            same foreign
-                                            entity, the person resident in India holding the highest stake in the
-                                            foreign entity
-                                            shall be required to submit APR. In case of holdings being equal, APR
-                                            may be filed
-                                            jointly by such persons resident in India. It is also clarified that
-                                            where APR is
-                                            required to be filed jointly, either one investor may be authorized by
-                                            other
-                                            investors, or such persons may jointly file the APR.
-                                        </li>
-                                        <li>5)The person resident in India shall report the details regarding
-                                            acquisition/
-                                            setting up /winding up/ transfer of an SDS or alteration in the
-                                            shareholding pattern
-                                            in the foreign entity during the reporting year in the APR, failing
-                                            which it shall
-                                            amount to non-submission of APR.</li>
-                                        <li>6)The person resident in India shall ensure that all the previous year
-                                            APRs have
-                                            been submitted to the designated AD bank. </li>
-                                        <li>7) Capital structure (para III of form APR) should be in cumulative and
-                                            the % stake
-                                            should be a total of all the persons resident in India in the foreign
-                                            entity </li>
-                                        <li>8) In Para VII the figures under “since commencement of business” should
-                                            be equal to
-                                            or more than the figure mentioned under current year</li>
-                                        <li>9) In Para VII (ii), Redemption of preference shares (not in the nature
-                                            of
-                                            compulsorily convertible preference shares (CCPS)) should also be
-                                            reported. </li>
-                                        <li>10) In Para VII (vii), other receipts which are not mentioned in the
-                                            table like
-                                            interest on loan or license fee etc. shall be mentioned. </li>
-                                        <li>11) In Para IX, the part of the profits of the foreign entity which is
-                                            retained and
-                                            reinvested in such foreign entity shall be mentioned. The retained
-                                            earnings are to
-                                            be calculated as per the procedure laid down by the International
-                                            Monetary Fund in
-                                            the latest version of their publication “Balance of Payments and
-                                            International
-                                            Investment Position Manual”. It is to be noted that the negative
-                                            retained earnings
-                                            is to be treated as ‘0’ (zero).</li>
-                                        <li>12) The level of step-down subsidiary (SDS) shall be calculated treating
-                                            the foreign
-                                            entity as the parent. So, an SDS directly under the foreign entity
-                                            should be treated
-                                            as first level SDS. Accordingly, an SDS under the first level SDS would
-                                            be treated
-                                            as second level SDS and so on and so forth. </li>
-                                        <li>13) In case of ParaXII, the structure of SDS should be in compliance
-                                            with the
-                                            structural requirements of the foreign entity i.e the structure of such
-                                            subsidiary/SDS shall also have limited liability where the foreign
-                                            entity’s core
-                                            activity is not in strategic sector. The investee entities of the
-                                            foreign entity
-                                            where such foreign entity does not have control may not be treated as
-                                            SDSs and
-                                            therefore may not be reported.</li>
-                                        <li>14) In case of Para XII (vi), if the SDS is engaged in the activity of
-                                            financial
-                                            services, the investment shall be in compliance to the provisions
-                                            contained in Para
-                                            2 of Schedule I of OI rules.</li>
-                                        <li>15) The activity code as per NIC 1987 and NIC 2008 shall be furnished.
-                                        </li>
-                                        <li>16) The date may be mentioned in format DD/MM/YYYY format. </li>
-                                        <li>17) The name of the foreign currency (FCY) shall be indicated as per
-                                            SWIFT code.
-                                        </li>
-                                        <li>18) Each page of the Form FC should be duly signed and stamped with date
-                                            by the
-                                            person resident in India submitting the same. </li>
-                                        <li>19) All amounts of foreign currency (FCY) and Indian Rupees (INR) should
-                                            be in
-                                            actuals only. </li>
-                                        <li>Note: All amounts should be in actuals. All the figures should be in a
-                                            single
-                                            foreign currency (FCY).</li>
-                                    </ul>
-                                </div>
+                                <app-apr-instructions></app-apr-instructions>
+
 
                             </tab>
                             <tab heading="APR Detail" id="1" disabled="disabled">
@@ -147,6 +117,26 @@
                                         <div class="row">
                                             <div class="col-12 mb-2">
                                                 <label class="form-label">APR for the period </label> <br>
+                                            </div>
+                                            <div class="col-4 input-block mb-2">
+                                                <input type="text" id="APR_UIN" spellcheck="false" required
+                                                    class="form-control" formControlName="APR_UIN"
+                                                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
+                                                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_UIN.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                    <div *ngIf="APR_UIN.errors?.['minlength']">
+                                                        This field must have at least 10 character.
+                                                    </div>
+                                                    <div *ngIf="APR_UIN.errors?.['maxlength']">
+                                                        This field must have at most 20 characters.
+                                                    </div>
+                                                </div>
+
+                                                <span class="placeholder">Unique Identification Number (UIN)</span>
+
                                             </div>
                                             <div class="col-4 input-block mb-2">
                                                 <input type="date" class="form-control" id="APR_From_Date"
@@ -176,26 +166,7 @@
 
                                             </div>
 
-                                            <div class="col-4 input-block mb-2">
-                                                <input type="text" id="APR_UIN" spellcheck="false" required
-                                                    class="form-control" formControlName="APR_UIN"
-                                                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
-                                                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_UIN.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="APR_UIN.errors?.['minlength']">
-                                                        This field must have at least 10 character.
-                                                    </div>
-                                                    <div *ngIf="APR_UIN.errors?.['maxlength']">
-                                                        This field must have at most 20 characters.
-                                                    </div>
-                                                </div>
-
-                                                <span class="placeholder">Unique Identification Number (UIN)</span>
-
-                                            </div>
+                                          
                                             <hr>
                                             <div class="row">
                                                 <label class="form-label">Capital structure as on the last day of the
@@ -1790,7 +1761,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td width="100%" colspan="30" valign="top">
-                                                        <br clear="all"/>
+                                                        <br clear="all" />
                                                         <p align="center">
                                                             <strong>ANNUAL PERFORMANCE REPORT (APR)</strong>
                                                             <strong></strong>
@@ -2094,7 +2065,8 @@
                                                             <strong>Repatriation from the foreign entity</strong>
                                                         </p>
                                                     </td>
-                                                </tr> <tr>
+                                                </tr>
+                                                <tr>
                                                     <td width="6%" colspan="2" valign="top">
                                                     </td>
                                                     <td width="35%" colspan="4" valign="top">
@@ -2462,7 +2434,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td width="100%" colspan="30" valign="top">
-                                                        <br clear="all"/>
+                                                        <br clear="all" />
                                                         <p align="center">
                                                             <strong>
                                                                 Declaration from Indian entity/ resident individual
@@ -2836,9 +2808,12 @@
                                                 which is reckoned as ODI
                                             </em>
                                             <em>
-                                        , shall submit an APR with respect to each        <a name="_Hlk110983382">foreign entity </a>every year till the person
-                                        resident in India is invested in such foreign entity, by December 31        <sup>st</sup> and where the accounting year of the foreign entity ends
-                                        on December 31<sup>st</sup>, the APR shall be submitted by December 31        <sup>st</sup> of the next year.
+                                                , shall submit an APR with respect to each <a
+                                                    name="_Hlk110983382">foreign entity </a>every year till the person
+                                                resident in India is invested in such foreign entity, by December 31
+                                                <sup>st</sup> and where the accounting year of the foreign entity ends
+                                                on December 31<sup>st</sup>, the APR shall be submitted by December 31
+                                                <sup>st</sup> of the next year.
                                             </em>
                                         </p>
                                         <p>
@@ -3020,7 +2995,7 @@
                                                 in actuals only.
                                             </em>
                                         </p>
-                                        </div>
+                                    </div>
                                     <div id="pdfTableAPR" #pdfTableAPR style="display:none;">
                                         <table style="border:1px" cellspacing="0" cellpadding="0" width="100%">
                                             <tbody>

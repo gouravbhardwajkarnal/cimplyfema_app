@@ -71,4 +71,9 @@ div.input-block input:focus + span.placeholder {
   min-height: 30px !important;
   align-items: center;
 }
+
+#pdfTable5{
+  width: 350px;
+  height: 842px;
+}
  

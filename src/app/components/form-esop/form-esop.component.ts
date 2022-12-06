@@ -279,6 +279,7 @@ export class FormEsopComponent implements OnInit {
   @ViewChild('pdfTable2') pdfTable2: ElementRef;
   @ViewChild('pdfTable3') pdfTable3: ElementRef;
   @ViewChild('pdfTable4') pdfTable4: ElementRef;
+  @ViewChild('pdfTable5',{static:false}) pdfTable5: ElementRef;
 
   downloadAsPDF1() {
   
@@ -312,6 +313,32 @@ export class FormEsopComponent implements OnInit {
     const pdfTable = this.pdfTable4.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML,{tableAutoSize:false});
     const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+  downloadAsPDF5() {
+    
+    /* let pdf = new jsPDF('p','pt','a4');
+     pdf.html(this.pdfTable5.nativeElement,{
+      callback:(pdf)=>{
+        pdf.save("Annexure.pdf")
+      }
+     }) */
+     const doc = new jsPDF();
+    const pdfTable = this.pdfTable5.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = {
+      content: html,
+      pageSize: 'A4',
+      pageOrientation: 'landscape',
+      styles: {
+          tableCenter: {
+              alignment: 'center',
+              absolutePosition: { x: 10, y: 35 },
+              margin: [20, 5, 0, 10],
+          },
+      },
+  };
     pdfMake.createPdf(documentDefinition).open();
 
   }
@@ -392,6 +419,15 @@ export class FormEsopComponent implements OnInit {
   }
   async ExportWord4() {
     const pdfTable = this.pdfTable4.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Annexure.docx');
+  }
+  async ExportWord5() {
+    const pdfTable = this.pdfTable5.nativeElement;
 
     var converted = await asBlob(pdfTable.innerHTML, {
       orientation: 'portrait',

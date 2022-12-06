@@ -614,12 +614,22 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">
-                                                                        <h6>D. Annexure </h6>
+                                                                        <h6>D.  </h6>
                                                                     </th>
                                                                     <td><img src="assets/images/word.png"
                                                                             style="cursor:pointer" (click)="ExportWord4()"></td>
                                                                     <td><img src="assets/images/pdf.png"
                                                                             (click)="downloadAsPDF4()"
+                                                                            style="cursor:pointer"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">
+                                                                        <h6>E. Annexure </h6>
+                                                                    </th>
+                                                                    <td><img src="assets/images/word.png"
+                                                                            style="cursor:pointer" (click)="ExportWord5()"></td>
+                                                                    <td><img src="assets/images/pdf.png"
+                                                                            (click)="downloadAsPDF5()"
                                                                             style="cursor:pointer"></td>
                                                                 </tr>
 
@@ -1083,7 +1093,7 @@
                                                             </div>
                                                             <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
                                                                 id="pdfTable4" #pdfTable4>
-<!-- 
+
                                                                 <p style="text-align: center;">
                                                                     <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
                                                                     </em>
@@ -1108,8 +1118,8 @@
                                                                             Stock
                                                                             Option
                                                                             -<em>{{esopFormlist.get('NameofinvesteeCompany').value}}</em>
-                                                                            (“the
-                                                                            company”)
+                                                                            ("the
+                                                                            company")
                                                                         </u>
                                                                     </strong>
                                                                 </p>
@@ -1198,19 +1208,19 @@
                                                                 </p>
                                                                 <p>
                                                                     _________________________
-                                                                </p>
+                                                                </p> 
                                                                 <p>
-                                                                    Name : <strong>Authorised_Signatory_Name</strong>
+                                                                    Name : <strong>{{esopFormlist.get('Authorised_Signatory_Name').value}}</strong>
                                                                 </p>
                                                                 <p>
                                                                     Designation :
-                                                                    <strong><em>Authorised_Signatory_Designation</em></strong>
+                                                                    <strong><em>{{esopFormlist.get('Authorised_Signatory_Designation').value}}</em></strong>
                                                                 </p>
                                                                 <p>
                                                                     Email ID :
                                                                 </p>
                                                                 <p>
-                                                                    Date : <a>XX-XX-XXXX</a>
+                                                                    Date : <a>{{ today | date : "dd-MM-yyyy" }}</a>
 
                                                                 </p>
                                                                 <div>
@@ -1223,69 +1233,72 @@
                                                                             </p>
                                                                         </div>
                                                                     </div>
-                                                                </div> -->
-<div style="width: 500px;">
-                                                                <table border="1" cellspacing="0" cellpadding="0" width="500">
-                                                                    <tbody>
-                                                            <tr>
-                                                                <td width="208" valign="top"><p>Full Name of the</p>
-                                                                    Grantee</td>
-                                                                <td width="208" valign="top"><p>Date of Issue</p></td>
-                                                                <td width="208" valign="top"><p>Number of ESOPs Granted</p></td>
-                                                                <td width="208" valign="top"><p>Country</p></td>
-                                                                <td width="208" valign="top"><p>Residential Status</p></td>
-                                                                <td width="208" valign="top"><p>Name of the Subsidiary . SDS</p></td>
-                                                                <td width="208" valign="top"><p>Pre-determined issue price</p></td>
-                                                                <td width="208" valign="top"><p>Conversion ratio</p></td>
-                                                                <td width="208" valign="top"><p>Equivalent equity shares on fully diluted basis</p></td>
-                                                                <td width="208" valign="top"><p>Face value of equity shares</p></td>
-                                                                <td width="208" valign="top"><p>Value of Shares in Rs</p></td>
-                                                                
-                                                            </tr>
-                                                        
-                                                            <tr
-                                                                *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+                                                                </div>
 
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].Full_Name_Grantee}}
-                                                                </td>
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].Date_of_Issue | date:'dd-MM-yyyy'}}
+                                                            </div>
+                                                            <div id="pdfTable5" #pdfTable5>
+                                                                
+                                                                    <table border="1" cellspacing="0" cellpadding="0"  width="100%">
+                                                                        <tbody>
+                                                                <tr>
+                                                                    <td width="4%" valign="top"><p>Full Name of the</p>
+                                                                        Grantee</td>
+                                                                    <td width="4%" valign="top"><p>Date of Issue</p></td>
+                                                                    <td width="4%" valign="top"><p>Number of ESOPs Granted</p></td>
+                                                                    <td width="4%" valign="top"><p>Country</p></td>
+                                                                    <td width="4%" valign="top"><p>Residential Status</p></td>
+                                                                    <td width="4%" valign="top"><p>Name of the Subsidiary . SDS</p></td>
+                                                                    <td width="4%" valign="top"><p>Pre-determined issue price</p></td>
+                                                                    <td width="4%" valign="top"><p>Conversion ratio</p></td>
+                                                                    <td width="4%" valign="top"><p>Equivalent equity shares on fully diluted basis</p></td>
+                                                                    <td width="4%" valign="top"><p>Face value of equity shares</p></td>
+                                                                    <td width="4%" valign="top"><p>Value of Shares in Rs</p></td>
+                                                                    
+                                                                </tr>
+                                                            
+                                                                <tr
+                                                                    *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+    
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].Full_Name_Grantee}}
+                                                                    </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].Date_of_Issue | date:'dd-MM-yyyy'}}
+                                                                       
+                                                                    </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].Number_ESOP_Granted}}
+                                                                    </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].Country}}
+                                                                    </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].ResidentialStatus}}
+                                                                    </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].SubsidiarySDS}}
+                                                                    </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].Pre_determined_issue_price}}
+                                                                    </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].Conversion_ratio}}
+                                                                    </td>
                                                                    
-                                                                </td>
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].Number_ESOP_Granted}}
-                                                                </td>
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].Country}}
-                                                                </td>
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].ResidentialStatus}}
-                                                                </td>
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].SubsidiarySDS}}
-                                                                </td>
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].Pre_determined_issue_price}}
-                                                                </td>
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].Conversion_ratio}}
-                                                                </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].Equivalent_equity_shares}}
+                                                                    </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].Facevalue_equity_shares}}
+                                                                    </td>
+                                                                    <td width="4%" valign="top">
+                                                                        {{GrantDetailsArray[i].Value_of_Shares}}
+                                                                     </td>
                                                                
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].Equivalent_equity_shares}}
-                                                                </td>
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].Facevalue_equity_shares}}
-                                                                </td>
-                                                                <td width="208" valign="top">
-                                                                    {{GrantDetailsArray[i].Value_of_Shares}}
-                                                                 </td>
-                                                           
-                                                            </tr>
-                                                                    </tbody>
-                                                    </table>
-                                                </div>
+                                                                </tr>
+                                                                        </tbody>
+                                                        </table>
+                                                    
                                                             </div>
                                                         </div>
                                                     </div>

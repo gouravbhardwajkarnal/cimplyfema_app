@@ -23,7 +23,9 @@
         [data]="filteredsubmodule"
         [(ngModel)]="SubselectedItems"
         (onSelect)="onSubModuleSelect($event,filteredsubmodule)"
-        (onSelectAll)="onAllSubModuleSelect($event,filteredsubmodule)">
+        (onSelectAll)="onAllSubModuleSelect($event,filteredsubmodule)"
+        (onDeSelect)="onItemDeSelect($event)"
+        (onDeSelectAll)="onUnSelectAll()">
       </ng-multiselect-dropdown>
         
       </div>
@@ -165,7 +167,7 @@
                   <div class="col-3 mb-2">
                     <label class="form-label">GST Number
                     </label>
-                    <input type="text" class="form-control" placeholder="GST Number" formControlName="COC_FDIGSTNo"
+                    <input type="number" class="form-control" placeholder="GST Number" formControlName="COC_FDIGSTNo"
                         [class.is-invalid]="COC_FDIFormlist.get('COC_FDIGSTNo').invalid && (COC_FDIFormlist.get('COC_FDIGSTNo').dirty ||COC_FDIFormlist.get('COC_FDIGSTNo').touched)">
                     <div *ngIf="COC_FDIFormlist.get('COC_FDIGSTNo').invalid && (COC_FDIFormlist.get('COC_FDIGSTNo').dirty ||COC_FDIFormlist.get('COC_FDIGSTNo').touched)"
                         class="invalid-feedback">
@@ -193,7 +195,7 @@
                   <label class="form-label">State
                   </label>
                   <input class="form-control" formControlName="COC_FDIState" list="datalistOptionsstate" [class.is-invalid]="COC_FDIFormlist.get('COC_FDIState').invalid && (COC_FDIFormlist.get('COC_FDIState').dirty ||COC_FDIFormlist.get('COC_FDIState').touched)"
-                  id="exampleDataList" placeholder="Type to search..."><datalist
+                  id="exampleDataList" placeholder="Select State"><datalist
                   id="datalistOptionsstate">
                   <option *ngFor="let state of StateList">{{state.State}}</option></datalist>  
                  </div>     
@@ -201,14 +203,14 @@
                   <label class="form-label">City
                   </label>
                   <input class="form-control" formControlName="COC_FDICity" list="datalistOptionscity" [class.is-invalid]="COC_FDIFormlist.get('COC_FDICity').invalid && (COC_FDIFormlist.get('COC_FDICity').dirty ||COC_FDIFormlist.get('COC_FDICity').touched)"
-                  id="exampleDataList" placeholder="Type to search..."><datalist
+                  id="exampleDataList" placeholder="Select City"><datalist
                   id="datalistOptionscity">
                   <option *ngFor="let city of CityList">{{city.city}}</option></datalist>  
                  </div>    
                 <div class="col-4 mb-2">
                     <label class="form-label">Pin-code
                     </label>
-                    <input type="text" class="form-control" formControlName="COC_FDIPincode" placeholder="Pincode"
+                    <input type="number" class="form-control" formControlName="COC_FDIPincode" placeholder="Pincode"
                         [class.is-invalid]="COC_FDIFormlist.get('COC_FDIPincode').invalid && (COC_FDIFormlist.get('COC_FDIPincode').dirty ||COC_FDIFormlist.get('COC_FDIPincode').touched)">
                     <div *ngIf="COC_FDIFormlist.get('COC_FDIPincode').invalid && (COC_FDIFormlist.get('COC_FDIPincode').dirty ||COC_FDIFormlist.get('COC_FDIPincode').touched)"
                         class="invalid-feedback">
@@ -339,12 +341,12 @@
             <li class="list-group-item list-group-item-info">A.Business Activities with NIC Code</li>
           </ul>  
           <div class="col-2 mb-2">
-            <label class="form-check-label" for="flexSwitchCheckChecked">NIC Code & Description</label>
+            <label class="form-check-label" for="flexSwitchCheckCheckedw">NIC Code & Description</label>
           </div>        
         <div class="col-4 mb-2">
            <!-- Button trigger modal -->
   <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckCheckedw" data-bs-toggle="modal" data-bs-target="#staticBackdropw">
   </div>
  <br>
 </div>
@@ -386,7 +388,7 @@
                 </table> 
                 </div>    
   <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade" id="staticBackdropw" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
@@ -478,7 +480,7 @@
                 <tbody>
                   <tr  *ngFor="let cent of SelectCOC_FDICenResArray; let i = index;">                  
                     <td >
-                      <div>{{cent.RegionalOffice}}</div>
+                      <div>{{cent.RegionalOffices}}</div>
                     </td>
                     <td>
                       <div>{{cent.Address}}</div>                    
@@ -511,7 +513,7 @@
                 <div>{{Regionallist.Topic}}</div>
               </td>
               <td>
-                <div>{{Regionallist.RegionalOffice}}</div>               
+                <div>{{Regionallist.RegionalOffices}}</div>               
               </td>
               <td>
                 <div>{{Regionallist.Address}}</div>                
@@ -584,7 +586,7 @@
         <div class="col-3 mb-2">
             <label class="form-label">Demand Draft Date
             </label>
-            <input type="text" class="form-control" formControlName="COC_FDI_CompoundDemandDate" placeholder="Demand Draft Date"
+            <input type="date" class="form-control" formControlName="COC_FDI_CompoundDemandDate" placeholder="Demand Draft Date"
             [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').touched)">
         <div *ngIf="COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').touched)"
             class="invalid-feedback">
@@ -598,7 +600,7 @@
           <label class="form-label">City
           </label>
           <input class="form-control" formControlName="COC_FDI_CompoundCity" list="datalistOptionscity" [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_CompoundCity').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundCity').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundCity').touched)"
-          id="exampleDataList" placeholder="Type to search..."><datalist
+          id="exampleDataList" placeholder="Select City"><datalist
           id="datalistOptionscity">
           <option *ngFor="let city of CityList">{{city.city}}</option></datalist>  
          </div>  
@@ -847,8 +849,7 @@
       </ul> 
       <table class="table table-striped table-bordered caption-top table-responsive">
         <thead>
-            <tr>
-                <th>Sl.No</th>                                            
+            <tr>                                          
                 <th>Name of Remitter</th>
                 <th>Total Amount (INR)</th>
                 <th>Date of Receipt</th>
@@ -858,13 +859,7 @@
         </thead>
         <tbody>
             <tr
-                *ngFor="let TableA of COC_FDIODITabAArray; let i = index;">
-                <td>
-                    <input type="text"
-                        [(ngModel)]="index"
-                        [ngModelOptions]="{standalone: true}"
-                        class="form-control form-control-sm">
-                     </td>             
+                *ngFor="let TableA of COC_FDIODITabAArray; let i = index;">             
                 <td>
                     <input type="text"
                         [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabARemitterName"
@@ -872,7 +867,7 @@
                         class="form-control form-control-sm">
                      </td>             
                 <td>
-                    <input type="text"
+                    <input type="number" (blur)="TableATotAmount(COC_FDIODITabAArray[i])"
                         [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabAAmount "
                         [ngModelOptions]="{standalone: true}"
                         class="form-control form-control-sm">
@@ -910,8 +905,7 @@
                 <label>Total</label>
               </td>
               <td>
-                <input type="text"
-                    [(ngModel)]="COC_FDIODITabATotal"
+                <input type="number"  formControlName="TableATotAmount"
                     [ngModelOptions]="{standalone: true}"
                     class="form-control form-control-sm">
                  </td>             
@@ -1003,8 +997,7 @@
       </ul> 
       <table class="table table-striped table-bordered caption-top table-responsive">
         <thead>
-            <tr>
-                <th>Sl.No</th>                                            
+            <tr>                                         
                 <th>Name of Remitter</th>
                 <th>Total Amount (INR)</th>
                 <th>Date of Receipt</th>
@@ -1016,13 +1009,7 @@
         </thead>
         <tbody>
             <tr
-                *ngFor="let TableC of COC_FDIODITableCArray; let i = index;">
-                <td>
-                    <input type="text"
-                        [(ngModel)]="index"
-                        [ngModelOptions]="{standalone: true}"
-                        class="form-control form-control-sm">
-                     </td>             
+                *ngFor="let TableC of COC_FDIODITableCArray; let i = index;">             
                   <td>
                     <input type="text"
                         [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCRemitterName"
@@ -1095,8 +1082,7 @@
       </ul> 
       <table class="table table-striped table-bordered caption-top table-responsive">
         <thead>
-            <tr>
-                <th>Sl.No</th>                                            
+            <tr>                                           
                 <th>Date</th>
                 <th>Authorised Capital</th>
                 <th>With effect from</th>
@@ -1106,13 +1092,7 @@
         </thead>
         <tbody>
             <tr
-                *ngFor="let Table of COC_FDIODIAuthorisedCapitalArray; let i = index;">
-                <td>
-                    <input type="text"
-                        [(ngModel)]="index"
-                        [ngModelOptions]="{standalone: true}"
-                        class="form-control form-control-sm">
-                     </td>             
+                *ngFor="let Table of COC_FDIODIAuthorisedCapitalArray; let i = index;">          
                   <td>
                     <input type="date"
                         [(ngModel)]="COC_FDIODIAuthorisedCapitalArray[i].COC_FDIODIAuthorisedDate"

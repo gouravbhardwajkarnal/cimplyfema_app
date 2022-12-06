@@ -35,6 +35,7 @@ export class FormCocComponent implements OnInit {
   NICCodeselectedItems = [];
   selectedItems = [];
   CityList: any = [];
+  COC_FDINICCodeDescriptionList:any=[];
   StateList: any = [];
   FDIStatelist:any=[];
   SubselectedItems = [];
@@ -60,38 +61,36 @@ export class FormCocComponent implements OnInit {
  firstFormGroup:FormGroup;
  secondFormGroup:FormGroup;
  NICCodeList:any=[];
+ FemaRegulationsList:any=[];
  RegionalOfficeList:any=[];
  SelectCOC_FDINICCodeDesArray:any=[];
  SelectCOC_FDICenResArray:any=[];
  COC_FDIFemaRegNoArray:any=[];
+ TableATotAmountData:number;
 isLinear = false;
   constructor(private commonservice: CommonService,private fb: FormBuilder,private apiService: ApiService,) {
     this.modules = commonservice.getCOCmodules();
     this.submodules = commonservice.getCOCsubmodules();
     this.readCity();
     this.readState();
-    this.NICCodeList=[
-      { Year: 2221, Class: "Foreign Direct Investment" ,DescriptionClass:"aDAdadasdasdasd"},
-      { Year: 2221, Class: "Foreign Direct Investment" ,DescriptionClass:"aDAdadasdasdasd"},
-      { Year: 2221, Class: "Foreign Direct Investment" ,DescriptionClass:"aDAdadasdasdasd"},
-      { Year:221, Class: "Foreign Direct Investment" ,DescriptionClass:"aDAdadasdasdasd"},
-      { Year: 4441, Class: "Foreign Direct Investment" ,DescriptionClass:"aDAdadasdasdasd"}
-    ];
-    this.RegionalOfficeList=[
-      { Topic: 2221, RegionalOffice: "Foreign Direct Investment" ,Address:"aDAdadasdasdasd",RegionalDirector:"aDAdadasdasdasd"},
-      { Topic: 2221, RegionalOffice: "Foreign Direct Investment" ,Address:"aDAdadasdasdasd",RegionalDirector:"aDAdadasdasdasd"},
-      { Topic: 2221, RegionalOffice: "Foreign Direct Investment" ,Address:"aDAdadasdasdasd",RegionalDirector:"aDAdadasdasdasd"}
-    ]
-
+    this.readNICCodeDes();
+    this.readRBIAuthority();
+    this.readFemaRegulations()
    } 
    readCity() {
-
     this.apiService.getCity().subscribe((data) => {
-
       this.CityList = data;
     });
-  
   }  
+  readFemaRegulations() {
+    debugger;
+    this.apiService.getFemaRegulations().subscribe((femadata) => {this.FemaRegulationsList = femadata;});}
+  readNICCodeDes() {
+    debugger;
+    this.apiService.getNICCodeDes().subscribe((Nicdata) => {this.NICCodeList = Nicdata;});}  
+   readRBIAuthority() {
+      debugger;
+      this.apiService.getRBIAuthority().subscribe((RBIData) => {this.RegionalOfficeList = RBIData;});}  
   readState() {
     this.apiService.getState().subscribe((data) => {
 
@@ -185,6 +184,7 @@ isLinear = false;
       DelayReasonsSubmissionDetails:new FormArray([]),
       PetitionRequestSubmissionDetails:new FormArray([]),
       COC_FDIODITabADetails:new FormArray([]),
+      TableATotAmount:new FormControl(this.TableATotAmountData, Validators.required),
       COC_FDIODITableBDetails:new FormArray([]),
       COC_FDIODITableCDetails:new FormArray([]),
       COC_FDIODIAuthorisedCapitalDetails:new FormArray([]),
@@ -276,7 +276,7 @@ isLinear = false;
   }
   SelectCOC_FDIResCent(items: any) {
     debugger;
-   this.SelectCOC_FDICenResArray.push({RegionalOffice:items.RegionalOffice,Address:items.Address})
+   this.SelectCOC_FDICenResArray.push({RegionalOffices:items.RegionalOffices,Address:items.Address})
     }
   onSelectAll(items: any) {
   
@@ -292,8 +292,13 @@ isLinear = false;
     this.Submodulename= val.filter(x =>x.id===Number(selectedSubModule.id))[0].name;
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
   }
+  TableATotAmount(data){
+    debugger;
+    if(this.TableATotAmountData==undefined && data.COC_FDIODITabAAmount!=''){this.TableATotAmountData = parseFloat(data.COC_FDIODITabAAmount);}
+    else if(this.TableATotAmountData!=undefined){this.TableATotAmountData = this.TableATotAmountData + parseFloat(data.COC_FDIODITabAAmount);}
+  };
   onModuleSelect(selectedModule) {
-    
+    this.SubmodulenameArray.length=0;
     if(selectedModule.id==1)
     {
     this.COC_FDIFormDiv=true;}
@@ -304,7 +309,14 @@ isLinear = false;
   }
 
   onAllSubModuleSelect(items: any,val) {
-  
+    debugger
+    for(let submod of val){
+    for (let order of this.SubmodulenameArray) {
+      if (order.Submodulename == submod.name) {
+          this.SubmodulenameArray.splice(this.SubmodulenameArray.indexOf(order), 1);
+      }      
+     }
+    }
     for(let i=0;i<items.length;i++){
     this.Submodule=items[i];
     this.SubmodulenameDes=val.filter(x =>x.id===Number(items[i].id))[0].Description;
@@ -313,13 +325,32 @@ isLinear = false;
     this.COC_FDIFemaRegNoArray.push({ COC_FDINatContname: this.Submodulename, COC_FDINatContDes: this.SubmodulenameDes});
     }
   }
+  onItemDeSelect(item: any) {
+    for (let order of this.SubmodulenameArray) {
+      if (order.Submodulename == item.name) {
+          this.SubmodulenameArray.splice(this.SubmodulenameArray.indexOf(order), 1);
+      }      
+     }
+}
+  onUnSelectAll() {
+    debugger;
+    this.SubmodulenameArray.length=0;
+}
   onSubModuleSelect(selectedSubModule,val)
   {
+    debugger;
     this.Submodule=selectedSubModule;
     this.SubmodulenameDes=val.filter(x =>x.id===Number(selectedSubModule.id))[0].Description;
     this.Submodulename= val.filter(x =>x.id===Number(selectedSubModule.id))[0].name;
+    for (let order of this.SubmodulenameArray) {
+      if (order.Submodulename == selectedSubModule.name) {
+          this.SubmodulenameArray.splice(this.SubmodulenameArray.indexOf(order), 1);
+      }      
+     }
+    //this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===selectedSubModule.name)[0].BackgroundA});
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
     this.COC_FDIFemaRegNoArray.push({ COC_FDINatContname: this.Submodulename, COC_FDINatContDes: this.SubmodulenameDes});
+    //this.BackSubmissionArray.push({COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===selectedSubModule.name)[0].BackgroundB});
   }
   CheckAgreeTerm(Val) {
     if(Val.currentTarget.checked==true){this.COC_FDIInstructionsButton=true;}

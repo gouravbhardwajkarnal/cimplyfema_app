@@ -27,3 +27,6 @@ const states = new Schema({
 })
 
 module.exports = mongoose.model('states', states)
+
+
+

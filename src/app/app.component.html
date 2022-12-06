@@ -242,44 +242,77 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="align-items-center  ms-auto navbar-nav">
+          <ul class="align-items-center ms-auto navbar-nav">
            
         
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+            <li class="nav-item">
+              <a [ngClass]="div1 == true ? 'nav-link dropdown-toggle show' : 'nav-link dropdown-toggle'"
+                aria-expanded="div1" (click)="div1Function()">
                 Fema Compliance
               </a>
-              <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item dropdown-toggle" id="1" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">FDI</a></li>
-                <li><a class="dropdown-item dropdown-toggle" id="2" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ODI</a></li>
+              <ul [ngClass]="div1 == true ? 'dropdown-menu p-0 top-100 show' : 'dropdown-menu p-0'" aria-expanded="div1">
+                <!-- <li><a class="dropdown-item dropdown-toggle" id="1" aria-haspopup="true" aria-expanded="false">FDI</a></li>
+                <li><a class="dropdown-item dropdown-toggle" id="2" aria-haspopup="true" aria-expanded="false">ODI</a></li> -->
+                <li class="nav-item dropdown dropend">
+                  <a class="dropdown-item dropdown-toggle" role="button" href="#" id="fdi"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">FDI</a>
+                  <ul [ngClass]="div2 == true ? 'dropdown-menu p-1 show' : 'dropdown-menu p-1 '" aria-labelledby="multilevelDropdownMenu1">
+                    <li><a class="dropdown-item" routerLink="#">Form FCGPR</a></li>
+                    <li><a class="dropdown-item" routerLink="#">Form FCTRS</a></li>
+                    <li><a class="dropdown-item" routerLink="/form-esop">Form ESOP</a></li>
+                    <li><a class="dropdown-item" routerLink="#">Form Downstream Investment</a></li>
+                    <li><a class="dropdown-item" routerLink="#">Form LLP I</a></li>
+                    <li><a class="dropdown-item" routerLink="#">Form LLP II</a></li>
+                    <li><a class="dropdown-item" routerLink="#">Form CN</a></li>
+                    <li><a class="dropdown-item" routerLink="#">Form INVI</a></li>
+                    <li><a class="dropdown-item" routerLink="#">Form DRR</a></li>
+                    <li><a class="dropdown-item" routerLink="#">DPIIT Application</a></li>
+             
+                  </ul>
+                </li>
+                <li class="nav-item dropdown dropend">
+                  <a class="dropdown-item dropdown-toggle" role="button" href="#" id="odi"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ODI</a>
+                  <ul [ngClass]="div3 == true ? 'dropdown-menu p-1 show' : 'dropdown-menu p-1'" aria-labelledby="multilevelDropdownMenu1">
+                    <li><a class="dropdown-item" routerLink="/form-fc">Form FC ( Overseas Direct Investment)</a></li>
+                    <li><a class="dropdown-item" routerLink="/form-apr">Form APR (Annual Performance Report)</a></li>
+                    <li><a class="dropdown-item" routerLink="/form-opi">Form OPI (Overseas Portfolio Investment)</a></li>
+                  </ul>
+                </li>
                 <li><a class="dropdown-item" routerLink="/form-coc">Compounding Of Contravention</a></li>
-                <!-- <li class="dropdown dropend">
-                  <a class="dropdown-item dropdown-toggle" href="#" id="multilevelDropdownMenu1"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Multilevel Action 1</a>
-                  <ul class="dropdown-menu" aria-labelledby="multilevelDropdownMenu1">
+               
+                <!-- <li class="nav-item dropdown">
+                  <a class="dropdown-item dropdown-toggle" role="button" href="#" id="multilevelDropdownMenu1"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Multilevel Action 2</a>
+                  <ul [ngClass]="div1 == true ? 'dropdown-menu p-1 show' : 'dropdown-menu p-1 '" aria-labelledby="multilevelDropdownMenu1">
                     <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li class="nav-item dropdown">
-                      <a class="dropdown-item dropdown-toggle" role="button" href="#" id="multilevelDropdownMenu1"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Multilevel Action 2</a>
-                      <ul class="dropdown-menu p-1" aria-labelledby="multilevelDropdownMenu1">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                      </ul>
-                    </li>
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                   </ul>
                 </li> -->
+                <!-- <li class="dropdown dropend">
+                  <a  [ngClass]="div2 == true ? 'dropdown-item dropdown-toggle show' : 'dropdown-item dropdown-toggle'"
+                   (click)="div2Function()" aria-haspopup="true" aria-expanded="div3">Multilevel Action 1</a>
+                  <ul [ngClass]="div2 == true ? 'dropdown-menu show' : 'dropdown-menu'" aria-labelledby="multilevelDropdownMenu1">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>  -->
               </ul>
             </li>
 
             <div class="seperator"></div>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Login</a>
+           
+              
             </li>
             <div class="seperator"></div>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Register</a>
+            </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -291,10 +324,7 @@
               </a>
             </li>
             <div class="seperator"></div>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Register</a>
-            </li>
-            <div class="seperator"></div>
+           
             <!-- <li class="nav-item">
               <a class="nav-link" href="#">Disabled</a>
             </li>

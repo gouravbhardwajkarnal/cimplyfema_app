@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-// Define collection and schema
-let Master_NIC_Codes = new Schema({
+const masterniccode = new Schema({
    Year: {
-      type: String
+      type: Number
    },
    Class: {
       type: String
@@ -17,4 +15,8 @@ let Master_NIC_Codes = new Schema({
    collection: 'Master_NIC_Codes'
 })
 
-module.exports = mongoose.model('Master_NIC_Codes', Master_NIC_Codes)
+module.exports = mongoose.model('masterniccode', masterniccode)
+
+
+
+

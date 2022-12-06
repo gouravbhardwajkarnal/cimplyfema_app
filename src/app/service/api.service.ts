@@ -105,7 +105,17 @@ getopiData() {
   return this.http.get(`${this.baseUri}/getOpi`);
 }
 
-
+//===============COC FDI Area Start===============
+getNICCodeDes() {
+  return this.http.get(`${this.baseUri}/Master_NIC_Codes`);
+}
+getRBIAuthority() {
+  return this.http.get(`${this.baseUri}/RBIAuthority`);
+}
+getFemaRegulations() {
+  return this.http.get(`${this.baseUri}/FemaRegulations`);
+}
+//===============COC FDI Area End=================
   // Error handling
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

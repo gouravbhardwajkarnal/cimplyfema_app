@@ -22,7 +22,6 @@ import { saveAs } from 'file-saver';
 import { ignoreElements } from 'rxjs';
 
 
-
 type AOA = any[][];
 @Component({
   selector: 'app-form-esop',
@@ -90,15 +89,25 @@ export class FormEsopComponent implements OnInit {
         necessary_documents: new FormControl(false),
         Authorised_Signatory_Name: new FormControl(''),
         Authorised_Signatory_Designation: new FormControl(''),
-        GrantDetails: new FormArray([])
+        GrantDetails: this.fb.array([]),
 
       }
     )
   }
 
+  GrantDetails(): FormArray {
+    return this.esopFormlist.get('GrantDetails') as FormArray;
+  }
+  
+
   addGrantData() {
+    debugger
     this.GrantDetailsdata = { Full_Name_Grantee: "", Date_of_Issue: "", Number_ESOP_Granted: "", Country: "", ResidentialStatus: "", SubsidiarySDS: "", Pre_determined_issue_price: "", Conversion_ratio1: "1:", Conversion_ratio: "", Equivalent_equity_shares: "", Facevalue_equity_shares: "", Value_of_Shares: "" }
     this.GrantDetailsArray.push(this.GrantDetailsdata);
+    const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
+    for (var i = 0; i < grantFormArray.length; i++) {
+      grantFormArray.value[i].Date_of_Issue=this.esopFormlist.value.Date_Resolution;
+    }
     return true;
   }
 
@@ -158,15 +167,6 @@ export class FormEsopComponent implements OnInit {
 
   }
 
-  private formatDate(date) {
-    const d = new Date(date);
-    let month = '' + (d.getMonth() + 1);
-    let day = '' + d.getDate();
-    const year = d.getFullYear();
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-    return [year, month, day].join('-');
-  }
 
   onSubmitESOPFrom() {
     const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
@@ -279,6 +279,7 @@ export class FormEsopComponent implements OnInit {
   @ViewChild('pdfTable2') pdfTable2: ElementRef;
   @ViewChild('pdfTable3') pdfTable3: ElementRef;
   @ViewChild('pdfTable4') pdfTable4: ElementRef;
+  @ViewChild('pdfTable5',{static:false}) pdfTable5: ElementRef;
 
   downloadAsPDF1() {
   
@@ -310,11 +311,38 @@ export class FormEsopComponent implements OnInit {
     
     const doc = new jsPDF();
     const pdfTable = this.pdfTable4.nativeElement;
-    var html = htmlToPdfmake(pdfTable.innerHTML);
+    var html = htmlToPdfmake(pdfTable.innerHTML,{tableAutoSize:false});
     const documentDefinition = { content: html };
     pdfMake.createPdf(documentDefinition).open();
 
   }
+  downloadAsPDF5() {
+    
+    /* let pdf = new jsPDF('p','pt','a4');
+     pdf.html(this.pdfTable5.nativeElement,{
+      callback:(pdf)=>{
+        pdf.save("Annexure.pdf")
+      }
+     }) */
+     const doc = new jsPDF();
+    const pdfTable = this.pdfTable5.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = {
+      content: html,
+      pageSize: 'A4',
+      pageOrientation: 'landscape',
+      styles: {
+          tableCenter: {
+              alignment: 'center',
+              absolutePosition: { x: 10, y: 35 },
+              margin: [20, 5, 0, 10],
+          },
+      },
+  };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+
 
   Exdata: AOA = [[1, 2], [3, 4]];
   onFileChange(evt: any) {
@@ -337,7 +365,6 @@ export class FormEsopComponent implements OnInit {
       
       for (var i = 1; i < this.Exdata.length; i++) {
       let RDate = new Date(this.Exdata[i][1]);
-        this.Exdata[i][this.datepipe.transform(RDate, 'MM-dd-yyyy')];
         if (i > 1) {
           this.addGrantData();
         }
@@ -365,8 +392,9 @@ export class FormEsopComponent implements OnInit {
     const pdfTable = this.pdfTable1.nativeElement;
 
     var converted = await asBlob(pdfTable.innerHTML, {
-      orientation: 'landscape',
+      orientation: 'portrait',
       margins: { top: 720 },
+      
     });
     saveAs(converted, 'Covering.docx');
   }
@@ -375,7 +403,7 @@ export class FormEsopComponent implements OnInit {
     const pdfTable = this.pdfTable2.nativeElement;
 
     var converted = await asBlob(pdfTable.innerHTML, {
-      orientation: 'landscape',
+      orientation: 'portrait',
       margins: { top: 720 },
     });
     saveAs(converted, 'CSCertificate.docx');
@@ -384,15 +412,30 @@ export class FormEsopComponent implements OnInit {
     const pdfTable = this.pdfTable3.nativeElement;
 
     var converted = await asBlob(pdfTable.innerHTML, {
-      orientation: 'landscape',
+      orientation: 'portrait',
       margins: { top: 720 },
     });
     saveAs(converted, 'Declaration.docx');
   }
-  get GrantDetails(): FormArray {
-    
-    return this.esopFormlist.get('GrantDetails') as FormArray;
+  async ExportWord4() {
+    const pdfTable = this.pdfTable4.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Annexure.docx');
   }
+  async ExportWord5() {
+    const pdfTable = this.pdfTable5.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Annexure.docx');
+  }
+  
   DateResolutionChange(e) {
   
     const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);

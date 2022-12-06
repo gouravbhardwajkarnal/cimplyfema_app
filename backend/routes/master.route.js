@@ -5,12 +5,31 @@ const masterRoute = express.Router()
 
 let Country = require('../data/countries')
 let cities = require('../data/cities')
-let states = require('../data/states')
+let bank = require('../data/banks')
+let currencycode= require('../data/currency')
 let locations = require('../data/locations');
 let masterniccode = require('../data/MasterNICCode');
 let rbiAuthority = require('../data/RBIAuthority');
 let femaRegulations=require('../data/FemaRegulations');
 var countryarray = [];
+masterRoute.route('/bank').get((req, res) => {
+  bank.find((error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+})
+masterRoute.route('/currencycode').get((req, res) => {
+  currencycode.distinct("Code", function (error, data) {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+})
 masterRoute.route('/country').get((req, res) => {
   Country.distinct("country", function (error, data) {
     if (error) {

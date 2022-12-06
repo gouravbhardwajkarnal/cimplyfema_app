@@ -36,6 +36,10 @@ export class FormAprComponent implements OnInit {
   TotalFPstake: number = 0;
   Totalstake: number = 0;
   id: string = '0';
+  BankName: string;
+  CurrencyCode: string;
+  BankList: any = [];
+  CurrencyCodeList: any=[];
   btnShow: boolean;
   btnShowNext: boolean;
   // generatePDF() {  
@@ -342,6 +346,8 @@ export class FormAprComponent implements OnInit {
   // aprFormlist:FormGroup
   constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private fb: FormBuilder, private commonservice: CommonService) {
     this.investment_model = {} as Iinvestment;
+    this.readBank();
+    this.readcurrency();
     this.sdstypes = commonservice.getAllsdstypes();
     this.Jurisdictiontypes = commonservice.getAllJurisdictiontypes();
     this.sdsleveltypes = commonservice.getAllsdsleveltypes();
@@ -540,6 +546,18 @@ export class FormAprComponent implements OnInit {
     //     'APR_G':new FormControl('',Validators.required),   
     //   }
     // )
+  }
+  readBank() {
+    this.apiService.getBank().subscribe((data) => {
+      this.BankList = data;
+      console.log(this.BankList);
+    });
+  }
+  readcurrency() {
+    this.apiService.getCurrency().subscribe((data) => {
+      this.CurrencyCodeList = data;
+      console.log(this.CurrencyCodeList);
+    });
   }
   addShareHoldingFE() {
     if (this.Totalstake == 100) {

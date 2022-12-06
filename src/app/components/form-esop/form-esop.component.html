@@ -67,7 +67,7 @@
                                             <div class="container-fluid pt-2">
                                                 <div class="row">
 
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">Corporate Identification Number (CIN/LLP) </label> -->
                                                         <input type="text" spellcheck="false" required
                                                             class="form-control" formControlName="CIN_LIP"
@@ -75,7 +75,7 @@
                                                         <span class="placeholder">Corporate Identification Number
                                                             (CIN/LLP)</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="false" required
                                                             class="form-control" formControlName="NameofinvesteeCompany"
                                                             [class.is-invalid]="esopFormlist.get('NameofinvesteeCompany').invalid && (esopFormlist.get('NameofinvesteeCompany').dirty ||esopFormlist.get('NameofinvesteeCompany').touched)">
@@ -86,7 +86,7 @@
                                                         <span class="placeholder">Name of the Investee Company</span>
                                                     </div>
 
-                                                    <div class="col-4 input-block  mb-2">
+                                                    <div class="col-4 input-block  mb-4">
                                                         <input type="text" spellcheck="false" required
                                                             class="form-control" formControlName="PanNo"
                                                             [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
@@ -102,19 +102,19 @@
                                                         <span class="placeholder">PAN Number</span>
                                                     </div>
 
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="true" required=""
                                                             class="form-control" formControlName="Registered_Office"
                                                             [class.is-invalid]="esopFormlist.get('Registered_Office').invalid && (esopFormlist.get('Registered_Office').dirty ||esopFormlist.get('Registered_Office').touched)">
                                                         <span class="placeholder">Registered Office</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="true" required=""
                                                             class="form-control" formControlName="ESOP_Scheme_Name"
                                                             [class.is-invalid]="esopFormlist.get('ESOP_Scheme_Name').invalid && (esopFormlist.get('ESOP_Scheme_Name').dirty ||esopFormlist.get('ESOP_Scheme_Name').touched)">
                                                         <span class="placeholder">ESOP Scheme Name</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">BR / EGM / Circular Resolution No.
                                             </label> -->
                                                         <input type="text" spellcheck="true" required
@@ -125,7 +125,7 @@
                                                     </div>
 
 
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">Date of Resolution
                                             </label> -->
                                                         <input type="date" spellcheck="true" required
@@ -136,8 +136,7 @@
                                                         <span class="placeholder">Date of Resolution</span>
                                                     </div>
 
-
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">Entry Route
                                             </label> -->
                                                         <select class="form-select" spellcheck="true" required
@@ -149,7 +148,7 @@
                                                         </select>
                                                         <span class="placeholder">Entry Route</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <!-- <label class="form-label">Applicable Sectoral cap/ Statutory ceiling
                                             </label> -->
                                                         <select class="form-select" spellcheck="true" required
@@ -166,8 +165,13 @@
                                                         <span class="placeholder">Applicable Sectoral cap/ Statutory
                                                             ceiling</span>
                                                     </div>
-                                                    <div class="col-12 mb-2">
-
+                                                    <div class="col-12 mb-4">
+                                                        <div class="form-check p-0">
+                                                            <label class="form-check-label" for="inlineRadio3">Whether
+                                                                the foreign investment is received for a specific
+                                                                project/manufacturing unit or manufacturing
+                                                                plant</label>
+                                                        </div>
                                                         <div class="form-check form-check-inline"
                                                             *ngFor="let fd of foreigninvestmentProject">
                                                             <input class="form-check-input" type="radio" id="{{fd.id}}"
@@ -177,17 +181,14 @@
                                                             <label class="form-check-label"
                                                                 for="{{fd.id}}">{{fd.Type}}</label>
                                                         </div>
-
-                                                        <div class="form-check form-check-inline">
-                                                            <label class="form-check-label" for="inlineRadio3">Whether
-                                                                the foreign
-                                                                investment is
-                                                                received for a specific project/manufacturing unit or
-                                                                manufacturing
-                                                                plant</label>
-                                                        </div>
                                                     </div>
-                                                    <div class="col-12 mb-2">
+                                                    <div class="col-12 mb-4">
+                                                        <div class="form-check p-0">
+                                                            <label class="form-check-label]" for="inlineRadio3">Whether
+                                                                the shareholding pattern due to this transaction being
+                                                                reported has already been accounted in the pre
+                                                                transaction shareholding pattern:*</label>
+                                                        </div>
                                                         <div class="form-check form-check-inline"
                                                             *ngFor="let fd of Shareholding">
                                                             <input class="form-check-input" type="radio" id="{{fd.id}}"
@@ -196,16 +197,6 @@
                                                                 value="{{fd.Type}}" style="cursor:pointer;">
                                                             <label class="form-check-label"
                                                                 for="{{fd.id}}">{{fd.Type}}</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <label class="form-check-label" for="inlineRadio3">Whether
-                                                                the change in
-                                                                the
-                                                                shareholding pattern due to this transaction being
-                                                                reported has
-                                                                already been
-                                                                accounted in the pre transaction shareholding
-                                                                pattern:*</label>
                                                         </div>
                                                     </div>
 
@@ -294,7 +285,8 @@
                                                                     <ng-select [items]="CountryList" bindLabel="name"
                                                                         placeholder="Select Country"
                                                                         [(ngModel)]="GrantDetailsArray[i].Country"
-                                                                        [ngModelOptions]="{standalone: true}" (change)="CountryChange($event)">
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        (change)="CountryChange($event)">
                                                                     </ng-select>
 
 
@@ -307,7 +299,8 @@
                                                                         <option value="Resident">Resident</option>
                                                                         <option value="Non-Resident">Non-Resident
                                                                         </option>
-                                                                        <option value="Non-Resident Indian">Non-Resident Indian
+                                                                        <option value="Non-Resident Indian">Non-Resident
+                                                                            Indian
                                                                         </option>
                                                                     </select>
                                                                 </td>
@@ -386,7 +379,7 @@
                                         <div class="container-fluid position-relative d-flex p-0">
                                             <div class="container-fluid pt-2">
                                                 <div class="row">
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P
                                                             [ngClass]="Non_Debt_Instruments.value == true ? 'del' : 'notdel'">
                                                             1. We comply with the procedure for issue of equity
@@ -407,7 +400,7 @@
                                                             formControlName="Non_Debt_Instruments"
                                                             style="cursor:pointer;">
                                                     </div>
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P
                                                             [ngClass]="sectoral_cap_statutory.value == true ? 'del' : 'notdel'">
                                                             2. The investment is within the sectoral cap / statutory
@@ -423,7 +416,7 @@
                                                             formControlName="sectoral_cap_statutory"
                                                             style="cursor:pointer;">
                                                     </div>
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P
                                                             [ngClass]="Indian_companies_reconstruction.value == true ? 'del' : 'notdel'">
                                                             3. The equity instruments issued under a scheme of merger
@@ -444,7 +437,7 @@
                                                             formControlName="Indian_companies_reconstruction"
                                                             style="cursor:pointer;">
                                                     </div>
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P [ngClass]="PMLA_UAPA.value == true ? 'del' : 'notdel'">
                                                             4. The foreign investment received and reported now will be
                                                             utilized in
@@ -465,7 +458,7 @@
                                                         <input class="form-check-input me-1" type="checkbox"
                                                             formControlName="PMLA_UAPA" style="cursor:pointer;">
                                                     </div>
-                                                    <div class="col-lg-10 mb-3">
+                                                    <div class="col-lg-10 mb-4">
                                                         <P
                                                             [ngClass]="enclose_documents.value == true ? 'del' : 'notdel'">
                                                             5. We enclose the following documents in compliance with
@@ -478,7 +471,7 @@
                                                             formControlName="enclose_documents" style="cursor:pointer;">
                                                     </div>
                                                     <div class="row justify-content-md-center">
-                                                        <div class="col-md-auto col-lg-10 mb-3">
+                                                        <div class="col-md-auto col-lg-10 mb-4">
                                                             <P
                                                                 [ngClass]="certificate_Company_Secretary.value == true ? 'del' : 'notdel'">
                                                                 i. A certificate from our Company Secretary as in the
@@ -491,7 +484,7 @@
                                                                 formControlName="certificate_Company_Secretary"
                                                                 style="cursor:pointer;">
                                                         </div>
-                                                        <div class="col-md-auto col-lg-10 mb-3">
+                                                        <div class="col-md-auto col-lg-10 mb-4">
                                                             <P
                                                                 [ngClass]="SEBI_registered.value == true ? 'del' : 'notdel'">
                                                                 ii. A certificate from SEBI registered Merchant Banker /
@@ -518,7 +511,7 @@
                                                                 formControlName="SEBI_registered"
                                                                 style="cursor:pointer;">
                                                         </div>
-                                                        <div class="col-md-auto col-lg-10 mb-3">
+                                                        <div class="col-md-auto col-lg-10 mb-4">
                                                             <P
                                                                 [ngClass]="necessary_documents.value == true ? 'del' : 'notdel'">
                                                                 iii. All other necessary documents as applicable to the
@@ -532,12 +525,12 @@
                                                         </div>
                                                     </div>
                                                     <hr>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="true" class="form-control"
                                                             formControlName="Authorised_Signatory_Name">
                                                         <span class="placeholder">Authorised Signatory Name</span>
                                                     </div>
-                                                    <div class="col-4 input-block mb-2">
+                                                    <div class="col-4 input-block mb-4">
                                                         <input type="text" spellcheck="true" class="form-control"
                                                             formControlName="Authorised_Signatory_Designation">
                                                         <span class="placeholder">Authorised Signatory
@@ -612,16 +605,28 @@
                                                                             (click)="downloadAsPDF3()"
                                                                             style="cursor:pointer"></td>
                                                                 </tr>
-                                                                <!-- <tr>
+                                                                <tr>
                                                                     <th scope="row">
-                                                                        <h6>D. Demand Draft </h6>
+                                                                        <h6>D. </h6>
                                                                     </th>
                                                                     <td><img src="assets/images/word.png"
-                                                                            style="cursor:pointer"></td>
+                                                                            style="cursor:pointer"
+                                                                            (click)="ExportWord4()"></td>
                                                                     <td><img src="assets/images/pdf.png"
                                                                             (click)="downloadAsPDF4()"
                                                                             style="cursor:pointer"></td>
-                                                                </tr> -->
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">
+                                                                        <h6>E. Annexure </h6>
+                                                                    </th>
+                                                                    <td><img src="assets/images/word.png"
+                                                                            style="cursor:pointer"
+                                                                            (click)="ExportWord5()"></td>
+                                                                    <td><img src="assets/images/pdf.png"
+                                                                            (click)="downloadAsPDF5()"
+                                                                            style="cursor:pointer"></td>
+                                                                </tr>
 
                                                             </tbody>
                                                         </table>
@@ -792,15 +797,16 @@
                                                                     ESOPs
                                                                     under its
                                                                     <b>{{esopFormlist.get('ESOP_Scheme_Name').value}}</b>
-                                                                    “ESOP
-                                                                    Scheme” at an
+                                                                    "ESOP
+                                                                    Scheme" at an
                                                                     exercise price of
                                                                     <br />
                                                                     INR
-                                                                    <b>{{GrantDetailsArray[0].Pre_determined_issue_price}</b>/-
+                                                                    <b>{{GrantDetailsArray[0].Pre_determined_issue_price}}</b>/-
                                                                     per
                                                                     option on
-                                                                    <b>{{GrantDetailsArray[0].Date_of_Issue}}</b>.
+                                                                    <b>{{GrantDetailsArray[0].Date_of_Issue | date:
+                                                                        'dd-MM-yyyy'}}</b>.
                                                                     <strong></strong>
                                                                 </p>
                                                                 <p>
@@ -906,8 +912,10 @@
                                                                 <p>
                                                                     We hereby declare that:
                                                                 </p>
-                                                                <div [ngSwitch]="esopFormlist.get('sectoral_cap_statutory').value">
-                                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
+                                                                <div
+                                                                    [ngSwitch]="esopFormlist.get('sectoral_cap_statutory').value">
+                                                                    <p *ngSwitchCase=true
+                                                                        style="text-decoration: line-through;">
                                                                         1. We comply with the procedure for issue of
                                                                         equity
                                                                         instruments as laid
@@ -932,135 +940,166 @@
                                                                     </p>
                                                                 </div>
 
-                                                                <div [ngSwitch]="esopFormlist.get('Indian_companies_reconstruction').value">
-                                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
-                                                                    2. The investment is within the sectoral cap/
-                                                                    statutory
-                                                                    ceiling
-                                                                    permissible
-                                                                    under the regulation, ibid and in compliance with
-                                                                    the
-                                                                    attendant
-                                                                    conditions.
-                                                                </p>
-                                                                <p *ngSwitchCase=false>
-                                                                    2. The investment is within the sectoral cap/
-                                                                    statutory
-                                                                    ceiling
-                                                                    permissible
-                                                                    under the regulation, ibid and in compliance with
-                                                                    the
-                                                                    attendant
-                                                                    conditions.
-                                                                </p>
+                                                                <div
+                                                                    [ngSwitch]="esopFormlist.get('Indian_companies_reconstruction').value">
+                                                                    <p *ngSwitchCase=true
+                                                                        style="text-decoration: line-through;">
+                                                                        2. The investment is within the sectoral cap/
+                                                                        statutory
+                                                                        ceiling
+                                                                        permissible
+                                                                        under the regulation, ibid and in compliance
+                                                                        with
+                                                                        the
+                                                                        attendant
+                                                                        conditions.
+                                                                    </p>
+                                                                    <p *ngSwitchCase=false>
+                                                                        2. The investment is within the sectoral cap/
+                                                                        statutory
+                                                                        ceiling
+                                                                        permissible
+                                                                        under the regulation, ibid and in compliance
+                                                                        with
+                                                                        the
+                                                                        attendant
+                                                                        conditions.
+                                                                    </p>
                                                                 </div>
                                                                 <div [ngSwitch]="esopFormlist.get('PMLA_UAPA').value">
-                                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
-                                                                    3. The foreign investment received and reported now
-                                                                    will
-                                                                    be utilized in
-                                                                    compliance with the provision of a Prevention of
-                                                                    Money
-                                                                    Laundering Act
-                                                                    2002
-                                                                    (PMLA) and Unlawful Activities (Prevention) Act,
-                                                                    1976
-                                                                    (UAPA). We confirm
-                                                                    that the investment complies with the provision of
-                                                                    all
-                                                                    applicable Rules
-                                                                    and
-                                                                    Regulations.
-                                                                </p>
-                                                                <p *ngSwitchCase=false>
-                                                                    3. The foreign investment received and reported now
-                                                                    will
-                                                                    be utilized in
-                                                                    compliance with the provision of a Prevention of
-                                                                    Money
-                                                                    Laundering Act
-                                                                    2002
-                                                                    (PMLA) and Unlawful Activities (Prevention) Act,
-                                                                    1976
-                                                                    (UAPA). We confirm
-                                                                    that the investment complies with the provision of
-                                                                    all
-                                                                    applicable Rules
-                                                                    and
-                                                                    Regulations.
-                                                                </p>
+                                                                    <p *ngSwitchCase=true
+                                                                        style="text-decoration: line-through;">
+                                                                        3. The foreign investment received and reported
+                                                                        now
+                                                                        will
+                                                                        be utilized in
+                                                                        compliance with the provision of a Prevention of
+                                                                        Money
+                                                                        Laundering Act
+                                                                        2002
+                                                                        (PMLA) and Unlawful Activities (Prevention) Act,
+                                                                        1976
+                                                                        (UAPA). We confirm
+                                                                        that the investment complies with the provision
+                                                                        of
+                                                                        all
+                                                                        applicable Rules
+                                                                        and
+                                                                        Regulations.
+                                                                    </p>
+                                                                    <p *ngSwitchCase=false>
+                                                                        3. The foreign investment received and reported
+                                                                        now
+                                                                        will
+                                                                        be utilized in
+                                                                        compliance with the provision of a Prevention of
+                                                                        Money
+                                                                        Laundering Act
+                                                                        2002
+                                                                        (PMLA) and Unlawful Activities (Prevention) Act,
+                                                                        1976
+                                                                        (UAPA). We confirm
+                                                                        that the investment complies with the provision
+                                                                        of
+                                                                        all
+                                                                        applicable Rules
+                                                                        and
+                                                                        Regulations.
+                                                                    </p>
                                                                 </div>
-                                                                <div [ngSwitch]="esopFormlist.get('enclose_documents').value">
-                                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
-                                                                    4. We enclose the following documents in compliance
-                                                                    with
-                                                                    these
-                                                                    regulations:
-                                                                </p>
-                                                                <p *ngSwitchCase=false>
-                                                                    4. We enclose the following documents in compliance
-                                                                    with
-                                                                    these
-                                                                    regulations:
-                                                                </p>
+                                                                <div
+                                                                    [ngSwitch]="esopFormlist.get('enclose_documents').value">
+                                                                    <p *ngSwitchCase=true
+                                                                        style="text-decoration: line-through;">
+                                                                        4. We enclose the following documents in
+                                                                        compliance
+                                                                        with
+                                                                        these
+                                                                        regulations:
+                                                                    </p>
+                                                                    <p *ngSwitchCase=false>
+                                                                        4. We enclose the following documents in
+                                                                        compliance
+                                                                        with
+                                                                        these
+                                                                        regulations:
+                                                                    </p>
                                                                 </div>
-                                                                <div [ngSwitch]="esopFormlist.get('certificate_Company_Secretary').value">
-                                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
-                                                                    (i) A certificate from our company Secretary as in
-                                                                    the
-                                                                    specified format.
-                                                                </p>
-                                                                <p *ngSwitchCase=false>
-                                                                    (i) A certificate from our company Secretary as in
-                                                                    the
-                                                                    specified format.
-                                                                </p>
+                                                                <div
+                                                                    [ngSwitch]="esopFormlist.get('certificate_Company_Secretary').value">
+                                                                    <p *ngSwitchCase=true
+                                                                        style="text-decoration: line-through;">
+                                                                        (i) A certificate from our company Secretary as
+                                                                        in
+                                                                        the
+                                                                        specified format.
+                                                                    </p>
+                                                                    <p *ngSwitchCase=false>
+                                                                        (i) A certificate from our company Secretary as
+                                                                        in
+                                                                        the
+                                                                        specified format.
+                                                                    </p>
                                                                 </div>
-                                                                <div [ngSwitch]="esopFormlist.get('SEBI_registered').value">
-                                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
-                                                                    (ii) A certificate from SEBI registered Merchant
-                                                                    Banker
-                                                                    / Chartered
-                                                                    Accountant / cost accountant or any other person as
-                                                                    authorized under
-                                                                    Foreign Exchange Management (Non-Debt Instruments)
-                                                                    Rules, 2019 dated
-                                                                    October 17, 2019 and as amended from time to time,
-                                                                    indicating the manner
-                                                                    of
-                                                                    arriving at the price of the shares issued to the
-                                                                    persons resident
-                                                                    outside
-                                                                    India (wherever applicable).
-                                                                </p>
-                                                                <p *ngSwitchCase=false>
-                                                                    (ii) A certificate from SEBI registered Merchant
-                                                                    Banker
-                                                                    / Chartered
-                                                                    Accountant / cost accountant or any other person as
-                                                                    authorized under
-                                                                    Foreign Exchange Management (Non-Debt Instruments)
-                                                                    Rules, 2019 dated
-                                                                    October 17, 2019 and as amended from time to time,
-                                                                    indicating the manner
-                                                                    of
-                                                                    arriving at the price of the shares issued to the
-                                                                    persons resident
-                                                                    outside
-                                                                    India (wherever applicable).
-                                                                </p>
+                                                                <div
+                                                                    [ngSwitch]="esopFormlist.get('SEBI_registered').value">
+                                                                    <p *ngSwitchCase=true
+                                                                        style="text-decoration: line-through;">
+                                                                        (ii) A certificate from SEBI registered Merchant
+                                                                        Banker
+                                                                        / Chartered
+                                                                        Accountant / cost accountant or any other person
+                                                                        as
+                                                                        authorized under
+                                                                        Foreign Exchange Management (Non-Debt
+                                                                        Instruments)
+                                                                        Rules, 2019 dated
+                                                                        October 17, 2019 and as amended from time to
+                                                                        time,
+                                                                        indicating the manner
+                                                                        of
+                                                                        arriving at the price of the shares issued to
+                                                                        the
+                                                                        persons resident
+                                                                        outside
+                                                                        India (wherever applicable).
+                                                                    </p>
+                                                                    <p *ngSwitchCase=false>
+                                                                        (ii) A certificate from SEBI registered Merchant
+                                                                        Banker
+                                                                        / Chartered
+                                                                        Accountant / cost accountant or any other person
+                                                                        as
+                                                                        authorized under
+                                                                        Foreign Exchange Management (Non-Debt
+                                                                        Instruments)
+                                                                        Rules, 2019 dated
+                                                                        October 17, 2019 and as amended from time to
+                                                                        time,
+                                                                        indicating the manner
+                                                                        of
+                                                                        arriving at the price of the shares issued to
+                                                                        the
+                                                                        persons resident
+                                                                        outside
+                                                                        India (wherever applicable).
+                                                                    </p>
                                                                 </div>
-                                                                <div [ngSwitch]="esopFormlist.get('necessary_documents').value">
-                                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
-                                                                    (iii) All other necessary documents as applicable to
-                                                                    the
-                                                                    issue.
-                                                                </p>
-                                                                <p *ngSwitchCase=false>
-                                                                    (iii) All other necessary documents as applicable to
-                                                                    the
-                                                                    issue.
-                                                                </p>
+                                                                <div
+                                                                    [ngSwitch]="esopFormlist.get('necessary_documents').value">
+                                                                    <p *ngSwitchCase=true
+                                                                        style="text-decoration: line-through;">
+                                                                        (iii) All other necessary documents as
+                                                                        applicable to
+                                                                        the
+                                                                        issue.
+                                                                    </p>
+                                                                    <p *ngSwitchCase=false>
+                                                                        (iii) All other necessary documents as
+                                                                        applicable to
+                                                                        the
+                                                                        issue.
+                                                                    </p>
                                                                 </div>
                                                                 <p>
                                                                     For
@@ -1078,24 +1117,25 @@
                                                                     {{esopFormlist.get('Authorised_Signatory_Designation').value}}
                                                                 </p>
                                                                 <p>
-                                                                    Date : {{ today | date : "dd-MM-yyyyy" }}
+                                                                    Date : {{ today | date : "dd-MM-yyyy" }}
                                                                 </p>
                                                             </div>
                                                             <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
                                                                 id="pdfTable4" #pdfTable4>
 
+
                                                                 <p style="text-align: center;">
-                                                                    <em><strong>{{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
+                                                                    <em><strong>To be executed on the letter head of {{esopFormlist.get('NameofinvesteeCompany').value}}</strong>
                                                                     </em>
                                                                 </p>
                                                                 <p>
                                                                     To,
                                                                 </p>
                                                                 <p>
-                                                                    [Bank Name]
+                                                                   
                                                                 </p>
                                                                 <p>
-                                                                    [Bank Address]
+                                                                    
                                                                 </p>
                                                                 <p>
                                                                     Dear Sir / Madam,
@@ -1108,8 +1148,8 @@
                                                                             Stock
                                                                             Option
                                                                             -<em>{{esopFormlist.get('NameofinvesteeCompany').value}}</em>
-                                                                            (“the
-                                                                            company”)
+                                                                            ("the
+                                                                            company")
                                                                         </u>
                                                                     </strong>
                                                                 </p>
@@ -1200,31 +1240,197 @@
                                                                     _________________________
                                                                 </p>
                                                                 <p>
-                                                                    Name : <strong>Authorised_Signatory_Name</strong>
+                                                                    Name :
+                                                                    <strong>{{esopFormlist.get('Authorised_Signatory_Name').value}}</strong>
                                                                 </p>
                                                                 <p>
                                                                     Designation :
-                                                                    <strong><em>Authorised_Signatory_Designation</em></strong>
+                                                                    <strong><em>{{esopFormlist.get('Authorised_Signatory_Designation').value}}</em></strong>
                                                                 </p>
                                                                 <p>
                                                                     Email ID :
                                                                 </p>
                                                                 <p>
-                                                                    Date : <a>XX-XX-XXXX</a>
+                                                                    Date : <a>{{ today | date : "dd-MM-yyyy" }}</a>
 
                                                                 </p>
-                                                                <div>
-                                                                    <hr align="left" size="1" width="33%" />
-                                                                    <div>
-                                                                        <div id="_com_1">
-                                                                            <a name="_msocom_1"></a>
-                                                                            <p>
-                                                                                Default Insertion - Current Date
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div id="pdfTable5" #pdfTable5>
 
+                                                                <table border="1" cellspacing="0" cellpadding="0"
+                                                                    width="100%">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Full Name of the</p>
+                                                                                Grantee
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Date of Issue</p>
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Number of ESOPs Granted</p>
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Country</p>
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Residential Status</p>
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Name of the Subsidiary . SDS</p>
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Pre-determined issue price</p>
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Conversion ratio</p>
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Equivalent equity shares on fully
+                                                                                    diluted basis</p>
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Face value of equity shares</p>
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                <p>Value of Shares in Rs</p>
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                                        <tr
+                                                                            *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].Full_Name_Grantee}}
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].Date_of_Issue |
+                                                                                date:'dd-MM-yyyy'}}
+
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].Number_ESOP_Granted}}
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].Country}}
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].ResidentialStatus}}
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].SubsidiarySDS}}
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].Pre_determined_issue_price}}
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].Conversion_ratio}}
+                                                                            </td>
+
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].Equivalent_equity_shares}}
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].Facevalue_equity_shares}}
+                                                                            </td>
+                                                                            <td width="4%" valign="top">
+                                                                                {{GrantDetailsArray[i].Value_of_Shares}}
+                                                                            </td>
+
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                            <div style="width: 500px;">
+                                                                <table border="1" cellspacing="0" cellpadding="0"
+                                                                    width="500">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Full Name of the</p>
+                                                                                Grantee
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Date of Issue</p>
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Number of ESOPs Granted</p>
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Country</p>
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Residential Status</p>
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Name of the Subsidiary . SDS</p>
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Pre-determined issue price</p>
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Conversion ratio</p>
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Equivalent equity shares on fully
+                                                                                    diluted basis</p>
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Face value of equity shares</p>
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                <p>Value of Shares in Rs</p>
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                                        <tr
+                                                                            *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].Full_Name_Grantee}}
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].Date_of_Issue
+                                                                                | date:'dd-MM-yyyy'}}
+
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].Number_ESOP_Granted}}
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].Country}}
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].ResidentialStatus}}
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].SubsidiarySDS}}
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].Pre_determined_issue_price}}
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].Conversion_ratio}}
+                                                                            </td>
+
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].Equivalent_equity_shares}}
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].Facevalue_equity_shares}}
+                                                                            </td>
+                                                                            <td width="208" valign="top">
+                                                                                {{GrantDetailsArray[i].Value_of_Shares}}
+                                                                            </td>
+
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1234,6 +1440,7 @@
                                     </div>
 
 
+
                                 </tab>
                             </tabset>
 
@@ -1241,7 +1448,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="col-lg-12 mt-2 mb-3">
+            <div class="col-lg-12 mt-2 mb-4">
                 <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1"
                     value="Previous">
                 <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">

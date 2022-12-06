@@ -37,6 +37,12 @@ export class ApiService {
   getState() {
     return this.http.get(`${this.baseUri}/State`);
   }
+  getBank() {
+    return this.http.get(`${this.baseUri}/Bank`);
+  }
+  getCurrency() {
+    return this.http.get(`${this.baseUri}/currencycode`);
+  }
   // Get employee
   getEmployee(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;

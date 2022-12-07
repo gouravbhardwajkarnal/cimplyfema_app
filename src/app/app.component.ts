@@ -20,6 +20,10 @@ div2Function(){
   this.div1=true;
   this.div2=true;
 }
+div3Function()
+{
+  this.div1=false;
+}
 //   $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
 //   if (!$(this).next().hasClass('show')) {
 //     $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");

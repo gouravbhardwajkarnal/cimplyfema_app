@@ -301,10 +301,10 @@ isLinear = false;
     this.SubmodulenameArray.length=0;
     if(selectedModule.id==1)
     {
-    this.COC_FDIFormDiv=true;}
+    /* this.COC_FDIFormDiv=true; */}
     else{
     this.COC_FDIFormDiv=false;
-    }
+    } 
     this.filteredsubmodule = this.submodules.filter(item => item.moduleid === Number(selectedModule.id));
   }
 
@@ -323,6 +323,15 @@ isLinear = false;
     this.Submodulename= val.filter(x =>x.id===Number(items[i].id))[0].name;
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
     this.COC_FDIFemaRegNoArray.push({ COC_FDINatContname: this.Submodulename, COC_FDINatContDes: this.SubmodulenameDes});
+    this.OpenFdiForm(items);
+    }
+  }
+  OpenFdiForm(selectedModule){
+    if(selectedModule.id==1)
+    {
+    this.COC_FDIFormDiv=true; }
+    else{
+    this.COC_FDIFormDiv=false;
     }
   }
   onItemDeSelect(item: any) {
@@ -351,6 +360,7 @@ isLinear = false;
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
     this.COC_FDIFemaRegNoArray.push({ COC_FDINatContname: this.Submodulename, COC_FDINatContDes: this.SubmodulenameDes});
     //this.BackSubmissionArray.push({COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===selectedSubModule.name)[0].BackgroundB});
+    this.OpenFdiForm(selectedSubModule);
   }
   CheckAgreeTerm(Val) {
     if(Val.currentTarget.checked==true){this.COC_FDIInstructionsButton=true;}

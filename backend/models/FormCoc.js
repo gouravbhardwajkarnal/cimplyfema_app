@@ -47,7 +47,7 @@ let FormCoc = new Schema({
         COC_FDIODITabARemitterName:{type:String},
         COC_FDIODITabAAmount:{type:Number},
         COC_FDIODITabAReceiptDate:{type:Date},
-        COC_FDIODITabAReportedDate:{type:Date},
+        COC_FDIODITabAReportedDate:{type:String},
         COC_FDIODITabADelay:{type:String}
         }],
         COC_FDIODITableBDetails: [{

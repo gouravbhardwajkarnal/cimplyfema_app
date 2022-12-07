@@ -236,7 +236,7 @@
   <section id="wrapper">
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-expand-md start-0">
       <div class="container-fluid">
-        <a href="/home" class="navbar-brand nav-link"><img class="logo" src="assets/images/logo.png" alt="logo"> </a>
+        <a routerLink="/home" class="navbar-brand nav-link"><img class="logo" src="assets/images/logo.png" alt="logo"> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -247,13 +247,13 @@
         
             <li class="nav-item">
               <a [ngClass]="div1 == true ? 'nav-link dropdown-toggle show' : 'nav-link dropdown-toggle'"
-                aria-expanded="div1" (click)="div1Function()">
+                aria-expanded="div1"  (mouseover)="div1Function()" >
                 Fema Compliance
               </a>
-              <ul [ngClass]="div1 == true ? 'dropdown-menu p-0 top-100 show' : 'dropdown-menu p-0'" aria-expanded="div1">
+              <ul [ngClass]="div1 == true ? 'dropdown-menu p-0 top-100 show' : 'dropdown-menu p-0'" aria-expanded="div1" (mouseout)="div1Function()">
                 <!-- <li><a class="dropdown-item dropdown-toggle" id="1" aria-haspopup="true" aria-expanded="false">FDI</a></li>
                 <li><a class="dropdown-item dropdown-toggle" id="2" aria-haspopup="true" aria-expanded="false">ODI</a></li> -->
-                <li class="nav-item dropdown dropend">
+                <li class="nav-item dropdown dropend" >
                   <a class="dropdown-item dropdown-toggle" role="button" href="#" id="fdi"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">FDI</a>
                   <ul [ngClass]="div2 == true ? 'dropdown-menu p-1 show' : 'dropdown-menu p-1 '" aria-labelledby="multilevelDropdownMenu1">

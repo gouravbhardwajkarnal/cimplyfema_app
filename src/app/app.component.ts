@@ -12,12 +12,17 @@ export class AppComponent {
 
 
   div1Function(){
+    debugger;
     this.div1=!this.div1;
     this.div2=false;
 }
 div2Function(){
   this.div1=true;
   this.div2=true;
+}
+div3Function()
+{
+  this.div1=false;
 }
 //   $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
 //   if (!$(this).next().hasClass('show')) {

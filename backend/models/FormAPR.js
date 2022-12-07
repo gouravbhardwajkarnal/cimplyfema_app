@@ -24,6 +24,23 @@ let FormAPR = new Schema({
    {
       type: Number
    },
+   APR_NameIE:
+   {
+      type: String
+   },
+   APR_NameJV:
+   {
+      type: String
+   },
+   APR_Currency:
+   {
+      type: String
+   },
+   APR_Bank:
+   {
+      type: String
+   },
+
    APR_Dec_A:
    {
       type: Boolean
@@ -99,6 +116,10 @@ let FormAPR = new Schema({
    APR_FE_Control:
    {
       type: String
+   },
+   APR_SDS_Control:
+   {
+      type: String 
    },
    APR_Foreign_Amount:
    {

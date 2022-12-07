@@ -13,12 +13,14 @@ import jsPDF from 'jspdf';
 import htmlToPdfmake from 'html-to-pdfmake';
 import { asBlob } from 'html-docx-js-typescript';
 import { saveAs } from 'file-saver';
+import { DatePipe } from '@angular/common';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-form-apr',
   templateUrl: './form-apr.component.html',
-  styleUrls: ['./form-apr.component.css']
+  styleUrls: ['./form-apr.component.css'],
+  providers: [DatePipe]
 })
 
 export class FormAprComponent implements OnInit {
@@ -26,6 +28,7 @@ export class FormAprComponent implements OnInit {
   public aprForm: FormGroup;
   public declaration: FormGroup;
   public CAform: FormGroup;
+  public sdsform: FormGroup;
   dataModel: any = {};
   investment_model: Iinvestment;
   @ViewChild('tabset') tabset: TabsetComponent;
@@ -39,7 +42,7 @@ export class FormAprComponent implements OnInit {
   BankName: string;
   CurrencyCode: string;
   BankList: any = [];
-  CurrencyCodeList: any=[];
+  CurrencyCodeList: any = [];
   btnShow: boolean;
   btnShowNext: boolean;
   // generatePDF() {  
@@ -344,16 +347,35 @@ export class FormAprComponent implements OnInit {
   //   pdfMake.createPdf(docDefinition).open();  
   // }  
   // aprFormlist:FormGroup
-  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private fb: FormBuilder, private commonservice: CommonService) {
+  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private fb: FormBuilder,
+    private commonservice: CommonService, public datepipe: DatePipe) {
     this.investment_model = {} as Iinvestment;
+
+    // var dd = String(today. getDate()). padStart(2, '0');
+    // var mm = String(today. getMonth() + 1). padStart(2, '0'); //January is 0!
+    // console.log('01-04-' + lastyear);
+    // console.log('31-03-' + currentyear);
+    var today = new Date();
+    var currentyear = today.getFullYear();
+    var lastyear = today.getFullYear() - 1;
+    // var fromdate= new Date('01-04-' + lastyear);
+    // var todate= new Date('31-03-' + currentyear);
+   var fromdate= new Date(lastyear+'-04-01');
+   var todate= new Date(currentyear+'-03-31');
+ 
+
+  //  this.datepipe.transform('01-04-' + lastyear, 'dd-MM-yyy');
+  //   this.datepipe.transform('31-03-' + currentyear, 'dd-MM-yyy');
     this.readBank();
     this.readcurrency();
     this.sdstypes = commonservice.getAllsdstypes();
     this.Jurisdictiontypes = commonservice.getAllJurisdictiontypes();
     this.sdsleveltypes = commonservice.getAllsdsleveltypes();
     this.aprForm = this.fb.group({
-      APR_From_Date: new FormControl('', Validators.required),
-      APR_To_Date: new FormControl('', Validators.required),
+      //APR_From_Date: new FormControl('', Validators.required),
+      //APR_To_Date: new FormControl('', Validators.required),
+     APR_From_Date: new FormControl(this.datepipe.transform(fromdate, 'yyyy-MM-dd'), Validators.required),
+       APR_To_Date: new FormControl(this.datepipe.transform(todate, 'yyyy-MM-dd'), Validators.required),
       APR_UIN: new FormControl('', Validators.required),
       APR_Indian_Amount: new FormControl('', Validators.required),
       APR_Indian_Share: new FormControl('', Validators.required),
@@ -366,28 +388,36 @@ export class FormAprComponent implements OnInit {
       APR_Dividend_Last: new FormControl('', Validators.required),
       APR_Worth_Current: new FormControl('', Validators.required),
       APR_Worth_Last: new FormControl('', Validators.required),
-      APR_Dividend_CurYear: new FormControl('', Validators.required),
-      APR_Dividend_commencement: new FormControl('', Validators.required),
-      APR_Repayment_CurYear: new FormControl('', Validators.required),
-      APR_Repayment_commencement: new FormControl('', Validators.required),
-      APR_EquityExport_CurYear: new FormControl('', Validators.required),
-      APR_EquityExport_commencement: new FormControl('', Validators.required),
-      APR_Royalties_CurYear: new FormControl('', Validators.required),
-      APR_Royalties_commencement: new FormControl('', Validators.required),
-      APR_Technical_CurYear: new FormControl('', Validators.required),
-      APR_Technical_commencement: new FormControl('', Validators.required),
-      APR_Consultancyfee_CurYear: new FormControl('', Validators.required),
-      APR_Consultancyfee_commencement: new FormControl('', Validators.required),
-      APR_Others_CurYear: new FormControl('', Validators.required),
-      APR_Others_commencement: new FormControl('', Validators.required),
-      APR_Profit_CurYear: new FormControl('', Validators.required),
-      APR_Profit_commencement: new FormControl('', Validators.required),
-      APR_Retained_CurYear: new FormControl('', Validators.required),
-      APR_Retained_commencement: new FormControl('', Validators.required),
-      APR_FDIforeign_CurYear: new FormControl('', Validators.required),
-      APR_FDIforeign_commencement: new FormControl('', Validators.required),
-      APR_exces_sshare_CurYear: new FormControl('', Validators.required),
-      APR_exces_sshare_commencement: new FormControl('', Validators.required),
+      APR_Dividend_CurYear: new FormControl(0, Validators.required),
+      APR_Dividend_commencement: new FormControl(0, Validators.required),
+      APR_Repayment_CurYear: new FormControl(0, Validators.required),
+      APR_Repayment_commencement: new FormControl(0, Validators.required),
+      APR_EquityExport_CurYear: new FormControl(0, Validators.required),
+      APR_EquityExport_commencement: new FormControl(0, Validators.required),
+      APR_Royalties_CurYear: new FormControl(0, Validators.required),
+      APR_Royalties_commencement: new FormControl(0, Validators.required),
+      APR_Technical_CurYear: new FormControl(0, Validators.required),
+      APR_Technical_commencement: new FormControl(0, Validators.required),
+      APR_Consultancyfee_CurYear: new FormControl(0, Validators.required),
+      APR_Consultancyfee_commencement: new FormControl(0, Validators.required),
+      APR_Others_CurYear: new FormControl(0, Validators.required),
+      APR_Others_commencement: new FormControl(0, Validators.required),
+      APR_Profit_CurYear: new FormControl(0, Validators.required),
+      APR_Profit_commencement: new FormControl(0, Validators.required),
+      APR_Retained_CurYear: new FormControl(0, Validators.required),
+      APR_Retained_commencement: new FormControl(0, Validators.required),
+      APR_FDIforeign_CurYear: new FormControl(0, Validators.required),
+      APR_FDIforeign_commencement: new FormControl(0, Validators.required),
+      APR_exces_sshare_CurYear: new FormControl(0, Validators.required),
+      APR_exces_sshare_commencement: new FormControl(0, Validators.required),
+      APR_NameIE: new FormControl('', Validators.required),
+      APR_NameJV: new FormControl('', Validators.required),
+      APR_Currency: new FormControl('', Validators.required),
+      APR_Bank: new FormControl('', Validators.required),
+    
+    });
+    this.sdsform= this.fb.group({
+      APR_SDS_Control:new FormControl('', Validators.required),
     });
     this.declaration = this.fb.group({
       APR_Dec_A: new FormControl(false),
@@ -399,10 +429,10 @@ export class FormAprComponent implements OnInit {
       APR_Authorized_Name: new FormControl('', Validators.required),
       APR_Authorized_Designation: new FormControl('', Validators.required),
       APR_Dec_Place: new FormControl('', Validators.required),
-      APR_Dec_Date: new FormControl('', Validators.required),
+      APR_Dec_Date: new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
       APR_Dec_Telephone: new FormControl('', Validators.required),
       APR_Dec_Email: new FormControl('', Validators.required),
-      APR_Dec_Stamp: new FormControl('', Validators.required),
+      APR_Dec_Stamp: new FormControl(''),
       SDSDetails: new FormArray([]),
       ShareHoldingFE: new FormArray([]),
     });
@@ -414,10 +444,10 @@ export class FormAprComponent implements OnInit {
       APR_CA_FirmName: new FormControl('', Validators.required),
       APR_CA_RegNo: new FormControl('', Validators.required),
       APR_CA_UDIN: new FormControl('', Validators.required),
-      APR_CA_Date: new FormControl('', Validators.required),
+      APR_CA_Date: new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
       APR_CA_Place: new FormControl('', Validators.required),
       APR_CA_Email: new FormControl('', Validators.required),
-      APR_CA_Stamp: new FormControl('', Validators.required),
+      APR_CA_Stamp: new FormControl(''),
       SDSDetails: new FormArray([]),
       ShareHoldingFE: new FormArray([]),
     });
@@ -432,7 +462,7 @@ export class FormAprComponent implements OnInit {
   SDS: any = {};
   SDSlength: number = 0;
   CapitalstructureFE() {
-  
+
     let indian = this.aprForm.value.APR_Indian_Amount;
     let foreign = this.aprForm.value.APR_Foreign_Amount;
     let total = indian + foreign;
@@ -628,7 +658,7 @@ export class FormAprComponent implements OnInit {
     }
   }
   onSubmitAPRFrom() {
-  
+
     console.log(this.aprForm);
 
     if (this.aprForm.invalid) {
@@ -668,349 +698,376 @@ export class FormAprComponent implements OnInit {
         this.dataModel[control] = this.CAform.controls[control].value;
       }
     }
-    this.dataModel['SDSDetails']=this.SDSArray;
-    this.dataModel['ShareHoldingFE']=this.ShareHoldingFEArray;
+    for (const control of Object.keys(this.sdsform.controls)) {
+      this.dataModel[control] = this.sdsform.controls[control].value;
+    }
+    this.dataModel['SDSDetails'] = this.SDSArray;
+    this.dataModel['ShareHoldingFE'] = this.ShareHoldingFEArray;
 
-        // this.aprForm.setControl('SDSDetails', this.fb.array(this.investment_model.investment_SDSModel || []));
+    // this.aprForm.setControl('SDSDetails', this.fb.array(this.investment_model.investment_SDSModel || []));
 
-        return this.apiService.createFormAPR(this.dataModel).subscribe({
-          complete: () => {
-            alert('FromAPR successfully created!');
-            // this.generatePDF();
-            console.log('FromAPR successfully created!');
-            //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
-            this.tabset.tabs[(Number(6))].disabled = false;
-            this.tabset.tabs[(Number(6))].active = true;
-            if (Number(6)==6) {
-              this.btnShowNext = false;
-            }
-          },
-          error: (e) => {
-            console.log(e);
-          },
-        });
-      }
+    return this.apiService.createFormAPR(this.dataModel).subscribe({
+      complete: () => {
+        alert('FromAPR successfully created!');
+        // this.generatePDF();
+        console.log('FromAPR successfully created!');
+        //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
+        this.tabset.tabs[(Number(6))].disabled = false;
+        this.tabset.tabs[(Number(6))].active = true;
+        if (Number(6) == 6) {
+          this.btnShowNext = false;
+        }
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
+  }
 
-      // console.log(this.aprFormlist);
+  // console.log(this.aprFormlist);
 
-    
+
   get APR_From_Date() {
-      return this.aprForm.get('APR_From_Date')!;
-    }
+    return this.aprForm.get('APR_From_Date')!;
+  }
   get APR_To_Date() {
-      return this.aprForm.get('APR_To_Date')!;
-    }
+    return this.aprForm.get('APR_To_Date')!;
+  }
   get APR_UIN() {
-      return this.aprForm.get('APR_UIN')!;
-    }
+    return this.aprForm.get('APR_UIN')!;
+  }
   get APR_Indian_Amount() {
-      return this.aprForm.get('APR_Indian_Amount')!;
-    }
+    return this.aprForm.get('APR_Indian_Amount')!;
+  }
   get APR_Indian_Share() {
-      return this.aprForm.get('APR_Indian_Share')!;
-    }
+    return this.aprForm.get('APR_Indian_Share')!;
+  }
   get APR_Foreign_Amount() {
-      return this.aprForm.get('APR_Foreign_Amount')!;
-    }
+    return this.aprForm.get('APR_Foreign_Amount')!;
+  }
   get APR_Foreign_Share() {
-      return this.aprForm.get('APR_Foreign_Share')!;
-    }
+    return this.aprForm.get('APR_Foreign_Share')!;
+  }
   get APR_FE_Control() {
-      return this.aprForm.get('APR_FE_Control')!;
-    }
+    return this.aprForm.get('APR_FE_Control')!;
+  }
   get APR_Profit_Current() {
-      return this.aprForm.get('APR_Profit_Current')!;
-    }
+    return this.aprForm.get('APR_Profit_Current')!;
+  }
   get APR_Profit_Last() {
-      return this.aprForm.get('APR_Profit_Last')!;
-    }
+    return this.aprForm.get('APR_Profit_Last')!;
+  }
 
   get APR_Dividend_Current() {
-      return this.aprForm.get('APR_Dividend_Current')!;
-    }
+    return this.aprForm.get('APR_Dividend_Current')!;
+  }
   get APR_Dividend_Last() {
-      return this.aprForm.get('APR_Dividend_Last')!;
-    }
+    return this.aprForm.get('APR_Dividend_Last')!;
+  }
 
   get APR_Worth_Current() {
-      return this.aprForm.get('APR_Worth_Current')!;
-    }
+    return this.aprForm.get('APR_Worth_Current')!;
+  }
   get APR_Worth_Last() {
-      return this.aprForm.get('APR_Worth_Last')!;
-    }
+    return this.aprForm.get('APR_Worth_Last')!;
+  }
   get APR_Dividend_CurYear() {
-      return this.aprForm.get('APR_Dividend_CurYear')!;
-    }
+    return this.aprForm.get('APR_Dividend_CurYear')!;
+  }
   get APR_Dividend_commencement() {
-      return this.aprForm.get('APR_Dividend_commencement')!;
-    }
+    return this.aprForm.get('APR_Dividend_commencement')!;
+  }
   get APR_Repayment_CurYear() {
-      return this.aprForm.get('APR_Repayment_CurYear')!;
-    }
+    return this.aprForm.get('APR_Repayment_CurYear')!;
+  }
   get APR_Repayment_commencement() {
-      return this.aprForm.get('APR_Repayment_commencement')!;
-    }
+    return this.aprForm.get('APR_Repayment_commencement')!;
+  }
   get APR_EquityExport_CurYear() {
-      return this.aprForm.get('APR_EquityExport_CurYear')!;
-    }
+    return this.aprForm.get('APR_EquityExport_CurYear')!;
+  }
   get APR_EquityExport_commencement() {
-      return this.aprForm.get('APR_EquityExport_commencement')!;
-    }
+    return this.aprForm.get('APR_EquityExport_commencement')!;
+  }
   get APR_Royalties_CurYear() {
-      return this.aprForm.get('APR_Royalties_CurYear')!;
-    }
+    return this.aprForm.get('APR_Royalties_CurYear')!;
+  }
   get APR_Royalties_commencement() {
-      return this.aprForm.get('APR_Royalties_commencement')!;
-    }
+    return this.aprForm.get('APR_Royalties_commencement')!;
+  }
   get APR_Technical_CurYear() {
-      return this.aprForm.get('APR_Technical_CurYear')!;
-    }
+    return this.aprForm.get('APR_Technical_CurYear')!;
+  }
   get APR_Technical_commencement() {
-      return this.aprForm.get('APR_Technical_commencement')!;
-    }
+    return this.aprForm.get('APR_Technical_commencement')!;
+  }
   get APR_Consultancyfee_CurYear() {
-      return this.aprForm.get('APR_Consultancyfee_CurYear')!;
-    }
+    return this.aprForm.get('APR_Consultancyfee_CurYear')!;
+  }
   get APR_Consultancyfee_commencement() {
-      return this.aprForm.get('APR_Consultancyfee_commencement')!;
-    }
+    return this.aprForm.get('APR_Consultancyfee_commencement')!;
+  }
   get APR_Others_CurYear() {
-      return this.aprForm.get('APR_Others_CurYear')!;
-    }
+    return this.aprForm.get('APR_Others_CurYear')!;
+  }
   get APR_Others_commencement() {
-      return this.aprForm.get('APR_Others_commencement')!;
-    }
+    return this.aprForm.get('APR_Others_commencement')!;
+  }
   get APR_Profit_CurYear() {
-      return this.aprForm.get('APR_Profit_CurYear')!;
-    }
+    return this.aprForm.get('APR_Profit_CurYear')!;
+  }
   get APR_Profit_commencement() {
-      return this.aprForm.get('APR_Profit_commencement')!;
-    }
+    return this.aprForm.get('APR_Profit_commencement')!;
+  }
   get APR_Retained_CurYear() {
-      return this.aprForm.get('APR_Retained_CurYear')!;
-    }
+    return this.aprForm.get('APR_Retained_CurYear')!;
+  }
   get APR_Retained_commencement() {
-      return this.aprForm.get('APR_Retained_commencement')!;
-    }
+    return this.aprForm.get('APR_Retained_commencement')!;
+  }
   get APR_FDIforeign_CurYear() {
-      return this.aprForm.get('APR_FDIforeign_CurYear')!;
-    }
+    return this.aprForm.get('APR_FDIforeign_CurYear')!;
+  }
   get APR_FDIforeign_commencement() {
-      return this.aprForm.get('APR_FDIforeign_commencement')!;
-    }
+    return this.aprForm.get('APR_FDIforeign_commencement')!;
+  }
   get APR_exces_sshare_CurYear() {
-      return this.aprForm.get('APR_exces_sshare_CurYear')!;
-    }
+    return this.aprForm.get('APR_exces_sshare_CurYear')!;
+  }
   get APR_exces_sshare_commencement() {
-      return this.aprForm.get('APR_exces_sshare_commencement')!;
-    }
+    return this.aprForm.get('APR_exces_sshare_commencement')!;
+  }
+  get APR_NameIE() {
+    return this.aprForm.get('APR_NameIE')!;
+  }
+  get APR_NameJV() {
+    return this.aprForm.get('APR_NameJV')!;
+  }
+  get APR_Currency() {
+    return this.aprForm.get('APR_Currency')!;
+  }
+  get APR_Bank() {
+    return this.aprForm.get('APR_Bank')!;
+  }
+  get APR_SDS_Control()
+  {
+    return this.sdsform.get('APR_SDS_Control');
+  }
 
   get APR_Dec_A() {
-      return this.declaration.get('APR_Dec_A')!;
-    }
+    return this.declaration.get('APR_Dec_A')!;
+  }
   get APR_Dec_B() {
-      return this.declaration.get('APR_Dec_B')!;
-    }
+    return this.declaration.get('APR_Dec_B')!;
+  }
   get APR_Dec_C() {
-      return this.declaration.get('APR_Dec_C')!;
-    }
+    return this.declaration.get('APR_Dec_C')!;
+  }
   get APR_Dec_D() {
-      return this.declaration.get('APR_Dec_D')!;
-    }
+    return this.declaration.get('APR_Dec_D')!;
+  }
   get APR_Dec_E() {
-      return this.declaration.get('APR_Dec_E')!;
-    }
+    return this.declaration.get('APR_Dec_E')!;
+  }
 
   get APR_Authorized_Signature() {
-      return this.declaration.get('APR_Authorized_Signature')!;
-    }
+    return this.declaration.get('APR_Authorized_Signature')!;
+  }
   get APR_Authorized_Name() {
-      return this.declaration.get('APR_Authorized_Name')!;
-    }
+    return this.declaration.get('APR_Authorized_Name')!;
+  }
   get APR_Authorized_Designation() {
-      return this.declaration.get('APR_Authorized_Designation')!;
-    }
+    return this.declaration.get('APR_Authorized_Designation')!;
+  }
   get APR_Dec_Place() {
-      return this.declaration.get('APR_Dec_Place')!;
-    }
+    return this.declaration.get('APR_Dec_Place')!;
+  }
   get APR_Dec_Date() {
-      return this.declaration.get('APR_Dec_Date')!;
-    }
+    return this.declaration.get('APR_Dec_Date')!;
+  }
   get APR_Dec_Telephone() {
-      return this.declaration.get('APR_Dec_Telephone')!;
-    }
+    return this.declaration.get('APR_Dec_Telephone')!;
+  }
   get APR_Dec_Email() {
-      return this.declaration.get('APR_Dec_Email')!;
-    }
+    return this.declaration.get('APR_Dec_Email')!;
+  }
   get APR_Dec_Stamp() {
-      return this.declaration.get('APR_Dec_Stamp')!;
-    }
+    return this.declaration.get('APR_Dec_Stamp')!;
+  }
 
   get APR_CA_A() {
-      return this.CAform.get('APR_CA_A')!;
-    }
+    return this.CAform.get('APR_CA_A')!;
+  }
   get APR_CA_B() {
-      return this.CAform.get('APR_CA_B')!;
-    }
+    return this.CAform.get('APR_CA_B')!;
+  }
   get APR_CA_C() {
-      return this.CAform.get('APR_CA_C')!;
-    }
+    return this.CAform.get('APR_CA_C')!;
+  }
   get APR_CA_Signature() {
-      return this.CAform.get('APR_CA_Signature')!;
-    }
+    return this.CAform.get('APR_CA_Signature')!;
+  }
   get APR_CA_FirmName() {
-      return this.CAform.get('APR_CA_FirmName')!;
-    }
+    return this.CAform.get('APR_CA_FirmName')!;
+  }
   get APR_CA_RegNo() {
-      return this.CAform.get('APR_CA_RegNo')!;
-    }
+    return this.CAform.get('APR_CA_RegNo')!;
+  }
   get APR_CA_UDIN() {
-      return this.CAform.get('APR_CA_UDIN')!;
-    }
+    return this.CAform.get('APR_CA_UDIN')!;
+  }
   get APR_CA_Stamp() {
-      return this.CAform.get('APR_CA_Stamp')!;
-    }
+    return this.CAform.get('APR_CA_Stamp')!;
+  }
   get APR_CA_Place() {
-      return this.CAform.get('APR_CA_Place')!;
-    }
+    return this.CAform.get('APR_CA_Place')!;
+  }
   get APR_CA_Date() {
-      return this.CAform.get('APR_CA_Date')!;
-    }
+    return this.CAform.get('APR_CA_Date')!;
+  }
   get APR_CA_Email() {
-      return this.CAform.get('APR_CA_Email')!;
-    }
-    addSDS() {
-      this.SDS = {
-        investment_SDS_Name: "",
-        investment_SDS_Level: "",
-        investment_SDS_Jurisdiction: "",
-        investment_SDS_ParentName: "",
-        investment_SDS_ParentLevel: "",
-        investment_SDS_ParentJurisdiction: "",
-        investment_SDS_InvestmentAmount: "",
-        investment_SDS_InvestmentDate: "",
-        investment_SDS_LEI: "",
-        investment_SDS_Type: "",
-        investment_SDS_1987NIC: "",
-        investment_SDS_2008NIC: "",
-        investment_SDS_Stake: ""
-      };
-      this.SDSArray.push(this.SDS)
-      console.log(this.SDSArray);
+    return this.CAform.get('APR_CA_Email')!;
+  }
+  addSDS() {
+    this.SDS = {
+      investment_SDS_Name: "",
+      investment_SDS_Level: "",
+      investment_SDS_Jurisdiction: "",
+      investment_SDS_ParentName: "",
+      investment_SDS_ParentLevel: "",
+      investment_SDS_ParentJurisdiction: "",
+      investment_SDS_InvestmentAmount: "",
+      investment_SDS_InvestmentDate: "",
+      investment_SDS_LEI: "",
+      investment_SDS_Type: "",
+      investment_SDS_1987NIC: "",
+      investment_SDS_2008NIC: "",
+      investment_SDS_Stake: ""
+    };
+    this.SDSArray.push(this.SDS)
+    console.log(this.SDSArray);
+    this.SDSlength = this.SDSArray.length;
+    return true;
+  }
+  deleteSDS(index) {
+    if (this.SDSArray.length == 1) {
+      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+      return false;
+    } else {
+      this.SDSArray.splice(index, 1);
       this.SDSlength = this.SDSArray.length;
+      //this.toastr.warning('Row deleted successfully', 'Delete row');  
       return true;
     }
-    deleteSDS(index) {
-      if (this.SDSArray.length == 1) {
-        //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
-        return false;
-      } else {
-        this.SDSArray.splice(index, 1);
-        this.SDSlength = this.SDSArray.length;
-        //this.toastr.warning('Row deleted successfully', 'Delete row');  
-        return true;
-      }
 
-    }
-    updatePrev() {
-  
-      this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
-      if (Number(this.id) - 1 >= 0) {
-        this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) - 1)
-        this.tabset.tabs[(Number(this.id)) - 1].disabled = false;
-        this.tabset.tabs[(Number(this.id)) - 1].active = true;
+  }
+  updatePrev() {
 
-        if (Number(this.id) - 1 == 0) {
-          this.btnShow = false;
-          this.tabset.tabs[(Number(this.id))].disabled = true;
-        }
-      }
-      if (Number(this.id) <= 5) {
-        this.btnShowNext = true;
+    this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
+    if (Number(this.id) - 1 >= 0) {
+      this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) - 1)
+      this.tabset.tabs[(Number(this.id)) - 1].disabled = false;
+      this.tabset.tabs[(Number(this.id)) - 1].active = true;
+
+      if (Number(this.id) - 1 == 0) {
+        this.btnShow = false;
+        this.tabset.tabs[(Number(this.id))].disabled = true;
       }
     }
-    updateNext() {
-  
-      let count = this.tabset.tabs.length;
-      this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
-      if (Number(this.id) == 1) {
-        if (this.aprForm.invalid) {
-
-          for (const control of Object.keys(this.aprForm.controls)) {
-            this.aprForm.controls[control].markAsTouched();
-          }
-          return;
-
-        }
-        else {
-          const ShareHoldingFE: FormArray = this.fb.array(this.ShareHoldingFEArray);
-          this.aprForm.setControl('ShareHoldingFE', ShareHoldingFE);
-
-        }
-      }
-      else if (Number(this.id) == 2) {
-        if (this.SDSArray.length == 0) {
-          for (const control of Object.keys(this.aprForm.controls)) {
-            this.aprForm.controls[control].markAsTouched();
-          }
-          return;
-        }
-        else {
-          const SDSArray: FormArray = this.fb.array(this.SDSArray);
-          this.aprForm.setControl('SDSDetails', SDSArray);
-        }
-      }
-      else if (Number(this.id) == 3) {
-        if (this.declaration.invalid) {
-
-          for (const control of Object.keys(this.declaration.controls)) {
-            this.declaration.controls[control].markAsTouched();
-          }
-          return;
-
-        }
-      }
-      else if (Number(this.id) == 4) {
-        if (this.CAform.invalid) {
-
-          for (const control of Object.keys(this.CAform.controls)) {
-            this.CAform.controls[control].markAsTouched();
-          }
-          return;
-
-        }
-      }
-
-      if (Number(this.id) + 1 < count) {
-        this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) + 1)
-        this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
-        this.tabset.tabs[(Number(this.id)) + 1].active = true;
-
-        this.btnShow = true;
-      }
-      if (Number(this.id) + 1 == 5 || Number(this.id)==6) {
-        this.btnShowNext = false;
-      }
-    }
-    @ViewChild('pdfTableAPR') pdfTableAPR: ElementRef;
-    @ViewChild('pdfAPR') pdfAPR: ElementRef;
-    downloadAsPDFAPR() {
-  
-      const doc = new jsPDF();
-      const pdfTable = this.pdfAPR.nativeElement;
-      var html = htmlToPdfmake(pdfTable.innerHTML);
-      const documentDefinition = { content: html };
-      pdfMake.createPdf(documentDefinition).open();
-  
-    }
-    async ExportWordAPR() {
-      const pdfTable = this.pdfTableAPR.nativeElement;
-      var converted = await asBlob(pdfTable.innerHTML, {
-        orientation: 'landscape',
-        margins: { top: 720 },
-      });
-      saveAs(converted, 'APRForm.docx');
+    if (Number(this.id) <= 5) {
+      this.btnShowNext = true;
     }
   }
+  updateNext() {
+debugger;
+    let count = this.tabset.tabs.length;
+    this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
+    if (Number(this.id) == 1) {
+      if (this.aprForm.invalid) {
+
+        for (const control of Object.keys(this.aprForm.controls)) {
+          this.aprForm.controls[control].markAsTouched();
+        }
+        return;
+
+      }
+      else {
+        const ShareHoldingFE: FormArray = this.fb.array(this.ShareHoldingFEArray);
+        this.aprForm.setControl('ShareHoldingFE', ShareHoldingFE);
+
+      }
+    }
+    else if (Number(this.id) == 2) {
+      if (this.sdsform.invalid) {
+
+        for (const control of Object.keys(this.sdsform.controls)) {
+          this.sdsform.controls[control].markAsTouched();
+        }
+        return;
+
+      }
+      // if (this.SDSArray.length == 0) {
+      //   for (const control of Object.keys(this.aprForm.controls)) {
+      //     this.aprForm.controls[control].markAsTouched();
+      //   }
+      //   return;
+      // }
+      else {
+        const SDSArray: FormArray = this.fb.array(this.SDSArray);
+        this.aprForm.setControl('SDSDetails', SDSArray);
+      }
+    }
+    else if (Number(this.id) == 3) {
+      if (this.declaration.invalid) {
+
+        for (const control of Object.keys(this.declaration.controls)) {
+          this.declaration.controls[control].markAsTouched();
+        }
+        return;
+
+      }
+    }
+    else if (Number(this.id) == 4) {
+      if (this.CAform.invalid) {
+
+        for (const control of Object.keys(this.CAform.controls)) {
+          this.CAform.controls[control].markAsTouched();
+        }
+        return;
+
+      }
+    }
+
+    if (Number(this.id) + 1 < count) {
+      this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) + 1)
+      this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
+      this.tabset.tabs[(Number(this.id)) + 1].active = true;
+
+      this.btnShow = true;
+    }
+    if (Number(this.id) + 1 == 5 || Number(this.id) == 6) {
+      this.btnShowNext = false;
+    }
+  }
+  @ViewChild('pdfTableAPR') pdfTableAPR: ElementRef;
+  @ViewChild('pdfAPR') pdfAPR: ElementRef;
+  downloadAsPDFAPR() {
+
+    const doc = new jsPDF();
+    const pdfTable = this.pdfAPR.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+  async ExportWordAPR() {
+    const pdfTable = this.pdfTableAPR.nativeElement;
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'APRForm.docx');
+  }
+}
 
 

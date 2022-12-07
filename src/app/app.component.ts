@@ -12,6 +12,7 @@ export class AppComponent {
 
 
   div1Function(){
+    debugger;
     this.div1=!this.div1;
     this.div2=false;
 }

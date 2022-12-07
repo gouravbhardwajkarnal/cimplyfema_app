@@ -1,102 +1,91 @@
 <div class="hpanel sub-sector-main">
     <h2 class="topic_title">FORM APR</h2>
-    <div class="container-fluid pt-2 card p-2">
-        <div class="row">
-
-            <div class="col-4 input-block mb-4">
-                <input type="text" id="APR_UIN" spellcheck="false" required class="form-control"
-                    formControlName="APR_UIN"
-                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
-                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)" class="invalid-feedback">
-                    <div *ngIf="APR_UIN.errors?.['required']">
-                        This field is required.
-                    </div>
-                    <div *ngIf="APR_UIN.errors?.['minlength']">
-                        This field must have at least 10 character.
-                    </div>
-                    <div *ngIf="APR_UIN.errors?.['maxlength']">
-                        This field must have at most 20 characters.
-                    </div>
-                </div>
-
-                <span class="placeholder">UIN No</span>
-
-            </div>
-            <div class="col-4 input-block mb-4">
-                <input type="text" id="APR_UIN" spellcheck="false" required class="form-control"
-                    formControlName="APR_UIN"
-                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
-                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)" class="invalid-feedback">
-                    <div *ngIf="APR_UIN.errors?.['required']">
-                        This field is required.
-                    </div>
-                    <div *ngIf="APR_UIN.errors?.['minlength']">
-                        This field must have at least 10 character.
-                    </div>
-                    <div *ngIf="APR_UIN.errors?.['maxlength']">
-                        This field must have at most 20 characters.
-                    </div>
-                </div>
-
-                <span class="placeholder">Name of the Indian Entity / Resident Individual </span>
-
-            </div>
-            <div class="col-4 input-block mb-4">
-                <input type="text" id="APR_UIN" spellcheck="false" required class="form-control"
-                    formControlName="APR_UIN"
-                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
-                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)" class="invalid-feedback">
-                    <div *ngIf="APR_UIN.errors?.['required']">
-                        This field is required.
-                    </div>
-                    <div *ngIf="APR_UIN.errors?.['minlength']">
-                        This field must have at least 10 character.
-                    </div>
-                    <div *ngIf="APR_UIN.errors?.['maxlength']">
-                        This field must have at most 20 characters.
-                    </div>
-                </div>
-
-                <span class="placeholder">Name of the JV/WOS
-                </span>
-
-            </div>
-            <div class="col-4 input-block mb-4">
-                <ng-select [items]="CurrencyCodeList" bindLabel="Code" placeholder="Select Currency"
-                    [(ngModel)]="CurrencyCode" [ngModelOptions]="{standalone: true}">
-                </ng-select>
-                <span class="placeholder">FCY</span>
-            </div>
-            <div class="col-4 input-block mb-4">
-                <ng-select [items]="BankList" bindLabel="BankName" placeholder="Select Bank" [(ngModel)]="BankName"
-                    [ngModelOptions]="{standalone: true}">
-                </ng-select>
-
-
-                <span class="placeholder">AD Bank</span>
-
-            </div>
-        </div>
-    </div>
     <div class="panel-body topic_drop p-0">
         <div class="act-sec">
             <div class="fema_tabs">
                 <nav>
                     <div id="myTab" role="tablist" class="nav nav-tabs">
-
+                        <div class="text-end w-100 p-2">
+                            <button class="btn btn-sm btn-primary me-2" *ngIf="btnShow" (click)="updatePrev()">
+                                Previous </button>
+                            <button class="btn btn-sm btn-primary" *ngIf="btnShowNext" (click)="updateNext()">
+                                Next </button>
+                        </div>
                         <tabset #tabset>
                             <tab heading="Instructions" id="0" disabled="disabled">
                                 <app-apr-instructions></app-apr-instructions>
-
-
                             </tab>
                             <tab heading="APR Detail" id="1" disabled="disabled">
                                 <form [formGroup]="aprForm">
                                     <div class="container-fluid pt-2 card p-2">
                                         <div class="row">
-                                            <div class="col-12 mb-4">
-                                                <label class="form-label">APR for the period </label> <br>
+                                            <div class="col-4 input-block mb-4">
+                                                <input type="text" id="APR_UIN" spellcheck="false" required
+                                                    class="form-control" formControlName="APR_UIN"
+                                                    [class.is-invalid]="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)">
+                                                <div *ngIf="APR_UIN.invalid && (APR_UIN.dirty || APR_UIN.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_UIN.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                    <div *ngIf="APR_UIN.errors?.['minlength']">
+                                                        This field must have at least 10 character.
+                                                    </div>
+                                                    <div *ngIf="APR_UIN.errors?.['maxlength']">
+                                                        This field must have at most 20 characters.
+                                                    </div>
+                                                </div>
+
+                                                <span class="placeholder">UIN No</span>
+
                                             </div>
+                                            <div class="col-4 input-block mb-4">
+                                                <input type="text" id="APR_NameIE" spellcheck="false" required
+                                                    class="form-control" formControlName="APR_NameIE"
+                                                    [class.is-invalid]="APR_NameIE.invalid && (APR_NameIE.dirty || APR_NameIE.touched)">
+                                                <div *ngIf="APR_NameIE.invalid && (APR_NameIE.dirty || APR_NameIE.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_NameIE.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+
+                                                <span class="placeholder">Name of the Indian Entity / Resident
+                                                    Individual </span>
+
+                                            </div>
+                                            <div class="col-4 input-block mb-4">
+                                                <input type="text" id="APR_NameJV" spellcheck="false" required
+                                                    class="form-control" formControlName="APR_NameJV"
+                                                    [class.is-invalid]="APR_NameJV.invalid && (APR_NameJV.dirty || APR_NameJV.touched)">
+                                                <div *ngIf="APR_NameJV.invalid && (APR_NameJV.dirty || APR_NameJV.touched)"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="APR_NameJV.errors?.['required']">
+                                                        This field is required.
+                                                    </div>
+                                                </div>
+                                                <span class="placeholder">Name of the JV/WOS
+                                                </span>
+
+                                            </div>
+                                            <div class="col-1 input-block mb-4">
+                                                <ng-select [items]="CurrencyCodeList" bindLabel="Code"
+                                                    placeholder="Select Currency" formControlName="APR_Currency">
+                                                </ng-select>
+                                                <span class="placeholder">FCY</span>
+                                            </div>
+                                            <div class="col-3 input-block mb-4">
+                                                <ng-select [items]="BankList" bindLabel="BankName"
+                                                    placeholder="Select Bank" formControlName="APR_Bank">
+                                                </ng-select>
+
+
+                                                <span class="placeholder">AD Bank</span>
+
+                                            </div>
+                                            <!-- <div class="col-12 mb-4">
+                                                <label class="form-label">APR for the period </label> <br>
+                                            </div> -->
                                             <!-- <div class="col-4 input-block mb-4">
                                                 <input type="text" id="APR_UIN" spellcheck="false" required
                                                     class="form-control" formControlName="APR_UIN"
@@ -122,7 +111,7 @@
                                                     spellcheck="false" required name="APR_From_Date"
                                                     formControlName="APR_From_Date"
                                                     [class.is-invalid]="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)">
-                                                <span class="placeholder">From Date</span>
+                                                <span class="placeholder">APR Period - From Date</span>
                                                 <div *ngIf="APR_From_Date.invalid && (APR_From_Date.dirty || APR_From_Date.touched)"
                                                     class="invalid-feedback">
                                                     <div *ngIf="APR_From_Date.errors?.['required']">
@@ -136,7 +125,7 @@
                                                     spellcheck="false" required name="APR_To_Date"
                                                     formControlName="APR_To_Date"
                                                     [class.is-invalid]="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)">
-                                                <span class="placeholder">To Date </span>
+                                                <span class="placeholder">APR Period - To Date </span>
                                                 <div *ngIf="APR_To_Date.invalid && (APR_To_Date.dirty || APR_To_Date.touched)"
                                                     class="invalid-feedback">
                                                     <div *ngIf="APR_To_Date.errors?.['required']">
@@ -154,7 +143,7 @@
                                                     accounting
                                                     year of theforeign entity </label><br>
                                             </div>
-                                            <div class="col-2 mb-4">
+                                            <!-- <div class="col-2 mb-4">
 
                                             </div>
 
@@ -164,7 +153,7 @@
                                             <div class="col-5 mb-4">
                                                 <label class="form-label">Share(%)
                                                 </label>
-                                            </div>
+                                            </div> -->
                                             <div class="col-2 mb-4">
                                                 <label class="form-label">i)Indian
                                                 </label>
@@ -193,7 +182,7 @@
                                                         This field is required.
                                                     </div>
                                                 </div>
-                                                <!-- <span class="placeholder">Share(%)</span> -->
+                                                <span class="placeholder">Share(%)</span>
 
                                             </div>
 
@@ -226,9 +215,10 @@
                                                         This field is required.
                                                     </div>
                                                 </div>
+                                                <span class="placeholder">Share(%)</span>
                                             </div>
                                             <hr>
-                                            <div class="col-sm-12 col-xl-8">
+                                            <div class="col-sm-12">
                                                 <label class="form-label">Whether the Indian Entity (IE)/ Resident
                                                     Individual (RI)/Trust/ Society has control in the foreign entity
                                                 </label>
@@ -255,79 +245,79 @@
                                                         This field is required.
                                                     </div>
                                                 </div>
+                                                <table class="table caption-top table-responsive">
+                                                    <caption>Change in the share holding pattern during the reporting
+                                                        year
+                                                        (Furnish the
+                                                        updated share holding pattern, if applicable, in the foreign
+                                                        entity)
+                                                    </caption>
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th scope="col"> Person resident in India
+                                                            </th>
+                                                            <th scope="col">%stake
+                                                            </th>
+                                                            <th scope="col">Foreign partner(s)
+                                                            </th>
+                                                            <th scope="col">%stake
+                                                            </th>
+                                                            <th scope="col">Total
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let dynamic of ShareHoldingFEArray; let i = index;">
+
+                                                            <td>
+                                                                <input [(ngModel)]="ShareHoldingFEArray[i].Person"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control" type="text" />
+                                                            </td>
+                                                            <td>
+                                                                <input [(ngModel)]="ShareHoldingFEArray[i].Pstake"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control" type="number"
+                                                                    (blur)="onBlur(ShareHoldingFEArray[i])" />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    [(ngModel)]="ShareHoldingFEArray[i].ForeignPartner"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control" type="text" />
+                                                            </td>
+                                                            <td>
+                                                                <input [(ngModel)]="ShareHoldingFEArray[i].FPstake"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    (blur)="onBlur(ShareHoldingFEArray[i])"
+                                                                    class="form-control" type="number" />
+                                                            </td>
+                                                            <td>
+                                                                <input [(ngModel)]="ShareHoldingFEArray[i].Total"
+                                                                    [ngModelOptions]="{standalone: true}" disabled
+                                                                    class="form-control" type="text" />
+                                                            </td>
+
+                                                            <td>
+                                                                <button type="button" (click)="addShareHoldingFE()"
+                                                                    class="btn btn-outline-primary me-2">+</button>
+                                                                <button type="button" *ngIf="ShareHoldingFElength>1"
+                                                                    (click)="deleteShareHoldingFE(i)"
+                                                                    class="btn btn-outline-primary me-2">-</button>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <td class="p-3">Total</td>
+                                                        <td class="p-3">{{TotalPstake}}</td>
+                                                        <td></td>
+                                                        <td class="p-3">{{TotalFPstake}}</td>
+                                                        <td class="p-3">{{Totalstake}}</td>
+                                                    </tfoot>
+                                                </table>
                                             </div>
-
-
-                                            <table class="table caption-top table-responsive">
-                                                <caption>Change in the share holding pattern during the reporting year
-                                                    (Furnish the
-                                                    updated share holding pattern, if applicable, in the foreign entity)
-                                                </caption>
-                                                <thead>
-                                                    <tr>
-
-                                                        <th scope="col"> Person resident in India
-                                                        </th>
-                                                        <th scope="col">%stake
-                                                        </th>
-                                                        <th scope="col">Foreign partner(s)
-                                                        </th>
-                                                        <th scope="col">%stake
-                                                        </th>
-                                                        <th scope="col">Total
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr *ngFor="let dynamic of ShareHoldingFEArray; let i = index;">
-
-                                                        <td>
-                                                            <input [(ngModel)]="ShareHoldingFEArray[i].Person"
-                                                                [ngModelOptions]="{standalone: true}"
-                                                                class="form-control" type="text" />
-                                                        </td>
-                                                        <td>
-                                                            <input [(ngModel)]="ShareHoldingFEArray[i].Pstake"
-                                                                [ngModelOptions]="{standalone: true}"
-                                                                class="form-control" type="number"
-                                                                (blur)="onBlur(ShareHoldingFEArray[i])" />
-                                                        </td>
-                                                        <td>
-                                                            <input [(ngModel)]="ShareHoldingFEArray[i].ForeignPartner"
-                                                                [ngModelOptions]="{standalone: true}"
-                                                                class="form-control" type="text" />
-                                                        </td>
-                                                        <td>
-                                                            <input [(ngModel)]="ShareHoldingFEArray[i].FPstake"
-                                                                [ngModelOptions]="{standalone: true}"
-                                                                (blur)="onBlur(ShareHoldingFEArray[i])"
-                                                                class="form-control" type="number" />
-                                                        </td>
-                                                        <td>
-                                                            <input [(ngModel)]="ShareHoldingFEArray[i].Total"
-                                                                [ngModelOptions]="{standalone: true}" disabled
-                                                                class="form-control" type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <button type="button" (click)="addShareHoldingFE()"
-                                                                class="btn btn-outline-primary me-2">+</button>
-                                                            <button type="button" *ngIf="ShareHoldingFElength>1"
-                                                                (click)="deleteShareHoldingFE(i)"
-                                                                class="btn btn-outline-primary me-2">-</button>
-
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                    <td>Total</td>
-                                                    <td>{{TotalPstake}}</td>
-                                                    <td></td>
-                                                    <td>{{TotalFPstake}}</td>
-                                                    <td>{{Totalstake}}</td>
-                                                </tfoot>
-                                            </table>
-
                                             <hr>
                                             <div class="col-12 mb-4">
                                                 <label class="form-label">Financial Position of the foreign entity for
@@ -377,6 +367,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-5 mb-4 input-block">
+                                                
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     name="APR_Dividend_Current" formControlName="APR_Dividend_Current"
                                                     [class.is-invalid]="APR_Dividend_Current.invalid && (APR_Dividend_Current.dirty || APR_Dividend_Current.touched)">
@@ -450,6 +441,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     name="APR_Dividend_CurYear" formControlName="APR_Dividend_CurYear"
                                                     [class.is-invalid]="APR_Dividend_CurYear.invalid && (APR_Dividend_CurYear.dirty || APR_Dividend_CurYear.touched)">
@@ -463,6 +455,7 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Dividend_commencement"
                                                     name="APR_Dividend_commencement"
@@ -480,6 +473,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" name="APR_Repayment_CurYear"
                                                     formControlName="APR_Repayment_CurYear" spellcheck="false" required
                                                     [class.is-invalid]="APR_Repayment_CurYear.invalid && (APR_Repayment_CurYear.dirty || APR_Repayment_CurYear.touched)">
@@ -492,6 +486,7 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" spellcheck="false" required=""
                                                     formControlName="APR_Repayment_commencement"
                                                     name="APR_Repayment_commencement"
@@ -509,6 +504,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                               
                                                 <input type="number" class="form-control"
                                                     formControlName="APR_EquityExport_CurYear" spellcheck="false"
                                                     required name="APR_EquityExport_CurYear"
@@ -522,6 +518,7 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_EquityExport_commencement"
                                                     name="APR_EquityExport_commencement"
@@ -539,6 +536,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Royalties_CurYear" name="APR_Royalties_CurYear"
                                                     [class.is-invalid]="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)">
@@ -551,6 +549,7 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Royalties_commencement"
                                                     name="APR_Royalties_commencement"
@@ -568,6 +567,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control"
                                                     formControlName="APR_Technical_CurYear" required spellcheck="false"
                                                     name="APR_Royalties_commencement"
@@ -581,6 +581,7 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Technical_commencement"
                                                     name="APR_Technical_commencement"
@@ -599,6 +600,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Consultancyfee_CurYear"
                                                     name="APR_Consultancyfee_CurYear"
@@ -612,6 +614,7 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" spellcheck="false" required
                                                     formControlName="APR_Consultancyfee_commencement"
                                                     name="APR_Consultancyfee_commencement"
@@ -629,6 +632,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Others_CurYear" name="APR_Others_CurYear"
                                                     [class.is-invalid]="APR_Others_CurYear.invalid && (APR_Others_CurYear.dirty || APR_Others_CurYear.touched)">
@@ -641,6 +645,7 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Others_commencement"
                                                     name="APR_Others_commencement"
@@ -658,6 +663,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Profit_CurYear" name="APR_Profit_CurYear"
                                                     [class.is-invalid]="APR_Profit_CurYear.invalid && (APR_Profit_CurYear.dirty || APR_Profit_CurYear.touched)">
@@ -670,6 +676,7 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control"
                                                     formControlName="APR_Profit_commencement"
                                                     name="APR_Profit_commencement" required spellcheck="false"
@@ -687,6 +694,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Retained_CurYear" name="APR_Retained_CurYear"
                                                     [class.is-invalid]="APR_Retained_CurYear.invalid && (APR_Retained_CurYear.dirty || APR_Retained_CurYear.touched)">
@@ -699,6 +707,7 @@
                                                 <span class="placeholder">Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_Retained_commencement"
                                                     name="APR_Retained_commencement"
@@ -716,6 +725,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_FDIforeign_CurYear"
                                                     name="APR_Retained_commencement"
@@ -729,6 +739,7 @@
                                                 <span class="placeholder"> Current Year </span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_FDIforeign_commencement"
                                                     name="APR_FDIforeign_commencement"
@@ -748,6 +759,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_exces_sshare_CurYear"
                                                     name="APR_exces_sshare_CurYear"
@@ -761,6 +773,7 @@
                                                 <span class="placeholder">Current Year</span>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
+                                                <span>{{aprForm.controls['APR_Currency'].value}}</span>
                                                 <input type="number" class="form-control" required spellcheck="false"
                                                     formControlName="APR_exces_sshare_commencement"
                                                     name="APR_exces_sshare_commencement"
@@ -785,13 +798,44 @@
                                 <div class="card p-2">
                                     <div class="col-sm-12 mb-4 mt-2 ">
                                         <label class="form-label">@ Furnish 15 / 17-digit transaction number
-                                            allotted by
-                                            Reserve
+                                            allotted by Reserve
                                             Bank allotted at the time of reporting of remittance in the online OID
                                             application.</label>
                                     </div>
+                                    <form [formGroup]="sdsform">
+                                    <div class="col-sm-12">
+                                        <label class="form-label">Whether SDS Applicable
+                                        </label>
+                                        <div class="clearfix"></div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" required
+                                                formControlName="APR_SDS_Control" name="APR_SDS_Control"
+                                                value="Yes"
+                                                [class.is-invalid]="APR_SDS_Control.invalid && (APR_SDS_Control.dirty || APR_SDS_Control.touched)">
+
+                                            <label class="form-check-label" for="APR_SDS_Control">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" required
+                                                formControlName="APR_SDS_Control" name="APR_SDS_Control"
+                                                value="No"
+                                                [class.is-invalid]="APR_SDS_Control.invalid && (APR_SDS_Control.dirty || APR_SDS_Control.touched)">
+                                            <label class="form-check-label" for="APR_SDS_Control">No</label>
+                                        </div>
+
+                                        <div *ngIf="APR_SDS_Control.invalid && (APR_SDS_Control.dirty || APR_SDS_Control.touched)"
+                                            class="invalid-feedback">
+                                            <div *ngIf="APR_SDS_Control.errors?.['required']">
+                                                This field is required.
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                    </form>
                                     <hr>
-                                    <div class="flex-nowrap my-2 overflow-auto row mt-3">
+                                   
+                                    <div class="flex-nowrap my-2 overflow-auto row mt-3" 
+                                    *ngIf="sdsform.controls['APR_SDS_Control'].value=='Yes'">
                                         <div class="col-4">
                                             <div class="col mb-4">
                                                 Name of SDS
@@ -1121,8 +1165,7 @@
                                                                 </div>
                                                                 <span class="placeholder">Signature of authorized
                                                                     official
-                                                                    of the IE approved by
-                                                                    the Board/ RI
+                                                                    of the IE/ RI
                                                                 </span>
                                                             </div>
                                                             <div class="col-sm-4 col-xl-4 mb-3 input-block">
@@ -1148,7 +1191,7 @@
                                                                         This field must have at most 250 characters.
                                                                     </div>
                                                                 </div>
-                                                                <span class="placeholder">Designation of the
+                                                                <span class="placeholder">Name of the
                                                                     Authorized
                                                                     Official of the IE/
                                                                     RI </span>
@@ -1208,7 +1251,7 @@
                                                             </div>
                                                             <div class="col-sm-4 col-xl-4 mb-3 input-block">
                                                                 <input type="date" id="APR_Dec_Date" name="APR_Dec_Date"
-                                                                    formControlName="APR_Dec_Date" spellcheck="false"
+                                                                    formControlName="APR_Dec_Date" spellcheck="false" disabled
                                                                     required class="form-control form-control-sm"
                                                                     [class.is-invalid]="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)">
                                                                 <div *ngIf="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)"
@@ -1270,8 +1313,8 @@
                                                             <div class="col-sm-4 col-xl-4 input-block">
 
                                                                 <input type="text" id="APR_Dec_Stamp" spellcheck="false"
-                                                                    required name="APR_Dec_Stamp"
-                                                                    formControlName="APR_Dec_Stamp" required
+                                                                     name="APR_Dec_Stamp"
+                                                                    formControlName="APR_Dec_Stamp"
                                                                     minlength="1" maxlength="250"
                                                                     class="form-control form-control-sm"
                                                                     [class.is-invalid]="APR_Dec_Stamp.invalid && (APR_Dec_Stamp.dirty || APR_Dec_Stamp.touched)">
@@ -1328,12 +1371,12 @@
                                                         <tr>
                                                             <th scope="row">i.</th>
                                                             <td [ngClass]="APR_CA_A.value == true ? 'del' : 'notdel'">
-                                                                APR for the year ended <span>{{APR_To_Date}}</span> is
+                                                                APR for the year ended <span>{{aprForm.controls['APR_To_Date'].value | date: 'dd-MM-yyyy'}}</span> is
                                                                 prepared on the basis of
                                                                 audited/
                                                                 unaudited balance sheet of the foreign entity for the
                                                                 year
-                                                                ended <span>{{APR_To_Date}}</span>.
+                                                                ended <span>{{aprForm.controls['APR_To_Date'].value | date: 'dd-MM-yyyy'}}</span>.
 
                                                             </td>
                                                             <td>
@@ -1353,7 +1396,7 @@
                                                         <tr>
                                                             <th scope="row">ii.</th>
                                                             <td [ngClass]="APR_CA_B.value == true ? 'del' : 'notdel'">
-                                                                APR for the year ended <span>{{APR_To_Date}}</span> is
+                                                                APR for the year ended <span>{{aprForm.controls['APR_To_Date'].value | date: 'dd-MM-yyyy'}}</span> is
                                                                 prepared on the basis of
                                                                 unaudited
                                                                 balance sheet of the foreign entity since audit is not
@@ -1579,8 +1622,8 @@
                                             </div>
                                             <div class="col-sm-4 col-xl-4 input-block">
 
-                                                <input type="text" id="APR_CA_Stamp" spellcheck="false" required
-                                                    name="APR_CA_Stamp" formControlName="APR_CA_Stamp" required
+                                                <input type="text" id="APR_CA_Stamp" spellcheck="false"
+                                                    name="APR_CA_Stamp" formControlName="APR_CA_Stamp"
                                                     minlength="1" maxlength="250" class="form-control form-control-sm"
                                                     [class.is-invalid]="APR_CA_Stamp.invalid && (APR_CA_Stamp.dirty || APR_CA_Stamp.touched)">
                                                 <div *ngIf="APR_CA_Stamp.invalid && (APR_CA_Stamp.dirty || APR_CA_Stamp.touched)"
@@ -4259,17 +4302,18 @@
                                     </div>
                                 </div>
                             </tab>
-                        </tabset>
-                        <div>
 
-                            <button class="btn btn-sm btn-primary mb-3" *ngIf="btnShow" (click)="updatePrev()">
-                                Previous </button>
-                            <button class="btn btn-sm btn-primary mb-3" *ngIf="btnShowNext" (click)="updateNext()">
-                                Next </button>
-                        </div>
+                        </tabset>
+
 
                     </div>
                 </nav>
+                <div>
+                    <button class="btn btn-sm btn-primary ml-2 me-2" *ngIf="btnShow" (click)="updatePrev()">
+                        Previous </button>
+                    <button class="btn btn-sm btn-primary" *ngIf="btnShowNext" (click)="updateNext()">
+                        Next </button>
+                </div>
             </div>
         </div>
     </div>

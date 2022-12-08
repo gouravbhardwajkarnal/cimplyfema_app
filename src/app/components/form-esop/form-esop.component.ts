@@ -30,6 +30,7 @@ type AOA = any[][];
   providers: [DatePipe]
 })
 export class FormEsopComponent implements OnInit {
+  Tabindexc: number = 0;
   today = new Date();
   flagStrike: boolean = true;
   dateresolution: any;
@@ -169,6 +170,7 @@ export class FormEsopComponent implements OnInit {
 
 
   onSubmitESOPFrom() {
+    debugger
     const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
     this.esopFormlist.setControl('GrantDetails', grantFormArray);
 
@@ -182,6 +184,7 @@ export class FormEsopComponent implements OnInit {
     else {
       return this.apiService.createFormEsop(this.esopFormlist.value).subscribe({
         complete: () => {
+          this.changeTab()
           alert('FromEsop successfully created!');
           //console.log('FromEsop successfully created!');
           //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
@@ -193,7 +196,7 @@ export class FormEsopComponent implements OnInit {
     }
   }
 
-  Tabindexc: number = 0;
+ 
   /*   confirmTabSwitch(event) {
       this.tabset.tabs.forEach((item, index) => {
         if (item.heading == event.target.innerText) {
@@ -396,7 +399,7 @@ export class FormEsopComponent implements OnInit {
       margins: { top: 720 },
       
     });
-    saveAs(converted, 'Covering.docx');
+    saveAs(converted, 'RBICoveringLetter.docx');
   }
 
   async ExportWord2() {
@@ -406,7 +409,7 @@ export class FormEsopComponent implements OnInit {
       orientation: 'portrait',
       margins: { top: 720 },
     });
-    saveAs(converted, 'CSCertificate.docx');
+    saveAs(converted, 'CompanySecretaryCertificate.docx');
   }
   async ExportWord3() {
     const pdfTable = this.pdfTable3.nativeElement;
@@ -415,7 +418,7 @@ export class FormEsopComponent implements OnInit {
       orientation: 'portrait',
       margins: { top: 720 },
     });
-    saveAs(converted, 'Declaration.docx');
+    saveAs(converted, 'AuthorisedRepresentativeofCompany.docx');
   }
   async ExportWord4() {
     const pdfTable = this.pdfTable4.nativeElement;

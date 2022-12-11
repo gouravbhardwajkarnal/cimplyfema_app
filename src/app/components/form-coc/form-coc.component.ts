@@ -1,17 +1,26 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
+
+import jsPDF from 'jspdf';
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import htmlToPdfmake from 'html-to-pdfmake';
 import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
+import { ignoreElements } from 'rxjs';
 import { ApiService } from 'src/app/service/api.service';
 import {COC_FDIODITableAList,COC_FDIODITableBList,COC_FDIODITableCList,COC_FDIODIAuthorisedCapitalList,CompoundingBackList,CompoundingTransactionList,CompoundingRegulatoryList,CompoundingDelayReasonsList,CompoundingPetitionRequestList} from 'src/app/model/COCFdi.model';
-type AOA = any[][];
+import { asBlob } from 'html-docx-js-typescript';
 @Component({
   selector: 'app-form-coc',
   templateUrl: './form-coc.component.html',
   styleUrls: ['./form-coc.component.css']
 })
 export class FormCocComponent implements OnInit {
+  @ViewChild('multiSelect') multiSelect;
   BackSubmissionArray: Array<CompoundingBackList> = [];
   TransactionSubmissionArray: Array<CompoundingTransactionList> = [];
   RegulatorySubmissionArray: Array<CompoundingRegulatoryList> = [];
@@ -51,7 +60,7 @@ export class FormCocComponent implements OnInit {
  SubmodulenameDes: string;
  COC_FDIInstructions:boolean=true;
  COC_FDIApplicantDetails:boolean=false;
- COC_FDIInstructionsButton:boolean=false;
+ COC_FDIInstructionsButton:boolean=true;
  COC_FDICompoundingDetails:boolean=false;
  COC_FDICompoundingSubmissions:boolean=false;
  COC_FDIODIECB:boolean=false;
@@ -298,7 +307,10 @@ isLinear = false;
     else if(this.TableATotAmountData!=undefined){this.TableATotAmountData = this.TableATotAmountData + parseFloat(data.COC_FDIODITabAAmount);}
   };
   onModuleSelect(selectedModule) {
+    debugger;
+    
     this.SubmodulenameArray.length=0;
+    //this.multiSelect.toggleSelectAll();
     if(selectedModule.id==1)
     {
     /* this.COC_FDIFormDiv=true; */}
@@ -356,27 +368,39 @@ isLinear = false;
           this.SubmodulenameArray.splice(this.SubmodulenameArray.indexOf(order), 1);
       }      
      }
-    //this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===selectedSubModule.name)[0].BackgroundA});
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
     this.COC_FDIFemaRegNoArray.push({ COC_FDINatContname: this.Submodulename, COC_FDINatContDes: this.SubmodulenameDes});
     //this.BackSubmissionArray.push({COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===selectedSubModule.name)[0].BackgroundB});
     this.OpenFdiForm(selectedSubModule);
   }
   CheckAgreeTerm(Val) {
-    if(Val.currentTarget.checked==true){this.COC_FDIInstructionsButton=true;}
-    else{this.COC_FDIInstructionsButton=false;}
+    if(Val.currentTarget.checked==true){this.COC_FDIInstructionsButton=false;}
+    else{this.COC_FDIInstructionsButton=true;}
     debugger;
   }
   RBI_FDISubmit(Val) {
 debugger;
     this.COC_FDIInstructions=false;
     this.COC_FDIApplicantDetails=false;
-    this.COC_FDIInstructionsButton=false;
+    this.COC_FDIInstructionsButton=true;
     this.COC_FDICompoundingDetails=false;
     this.COC_FDICompoundingSubmissions=false;
     this.COC_FDIODIECB=false;
     this.COC_FDIOtherAnnexures=false;
     this.COC_FDIDocPreviewg=false;
+    if(Val=='4'){
+    this.BackSubmissionArray.length=0;
+    this.DelayReasonsSubmissionArray.length=0;
+    this.RegulatorySubmissionArray.length=0;
+    this.PetitionRequestSubmissionArray.length=0;
+    for(let Fema of  this.SubmodulenameArray){
+      if(this.FemaRegulationsList.length>0){
+    this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].BackgroundA});
+    this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].BackgroundB});
+    this.DelayReasonsSubmissionArray.push({ COC_FDI_DelayReasons:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].DelayReasons});
+    this.RegulatorySubmissionArray.push({ COC_FDI_Regulatory:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].RegulatoryFramework});
+    this.PetitionRequestSubmissionArray.push({ COC_FDI_PetitionRequest:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].PetitionRequest});
+    }};}
     if(Val=='1'){this.COC_FDIInstructions=true;}
     if(Val=='2'){this.COC_FDIApplicantDetails=true;};if(Val=='3'){this.COC_FDICompoundingDetails=true;};if(Val=='4'){this.COC_FDICompoundingSubmissions=true;};
     if(Val=='5'){this.COC_FDIODIECB=true;};if(Val=='7'){this.COC_FDIDocPreviewg=true;};if(Val=='6'){this.COC_FDIOtherAnnexures=true;};
@@ -427,6 +451,143 @@ debugger;
         },
       });
     }
+  }
+
+  @ViewChild('pdfTable1') pdfTable1: ElementRef;
+  @ViewChild('pdfTable2') pdfTable2: ElementRef;
+  @ViewChild('pdfTable3') pdfTable3: ElementRef;
+  @ViewChild('pdfTable4') pdfTable4: ElementRef;
+  @ViewChild('pdfTable5') pdfTable5: ElementRef;
+  @ViewChild('pdfTable6') pdfTable6: ElementRef;
+  @ViewChild('pdfTable7') pdfTable7: ElementRef;
+
+  downloadAsPDF1() {
+  
+    const doc = new jsPDF();
+    const pdfTable = this.pdfTable1.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+  downloadAsPDF2() {
+    const doc = new jsPDF();
+    const pdfTable = this.pdfTable2.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+  downloadAsPDF3() {
+    
+    const doc = new jsPDF();
+    const pdfTable = this.pdfTable3.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+  downloadAsPDF4() {
+    
+    const doc = new jsPDF();
+    const pdfTable = this.pdfTable4.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML,{tableAutoSize:false});
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+
+  downloadAsPDF5() {
+    
+    const doc = new jsPDF();
+    const pdfTable = this.pdfTable5.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML,{tableAutoSize:false});
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+  downloadAsPDF6() {
+    
+    const doc = new jsPDF();
+    const pdfTable = this.pdfTable6.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML,{tableAutoSize:false});
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+  downloadAsPDF7() {
+    
+    const doc = new jsPDF();
+    const pdfTable = this.pdfTable7.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML,{tableAutoSize:false});
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+  async ExportWord1() {
+    const pdfTable = this.pdfTable1.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+      
+    });
+    saveAs(converted, 'Covering.docx');
+  }
+
+  async ExportWord2() {
+    const pdfTable = this.pdfTable2.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'CSCertificate.docx');
+  }
+  async ExportWord3() {
+    const pdfTable = this.pdfTable3.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Declaration.docx');
+  }
+  async ExportWord4() {
+    const pdfTable = this.pdfTable4.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Annexure.docx');
+  }
+  async ExportWord5() {
+    const pdfTable = this.pdfTable5.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Annexure.docx');
+  }
+  async ExportWord6() {
+    const pdfTable = this.pdfTable6.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Annexure.docx');
+  }
+  async ExportWord7() {
+    const pdfTable = this.pdfTable7.nativeElement;
+
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'Annexure.docx');
   }
 }
 

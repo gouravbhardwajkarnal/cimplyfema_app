@@ -1,5 +1,3 @@
- 
-
  <div clas="container">
     <div class="row mt-3">
       <div class="col-sm-12 col-xl-4">
@@ -17,7 +15,7 @@
       <div class="col-sm-12 col-xl-4">
         <label class="form-label"> Select Submodule
         </label>
-        <ng-multiselect-dropdown
+        <ng-multiselect-dropdown #multiSelect
         [placeholder]="'Select Sub Topic'"
         [settings]="SubModuleSettings"
         [data]="filteredsubmodule"
@@ -117,7 +115,7 @@
     <label class="form-check-label" for="flexCheckChecked">
         Yes I Agree With your Terms and Conditions.
     </label><br>
-    <button type="button" *ngIf="COC_FDIInstructionsButton" (click)="RBI_FDISubmit('2')" class="btn btn-primary">Next</button>
+    <button type="button" [disabled]="COC_FDIInstructionsButton" (click)="RBI_FDISubmit('2')" class="btn btn-primary">Next</button>
   </div> 
 <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIApplicantDetails">
     <div class="container-fluid position-relative d-flex p-0">
@@ -1220,55 +1218,48 @@
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    <h6>D.Information Annexure </h6>
+                                    <h6>D.Declaration/Undertaking  </h6>
                                 </th>
                                 <td><img src="assets/images/word.png"
-                                        style="cursor:pointer"></td>
+                                  (click)="ExportWord4()" style="cursor:pointer">
+                          </td>
                                 <td><img src="assets/images/pdf.png"
                                         (click)="downloadAsPDF4()"
                                         style="cursor:pointer"></td>
                             </tr>
                             <tr>
                               <th scope="row">
-                                  <h6>E.Declaration / Undertaking </h6>
+                                  <h6>E.Letter of authority </h6>
                               </th>
                               <td><img src="assets/images/word.png"
-                                      style="cursor:pointer"></td>
+                                (click)="ExportWord5()" style="cursor:pointer">
+                        </td>
                               <td><img src="assets/images/pdf.png"
-                                      (click)="downloadAsPDF4()"
+                                      (click)="downloadAsPDF5()"
                                       style="cursor:pointer"></td>
                           </tr>
                           <tr>
                             <th scope="row">
-                                <h6>F.ECS mandate Form </h6>
+                                <h6>F.Undertaking </h6>
                             </th>
                             <td><img src="assets/images/word.png"
-                                    style="cursor:pointer"></td>
+                              (click)="ExportWord6()" style="cursor:pointer">
+                      </td>
                             <td><img src="assets/images/pdf.png"
-                                    (click)="downloadAsPDF4()"
+                                    (click)="downloadAsPDF6()"
                                     style="cursor:pointer"></td>
                         </tr>
                         <tr>
                           <th scope="row">
-                              <h6>G.PAN Card copy of the Company </h6>
+                              <h6>G.ECS Mandate Letter </h6>
                           </th>
                           <td><img src="assets/images/word.png"
-                                  style="cursor:pointer"></td>
+                            (click)="ExportWord7()" style="cursor:pointer">
+                    </td>
                           <td><img src="assets/images/pdf.png"
-                                  (click)="downloadAsPDF4()"
+                                  (click)="downloadAsPDF7()"
                                   style="cursor:pointer"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">
-                            <h6>H.Demand Draft of INR 5000 in drawn in favour of Reserve Bank of India, payable at XXXXXXXX </h6>
-                        </th>
-                        <td><img src="assets/images/word.png"
-                                style="cursor:pointer"></td>
-                        <td><img src="assets/images/pdf.png"
-                                (click)="downloadAsPDF4()"
-                                style="cursor:pointer"></td>
-                    </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -1279,6 +1270,969 @@
   </div>
   <button type="button" (click)="RBI_FDISubmit('6')" class="btn btn-primary">Back</button>
   <button type="button" (click)="onSubmitCOCFrom()" class="btn btn-primary">Submit</button>
+</div>
+<div style="display: none;">
+  <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+      id="pdfTable1" #pdfTable1>
+
+      <p>Date : XX-XX-XXXX&lt;date on which application was created i.e. current date&gt;</p>
+      <p>&nbsp;</p>
+      <p>To</p>
+      <p>XXXXXXXXXXXXXXThe Compounding Authority</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>split the text based on comma and show it separate lines</p>
+      <p>[Insert Address]</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>Dear Sir / Madam</p>
+      <p>&nbsp;</p>
+      <p><strong>Sub:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application for Compounding under the </strong><strong>Foreign Exchange Management Act, 1999 for (1) XXXXXXXXXXXXXXXXXXXXXXX (2) XXXXXXXXXXXXXXXXXXXXXXX ([Insert Sub-Topics] &ndash; [Insert Company Name]. </strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p><strong>Ref:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Insert Entire RBI Reference] Dipesh &ndash; where do we have to pick this value from</strong></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><strong>[Insert Company Name]</strong>(&ldquo;the Company&rdquo;) is herewith submitting a compounding application with the RBI for compounding of contraventions under <strong>(1) XXXXXXXXXXXXXXXXXXXXXXX (2) XXXXXXXXXXXXXXXXXXXXXXX ([Insert Sub-Topics]</strong>in reference to the <strong>RBI Letter no. [Insert Entire RBI Reference]</strong>In this regard, the Company is enclosing herewith the following documents as under:</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <table>
+      <tbody>
+      <tr>
+      <td width="77">
+      <p><strong>Sr. No.</strong></p>
+      </td>
+      <td width="506">
+      <p><strong>Particulars</strong></p>
+      </td>
+      <td width="119">
+      <p><strong>Annexure</strong></p>
+      </td>
+      </tr>
+      <tr>
+      <td width="77">
+      <p>1.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+      </td>
+      <td width="506">
+      <p>Application for compounding in the specified format provided under Foreign Exchange (Compounding Proceedings) Rules, 2000 in duplicate</p>
+      </td>
+      <td width="119">
+      <p>1</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="77">
+      <p>2.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+      </td>
+      <td width="506">
+      <p>Facts of the case, our submissions, compounding request and petition</p>
+      </td>
+      <td width="119">
+      <p>2</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="77">
+      <p>3.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+      </td>
+      <td width="506">
+      <p>Copy of <strong>RBI Letter no. XXXXXXXXXXX / Email dated XX-XX-XXXX</strong><strong>&lt;date of application&gt;</strong> for approval of Downstream Investment.</p>
+      </td>
+      <td width="119">
+      <p>3</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="77">
+      <p>4.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+      </td>
+      <td width="506">
+      <p>Details to be furnished in accordance with Annex &ndash; II &ndash; FDI of Master Circular No.9/ 2015-16 dated July 1, 2015 read with AP (DIR Series) Circular No. 20 dated August 12, 2013</p>
+      </td>
+      <td width="119">
+      <p>4</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="77">
+      <p>5.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+      </td>
+      <td width="506">
+      <p>Declaration in accordance with Annex &ndash; II &ndash; FDI of Master Circular No.9/ 2015-16 dated July 1, 2015</p>
+      </td>
+      <td width="119">
+      <p>5</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="77">
+      <p>6.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+      </td>
+      <td width="506">
+      <p>ECS mandate Form</p>
+      </td>
+      <td width="119">
+      <p>6</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="77">
+      <p>7.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+      </td>
+      <td width="506">
+      <p>PAN Card copy of the Company</p>
+      </td>
+      <td width="119">
+      <p>7</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="77">
+      <p>8.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+      </td>
+      <td width="506">
+      <p>MOA and AOA of the Company</p>
+      </td>
+      <td width="119">
+      <p>8</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="77">
+      <p>9.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+      </td>
+      <td width="506">
+      <p>Demand Draft of INR 5000 in drawn in favour of Reserve Bank of India, payable at XXXXXXX&lt;value to be picked from &ldquo;Payable at&rdquo; field in Compounding Details Tab&gt;</p>
+      </td>
+      <td width="119">
+      <p>9</p>
+      </td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>Should you require any further information/ clarifications, we request you to contact <strong>below mentioned company/authorised representatives</strong></p>
+      <p>&nbsp;</p>
+      <table>
+      <tbody>
+      <tr>
+      <td colspan="2" width="354">
+      <p><strong>Contact : Company&rsquo;s Representative</strong></p>
+      </td>
+      <td colspan="2" width="384">
+      <p><strong>Contact : Authorised Representative</strong></p>
+      </td>
+      </tr>
+      <tr>
+      <td width="115">
+      <p>Name</p>
+      </td>
+      <td width="239">
+      <p>XXXXXXXXXX</p>
+      </td>
+      <td width="55">
+      <p>Name</p>
+      </td>
+      <td width="329">
+      <p>XXXXXXXXXX</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="115">
+      <p>Designation</p>
+      </td>
+      <td width="239">
+      <p>XXXXXXXXXX</p>
+      </td>
+      <td width="55">
+      <p>Designation</p>
+      </td>
+      <td width="329">
+      <p>XXXXXXXXXX</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="115">
+      <p>Tel</p>
+      </td>
+      <td width="239">
+      <p>XXXXXXXXXX</p>
+      </td>
+      <td width="55">
+      <p>Tel</p>
+      </td>
+      <td width="329">
+      <p>XXXXXXXXXX</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="115">
+      <p>Fax</p>
+      </td>
+      <td width="239">
+      <p>XXXXXXXXXX</p>
+      </td>
+      <td width="55">
+      <p>Fax</p>
+      </td>
+      <td width="329">
+      <p>XXXXXXXXXX</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="115">
+      <p>Cell</p>
+      </td>
+      <td width="239">
+      <p>XXXXXXXXXX</p>
+      </td>
+      <td width="55">
+      <p>Cell</p>
+      </td>
+      <td width="329">
+      <p>XXXXXXXXXX</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="115">
+      <p>Email</p>
+      </td>
+      <td width="239">
+      <p>XXXXXXXXXX</p>
+      </td>
+      <td width="55">&nbsp;</td>
+      <td width="329">&nbsp;</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <p>All the Company representative fields values will come from Applicant Details tab</p>
+      <p>All the Authorised Representative fields will come from Compounding Authority section in Compounding Details Tab</p>
+      <p>&nbsp;</p>
+      <p>Yours sincerely,</p>
+      <p>&nbsp;</p>
+      <p><strong>For [Insert Company Name]</strong><strong>&nbsp; - value will come from the Applicant Details tab </strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p><strong>XXXXXXXXXX</strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p><strong>[Authorised Signatory / Director]</strong></p>
+      <p><strong>Place:&nbsp; XXXXXXXXXX</strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+  </div>
+  <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+      id="pdfTable2" #pdfTable2>
+      <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Annexure 1</strong></p>
+<p><strong>Form </strong></p>
+<p><strong>(See Rule 4 or 5)</strong></p>
+<p><strong>(To be filled in duplicate and shall be accompanied by certified copy of the memorandum issued)</strong></p>
+<p>&nbsp;</p>
+<table width="797">
+<tbody>
+<tr>
+<td width="52">
+<p>1.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="259">
+<p>Name of the Applicant&nbsp; (In BLOCK LETTERS)</p>
+</td>
+<td colspan="2" width="486">
+<p><strong>[Insert Company / Applicant Name]</strong></p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>2.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="259">
+<p>Full Address of the Applicant</p>
+</td>
+<td width="116">
+<p>Address</p>
+</td>
+<td width="370">
+<p><strong>[Insert Company / Applicant Address]</strong></p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>&nbsp;</p>
+</td>
+<td width="259">
+<p>&nbsp;</p>
+</td>
+<td width="116">
+<p>Phone No.</p>
+</td>
+<td width="370">
+<p><strong>[Insert Company / Applicant Contact]</strong></p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>&nbsp;</p>
+</td>
+<td width="259">
+<p>&nbsp;</p>
+</td>
+<td width="116">
+<p>Fax No.</p>
+</td>
+<td width="370">
+<p><strong>[Insert Company / Applicant Contact]</strong></p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>&nbsp;</p>
+</td>
+<td width="259">
+<p>&nbsp;</p>
+</td>
+<td width="116">
+<p>Email ID</p>
+</td>
+<td width="370">
+<p><strong>[Insert Company / Applicant Email]</strong></p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>3.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="259">
+<p>Whether the Applicant is resident in India or resident outside India? (please refer to Section 2 (v) of the Act)</p>
+</td>
+<td colspan="2" width="486">
+<p><strong>The applicant is a Companyregistered under the provisions of Companies Act, 1956 / Companies Act, 2013 and is resident in India in terms of Section 2(v) of FEMA.&nbsp; </strong></p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>4.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="259">
+<p>Name of the Adjudicating Authority before whom the case in pending</p>
+</td>
+<td colspan="2" width="486">
+<p><strong>Not Applicable</strong></p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>5.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="259">
+<p>Nature of Contravention [according to sub-section (1) of section 13]</p>
+</td>
+<td colspan="2" width="486">
+<p><strong>[Insert All Sub-topics]. The contraventions have been described in Annexure&nbsp;2</strong></p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>6.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="259">
+<p>Brief Facts of the Case</p>
+</td>
+<td colspan="2" width="486">
+<p><strong>Please refer Annexure 2</strong></p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>7.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="259">
+<p>Details of Fee for application for compounding</p>
+</td>
+<td colspan="2" width="486">
+<p><strong>Demand Draft No. XXXXXX</strong>&lt;value to be picked from &ldquo;Demand Draft No&rdquo; field in Compounding Details Tab&gt;<strong>dated XXXXXX</strong>&lt;value to be picked from &ldquo;Demand Draft Date&rdquo; field in Compounding Details Tab&gt;<strong>for Rs. 5,000/- (Rupees Five Thousand Only) in favor of Reserve Bank of India, payable at XXXXXX</strong>&lt;value to be picked from &ldquo;Payable at&rdquo; field in Compounding Details Tab&gt;</p>
+</td>
+</tr>
+<tr>
+<td width="52">
+<p>8.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="259">
+<p>Any other information relevant to the case</p>
+</td>
+<td colspan="2" width="486">
+<p>Please refer <strong>Annexure 2</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>I declare that the particulars given are true and correct to the best of our knowledge and belief and that I am willing to accept any direction/order of the Compounding Authority in connection with compounding of our case.</p>
+<p>&nbsp;</p>
+<p>Yours sincerely,</p>
+<p>&nbsp;</p>
+<p><strong>For [Insert Company Name]</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>XXXXXXXXXX</strong></p>
+<p><strong>[Authorised Signatory / Director]</strong></p>
+<p><strong>Place:&nbsp; XXXXXXXXXX</strong></p>
+<p>&nbsp;</p>
+  </div>
+  <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+      id="pdfTable3" #pdfTable3>
+      <p>Annexure 2<br />All the values to be picked from Compounding Submissions according to the respective sections.<br />1. BACKGROUND<br /> <br />1.1 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>1.2 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>1.3 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>2. CONTRAVENTIONS AND REASONS FOR CONTRAVENTIONS</p>
+<p>2.1 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>2.2 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>2.3 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>&nbsp;</p>
+<p>3. REGULATORY FRAMEWORK</p>
+<p>3.1 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>3.2 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>4. DELAY REASONS</p>
+<p>3.3 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>3.4 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p><br />5. PETITION REQUEST</p>
+<p>4.1 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p><br />Yours sincerely, <br />For [Insert Company Name]</p>
+<p><br />XXXXXXXXXX<br />[Authorised Signatory / Director]<br />Place: XXXXXXXXXX&lt;what value needs to be populated here &gt;<br />Date: XXXXXXX&lt;date of application&gt;</p>
+<p>&nbsp;</p>
+  </div>
+  <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+      id="pdfTable4" #pdfTable4>
+      PrivacyPrivacy
+Facebook
+Twitter
+Linkedin
+Reddit
+Word to Clean HTML ConverterWord HTML
+
+Undo New page indentation compress encoding 
+option ico
+option2 
+option3
+option4 
+option5
+option6 
+option7
+option8Clean
+-
+<p><strong>Annexure&nbsp;4</strong></p>
+<p>To</p>
+<p>The Compounding Authority&lt;this would the same values as the RBI Covering Letter&gt;</p>
+<p>Cell for Effective Implementation of FEMA (CEFA)</p>
+<p>Reserve Bank of India</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Dear Sir/ Madam,</p>
+<p>&nbsp;</p>
+<p><strong>Sub: Application for Compounding &ndash; Undertaking</strong></p>
+<p>&nbsp;</p>
+<p>I/We, <strong>XXXXXXXXXXXXXXXXXXXXX</strong>hereby confirm/declare that we are not under any enquiry/investigation/adjudication by any agency such as Directorate of Enforcement, CBI etc. as on the date of this application.</p>
+<p>&nbsp;</p>
+<p>I/We further undertake to inform to the Compounding Authority / Reserve Bank of India immediately, in writing, if any enquiry/investigation/adjudication proceedings are initiated by any agency against us at any time hereafter but on or before the date of issuance of the compounding order in respect of the compounding application filed by us.</p>
+<p>&nbsp;</p>
+<p>We further undertake and confirm that no appeal has been filed by us under section 17 or section 19 of FEMA, 1999.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Yours sincerely,</p>
+<p><strong>For XXXXXXXXXXXXXXXXXXXXX</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>XXXXXXXXXXX</strong></p>
+<p><strong>[Director]</strong></p>
+<p><strong>Place: Bangalore</strong></p>
+<p><strong>Date: XXXXXXX</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+Characters: 1542
+Sample
+ 
+×
+Paste or compose your doc in the editor and switch to HTML view to get the code!
+Word Doc to HTML Online Converter
+Word Document to HTML Online Converter
+Paste your doc and switch to the HTML tab
+Free online Word to HTML converter with built-in code cleaning features and easy switch between the visual and source editors. It works perfectly for any document conversion, like Microsoft Word, Excel, PowerPoint, PDF, Google Docs, Sheets, and many more. You can also use this tool for composing web content from scratch or just to tidy up the dirty markup.
+
+As a legacy of the well-known but discontinued WordOff online tool we wanted to keep the user interface as simple as possible and adding many new features according to our visitors' feedbacks.
+
+
+How to Convert Doc to HTML?
+The process is very simple with this free online tool and it requirest just a few simple steps:
+
+Open your file with Microsoft Word, WPS Writer or any other rich text editor.
+Copy-paste the content into the area above.
+Switch to the HTML tab and clean the code.
+Wordpress HTML Editor
+Word HTML is the perfect tool to edit the source code of WordPress articles or any other content management system when their built in composer doesn't provide all functionalities we need. Compose the content right in your browser window without installing any extension or plugin to handle the syntax highlighting and other text editing features.
+
+How To Use?
+Paste the document you want to convert in the Word Editor, then switch to HTML view using the big tabs at the top of the page to generate the code.
+
+Clean the dirty markup with the big button which performs the active (checked) options in the list. You can also apply these features one-by-one with the execute icon. When a clean operation is performed the program might add a paragraph to the text, containing a backlink to one of our partner sites. Please leave these unchange to support the this free website.
+
+styles  –  remove style attributes from each tag:<span style="color: red;">highlighted</span>
+empty icon  –  delete empty tags which don't contain anything:<span>Hello<span></span> World</span>
+
+spaces  –  clear successive non-breaking spaces and leave only one instance:<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+attributes  –  get rid of tag attributes (except href of links and src of images):<img src="/icon.png" alt="icon" width="52" height="52" id="pic52" />
+class and id ico  –  strip classes and IDs:<img id="pic52" class="right" src="/icon.png" alt="icon" width="52" />
+space ico  –  wipe off elements that contain only a &nbsp; character:<p>&nbsp;</p>
+comments  icon  –  dislodge HTML comments:<!-- comment -->
+plain text icon  –  convert the document to plain text:<p><span class="header">text</span></p>
+Additional editor controls
+source editor commands  –  Undo, new page, indent markup, compress, activate encoding.
+
+Our Sponsors
+Omnipapers.com reviews will help you to pick an honest essay company.
+My Homework Done can help with any subject, from math to programming.
+
+
+Custom Writings will write your essay from scratch. Get professional help from academic experts.
+Visit LegitimateEssayWriting.com to choose the best essay helper online.
+Rapid Essay Service - best college essay writing service.
+Read essay writing service reviews.
+Goread.io is the best website to buy Instagram likes.
+ShoppingArchives.com is a website that has the best online shopping sites all in one place.
+
+Common Questions
+How do I convert Word to HTML without dirty markup?
+MS Word allows to save the document as an .html file but this will result in a lot of unwanted dirty markup. This increases the file size and disrupts the website styles if you end up publishing it online. It's recommended to clean the HTML with this free online tool.
+
+dirty markup from MS Word
+Get rid of the mess generated by Word Editors
+
+How do I convert any visual text to HTML?
+WordHTML editor works flawlessly for any visual document and allows them to convert with a couple clicks:
+
+Microsoft Office products (Word, Excel, Powerpoint)
+Google Docs, Google Sheets
+OpenOffice and other WYSIWYG editors
+...any other visual text document (let us know if you find an exception)
+Copy-paste your document in the online editor then switch to HTML view in the header to get the result instantly.
+
+How to open a .doc file in the editor?
+First you need to open the document in a reader, select and paste de desired section in the web browser on WordHTML.
+
+How to save and publish the results?
+To publish your file on the web you need to paste the HTML code in a .html file and upload it to the web.
+If your site is using a CMS then you need to log in with editor credentials and publish the article in your admin area.
+
+How to clean the markup?
+Switch to HTML view to see the code, review the cleaning settings and press the big Clean button.
+Remove automatically inline styles, classes, empty tags, comments and other unwanted bits.
+
+markup cleaning
+The markup can be cleaned with the click of a button
+
+Can I convert HTML code to Word document?
+Inverse conversion is also possible with WordHTML. Insert your code when the HTML tab is active and switch to Word Editor.
+
+Is WordHTML an online Word editor?
+Yes, and it's even more. It supports the most common WYSIWYG features but you can't save your document. To save you'll have to copy the results in a desktop editor and save there.
+
+This site uses cookies to collect visitor statistics and to save your settings.
+By using this website you accept&our Terms&Conditions.
+©WordHTML.com
+
+  </div>
+  <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+      id="pdfTable5" #pdfTable5>
+      <p><strong>Annexure&nbsp;5</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p>25 September 2019&lt;date of application&gt;</p>
+<p>&nbsp;</p>
+<p>To</p>
+<p>The Chief General Manager in Charge&lt;same as RBI Reference Letter document&gt;</p>
+<p>Cell for Effective Implementation of FEMA (CEFA)</p>
+<p>Foreign Exchange Department</p>
+<p>Reserve Bank of India</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Dear Sir/ Madam,</p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>Sub: Application for Compounding &nbsp;- Letter of Authority</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p>We hereby authorise<strong>XXXXXXXXXXX</strong><strong>&lt;what value should come here&gt;</strong> having their office at <strong>XXXXXXXXXXX</strong>&lt;what value should come here &gt;(referred to as &ldquo;Authorised Representatives&rdquo;), to appear and represent us before the Reserve Bank of India (&lsquo;RBI&rsquo;), in connection with our application for compounding under the Foreign Exchange Management Act, 1999 (the &lsquo;Application&rsquo;).</p>
+<p>Further, we also authorize them to make necessary submissions, representations and amendments, as may be required by the RBI, and to receive all notices or communications including Order, as may be addressed to us, and generally to do all acts, deeds and things deemed necessary for the purpose of the application on our behalf.</p>
+<p>We hereby undertake to confirm, approve, ratify, adopt and abide by all the acts and statements made by our Authorised Representatives in connection with the Application and their explanations and statements will be binding on us.</p>
+<p>&nbsp;</p>
+<p>Yours sincerely,</p>
+<p><strong>For Fomento Resources Private Limited&lt;company name&gt;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>XXXXXXXXXX</strong></p>
+<p>&nbsp;</p>
+<p><strong>Place:&nbsp; XXXXXXXXXX</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+  </div>
+  <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+      id="pdfTable6" #pdfTable6>
+      PrivacyPrivacy
+      Facebook
+      Twitter
+      Linkedin
+      Reddit
+      Word to Clean HTML ConverterWord HTML
+      
+      Undo New page indentation compress encoding 
+      option ico
+      option2 
+      option3
+      option4 
+      option5
+      option6 
+      option7
+      option8Clean
+      -
+      <p><strong>Annexure&nbsp;4</strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p><strong><em>&nbsp;</em></strong></p>
+      <p><strong><em>&lt;&lt;Insert date&gt;&gt;</em></strong></p>
+      <p>&nbsp;</p>
+      <p>To</p>
+      <p>The Compounding Authority</p>
+      <p>Cell for Effective Implementation of FEMA (CEFA)</p>
+      <p>Reserve Bank of India</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>Dear Sir/ Madam,</p>
+      <p>&nbsp;</p>
+      <p><strong>Sub: Application for Compounding &ndash; Undertaking</strong></p>
+      <p>&nbsp;</p>
+      <p>* I/We, ___________________(Name of the Applicant), hereby confirm / declare that I/we am/are not under any enquiry / investigation / adjudication by Directorate of Enforcement, as on the date of this application.</p>
+      <p>&nbsp;</p>
+      <p>I/We further undertake to inform to the Compounding Authority / Reserve Bank of India immediately, in writing, if any enquiry/investigation/adjudication proceedings are initiated by the Directorate of Enforcement against me/us at any time hereafter but on or before the date of issuance of the compounding order in respect of the compounding application filed by me/us.&rsquo;</p>
+      <p>&nbsp;</p>
+      <p>OR</p>
+      <p>&nbsp;</p>
+      <p>*I/We ___________________ (Name of the applicant) hereby confirm/declare that I/we am/are or was/were under enquiry/investigation/adjudication by Directorate of Enforcement, and the details are given in the Annex.</p>
+      <p>&nbsp;</p>
+      <p>I/We further undertake and confirm that no appeal has been filed by me/us under section 17 or section 19 of FEMA, 1999.</p>
+      <p>&nbsp;</p>
+      <p>(* Strike out one)</p>
+      <p>&nbsp;</p>
+      <p>Yours sincerely,</p>
+      <p><strong>For [Insert Company Name]</strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p><strong>&nbsp;</strong></p>
+      <p><strong>XXXXXXXXXX</strong></p>
+      <p>&nbsp;</p>
+      <p><strong>Place:&nbsp; XXXXXXXXXX</strong></p>
+      <p><strong>Date:&nbsp; XXXXXXX</strong></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      Characters: 1876
+      Sample
+       
+      ×
+      Paste or compose your doc in the editor and switch to HTML view to get the code!
+      Word Doc to HTML Online Converter
+      Word Document to HTML Online Converter
+      Paste your doc and switch to the HTML tab
+      Free online Word to HTML converter with built-in code cleaning features and easy switch between the visual and source editors. It works perfectly for any document conversion, like Microsoft Word, Excel, PowerPoint, PDF, Google Docs, Sheets, and many more. You can also use this tool for composing web content from scratch or just to tidy up the dirty markup.
+      
+      As a legacy of the well-known but discontinued WordOff online tool we wanted to keep the user interface as simple as possible and adding many new features according to our visitors' feedbacks.
+      
+      
+      How to Convert Doc to HTML?
+      The process is very simple with this free online tool and it requirest just a few simple steps:
+      
+      Open your file with Microsoft Word, WPS Writer or any other rich text editor.
+      Copy-paste the content into the area above.
+      Switch to the HTML tab and clean the code.
+      Wordpress HTML Editor
+      Word HTML is the perfect tool to edit the source code of WordPress articles or any other content management system when their built in composer doesn't provide all functionalities we need. Compose the content right in your browser window without installing any extension or plugin to handle the syntax highlighting and other text editing features.
+      
+      How To Use?
+      Paste the document you want to convert in the Word Editor, then switch to HTML view using the big tabs at the top of the page to generate the code.
+      
+      Clean the dirty markup with the big button which performs the active (checked) options in the list. You can also apply these features one-by-one with the execute icon. When a clean operation is performed the program might add a paragraph to the text, containing a backlink to one of our partner sites. Please leave these unchange to support the this free website.
+      
+      styles  –  remove style attributes from each tag:<span style="color: red;">highlighted</span>
+      empty icon  –  delete empty tags which don't contain anything:<span>Hello<span></span> World</span>
+      
+      spaces  –  clear successive non-breaking spaces and leave only one instance:<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      
+      attributes  –  get rid of tag attributes (except href of links and src of images):<img src="/icon.png" alt="icon" width="52" height="52" id="pic52" />
+      class and id ico  –  strip classes and IDs:<img id="pic52" class="right" src="/icon.png" alt="icon" width="52" />
+      space ico  –  wipe off elements that contain only a &nbsp; character:<p>&nbsp;</p>
+      comments  icon  –  dislodge HTML comments:<!-- comment -->
+      plain text icon  –  convert the document to plain text:<p><span class="header">text</span></p>
+      Additional editor controls
+      source editor commands  –  Undo, new page, indent markup, compress, activate encoding.
+      
+      Our Sponsors
+      Omnipapers.com reviews will help you to pick an honest essay company.
+      My Homework Done can help with any subject, from math to programming.
+      
+      
+      Custom Writings will write your essay from scratch. Get professional help from academic experts.
+      Visit LegitimateEssayWriting.com to choose the best essay helper online.
+      Rapid Essay Service - best college essay writing service.
+      Read essay writing service reviews.
+      Goread.io is the best website to buy Instagram likes.
+      ShoppingArchives.com is a website that has the best online shopping sites all in one place.
+      
+      Common Questions
+      How do I convert Word to HTML without dirty markup?
+      MS Word allows to save the document as an .html file but this will result in a lot of unwanted dirty markup. This increases the file size and disrupts the website styles if you end up publishing it online. It's recommended to clean the HTML with this free online tool.
+      
+      dirty markup from MS Word
+      Get rid of the mess generated by Word Editors
+      
+      How do I convert any visual text to HTML?
+      WordHTML editor works flawlessly for any visual document and allows them to convert with a couple clicks:
+      
+      Microsoft Office products (Word, Excel, Powerpoint)
+      Google Docs, Google Sheets
+      OpenOffice and other WYSIWYG editors
+      ...any other visual text document (let us know if you find an exception)
+      Copy-paste your document in the online editor then switch to HTML view in the header to get the result instantly.
+      
+      How to open a .doc file in the editor?
+      First you need to open the document in a reader, select and paste de desired section in the web browser on WordHTML.
+      
+      How to save and publish the results?
+      To publish your file on the web you need to paste the HTML code in a .html file and upload it to the web.
+      If your site is using a CMS then you need to log in with editor credentials and publish the article in your admin area.
+      
+      How to clean the markup?
+      Switch to HTML view to see the code, review the cleaning settings and press the big Clean button.
+      Remove automatically inline styles, classes, empty tags, comments and other unwanted bits.
+      
+      markup cleaning
+      The markup can be cleaned with the click of a button
+      
+      Can I convert HTML code to Word document?
+      Inverse conversion is also possible with WordHTML. Insert your code when the HTML tab is active and switch to Word Editor.
+      
+      Is WordHTML an online Word editor?
+      Yes, and it's even more. It supports the most common WYSIWYG features but you can't save your document. To save you'll have to copy the results in a desktop editor and save there.
+      
+      This site uses cookies to collect visitor statistics and to save your settings.
+      By using this website you accept&our Terms&Conditions.
+      ©WordHTML.com
+      
+  </div>
+  <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+      id="pdfTable7" #pdfTable7>
+      <p><strong>Annexure 6</strong></p>
+<p><strong><u>&nbsp;</u></strong></p>
+<p><strong><u>ELECTRONIC CLEARING SERVICE (ECS)</u></strong></p>
+<p><strong><u>MANDATE FORM</u></strong></p>
+<p>&nbsp;</p>
+<table>
+<tbody>
+<tr>
+<td width="69">
+<p><strong>Sr. No.</strong></p>
+</td>
+<td colspan="2" width="323">
+<p><strong>Particulars</strong></p>
+</td>
+<td width="347">
+<p><strong>Details</strong></p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>1.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td colspan="2" width="323">
+<p>Name of the Party (Beneficiary)</p>
+</td>
+<td width="347">
+<p>XXXXXXXX</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>2.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td colspan="2" width="323">
+<p>Particulars of the Bank Account</p>
+</td>
+<td width="347">
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>&nbsp;</p>
+</td>
+<td width="53">
+<p>A.&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="270">
+<p>Name of the Bank</p>
+</td>
+<td width="347">
+<p>XXXXXXXX</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>&nbsp;</p>
+</td>
+<td width="53">
+<p>B.&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="270">
+<p>Name of the Branch</p>
+</td>
+<td width="347">
+<p>XXXXXXXX</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>&nbsp;</p>
+</td>
+<td width="53">
+<p>&nbsp;</p>
+</td>
+<td width="270">
+<p>Address</p>
+</td>
+<td width="347">
+<p>XXXXXXXX</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>&nbsp;</p>
+</td>
+<td width="53">
+<p>&nbsp;</p>
+</td>
+<td width="270">
+<p>Telephone no.</p>
+</td>
+<td width="347">
+<p>XXXXXXXX</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>&nbsp;</p>
+</td>
+<td width="53">
+<p>C.&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="270">
+<p>9 Digit MICR Code Number ((as appearing on the cheque issued by the Bank)</p>
+</td>
+<td width="347">
+<p>XXXXXXXX</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>&nbsp;</p>
+</td>
+<td width="53">
+<p>D.&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="270">
+<p>IFSC Code</p>
+</td>
+<td width="347">
+<p>XXXXXXXX</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>&nbsp;</p>
+</td>
+<td width="53">
+<p>E.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="270">
+<p>Type of Account (Strike Off whichever not applicable)</p>
+</td>
+<td width="347">
+<p>XXXXXXXX</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>&nbsp;</p>
+</td>
+<td width="53">
+<p>F.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
+</td>
+<td width="270">
+<p>Account No (as appearing on the cheque book issued by the Bank)</p>
+</td>
+<td width="347">
+<p>XXXXXXXX</p>
+</td>
+</tr>
+<tr>
+<td width="69">
+<p>&nbsp;</p>
+</td>
+<td colspan="3" width="669">
+<p>(Please attach photocopy of a blank cheque for verification of the bank account details)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>I/We hereby declare that the particulars given above are correct and complete. If the transaction is delayed or not effected at all for reasons of incomplete or incorrect information, I/We would not hold the user institution responsible.</p>
+<p>&nbsp;</p>
+<p>Yours sincerely,</p>
+<p><strong>For XXXXXXXXXX</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>XXXXXXXXXX</strong></p>
+<p><strong>[Designation]</strong></p>
+<p><strong>Place:&nbsp; XXXXXXXXXX</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+  </div>
 </div>
  </div>
  </form>

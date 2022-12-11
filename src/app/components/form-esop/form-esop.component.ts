@@ -69,9 +69,10 @@ export class FormEsopComponent implements OnInit {
 
     this.esopFormlist = this.fb.group(
       {
+        // Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')
         NameofinvesteeCompany: new FormControl('', Validators.required),
         CIN_LIP: new FormControl('', Validators.required),
-        PanNo: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
+        PanNo: new FormControl('', Validators.required),
         Registered_Office: new FormControl('', Validators.required),
         ESOP_Scheme_Name: new FormControl('', Validators.required),
         BR_EGM_Circular: new FormControl('', Validators.required),
@@ -170,7 +171,6 @@ export class FormEsopComponent implements OnInit {
 
 
   onSubmitESOPFrom() {
-    debugger
     const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
     this.esopFormlist.setControl('GrantDetails', grantFormArray);
 
@@ -185,7 +185,7 @@ export class FormEsopComponent implements OnInit {
       return this.apiService.createFormEsop(this.esopFormlist.value).subscribe({
         complete: () => {
           this.changeTab()
-          alert('FromEsop successfully created!');
+          // alert('FromEsop successfully created!');
           //console.log('FromEsop successfully created!');
           //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
         },

@@ -4,4 +4,27 @@
   .notdel{
     text-decoration: auto;
   }
+  .invalid-feedbackradio {
+    /* display: none; */
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: #dc3545 !important;
+}
+/* 
+div.input-block span.placeholder {
+  position: absolute;
+  padding: 12px 5px 6px 51px;
+  font-family: Roboto, sans-serif;
+  color: black;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  top: 0;
+  left: 17px;
+  transition: all 0.2s;
+  transform-origin: 0% 0%;
+  background: transparent;
+  pointer-events: none;
+} */
  

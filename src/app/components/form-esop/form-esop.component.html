@@ -5,7 +5,7 @@
             <div class="fema_tabs">
                 <nav>
                     <div id="myTab" role="tablist" class="nav nav-tabs">
-                        <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()">
+                        <form [formGroup]="esopFormlist" (ngSubmit)="onSubmitESOPFrom()" class="w-100">
                             <!-- (click)="confirmTabSwitch($event)" -->
                             <tabset #tabset>
                                 <tab heading="Instructions">
@@ -92,10 +92,10 @@
                                                             [class.is-invalid]="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)">
                                                         <div *ngIf="esopFormlist.get('PanNo').invalid && (esopFormlist.get('PanNo').dirty ||esopFormlist.get('PanNo').touched)"
                                                             class="invalid-feedback">
-                                                            <!--  <div *ngIf="esopFormlist.get('PanNo').errors['required']">
+                                                            <div *ngIf="esopFormlist.get('PanNo').errors['required']">
                                                                 This field is required.
                                                             </div>
-                                                            <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
+                                                            <!-- <div *ngIf="esopFormlist.get('PanNo').errors['pattern']">
                                                                 Invalid PAN Number Format
                                                             </div> -->
                                                         </div>
@@ -206,7 +206,6 @@
                                         </div>
                                     </div>
                                 </tab>
-
                                 <tab heading="Grant Details" disabled="disabled">
                                     <div class="card p-2 mt-1">
                                         <div class="card-header">
@@ -538,7 +537,8 @@
                                                     </div>
 
                                                     <div class="col-lg-12 text-center">
-                                                        <input type="submit" value="Submit" class="btn btn-primary">
+                                                        <input type="submit" value="Submit & Preview"
+                                                            class="btn btn-primary">
                                                     </div>
                                                 </div>
                                             </div>
@@ -547,7 +547,6 @@
                                 </tab>
                                 <tab heading="Preview" disabled="disabled">
                                     <div class="container-fluid pt-2 card p-2">
-                                        
                                         <table class="table table-borderless">
                                             <thead>
                                                 <tr>
@@ -571,7 +570,8 @@
                                                             style="cursor:pointer">
                                                     </td>
                                                     <td><img src="assets/images/pdf.png" (click)="downloadAsPDF1()"
-                                                            style="cursor:pointer"></td>
+                                                            style="cursor:pointer">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">
@@ -581,7 +581,8 @@
                                                             style="cursor:pointer">
                                                     </td>
                                                     <td><img src="assets/images/pdf.png" (click)="downloadAsPDF2()"
-                                                            style="cursor:pointer"></td>
+                                                            style="cursor:pointer">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">
@@ -591,16 +592,18 @@
                                                             style="cursor:pointer">
                                                     </td>
                                                     <td><img src="assets/images/pdf.png" (click)="downloadAsPDF3()"
-                                                            style="cursor:pointer"></td>
+                                                            style="cursor:pointer">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">
-                                                        <h6>D.Declaration </h6>
+                                                        <h6>D. Declaration </h6>
                                                     </th>
                                                     <td><img src="assets/images/word.png" style="cursor:pointer"
                                                             (click)="ExportWord4()"></td>
                                                     <td><img src="assets/images/pdf.png" (click)="downloadAsPDF4()"
-                                                            style="cursor:pointer"></td>
+                                                            style="cursor:pointer">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">
@@ -609,7 +612,8 @@
                                                     <td><img src="assets/images/word.png" style="cursor:pointer"
                                                             (click)="ExportWord5()"></td>
                                                     <td><img src="assets/images/pdf.png" (click)="downloadAsPDF5()"
-                                                            style="cursor:pointer"></td>
+                                                            style="cursor:pointer">
+                                                    </td>
                                                 </tr>
 
                                             </tbody>
@@ -1403,14 +1407,9 @@
                                                 </table>
                                             </div>
                                         </div>
-
                                     </div>
-
-
-
                                 </tab>
                             </tabset>
-
                         </form>
                     </div>
                 </nav>

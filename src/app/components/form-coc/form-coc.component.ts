@@ -430,6 +430,7 @@ debugger;
     this.COC_FDIFormlist.setControl('COC_FDIODITableBDetails', TabBFormArray);
     const TabCFormArray: FormArray = this.fb.array(this.COC_FDIODITableCArray);
     this.COC_FDIFormlist.setControl('COC_FDIODITableCDetails', TabCFormArray);
+    
     const AuthCapFormArray: FormArray = this.fb.array(this.COC_FDIODIAuthorisedCapitalArray);
     this.COC_FDIFormlist.setControl('COC_FDIODIAuthorisedCapitalDetails', AuthCapFormArray);
     console.log(this.COC_FDIFormlist.value);

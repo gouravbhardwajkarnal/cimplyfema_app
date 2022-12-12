@@ -39,9 +39,9 @@ export class CommonService {
     opitypes: DisinvetmentType[] = [
         { id: 1, name: "OPI – Indian Entity " },
         { id: 2, name: "OPI – Mutual Funds" },
-        { id: 3, name: "OPI – Resident Individuals (ESOP / Employee Benefit Scheme" },
-        { id: 4, name: "Venture Capital Fund (VCF)" },
-        { id: 5, name: "Alternate Investment Fund (AIF)" },
+        { id: 3, name: "OPI – Resident Individuals (ESOP / Employee Benefit Scheme)" },
+        { id: 4, name: "OPI – Venture Capital Fund (VCF)" },
+        { id: 5, name: "OPI – Alternate Investment Fund (AIF)" },
     ];
     modules: Modules[] = [
         { id: 1, name: "Foreign Direct Investment" },

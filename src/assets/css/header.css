@@ -3,128 +3,7 @@
     cursor: pointer;
     float: right;
 }
-.searchbox {
-    border: none;
-    margin: 0 0 0 10px;
-    width: 30vw;
-    padding: 10px;
-}
-.search_area {
-    line-height: 1.4;
-    font-size: 15px;
-    color: #3a4851;
-    background: #f1f3f6;
-    width: 100%;
-    min-height: calc(100vh - 194px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px 0;
-}
-.search_area .search_box {
-    width: 60%;
-    margin: 0 auto;
-    max-width: 570px;
-    position: relative;
-}
-.search_area .search_box .input-group {
-    z-index: 1040;
-}
-.search_area .input-group input {
-    width: 100%;
-    background: #fff !important;
-    padding: 12px 13px 9px 45px;
-    border: none;
-    height: 48px;
-    color: #000;
-    border-radius: 0 !important;
-    margin-bottom: 0;
-    transition: all 0.5s ease;
-    z-index: 0 !important;
-    border: 1px solid #fff;
-}
-.search_area .input-group input:hover {
-    cursor: pointer;
-}
-.search_area .input-group input:focus {
-    background: #fff 61 !important;
-    border-color: #3a4851 52 !important;
-    box-shadow: none;
-}
-.search_area .input-group input::-webkit-input-placeholder {
-    color: #000;
-}
-.search_area .input-group input::-moz-placeholder {
-    color: #000;
-}
-.search_area .input-group input:-ms-input-placeholder {
-    color: #000;
-}
-.search_area .input-group input::-ms-input-placeholder {
-    color: #000;
-}
-.search_area .input-group input::placeholder {
-    color: #000;
-}
-.search_area .input-group:focus input {
-    background: #fff 61 !important;
-    border-color: #3a4851 52 !important;
-}
-.search_area .input-group .search_icon {
-    position: absolute;
-    left: 4px;
-    top: 0;
-    bottom: 0;
-    width: 40px;
-    height: 40px;
-    margin: 5px 0 0;
-    text-align: center;
-    padding: 0px;
-    z-index: 1;
-    color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-}
-.news_slid {
-    width: 60%;
-    margin: 0 auto;
-    max-width: 570px;
-    position: relative;
-    width: 60%;
-    margin: 0 auto;
-    max-width: 570px;
-    position: relative;
-    min-height: 110px;
-}
-.search_rtl {
-    width: 60%;
-    margin: 0 auto;
-    max-width: 570px;
-    position: relative;
-}
-.search_rtl ul > li {
-    background: #fff;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 0.15rem 0.5rem rgba(57, 72, 81, 0.025);
-}
-.search_rtl ul > li h1 {
-    font-size: 20px;
-    font-weight: 700;
-    color: #08d9d6;
-    line-height: 20px;
-}
-.search_rtl ul > li:hover {
-    cursor: pointer;
-}
-.search_rtl ul > li:hover h1 {
-    color: #3a4851;
-}
-.search_display .news_slid {
-    min-height: 115px;
-}
+
 nav.navbar {
     width: 100%;
     position: fixed;
@@ -137,6 +16,7 @@ nav.navbar {
     background: white;
     box-shadow: 0px 4px 26px rgba(50, 75, 94, 0.1);
 }
+
 @font-face {
     font-family: "Circular Std";
     src: url("../../../../assets/fonts/Circular Std Font.otf") format("opentype");
@@ -162,6 +42,10 @@ nav.navbar {
 
 .dd-none {
     display: none;
+}
+.dropdown-menu.b-menu.show {
+    min-width: 800px;
+    max-width: 100%;
 }
 .navbar-nav .log_btn > .btn {
     display: flex;
@@ -191,37 +75,6 @@ nav.navbar {
     color: #3a4851;
 }
 
-footer {
-    background: #fff;
-    display: flex;
-    align-items: center;
-    border-top: 1px solid #e4e5e7;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    color: #000;
-    padding: 15px 0;
-    font-weight: 500;
-    height: 60px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 9;
-}
-footer .row {
-    width: 100%;
-}
-footer .col-3 {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 16px;
-}
-footer .col-6 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 .copyright {
     height: 100%;
     display: flex;
@@ -237,55 +90,6 @@ ul.footer_menu {
     justify-content: center;
     align-items: center;
     height: 100%;
-}
-ul.footer_menu li {
-    line-height: inherit;
-    padding: 0 !important;
-}
-ul.footer_menu li a {
-    line-height: normal;
-    position: relative;
-    font-weight: normal;
-    padding: 0 6px;
-    color: #000;
-    font-size: 13px;
-}
-ul.footer_menu li a:hover {
-    color: #08d9d6;
-    text-decoration: none;
-}
-ul.footer_menu li a::after {
-    content: "";
-    position: absolute;
-    right: -1px;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
-ul.footer_menu li:last-child a::after {
-    border-right: 0;
-}
-.social_btn {
-    text-align: right;
-    float: right;
-}
-.social_btn a {
-    width: 30px;
-    height: 30px;
-    border-radius: 50px;
-    background: #fff;
-    color: #000;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 5px;
-    float: left;
-}
-.social_btn a:hover {
-    color: #08d9d6;
-}
-.social_btn a:focus {
-    color: #08d9d6;
 }
 .normalheader {
     min-width: 320px;
@@ -464,9 +268,7 @@ thead > tr > th {
 .log_btn > .dropdown-menu .dropdown-item {
     text-transform: capitalize;
 }
-.dropdown-item {
-    margin: 5px auto;
-}
+
 .fema_btn {
     background: #fff;
     border-color: #3a4851;
@@ -1300,12 +1102,6 @@ footer {
     width: 100%;
     color: #000;
     padding: 15px 0;
-    font-weight: 500;
-    height: 60px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 9;
 }
 .copyright {
     height: 100%;
@@ -1327,6 +1123,7 @@ ul.footer_menu li a {
     padding: 0 6px;
     color: #000;
     font-size: 13px;
+    text-decoration: none;
 }
 ul.footer_menu li a:hover {
     color: #08d9d6;
@@ -1334,8 +1131,7 @@ ul.footer_menu li a:hover {
 }
 ul.footer_menu li a::after {
     content: "";
-   /* border-right: 1px solid #b6b6b6;
-    */
+    border-right: 1px solid #b6b6b6;
     position: absolute;
     right: -1px;
     top: 0;
@@ -1371,10 +1167,12 @@ footer .col-6 {
     margin: 0 5px;
     float: left;
 }
+.social_btn a svg {
+    width: 16px;
+}
 .social_btn a:hover, .social_btn a:focus {
     color: #08d9d6;
 }
-
 .social_btn {
     float: right;
 }

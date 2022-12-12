@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card mt-2">
         <div class="card-header p-2 text-center">
-            <h5>FORM OPI: Section A</h5>
+            <h5>FORM OPI</h5>
             <h6>(For the half year ended March/ September)</h6>
         </div>
     </div>
@@ -11,17 +11,27 @@
             Portfolio Investment (OPI) or transferring such investment during the reporting period (Only relevant
             sections of this form, as applicable, may be used)
             All amounts should be in actuals</p>
-            <!-- (change)="CountryChange($event)" -->
-            <select class="form-control">
-            <option ng-option value="">Select Investor type</option>
-            <option *ngFor=" let object of opitypes" value="{{object.id}}">
-                {{object.name}}
-            </option>
-        </select>
+        <!--  -->
+        <div class="row">
+            <div class="col-sm-4">
+                <select class="form-control" (change)="InvestorChange($event.target.value)">
+                    <option ng-option value="">Select Investor type</option>
+                    <option *ngFor=" let object of opitypes" value="{{object.id}}">
+                        {{object.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-8 text-right mt-2 mb-3">
+                <button class="btn btn-sm btn-primary ml-2 me-2" *ngIf="btnShow" (click)="updatePrev()">
+                    Previous </button>
+                <button class="btn btn-sm btn-primary" *ngIf="btnShowNext" (click)="updateNext()">
+                    Next </button>
+            </div>
+        </div>
     </div>
     <form [formGroup]="OpiFormlist" (ngSubmit)="onSubmitOPIFrom()">
         <tabset #tabset>
-            <tab heading="Instructions">
+            <tab heading="Instructions" id="0" disabled="disabled">
                 <div class="card mt-1 p-2">
                     <div class="heading mt-2 mb-2 text-center"><b>Instructions for filling up Form OPI </b>
                     </div>
@@ -44,73 +54,77 @@
                     </p>
                 </div>
             </tab>
-            <tab heading="Form OPI – Section A">
+            <tab heading="Form OPI – Section A" id="1" disabled="disabled">
                 <div class="card mt-1 p-2">
                     <div class="heading mt-2 mb-2 text-center"><b>Particulars of the Indian Entity/Mutual Fund
                             (MF)</b>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-4 mb-2">
-                            <label class="form-label">Name of Indian entity/ MF
-                            </label>
-                            <input type="text" class="form-control" formControlName="OPI_Sec_A_Name"
-                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Name').invalid && (OpiFormlist.get('OPI_Sec_A_Name').dirty ||OpiFormlist.get('OPI_Sec_A_Name').touched)">
+                        <div class="col-3 mb-4">
+                            <div class="input-block">
+                                <input type="text" class="form-control" spellcheck="false" required
+                                    formControlName="OPI_Sec_A_Name" id="OPI_Sec_A_Name"
+                                      [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Name').invalid && (OpiFormlist.get('OPI_Sec_A_Name').dirty ||OpiFormlist.get('OPI_Sec_A_Name').touched)">
+                                <span class="placeholder">Name of Indian entity/ MF</span>
+                            </div>
                         </div>
+                        
                         <div class="col-4 mb-2">
                             <label class="form-label">LEI of Indian entity/ MF
                             </label>
-                            <input type="text" class="form-control" formControlName="OPI_Sec_A_LEI" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_LEI').invalid && (OpiFormlist.get('OPI_Sec_A_LEI').dirty ||OpiFormlist.get('OPI_Sec_A_LEI').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_A_LEI"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_LEI').invalid && (OpiFormlist.get('OPI_Sec_A_LEI').dirty ||OpiFormlist.get('OPI_Sec_A_LEI').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">PAN
                             </label>
-                            <input type="text" class="form-control" formControlName="OPI_Sec_A_PAN" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_PAN').invalid && (OpiFormlist.get('OPI_Sec_A_PAN').dirty ||OpiFormlist.get('OPI_Sec_A_PAN').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_A_PAN"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_PAN').invalid && (OpiFormlist.get('OPI_Sec_A_PAN').dirty ||OpiFormlist.get('OPI_Sec_A_PAN').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">Address of Indian entity/ MF
                             </label>
                             <input type="text" class="form-control" formControlName="OPI_Sec_A_Address"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Address').invalid && (OpiFormlist.get('OPI_Sec_A_Address').dirty ||OpiFormlist.get('OPI_Sec_A_Address').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Address').invalid && (OpiFormlist.get('OPI_Sec_A_Address').dirty ||OpiFormlist.get('OPI_Sec_A_Address').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">City
                             </label>
-                            <input type="text" class="form-control" formControlName="OPI_Sec_A_City" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_City').invalid && (OpiFormlist.get('OPI_Sec_A_City').dirty ||OpiFormlist.get('OPI_Sec_A_City').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_A_City"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_City').invalid && (OpiFormlist.get('OPI_Sec_A_City').dirty ||OpiFormlist.get('OPI_Sec_A_City').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">State
                             </label>
-                            <input type="text" class="form-control" formControlName="OPI_Sec_A_State" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_State').invalid && (OpiFormlist.get('OPI_Sec_A_State').dirty ||OpiFormlist.get('OPI_Sec_A_State').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_A_State"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_State').invalid && (OpiFormlist.get('OPI_Sec_A_State').dirty ||OpiFormlist.get('OPI_Sec_A_State').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">PIN code
                             </label>
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_PIN" [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_PIN').invalid && (OpiFormlist.get('OPI_Sec_A_PIN').dirty ||OpiFormlist.get('OPI_Sec_A_PIN').touched)">
+                            <input type="number" class="form-control" formControlName="OPI_Sec_A_PIN"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_PIN').invalid && (OpiFormlist.get('OPI_Sec_A_PIN').dirty ||OpiFormlist.get('OPI_Sec_A_PIN').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">Net worth in INR (in case of Indian entity) as per last audited
                                 balance sheet
                             </label>
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_NetINR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetINR').invalid && (OpiFormlist.get('OPI_Sec_A_NetINR').dirty ||OpiFormlist.get('OPI_Sec_A_NetINR').touched)">
+                            <input type="number" class="form-control" formControlName="OPI_Sec_A_NetINR"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetINR').invalid && (OpiFormlist.get('OPI_Sec_A_NetINR').dirty ||OpiFormlist.get('OPI_Sec_A_NetINR').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">As on date (Please mention date)
                             </label>
-                            <input type="date" class="form-control" formControlName="OPI_Sec_A_AsOn_Date" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_AsOn_Date').invalid && (OpiFormlist.get('OPI_Sec_A_AsOn_Date').dirty ||OpiFormlist.get('OPI_Sec_A_AsOn_Date').touched)">
+                            <input type="date" class="form-control" formControlName="OPI_Sec_A_AsOn_Date"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_AsOn_Date').invalid && (OpiFormlist.get('OPI_Sec_A_AsOn_Date').dirty ||OpiFormlist.get('OPI_Sec_A_AsOn_Date').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">Whether the IE is listed
                             </label>
                             <div class="form-check form-check-inline" *ngFor="let fd of WhetherIElist">
                                 <input class="form-check-input" type="radio" id="{{fd.id}}"
-                                    formControlName="WhetherIElist" value="{{fd.Type}}" style="cursor:pointer;" 
+                                    formControlName="WhetherIElist" value="{{fd.Type}}" style="cursor:pointer;"
                                     [class.is-invalid]="OpiFormlist.get('WhetherIElist').invalid && (OpiFormlist.get('WhetherIElist').dirty ||OpiFormlist.get('WhetherIElist').touched)">
                                 <label class="form-check-label" for="{{fd.id}}">{{fd.Type}}</label>
                             </div>
@@ -127,533 +141,655 @@
                         <div class="col-4 mb-2">
                             <label class="form-label">Contact person (name & designation)
                             </label>
-                            <input type="text" class="form-control" formControlName="OPI_Sec_A_ContactPerson" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ContactPerson').invalid && (OpiFormlist.get('OPI_Sec_A_ContactPerson').dirty ||OpiFormlist.get('OPI_Sec_A_ContactPerson').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_A_ContactPerson"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ContactPerson').invalid && (OpiFormlist.get('OPI_Sec_A_ContactPerson').dirty ||OpiFormlist.get('OPI_Sec_A_ContactPerson').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">Mobile number
                             </label>
-                            <input type="text" class="form-control" formControlName="OPI_Sec_A_Mobile" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mobile').invalid && (OpiFormlist.get('OPI_Sec_A_Mobile').dirty ||OpiFormlist.get('OPI_Sec_A_Mobile').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_A_Mobile"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mobile').invalid && (OpiFormlist.get('OPI_Sec_A_Mobile').dirty ||OpiFormlist.get('OPI_Sec_A_Mobile').touched)">
                         </div>
                         <div class="col-4 mb-2">
                             <label class="form-label">E-mail ID
                             </label>
-                            <input type="text" class="form-control" formControlName="OPI_Sec_A_EmailId" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EmailId').invalid && (OpiFormlist.get('OPI_Sec_A_EmailId').dirty ||OpiFormlist.get('OPI_Sec_A_EmailId').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_A_EmailId"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EmailId').invalid && (OpiFormlist.get('OPI_Sec_A_EmailId').dirty ||OpiFormlist.get('OPI_Sec_A_EmailId').touched)">
                         </div>
-                        <div class="heading">
-                            <h6>A. OPI by Indian entity (Please refer to Schedule II & Proviso 2(iii) of Schedule V
-                                of
-                                OI Rules)</h6>
+                        <div class="card" *ngIf="IndianEntity">
+                            <div class="heading">
+                                <h6>A. OPI by Indian entity (Please refer to Schedule II & Proviso 2(iii) of Schedule V
+                                    of
+                                    OI Rules)</h6>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="form-label">USD
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="form-label">INR
+                                </label>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">i. Net Amount of Investment held abroad (opening balance) at
+                                    cost basis
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_NetAmount_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetAmount_USD').invalid && (OpiFormlist.get('OPI_Sec_A_NetAmount_USD').dirty ||OpiFormlist.get('OPI_Sec_A_NetAmount_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_NetAmount_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetAmount_INR').invalid && (OpiFormlist.get('OPI_Sec_A_NetAmount_INR').dirty ||OpiFormlist.get('OPI_Sec_A_NetAmount_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">ii. Investments made during the half year (including
+                                    reinvestment)</label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_Investments_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Investments_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Investments_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Investments_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_Investments_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Investments_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Investments_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Investments_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">iii. Sale/disinvestment made during the half year * </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_Sale_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Sale_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Sale_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Sale_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_Sale_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Sale_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Sale_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Sale_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">iv. Net amount of Investment held abroad (closing balance)
+                                    (I+II-III)</label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_NetAmountClosing_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetAmountClosing_USD').invalid && (OpiFormlist.get('OPI_Sec_A_NetAmountClosing_USD').dirty ||OpiFormlist.get('OPI_Sec_A_NetAmountClosing_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_NetAmountClosing_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetAmountClosing_INR').invalid && (OpiFormlist.get('OPI_Sec_A_NetAmountClosing_INR').dirty ||OpiFormlist.get('OPI_Sec_A_NetAmountClosing_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label"><b>Remittance amount</b></label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_RemittanceAmt_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_RemittanceAmt_USD').invalid && (OpiFormlist.get('OPI_Sec_A_RemittanceAmt_USD').dirty ||OpiFormlist.get('OPI_Sec_A_RemittanceAmt_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_RemittanceAmt_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_RemittanceAmt_INR').invalid && (OpiFormlist.get('OPI_Sec_A_RemittanceAmt_INR').dirty ||OpiFormlist.get('OPI_Sec_A_RemittanceAmt_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label"><b>Repatriation amount</b></label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_Repatriation_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Repatriation_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Repatriation_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Repatriation_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_Repatriation_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Repatriation_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Repatriation_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Repatriation_INR').touched)">
+                            </div>
                         </div>
-                        <div class="col-lg-6 mb-3">
-                        </div>
-                        <div class="col-lg-2">
-                            <label class="form-label">USD
-                            </label>
-                        </div>
-                        <div class="col-lg-2">
-                            <label class="form-label">INR
-                            </label>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label">i. Net Amount of Investment held abroad (opening balance) at
-                                cost basis
-                            </label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_NetAmount_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetAmount_USD').invalid && (OpiFormlist.get('OPI_Sec_A_NetAmount_USD').dirty ||OpiFormlist.get('OPI_Sec_A_NetAmount_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_NetAmount_INR"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetAmount_INR').invalid && (OpiFormlist.get('OPI_Sec_A_NetAmount_INR').dirty ||OpiFormlist.get('OPI_Sec_A_NetAmount_INR').touched)">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label">ii. Investments made during the half year (including
-                                reinvestment)</label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_Investments_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Investments_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Investments_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Investments_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_Investments_INR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Investments_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Investments_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Investments_INR').touched)">
-                        </div>
+                        <div class="card" *ngIf="MutualFund">
+                            <div class="heading">
+                                <h6>B. OPI by resident individuals by way of ESOP/ Employee Benefits Scheme (EBS)
+                                    (Please
+                                    refer to Para 1 (2) (iii)(h) and para 3 of Schedule III of OI Rules) (reporting to
+                                    be
+                                    made by by the company/ branch/ office, as the case may be</h6>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                            </div>
+                            <div class="col-lg-2">
+                                <label class="form-label">USD
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <label class="form-label">INR
+                                </label>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">i. Net Amount of ESOP/ EBS Investment held abroad (Opening
+                                    Balance) at cost basis
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_NetAmt_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_NetAmt_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">ii. Investments made during the Half Year (including
+                                    reinvestment)</label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_Investments_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_Investments_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_Investments_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_Investments_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_Investments_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_Investments_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_Investments_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_Investments_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">iii. Disinvestments made during the Half Year * </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_Disinvestment_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_Disinvestment_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label">iv. Net amount of Investments held abroad (Closing Balance)
+                                    (I+II-III)</label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_NetAmtClose_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_NetAmtClose_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label"><b>Remittance amount</b></label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_RemittanceAmt_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_RemittanceAmt_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_INR').touched)">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="form-label"><b> amount</b></label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_RepatriationAmt_USD"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_USD').touched)">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control"
+                                    formControlName="OPI_Sec_A_EBS_RepatriationAmt_INR"
+                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_INR').touched)">
+                            </div>
+                            <div class="heading"><b>Consolidated details of Employee Stock Ownership Plan (ESOP)/
+                                    Employee
+                                    Benefits Scheme should be reported as under by the company/ branch/ office, as the
+                                    case
+                                    may be</b>
+                            </div>
+                            <div class="container text-justify">
+                                <p>a. We, ……………………………………….... (Indian Company / Office / Branch), hereby declare
+                                    that:<br>
+                                    <br>
+                                    M/s. ……………………………………………..………. (foreign company) has issued ……….(nature)<br> equity
+                                    capital/ %
+                                    interest to our employees / directors under ESOP/ Employee Benefits Scheme
+                                    <br>during
+                                    the
+                                    half year as under:<br><br>
+                                    (i) Equity capital/% interest allotted:<br>
+                                    (ii) Number of employees/ Directors who accepted shares/ interest: <br><br>
 
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label">iii. Sale/disinvestment made during the half year * </label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_Sale_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Sale_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Sale_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Sale_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_Sale_INR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Sale_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Sale_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Sale_INR').touched)">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label">iv. Net amount of Investment held abroad (closing balance)
-                                (I+II-III)</label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_NetAmountClosing_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetAmountClosing_USD').invalid && (OpiFormlist.get('OPI_Sec_A_NetAmountClosing_USD').dirty ||OpiFormlist.get('OPI_Sec_A_NetAmountClosing_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_NetAmountClosing_INR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_NetAmountClosing_INR').invalid && (OpiFormlist.get('OPI_Sec_A_NetAmountClosing_INR').dirty ||OpiFormlist.get('OPI_Sec_A_NetAmountClosing_INR').touched)">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label"><b>Remittance amount</b></label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_RemittanceAmt_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_RemittanceAmt_USD').invalid && (OpiFormlist.get('OPI_Sec_A_RemittanceAmt_USD').dirty ||OpiFormlist.get('OPI_Sec_A_RemittanceAmt_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_RemittanceAmt_INR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_RemittanceAmt_INR').invalid && (OpiFormlist.get('OPI_Sec_A_RemittanceAmt_INR').dirty ||OpiFormlist.get('OPI_Sec_A_RemittanceAmt_INR').touched)">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label"><b>Repatriation amount</b></label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_Repatriation_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Repatriation_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Repatriation_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Repatriation_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_Repatriation_INR"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Repatriation_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Repatriation_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Repatriation_INR').touched)">
-                        </div>
-                        <div class="heading">
-                            <h6>B. OPI by resident individuals by way of ESOP/ Employee Benefits Scheme (EBS)
-                                (Please
-                                refer to Para 1 (2) (iii)(h) and para 3 of Schedule III of OI Rules) (reporting to
-                                be
-                                made by by the company/ branch/ office, as the case may be</h6>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                        </div>
-                        <div class="col-lg-2">
-                            <label class="form-label">USD
-                            </label>
-                        </div>
-                        <div class="col-lg-2">
-                            <label class="form-label">INR
-                            </label>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label">i. Net Amount of ESOP/ EBS Investment held abroad (Opening
-                                Balance) at cost basis
-                            </label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_NetAmt_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_NetAmt_INR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_NetAmt_INR').touched)">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label">ii. Investments made during the Half Year (including
-                                reinvestment)</label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_Investments_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_Investments_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_Investments_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_Investments_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_Investments_INR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_Investments_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_Investments_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_Investments_INR').touched)">
-                        </div>
 
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label">iii. Disinvestments made during the Half Year * </label>
+                                    b. We, ……………………………………….... (Indian Company / Office / Branch), hereby declare
+                                    that:<br>
+                                    <br>
+                                    M/s. ……………………………………………..………. (foreign company) has repurchased …….. <br>(nature)
+                                    equity
+                                    capital from our employees /directors under ESOP/ Employee Benefits Scheme
+                                    during<br>
+                                    the
+                                    half year as under:<br><br>
+                                    (i) equity capital repurchased:<br>
+                                    (ii) Number of employees / Directors who sold equity capital/ interest: <br>
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_Disinvestment_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_Disinvestment_INR"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_Disinvestment_INR').touched)">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label">iv. Net amount of Investments held abroad (Closing Balance)
-                                (I+II-III)</label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_NetAmtClose_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_NetAmtClose_INR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_NetAmtClose_INR').touched)">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label"><b>Remittance amount</b></label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_RemittanceAmt_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_RemittanceAmt_INR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_RemittanceAmt_INR').touched)">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label class="form-label"><b> amount</b></label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_RepatriationAmt_USD" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_USD').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_USD').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_USD').touched)">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="number" class="form-control" formControlName="OPI_Sec_A_EBS_RepatriationAmt_INR" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_INR').invalid && (OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_INR').dirty ||OpiFormlist.get('OPI_Sec_A_EBS_RepatriationAmt_INR').touched)">
-                        </div>
-                        <div class="heading"><b>Consolidated details of Employee Stock Ownership Plan (ESOP)/
-                                Employee
-                                Benefits Scheme should be reported as under by the company/ branch/ office, as the
-                                case
-                                may be</b>
-                        </div>
-                        <div class="container text-justify">
-                            <p>a. We, ……………………………………….... (Indian Company / Office / Branch), hereby declare
-                                that:<br>
-                                <br>
-                                M/s. ……………………………………………..………. (foreign company) has issued ……….(nature)<br> equity
-                                capital/ %
-                                interest to our employees / directors under ESOP/ Employee Benefits Scheme
-                                <br>during
-                                the
-                                half year as under:<br><br>
-                                (i) Equity capital/% interest allotted:<br>
-                                (ii) Number of employees/ Directors who accepted shares/ interest: <br><br>
+                        <div class="card" *ngIf="ResidentIndividual">
+                            <div class="heading">
+                                <h6><b>C. OPI by Mutual Funds (please refer to Para 2 of Schedule IV of OI Rules)</b>
+                                </h6>
+                            </div>
 
 
-                                b. We, ……………………………………….... (Indian Company / Office / Branch), hereby declare
-                                that:<br>
-                                <br>
-                                M/s. ……………………………………………..………. (foreign company) has repurchased …….. <br>(nature)
-                                equity
-                                capital from our employees /directors under ESOP/ Employee Benefits Scheme
-                                during<br>
-                                the
-                                half year as under:<br><br>
-                                (i) equity capital repurchased:<br>
-                                (ii) Number of employees / Directors who sold equity capital/ interest: <br>
-                            </p>
-                        </div>
-                        <div class="heading">
-                            <h6><b>C. OPI by Mutual Funds (please refer to Para 2 of Schedule IV of OI Rules)</b>
-                            </h6>
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col" colspan="2">Opening balance</th>
+                                        <th scope="col" colspan="2">Purchase/ acquired</th>
+                                        <th scope="col" colspan="2">Sale/ disinvested*</th>
+                                        <th scope="col" colspan="2">Closing balance</th>
+                                        <th scope="col" colspan="2">Remittance from India</th>
+                                        <th scope="col" colspan="2">Repatriation to India</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td></td>
+                                        <td>USD</td>
+                                        <td>INR</td>
+                                        <td>USD</td>
+                                        <td>INR</td>
+                                        <td>USD</td>
+                                        <td>INR</td>
+                                        <td>USD</td>
+                                        <td>INR</td>
+                                        <td>USD</td>
+                                        <td>INR</td>
+                                        <td>USD</td>
+                                        <td>INR</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>i</td>
+                                        <td>Equity</td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity1_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity1_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity2_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity2_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity3_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity3_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity4_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity4_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity5_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity5_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity6_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity6_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity7_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity7_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity8_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity8_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity9_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity9_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity10_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity10_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity11_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity11_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Equity12_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity12_INR').touched)">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>ii</td>
+                                        <td>Debt Instruments</td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument1_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument1_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument2_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument2_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument3_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument3_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument4_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument4_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument5_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument5_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument6_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument6_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument7_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument7_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument8_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument8_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument9_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument9_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument10_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument10_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument11_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument11_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_DebtInstrument12_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument12_INR').touched)">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>iii</td>
+                                        <td>ADR/GDR</td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR1_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR1_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR2_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR2_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR3_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR3_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR4_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR4_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR5_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR5_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR6_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR6_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR7_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR7_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR8_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR8_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR9_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR9_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR10_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR10_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR11_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR11_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ADR_GDR12_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR12_INR').touched)">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>iv</td>
+                                        <td>ETF (Securities)</td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF1_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF1_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF2_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF2_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF3_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF3_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF4_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF4_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF5_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF5_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF6_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF6_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF7_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF7_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF8_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF8_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF9_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF9_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF10_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF10_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF11_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF11_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_ETF12_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF12_INR').touched)">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>v</td>
+                                        <td>Mutual Funds</td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual1_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual1_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual2_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual2_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual3_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual3_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual4_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual4_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual5_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual5_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual6_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual6_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual7_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual7_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual8_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual8_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual9_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual9_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual10_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual10_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual11_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual11_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Mutual12_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual12_INR').touched)">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>vi</td>
+                                        <td>Others (Specify)</td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others1_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others1_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others2_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others2_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others3_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others3_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others4_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others4_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others5_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others5_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others6_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others6_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others7_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others7_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others8_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others8_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others9_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others9_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others10_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others10_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others11_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others11_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Others12_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others12_INR').touched)">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Total(C)</td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total1_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total1_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total2_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total2_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total3_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total3_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total4_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total4_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total5_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total5_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total6_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total6_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total7_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total7_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total8_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total8_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total9_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total9_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total10_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total10_INR').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total11_USD"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total11_USD').touched)">
+                                        </td>
+                                        <td><input type="number" class="form-control"
+                                                formControlName="OPI_Sec_A_Total12_INR"
+                                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total12_INR').touched)">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="mb-6">* The disinvestment amount should correspond to the actual investment amount
+                                made
+                                and not the sale/market value on which disinvestment took place</p>
                         </div>
                     </div>
-
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                                <th scope="col" colspan="2">Opening balance</th>
-                                <th scope="col" colspan="2">Purchase/ acquired</th>
-                                <th scope="col" colspan="2">Sale/ disinvested*</th>
-                                <th scope="col" colspan="2">Closing balance</th>
-                                <th scope="col" colspan="2">Remittance from India</th>
-                                <th scope="col" colspan="2">Repatriation to India</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td>USD</td>
-                                <td>INR</td>
-                                <td>USD</td>
-                                <td>INR</td>
-                                <td>USD</td>
-                                <td>INR</td>
-                                <td>USD</td>
-                                <td>INR</td>
-                                <td>USD</td>
-                                <td>INR</td>
-                                <td>USD</td>
-                                <td>INR</td>
-
-                            </tr>
-
-                            <tr>
-                                <td>i</td>
-                                <td>Equity</td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity1_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity1_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity2_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity2_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity3_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity3_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity4_INR" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity4_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity5_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity5_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity6_INR" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity6_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity7_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity7_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity8_INR" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity8_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity9_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity9_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity10_INR" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity10_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity11_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Equity11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Equity11_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Equity12_INR" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Equity12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Equity12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Equity12_INR').touched)">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ii</td>
-                                <td>Debt Instruments</td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument1_USD" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument1_USD').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument2_INR" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument2_INR').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument3_USD" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument3_USD').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument4_INR" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument4_INR').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument5_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument5_USD').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument6_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument6_INR').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument7_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument7_USD').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument8_INR" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument8_INR').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument9_USD" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument9_USD').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument10_INR" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument10_INR').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument11_USD" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument11_USD').touched)"></td>
-                                <td><input type="number" class="form-control"
-                                        formControlName="OPI_Sec_A_DebtInstrument12_INR" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_DebtInstrument12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_DebtInstrument12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_DebtInstrument12_INR').touched)"></td>
-                            </tr>
-                            <tr>
-                                <td>iii</td>
-                                <td>ADR/GDR</td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR1_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR1_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR2_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR2_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR3_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR3_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR4_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR4_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR5_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR5_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR6_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR6_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR7_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR7_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR8_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR8_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR9_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR9_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR10_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR10_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR11_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR11_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ADR_GDR12_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ADR_GDR12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ADR_GDR12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ADR_GDR12_INR').touched)">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>iv</td>
-                                <td>ETF (Securities)</td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF1_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF1_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF2_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF2_INR').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF3_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF3_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF4_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF4_INR').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF5_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF5_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF6_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF6_INR').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF7_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF7_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF8_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF8_INR').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF9_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF9_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF10_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF10_INR').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF11_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_ETF11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_ETF11_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_ETF12_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_ETF12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_ETF12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_ETF12_INR').touched)"></td>
-                            </tr>
-                            <tr>
-                                <td>v</td>
-                                <td>Mutual Funds</td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual1_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual1_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual2_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual2_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual3_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual3_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual4_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual4_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual5_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual5_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual6_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual6_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual7_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual7_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual8_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual8_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual9_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual9_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual10_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual10_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual11_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual11_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Mutual12_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Mutual12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Mutual12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Mutual12_INR').touched)">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>vi</td>
-                                <td>Others (Specify)</td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others1_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others1_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others2_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others2_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others3_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others3_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others4_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others4_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others5_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others5_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others6_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others6_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others7_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others7_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others8_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others8_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others9_USD" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others9_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others10_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others10_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others11_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Others11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Others11_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Others12_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Others12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Others12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Others12_INR').touched)">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>Total(C)</td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total1_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total1_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total1_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total1_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total2_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total2_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total2_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total2_INR').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total3_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total3_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total3_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total3_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total4_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total4_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total4_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total4_INR').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total5_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total5_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total5_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total5_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total6_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total6_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total6_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total6_INR').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total7_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total7_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total7_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total7_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total8_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total8_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total8_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total8_INR').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total9_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total9_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total9_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total9_USD').touched)"></td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total10_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total10_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total10_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total10_INR').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total11_USD"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total11_USD').invalid && (OpiFormlist.get('OPI_Sec_A_Total11_USD').dirty ||OpiFormlist.get('OPI_Sec_A_Total11_USD').touched)">
-                                </td>
-                                <td><input type="number" class="form-control" formControlName="OPI_Sec_A_Total12_INR"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_A_Total12_INR').invalid && (OpiFormlist.get('OPI_Sec_A_Total12_INR').dirty ||OpiFormlist.get('OPI_Sec_A_Total12_INR').touched)">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="mb-6">* The disinvestment amount should correspond to the actual investment amount
-                        made
-                        and not the sale/market value on which disinvestment took place</p>
                 </div>
             </tab>
-            <tab heading="Form OPI – Section B">
+            <tab heading="Form OPI – Section B" id="2" disabled="disabled">
                 <div class="card mt-1 p-2">
                     <div class="heading mt-2 mb-2 text-center">
                         <b>Reporting of the Overseas Portfolio Investment (OPI) by Venture Capital Fund (VCF)/
@@ -674,107 +810,107 @@
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_Name"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Name').invalid && (OpiFormlist.get('OPI_Sec_B_Name').dirty ||OpiFormlist.get('OPI_Sec_B_Name').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Name').invalid && (OpiFormlist.get('OPI_Sec_B_Name').dirty ||OpiFormlist.get('OPI_Sec_B_Name').touched)">
                         </div>
 
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">ii. LEI of Indian entity</label>
                         </div>
                         <div class="col-lg-4">
-                            <input type="text" class="form-control" formControlName="OPI_Sec_B_LEI" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_LEI').invalid && (OpiFormlist.get('OPI_Sec_B_LEI').dirty ||OpiFormlist.get('OPI_Sec_B_LEI').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_B_LEI"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_LEI').invalid && (OpiFormlist.get('OPI_Sec_B_LEI').dirty ||OpiFormlist.get('OPI_Sec_B_LEI').touched)">
                         </div>
 
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">iii. PAN </label>
                         </div>
                         <div class="col-lg-4">
-                            <input type="text" class="form-control" formControlName="OPI_Sec_B_PAN" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_PAN').invalid && (OpiFormlist.get('OPI_Sec_B_PAN').dirty ||OpiFormlist.get('OPI_Sec_B_PAN').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_B_PAN"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_PAN').invalid && (OpiFormlist.get('OPI_Sec_B_PAN').dirty ||OpiFormlist.get('OPI_Sec_B_PAN').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">iv. Group to which the entity belongs</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_Group"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Group').invalid && (OpiFormlist.get('OPI_Sec_B_Group').dirty ||OpiFormlist.get('OPI_Sec_B_Group').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Group').invalid && (OpiFormlist.get('OPI_Sec_B_Group').dirty ||OpiFormlist.get('OPI_Sec_B_Group').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">v. Activity code of the Indian entity</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_Activity"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Activity').invalid && (OpiFormlist.get('OPI_Sec_B_Activity').dirty ||OpiFormlist.get('OPI_Sec_B_Activity').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Activity').invalid && (OpiFormlist.get('OPI_Sec_B_Activity').dirty ||OpiFormlist.get('OPI_Sec_B_Activity').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">vi. Address of the Indian entity/ RI</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_Address"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Address').invalid && (OpiFormlist.get('OPI_Sec_B_Address').dirty ||OpiFormlist.get('OPI_Sec_B_Address').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Address').invalid && (OpiFormlist.get('OPI_Sec_B_Address').dirty ||OpiFormlist.get('OPI_Sec_B_Address').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">vii. City</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_City"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_City').invalid && (OpiFormlist.get('OPI_Sec_B_City').dirty ||OpiFormlist.get('OPI_Sec_B_City').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_City').invalid && (OpiFormlist.get('OPI_Sec_B_City').dirty ||OpiFormlist.get('OPI_Sec_B_City').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">viii. State</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_State"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_State').invalid && (OpiFormlist.get('OPI_Sec_B_State').dirty ||OpiFormlist.get('OPI_Sec_B_State').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_State').invalid && (OpiFormlist.get('OPI_Sec_B_State').dirty ||OpiFormlist.get('OPI_Sec_B_State').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">ix. PIN Code</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="number" class="form-control" formControlName="OPI_Sec_B_PINCode"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_PINCode').invalid && (OpiFormlist.get('OPI_Sec_B_PINCode').dirty ||OpiFormlist.get('OPI_Sec_B_PINCode').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_PINCode').invalid && (OpiFormlist.get('OPI_Sec_B_PINCode').dirty ||OpiFormlist.get('OPI_Sec_B_PINCode').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">x. Name of the contact person</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_ContactPerson"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_ContactPerson').invalid && (OpiFormlist.get('OPI_Sec_B_ContactPerson').dirty ||OpiFormlist.get('OPI_Sec_B_ContactPerson').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_ContactPerson').invalid && (OpiFormlist.get('OPI_Sec_B_ContactPerson').dirty ||OpiFormlist.get('OPI_Sec_B_ContactPerson').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">xi. Designation of the contact person</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_Designation"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Designation').invalid && (OpiFormlist.get('OPI_Sec_B_Designation').dirty ||OpiFormlist.get('OPI_Sec_B_Designation').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Designation').invalid && (OpiFormlist.get('OPI_Sec_B_Designation').dirty ||OpiFormlist.get('OPI_Sec_B_Designation').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">xii. Telephone No.</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_Telephone"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Telephone').invalid && (OpiFormlist.get('OPI_Sec_B_Telephone').dirty ||OpiFormlist.get('OPI_Sec_B_Telephone').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Telephone').invalid && (OpiFormlist.get('OPI_Sec_B_Telephone').dirty ||OpiFormlist.get('OPI_Sec_B_Telephone').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">xii. Mobile No. of the contact person</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_MobileCP"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_MobileCP').invalid && (OpiFormlist.get('OPI_Sec_B_MobileCP').dirty ||OpiFormlist.get('OPI_Sec_B_MobileCP').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_MobileCP').invalid && (OpiFormlist.get('OPI_Sec_B_MobileCP').dirty ||OpiFormlist.get('OPI_Sec_B_MobileCP').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">xiv. Fax No</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_FaxNo"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_FaxNo').invalid && (OpiFormlist.get('OPI_Sec_B_FaxNo').dirty ||OpiFormlist.get('OPI_Sec_B_FaxNo').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_FaxNo').invalid && (OpiFormlist.get('OPI_Sec_B_FaxNo').dirty ||OpiFormlist.get('OPI_Sec_B_FaxNo').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">xv. Email</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_Email"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Email').invalid && (OpiFormlist.get('OPI_Sec_B_Email').dirty ||OpiFormlist.get('OPI_Sec_B_Email').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Email').invalid && (OpiFormlist.get('OPI_Sec_B_Email').dirty ||OpiFormlist.get('OPI_Sec_B_Email').touched)">
                         </div>
                     </div>
                     <div class="heading">
@@ -787,7 +923,7 @@
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_Name"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Name').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Name').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Name').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Name').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Name').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Name').touched)">
                         </div>
 
                         <div class="col-lg-8 mb-3">
@@ -795,70 +931,70 @@
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_PAN"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_PAN').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_PAN').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_PAN').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_PAN').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_PAN').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_PAN').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">iii. Group to which the entity belongs</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_Group"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Group').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Group').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Group').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Group').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Group').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Group').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">iv. Activity code of the Indian Company</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_Activity"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Activity').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Activity').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Activity').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Activity').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Activity').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Activity').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">v. Address of the Indian entity/ RI</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_Address"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Address').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Address').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Address').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Address').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Address').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Address').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">vi. City</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_City"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_City').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_City').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_City').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_City').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_City').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_City').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">vii. State</label>
                         </div>
                         <div class="col-lg-4">
-                            <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_State" 
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_State').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_State').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_State').touched)">
+                            <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_State"
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_State').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_State').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_State').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">viii. PIN Code</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="number" class="form-control" formControlName="OPI_Sec_B_VCF_PINCode"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_PINCode').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_PINCode').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_PINCode').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_PINCode').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_PINCode').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_PINCode').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">ix. Name of the contact person</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_ContactPerson"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_ContactPerson').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_ContactPerson').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_ContactPerson').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_ContactPerson').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_ContactPerson').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_ContactPerson').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">x. Designation of the contact person</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_Designation"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Designation').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Designation').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Designation').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Designation').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Designation').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Designation').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">xi. Telephone No.</label>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_Telephone"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Telephone').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Telephone').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Telephone').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Telephone').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Telephone').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Telephone').touched)">
                         </div>
 
                         <div class="col-lg-8 mb-3">
@@ -866,7 +1002,7 @@
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_VCF_Email"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Email').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Email').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Email').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_VCF_Email').invalid && (OpiFormlist.get('OPI_Sec_B_VCF_Email').dirty ||OpiFormlist.get('OPI_Sec_B_VCF_Email').touched)">
                         </div>
                     </div>
                     <div class="heading">
@@ -879,7 +1015,7 @@
                         </div>
                         <div class="col-lg-4">
                             <input type="text" class="form-control" formControlName="OPI_Sec_B_AIF_Name"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_AIF_Name').invalid && (OpiFormlist.get('OPI_Sec_B_AIF_Name').dirty ||OpiFormlist.get('OPI_Sec_B_AIF_Name').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_AIF_Name').invalid && (OpiFormlist.get('OPI_Sec_B_AIF_Name').dirty ||OpiFormlist.get('OPI_Sec_B_AIF_Name').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">ii. Date of the SEBI Approval
@@ -887,7 +1023,7 @@
                         </div>
                         <div class="col-lg-4">
                             <input type="date" class="form-control" formControlName="OPI_Sec_B_AIF_Date"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_AIF_Date').invalid && (OpiFormlist.get('OPI_Sec_B_AIF_Date').dirty ||OpiFormlist.get('OPI_Sec_B_AIF_Date').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_AIF_Date').invalid && (OpiFormlist.get('OPI_Sec_B_AIF_Date').dirty ||OpiFormlist.get('OPI_Sec_B_AIF_Date').touched)">
                         </div>
                         <div class="col-lg-8 mb-3">
                             <label class="form-label">iii. Limit of the Overseas investment granted by SEBI (Amount
@@ -897,7 +1033,7 @@
                         </div>
                         <div class="col-lg-4">
                             <input type="number" class="form-control" formControlName="OPI_Sec_B_AIF_SEBILimit"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_AIF_SEBILimit').invalid && (OpiFormlist.get('OPI_Sec_B_AIF_SEBILimit').dirty ||OpiFormlist.get('OPI_Sec_B_AIF_SEBILimit').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_AIF_SEBILimit').invalid && (OpiFormlist.get('OPI_Sec_B_AIF_SEBILimit').dirty ||OpiFormlist.get('OPI_Sec_B_AIF_SEBILimit').touched)">
                         </div>
                     </div>
                     <div class="heading">
@@ -939,162 +1075,201 @@
                                 <tr>
                                     <td>i</td>
                                     <td>Equity</td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Equity1_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity1_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity1_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity1_USD').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Equity1_USD"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity1_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity1_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity1_USD').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Equity2_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity2_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity2_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity2_INR').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Equity2_INR"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity2_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity2_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity2_INR').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Equity3_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity3_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity3_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity3_USD').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Equity3_USD"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity3_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity3_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity3_USD').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Equity4_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity4_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity4_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity4_INR').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Equity4_INR"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity4_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity4_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity4_INR').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Equity5_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity5_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity5_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity5_USD').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Equity5_USD"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity5_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity5_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity5_USD').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Equity6_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity6_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity6_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity6_INR').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Equity6_INR"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity6_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity6_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity6_INR').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Equity7_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity7_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity7_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity7_USD').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Equity7_USD"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity7_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity7_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity7_USD').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Equity8_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity8_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity8_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity8_INR').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Equity8_INR"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity8_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity8_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity8_INR').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Equity9_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity9_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity9_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity9_USD').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Equity9_USD"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity9_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity9_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity9_USD').touched)">
                                     </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Equity10_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity10_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity10_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity10_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity10_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity10_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity10_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Equity11_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity11_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity11_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity11_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity11_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Equity11_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Equity11_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Equity12_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity12_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity12_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity12_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Equity12_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Equity12_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Equity12_INR').touched)">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>ii</td>
                                     <td>Equity linked instrument</td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked1_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked1_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked1_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked1_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked1_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked1_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked1_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked2_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked2_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked2_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked2_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked2_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked2_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked2_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked3_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked3_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked3_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked3_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked3_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked3_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked3_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked4_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked4_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked4_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked4_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked4_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked4_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked4_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked5_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked5_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked5_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked5_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked5_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked5_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked5_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked6_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked6_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked6_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked6_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked6_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked6_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked6_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked7_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked7_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked7_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked7_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked7_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked7_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked7_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked8_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked8_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked8_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked8_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked8_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked8_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked8_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked9_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked9_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked9_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked9_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked9_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked9_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked9_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked10_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked10_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked10_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked10_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked10_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked10_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked10_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked11_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked11_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked11_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked11_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked11_USD').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked11_USD').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked11_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_EquityLinked12_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked12_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked12_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked12_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_EquityLinked12_INR').invalid && (OpiFormlist.get('OPI_Sec_B_EquityLinked12_INR').dirty ||OpiFormlist.get('OPI_Sec_B_EquityLinked12_INR').touched)">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>iii</td>
                                     <td>Other permissible instrument (furnish the details of instrument)</td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible1_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible1_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible1_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible1_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible1_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible1_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible1_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible2_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible2_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible2_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible2_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible2_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible2_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible2_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible3_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible3_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible3_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible3_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible3_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible3_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible3_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible4_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible4_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible4_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible4_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible4_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible4_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible4_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible5_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible5_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible5_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible5_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible5_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible5_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible5_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible6_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible6_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible6_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible6_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible6_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible6_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible6_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible7_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible7_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible7_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible7_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible7_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible7_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible7_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible8_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible8_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible8_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible8_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible8_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible8_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible8_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible9_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible9_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible9_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible9_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible9_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible9_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible9_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible10_INR"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible10_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible10_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible10_INR').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible10_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible10_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible10_INR').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
                                             formControlName="OPI_Sec_B_Permissible11_USD"
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible11_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible11_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible11_USD').touched)"></td>
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible11_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible11_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible11_USD').touched)">
+                                    </td>
                                     <td><input type="number" class="form-control"
-                                            formControlName="OPI_Sec_B_Permissible12_INR" 
-                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible12_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible12_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible12_INR').touched)"></td>
+                                            formControlName="OPI_Sec_B_Permissible12_INR"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Permissible12_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Permissible12_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Permissible12_INR').touched)">
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td></td>
                                     <td>Total</td>
                                     <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total1_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total1_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total1_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total1_USD').touched)">
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total1_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total1_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total1_USD').touched)">
                                     </td>
                                     <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total2_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total2_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total2_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total2_INR').touched)">
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total2_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total2_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total2_INR').touched)">
                                     </td>
                                     <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total3_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total3_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total3_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total3_USD').touched)">
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total3_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total3_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total3_USD').touched)">
                                     </td>
                                     <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total4_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total4_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total4_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total4_INR').touched)">
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total4_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total4_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total4_INR').touched)">
                                     </td>
                                     <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total5_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total5_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total5_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total5_USD').touched)">
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total5_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total5_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total5_USD').touched)">
                                     </td>
                                     <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total6_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total6_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total6_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total6_INR').touched)">
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total6_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total6_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total6_INR').touched)">
                                     </td>
                                     <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total7_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total7_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total7_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total7_USD').touched)">
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total7_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total7_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total7_USD').touched)">
                                     </td>
                                     <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total8_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total8_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total8_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total8_INR').touched)">
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total8_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total8_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total8_INR').touched)">
                                     </td>
                                     <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total9_USD"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total9_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total9_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total9_USD').touched)">
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total9_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total9_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total9_USD').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total10_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total10_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total10_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total10_INR').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Total10_INR"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total10_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total10_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total10_INR').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total11_USD" 
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total11_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total11_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total11_USD').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Total11_USD"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total11_USD').invalid && (OpiFormlist.get('OPI_Sec_B_Total11_USD').dirty ||OpiFormlist.get('OPI_Sec_B_Total11_USD').touched)">
                                     </td>
-                                    <td><input type="number" class="form-control" formControlName="OPI_Sec_B_Total12_INR"
-                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total12_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total12_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total12_INR').touched)">
+                                    <td><input type="number" class="form-control"
+                                            formControlName="OPI_Sec_B_Total12_INR"
+                                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_B_Total12_INR').invalid && (OpiFormlist.get('OPI_Sec_B_Total12_INR').dirty ||OpiFormlist.get('OPI_Sec_B_Total12_INR').touched)">
                                     </td>
                                 </tr>
 
@@ -1103,7 +1278,7 @@
                     </div>
                 </div>
             </tab>
-            <tab heading="FORM OPI: Section C">
+            <tab heading="FORM OPI: Section C" id="3" disabled="disabled">
                 <div class="card mt-1 p-2">
 
                     <p class="text-center">
@@ -1140,7 +1315,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <input type="text" class="form-control" formControlName="OPI_Sec_C_Signature"
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Signature').invalid && (OpiFormlist.get('OPI_Sec_C_Signature').dirty ||OpiFormlist.get('OPI_Sec_C_Signature').touched)">
+                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Signature').invalid && (OpiFormlist.get('OPI_Sec_C_Signature').dirty ||OpiFormlist.get('OPI_Sec_C_Signature').touched)">
                                 </div>
 
                                 <hr>
@@ -1151,8 +1326,8 @@
                                     </label>
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control" formControlName="OPI_Sec_C_Name" 
-                                    [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Name').invalid && (OpiFormlist.get('OPI_Sec_C_Name').dirty ||OpiFormlist.get('OPI_Sec_C_Name').touched)">
+                                    <input type="text" class="form-control" formControlName="OPI_Sec_C_Name"
+                                        [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Name').invalid && (OpiFormlist.get('OPI_Sec_C_Name').dirty ||OpiFormlist.get('OPI_Sec_C_Name').touched)">
                                 </div>
                             </div>
                         </div>
@@ -1172,7 +1347,7 @@
                         </div>
                         <div class="col-lg-3">
                             <input type="text" class="form-control" formControlName="OPI_Sec_C_Place"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Place').invalid && (OpiFormlist.get('OPI_Sec_C_Place').dirty ||OpiFormlist.get('OPI_Sec_C_Place').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Place').invalid && (OpiFormlist.get('OPI_Sec_C_Place').dirty ||OpiFormlist.get('OPI_Sec_C_Place').touched)">
                         </div>
                         <div class="col-3 mb-2">
                             <label class="form-label">Date
@@ -1180,7 +1355,7 @@
                         </div>
                         <div class="col-lg-3">
                             <input type="date" class="form-control" formControlName="OPI_Sec_C_Date"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Date').invalid && (OpiFormlist.get('OPI_Sec_C_Date').dirty ||OpiFormlist.get('OPI_Sec_C_Date').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Date').invalid && (OpiFormlist.get('OPI_Sec_C_Date').dirty ||OpiFormlist.get('OPI_Sec_C_Date').touched)">
                         </div>
                         <hr class="mt-2">
                         <div class="col-3 mb-2">
@@ -1189,7 +1364,7 @@
                         </div>
                         <div class="col-lg-3">
                             <input type="text" class="form-control" formControlName="OPI_Sec_C_Telephone"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Telephone').invalid && (OpiFormlist.get('OPI_Sec_C_Telephone').dirty ||OpiFormlist.get('OPI_Sec_C_Telephone').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_Telephone').invalid && (OpiFormlist.get('OPI_Sec_C_Telephone').dirty ||OpiFormlist.get('OPI_Sec_C_Telephone').touched)">
                         </div>
                         <div class="col-3 mb-2">
                             <label class="form-label">Email ID
@@ -1197,26 +1372,27 @@
                         </div>
                         <div class="col-lg-3">
                             <input type="text" class="form-control" formControlName="OPI_Sec_C_EmailId"
-                            [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_EmailId').invalid && (OpiFormlist.get('OPI_Sec_C_EmailId').dirty ||OpiFormlist.get('OPI_Sec_C_EmailId').touched)">
+                                [class.is-invalid]="OpiFormlist.get('OPI_Sec_C_EmailId').invalid && (OpiFormlist.get('OPI_Sec_C_EmailId').dirty ||OpiFormlist.get('OPI_Sec_C_EmailId').touched)">
                         </div>
                     </div>
                     <div class="col-lg-12 text-center mb-4">
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </div>
                 </div>
-
-
-
+            </tab>
+            <tab heading="FORM OPI: Preview" id="4" disabled="disabled">
             </tab>
         </tabset>
-        <div class="col-lg-12 text-center mt-2 mb-3">
-            <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1" value="Back">
-            <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
+        <div class="col-lg-12 text-right mt-2 mb-3">
+            <button class="btn btn-sm btn-primary ml-2 me-2" *ngIf="btnShow" (click)="updatePrev()">
+                Previous </button>
+            <button class="btn btn-sm btn-primary" *ngIf="btnShowNext" (click)="updateNext()">
+                Next </button>
         </div>
     </form>
     <div style="display: none;">
-    <!-- <app-opi-pdf #OpiPdfComponent [hero]="datalist" ></app-opi-pdf> -->
-</div>
+        <!-- <app-opi-pdf #OpiPdfComponent [hero]="datalist" ></app-opi-pdf> -->
+    </div>
     <!--  <button (click)='goto(0)'>Go to 1</button>
       <button (click)='goto(1)'>Go to 2</button>
       <button (click)='goto(2)'>Go to 3</button>

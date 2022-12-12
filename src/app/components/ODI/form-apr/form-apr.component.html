@@ -1855,7 +1855,16 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row">
-                                                    <h6>A. APR Form</h6>
+                                                    <h6>A. RBI Covering Letter</h6>
+                                                </th>
+                                                <td><img src="assets/images/word.png" style="cursor:pointer"
+                                                        (click)="ExportWordCoveringLetter()"></td>
+                                                <td><img src="assets/images/pdf.png" style="cursor:pointer"
+                                                        (click)="downloadCoveringLetter()"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <h6>B. Form APR</h6>
                                                 </th>
                                                 <td><img src="assets/images/word.png" (click)="ExportWordAPR()"
                                                         style="cursor:pointer"></td>
@@ -1864,20 +1873,12 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">
-                                                    <h6>B. Auditor/CA Certificate</h6>
+                                                    <h6>C. Statutory Auditor / Chartered Accountant Certificate</h6>
                                                 </th>
                                                 <td><img src="assets/images/word.png" style="cursor:pointer" (click)="ExportWordpdfCAcertificate()"></td>
                                                 <td><img src="assets/images/pdf.png" style="cursor:pointer" (click)="downloadpdfCAcertificate()"></td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    <h6>C. Covering Letter</h6>
-                                                </th>
-                                                <td><img src="assets/images/word.png" style="cursor:pointer"
-                                                        (click)="ExportWordCoveringLetter()"></td>
-                                                <td><img src="assets/images/pdf.png" style="cursor:pointer"
-                                                        (click)="downloadCoveringLetter()"></td>
-                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                     <div id="pdfCovering" #pdfCovering style="display:none; ">

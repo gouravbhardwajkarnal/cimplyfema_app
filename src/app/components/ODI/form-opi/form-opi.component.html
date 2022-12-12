@@ -11,6 +11,13 @@
             Portfolio Investment (OPI) or transferring such investment during the reporting period (Only relevant
             sections of this form, as applicable, may be used)
             All amounts should be in actuals</p>
+            <!-- (change)="CountryChange($event)" -->
+            <select class="form-control">
+            <option ng-option value="">Select Investor type</option>
+            <option *ngFor=" let object of opitypes" value="{{object.id}}">
+                {{object.name}}
+            </option>
+        </select>
     </div>
     <form [formGroup]="OpiFormlist" (ngSubmit)="onSubmitOPIFrom()">
         <tabset #tabset>
@@ -37,7 +44,7 @@
                     </p>
                 </div>
             </tab>
-            <tab heading="FORM OPI: Section A">
+            <tab heading="Form OPI – Section A">
                 <div class="card mt-1 p-2">
                     <div class="heading mt-2 mb-2 text-center"><b>Particulars of the Indian Entity/Mutual Fund
                             (MF)</b>
@@ -646,7 +653,7 @@
                         and not the sale/market value on which disinvestment took place</p>
                 </div>
             </tab>
-            <tab heading="FORM OPI: Section B">
+            <tab heading="Form OPI – Section B">
                 <div class="card mt-1 p-2">
                     <div class="heading mt-2 mb-2 text-center">
                         <b>Reporting of the Overseas Portfolio Investment (OPI) by Venture Capital Fund (VCF)/
@@ -1096,7 +1103,6 @@
                     </div>
                 </div>
             </tab>
-
             <tab heading="FORM OPI: Section C">
                 <div class="card mt-1 p-2">
 
@@ -1209,7 +1215,7 @@
         </div>
     </form>
     <div style="display: none;">
-    <app-opi-pdf #OpiPdfComponent [hero]="datalist" ></app-opi-pdf>
+    <!-- <app-opi-pdf #OpiPdfComponent [hero]="datalist" ></app-opi-pdf> -->
 </div>
     <!--  <button (click)='goto(0)'>Go to 1</button>
       <button (click)='goto(1)'>Go to 2</button>

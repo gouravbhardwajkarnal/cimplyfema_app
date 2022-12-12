@@ -36,6 +36,13 @@ export class CommonService {
         { id: 2, name: "2nd Level" },
         { id: 3, name: "3rd Level" },
     ];
+    opitypes: DisinvetmentType[] = [
+        { id: 1, name: "OPI – Indian Entity " },
+        { id: 2, name: "OPI – Mutual Funds" },
+        { id: 3, name: "OPI – Resident Individuals (ESOP / Employee Benefit Scheme" },
+        { id: 4, name: "Venture Capital Fund (VCF)" },
+        { id: 5, name: "Alternate Investment Fund (AIF)" },
+    ];
     modules: Modules[] = [
         { id: 1, name: "Foreign Direct Investment" },
         { id: 2, name: "Overseas Direct Investment" }
@@ -133,6 +140,9 @@ cocsubmodules: COCsubmodules[] = [
     }
     getAllsdsleveltypes(): DisinvetmentType[] {
         return this.sdsleveltypes;
+    }
+    getAllopitypes(): DisinvetmentType[] {
+        return this.opitypes;
     }
     getAllmodules(): Modules[] {
         return this.modules;

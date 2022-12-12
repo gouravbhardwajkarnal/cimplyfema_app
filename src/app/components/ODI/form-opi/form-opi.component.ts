@@ -3,8 +3,10 @@ import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
 import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
-import{OpiDataList} from'./opilist'
-import { OpiPdfComponent } from './opi-pdf/opi-pdf.component';
+import { OpiDataList } from 'src/app/model/opilist';
+import { OpiPdfComponent } from '../opi-pdf/opi-pdf.component';
+import { CommonService } from 'src/app/service/common.service';
+import { DisinvetmentType } from 'src/app/model/common.model';
 
 @Component({
   selector: 'app-form-opi',
@@ -15,9 +17,11 @@ export class FormOpiComponent implements OnInit {
   OpiFormlist:FormGroup
   @ViewChild('tabset') tabset: TabsetComponent;
   @ViewChild('OpiPdfComponent', {static: false}) childComponent: OpiPdfComponent;
-  constructor(private readonly route: ActivatedRoute,private apiService: ApiService) {
-    
+  opitypes: DisinvetmentType[];
+  constructor(private readonly route: ActivatedRoute,private apiService: ApiService,private commonservice: CommonService) {
+    this.opitypes = commonservice.getAllopitypes();
    }
+  
   /*  ngAfterViewInit() {
     this.childComponent.downloadAsPDF();
 } */

@@ -1,0 +1,8 @@
+
+.del { 
+    text-decoration: line-through;
+  }
+  .notdel{
+    text-decoration: auto;
+  }
+  

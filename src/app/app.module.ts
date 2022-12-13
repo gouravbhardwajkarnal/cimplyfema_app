@@ -20,7 +20,7 @@ import { FormFcDisinvestmentComponent } from './Partial_Components/form-fc-disin
 import { OpiPdfComponent } from './components/ODI/opi-pdf/opi-pdf.component';
 import { EsopPdfComponent } from './components/FDI/esop-pdf/esop-pdf.component';
 import { HomeComponent } from './components/home/home.component';
-import { FormCocComponent } from './components/COC/form-coc/form-coc.component';
+import { FormCocComponent } from './components/form-coc/form-coc.component';
 import { FormCocFdiComponent } from './Partial_Components/form-coc-fdi/form-coc-fdi.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';

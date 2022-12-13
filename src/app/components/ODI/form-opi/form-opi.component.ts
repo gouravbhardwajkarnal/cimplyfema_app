@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
-import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { OpiDataList } from 'src/app/model/opilist';
@@ -20,20 +20,24 @@ export class FormOpiComponent implements OnInit {
   btnShowNext: boolean;
   IndianEntity: boolean = false;
   MutualFund: boolean = false;
+  AIF: boolean = false;
+  VCF: boolean = false;
   ResidentIndividual: boolean = false;
+  emailPattern: string;
   OpiFormlist: FormGroup
   @ViewChild('tabset') tabset: TabsetComponent;
   @ViewChild('OpiPdfComponent', { static: false }) childComponent: OpiPdfComponent;
   opitypes: DisinvetmentType[];
-  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private commonservice: CommonService) {
+  constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private commonservice: CommonService, private fb: FormBuilder) {
     this.opitypes = commonservice.getAllopitypes();
     this.btnShowNext = true;
+    this.emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   }
 
   /*  ngAfterViewInit() {
     this.childComponent.downloadAsPDF();
 } */
-
+  public mainform: FormGroup;
   datalist: {
     UserId: "",
     OPI_Sec_A_Name: "",
@@ -244,22 +248,26 @@ export class FormOpiComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.mainform = this.fb.group({
 
-    this.OpiFormlist = new FormGroup(
-      {
-        'OPI_Sec_A_Name': new FormControl('', Validators.required),
-        'OPI_Sec_A_LEI': new FormControl('', Validators.required),
-        'OPI_Sec_A_PAN': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
-        'OPI_Sec_A_Address': new FormControl('', Validators.required),
-        'OPI_Sec_A_City': new FormControl('', Validators.required),
-        'OPI_Sec_A_State': new FormControl('', Validators.required),
-        'OPI_Sec_A_PIN': new FormControl('', Validators.required),
-        'OPI_Sec_A_NetINR': new FormControl('', Validators.required),
-        'OPI_Sec_A_AsOn_Date': new FormControl('', Validators.required),
-        'WhetherIElist': new FormControl('', Validators.required),
-        'OPI_Sec_A_ContactPerson': new FormControl('', Validators.required),
-        'OPI_Sec_A_Mobile': new FormControl('', Validators.required),
-        'OPI_Sec_A_EmailId': new FormControl('', Validators.required),
+    // });
+    this.OpiFormlist = this.fb.group({
+      'OPI_Sec_A_Name': new FormControl('', Validators.required),
+      'OPI_Sec_A_LEI': new FormControl('', Validators.required),
+      'OPI_Sec_A_PAN': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
+      'OPI_Sec_A_Address': new FormControl('', Validators.required),
+      'OPI_Sec_A_City': new FormControl('', Validators.required),
+      'OPI_Sec_A_State': new FormControl('', Validators.required),
+      'OPI_Sec_A_PIN': new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{6}"), Validators.minLength(6),
+      Validators.maxLength(6)]),
+      'OPI_Sec_A_NetINR': new FormControl('', Validators.required),
+      'OPI_Sec_A_AsOn_Date': new FormControl('', Validators.required),
+      'WhetherIElist': new FormControl('', Validators.required),
+      'OPI_Sec_A_ContactPerson': new FormControl('', Validators.required),
+      'OPI_Sec_A_Mobile': new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{10}"), Validators.minLength(10),
+      Validators.maxLength(10)]),
+      'OPI_Sec_A_EmailId': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      IndianEntitysform: new FormGroup({
         'OPI_Sec_A_NetAmount_USD': new FormControl('', Validators.required),
         'OPI_Sec_A_NetAmount_INR': new FormControl('', Validators.required),
         'OPI_Sec_A_Investments_USD': new FormControl('', Validators.required),
@@ -271,19 +279,48 @@ export class FormOpiComponent implements OnInit {
         'OPI_Sec_A_RemittanceAmt_USD': new FormControl('', Validators.required),
         'OPI_Sec_A_RemittanceAmt_INR': new FormControl('', Validators.required),
         'OPI_Sec_A_Repatriation_USD': new FormControl('', Validators.required),
-        'OPI_Sec_A_Repatriation_INR': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_NetAmt_USD': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_NetAmt_INR': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_Investments_USD': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_Investments_INR': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_Disinvestment_USD': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_Disinvestment_INR': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_NetAmtClose_USD': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_NetAmtClose_INR': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_RemittanceAmt_USD': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_RemittanceAmt_INR': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_RepatriationAmt_USD': new FormControl('', Validators.required),
-        'OPI_Sec_A_EBS_RepatriationAmt_INR': new FormControl('', Validators.required),
+        'OPI_Sec_A_Repatriation_INR': new FormControl('', Validators.required)
+        // 'OPI_Sec_A_EBS_NetAmt_USD': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_NetAmt_INR': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_Investments_USD': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_Investments_INR': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_Disinvestment_USD': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_Disinvestment_INR': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_NetAmtClose_USD': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_NetAmtClose_INR': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_RemittanceAmt_USD': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_RemittanceAmt_INR': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_RepatriationAmt_USD': new FormControl('', Validators.required),
+        // 'OPI_Sec_A_EBS_RepatriationAmt_INR': new FormControl('', Validators.required)
+      }),
+      MutualFunds: new FormGroup(
+        {
+          // 'OPI_Sec_A_NetAmount_USD': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_NetAmount_INR': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_Investments_USD': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_Investments_INR': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_Sale_USD': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_Sale_INR': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_NetAmountClosing_USD': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_NetAmountClosing_INR': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_RemittanceAmt_USD': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_RemittanceAmt_INR': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_Repatriation_USD': new FormControl('', Validators.required),
+          // 'OPI_Sec_A_Repatriation_INR': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_NetAmt_USD': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_NetAmt_INR': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_Investments_USD': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_Investments_INR': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_Disinvestment_USD': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_Disinvestment_INR': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_NetAmtClose_USD': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_NetAmtClose_INR': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_RemittanceAmt_USD': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_RemittanceAmt_INR': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_RepatriationAmt_USD': new FormControl('', Validators.required),
+          'OPI_Sec_A_EBS_RepatriationAmt_INR': new FormControl('', Validators.required),
+        }),
+      ResidentIndividual: new FormGroup({
         'OPI_Sec_A_Equity1_USD': new FormControl('', Validators.required),
         'OPI_Sec_A_Equity2_INR': new FormControl('', Validators.required),
         'OPI_Sec_A_Equity3_USD': new FormControl('', Validators.required),
@@ -369,101 +406,109 @@ export class FormOpiComponent implements OnInit {
         'OPI_Sec_A_Total11_USD': new FormControl('', Validators.required),
         'OPI_Sec_A_Total12_INR': new FormControl('', Validators.required),
 
-        'OPI_Sec_B_Name': new FormControl('', Validators.required),
-        'OPI_Sec_B_LEI': new FormControl('', Validators.required),
-        'OPI_Sec_B_PAN': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
-        'OPI_Sec_B_Group': new FormControl('', Validators.required),
-        'OPI_Sec_B_Activity': new FormControl('', Validators.required),
-        'OPI_Sec_B_Address': new FormControl('', Validators.required),
-        'OPI_Sec_B_City': new FormControl('', Validators.required),
-        'OPI_Sec_B_State': new FormControl('', Validators.required),
-        'OPI_Sec_B_PINCode': new FormControl('', Validators.required),
-        'OPI_Sec_B_ContactPerson': new FormControl('', Validators.required),
-        'OPI_Sec_B_Designation': new FormControl('', Validators.required),
-        'OPI_Sec_B_Telephone': new FormControl('', Validators.required),
-        'OPI_Sec_B_MobileCP': new FormControl('', Validators.required),
-        'OPI_Sec_B_FaxNo': new FormControl('', Validators.required),
-        'OPI_Sec_B_Email': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_Name': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_PAN': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
-        'OPI_Sec_B_VCF_Group': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_Activity': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_Address': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_City': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_State': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_PINCode': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_ContactPerson': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_Designation': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_Telephone': new FormControl('', Validators.required),
-        'OPI_Sec_B_VCF_Email': new FormControl('', Validators.required),
-        'OPI_Sec_B_AIF_Name': new FormControl('', Validators.required),
-        'OPI_Sec_B_AIF_Date': new FormControl('', Validators.required),
-        'OPI_Sec_B_AIF_SEBILimit': new FormControl('', Validators.required),
+      }),
 
-        'OPI_Sec_B_Equity1_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity2_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity3_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity4_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity5_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity6_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity7_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity8_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity9_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity10_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity11_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Equity12_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Name': new FormControl('', Validators.required),
+      'OPI_Sec_B_LEI': new FormControl('', Validators.required),
+      'OPI_Sec_B_PAN': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
+      'OPI_Sec_B_Group': new FormControl('', Validators.required),
+      'OPI_Sec_B_Activity': new FormControl('', Validators.required),
+      'OPI_Sec_B_Address': new FormControl('', Validators.required),
+      'OPI_Sec_B_City': new FormControl('', Validators.required),
+      'OPI_Sec_B_State': new FormControl('', Validators.required),
+      'OPI_Sec_B_PINCode': new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{6}"), Validators.minLength(6),
+      Validators.maxLength(6)]),
+      'OPI_Sec_B_ContactPerson': new FormControl('', Validators.required),
+      'OPI_Sec_B_Designation': new FormControl('', Validators.required),
+      'OPI_Sec_B_Telephone': new FormControl('', Validators.required),
+      'OPI_Sec_B_MobileCP': new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{10}"), Validators.minLength(10),
+      Validators.maxLength(10)]),
+      'OPI_Sec_B_FaxNo': new FormControl('', Validators.required),
+      'OPI_Sec_B_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      'OPI_Sec_B_VCF_Name': new FormControl('', Validators.required),
+      'OPI_Sec_B_VCF_PAN': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
+      'OPI_Sec_B_VCF_Group': new FormControl('', Validators.required),
+      'OPI_Sec_B_VCF_Activity': new FormControl('', Validators.required),
+      'OPI_Sec_B_VCF_Address': new FormControl('', Validators.required),
+      'OPI_Sec_B_VCF_City': new FormControl('', Validators.required),
+      'OPI_Sec_B_VCF_State': new FormControl('', Validators.required),
+      'OPI_Sec_B_VCF_PINCode': new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{6}"), Validators.minLength(6),
+      Validators.maxLength(6)]),
+      'OPI_Sec_B_VCF_ContactPerson': new FormControl('', Validators.required),
+      'OPI_Sec_B_VCF_Designation': new FormControl('', Validators.required),
+      'OPI_Sec_B_VCF_Telephone': new FormControl('', Validators.required),
+      'OPI_Sec_B_VCF_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      'OPI_Sec_B_AIF_Name': new FormControl('', Validators.required),
+      'OPI_Sec_B_AIF_Date': new FormControl('', Validators.required),
+      'OPI_Sec_B_AIF_SEBILimit': new FormControl('', Validators.required),
 
-        'OPI_Sec_B_EquityLinked1_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked2_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked3_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked4_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked5_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked6_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked7_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked8_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked9_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked10_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked11_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_EquityLinked12_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity1_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity2_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity3_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity4_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity5_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity6_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity7_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity8_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity9_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity10_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity11_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Equity12_INR': new FormControl('', Validators.required),
 
-        'OPI_Sec_B_Permissible1_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible2_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible3_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible4_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible5_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible6_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible7_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible8_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible9_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible10_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible11_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Permissible12_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked1_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked2_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked3_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked4_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked5_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked6_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked7_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked8_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked9_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked10_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked11_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_EquityLinked12_INR': new FormControl('', Validators.required),
 
-        'OPI_Sec_B_Total1_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total2_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total3_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total4_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total5_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total6_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total7_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total8_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total9_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total10_INR': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total11_USD': new FormControl('', Validators.required),
-        'OPI_Sec_B_Total12_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible1_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible2_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible3_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible4_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible5_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible6_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible7_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible8_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible9_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible10_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible11_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Permissible12_INR': new FormControl('', Validators.required),
 
+      'OPI_Sec_B_Total1_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total2_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total3_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total4_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total5_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total6_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total7_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total8_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total9_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total10_INR': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total11_USD': new FormControl('', Validators.required),
+      'OPI_Sec_B_Total12_INR': new FormControl('', Validators.required),
+      SectionC: new FormGroup({
         'OPI_Sec_C_Signature': new FormControl('', Validators.required),
         'OPI_Sec_C_Name': new FormControl('', Validators.required),
         'OPI_Sec_C_Stamp': new FormControl(''),
         'OPI_Sec_C_Place': new FormControl('', Validators.required),
         'OPI_Sec_C_Date': new FormControl('', Validators.required),
         'OPI_Sec_C_Telephone': new FormControl('', Validators.required),
-        'OPI_Sec_C_EmailId': new FormControl('', Validators.required),
-      }
+        'OPI_Sec_C_EmailId': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      })
+    }
     )
-
-
     //this.childComponent.downloadAsPDF();
+    // this.OpiFormlist.addControl(
+    //   'child',
+    //   new FormGroup(this.mainform.controls)
+    // );
   }
   WhetherIElist = [
     { id: '1', Type: 'Yes' },
@@ -471,101 +516,140 @@ export class FormOpiComponent implements OnInit {
   ]
 
   updatePrev() {
-
+    debugger;
     this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
     if (Number(this.id) - 1 >= 0) {
       this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) - 1)
-      this.tabset.tabs[(Number(this.id)) - 1].disabled = false;
-      this.tabset.tabs[(Number(this.id)) - 1].active = true;
-      if (Number(this.typeshow) <= 3 && Number(this.id) == 3) {
+      if (Number(this.id) != 3) {
+        if (Number(this.typeshow) <= 3) {
+          this.tabset.tabs[(Number(this.id)) - 1].disabled = false;
+          this.tabset.tabs[(Number(this.id)) - 1].active = true;
+        }
+      }
+      if (Number(this.typeshow) <= 3 && (Number(this.id) == 3 || Number(this.id) == 2)) {
         this.tabset.tabs[(Number(this.id)) - 2].disabled = false;
         this.tabset.tabs[(Number(this.id)) - 2].active = true;
+      }
+      else if (Number(this.typeshow) > 3) {
+        this.tabset.tabs[(Number(this.id)) - 2].disabled = true;
+        if (Number(this.id) == 3 || Number(this.id) == 4) {
+          this.tabset.tabs[(Number(this.id)) - 1].disabled = false;
+          this.tabset.tabs[(Number(this.id)) - 1].active = true;
+        }
+        else if (Number(this.id) == 2) {
+          this.tabset.tabs[(Number(this.id)) - 2].disabled = false;
+          this.tabset.tabs[(Number(this.id)) - 2].active = true;
+        }
       }
       if (Number(this.id) - 1 == 0) {
         this.btnShow = false;
         this.tabset.tabs[(Number(this.id))].disabled = true;
       }
-    }
-    if (Number(this.id) == 4) {
-      this.btnShowNext = false;
-      this.btnShow = true;
+      if (Number(this.id) == 3 || Number(this.id) == 4) {
+        this.btnShowNext = true;
+        this.btnShow = true;
+      }
     }
   }
   updateNext() {
     debugger;
-    let count = this.tabset.tabs.length;
-    this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
-    if (Number(this.id) == 3) {
-      this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
-      this.tabset.tabs[(Number(this.id)) + 1].active = true;
-    }
+    if (this.typeshow != '0') {
+      let count = this.tabset.tabs.length;
+      this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
+      if (Number(this.id) == 3) {
+        this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
+        this.tabset.tabs[(Number(this.id)) + 1].active = true;
+      }
 
-    if (Number(this.id) + 1 < count) {
-      this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) + 1)
-      if (Number(this.typeshow) <= 3) {
-        if (Number(this.id) > 0) {
-          this.tabset.tabs[(Number(this.id)) + 2].disabled = false;
-          this.tabset.tabs[(Number(this.id)) + 2].active = true;
+      if (Number(this.id) + 1 < count) {
+        this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) + 1)
+        if (Number(this.typeshow) <= 3) {
+          if (Number(this.id) <= 2 && Number(this.id) != 0) {
+            this.tabset.tabs[(Number(this.id)) + 2].disabled = false;
+            this.tabset.tabs[(Number(this.id)) + 2].active = true;
 
+          }
+          else if (Number(this.id) <= 2) {
+            this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
+            this.tabset.tabs[(Number(this.id)) + 1].active = true;
+            this.tabset.tabs[(Number(this.id)) + 2].disabled = true;
+          }
         }
         else {
-          this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
-          this.tabset.tabs[(Number(this.id)) + 1].active = true;
-          this.tabset.tabs[(Number(this.id)) + 2].disabled = true;
+          if (Number(this.id) > 0) {
+            this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
+            this.tabset.tabs[(Number(this.id)) + 1].active = true;
+            if (Number(this.id) + 1 == 4) {
+              this.btnShowNext = false;
+            }
+          }
+          else {
+            this.tabset.tabs[(Number(this.id)) + 1].disabled = true;
+            this.tabset.tabs[(Number(this.id)) + 2].disabled = false;
+            this.tabset.tabs[(Number(this.id)) + 2].active = true;
+          }
         }
-      }
-      else {
-        if (Number(this.id) > 0) {
-          this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
-          this.tabset.tabs[(Number(this.id)) + 1].active = true;
+        if (Number(this.id) + 1 == 4 || Number(this.id) == 4) {
+          this.btnShowNext = false;
+          this.btnShow = true;
         }
         else {
-          this.tabset.tabs[(Number(this.id)) + 1].disabled = true;
-          this.tabset.tabs[(Number(this.id)) + 2].disabled = false;
-          this.tabset.tabs[(Number(this.id)) + 2].active = true;
+          this.btnShow = true;
         }
+
       }
-      if (Number(this.id) == 4) {
-        this.btnShowNext = false;
-        this.btnShow = true;
-      }
-      else {
-        this.btnShow = true;
-      }
+
     }
-    if (Number(this.id) + 1 == 5 || Number(this.id) == 6) {
-      this.btnShowNext = false;
+    else {
+      alert("please select investor type");
     }
   }
 
 
   onSubmitOPIFrom() {
-    if (this.OpiFormlist.invalid) {
-      for (const control of Object.keys(this.OpiFormlist.controls)) {
-        this.OpiFormlist.controls[control].markAsTouched();
+    debugger;
+    if (Number(this.typeshow) == 1) {
+      if (this.OpiFormlist.controls["IndianEntitysform"].invalid) {
+        for (const control of Object.keys(this.OpiFormlist.controls["IndianEntitysform"])) {
+          this.OpiFormlist.controls[control].markAsTouched();
+        }
+        return;
       }
-      return;
+      else {
+        if (this.OpiFormlist.controls["SectionC"].invalid) {
+          for (const control of Object.keys(this.OpiFormlist.controls["SectionC"])) {
+            this.OpiFormlist.controls[control].markAsTouched();
+          }
+          return;
+        }
+        else {
+          return this.apiService.createFormOpi(this.OpiFormlist.value).subscribe({
+            complete: () => {
+              this.datalist = this.OpiFormlist.value;
+              console.log(this.datalist);
+              //result.insertedId.toString() 
+              alert('Fromopi successfully created!');
+              this.childComponent.downloadAsPDF();
+              //console.log('FromEsop successfully created!');
+              //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
+            },
+            error: (e) => {
+              console.log(e);
+            },
+          });
+        }
+      }
+
     }
-    else {
-      return this.apiService.createFormOpi(this.OpiFormlist.value).subscribe({
-        complete: () => {
-          this.datalist = this.OpiFormlist.value;
-          console.log(this.datalist);
-          //result.insertedId.toString() 
-          alert('Fromopi successfully created!');
-          this.childComponent.downloadAsPDF();
-          //console.log('FromEsop successfully created!');
-          //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
-        },
-        error: (e) => {
-          console.log(e);
-        },
-      });
-    }
+    // if (this.OpiFormlist.invalid) {
+    //   for (const control of Object.keys(this.OpiFormlist.controls)) {
+    //     this.OpiFormlist.controls[control].markAsTouched();
+    //   }
+
+    // }
+ 
 
   }
-
-
   Tabindexc: number = 0;
   confirmTabSwitch(event) {
     this.tabset.tabs.forEach((item, index) => {
@@ -617,26 +701,52 @@ export class FormOpiComponent implements OnInit {
     debugger;
     this.typeshow = type;
     if (type <= 3) {
+      this.tabset.tabs[1].disabled = false;
+      this.tabset.tabs[2].disabled = true;
       this.tabset.tabs[2].active = false;
+      this.tabset.tabs[1].active = true;
+
     }
     else {
+      this.tabset.tabs[2].disabled = false;
+      this.tabset.tabs[1].disabled = true;
       this.tabset.tabs[1].active = false;
+      this.tabset.tabs[2].active = true;
+
     }
 
     if (type == "1") {
       this.IndianEntity = true;
       this.MutualFund = false;
       this.ResidentIndividual = false;
+      this.AIF = false;
+      this.VCF = false;
     }
     else if (type == "2") {
       this.IndianEntity = false;
       this.MutualFund = true;
       this.ResidentIndividual = false;
+      this.AIF = false;
+      this.VCF = false;
     }
     else if (type == "3") {
       this.IndianEntity = false;
       this.MutualFund = false;
       this.ResidentIndividual = true;
+
+    }
+    else if (type == "4") {
+      this.AIF = false;
+      this.VCF = true;
+      this.IndianEntity = false;
+      this.MutualFund = false;
+
+    }
+    else if (type == "5") {
+      this.AIF = true;
+      this.VCF = false;
+      this.IndianEntity = false;
+      this.MutualFund = false;
 
     }
 

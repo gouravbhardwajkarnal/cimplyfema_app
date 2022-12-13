@@ -413,20 +413,20 @@ div.input-block span.placeholder {
   transform-origin: 0% 0%;
   background: none;
   pointer-events: none;
+  z-index: 6;
 }
 div.input-block input:valid + span.placeholder, div.input-block select + span.placeholder, div.input-block input[type="date"] + span.placeholder,
 div.input-block input:focus + span.placeholder {
-  transform: translateY(-20px);
-  background: #fff;
-  padding: 5px;
+  transform: translateY(-15px);
+    background: #fff;
+    padding: 4px;
   opacity: 1;
   height: auto;
   min-height: auto;
   line-height: normal;
 }
 div.input-block input:focus{
-  color: #284B63;
-  border-color: #284B63;
+  border-color: #ced4da;
 }
 div.input-block input:focus + span.placeholder {
   color: #284B63;
@@ -436,7 +436,17 @@ input::placeholder + span.placeholder{
   transform: scale(0.8) translateY(-30px);
   background: #fff;
 }
-
+.input-group span.placeholder {
+  left: 60px !important;
+}
+form div .input-group.input-block > input:nth-child(2) {
+  border-top-right-radius: 0.375rem !important;
+  border-bottom-right-radius: 0.375rem !important;
+}
+form div .input-group.input-block > span.input-group-text{
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
 /*------------------End-Error-msg--------------------*/
 
 /*---------------Scroll-design--------------*/

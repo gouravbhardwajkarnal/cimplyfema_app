@@ -5,7 +5,7 @@ import { FormEsopComponent } from './components/FDI/form-esop/form-esop.componen
 import { FormOpiComponent } from './components/ODI/form-opi/form-opi.component';
 import { FormAprComponent } from './components/ODI/form-apr/form-apr.component';
 import { OpiPdfComponent } from './components/ODI/opi-pdf/opi-pdf.component';
-import { FormCocComponent } from './components/COC/form-coc/form-coc.component';
+import { FormCocComponent } from './components/form-coc/form-coc.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [

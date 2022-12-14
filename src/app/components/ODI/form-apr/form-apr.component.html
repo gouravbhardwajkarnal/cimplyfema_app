@@ -1,11 +1,11 @@
 <div class="hpanel sub-sector-main">
     <h2 class="topic_title">FORM APR</h2>
-    <div class="panel-body topic_drop p-0">
+    <div class="bg-transparent border-0 p-0 panel-body topic_drop">
         <div class="act-sec">
             <div class="fema_tabs">
                 
                 <form [formGroup]="mainform">
-                    <div class="container-fluid pt-2 card p-2">
+                    <div class="border-0 card container-fluid pt-4 shadow">
                         <div class="row">
                             <div class="col-3 input-block mb-4">
                                 <input type="text" id="APR_UIN" spellcheck="false" required class="form-control"
@@ -42,7 +42,7 @@
                                     Individual </span>
 
                             </div>
-                            <div class="col-4 input-block mb-4">
+                            <div class="col-3 input-block mb-4">
                                 <input type="text" id="APR_NameJV" spellcheck="false" required class="form-control"
                                     formControlName="APR_NameJV"
                                     [class.is-invalid]="APR_NameJV.invalid && (APR_NameJV.dirty || APR_NameJV.touched)">
@@ -56,7 +56,7 @@
                                 </span>
 
                             </div>
-                            <div class="col-1 input-block mb-4">
+                            <div class="col-2 input-block mb-4">
                                 <ng-select [items]="CurrencyCodeList" bindLabel="Code" placeholder="Select Currency"
                                     formControlName="APR_Currency" [(ngModel)]="selectedcurrency">
                                 </ng-select>
@@ -101,12 +101,12 @@
                         </div>
                     </div>
                 </form>
-                <nav>
+                <nav class="mt-4">
                     <div id="myTab" role="tablist" class="nav nav-tabs">
                         <div class="text-end w-100 p-2">
-                            <button class="btn btn-sm btn-primary me-2" *ngIf="btnShow" (click)="updatePrev()">
+                            <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white me-2" *ngIf="btnShow" (click)="updatePrev()">
                                 Previous </button>
-                            <button class="btn btn-sm btn-primary" *ngIf="btnShowNext" (click)="updateNext()">
+                            <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white" *ngIf="btnShowNext" (click)="updateNext()">
                                 Next </button>
                         </div>
                         <tabset #tabset>
@@ -115,9 +115,8 @@
                             </tab>
                             <tab heading="APR Detail" id="1" disabled="disabled">
                                 <form [formGroup]="aprForm">
-                                    <div class="container-fluid pt-2 card p-2">
+                                    <div class="card p-4 rounded-0 border-info1">
                                         <div class="row">
-                                            <hr>
                                             <div class="row">
                                                 <label class="form-label">Capital structure as on the last day of the
                                                     accounting
@@ -129,24 +128,28 @@
                                             </div>
                                             <div class="col-5 mb-4">
                                                 <div class="input-group input-block">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"
-                                                            id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
-                                                    </div>
+                                                    <span class="input-group-text" id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     <input type="number" class="form-control" spellcheck="false"
                                                         required (blur)="CapitalstructureFE()"
                                                         formControlName="APR_Indian_Amount" id="APR_Indian_Amount"
                                                         name="APR_Indian_Amount" aria-label="APR_Indian_Amount"
                                                         aria-describedby="APR_Indian_Amount"
                                                         [class.is-invalid]="APR_Indian_Amount.invalid && (APR_Indian_Amount.dirty || APR_Indian_Amount.touched)">
+                                                    <span class="placeholder">Amount</span>
                                                     <div *ngIf="APR_Indian_Amount.invalid && (APR_Indian_Amount.dirty || APR_Indian_Amount.touched)"
                                                         class="invalid-feedback">
                                                         <div *ngIf="APR_Indian_Amount.errors?.['required']">
                                                             This field is required.
                                                         </div>
                                                     </div>
-                                                    <span class="placeholder">Amount</span>
-                                                </div>
+                                                  </div>
+                                                <!-- <div class="input-group input-block">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"
+                                                            id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
+                                                    </div>
+                                                    
+                                                </div> -->
                                             </div>
                                             <div class="col-5 input-block mb-4">
                                                 <input type="number" class="form-control" spellcheck="false" required
@@ -1467,7 +1470,7 @@
                             </tab>
                             <tab heading="Statutory Auditor/CA Certificate" id="4" disabled="disabled">
                                 <form [formGroup]="CAform">
-                                    <div class="container-fluid pt-2 card p-2">
+                                    <div class="card p-4 rounded-0 border-info1">
                                         <div class="row">
 
                                             <div class="card-header">
@@ -1757,7 +1760,7 @@
                                 </form>
                             </tab>
                             <tab heading="AD bank Certificate" id="5" disabled="disabled">
-                                <div class="container-fluid pt-2 card p-2">
+                                <div class="card p-4 rounded-0 border-info1">
                                     <div class="row">
                                         <div class="card-header">
                                             <div class="card-header">
@@ -1837,7 +1840,7 @@
                                 </div>
                             </tab>
                             <tab heading="Preview" id="6">
-                                <div class="container-fluid pt-2 card p-2">
+                                <div class="card p-4 rounded-0 border-info1">
                                     <table class="table table-borderless">
                                         <thead>
                                             <tr>
@@ -2984,10 +2987,10 @@
 
                     </div>
                 </nav>
-                <div>
-                    <button class="btn btn-sm btn-primary ml-2 me-2" *ngIf="btnShow" (click)="updatePrev()">
+                <div class="text-center p-3">
+                    <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white me-2" *ngIf="btnShow" (click)="updatePrev()">
                         Previous </button>
-                    <button class="btn btn-sm btn-primary" *ngIf="btnShowNext" (click)="updateNext()">
+                    <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white" *ngIf="btnShowNext" (click)="updateNext()">
                         Next </button>
                 </div>
             </div>

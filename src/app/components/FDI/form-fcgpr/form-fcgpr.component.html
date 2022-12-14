@@ -1,0 +1,1344 @@
+<div class="hpanel sub-sector-main">
+    <h2 class="topic_title">FORM FCGPR</h2>
+    <div class="panel-body topic_drop p-0">
+        <div class="act-sec">
+            <div class="fema_tabs">
+                <nav>
+                    <div id="myTab" role="tablist" class="nav nav-tabs">
+                        <form [formGroup]="fcgprFormlist" (ngSubmit)="onSubmitFCGPRFrom()" class="w-100">
+                            <!-- (click)="confirmTabSwitch($event)" -->
+                            <div class="container-fluid pt-2">
+                                <div class="row">
+
+                                    <div class="col-3 input-block mb-4">
+                                        <!-- <label class="form-label">Corporate Identification Number (CIN/LLP) </label> -->
+                                        <input type="text" spellcheck="false" required class="form-control"
+                                            formControlName="CIN_LIP"
+                                            [class.is-invalid]="fcgprFormlist.get('CIN_LIP').invalid && (fcgprFormlist.get('CIN_LIP').dirty ||fcgprFormlist.get('CIN_LIP').touched)">
+                                        <span class="placeholder">Corporate Identification Number
+                                            (CIN/LLP)</span>
+                                    </div>
+                                    <div class="col-3 input-block mb-4">
+                                        <input type="text" spellcheck="false" required class="form-control"
+                                            formControlName="NameofinvesteeCompany"
+                                            [class.is-invalid]="fcgprFormlist.get('NameofinvesteeCompany').invalid && (fcgprFormlist.get('NameofinvesteeCompany').dirty ||fcgprFormlist.get('NameofinvesteeCompany').touched)">
+                                        <div *ngIf="fcgprFormlist.get('NameofinvesteeCompany').invalid && (fcgprFormlist.get('NameofinvesteeCompany').dirty ||fcgprFormlist.get('NameofinvesteeCompany').touched)"
+                                            class="invalid-feedback">
+                                            This field is required.
+                                        </div>
+                                        <span class="placeholder">Name of the Investee Company</span>
+                                    </div>
+                                    <div class="col-3 input-block mb-4">
+                                        <select class="form-select" spellcheck="true" required
+                                            formControlName="Type_Of_Allotment"
+                                            [class.is-invalid]="fcgprFormlist.get('Type_Of_Allotment').invalid && (fcgprFormlist.get('Type_Of_Allotment').dirty ||fcgprFormlist.get('Type_Of_Allotment').touched)">
+                                            <option>Preferential Allotment / Private Placement / Private Arrangement
+                                            </option>
+                                            <option>Rights</option>
+                                            <option>Bonus</option>
+                                            <option>Merger / demerger / Amalgamation</option>
+                                            <option>Subscription to Memorandum of Association (MoA)</option>
+                                            <option>Conversion of convertible notes</option>
+                                            <option>Capital Instruments issued under Schedule 7 of FEMA 20(R) to FVCIs
+                                            </option>
+                                            <option>Shares issued upon excise of ESOPs</option>
+                                            <option>Issue of sweat equity shares</option>
+                                            <option>Participating interests/rights in oil fields</option>
+                                            <option>Others (Please Specify)</option>
+                                        </select>
+                                        <span class="placeholder">Type of Allotment</span>
+                                    </div>
+                                    <div class="col-3 input-block  mb-4">
+                                        <input type="text" spellcheck="false" required class="form-control"
+                                            formControlName="PanNo"
+                                            [class.is-invalid]="fcgprFormlist.get('PanNo').invalid && (fcgprFormlist.get('PanNo').dirty ||fcgprFormlist.get('PanNo').touched)">
+                                        <div *ngIf="fcgprFormlist.get('PanNo').invalid && (fcgprFormlist.get('PanNo').dirty ||fcgprFormlist.get('PanNo').touched)"
+                                            class="invalid-feedback">
+                                            <div *ngIf="fcgprFormlist.get('PanNo').errors['required']">
+                                                This field is required.
+                                            </div>
+                                            <!-- <div *ngIf="fcgprFormlist.get('PanNo').errors['pattern']">
+                                                Invalid PAN Number Format
+                                            </div> -->
+                                        </div>
+                                        <span class="placeholder">PAN Number</span>
+                                    </div>
+
+
+
+
+                                    <hr class="p-4">
+                                </div>
+                            </div>
+
+                            <tabset #tabset>
+                                <tab heading="Instructions">
+
+                                    <div class="card p-2">
+                                        <h5>Instructions</h5>
+
+                                        Instructions for filling up the Form FC
+                                        <ul>
+                                            <li>1) The Form FC is required to be submitted to the designated AD bank by
+                                                the person
+                                                resident
+                                                in India
+                                                seeking to invest in the foreign entity, whether under Automatic Route
+                                                or Approval
+                                                Route.
+                                            </li>
+                                            <li> 2) Under Approval Route, the Form FC after scrutiny, should be
+                                                submitted by the AD
+                                                bank, to
+                                                the Reserve
+                                                Bank as per the instructions in Para 3 of FEM (Overseas Investment)
+                                                Directions,
+                                                2022.</li>
+                                            <li>3) The Form FC is to be submitted while undertaking financial commitment
+                                                in a
+                                                foreign
+                                                entity, at the
+                                                time of sending outward remittance or making a financial commitment,
+                                                whichever is
+                                                earlier.
+                                            </li>
+                                            <li>4) In case of acquisition of equity capital on deferred payment basis in
+                                                accordance
+                                                with
+                                                Regulation 7 of
+                                                OI Regulations, the part of the consideration, payment of which is
+                                                deferred by the
+                                                person
+                                                resident in
+                                                India shall be treated as non-fund-based commitment and shall be
+                                                reported
+                                                accordingly.
+                                                Subsequent
+                                                remittance towards the payment of deferred consideration shall be
+                                                reported in Form
+                                                FC
+                                                as conversion of 
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </tab>
+                                <tab heading="Basic Details" disabled="disabled">
+                                    <div class="card p-2 mt-1">
+                                        <div class="card-header">
+                                            Basic Details
+                                        </div>
+                                        <div class="container-fluid position-relative d-flex p-0 pt-4">
+
+                                            <div class="container-fluid pt-2">
+                                                <div class="row">
+                                                    <div class="col-4 input-block mb-4">
+                                                        <select class="form-select" spellcheck="true" required
+                                                            formControlName="Entry_Route"
+                                                            [class.is-invalid]="fcgprFormlist.get('Entry_Route').invalid && (fcgprFormlist.get('Entry_Route').dirty ||fcgprFormlist.get('Entry_Route').touched)">
+                                                            <option value="Automatic Route">Automatic Route</option>
+                                                            <option value="Government Route">Approval Route
+                                                            </option>
+                                                        </select>
+                                                        <span class="placeholder">Entry Route</span>
+                                                    </div>
+                                                    <div class="col-4 input-block mb-4">
+                                                        <select class="form-select" spellcheck="true" required
+                                                            formControlName="Sectoral_Cap"
+                                                            [class.is-invalid]="fcgprFormlist.get('Sectoral_Cap').invalid && (fcgprFormlist.get('Sectoral_Cap').dirty ||fcgprFormlist.get('Sectoral_Cap').touched)">
+                                                            <option value="0">0%</option>
+                                                            <option value="26">26%</option>
+                                                            <option value="49">49%</option>
+                                                            <option value="51">51%</option>
+                                                            <option value="74">74%</option>
+                                                            <option value="100">100%</option>
+                                                        </select>
+                                                        <span class="placeholder">Sectoral cap</span>
+                                                    </div>
+                                                    <div class="col-4 input-block mb-4">
+                                                        <input type="date" spellcheck="true" required
+                                                            id="dateresolution" class="form-control" name="date-field"
+                                                            formControlName="Application_Date"
+                                                            (change)="DateResolutionChange($event)"
+                                                            [class.is-invalid]="fcgprFormlist.get('Application_Date').invalid && (fcgprFormlist.get('Application_Date').dirty ||fcgprFormlist.get('Application_Date').touched)" />
+                                                        <span class="placeholder">Application date</span>
+                                                    </div>
+
+                                                    <div class="col-4 input-block mb-4">
+                                                        <input type="date" spellcheck="true" required
+                                                            id="dateresolution" class="form-control" name="date-field"
+                                                            formControlName="Date_of_Issue"
+                                                            (change)="DateResolutionChange($event)"
+                                                            [class.is-invalid]="fcgprFormlist.get('Date_of_Issue').invalid && (fcgprFormlist.get('Date_of_Issue').dirty ||fcgprFormlist.get('Date_of_Issue').touched)" />
+                                                        <span class="placeholder">Date Of Issue</span>
+                                                    </div>
+                                                    <div class="col-4 input-block mb-4">
+                                                        <input type="text" spellcheck="true" required=""
+                                                            class="form-control"
+                                                            formControlName="Initial_FC_GPR_Reference_Number"
+                                                            [class.is-invalid]="fcgprFormlist.get('Initial_FC_GPR_Reference_Number').invalid && (fcgprFormlist.get('Initial_FC_GPR_Reference_Number').dirty ||fcgprFormlist.get('Initial_FC_GPR_Reference_Number').touched)">
+                                                        <span class="placeholder">Initial FC GPR Reference Number</span>
+                                                    </div>
+                                                    <div class="col-4 input-block mb-4">
+                                                        <input type="number" min="0" spellcheck="true" required=""
+                                                            class="form-control" formControlName="Paid_Up_Capital"
+                                                            [class.is-invalid]="fcgprFormlist.get('Paid_Up_Capital').invalid && (fcgprFormlist.get('Paid_Up_Capital').dirty ||fcgprFormlist.get('Paid_Up_Capital').touched)">
+                                                        <span class="placeholder">PAID-UP CAPITAL (in Rs.)</span>
+                                                    </div>
+
+
+
+                                                    <div class="col-12 mb-4">
+                                                        <div class="form-check p-0">
+                                                            <label class="form-check-label" for="inlineRadio3">Whether
+                                                                the foreign investment is received for a specific
+                                                                project/manufacturing unit or manufacturing
+                                                                plant</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline"
+                                                            *ngFor="let fd of foreigninvestmentProject">
+                                                            <input class="form-check-input" type="radio" id="{{fd.id}}"
+                                                                formControlName="foreigninvestmentproject"
+                                                                [class.is-invalid]="fcgprFormlist.get('foreigninvestmentproject').invalid && (fcgprFormlist.get('foreigninvestmentproject').dirty ||fcgprFormlist.get('foreigninvestmentproject').touched)"
+                                                                value="{{fd.Type}}" style="cursor:pointer;">
+                                                            <label class="form-check-label"
+                                                                for="{{fd.id}}">{{fd.Type}}</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mb-4">
+                                                        <div class="form-check p-0">
+                                                            <label class="form-check-label]" for="inlineRadio3">Whether
+                                                                the shareholding pattern due to this transaction being
+                                                                reported has already been accounted in the pre
+                                                                transaction shareholding pattern:*</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline"
+                                                            *ngFor="let fd of Shareholding">
+                                                            <input class="form-check-input" type="radio" id="{{fd.id}}"
+                                                                formControlName="Shareholdingpattern"
+                                                                [class.is-invalid]="fcgprFormlist.get('Shareholdingpattern').invalid && (fcgprFormlist.get('Shareholdingpattern').dirty ||fcgprFormlist.get('Shareholdingpattern').touched)"
+                                                                value="{{fd.Type}}" style="cursor:pointer;">
+                                                            <label class="form-check-label"
+                                                                for="{{fd.id}}">{{fd.Type}}</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr class="p-4">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab heading="Investor Details" disabled="disabled">
+                                    <div class="card p-2 mt-1">
+                                        <div class="card-header">
+                                            Investor Details
+                                            <a class="btn btn-danger" style="float: right;"
+                                                href="assets/FCGPRExcelFormat.xlsx"
+                                                download="FCGPRExcelFormat.xlsx">Download Excel Template </a>
+                                        </div>
+                                        <div class="col-lg-4 mt-2">
+
+                                            <input class="form-control" type="file" (change)="onFileChange($event)"
+                                                multiple="false" />
+                                        </div>
+                                        <div class="container-fluid position-relative d-flex p-0">
+                                            <div class="container-fluid pt-2">
+                                                <div class="row pt-5 bg-light shadow-sm mb-4 mt-3"
+                                                    *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+                                                    <div class="col-11">
+                                                        <div class="row">
+                                                            <div class="col-1 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].Sno"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">SR.NO</span>
+                                                            </div>
+                                                            <div class="col-3 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].Investor_Name"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Investor Name</span>
+                                                            </div>
+
+                                                            <div class="col-3 input-block mb-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Investor_Address"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Investor Address</span>
+                                                            </div>
+                                                            <div class="col-3 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].Town_City"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Town/City</span>
+                                                            </div>
+
+
+                                                            <div class="col-2 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].State"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">State</span>
+                                                            </div>
+
+                                                            <div class="col-2 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].PIN_Zip_Code"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">PIN/Zip Code</span>
+                                                            </div>
+                                                            <div class="col-2 input-block mb-4">
+                                                                <ng-select [items]="CountryList" bindLabel="name"
+                                                                    placeholder="Select Country"
+                                                                    [(ngModel)]="GrantDetailsArray[i].Country"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    (change)="CountryChange($event)">
+                                                                </ng-select>
+                                                                <span class="placeholder">Country</span>
+                                                            </div>
+
+                                                            <div class="col-3 input-block mb-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Constitution_investing_entity"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Constitution - investing
+                                                                    entity</span>
+                                                            </div>
+                                                            <div class="col-3 input-block mb-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Type_of_Capital_instrument"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Type of Capital
+                                                                    instrument</span>
+                                                            </div>
+
+                                                            <div class="col-2 input-block mb-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].No_of_Instruments_instrument"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">No. of Instruments</span>
+                                                            </div>
+                                                            <div class="col-2  mb-4">
+
+                                                                <span class="">Conversion ratio</span>
+                                                                <div class="input-block d-flex">
+                                                                    <input
+                                                                        [(ngModel)]="GrantDetailsArray[i].Pre_determined_issue_price"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        class="form-control form-control-sm"
+                                                                        type="text" />
+
+                                                                    <input type="text"
+                                                                        [(ngModel)]="GrantDetailsArray[i].Conversion_ratio1"
+                                                                        class="form-control form-control-sm"
+                                                                        [ngModelOptions]="{standalone: true}">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-4 input-block mb-4 mt-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].No_of_Equity_shares"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">No. of Equity shares on fully
+                                                                    diluted basis</span>
+                                                            </div>
+                                                            <div class="col-2 input-block mb-4 mt-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Fair_value_of_Shares"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Fair value of Shares (in
+                                                                    Rs)</span>
+                                                            </div>
+
+                                                            <div class="col-2 input-block mb-4 mt-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].Issue_Price"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Issue Price</span>
+                                                            </div>
+                                                            <div class="col-2 input-block mb-4 mt-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Amount_of_Consideration"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Amount of Consideration</span>
+                                                            </div>
+                                                            <div class="col-4 input-block mb-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Consolidated_Particulars_of_Issue"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Consolidated Particulars of
+                                                                    Issue</span>
+                                                            </div>
+                                                            <div class="col-3 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].AD_Bank_Name"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">AD Bank Name</span>
+                                                            </div>
+
+                                                            <div class="col-3 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].Address"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Address</span>
+                                                            </div>
+                                                            <div class="col-2 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].n_Town_City"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Town/City</span>
+
+                                                            </div>
+                                                            <div class="col-2 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].n_Pin_Code"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder"> Pin Code</span>
+
+                                                            </div>
+                                                            <div class="col-2 input-block mb-4">
+                                                                <input [(ngModel)]="GrantDetailsArray[i].n_State"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">State</span>
+
+                                                            </div>
+
+                                                            <div class="col-2 input-block mb-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Mode_of_Payment"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Mode of Payment</span>
+                                                            </div>
+                                                            <div class="col-3 input-block mb-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Based_on_Mode_of_Payment_Selection"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Based on Mode of Payment
+                                                                    Selection</span>
+                                                            </div>
+                                                            <div class="col-3 input-block mb-4">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Total_amount_of_Inflow"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm" type="text" />
+                                                                <span class="placeholder">Total amount of Inflow (in
+                                                                    Rs)</span>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1 d-flex align-items-end pb-4">
+                                                        <button type="button" class="btn btn-outline-primary me-2"
+                                                            (click)="addGrantData()">+</button>
+                                                        <button type="button" *ngIf="GrantDetailsArray.length>1"
+                                                            class="btn btn-outline-primary me-2"
+                                                            (click)="deleteGrantData(i)">-</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab heading="Checklist" disabled="disabled">
+                                    <div class="card p-2 mt-1">
+                                        <div class="card-header">
+                                            Checklist
+                                        </div>
+                                        <div class="container-fluid position-relative d-flex p-0">
+                                            <div class="container-fluid pt-2">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab heading="Preview" disabled="disabled">
+                                    <div class="container-fluid pt-2 card p-2">
+                                        <table class="table table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 90%;">
+                                                        <h6>Particulars</h6>
+                                                    </th>
+                                                    <th style="width: 15%;">
+                                                        <h6>Word</h6>
+                                                    </th>
+                                                    <th style="width: 15%;">
+                                                        <h6>Pdf</h6>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <h6>A. RBI Covering Letter</h6>
+                                                    </th>
+                                                    <td><img src="assets/images/word.png" (click)="ExportWord1()"
+                                                            style="cursor:pointer">
+                                                    </td>
+                                                    <td><img src="assets/images/pdf.png" (click)="downloadAsPDF1()"
+                                                            style="cursor:pointer">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <h6>B. Company Secretary Certificate</h6>
+                                                    </th>
+                                                    <td><img src="assets/images/word.png" (click)="ExportWord2()"
+                                                            style="cursor:pointer">
+                                                    </td>
+                                                    <td><img src="assets/images/pdf.png" (click)="downloadAsPDF2()"
+                                                            style="cursor:pointer">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <h6>C. Authorised Representative of Company</h6>
+                                                    </th>
+                                                    <td><img src="assets/images/word.png" (click)="ExportWord3()"
+                                                            style="cursor:pointer">
+                                                    </td>
+                                                    <td><img src="assets/images/pdf.png" (click)="downloadAsPDF3()"
+                                                            style="cursor:pointer">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <h6>D. Declaration </h6>
+                                                    </th>
+                                                    <td><img src="assets/images/word.png" style="cursor:pointer"
+                                                            (click)="ExportWord4()"></td>
+                                                    <td><img src="assets/images/pdf.png" (click)="downloadAsPDF4()"
+                                                            style="cursor:pointer">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <h6>E. Annexure </h6>
+                                                    </th>
+                                                    <td><img src="assets/images/word.png" style="cursor:pointer"
+                                                            (click)="ExportWord5()"></td>
+                                                    <td><img src="assets/images/pdf.png" (click)="downloadAsPDF5()"
+                                                            style="cursor:pointer">
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <div style="display: none;">
+
+                                            <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+                                                id="pdfTable1" #pdfTable1>
+                                                <p style="text-align: center;">
+                                                    <em><strong>(To be executed on the letter head of
+                                                            {{fcgprFormlist.get('NameofinvesteeCompany')?.value}})</strong>
+                                                    </em>
+                                                </p>
+                                                <p>
+                                                    To,<br>
+                                                    <br>
+
+                                                </p>
+
+
+                                                <p style="margin: 0px;">
+                                                    Sub: Filing of form FCGPR for granting Employee Stock
+                                                    Option
+                                                    <b>{{fcgprFormlist.get('NameofinvesteeCompany')?.value}}
+                                                    </b>
+                                                </p>
+
+                                                <p>With regards to the above cited subject
+                                                    <u><b>{{fcgprFormlist.get('NameofinvesteeCompany')?.value}}</b></u>
+                                                    (hereinafter
+                                                    referred
+                                                    to
+                                                    the
+                                                    "company") had granted
+                                                    <b>{{GrantDetailsArray[0].Number_FCGPR_Granted}}</b>
+                                                    FCGPRs under
+                                                    its Employee Stock Option Plan
+                                                    (<b>{{fcgprFormlist.get('FCGPR_Scheme_Name')?.value}}</b>)
+                                                    at
+                                                    INR
+                                                    <b>{{GrantDetailsArray[0].Pre_determined_issue_price}}</b>/-
+                                                    per
+                                                    option to its various employees who are
+                                                    resident
+                                                    outside India (as per Annexure). The Board / EGM /
+                                                    Circular Resolution
+                                                    No:
+                                                    <b>{{fcgprFormlist.get('BR_EGM_Circular')?.value}}</b>
+                                                    for
+                                                    granting the said FCGPRs was passed on
+                                                    <u><b>{{fcgprFormlist.get('Date_Resolution')?.value |
+                                                            date : "dd-MM-yyyy"}}</b>
+                                                    </u>.
+                                                </p>
+                                                <p>Enclosed is the documentation for submission of FCGPR:
+                                                </p>
+
+                                                <table style="border:1" cellspacing="0" cellpadding="5">
+                                                    <thead>
+                                                        <th align="left">Sl. No.</th>
+                                                        <th align="left">Documentation</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1.</td>
+                                                            <td>FCGPR Scheme</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2.</td>
+                                                            <td>Resolution granting FCGPRs</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3.</td>
+                                                            <td>Authorized Representative Declaration
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4.</td>
+                                                            <td>Certificate from the Practicing Company
+                                                                Secretary of the
+                                                                Indian company
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <p>Kindly accept the same and oblige.</p>
+                                                <br>
+                                                <br>
+                                                <p>For
+                                                    {{fcgprFormlist.get('NameofinvesteeCompany')?.value}}
+                                                </p>
+                                                <br>
+                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            __________________________
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Name
+                                                        </td>
+                                                        <td style="width: 30px; text-align:center;">
+                                                            :
+                                                        </td>
+                                                        <td>
+                                                            {{fcgprFormlist.get('Authorised_Signatory_Name')?.value}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Designation
+                                                        </td>
+                                                        <td style="width: 30px; text-align:center;">
+                                                            :
+                                                        </td>
+                                                        <td>
+                                                            {{fcgprFormlist.get('Authorised_Signatory_Designation')?.value}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Date
+                                                        </td>
+                                                        <td style="width: 30px; text-align:center;">
+                                                            :
+                                                        </td>
+                                                        <td>
+                                                            {{today | date:"dd-MM-yyyy"}}
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+
+                                            </div>
+                                            <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+                                                id="pdfTable2" #pdfTable2>
+                                                <p style="text-align: center;">
+                                                    <em><strong>(To be executed on the letter head of
+                                                            Practicing Company Secretary
+                                                            {{fcgprFormlist.get('NameofinvesteeCompany')?.value}})</strong>
+                                                    </em>
+                                                </p>
+                                                <p>
+                                                    To,
+                                                </p>
+                                                <p>
+                                                    The Reserve Bank of India,
+                                                </p>
+                                                <p>
+                                                    Mumbai
+                                                </p>
+                                                <p>
+                                                    <strong></strong>
+                                                </p>
+                                                <p>
+                                                    <b>{{fcgprFormlist.get('NameofinvesteeCompany')?.value}}</b><strong>
+                                                        (CIN
+                                                        - </strong>
+                                                    <b>{{fcgprFormlist.get('CIN_LIP')?.value}}</b><strong>)</strong>,
+                                                    (the
+                                                    Company) having
+                                                    its registered
+                                                    office at
+                                                    <b>{{fcgprFormlist.get('CIN_LIP')?.value}}</b>
+                                                    , has granted
+                                                    <b>{{GrantDetailsArray[0].Number_FCGPR_Granted}}</b>
+                                                    FCGPRs
+                                                    under its
+                                                    <b>{{fcgprFormlist.get('FCGPR_Scheme_Name')?.value}}</b>
+                                                    "FCGPR
+                                                    Scheme" at an
+                                                    exercise price of
+                                                    <br />
+                                                    INR
+                                                    <b>{{GrantDetailsArray[0].Pre_determined_issue_price}}</b>/-
+                                                    per
+                                                    option on
+                                                    <b>{{GrantDetailsArray[0].Date_of_Issue | date:
+                                                        'dd-MM-yyyy'}}</b>.
+                                                    <strong></strong>
+                                                </p>
+                                                <p>
+                                                    <strong></strong>
+                                                </p>
+                                                <p>
+                                                    In respect of the details as mentioned above, we
+                                                    certify
+                                                    the following:
+                                                </p>
+                                                <p>
+                                                    (i) all the requirements of the Companies Act, 2013
+                                                    have
+                                                    been complied
+                                                    with;
+                                                </p>
+                                                <p>
+                                                    (ii) terms and conditions of the Government
+                                                    approval, if
+                                                    any, have been
+                                                    complied with;
+                                                </p>
+                                                <p>
+                                                    (iii) The company is eligible to issue equity
+                                                    instruments/receive equity
+                                                    instruments under Foreign Exchange Management
+                                                    (Non-Debt
+                                                    Instruments)
+                                                    Rules,
+                                                    2019 dated October 17, 2019 and as amended from
+                                                    time.
+                                                </p>
+                                                <p>
+                                                    (iv) The company has all certificates issued by
+                                                    authorized dealers in
+                                                    India
+                                                    evidencing receipt of amount of consideration in
+                                                    accordance with Foreign
+                                                    Exchange Management (Non-Debt Instruments) Rules,
+                                                    2019
+                                                    dated October 17,
+                                                    2019 and as amended from time.
+                                                </p>
+                                                <p>
+                                                    (v) The Investment Agreement/ Shareholder Agreement
+                                                    between the investor
+                                                    and the investee company is in compliance with the
+                                                    provisions of Foreign
+                                                    Exchange Management (Non-Debt Instruments) Rules,
+                                                    2019
+                                                    dated October 17,
+                                                    2019 and as amended from time.
+                                                </p>
+                                                <p>
+                                                    For and on Behalf of
+                                                </p>
+                                                <p>
+                                                    ____________ Associate
+                                                </p>
+                                                <p>
+                                                    Name :
+                                                    {{fcgprFormlist.get('Authorised_Signatory_Name')?.value}}
+                                                </p>
+                                                <p>
+                                                    Designation :
+                                                    {{fcgprFormlist.get('Authorised_Signatory_Designation')?.value}}
+                                                </p>
+                                                <p>
+                                                    C.P. No. : XXXXXXXXX
+                                                </p>
+                                                <p>
+                                                    Place : XXXXXXXXX
+                                                </p>
+                                                <p>
+                                                    Date : {{today | date:"dd-MM-yyyy"}}
+                                                </p>
+                                                <em>
+                                                    <br clear="all" />
+                                                </em>
+                                                <p>
+                                                    <em></em>
+                                                </p>
+                                            </div>
+                                            <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+                                                id="pdfTable3" #pdfTable3>
+                                                <p style="text-align: center;">
+                                                    <em><strong>(To be executed on the letter head of
+                                                            {{fcgprFormlist.get('NameofinvesteeCompany')?.value}})</strong>
+                                                    </em>
+                                                </p>
+                                                <p>
+                                                    <strong><u></u></strong>
+                                                </p>
+                                                <p style="text-align: center;">
+                                                    <strong>
+                                                        <u>
+                                                            DECLARATION TO BE FILED BY THE AUTHORISED
+                                                            REPRESENTATIVE OF THE
+                                                            INDIAN COMPANY
+                                                        </u>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    We hereby declare that:
+                                                </p>
+                                                <div [ngSwitch]="fcgprFormlist.get('sectoral_cap_statutory')?.value">
+                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
+                                                        1. We comply with the procedure for issue of
+                                                        equity
+                                                        instruments as laid
+                                                        down under Foreign Exchange Management (Non-Debt
+                                                        Instruments) Rules,
+                                                        2019
+                                                        dated October 17, 2019 and as amended from time
+                                                        to
+                                                        time.
+                                                    </p>
+                                                    <p *ngSwitchCase=false>
+
+                                                        1. We comply with the procedure for issue of
+                                                        equity
+                                                        instruments as laid
+                                                        down under Foreign Exchange Management (Non-Debt
+                                                        Instruments) Rules,
+                                                        2019
+                                                        dated October 17, 2019 and as amended from time
+                                                        to
+                                                        time.
+                                                    </p>
+                                                </div>
+
+                                                <div
+                                                    [ngSwitch]="fcgprFormlist.get('Indian_companies_reconstruction')?.value">
+                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
+                                                        2. The investment is within the sectoral cap/
+                                                        statutory
+                                                        ceiling
+                                                        permissible
+                                                        under the regulation, ibid and in compliance
+                                                        with
+                                                        the
+                                                        attendant
+                                                        conditions.
+                                                    </p>
+                                                    <p *ngSwitchCase=false>
+                                                        2. The investment is within the sectoral cap/
+                                                        statutory
+                                                        ceiling
+                                                        permissible
+                                                        under the regulation, ibid and in compliance
+                                                        with
+                                                        the
+                                                        attendant
+                                                        conditions.
+                                                    </p>
+                                                </div>
+                                                <div [ngSwitch]="fcgprFormlist.get('PMLA_UAPA')?.value">
+                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
+                                                        3. The foreign investment received and reported
+                                                        now
+                                                        will
+                                                        be utilized in
+                                                        compliance with the provision of a Prevention of
+                                                        Money
+                                                        Laundering Act
+                                                        2002
+                                                        (PMLA) and Unlawful Activities (Prevention) Act,
+                                                        1976
+                                                        (UAPA). We confirm
+                                                        that the investment complies with the provision
+                                                        of
+                                                        all
+                                                        applicable Rules
+                                                        and
+                                                        Regulations.
+                                                    </p>
+                                                    <p *ngSwitchCase=false>
+                                                        3. The foreign investment received and reported
+                                                        now
+                                                        will
+                                                        be utilized in
+                                                        compliance with the provision of a Prevention of
+                                                        Money
+                                                        Laundering Act
+                                                        2002
+                                                        (PMLA) and Unlawful Activities (Prevention) Act,
+                                                        1976
+                                                        (UAPA). We confirm
+                                                        that the investment complies with the provision
+                                                        of
+                                                        all
+                                                        applicable Rules
+                                                        and
+                                                        Regulations.
+                                                    </p>
+                                                </div>
+                                                <div [ngSwitch]="fcgprFormlist.get('enclose_documents')?.value">
+                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
+                                                        4. We enclose the following documents in
+                                                        compliance
+                                                        with
+                                                        these
+                                                        regulations:
+                                                    </p>
+                                                    <p *ngSwitchCase=false>
+                                                        4. We enclose the following documents in
+                                                        compliance
+                                                        with
+                                                        these
+                                                        regulations:
+                                                    </p>
+                                                </div>
+                                                <div
+                                                    [ngSwitch]="fcgprFormlist.get('certificate_Company_Secretary')?.value">
+                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
+                                                        (i) A certificate from our company Secretary as
+                                                        in
+                                                        the
+                                                        specified format.
+                                                    </p>
+                                                    <p *ngSwitchCase=false>
+                                                        (i) A certificate from our company Secretary as
+                                                        in
+                                                        the
+                                                        specified format.
+                                                    </p>
+                                                </div>
+                                                <div [ngSwitch]="fcgprFormlist.get('SEBI_registered')?.value">
+                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
+                                                        (ii) A certificate from SEBI registered Merchant
+                                                        Banker
+                                                        / Chartered
+                                                        Accountant / cost accountant or any other person
+                                                        as
+                                                        authorized under
+                                                        Foreign Exchange Management (Non-Debt
+                                                        Instruments)
+                                                        Rules, 2019 dated
+                                                        October 17, 2019 and as amended from time to
+                                                        time,
+                                                        indicating the manner
+                                                        of
+                                                        arriving at the price of the shares issued to
+                                                        the
+                                                        persons resident
+                                                        outside
+                                                        India (wherever applicable).
+                                                    </p>
+                                                    <p *ngSwitchCase=false>
+                                                        (ii) A certificate from SEBI registered Merchant
+                                                        Banker
+                                                        / Chartered
+                                                        Accountant / cost accountant or any other person
+                                                        as
+                                                        authorized under
+                                                        Foreign Exchange Management (Non-Debt
+                                                        Instruments)
+                                                        Rules, 2019 dated
+                                                        October 17, 2019 and as amended from time to
+                                                        time,
+                                                        indicating the manner
+                                                        of
+                                                        arriving at the price of the shares issued to
+                                                        the
+                                                        persons resident
+                                                        outside
+                                                        India (wherever applicable).
+                                                    </p>
+                                                </div>
+                                                <div [ngSwitch]="fcgprFormlist.get('necessary_documents')?.value">
+                                                    <p *ngSwitchCase=true style="text-decoration: line-through;">
+                                                        (iii) All other necessary documents as
+                                                        applicable to
+                                                        the
+                                                        issue.
+                                                    </p>
+                                                    <p *ngSwitchCase=false>
+                                                        (iii) All other necessary documents as
+                                                        applicable to
+                                                        the
+                                                        issue.
+                                                    </p>
+                                                </div>
+                                                <p>
+                                                    For
+                                                    <b>{{fcgprFormlist.get('NameofinvesteeCompany')?.value}}</b>
+                                                </p>
+                                                <p>
+                                                    __________________________________
+                                                </p>
+                                                <p>
+                                                    Name :
+                                                    {{fcgprFormlist.get('Authorised_Signatory_Name')?.value}}
+                                                </p>
+                                                <p>
+                                                    Designation :
+                                                    {{fcgprFormlist.get('Authorised_Signatory_Designation')?.value}}
+                                                </p>
+                                                <p>
+                                                    Date : {{ today | date : "dd-MM-yyyy" }}
+                                                </p>
+                                            </div>
+                                            <div style="padding: 30px;font-family: Calibri; font-size: 11pt;"
+                                                id="pdfTable4" #pdfTable4>
+
+
+                                                <p style="text-align: center;">
+                                                    <em><strong>To be executed on the letter head of
+                                                            {{fcgprFormlist.get('NameofinvesteeCompany')?.value}}</strong>
+                                                    </em>
+                                                </p>
+                                                <p>
+                                                    To,
+                                                </p>
+                                                <p>
+
+                                                </p>
+                                                <p>
+
+                                                </p>
+                                                <p>
+                                                    Dear Sir / Madam,
+                                                </p>
+                                                <p>
+                                                    <strong>
+                                                        Sub:
+                                                        <u>
+                                                            Filing of form FCGPR for granting Employee
+                                                            Stock
+                                                            Option
+                                                            -<em>{{fcgprFormlist.get('NameofinvesteeCompany')?.value}}</em>
+                                                            ("the
+                                                            company")
+                                                        </u>
+                                                    </strong>
+                                                </p>
+                                                <div>
+                                                    <p>
+                                                        <strong></strong>
+                                                    </p>
+                                                </div>
+                                                <p>
+                                                    We confirm that the options granted to employees who
+                                                    are
+                                                    person resident
+                                                    outside India are not from a country, which shares
+                                                    land
+                                                    border with
+                                                    India
+                                                    or the Significant Beneficial Owner (jointly or
+                                                    severely) of an
+                                                    investment
+                                                    into India who is situated in or is a citizen of any
+                                                    such country
+                                                    (Pakistan, Bangladesh, Afghanistan, Nepal, Bhutan,
+                                                    Myanmar, and China.
+                                                    (China includes Hong Kong and Macau).
+                                                </p>
+                                                <p>
+                                                    Herewith we confirm we are in compliance to Press
+                                                    Note
+                                                    No. 3(2020
+                                                    Series)
+                                                    dated 17/04/2020
+                                                </p>
+                                                <p>
+                                                    We are hereby sharing the shareholding pattern of
+                                                    our
+                                                    company for your
+                                                    reference (Optional)
+                                                </p>
+                                                <table border="1" cellspacing="0" cellpadding="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="208" valign="top">
+                                                                <p>
+                                                                    Investor category (Company,
+                                                                </p>
+                                                                <p>
+                                                                    LLP, Individual etc)
+                                                                </p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>
+                                                                    Investor country
+                                                                </p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>
+                                                                    Percentage holding as of ___
+                                                                </p>
+                                                                <p>
+                                                                    (date)
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="208" valign="top">
+                                                                <p style="text-align: center;">
+                                                                    ----------------
+                                                                </p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p style="text-align: center;">
+                                                                    ----------------
+                                                                </p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p style="text-align: center;">
+                                                                    ----------------
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p>
+                                                    For
+                                                    <strong><em><u>{{fcgprFormlist.get('NameofinvesteeCompany')?.value}}</u></em></strong>
+                                                </p>
+                                                <p>
+                                                    _________________________
+                                                </p>
+                                                <p>
+                                                    Name :
+                                                    <strong>{{fcgprFormlist.get('Authorised_Signatory_Name')?.value}}</strong>
+                                                </p>
+                                                <p>
+                                                    Designation :
+                                                    <strong><em>{{fcgprFormlist.get('Authorised_Signatory_Designation')?.value}}</em></strong>
+                                                </p>
+                                                <p>
+                                                    Email ID :
+                                                </p>
+                                                <p>
+                                                    Date : <a>{{ today | date : "dd-MM-yyyy" }}</a>
+
+                                                </p>
+
+                                            </div>
+                                            <div id="pdfTable5" #pdfTable5>
+
+                                                <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="4%" valign="top">
+                                                                <p>Full Name of the</p>
+                                                                Grantee
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Date of Issue</p>
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Number of FCGPRs Granted</p>
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Country</p>
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Residential Status</p>
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Name of the Subsidiary . SDS</p>
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Pre-determined issue price</p>
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Conversion ratio</p>
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Equivalent equity shares on fully
+                                                                    diluted basis</p>
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Face value of equity shares</p>
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                <p>Value of Shares in Rs</p>
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].Full_Name_Grantee}}
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].Date_of_Issue |
+                                                                date:'dd-MM-yyyy'}}
+
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].Number_FCGPR_Granted}}
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].Country}}
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].ResidentialStatus}}
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].SubsidiarySDS}}
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].Pre_determined_issue_price}}
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].Conversion_ratio}}
+                                                            </td>
+
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].Equivalent_equity_shares}}
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].Facevalue_equity_shares}}
+                                                            </td>
+                                                            <td width="4%" valign="top">
+                                                                {{GrantDetailsArray[i].Value_of_Shares}}
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div style="width: 500px;">
+                                                <table border="1" cellspacing="0" cellpadding="0" width="500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="208" valign="top">
+                                                                <p>Full Name of the</p>
+                                                                Grantee
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Date of Issue</p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Number of FCGPRs Granted</p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Country</p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Residential Status</p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Name of the Subsidiary . SDS</p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Pre-determined issue price</p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Conversion ratio</p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Equivalent equity shares on fully
+                                                                    diluted basis</p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Face value of equity shares</p>
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                <p>Value of Shares in Rs</p>
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr *ngFor="let dynamic of GrantDetailsArray; let i = index;">
+
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].Full_Name_Grantee}}
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].Date_of_Issue
+                                                                | date:'dd-MM-yyyy'}}
+
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].Number_FCGPR_Granted}}
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].Country}}
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].ResidentialStatus}}
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].SubsidiarySDS}}
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].Pre_determined_issue_price}}
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].Conversion_ratio}}
+                                                            </td>
+
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].Equivalent_equity_shares}}
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].Facevalue_equity_shares}}
+                                                            </td>
+                                                            <td width="208" valign="top">
+                                                                {{GrantDetailsArray[i].Value_of_Shares}}
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                            </tabset>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-12 mt-2 mb-4">
+                <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1"
+                    value="Previous">
+                <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
+            </div>
+        </div>
+
+    </div>
+</div>

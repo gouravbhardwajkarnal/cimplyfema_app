@@ -2,6 +2,7 @@ export class GrantDetailsList{
     Full_Name_Grantee:string;  
     Date_of_Issue:string;  
     Number_ESOP_Granted:number;  
+    Number_FCGPR_Granted:number;  
     Country:string;
     ResidentialStatus:string;
     SubsidiarySDS:number;

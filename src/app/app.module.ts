@@ -26,11 +26,13 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AprInstructionsComponent } from './Common/apr-instructions/apr-instructions.component';
 import { FormEsopComponent } from './components/FDI/form-esop/form-esop.component';
+import { FormFcgprComponent } from './components/FDI/form-fcgpr/form-fcgpr.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormEsopComponent,
+    FormFcgprComponent,
     FormFcComponent,
     InstructionsComponent,
     FormAprComponent,

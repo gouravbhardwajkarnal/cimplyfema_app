@@ -130,7 +130,7 @@
                                                 <div class="input-group input-block">
                                                     <span class="input-group-text" id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     <input type="number" class="form-control" spellcheck="false"
-                                                        required (blur)="CapitalstructureFE()"
+                                                        required (keydown)="CapitalstructureFE()"
                                                         formControlName="APR_Indian_Amount" id="APR_Indian_Amount"
                                                         name="APR_Indian_Amount" aria-label="APR_Indian_Amount"
                                                         aria-describedby="APR_Indian_Amount"

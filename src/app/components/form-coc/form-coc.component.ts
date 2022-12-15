@@ -91,6 +91,12 @@ isLinear = false;
       this.CityList = data;
     });
   }  
+  readState() {
+    this.apiService.getState().subscribe((data) => {
+
+      this.StateList = data;
+    });
+  }
   readFemaRegulations() {
     debugger;
     this.apiService.getFemaRegulations().subscribe((femadata) => {this.FemaRegulationsList = femadata;});}
@@ -100,12 +106,7 @@ isLinear = false;
    readRBIAuthority() {
       debugger;
       this.apiService.getRBIAuthority().subscribe((RBIData) => {this.RegionalOfficeList = RBIData;});}  
-  readState() {
-    this.apiService.getState().subscribe((data) => {
-
-      this.StateList = data;
-    });
-  }
+ 
   ngOnInit(): void { 
     this.BackSubmissiondata = { COC_FDI_Background: ""}
     this.BackSubmissionArray.push(this.BackSubmissiondata);

@@ -191,20 +191,20 @@ export class FormFcgprComponent implements OnInit {
       console.log(this.CountryList);
     });
   }
-  CounEquivalentEquityShares(i) {
-    if (this.GrantDetailsArray[i].Number_FCGPR_Granted != null && this.GrantDetailsArray[i].Conversion_ratio != null) {
-      this.GrantDetailsArray[i].Equivalent_equity_shares = this.GrantDetailsArray[i].Number_FCGPR_Granted * this.GrantDetailsArray[i].Conversion_ratio;
+  // CounEquivalentEquityShares(i) {
+  //   if (this.GrantDetailsArray[i].Number_FCGPR_Granted != null && this.GrantDetailsArray[i].Conversion_ratio != null) {
+  //     this.GrantDetailsArray[i].Equivalent_equity_shares = this.GrantDetailsArray[i].Number_FCGPR_Granted * this.GrantDetailsArray[i].Conversion_ratio;
 
-    }
-    this.CountValueofShares(i)
-  }
+  //   }
+  //   this.CountValueofShares(i)
+  // }
 
-  CountValueofShares(i) {
-    if (this.GrantDetailsArray[i].Equivalent_equity_shares != null && this.GrantDetailsArray[i].Facevalue_equity_shares != null) {
-      this.GrantDetailsArray[i].Value_of_Shares = this.GrantDetailsArray[i].Equivalent_equity_shares * this.GrantDetailsArray[i].Facevalue_equity_shares;
-    }
+  // CountValueofShares(i) {
+  //   if (this.GrantDetailsArray[i].Equivalent_equity_shares != null && this.GrantDetailsArray[i].Facevalue_equity_shares != null) {
+  //     this.GrantDetailsArray[i].Value_of_Shares = this.GrantDetailsArray[i].Equivalent_equity_shares * this.GrantDetailsArray[i].Facevalue_equity_shares;
+  //   }
 
-  }
+  // }
 
 
   onSubmitFCGPRFrom() {
@@ -506,6 +506,14 @@ export class FormFcgprComponent implements OnInit {
     grantFormArray.value[0].Date_of_Issue = e.target.value;
 
   }
+  
+  calcEquity(i) {
+   
+    const grantFormArray: FormArray = this.fb.array(this.GrantDetailsArray);
+    grantFormArray.value[i].No_of_Equity_shares =  ((grantFormArray.value[i].No_of_Instruments_instrument || 0) * parseFloat(`${(grantFormArray.value[i].Conversion_ratio1 || 0)}.${(grantFormArray.value[i].Conversion_ratio || 0)}`))?.toFixed(2)
+    
+  }
+
 
   CountryChange(couname) {
 

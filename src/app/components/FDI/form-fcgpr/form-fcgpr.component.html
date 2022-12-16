@@ -66,6 +66,11 @@
 
 
 
+                                    <div class="col-lg-12 mt-2 mb-4">
+                                        <input type="button" *ngIf="btnBack" (click)="btnBackchange()" class="btn btn-primary me-1"
+                                            value="Previous">
+                                        <input type="button" *ngIf="btnNext" (click)="changeTab()" class="btn btn-primary" value="Next">
+                                    </div>
 
                                     <hr class="p-4">
                                 </div>
@@ -243,211 +248,261 @@
                                         </div>
                                         <div class="container-fluid position-relative d-flex p-0">
                                             <div class="container-fluid pt-2">
-                                                <div class="row pt-5 bg-light shadow-sm mb-4 mt-3"
-                                                    *ngFor="let dynamic of GrantDetailsArray; let i = index;">
-                                                    <div class="col-11">
-                                                        <div class="row">
-                                                            <div class="col-1 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].Sno"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">SR.NO</span>
-                                                            </div>
-                                                            <div class="col-3 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].Investor_Name"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Investor Name</span>
-                                                            </div>
+                                                <div class="row">
+                                                    <table style="white-space:inherit ;"
+                                                    class="table table-striped table-bordered caption-top table-responsive overlay-active">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="padding:2px!important">Sno</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Investor Name</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Investor Address</th>
+                                                            <th style="padding:2px!important;min-width:120px;" style="width: 200px;">Town/City</th>
+                                                            <th style="padding:2px!important;min-width:120px;">State</th>
+                                                            <th style="padding:2px!important;min-width:120px;">PIN/Zip Code</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Country</th>
+                                                            <th style="padding:2px!important;min-width:120px;" colspan="2">Constitution - investing entity</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Type of Capital instrument</th>
+                                                            <th style="padding:2px!important;min-width:120px;">No. of Instruments</th>
+                                                            <th style="padding:2px!important;min-width:120px;" colspan="2">Conversion ratioc</th>
+                                                            <th style="padding:2px!important;min-width:120px;">No. of Equity shares on fully diluted basis</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Fair value of Shares (in Rs)</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Issue Price</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Amount of Consideration</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Consolidated Particulars of Issue</th>
+                                                            <th style="padding:2px!important;min-width:120px;">AD Bank Name</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Address</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Town/City</th>
+                                                            <th style="padding:2px!important;min-width:120px;"> Pin Code</th>
+                                                            <th style="padding:2px!important;min-width:120px;">State</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Mode of Payment</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Based on Mode of Payment Selection</th>
+                                                            <th style="padding:2px!important;min-width:120px;">Total amount of Inflow (in Rs)</th>
+                                                            <th style="padding:2px!important"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr
+                                                            *ngFor="let dynamic of GrantDetailsArray; let i = index;">
 
-                                                            <div class="col-3 input-block mb-4">
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Sno"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm"
+                                                                    type="number" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Investor_Name"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
                                                                 <input
                                                                     [(ngModel)]="GrantDetailsArray[i].Investor_Address"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Investor Address</span>
-                                                            </div>
-                                                            <div class="col-3 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].Town_City"
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Town_City"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Town/City</span>
-                                                            </div>
-
-
-                                                            <div class="col-2 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].State"
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].State"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">State</span>
-                                                            </div>
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
 
-                                                            <div class="col-2 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].PIN_Zip_Code"
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].PIN_Zip_Code"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">PIN/Zip Code</span>
-                                                            </div>
-                                                            <div class="col-2 input-block mb-4">
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
                                                                 <ng-select [items]="CountryList" bindLabel="name"
                                                                     placeholder="Select Country"
                                                                     [(ngModel)]="GrantDetailsArray[i].Country"
                                                                     [ngModelOptions]="{standalone: true}"
                                                                     (change)="CountryChange($event)">
                                                                 </ng-select>
-                                                                <span class="placeholder">Country</span>
-                                                            </div>
+                                                            </td>
 
-                                                            <div class="col-3 input-block mb-4">
+
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].State"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+
+                                                            <td style="padding:2px!important">
                                                                 <input
                                                                     [(ngModel)]="GrantDetailsArray[i].Constitution_investing_entity"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Constitution - investing
-                                                                    entity</span>
-                                                            </div>
-                                                            <div class="col-3 input-block mb-4">
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+
+                                                            <td style="padding:2px!important">
                                                                 <input
                                                                     [(ngModel)]="GrantDetailsArray[i].Type_of_Capital_instrument"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Type of Capital
-                                                                    instrument</span>
-                                                            </div>
-
-                                                            <div class="col-2 input-block mb-4">
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
                                                                 <input
                                                                     [(ngModel)]="GrantDetailsArray[i].No_of_Instruments_instrument"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">No. of Instruments</span>
-                                                            </div>
-                                                            <div class="col-2  mb-4">
+                                                                    class="form-control form-control-sm"
+                                                                    (ngModelChange)="calcEquity(i)"
+                                                                    type="number" />
+                                                            </td>
+                                                            
 
-                                                                <span class="">Conversion ratio</span>
-                                                                <div class="input-block d-flex">
-                                                                    <input
-                                                                        [(ngModel)]="GrantDetailsArray[i].Pre_determined_issue_price"
-                                                                        [ngModelOptions]="{standalone: true}"
-                                                                        class="form-control form-control-sm"
-                                                                        type="text" />
+                                                            <td style="padding:2px!important"><input type="text"
+                                                                    [(ngModel)]="GrantDetailsArray[i].Conversion_ratio1"
+                                                                    class="form-control form-control-sm"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    (ngModelChange)="calcEquity(i)"
+                                                                    type="number"
+                                                                    >
+                                                            </td>
+                                                            <td style="padding:2px!important">
 
-                                                                    <input type="text"
-                                                                        [(ngModel)]="GrantDetailsArray[i].Conversion_ratio1"
-                                                                        class="form-control form-control-sm"
-                                                                        [ngModelOptions]="{standalone: true}">
-                                                                </div>
-                                                            </div>
+                                                                <input type="text"
+                                                                    [(ngModel)]="GrantDetailsArray[i].Conversion_ratio"
+                                                                    class="form-control form-control-sm"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    (ngModelChange)="calcEquity(i)"
+                                                                    type="number">
 
-                                                            <div class="col-4 input-block mb-4 mt-4">
+                                                            </td>
+
+                                                            <td style="padding:2px!important">
                                                                 <input
                                                                     [(ngModel)]="GrantDetailsArray[i].No_of_Equity_shares"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">No. of Equity shares on fully
-                                                                    diluted basis</span>
-                                                            </div>
-                                                            <div class="col-2 input-block mb-4 mt-4">
+                                                                    class="form-control form-control-sm"
+                                                                    type="number" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
                                                                 <input
                                                                     [(ngModel)]="GrantDetailsArray[i].Fair_value_of_Shares"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Fair value of Shares (in
-                                                                    Rs)</span>
-                                                            </div>
+                                                                    class="form-control form-control-sm" type="text"
+                                                                     />
+                                                            </td>
 
-                                                            <div class="col-2 input-block mb-4 mt-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].Issue_Price"
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Issue_Price"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Issue Price</span>
-                                                            </div>
-                                                            <div class="col-2 input-block mb-4 mt-4">
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+
+                                                            <td style="padding:2px!important">
                                                                 <input
                                                                     [(ngModel)]="GrantDetailsArray[i].Amount_of_Consideration"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Amount of Consideration</span>
-                                                            </div>
-                                                            <div class="col-4 input-block mb-4">
+                                                                    class="form-control form-control-sm disabled"
+                                                                    type="text"
+                                                                    disabled
+                                                                     />
+                                                            </td>
+                                                            <td style="padding:2px!important">
                                                                 <input
-                                                                    [(ngModel)]="GrantDetailsArray[i].Consolidated_Particulars_of_Issue"
+                                                                    [(ngModel)]="GrantDetailsArray[i].Consolidated_Particulars_of_Issuef"
                                                                     [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Consolidated Particulars of
-                                                                    Issue</span>
-                                                            </div>
-                                                            <div class="col-3 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].AD_Bank_Name"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">AD Bank Name</span>
-                                                            </div>
-
-                                                            <div class="col-3 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].Address"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Address</span>
-                                                            </div>
-                                                            <div class="col-2 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].n_Town_City"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Town/City</span>
-
-                                                            </div>
-                                                            <div class="col-2 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].n_Pin_Code"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder"> Pin Code</span>
-
-                                                            </div>
-                                                            <div class="col-2 input-block mb-4">
-                                                                <input [(ngModel)]="GrantDetailsArray[i].n_State"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">State</span>
-
-                                                            </div>
-
-                                                            <div class="col-2 input-block mb-4">
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
                                                                 <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].AD_Bank_Name"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+                                                            
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].Address"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].n_Town_City"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+                                                            
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].n_Pin_Code"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+
+                                                            <td style="padding:2px!important">
+                                                                <input
+                                                                    [(ngModel)]="GrantDetailsArray[i].n_State"
+                                                                    [ngModelOptions]="{standalone: true}"
+                                                                    class="form-control form-control-sm"
+                                                                    type="text" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
+                                                            <input
                                                                     [(ngModel)]="GrantDetailsArray[i].Mode_of_Payment"
                                                                     [ngModelOptions]="{standalone: true}"
                                                                     class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Mode of Payment</span>
-                                                            </div>
-                                                            <div class="col-3 input-block mb-4">
+                                                                </td>
+                                                            <td style="padding:2px!important">
                                                                 <input
-                                                                    [(ngModel)]="GrantDetailsArray[i].Based_on_Mode_of_Payment_Selection"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Based on Mode of Payment
-                                                                    Selection</span>
-                                                            </div>
-                                                            <div class="col-3 input-block mb-4">
+                                                                [(ngModel)]="GrantDetailsArray[i].Based_on_Mode_of_Payment_Selection"
+                                                                [ngModelOptions]="{standalone: true}"
+                                                                class="form-control form-control-sm" type="text" />
+                                                            </td>
+                                                            <td style="padding:2px!important">
                                                                 <input
-                                                                    [(ngModel)]="GrantDetailsArray[i].Total_amount_of_Inflow"
-                                                                    [ngModelOptions]="{standalone: true}"
-                                                                    class="form-control form-control-sm" type="text" />
-                                                                <span class="placeholder">Total amount of Inflow (in
-                                                                    Rs)</span>
-                                                            </div>
+                                                                [(ngModel)]="GrantDetailsArray[i].Total_amount_of_Inflow"
+                                                                [ngModelOptions]="{standalone: true}"
+                                                                class="form-control form-control-sm" type="text" />
+                                                            </td>
+                                                            
+                                                            <td style="padding:2px!important"></td>
 
+                                                            <td style="padding:2px!important">
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary me-2"
+                                                                    (click)="addGrantData()">+</button>
+                                                                <button type="button"
+                                                                    *ngIf="GrantDetailsArray.length>1"
+                                                                    class="btn btn-outline-primary me-2"
+                                                                    (click)="deleteGrantData(i)">-</button>
 
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-1 d-flex align-items-end pb-4">
-                                                        <button type="button" class="btn btn-outline-primary me-2"
-                                                            (click)="addGrantData()">+</button>
-                                                        <button type="button" *ngIf="GrantDetailsArray.length>1"
-                                                            class="btn btn-outline-primary me-2"
-                                                            (click)="deleteGrantData(i)">-</button>
-                                                    </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

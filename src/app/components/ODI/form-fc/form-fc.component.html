@@ -1,7 +1,7 @@
 <div class="container">
     <form [formGroup]="reactiveForm" #form="ngForm" (ngSubmit)="submit()">
         <div class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Form FC: UIN No - XXXXXXXXXXX
+            <a class="navbar-brand" href="#">Form FC
                 <!-- <small class="text-muted">
         your source of news about frontend development!
       </small> -->
@@ -10,6 +10,20 @@
         <div class="container-fluid position-relative d-flex p-0">
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
+                    <div class="col-4 input-block mb-4">
+                        <input type="text" id="APR_NameIE" spellcheck="false" required class="form-control"
+                            formControlName="APR_NameIE">
+                            <!-- [class.is-invalid]="APR_NameIE.invalid && (APR_NameIE.dirty || APR_NameIE.touched)"> -->
+                        <!-- <div *ngIf="APR_NameIE.invalid && (APR_NameIE.dirty || APR_NameIE.touched)"
+                            class="invalid-feedback">
+                            <div *ngIf="APR_NameIE.errors?.['required']">
+                                This field is required.
+                            </div>
+                        </div> -->
+
+                        <span class="placeholder">UIN No</span>
+
+                    </div>
                     <div class="col-sm-12 col-xl-4">
                         <label class="form-label">Investment Route
 

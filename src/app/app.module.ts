@@ -61,7 +61,8 @@ schemas:[NO_ERRORS_SCHEMA]
     HttpClientModule,
     BrowserAnimationsModule,
     TabsModule.forRoot(),
-    NgSelectModule
+    NgSelectModule,
+    ToastrModule.forRoot(),
   ],
   schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
   providers: [CommonService,UtilService],

@@ -8,6 +8,7 @@ import { FormAprComponent } from './components/ODI/form-apr/form-apr.component';
 import { OpiPdfComponent } from './components/ODI/opi-pdf/opi-pdf.component';
 import { FormCocComponent } from './components/form-coc/form-coc.component';
 import { HomeComponent } from './components/home/home.component';
+import { FormNiccodesComponent } from './Partial_Components/form-niccodes/form-niccodes.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'form-apr', component: FormAprComponent },
   { path: 'opi-pdf', component: OpiPdfComponent },
   { path: 'form-coc', component: FormCocComponent },
+  { path: 'form-niccodes', component: FormNiccodesComponent },
   { path: 'home', component: HomeComponent },
 ];
 

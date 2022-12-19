@@ -1,5 +1,5 @@
 
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { FormFcWosComponent } from './Partial_Components/form-fc-wos/form-fc-wos
 import { FormOpiComponent } from './components/ODI/form-opi/form-opi.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule} from 'ngx-bootstrap/tabs';
+import {ToastrModule} from 'ngx-toastr';
 import { FormFcSdsComponent } from './Partial_Components/form-fc-sds/form-fc-sds.component';
 import { FormFcDisinvestmentComponent } from './Partial_Components/form-fc-disinvestment/form-fc-disinvestment.component';
 import { OpiPdfComponent } from './components/ODI/opi-pdf/opi-pdf.component';
@@ -27,6 +28,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { AprInstructionsComponent } from './Common/apr-instructions/apr-instructions.component';
 import { FormEsopComponent } from './components/FDI/form-esop/form-esop.component';
 import { FormFcgprComponent } from './components/FDI/form-fcgpr/form-fcgpr.component';
+import { FormNiccodesComponent } from './Partial_Components/form-niccodes/form-niccodes.component';
+import { UtilService } from './service/util.service';
+schemas:[NO_ERRORS_SCHEMA]
 
 @NgModule({
   declarations: [
@@ -45,7 +49,8 @@ import { FormFcgprComponent } from './components/FDI/form-fcgpr/form-fcgpr.compo
     HomeComponent,
     FormCocComponent,
     FormCocFdiComponent,
-    AprInstructionsComponent
+    AprInstructionsComponent,
+    FormNiccodesComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -58,7 +63,8 @@ import { FormFcgprComponent } from './components/FDI/form-fcgpr/form-fcgpr.compo
     TabsModule.forRoot(),
     NgSelectModule
   ],
-  providers: [CommonService],
+  schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
+  providers: [CommonService,UtilService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

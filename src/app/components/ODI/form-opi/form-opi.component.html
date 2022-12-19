@@ -1799,8 +1799,8 @@
                     </div>
                 </div>
             </tab>
-            <!-- id="4" disabled="disabled" -->
-            <tab heading="FORM OPI: Preview">
+          
+            <tab heading="FORM OPI: Preview" id="4" disabled="disabled">
                 <div class="container-fluid pt-2 card p-2">
                     <table class="table table-borderless">
                         <thead>
@@ -2007,671 +2007,1254 @@
                         <td colspan="4" width="33%">&nbsp;</td>
                         <td colspan="14" width="62%">&nbsp;</td>
                     </tr>
-                    <tr>
-                        <td colspan="20" width="100%">
-                            <p><strong>A. OPI by Indian entity (Please refer to Schedule II &amp; Proviso 2(iii) of
-                                    Schedule V of OI
-                                    Rules)</strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="14" width="71%">&nbsp;</td>
-                        <td colspan="4" width="16%">
-                            <p><strong>USD</strong></p>
-                        </td>
-                        <td colspan="2" width="12%">
-                            <p><strong>INR</strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>i</p>
-                        </td>
-                        <td colspan="13" width="66%">
-                            <p>Net Amount of Investment held abroad (opening balance) at cost basis</p>
-                        </td>
-                        <td colspan="4" width="16%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmount_USD}}</td>
-                        <td colspan="2" width="12%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmount_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>ii</p>
-                        </td>
-                        <td colspan="13" width="66%">
-                            <p>Investments made during the half year (including reinvestment)</p>
-                        </td>
-                        <td colspan="4" width="16%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Investments_USD}}</td>
-                        <td colspan="2" width="12%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Investments_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iii</p>
-                        </td>
-                        <td colspan="13" width="66%">
-                            <p>Sale/disinvestment made during the half year *</p>
-                        </td>
-                        <td colspan="4" width="16%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Sale_USD}}</td>
-                        <td colspan="2" width="12%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Sale_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iv</p>
-                        </td>
-                        <td colspan="13" width="66%">
-                            <p>Net amount of Investment held abroad (closing balance) (I+II-III)</p>
-                        </td>
-                        
-                        <td colspan="4" width="16%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmountClosing_USD}}</td>
-                        <td colspan="2" width="12%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmountClosing_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">&nbsp;</td>
-                        <td colspan="13" width="66%">
-                            <p><strong>Remittance amount</strong></p>
-                        </td>
-                        <td colspan="4" width="16%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_RemittanceAmt_USD}}</td>
-                        <td colspan="2" width="12%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_RemittanceAmt_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">&nbsp;</td>
-                        <td colspan="13" width="66%">
-                            <p><strong>Repatriation amount</strong></p>
-                        </td>
-                        <td colspan="4" width="16%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Repatriation_USD}}</td>
-                        <td colspan="2" width="12%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Repatriation_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="20" width="100%">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td colspan="20" width="100%">
-                            <p><strong>B. OPI by resident individuals by way of ESOP/ Employee Benefits Scheme (EBS)
-                                    (Please refer
-                                    to Para 1 (2) (iii)(h) and para 3 of Schedule III of OI Rules) (reporting to be made
-                                    by by the
-                                    company/ branch/ office, as the case may be</strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="13" width="70%">&nbsp;</td>
-                        <td colspan="4" width="17%">
-                            <p><strong>USD</strong></p>
-                        </td>
-                        <td colspan="3" width="12%">
-                            <p><strong>INR</strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>i</p>
-                        </td>
-                        <td colspan="12" width="66%">
-                            <p>Net Amount of ESOP/ EBS Investment held abroad (Opening Balance) at cost basis</p>
-                        </td>
-                        <td colspan="4" width="17%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmt_USD}}</td>
-                        <td colspan="3" width="12%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmt_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>ii</p>
-                        </td>
-                        <td colspan="12" width="66%">
-                            <p>Investments made during the Half Year (including reinvestment)</p>
-                        </td>
-                        <td colspan="4" width="17%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Investments_USD}}</td>
-                        <td colspan="3" width="12%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Investments_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iii</p>
-                        </td>
-                        <td colspan="12" width="66%">
-                            <p>Disinvestments made during the Half Year *</p>
-                        </td>
-                        <td colspan="4" width="17%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Disinvestment_USD}}</td>
-                        <td colspan="3" width="12%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Disinvestment_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iv</p>
-                        </td>
-                        <td colspan="12" width="66%">
-                            <p>Net amount of Investments held abroad (Closing Balance) (I+II-III)</p>
-                        </td>
-                        <td colspan="4" width="17%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmtClose_USD}}</td>
-                        <td colspan="3" width="12%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmtClose_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">&nbsp;</td>
-                        <td colspan="12" width="66%">
-                            <p><strong>Remittance Amount</strong></p>
-                        </td>
-                        <td colspan="4" width="17%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RemittanceAmt_USD}}</td>
-                        <td colspan="3" width="12%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RemittanceAmt_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">&nbsp;</td>
-                        <td colspan="12" width="66%">
-                            <p><strong>Repatriation Amount</strong></p>
-                        </td>
-                        <td colspan="4" width="17%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RepatriationAmt_USD}}</td>
-                        <td colspan="3" width="12%">{{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RepatriationAmt_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="20" width="100%">
-                            <p><strong>Consolidated details of Employee Stock Ownership Plan (ESOP)/ Employee Benefits
-                                    Scheme should
-                                    be reported as under by the company/ branch/ office, as the case may be</strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="20" width="100%">
-                            <p>a. We,
-                                {{OpiFormlist.value.basicform.OPI_Sec_A_Name}} 
-                                (Indian Company / Office / Branch), hereby declare that:</p>
-                            <p>M/s.
-                                {{OpiFormlist.value.basicform.OPI_Sec_A_ForeignName}} (foreign company) has issued
-                                {{OpiFormlist.value.basicform.OPI_Sec_A_SharesIssued}} .(nature) equity capital/ %
-                                interest to our
-                                employees / directors under ESOP/ Employee Benefits Scheme during the half year as
-                                under:</p>
-                            <p>(i) Equity capital/% interest allotted:</p>
-                            <p>(ii) Number of employees/ Directors who accepted shares/ interest:</p>
-                            <p>b. We,
-                                {{OpiFormlist.value.basicform.OPI_Sec_A_Name}} (Indian Company / Office / Branch), hereby declare that:</p>
-                            <p>M/s.
-                                {{OpiFormlist.value.basicform.OPI_Sec_A_ForeignName}} (foreign company) has repurchased
-                                {{OpiFormlist.value.basicform.OPI_Sec_A_SharesRepurchased}}  (nature) equity capital from our
-                                employees
-                                /directors under ESOP/ Employee Benefits Scheme during the half year as under:</p>
-                            <p>(i) equity capital repurchased:</p>
-                            <p>(ii) Number of employees / Directors who sold equity capital/ interest:</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="20" width="100%">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td colspan="20" width="100%">
-                            <p><strong>C. OPI by Mutual Funds (please refer to Para 2 of Schedule IV of OI
-                                    Rules)</strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" width="21%">&nbsp;</td>
-                        <td colspan="2" width="13%">
-                            <p>Opening balance</p>
-                        </td>
-                        <td colspan="3" width="12%">
-                            <p>Purchase/ acquired</p>
-                        </td>
-                        <td colspan="3" width="15%">
-                            <p>Sale/ disinvested*</p>
-                        </td>
-                        <td colspan="4" width="12%">
-                            <p>Closing balance</p>
-                        </td>
-                        <td colspan="2" width="12%">
-                            <p>Remittance from India</p>
-                        </td>
-                        <td colspan="3" width="12%">
-                            <p>Repatriation to India</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">&nbsp;</td>
-                        <td colspan="2" width="16%">&nbsp;</td>
-                        <td width="6%">
-                            <p>USD</p>
-                        </td>
-                        <td width="6%">
-                            <p>INR</p>
-                        </td>
-                        <td colspan="2" width="6%">
-                            <p>USD</p>
-                        </td>
-                        <td width="6%">
-                            <p>INR</p>
-                        </td>
-                        <td width="7%">
-                            <p>USD</p>
-                        </td>
-                        <td colspan="2" width="7%">
-                            <p>INR</p>
-                        </td>
-                        <td width="6%">
-                            <p>USD</p>
-                        </td>
-                        <td colspan="3" width="6%">
-                            <p>INR</p>
-                        </td>
-                        <td width="6%">
-                            <p>USD</p>
-                        </td>
-                        <td width="6%">
-                            <p>INR</p>
-                        </td>
-                        <td colspan="2" width="6%">
-                            <p>USD</p>
-                        </td>
-                        <td width="6%">
-                            <p>INR</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>i</p>
-                        </td>
-                        <td colspan="2" width="16%">
-                            <p>Equity</p>
-                        </td>
-                        <td width="6%">  {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity1_USD}} </td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity2_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity3_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity5_USD}}</td>
-                        <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity7_USD}}</td>
-                        <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity8_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity10_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity11_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity12_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>ii</p>
-                        </td>
-                        <td colspan="2" width="16%">
-                            <p>Debt Instruments</p>
-                        </td>
-                        <td width="6%">  {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument1_USD}} </td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument2_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument3_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument5_USD}}</td>
-                        <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument7_USD}}</td>
-                        <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument8_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument10_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument11_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument12_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iii</p>
-                        </td>
-                        <td colspan="2" width="16%">
-                            <p>ADR/GDR</p>
-                        </td>
-                        <td width="6%">  {{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR1_USD}} </td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR2_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR3_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR5_USD}}</td>
-                        <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR7_USD}}</td>
-                        <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR8_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR10_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR11_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR12_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iv</p>
-                        </td>
-                        <td colspan="2" width="16%">
-                            <p>ETF (Securities)</p>
-                        </td>
-                        <td width="6%">  {{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF1_USD}} </td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF2_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF3_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF5_USD}}</td>
-                        <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF7_USD}}</td>
-                        <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF8_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF10_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF11_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF12_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>v</p>
-                        </td>
-                        <td colspan="2" width="16%">
-                            <p>Mutual Funds</p>
-                        </td>
-                        <td width="6%">  {{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual1_USD}} </td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual2_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual3_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual5_USD}}</td>
-                        <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual7_USD}}</td>
-                        <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual8_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual10_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual11_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Mutual12_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>vi</p>
-                        </td>
-                        <td colspan="2" width="16%">
-                            <p>Others (Specify)</p>
-                        </td>
-                        <td width="6%">  {{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others1_USD}} </td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others2_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others3_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others5_USD}}</td>
-                        <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others7_USD}}</td>
-                        <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others8_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others10_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others11_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Others12_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">&nbsp;</td>
-                        <td colspan="2" width="16%">
-                            <p><strong>Total (C)</strong></p>
-                        </td>
-                        <td width="6%">  {{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total1_USD}} </td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total2_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total3_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total5_USD}}</td>
-                        <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total7_USD}}</td>
-                        <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total8_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total10_INR}}</td>
-                        <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total11_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_Total12_INR}}</td>
-                        
-                      
-                    </tr>
+                    <div [ngSwitch]="typeshow!='1'">
+                        <div *ngSwitchCase=true style="text-decoration: line-through;">
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="20" width="100%">
+                                    <p><strong>A. OPI by Indian entity (Please refer to Schedule II &amp; Proviso 2(iii)
+                                            of
+                                            Schedule V of OI
+                                            Rules)</strong></p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="14" width="71%">&nbsp;</td>
+                                <td colspan="4" width="16%">
+                                    <p><strong>USD</strong></p>
+                                </td>
+                                <td colspan="2" width="12%">
+                                    <p><strong>INR</strong></p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>i</p>
+                                </td>
+                                <td colspan="13" width="66%">
+                                    <p>Net Amount of Investment held abroad (opening balance) at cost basis</p>
+                                </td>
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmount_USD}}</td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmount_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>ii</p>
+                                </td>
+                                <td colspan="13" width="66%">
+                                    <p>Investments made during the half year (including reinvestment)</p>
+                                </td>
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Investments_USD}}
+                                </td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Investments_INR}}
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iii</p>
+                                </td>
+                                <td colspan="13" width="66%">
+                                    <p>Sale/disinvestment made during the half year *</p>
+                                </td>
+                                <td colspan="4" width="16%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Sale_USD}}
+                                </td>
+                                <td colspan="2" width="12%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Sale_INR}}
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iv</p>
+                                </td>
+                                <td colspan="13" width="66%">
+                                    <p>Net amount of Investment held abroad (closing balance) (I+II-III)</p>
+                                </td>
+
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmountClosing_USD}}</td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmountClosing_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="13" width="66%">
+                                    <p><strong>Remittance amount</strong></p>
+                                </td>
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_RemittanceAmt_USD}}
+                                </td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_RemittanceAmt_INR}}
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="13" width="66%">
+                                    <p><strong>Repatriation amount</strong></p>
+                                </td>
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Repatriation_USD}}
+                                </td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Repatriation_INR}}
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="20" width="100%">&nbsp;</td>
+                            </tr>
+                        </div>
+                        <div *ngSwitchCase=false>
+                            <tr>
+                                <td colspan="20" width="100%">
+                                    <p><strong>A. OPI by Indian entity (Please refer to Schedule II &amp; Proviso 2(iii)
+                                            of
+                                            Schedule V of OI
+                                            Rules)</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="14" width="71%">&nbsp;</td>
+                                <td colspan="4" width="16%">
+                                    <p><strong>USD</strong></p>
+                                </td>
+                                <td colspan="2" width="12%">
+                                    <p><strong>INR</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>i</p>
+                                </td>
+                                <td colspan="13" width="66%">
+                                    <p>Net Amount of Investment held abroad (opening balance) at cost basis</p>
+                                </td>
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmount_USD}}</td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmount_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>ii</p>
+                                </td>
+                                <td colspan="13" width="66%">
+                                    <p>Investments made during the half year (including reinvestment)</p>
+                                </td>
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Investments_USD}}
+                                </td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Investments_INR}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iii</p>
+                                </td>
+                                <td colspan="13" width="66%">
+                                    <p>Sale/disinvestment made during the half year *</p>
+                                </td>
+                                <td colspan="4" width="16%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Sale_USD}}
+                                </td>
+                                <td colspan="2" width="12%">{{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Sale_INR}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iv</p>
+                                </td>
+                                <td colspan="13" width="66%">
+                                    <p>Net amount of Investment held abroad (closing balance) (I+II-III)</p>
+                                </td>
+
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmountClosing_USD}}</td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_NetAmountClosing_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="13" width="66%">
+                                    <p><strong>Remittance amount</strong></p>
+                                </td>
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_RemittanceAmt_USD}}
+                                </td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_RemittanceAmt_INR}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="13" width="66%">
+                                    <p><strong>Repatriation amount</strong></p>
+                                </td>
+                                <td colspan="4" width="16%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Repatriation_USD}}
+                                </td>
+                                <td colspan="2" width="12%">
+                                    {{OpiFormlist.value.IndianEntitysform.OPI_Sec_A_Repatriation_INR}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="20" width="100%">&nbsp;</td>
+                            </tr>
+                        </div>
+                    </div>
+                    <div [ngSwitch]="typeshow!='3'">
+                        <div *ngSwitchCase=true style="text-decoration: line-through;">
+
+                            <tr>
+                                <td colspan="20" width="100%">
+
+                                    <p style="text-decoration: line-through;"><strong>B. OPI by resident individuals by
+                                            way of ESOP/ Employee Benefits Scheme (EBS)
+                                            (Please refer
+                                            to Para 1 (2) (iii)(h) and para 3 of Schedule III of OI Rules) (reporting to
+                                            be made
+                                            by by the
+                                            company/ branch/ office, as the case may be</strong></p>
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="13" width="70%">&nbsp;</td>
+                                <td colspan="4" width="17%">
+                                    <p style="text-decoration: line-through;"><strong>USD</strong></p>
+                                </td>
+                                <td colspan="3" width="12%">
+                                    <p style="text-decoration: line-through;"><strong>INR</strong></p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>i</p>
+                                </td>
+                                <td colspan="12" width="66%">
+                                    <p style="text-decoration: line-through;">Net Amount of ESOP/ EBS Investment held
+                                        abroad (Opening Balance) at cost basis</p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmt_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmt_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>ii</p>
+                                </td>
+                                <td colspan="12" width="66%">
+                                    <p>Investments made during the Half Year (including reinvestment)</p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Investments_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Investments_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iii</p>
+                                </td>
+                                <td colspan="12" width="66%">
+                                    <p>Disinvestments made during the Half Year *</p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Disinvestment_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Disinvestment_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iv</p>
+                                </td>
+                                <td colspan="12" width="66%">
+                                    <p>Net amount of Investments held abroad (Closing Balance) (I+II-III)</p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmtClose_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmtClose_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="12" width="66%">
+                                    <p><strong>Remittance Amount</strong></p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RemittanceAmt_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RemittanceAmt_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="12" width="66%">
+                                    <p><strong>Repatriation Amount</strong></p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RepatriationAmt_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RepatriationAmt_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="20" width="100%">
+                                    <p><strong>Consolidated details of Employee Stock Ownership Plan (ESOP)/ Employee
+                                            Benefits
+                                            Scheme should
+                                            be reported as under by the company/ branch/ office, as the case may
+                                            be</strong></p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="20" width="100%">
+                                    <p>a. We,
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_Name}}
+                                        (Indian Company / Office / Branch), hereby declare that:</p>
+                                    <p>M/s.
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_ForeignName}} (foreign company) has
+                                        issued
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_SharesIssued}} .(nature) equity capital/
+                                        %
+                                        interest to our
+                                        employees / directors under ESOP/ Employee Benefits Scheme during the half year
+                                        as
+                                        under:</p>
+                                    <p>(i) Equity capital/% interest allotted:</p>
+                                    <p>(ii) Number of employees/ Directors who accepted shares/ interest:</p>
+                                    <p>b. We,
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_Name}} (Indian Company / Office /
+                                        Branch), hereby declare that:</p>
+                                    <p>M/s.
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_ForeignName}} (foreign company) has
+                                        repurchased
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_SharesRepurchased}} (nature) equity
+                                        capital from our
+                                        employees
+                                        /directors under ESOP/ Employee Benefits Scheme during the half year as under:
+                                    </p>
+                                    <p>(i) equity capital repurchased:</p>
+                                    <p>(ii) Number of employees / Directors who sold equity capital/ interest:</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="20" width="100%">&nbsp;</td>
+                            </tr>
+                        </div>
+                        <div *ngSwitchCase=false>
+
+                            <tr>
+                                <td colspan="20" width="100%">
+
+                                    <p><strong>B. OPI by resident individuals by way of ESOP/ Employee Benefits Scheme
+                                            (EBS)
+                                            (Please refer
+                                            to Para 1 (2) (iii)(h) and para 3 of Schedule III of OI Rules) (reporting to
+                                            be made
+                                            by by the
+                                            company/ branch/ office, as the case may be</strong></p>
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="13" width="70%">&nbsp;</td>
+                                <td colspan="4" width="17%">
+                                    <p><strong>USD</strong></p>
+                                </td>
+                                <td colspan="3" width="12%">
+                                    <p><strong>INR</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>i</p>
+                                </td>
+                                <td colspan="12" width="66%">
+                                    <p>Net Amount of ESOP/ EBS Investment held abroad (Opening Balance) at cost basis
+                                    </p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmt_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmt_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>ii</p>
+                                </td>
+                                <td colspan="12" width="66%">
+                                    <p>Investments made during the Half Year (including reinvestment)</p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Investments_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Investments_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iii</p>
+                                </td>
+                                <td colspan="12" width="66%">
+                                    <p>Disinvestments made during the Half Year *</p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Disinvestment_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_Disinvestment_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iv</p>
+                                </td>
+                                <td colspan="12" width="66%">
+                                    <p>Net amount of Investments held abroad (Closing Balance) (I+II-III)</p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmtClose_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_NetAmtClose_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="12" width="66%">
+                                    <p><strong>Remittance Amount</strong></p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RemittanceAmt_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RemittanceAmt_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="12" width="66%">
+                                    <p><strong>Repatriation Amount</strong></p>
+                                </td>
+                                <td colspan="4" width="17%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RepatriationAmt_USD}}</td>
+                                <td colspan="3" width="12%">
+                                    {{OpiFormlist.value.ResidentIndividualform.OPI_Sec_A_EBS_RepatriationAmt_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="20" width="100%">
+                                    <p><strong>Consolidated details of Employee Stock Ownership Plan (ESOP)/ Employee
+                                            Benefits
+                                            Scheme should
+                                            be reported as under by the company/ branch/ office, as the case may
+                                            be</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="20" width="100%">
+                                    <p>a. We,
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_Name}}
+                                        (Indian Company / Office / Branch), hereby declare that:</p>
+                                    <p>M/s.
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_ForeignName}} (foreign company) has
+                                        issued
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_SharesIssued}} .(nature) equity capital/
+                                        %
+                                        interest to our
+                                        employees / directors under ESOP/ Employee Benefits Scheme during the half year
+                                        as
+                                        under:</p>
+                                    <p>(i) Equity capital/% interest allotted:</p>
+                                    <p>(ii) Number of employees/ Directors who accepted shares/ interest:</p>
+                                    <p>b. We,
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_Name}} (Indian Company / Office /
+                                        Branch), hereby declare that:</p>
+                                    <p>M/s.
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_ForeignName}} (foreign company) has
+                                        repurchased
+                                        {{OpiFormlist.value.basicform.OPI_Sec_A_SharesRepurchased}} (nature) equity
+                                        capital from our
+                                        employees
+                                        /directors under ESOP/ Employee Benefits Scheme during the half year as under:
+                                    </p>
+                                    <p>(i) equity capital repurchased:</p>
+                                    <p>(ii) Number of employees / Directors who sold equity capital/ interest:</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="20" width="100%">&nbsp;</td>
+                            </tr>
+                        </div>
+                    </div>
+                    <div [ngSwitch]="typeshow!='2'">
+                        <div *ngSwitchCase=true style="text-decoration: line-through;">
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="20" width="100%">
+                                    <p><strong>C. OPI by Mutual Funds (please refer to Para 2 of Schedule IV of OI
+                                            Rules)</strong></p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="3" width="21%">&nbsp;</td>
+                                <td colspan="2" width="13%">
+                                    <p>Opening balance</p>
+                                </td>
+                                <td colspan="3" width="12%">
+                                    <p>Purchase/ acquired</p>
+                                </td>
+                                <td colspan="3" width="15%">
+                                    <p>Sale/ disinvested*</p>
+                                </td>
+                                <td colspan="4" width="12%">
+                                    <p>Closing balance</p>
+                                </td>
+                                <td colspan="2" width="12%">
+                                    <p>Remittance from India</p>
+                                </td>
+                                <td colspan="3" width="12%">
+                                    <p>Repatriation to India</p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="2" width="16%">&nbsp;</td>
+                                <td width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td colspan="2" width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td colspan="2" width="7%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td colspan="3" width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td colspan="2" width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>i</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>Equity</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity2_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity5_USD}}</td>
+                                <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity7_USD}}</td>
+                                <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity10_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity11_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity12_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>ii</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>Debt Instruments</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument2_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument5_USD}}</td>
+                                <td colspan="2" width="7%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument7_USD}}</td>
+                                <td colspan="3" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument10_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument11_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument12_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iii</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>ADR/GDR</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR2_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR5_USD}}</td>
+                                <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR7_USD}}</td>
+                                <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR10_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR11_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR12_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iv</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>ETF (Securities)</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF2_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF5_USD}}</td>
+                                <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF7_USD}}</td>
+                                <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF10_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF11_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_ETF12_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>v</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>Mutual Funds</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual2_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual3_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual5_USD}}</td>
+                                <td colspan="2" width="7%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual7_USD}}</td>
+                                <td colspan="3" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual8_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual10_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual11_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual12_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>vi</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>Others (Specify)</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others2_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others3_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others5_USD}}</td>
+                                <td colspan="2" width="7%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others7_USD}}</td>
+                                <td colspan="3" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others8_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others10_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others11_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others12_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="2" width="16%">
+                                    <p><strong>Total (C)</strong></p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total2_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total5_USD}}</td>
+                                <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total7_USD}}</td>
+                                <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total10_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total11_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total12_INR}}</td>
+
+
+                            </tr>
+                        </div>
+                        <div *ngSwitchCase=false>
+                            <tr>
+                                <td colspan="20" width="100%">
+                                    <p><strong>C. OPI by Mutual Funds (please refer to Para 2 of Schedule IV of OI
+                                            Rules)</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" width="21%">&nbsp;</td>
+                                <td colspan="2" width="13%">
+                                    <p>Opening balance</p>
+                                </td>
+                                <td colspan="3" width="12%">
+                                    <p>Purchase/ acquired</p>
+                                </td>
+                                <td colspan="3" width="15%">
+                                    <p>Sale/ disinvested*</p>
+                                </td>
+                                <td colspan="4" width="12%">
+                                    <p>Closing balance</p>
+                                </td>
+                                <td colspan="2" width="12%">
+                                    <p>Remittance from India</p>
+                                </td>
+                                <td colspan="3" width="12%">
+                                    <p>Repatriation to India</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="2" width="16%">&nbsp;</td>
+                                <td width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td colspan="2" width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td colspan="2" width="7%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td colspan="3" width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td colspan="2" width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>i</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>Equity</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity2_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity5_USD}}</td>
+                                <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity7_USD}}</td>
+                                <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity10_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity11_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Equity12_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>ii</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>Debt Instruments</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument2_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument5_USD}}</td>
+                                <td colspan="2" width="7%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument7_USD}}</td>
+                                <td colspan="3" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument10_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument11_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_DebtInstrument12_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iii</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>ADR/GDR</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR2_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR5_USD}}</td>
+                                <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR7_USD}}</td>
+                                <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR10_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR11_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ADR_GDR12_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iv</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>ETF (Securities)</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF2_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF5_USD}}</td>
+                                <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF7_USD}}</td>
+                                <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF10_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF11_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_ETF12_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>v</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>Mutual Funds</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual2_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual3_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual5_USD}}</td>
+                                <td colspan="2" width="7%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual7_USD}}</td>
+                                <td colspan="3" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual8_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual10_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual11_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Mutual12_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>vi</p>
+                                </td>
+                                <td colspan="2" width="16%">
+                                    <p>Others (Specify)</p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others2_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others3_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others5_USD}}</td>
+                                <td colspan="2" width="7%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others7_USD}}</td>
+                                <td colspan="3" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others8_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others10_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others11_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Others12_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">&nbsp;</td>
+                                <td colspan="2" width="16%">
+                                    <p><strong>Total (C)</strong></p>
+                                </td>
+                                <td width="6%"> {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total1_USD}} </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total2_INR}}</td>
+                                <td colspan="2" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total3_USD}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total5_USD}}</td>
+                                <td colspan="2" width="7%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total6_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total7_USD}}</td>
+                                <td colspan="3" width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total8_INR}}
+                                </td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total10_INR}}</td>
+                                <td colspan="2" width="6%">
+                                    {{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total11_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.MutualFundform.OPI_Sec_A_Total12_INR}}</td>
+
+
+                            </tr>
+                        </div>
+                    </div>
                 </tbody>
             </table>
             <p>* The disinvestment amount should correspond to the actual investment amount made and not the sale/market
                 value on which disinvestment took place</p>
-            <table width="107%">
-                <tbody>
-                    <tr>
-                        <td colspan="4" width="100%">
-                            <p><strong>Form OPI: Section B</strong></p>
-                            <p><strong>Reporting of the Overseas Portfolio Investment (OPI) by Venture Capital Fund
-                                    (VCF)/
-                                    Alternate Investment Fund (AIF)</strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p><strong>I</strong></p>
-                        </td>
-                        <td colspan="2" width="94%">
-                            <p>Particulars of the Indian entity/ resident individual (RI) who has promoted/ invested in
-                                VCF/
-                                AIF (Attach Separate sheet if there are multiple Indian entities/ RIs)</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>i.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Name of the Indian entity/ RI</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Name}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>ii.</p>
-                        </td>
-                        <td width="32%">
-                            <p>LEI of Indian entity</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_LEI}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>iii.</p>
-                        </td>
-                        <td width="32%">
-                            <p>PAN</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_PAN}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>iv.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Group to which the entity belongs</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Group}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>v.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Activity code of the Indian entity</p>
-                        </td>
-                        <td width="62%">
-                            
-                            <p>{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Activity}}</p>
-                            <p></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>vi.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Address of the Indian entity/ RI</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Address}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>vii.</p>
-                        </td>
-                        <td width="32%">
-                            <p>City</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_City}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>viii.</p>
-                        </td>
-                        <td width="32%">
-                            <p>State</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_State}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>ix.</p>
-                        </td>
-                        <td width="32%">
-                            <p>PIN code</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_PINCode}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>x.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Name of the contact person</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_ContactPerson}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>xi.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Designation of the contact person</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Designation}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>xii.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Telephone No.</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Telephone}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>xiii.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Mobile No. of the contact person</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_MobileCP}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>xiv.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Fax No.</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_FaxNo}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="5%">
-                            <p>xv.</p>
-                        </td>
-                        <td width="32%">
-                            <p>Email</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Email}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p><strong>II</strong></p>
-                        </td>
-                        <td colspan="3" width="95%">
-                            <p>Particulars of the Indian Company/ RI who manages the VCF/ AIF</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>i.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>Name of the Indian entity/ RI</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Name}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>ii.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>PAN</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_PAN}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iii.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>Group to which the entity belongs</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Group}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iv.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>Activity code of the Indian Company</p>
-                        </td>
-                        <td width="62%">
-                            <p>{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Activity}}</p>
-                            <p></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>v.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>Address of the Indian entity/ RI</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Address}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>vi.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>City</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_City}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>vii.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>State</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_State}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>viii.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>PIN code</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_PINCode}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>ix.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>Name of the contact person</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_ContactPerson}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>x.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>Designation of the contact person</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Designation}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>xi.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>Telephone No.</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Telephone}}</td>
-                    </tr>
-                    <!-- <tr>
+            <div [ngSwitch]="typeshow!='4' && typeshow!='5'">
+                <div *ngSwitchCase=true style="text-decoration: line-through;">
+                    <table width="107%">
+                        <tbody>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="4" width="100%">
+                                    <p><strong>Form OPI: Section B</strong></p>
+                                    <p>Reporting of the Overseas Portfolio Investment (OPI) by Venture Capital Fund(VCF)/Alternate Investment Fund (AIF)</p>
+                                    <!-- <div *ngIf="typeshow=='4'">
+                                        <p>Venture Capital Fund(VCF)</p>
+                                    </div>/
+                                    <div *ngIf="typeshow!='4'">
+                                        <p style="text-decoration: line-through;">Alternate Investment Fund (AIF)</p>
+                                    </div>
+                                    <div *ngIf="typeshow!='5'">
+                                        <p style="text-decoration: line-through;">Venture Capital Fund(VCF)</p>
+                                    </div>/
+                                    <div *ngIf="typeshow=='5'">
+                                        <p>Alternate Investment Fund (AIF)</p>
+                                    </div> -->
+                                    
+
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p><strong>I</strong></p>
+                                </td>
+                                <td colspan="2" width="94%">
+                                    <p>Particulars of the Indian entity/ resident individual (RI) who has promoted/
+                                        invested
+                                        in
+                                        VCF/
+                                        AIF (Attach Separate sheet if there are multiple Indian entities/ RIs)</p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>i.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Name of the Indian entity/ RI</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Name}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>ii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>LEI of Indian entity</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_LEI}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>iii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>PAN</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_PAN}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>iv.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Group to which the entity belongs</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Group}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>v.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Activity code of the Indian entity</p>
+                                </td>
+                                <td width="62%">
+
+                                    <p>{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Activity}}</p>
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>vi.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Address of the Indian entity/ RI</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Address}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>vii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>City</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_City}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>viii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>State</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_State}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>ix.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>PIN code</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_PINCode}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>x.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Name of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_ContactPerson}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>xi.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Designation of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Designation}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>xii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Telephone No.</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Telephone}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>xiii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Mobile No. of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_MobileCP}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>xiv.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Fax No.</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_FaxNo}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="2" width="5%">
+                                    <p>xv.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Email</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Email}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p><strong>II</strong></p>
+                                </td>
+                                <td colspan="3" width="95%">
+                                    <p>Particulars of the Indian Company/ RI who manages the VCF/ AIF</p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>i.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Name of the Indian entity/ RI</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Name}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>ii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>PAN</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_PAN}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Group to which the entity belongs</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Group}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iv.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Activity code of the Indian Company</p>
+                                </td>
+                                <td width="62%">
+                                    <p>{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Activity}}</p>
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>v.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Address of the Indian entity/ RI</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Address}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>vi.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>City</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_City}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>vii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>State</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_State}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>viii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>PIN code</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_PINCode}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>ix.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Name of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_ContactPerson}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>x.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Designation of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Designation}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>xi.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Telephone No.</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Telephone}}</td>
+                            </tr>
+                            <!-- <tr>
                         <td width="4%">
                             <p>xii.</p>
                         </td>
@@ -2680,282 +3263,872 @@
                         </td>
                         <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Email}}</td>
                     </tr> -->
-                    <tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>xii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Fax No.</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_FaxNo}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>xiii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Email</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Email}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p><strong>III</strong></p>
+                                </td>
+                                <td colspan="3" width="95%">
+                                    <p>Particulars of the VCF/ AIF</p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>i.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>&nbsp;Name of the VCF/AIF</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_AIF_Name}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>ii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>&nbsp;Date of the SEBI Approval</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_AIF_Date}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>&nbsp;Limit of the Overseas investment granted by SEBI (Amount in actuals in USD)
+                                    </p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_AIF_SEBILimit}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table width="108%">
+                        <tbody>
+                            <tr style="text-decoration: line-through;">
+                                <td colspan="14" width="100%">
+                                    <p><strong>IV OPI by VCF/AIF (please refer to Para 2 of Schedule IV of OI
+                                            Rules)</strong>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">&nbsp;</td>
+                                <td width="15%">&nbsp;</td>
+                                <td colspan="2" width="13%">
+                                    <p>Opening Balance</p>
+                                </td>
+                                <td colspan="2" width="13%">
+                                    <p>Purchase/ acquired</p>
+                                </td>
+                                <td colspan="2" width="13%">
+                                    <p>Sale/ disinvested</p>
+                                </td>
+                                <td colspan="2" width="12%">
+                                    <p>Closing Balance</p>
+                                </td>
+                                <td colspan="2" width="13%">
+                                    <p>Remittance from India</p>
+                                </td>
+                                <td colspan="2" width="14%">
+                                    <p>Repatriation to India</p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">&nbsp;</td>
+                                <td width="15%">&nbsp;</td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="5%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="5%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="7%">
+                                    <p>INR</p>
+                                </td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>i</p>
+                                </td>
+                                <td width="15%">
+                                    <p>Equity</p>
+                                </td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity1_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity2_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity3_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity5_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity7_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity8_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity10_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity11_USD}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity12_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>ii</p>
+                                </td>
+                                <td width="15%">
+                                    <p>Equity linked instrument</p>
+                                </td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked1_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked2_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked3_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked5_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked7_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked8_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked10_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked11_USD}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked12_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">
+                                    <p>iii</p>
+                                </td>
+                                <td width="15%">
+                                    <p>Other permissible instrument (furnish the details of instrument)</p>
+                                </td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible1_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible2_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible3_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible5_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible7_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible8_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible10_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible11_USD}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible12_INR}}</td>
+                            </tr>
+                            <tr style="text-decoration: line-through;">
+                                <td width="4%">&nbsp;</td>
+                                <td width="15%">
+                                    <p><strong>Total</strong></p>
+                                </td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total1_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total2_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total3_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total5_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total7_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total8_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total10_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total11_USD}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total12_INR}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                   
+                </div>
+                <div *ngSwitchCase=false>
+                    <table width="107%">
+                        <tbody>
+                            <tr>
+                                <td colspan="4" width="100%">
+                                    <p><strong>Form OPI: Section B</strong></p>
+                                    <p><strong>Reporting of the Overseas Portfolio Investment (OPI) by Venture Capital
+                                            Fund
+                                            (VCF)/
+                                            Alternate Investment Fund (AIF)</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p><strong>I</strong></p>
+                                </td>
+                                <td colspan="2" width="94%">
+                                    <p>Particulars of the Indian entity/ resident individual (RI) who has promoted/
+                                        invested
+                                        in
+                                        VCF/
+                                        AIF (Attach Separate sheet if there are multiple Indian entities/ RIs)</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>i.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Name of the Indian entity/ RI</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Name}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>ii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>LEI of Indian entity</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_LEI}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>iii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>PAN</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_PAN}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>iv.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Group to which the entity belongs</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Group}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>v.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Activity code of the Indian entity</p>
+                                </td>
+                                <td width="62%">
+
+                                    <p>{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Activity}}</p>
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>vi.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Address of the Indian entity/ RI</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Address}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>vii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>City</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_City}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>viii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>State</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_State}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>ix.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>PIN code</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_PINCode}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>x.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Name of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_ContactPerson}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>xi.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Designation of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Designation}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>xii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Telephone No.</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Telephone}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>xiii.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Mobile No. of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_MobileCP}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>xiv.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Fax No.</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_FaxNo}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="5%">
+                                    <p>xv.</p>
+                                </td>
+                                <td width="32%">
+                                    <p>Email</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Email}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p><strong>II</strong></p>
+                                </td>
+                                <td colspan="3" width="95%">
+                                    <p>Particulars of the Indian Company/ RI who manages the VCF/ AIF</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>i.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Name of the Indian entity/ RI</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Name}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>ii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>PAN</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_PAN}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Group to which the entity belongs</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Group}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iv.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Activity code of the Indian Company</p>
+                                </td>
+                                <td width="62%">
+                                    <p>{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Activity}}</p>
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>v.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Address of the Indian entity/ RI</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Address}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>vi.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>City</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_City}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>vii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>State</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_State}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>viii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>PIN code</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_PINCode}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>ix.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Name of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_ContactPerson}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>x.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Designation of the contact person</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Designation}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>xi.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Telephone No.</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Telephone}}</td>
+                            </tr>
+                            <!-- <tr>
                         <td width="4%">
-                            <p>xiii.</p>
+                            <p>xii.</p>
                         </td>
                         <td colspan="2" width="32%">
-                            <p>Fax No.</p>
+                            <p>Mobile No. of the contact person</p>
                         </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_FaxNo}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>xiv.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>Email</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Email}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p><strong>III</strong></p>
-                        </td>
-                        <td colspan="3" width="95%">
-                            <p>Particulars of the VCF/ AIF</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>i.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>&nbsp;Name of the VCF/AIF</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_AIF_Name}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>ii.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>&nbsp;Date of the SEBI Approval</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_AIF_Date}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iii.</p>
-                        </td>
-                        <td colspan="2" width="32%">
-                            <p>&nbsp;Limit of the Overseas investment granted by SEBI (Amount in actuals in USD)</p>
-                        </td>
-                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_AIF_SEBILimit}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table width="108%">
-                <tbody>
-                    <tr>
-                        <td colspan="14" width="100%">
-                            <p><strong>IV OPI by VCF/AIF (please refer to Para 2 of Schedule IV of OI Rules)</strong>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">&nbsp;</td>
-                        <td width="15%">&nbsp;</td>
-                        <td colspan="2" width="13%">
-                            <p>Opening Balance</p>
-                        </td>
-                        <td colspan="2" width="13%">
-                            <p>Purchase/ acquired</p>
-                        </td>
-                        <td colspan="2" width="13%">
-                            <p>Sale/ disinvested</p>
-                        </td>
-                        <td colspan="2" width="12%">
-                            <p>Closing Balance</p>
-                        </td>
-                        <td colspan="2" width="13%">
-                            <p>Remittance from India</p>
-                        </td>
-                        <td colspan="2" width="14%">
-                            <p>Repatriation to India</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">&nbsp;</td>
-                        <td width="15%">&nbsp;</td>
-                        <td width="7%">
-                            <p>USD</p>
-                        </td>
-                        <td width="5%">
-                            <p>INR</p>
-                        </td>
-                        <td width="7%">
-                            <p>USD</p>
-                        </td>
-                        <td width="5%">
-                            <p>INR</p>
-                        </td>
-                        <td width="7%">
-                            <p>USD</p>
-                        </td>
-                        <td width="6%">
-                            <p>INR</p>
-                        </td>
-                        <td width="6%">
-                            <p>USD</p>
-                        </td>
-                        <td width="6%">
-                            <p>INR</p>
-                        </td>
-                        <td width="7%">
-                            <p>USD</p>
-                        </td>
-                        <td width="6%">
-                            <p>INR</p>
-                        </td>
-                        <td width="7%">
-                            <p>USD</p>
-                        </td>
-                        <td width="7%">
-                            <p>INR</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>i</p>
-                        </td>
-                        <td width="15%">
-                            <p>Equity</p>
-                        </td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity1_USD}}</td>
-                        <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity2_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity3_USD}}</td>
-                        <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity5_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity7_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity8_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity10_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity11_USD}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity12_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>ii</p>
-                        </td>
-                        <td width="15%">
-                            <p>Equity linked instrument</p>
-                        </td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked1_USD}}</td>
-                        <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked2_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked3_USD}}</td>
-                        <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked5_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked7_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked8_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked10_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked11_USD}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked12_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">
-                            <p>iii</p>
-                        </td>
-                        <td width="15%">
-                            <p>Other permissible instrument (furnish the details of instrument)</p>
-                        </td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible1_USD}}</td>
-                        <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible2_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible3_USD}}</td>
-                        <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible5_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible7_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible8_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible10_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible11_USD}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible12_INR}}</td>
-                    </tr>
-                    <tr>
-                        <td width="4%">&nbsp;</td>
-                        <td width="15%">
-                            <p><strong>Total</strong></p>
-                        </td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total1_USD}}</td>
-                        <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total2_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total3_USD}}</td>
-                        <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total4_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total5_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total6_INR}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total7_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total8_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total9_USD}}</td>
-                        <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total10_INR}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total11_USD}}</td>
-                        <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total12_INR}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table width="651">
-                <tbody>
-                    <tr>
-                        <td colspan="5" width="651">
-                            <p><strong>Section C</strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" width="651">
-                            <p><strong>Certificate from Indian entity/ Mutual Fund/AIF/VCF (Strike out whichever is not
-                                    applicable)</strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" width="651">
-                            <p>We, the Indian entity/ Mutual Fund/ AIF/ VCF further confirm that the investment made as
-                                above are in compliance with the provisions contained in OI Rules.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" width="651">
-                            <p>All the transactions effected during the half year are included above and we hereby
-                                certify
-                                that the information furnished above are true and correct. <strong><u>We also duly
-                                        acknowledge that if any information furnished by us is found to be false and/or
-                                        incorrect, it shall be construed that the reporting requirements under FEMA,1999
-                                        have not been complied with.</u></strong></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="311">
-                            <p>Signature of the authorized official of the Indian entity approved by the Board or
-                                equivalent
-                                body, as the case may be/ Mutual Fund/ AIF/ VCF</p>
-                        </td>
-                        <td colspan="2" width="192">{{OpiFormlist.value.SectionC.OPI_Sec_C_Signature}}</td>
-                        <td rowspan="2" width="149">
-                            <p>Stamp/Seal</p>
-                            <p>{{OpiFormlist.value.SectionC.OPI_Sec_C_Stamp}}</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" width="311">
-                            <p>Name &amp; designation of the Authorized Official of the Indian entity/ Mutual Fund/ AIF/
-                                VCF
-                            </p>
-                        </td>
-                        <td colspan="2" width="192">{{OpiFormlist.value.SectionC.OPI_Sec_C_Name}} {{OpiFormlist.value.SectionC.OPI_Sec_C_Designation}}</td>
-                    </tr>
-                    <tr>
-                        <td width="84">
-                            <p>Place</p>
-                        </td>
-                        <td width="227">{{OpiFormlist.value.SectionC.OPI_Sec_C_Place}}</td>
-                        <td width="76">
-                            <p>Date</p>
-                        </td>
-                        <td colspan="2" width="265">{{OpiFormlist.value.SectionC.OPI_Sec_C_Date}}</td>
-                    </tr>
-                    <tr>
-                        <td width="84">
-                            <p>Telephone No.</p>
-                        </td>
-                        <td width="227">{{OpiFormlist.value.SectionC.OPI_Sec_C_Telephone}}</td>
-                        <td width="76">
-                            <p>Email ID</p>
-                        </td>
-                        <td colspan="2" width="265">{{OpiFormlist.value.SectionC.OPI_Sec_C_EmailId}}</td>
-                    </tr>
-                </tbody>
-            </table>
+                        <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_Email}}</td>
+                    </tr> -->
+                            <tr>
+                                <td width="4%">
+                                    <p>xiii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Fax No.</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_FaxNo}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>xiv.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>Email</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Email}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p><strong>III</strong></p>
+                                </td>
+                                <td colspan="3" width="95%">
+                                    <p>Particulars of the VCF/ AIF</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>i.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>&nbsp;Name of the VCF/AIF</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_AIF_Name}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>ii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>&nbsp;Date of the SEBI Approval</p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_AIF_Date}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iii.</p>
+                                </td>
+                                <td colspan="2" width="32%">
+                                    <p>&nbsp;Limit of the Overseas investment granted by SEBI (Amount in actuals in USD)
+                                    </p>
+                                </td>
+                                <td width="62%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_AIF_SEBILimit}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table width="108%">
+                        <tbody>
+                            <tr>
+                                <td colspan="14" width="100%">
+                                    <p><strong>IV OPI by VCF/AIF (please refer to Para 2 of Schedule IV of OI
+                                            Rules)</strong>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">&nbsp;</td>
+                                <td width="15%">&nbsp;</td>
+                                <td colspan="2" width="13%">
+                                    <p>Opening Balance</p>
+                                </td>
+                                <td colspan="2" width="13%">
+                                    <p>Purchase/ acquired</p>
+                                </td>
+                                <td colspan="2" width="13%">
+                                    <p>Sale/ disinvested</p>
+                                </td>
+                                <td colspan="2" width="12%">
+                                    <p>Closing Balance</p>
+                                </td>
+                                <td colspan="2" width="13%">
+                                    <p>Remittance from India</p>
+                                </td>
+                                <td colspan="2" width="14%">
+                                    <p>Repatriation to India</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">&nbsp;</td>
+                                <td width="15%">&nbsp;</td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="5%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="5%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="6%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="6%">
+                                    <p>INR</p>
+                                </td>
+                                <td width="7%">
+                                    <p>USD</p>
+                                </td>
+                                <td width="7%">
+                                    <p>INR</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>i</p>
+                                </td>
+                                <td width="15%">
+                                    <p>Equity</p>
+                                </td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity1_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity2_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity3_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity5_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity7_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity8_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity10_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity11_USD}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Equity12_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>ii</p>
+                                </td>
+                                <td width="15%">
+                                    <p>Equity linked instrument</p>
+                                </td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked1_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked2_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked3_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked5_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked7_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked8_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked10_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked11_USD}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_EquityLinked12_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">
+                                    <p>iii</p>
+                                </td>
+                                <td width="15%">
+                                    <p>Other permissible instrument (furnish the details of instrument)</p>
+                                </td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible1_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible2_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible3_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible5_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible7_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible8_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible10_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible11_USD}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Permissible12_INR}}</td>
+                            </tr>
+                            <tr>
+                                <td width="4%">&nbsp;</td>
+                                <td width="15%">
+                                    <p><strong>Total</strong></p>
+                                </td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total1_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total2_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total3_USD}}</td>
+                                <td width="5%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total4_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total5_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total6_INR}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total7_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total8_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total9_USD}}</td>
+                                <td width="6%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total10_INR}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total11_USD}}</td>
+                                <td width="7%">{{OpiFormlist.value.VCFAIFform.OPI_Sec_B_Total12_INR}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table width="651">
+                        <tbody>
+                            <tr>
+                                <td colspan="5" width="651">
+                                    <p><strong>Section C</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" width="651">
+                                    <p><strong>Certificate from Indian entity/ Mutual Fund/AIF/VCF (Strike out whichever
+                                            is
+                                            not
+                                            applicable)</strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" width="651">
+                                    <p>We, the Indian entity/ Mutual Fund/ AIF/ VCF further confirm that the investment
+                                        made
+                                        as
+                                        above are in compliance with the provisions contained in OI Rules.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" width="651">
+                                    <p>All the transactions effected during the half year are included above and we
+                                        hereby
+                                        certify
+                                        that the information furnished above are true and correct. <strong><u>We also
+                                                duly
+                                                acknowledge that if any information furnished by us is found to be false
+                                                and/or
+                                                incorrect, it shall be construed that the reporting requirements under
+                                                FEMA,1999
+                                                have not been complied with.</u></strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="311">
+                                    <p>Signature of the authorized official of the Indian entity approved by the Board
+                                        or
+                                        equivalent
+                                        body, as the case may be/ Mutual Fund/ AIF/ VCF</p>
+                                </td>
+                                <td colspan="2" width="192">{{OpiFormlist.value.SectionC.OPI_Sec_C_Signature}}</td>
+                                <td rowspan="2" width="149">
+                                    <p>Stamp/Seal</p>
+                                    <p>{{OpiFormlist.value.SectionC.OPI_Sec_C_Stamp}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="311">
+                                    <p>Name &amp; designation of the Authorized Official of the Indian entity/ Mutual
+                                        Fund/
+                                        AIF/
+                                        VCF
+                                    </p>
+                                </td>
+                                <td colspan="2" width="192">{{OpiFormlist.value.SectionC.OPI_Sec_C_Name}}
+                                    {{OpiFormlist.value.SectionC.OPI_Sec_C_Designation}}</td>
+                            </tr>
+                            <tr>
+                                <td width="84">
+                                    <p>Place</p>
+                                </td>
+                                <td width="227">{{OpiFormlist.value.SectionC.OPI_Sec_C_Place}}</td>
+                                <td width="76">
+                                    <p>Date</p>
+                                </td>
+                                <td colspan="2" width="265">{{OpiFormlist.value.SectionC.OPI_Sec_C_Date}}</td>
+                            </tr>
+                            <tr>
+                                <td width="84">
+                                    <p>Telephone No.</p>
+                                </td>
+                                <td width="227">{{OpiFormlist.value.SectionC.OPI_Sec_C_Telephone}}</td>
+                                <td width="76">
+                                    <p>Email ID</p>
+                                </td>
+                                <td colspan="2" width="265">{{OpiFormlist.value.SectionC.OPI_Sec_C_EmailId}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <table width="651">
+                    <tbody>
+                        <tr>
+                            <td colspan="5" width="651">
+                                <p><strong>Section C</strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" width="651">
+                                <p><strong>Certificate from Indian entity/ Mutual Fund/AIF/VCF (Strike out whichever
+                                        is
+                                        not
+                                        applicable)</strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" width="651">
+                                <p>We, the Indian entity/ Mutual Fund/ AIF/ VCF further confirm that the investment
+                                    made
+                                    as
+                                    above are in compliance with the provisions contained in OI Rules.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" width="651">
+                                <p>All the transactions effected during the half year are included above and we
+                                    hereby
+                                    certify
+                                    that the information furnished above are true and correct. <strong><u>We also
+                                            duly
+                                            acknowledge that if any information furnished by us is found to be false
+                                            and/or
+                                            incorrect, it shall be construed that the reporting requirements under
+                                            FEMA,1999
+                                            have not been complied with.</u></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" width="311">
+                                <p>Signature of the authorized official of the Indian entity approved by the Board
+                                    or
+                                    equivalent
+                                    body, as the case may be/ Mutual Fund/ AIF/ VCF</p>
+                            </td>
+                            <td colspan="2" width="192">{{OpiFormlist.value.SectionC.OPI_Sec_C_Signature}}</td>
+                            <td rowspan="2" width="149">
+                                <p>Stamp/Seal</p>
+                                <p>{{OpiFormlist.value.SectionC.OPI_Sec_C_Stamp}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" width="311">
+                                <p>Name &amp; designation of the Authorized Official of the Indian entity/ Mutual
+                                    Fund/
+                                    AIF/
+                                    VCF
+                                </p>
+                            </td>
+                            <td colspan="2" width="192">{{OpiFormlist.value.SectionC.OPI_Sec_C_Name}}
+                                {{OpiFormlist.value.SectionC.OPI_Sec_C_Designation}}</td>
+                        </tr>
+                        <tr>
+                            <td width="84">
+                                <p>Place</p>
+                            </td>
+                            <td width="227">{{OpiFormlist.value.SectionC.OPI_Sec_C_Place}}</td>
+                            <td width="76">
+                                <p>Date</p>
+                            </td>
+                            <td colspan="2" width="265">{{OpiFormlist.value.SectionC.OPI_Sec_C_Date}}</td>
+                        </tr>
+                        <tr>
+                            <td width="84">
+                                <p>Telephone No.</p>
+                            </td>
+                            <td width="227">{{OpiFormlist.value.SectionC.OPI_Sec_C_Telephone}}</td>
+                            <td width="76">
+                                <p>Email ID</p>
+                            </td>
+                            <td colspan="2" width="265">{{OpiFormlist.value.SectionC.OPI_Sec_C_EmailId}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <p><strong>Instructions for filling up Form OPI </strong></p>
             <ul>
                 <li><em>In the case of Mutual Funds, the details of Indian entity responsible for filing the Form OPI

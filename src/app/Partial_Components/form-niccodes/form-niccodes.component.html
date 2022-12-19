@@ -1,0 +1,294 @@
+<div class="container-fluid py-md-5">
+    <div class="py-3 main-head">
+        <div class="rounded1 shadow-sm bg-white text-center px-3 py-4">
+          <h4>NIC Codes & Manuals</h4>
+        </div>
+    </div>
+
+
+    <div class="bg-white btn-tbb nav pt-3 text-center">
+        <ul class="d-inline-flex mx-auto nav-pills rounded2 nic-tab" id="Snapshot-tab" role="tablist">
+            <li class="nav-item active">
+                <a class="nav-link text-dark active" id="nic-tab" data-toggle="pill" href="#nic" role="tab"
+                    aria-controls="nic" aria-selected="true">NIC Codes & Mapping</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="rem-tab" data-toggle="pill" href="#rem" role="tab" aria-controls="rem"
+                    aria-selected="false">Inward/Outward Remittance Codes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="manual-tab" data-toggle="pill" href="#manual" role="tab" aria-controls="manual"
+                    aria-selected="false">Manual</a>
+            </li>
+            
+
+        </ul>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="nic" role="tabpanel" aria-labelledby="pills-2008-tab">
+            <div class="bg-white pt-3">
+                <ul class="nav justify-content-center nav-pills mb-3" id="Snapshot-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" (click)="OnModuleTabClick('notification')" id="fema-notifications"
+                            data-toggle="tab" href="#notifications" role="tab" aria-controls="notifications"
+                            aria-selected="true">NIC Code Mapping</a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a [ngClass]="ActiveTab == 2008 ? 'nav-link text-dark active' : 'nav-link text-dark'" (click)="OnModuleTabClick(2008)"
+                            id="nic2008-tab" data-toggle="tab" role="tab"
+                            aria-controls="regulation" aria-selected="false">NIC Code 2008</a>
+                    </li>
+                    <li class="nav-item">
+                        <a [ngClass]="ActiveTab == 1987 ? 'nav-link text-dark active' : 'nav-link text-dark'" (click)="OnModuleTabClick(1987)" id="nic1987-tab" data-toggle="tab"
+                            role="tab" aria-controls="gsr" aria-selected="false">NIC Code 1987</a>
+
+                    </li>
+                    <li class="nav-item">
+                        
+                        <a  *ngIf="!IsLoggedIn()" data-toggle="modal" data-target="#login-modal"  class="border-dark btn d-flex ml-3 pdf"><img src="../../../../../assets/images/pdf.png" alt="" class="align-self-center img-fluid pr-2"> <span class="align-self-center size-14">See the pdf
+                        </span></a>
+                           <a  *ngIf="IsLoggedIn()" (click)="GoFEMAModule(PDFPaths)" class="border-dark btn d-flex ml-3 pdf"><img src="../../../../../assets/images/pdf.png" alt="" class="align-self-center img-fluid pr-2"> <span class="align-self-center size-14">See the pdf
+                        </span></a>
+                       
+                    
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content" id="myTabContent">
+                <div [ngClass]="ActiveTab == 2008 ? 'tab-pane fade show active' : 'tab-pane fade'" id="regulation" role="tabpanel"
+                    aria-labelledby="fema-regulation">
+
+                    <div class="fema_bg">
+                        <div class="fema_inner">
+                            <div class="row">
+                                <div class="col-md-3 offset-md-9">
+                                    <form novalidate (ngSubmit)="SearchCode('regulation',frmAllNotification)"
+                                        [formGroup]="frmAllNotification">
+                                        <div class="search_tbl">
+                                            <div class="input-group">
+
+                                                <input type="text" class="form-control" name="search"
+                                                    placeholder="Search for codes" formControlName="SearchText">
+                                                <span class="search_icon"> <button type="submit" style="border: 0;"><i
+                                                            class="fas fa-search"></i> </button></span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="table-responsive mt-4">
+                                <table class="table" style="border-radius: 14px; overflow: hidden; border-collapse: separate; border-spacing: 0 5px;">
+                                  <tbody><tr class="bg-light rounded2">
+                                    <th (click)="OnAllNotificationSort('RegulationNumber',0)" class="border-top-0 border-right size-14">Sub-Class <i class="fas {{sortingAllNotificationField == 'RegulationNumber' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                    <th (click)="OnAllNotificationSort('NotificationNumber',1)" class="border-top-0 border-right size-14">Class <i class="fas {{sortingAllNotificationField == 'NotificationNumber' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                    <th (click)="OnAllNotificationSort('NotificationNumber',2)" class="border-top-0 border-right size-14">Group <i class="fas {{sortingAllNotificationField == 'NotificationName' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                    <th (click)="OnAllNotificationSort('NotificationNumber',3)" class="border-top-0 border-right size-14">Divison <i class="fas {{sortingAllNotificationField == 'NotificationDate' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fas fa-sort sort-opacity'}}"></i></th>
+                                    <th (click)="OnAllNotificationSort('NotificationNumber',4)" class="border-top-0 size-14">Section <i class="fas {{sortingAllNotificationField == 'GSRNo' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                  </tr>
+                                  <ng-template ngFor let-nicCode2008 let-j="index" [ngForOf]="nicCodes2008">
+                                    <tr class="bg-white">
+                                        <td class="border-top-0 border-right size-14 w-25"><a class="text-primary">{{nicCode2008.subClass}}</a></td>
+                                        <td class="border-top-0 border-right size-14">{{nicCode2008.class}}</td>
+                                        <td class="border-top-0 border-right size-14"><a class="text-primary">{{nicCode2008.group}}</a></td>
+                                        <td class="border-top-0 border-right size-14">{{nicCode2008.division}}</td>
+                                        <td class="border-top-0 size-14">{{nicCode2008.section}}</td>
+                                    </tr>
+                                    </ng-template>y
+                                    </tbody>
+                                </table>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="fema-notifications">
+                    <div class="fema_bg">
+                        <div class="fema_inner">
+                            <div class="row">
+                                <div class="col-md-3 offset-md-9">
+                                    <form novalidate (ngSubmit)="SearchCode('notifications',frmAllNotification)"
+                                        [formGroup]="frmAllNotification">
+                                        <div class="search_tbl">
+                                            <div class="input-group">
+
+                                                <input type="text" class="form-control" name="search"
+                                                    placeholder="Search for codes" formControlName="SearchText">
+                                                <span class="search_icon"> <button type="submit" style="border: 0;"><i
+                                                            class="fas fa-search"></i> </button></span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="table-responsive mt-4">
+                                <table class="table" style="border-radius: 14px; overflow: hidden; border-collapse: separate; border-spacing: 0 5px;">
+                                  <tbody><tr class="bg-light rounded2">
+                                    <th (click)="OnAllNotificationSort('RegulationNumber',0)" class="border-top-0 border-right size-14 w-25">FDI Policy Para No. <i class="fas {{sortingAllNotificationField == 'RegulationNumber' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                    <th (click)="OnAllNotificationSort('NotificationNumber',1)" class="border-top-0 border-right size-14">Sector / Activity <i class="fas {{sortingAllNotificationField == 'NotificationNumber' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                    <th (click)="OnAllNotificationSort('NotificationName',2)" class="border-top-0 border-right size-14">% of Equity / FDI Cap<i class="fas {{sortingAllNotificationField == 'NotificationName' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                    <th (click)="OnAllNotificationSort('NotificationDate',3)" class="border-top-0 border-right size-14">Entry Route <i class="fas {{sortingAllNotificationField == 'NotificationDate' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fas fa-sort sort-opacity'}}"></i></th>
+                                    <th (click)="OnAllNotificationSort('GSRNo',4)" class="border-top-0 border-right size-14">Other Conditions <i class="fas {{sortingAllNotificationField == 'GSRNo' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                    <th (click)="OnAllNotificationSort('GSRNo',4)" class="border-top-0 size-14">Other Conditions  <i class="fas {{sortingAllNotificationField == 'GSRNo' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                  </tr>
+                                    <ng-template ngFor let-nicCodeMapping let-j="index" [ngForOf]="nicCodesMapping">
+                                    <tr class="bg-white">
+                                        <td class="border-top-0 border-right size-14"><a class="text-primary">{{nicCodeMapping.policy}}</a></td>
+                                        <td class="border-top-0 border-right size-14">{{nicCodeMapping.sector}}</td>
+                                        <td class="border-top-0 border-right size-14"><a class="text-primary">{{nicCodeMapping.equity}}</a></td>
+                                        <td class="border-top-0 border-right size-14">{{nicCodeMapping.entryRoute}}</td>
+                                        <td class="border-top-0 border-right size-14">{{nicCodeMapping.otherConditions}}</td>
+                                        <td class="border-top-0 size-14">{{nicCodeMapping.nic}}</td>
+                                    </tr>
+                                    </ng-template>
+                                    </tbody>
+                                </table>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div [ngClass]="ActiveTab == 1987 ? 'tab-pane fade show active' : 'tab-pane fade'" id="gsr" role="tabpanel" aria-labelledby="gsr-tab">
+                    <div class="fema_bg">
+
+                        <div class="fema_inner">
+                            <!-- <div class="tab-content" id="myTabContent"> -->
+                            <div class="fema_inner">
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-9">
+                                        <form novalidate (ngSubmit)="SearchCode('gsr',frmAllNotification)"
+                                            [formGroup]="frmAllNotification">
+                                            <div class="search_tbl">
+                                                <div class="input-group">
+
+                                                    <input type="text" class="form-control" name="search"
+                                                        placeholder="Search for codes" formControlName="SearchText">
+                                                    <span class="search_icon"> <button type="submit"
+                                                            style="border: 0;"><i class="fas fa-search"></i>
+                                                        </button></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="table-responsive mt-4">
+                                    <table class="table" style="border-radius: 14px; overflow: hidden; border-collapse: separate; border-spacing: 0 5px;">
+                                      <tbody><tr class="bg-light rounded2">
+                                        <th (click)="OnAllNotificationSort('RegulationNumber',0)" class="border-top-0 border-right size-14">Description <i class="fas {{sortingAllNotificationField == 'RegulationNumber' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                        <th (click)="OnAllNotificationSort('GSRNo',4)" class="border-top-0 size-14">Section <i class="fas {{sortingAllNotificationField == 'GSRNo' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i></th>
+                                      </tr>
+                                        <ng-template ngFor let-nicCode1987 let-j="index" [ngForOf]="nicCodes1987">
+                                        <tr class="bg-white">
+                                            <td class="border-top-0 border-right size-14 w-50"><a class="text-primary">{{nicCode1987.description}}</a></td>
+                                            <td class="border-top-0 size-14">{{nicCode1987.section}}</td>
+                                        </tr>
+                                        </ng-template>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                <div class="table-responsive mt-4">
+                                    <table class="table" style="border-radius: 14px; overflow: hidden; border-collapse: separate; border-spacing: 0 5px;">
+                                        <thead class="bg-light">
+                                            <tr class="bg-white" style="display:table-row!important">
+
+                                                <th (click)="OnAllNotificationSort('RegulationNumber',0)" class="border-top-0 border-right size-14">Description <i
+                                                        class="fas {{sortingAllNotificationField == 'RegulationNumber' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i>
+                                                </th>
+
+                                                <th (click)="OnAllNotificationSort('GSRNo',4)" class="border-top-0 size-14">Section <i
+                                                        class="fas {{sortingAllNotificationField == 'GSRNo' ? (sortingAllNotificationDirection == 'A' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort sort-opacity'}}"></i>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <ng-template ngFor let-nicCode1987 let-j="index" [ngForOf]="nicCodes1987">
+                                                <tr class="body-white">
+                                                    <td class="border-top-0 border-right size-14 w-50">{{nicCode1987.description}}</td>
+                                                    <td class="border-top-0 size-14">{{nicCode1987.section}}</td>
+                                                </tr>
+                                            </ng-template>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="rem" role="tabpanel" aria-labelledby="pills-Mapping-tab">
+            <div class="nic_sub_part">
+                <!-- <app-rbi-feters-purpose-codes></app-rbi-feters-purpose-codes> -->
+            </div>
+        </div>
+        <div class="tab-pane fade" id="manual" role="tabpanel" aria-labelledby="pills-Mapping-tab">
+            <div class="nic_sub_part">
+                <div class="bg-white btn-tbb nav pt-3 text-center">
+                <ul class="d-inline-flex mx-auto nav-pills rounded2 nic-tab" id="Snapshot-tab" role="tablist">
+                    <li class="nav-item active">
+                        <a class="nav-link text-dark active" id="FIPB-tab" data-toggle="pill" href="#FIPB" role="tab"
+                            aria-controls="FIPB" aria-selected="true">FIPB Manual</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" id="Firms-tab" data-toggle="pill" href="#Firms" role="tab" aria-controls="Firms"
+                            aria-selected="false">FIRMS FAQ’s</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" id="SMF-tab" data-toggle="pill" href="#SMF" role="tab" aria-controls="SMF"
+                            aria-selected="false">SMF Firms Manual</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" id="EMF-tab" data-toggle="pill" href="#EMF" role="tab" aria-controls="EMF"
+                            aria-selected="false">EMF Firms Manual</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" id="FLAUser-tab" data-toggle="pill" href="#FLAUser" role="tab" aria-controls="FLAUser"
+                            aria-selected="false">FLA User Manual</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" id="FLAReg-tab" data-toggle="pill" href="#FLAReg" role="tab" aria-controls="FLAReg"
+                            aria-selected="false">FLA Registration Manual</a>
+                    </li>
+                </ul>
+                </div>
+                <div class="my-3 p-3 tab-content" id="pills-tabContents">
+                    <div class="tab-pane fade active in" id="FIPB" role="tabpanel" aria-labelledby="pills-Mapping-tab">
+                        <div class="nic_sub_part">
+                            <embed src="https://assets.cimplyfema.in/Assets/ManualPDF/01082020113227077_FIPB User Manual_compressed.pdf" style="width: 100%;height: 700px" type="application/pdf">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="Firms" role="tabpanel" aria-labelledby="pills-Mapping-tab">
+                        <div class="nic_sub_part">
+                            <embed src="https://assets.cimplyfema.in/Assets/ManualPDF/01082020112945781_FAQs-FIRMS (1).pdf" style="width: 100%;height: 700px" type="application/pdf">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="SMF" role="tabpanel" aria-labelledby="pills-Mapping-tab">
+                        <div class="nic_sub_part">  
+                            <embed src="https://assets.cimplyfema.in/Assets/ManualPDF/01082020113014115_FIRMS_User Manual (2)_compressed.pdf" style="width: 100%;height: 700px" type="application/pdf">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="EMF" role="tabpanel" aria-labelledby="pills-Mapping-tab">
+                        <div class="nic_sub_part">
+                            <embed src="https://assets.cimplyfema.in/Assets/ManualPDF/01082020113051900_ENTITY_User Manual (2)_compressed.pdf" style="width: 100%;height: 700px" type="application/pdf">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="FLAUser" role="tabpanel" aria-labelledby="pills-Mapping-tab">
+                        <div class="nic_sub_part">
+                            <embed src="https://assets.cimplyfema.in/Assets/ManualPDF/05072019122948860_User_manual_for_filing_online_FLA_form.pdf" style="width: 100%;height: 700px" type="application/pdf">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="FLAReg" role="tabpanel" aria-labelledby="pills-Mapping-tab">
+                        <div class="nic_sub_part"> 
+                            <embed src="https://assets.cimplyfema.in/Assets/ManualPDF/05072019123008313_User_manual_for_FLA_User regisration_form.pdf" style="width: 100%;height: 700px" type="application/pdf">
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- <app-pdf-popup-user-new #PDFPopupUserNewComponent></app-pdf-popup-user-new> -->

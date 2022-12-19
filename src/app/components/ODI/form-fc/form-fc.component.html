@@ -69,7 +69,17 @@
                     <tab heading="Investor Details">
 
                         <div class="row g-4">
-                            <div class="col-sm-12 col-xl-4">
+                            <div class="col-3 mb-4">
+                                <div class="input-block">
+                                    <input type="text" class="form-control" spellcheck="false" required
+                                        formControlName="investment_name" id="investment_name">
+                                        <!-- [class.is-invalid]="OpiFormlist.get('basicform.OPI_Sec_A_Name').invalid && 
+                                        (OpiFormlist.get('basicform.OPI_Sec_A_Name').dirty ||
+                                        OpiFormlist.get('basicform.OPI_Sec_A_Name').touched)"> -->
+                                    <span class="placeholder">Name of IE/ RI/ Trust/ Society</span>
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-12 col-xl-4">
                                 <label for="investment_name" class="form-label">Name of IE/ RI/ Trust/ Society
                                 </label>
                                 <input type="text" id="investment_name" name="investment_name"
@@ -88,7 +98,7 @@
                                         This field must have at most 250 characters.
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="mb-3 col-sm-12 col-xl-4">
                                 <label for="investment_pan" class="form-label">PAN
                                 </label>
@@ -1558,3 +1568,4 @@
         <button type="submit" class="btn btn-primary" *ngIf="!this.reactiveForm.invalid">Submit</button>
     </form>
 </div>
+<app-form-niccodes></app-form-niccodes>

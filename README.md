@@ -38,3 +38,10 @@ npm install file-saver
 npm install nodemon  to run backend server
 npm install -g  nodemon --save-dev   global install
 
+
+## toaster 
+npm i ngx-toastr@13.2.1 
+## modal
+
+npm install ngx-modal-dialog --save --legacy-peer-deps
+

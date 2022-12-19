@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
-
+import { formatDate } from "@angular/common";
 import jsPDF from 'jspdf';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -77,6 +77,10 @@ export class FormCocComponent implements OnInit {
  COC_FDIFemaRegNoArray:any=[];
  TableATotAmountData:number;
 isLinear = false;
+
+ActiveTab: number = 1987;
+NICCodeListShow:any=[];
+RegionalOfficeListShow:any=[];
   constructor(private commonservice: CommonService,private fb: FormBuilder,private apiService: ApiService,) {
     this.modules = commonservice.getCOCmodules();
     this.submodules = commonservice.getCOCsubmodules();
@@ -98,14 +102,24 @@ isLinear = false;
     });
   }
   readFemaRegulations() {
-    debugger;
+  
     this.apiService.getFemaRegulations().subscribe((femadata) => {this.FemaRegulationsList = femadata;});}
   readNICCodeDes() {
-    debugger;
-    this.apiService.getNICCodeDes().subscribe((Nicdata) => {this.NICCodeList = Nicdata;});}  
+  
+    this.apiService.getNICCodeDes().subscribe((Nicdata) => {this.NICCodeList = Nicdata;});
+    // this.NICCodeList=this.NICCodeList.map((item)=>{
+    //   item.status=false
+    // // })
+    // console.log('hiii',this.NICCodeList)
+  }
    readRBIAuthority() {
-      debugger;
-      this.apiService.getRBIAuthority().subscribe((RBIData) => {this.RegionalOfficeList = RBIData;});}  
+    
+      this.apiService.getRBIAuthority().subscribe((RBIData) => {this.RegionalOfficeList = RBIData;
+      this.RegionalOfficeListShow=RBIData});
+      for(let i=0;i<this.RegionalOfficeListShow.length;i++){
+        this.RegionalOfficeListShow.status=false
+      }
+    }  
  
   ngOnInit(): void { 
     this.BackSubmissiondata = { COC_FDI_Background: ""}
@@ -185,7 +199,7 @@ isLinear = false;
       COC_FDI_CompoundRef:new FormControl('', Validators.required),
       COC_FDI_CompoundAppFee:new FormControl('INR 5000', Validators.required),
       COC_FDI_CompoundDemandNo:new FormControl('', Validators.required),
-      COC_FDI_CompoundDemandDate:new FormControl('', Validators.required),
+      COC_FDI_CompoundDemandDate:new FormControl(formatDate(new Date(),"yyyy-MM-dd",'en'), Validators.required),
       COC_FDI_CompoundCity:new FormControl('', Validators.required),
       //COC_FDI_CompSubBackground:new FormControl('', Validators.required),
       BackSubmissionDetails:new FormArray([]),
@@ -280,14 +294,59 @@ isLinear = false;
     this.COC_FDIODIAuthorisedCapitalArray.push(this.COC_FDIODIAuthorisedCapitaldata);}
     return true;
   }
-  SelectCOC_FDINICCodeDes(items: any) {
-  debugger;
- this.SelectCOC_FDINICCodeDesArray.push({Year:items.Year,Class:items.Class,DescriptionClass:items.DescriptionClass})
+
+  // Step 3 select nicCode in modal
+  SelectCOC_FDINICCodeDes(item: any) {
+    console.log(item)
+    let itemExist=this.SelectCOC_FDINICCodeDesArray.findIndex(nicCode => nicCode.Class === item.Class);
+  if(item.status==true){
+    // this.NICCodeListShow[itemExist].status=false
+    item.status=false
+    this.SelectCOC_FDINICCodeDesArray.splice(itemExist,1)
   }
-  SelectCOC_FDIResCent(items: any) {
-    debugger;
-   this.SelectCOC_FDICenResArray.push({RegionalOffices:items.RegionalOffices,Address:items.Address})
+  else{
+    // this.NICCodeListShow[itemExist].status=true
+    item.status=true
+    this.SelectCOC_FDINICCodeDesArray.push({Year:item.Year,Class:item.Class,DescriptionClass:item.DescriptionClass})
+  }
+  }
+
+  SelectAllNicCodes(event:any){
+    console.log(event.target.checked)
+    if(event.target.checked){
+      this.NICCodeListShow.map((item)=>{
+        item.status=true
+        this.SelectCOC_FDINICCodeDesArray.push({Year:item.Year,Class:item.Class,DescriptionClass:item.DescriptionClass})
+      })
     }
+    else{
+      this.SelectCOC_FDINICCodeDesArray=[]
+    }
+  }
+
+
+  SelectCOC_FDIResCent(item: any) {
+    let itemExist=this.SelectCOC_FDICenResArray.findIndex(x => x._id === item._id);
+    if(item.status==true){
+      item.status=false
+      this.SelectCOC_FDICenResArray.splice(itemExist,1)
+      console.log('in if')
+    }
+    else{
+      item.status==true
+      this.SelectCOC_FDICenResArray.push({id:item._id,RegionalOffices:item.RegionalOffices,Address:item.Address})
+
+    }
+    }
+
+  searchRegionalOfficeList(event:any){
+    this.RegionalOfficeListShow=this.RegionalOfficeList.filter((x)=>{
+      if(x.RegionalOffices.includes(event.target.value)){
+        return x
+      }
+    })
+  }
+
   onSelectAll(items: any) {
   
     console.log(items);
@@ -295,6 +354,7 @@ isLinear = false;
   title = 'cimplyfema';
 
   filteredsubmodule: any;
+
   NICCodeSelect(selectedSubModule,val)
   {
     this.Submodule=selectedSubModule;
@@ -303,12 +363,12 @@ isLinear = false;
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
   }
   TableATotAmount(data){
-    debugger;
     if(this.TableATotAmountData==undefined && data.COC_FDIODITabAAmount!=''){this.TableATotAmountData = parseFloat(data.COC_FDIODITabAAmount);}
     else if(this.TableATotAmountData!=undefined){this.TableATotAmountData = this.TableATotAmountData + parseFloat(data.COC_FDIODITabAAmount);}
   };
+
+
   onModuleSelect(selectedModule) {
-    debugger;
     
     this.SubmodulenameArray.length=0;
     //this.multiSelect.toggleSelectAll();
@@ -322,7 +382,6 @@ isLinear = false;
   }
 
   onAllSubModuleSelect(items: any,val) {
-    debugger
     for(let submod of val){
     for (let order of this.SubmodulenameArray) {
       if (order.Submodulename == submod.name) {
@@ -336,31 +395,43 @@ isLinear = false;
     this.Submodulename= val.filter(x =>x.id===Number(items[i].id))[0].name;
     this.SubmodulenameArray.push({ Submodulename: this.Submodulename, SubmodulenameDes: this.SubmodulenameDes});
     this.COC_FDIFemaRegNoArray.push({ COC_FDINatContname: this.Submodulename, COC_FDINatContDes: this.SubmodulenameDes});
-    this.OpenFdiForm(items);
-    }
   }
-  OpenFdiForm(selectedModule){
-    if(selectedModule.id==1)
+  this.OpenFdiForm(items);
+  }
+
+  OpenFdiForm(selectedModule?:any){
+    // console.log('in openFdiForm:selectModule',selectedModule,selectedModule.id)
+    if(selectedModule)
     {
+      console.log("in if")
     this.COC_FDIFormDiv=true; }
-    else{
-    this.COC_FDIFormDiv=false;
+    if(this.SubmodulenameArray.length==0){
+      this.COC_FDIFormDiv=false;
     }
+    // else{
+    // this.COC_FDIFormDiv=false;
+    // }
   }
+
+  // Unselect single submodule in headr dropdown
   onItemDeSelect(item: any) {
     for (let order of this.SubmodulenameArray) {
       if (order.Submodulename == item.name) {
           this.SubmodulenameArray.splice(this.SubmodulenameArray.indexOf(order), 1);
       }      
-     }
+    }
+    this.OpenFdiForm() // TO close the tab if nothing is selected    
 }
+
+  // Unselect all subModules in header dropdown
   onUnSelectAll() {
-    debugger;
     this.SubmodulenameArray.length=0;
+    this.OpenFdiForm() // To close the tab if nothing is selected
 }
+
   onSubModuleSelect(selectedSubModule,val)
   {
-    debugger;
+
     this.Submodule=selectedSubModule;
     this.SubmodulenameDes=val.filter(x =>x.id===Number(selectedSubModule.id))[0].Description;
     this.Submodulename= val.filter(x =>x.id===Number(selectedSubModule.id))[0].name;
@@ -374,13 +445,15 @@ isLinear = false;
     //this.BackSubmissionArray.push({COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===selectedSubModule.name)[0].BackgroundB});
     this.OpenFdiForm(selectedSubModule);
   }
+
+  // Check agree checkbox in instruction
   CheckAgreeTerm(Val) {
     if(Val.currentTarget.checked==true){this.COC_FDIInstructionsButton=false;}
     else{this.COC_FDIInstructionsButton=true;}
-    debugger;
   }
+
+  // Stepper back/next button
   RBI_FDISubmit(Val) {
-debugger;
     this.COC_FDIInstructions=false;
     this.COC_FDIApplicantDetails=false;
     this.COC_FDIInstructionsButton=true;
@@ -395,20 +468,65 @@ debugger;
     this.RegulatorySubmissionArray.length=0;
     this.PetitionRequestSubmissionArray.length=0;
     for(let Fema of  this.SubmodulenameArray){
+      console.log("SubmodulenameArray",this.SubmodulenameArray,this.FemaRegulationsList)
       if(this.FemaRegulationsList.length>0){
-    this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].BackgroundA});
-    this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].BackgroundB});
-    this.DelayReasonsSubmissionArray.push({ COC_FDI_DelayReasons:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].DelayReasons});
-    this.RegulatorySubmissionArray.push({ COC_FDI_Regulatory:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].RegulatoryFramework});
-    this.PetitionRequestSubmissionArray.push({ COC_FDI_PetitionRequest:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].PetitionRequest});
+        console.log(this.FemaRegulationsList.filter(x=>x["FEMA Regulation No"]["(Sub-topics)"]===Fema.Submodulename))
+    // this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].BackgroundA});
+    // this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].BackgroundB});
+    // this.DelayReasonsSubmissionArray.push({ COC_FDI_DelayReasons:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].DelayReasons});
+    // this.RegulatorySubmissionArray.push({ COC_FDI_Regulatory:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].RegulatoryFramework});
+    // this.PetitionRequestSubmissionArray.push({ COC_FDI_PetitionRequest:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].PetitionRequest});
+    this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x["FEMA Regulation No"]["(Sub-topics)"]===Fema.Submodulename)[0]["Background 1"][1]});
+    this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x["FEMA Regulation No"]["(Sub-topics)"]===Fema.Submodulename)[0]["Background 1"][2]});
+    this.DelayReasonsSubmissionArray.push({ COC_FDI_DelayReasons:this.FemaRegulationsList.filter(x=>x["FEMA Regulation No"]["(Sub-topics)"]===Fema.Submodulename)[0].DelayReasons});
+    this.RegulatorySubmissionArray.push({ COC_FDI_Regulatory:this.FemaRegulationsList.filter(x=>x["FEMA Regulation No"]["(Sub-topics)"]===Fema.Submodulename)[0].RegulatoryFramework});
+    this.PetitionRequestSubmissionArray.push({ COC_FDI_PetitionRequest:this.FemaRegulationsList.filter(x=>x["FEMA Regulation No"]["(Sub-topics)"]===Fema.Submodulename)[0].PetitionRequest});
     }};}
-    if(Val=='1'){this.COC_FDIInstructions=true;}
-    if(Val=='2'){this.COC_FDIApplicantDetails=true;};if(Val=='3'){this.COC_FDICompoundingDetails=true;};if(Val=='4'){this.COC_FDICompoundingSubmissions=true;};
+    if(Val=='1'){this.COC_FDIInstructions=true
+      for(let i=0;i<this.NICCodeList.length;i++){
+        this.NICCodeList[i].status=false
+        // console.log(this.NICCodeList)
+      }
+    }
+    if(Val=='2'){this.COC_FDIApplicantDetails=true
+      
+    };
+    if(Val=='3'){
+      let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
+      let check=true
+      key.map((item)=>{
+        if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
+          this.COC_FDIFormlist.controls[item].markAsTouched();
+          check=false
+          this.COC_FDIApplicantDetails=true;
+          // return;
+        }
+      })
+      if(check){
+        this.COC_FDICompoundingDetails=true;
+      }
+      
+    };
+    if(Val=='4'){this.COC_FDICompoundingSubmissions=true;};
     if(Val=='5'){this.COC_FDIODIECB=true;};if(Val=='7'){this.COC_FDIDocPreviewg=true;};if(Val=='6'){this.COC_FDIOtherAnnexures=true;};
     console.log(Val);
   }
+
+  OnModuleTabClick(year:any){
+    console.log(this.NICCodeList)
+    this.NICCodeListShow=this.NICCodeList.filter(x=>x.Year==year)
+    this.ActiveTab=year
+  }
+
+  searchNicCode(event:any){
+    console.log(typeof event.target.value)
+    this.NICCodeListShow=this.NICCodeList.filter((x)=>{
+      if(x.Year==this.ActiveTab && String(x.Class).includes(event.target.value)){
+        return x
+      }
+    })
+  }
   onSubmitCOCFrom() {
-    debugger;
     const COC_FDINICCodeDesArray: FormArray = this.fb.array(this.SelectCOC_FDINICCodeDesArray);
     this.COC_FDIFormlist.setControl('SelectCOC_FDINICCodeDesDetails', COC_FDINICCodeDesArray);
     const COC_FDIFemaRegNoFormArray: FormArray = this.fb.array(this.COC_FDIFemaRegNoArray);

@@ -1,5 +1,5 @@
 export class COC_FDI_DetailsList{     
-    COC_FDICIN:number;  
+    COC_FDICIN:string;  
     COC_FDI_CompanyName:string;  
     COC_FDIIncorporationDate:Date;  
     COC_FDIBusPanNo:string;

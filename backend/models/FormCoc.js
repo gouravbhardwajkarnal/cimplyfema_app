@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema
 let FormCoc = new Schema({
-    COC_FDICIN:{type:Number},
+    COC_FDICIN:{type:String},
     COC_FDI_CompanyName: { type: String},
     FDI_FlatBuildingNumber: { type: String},
     COC_FDI_RBILetter:{type: Date},

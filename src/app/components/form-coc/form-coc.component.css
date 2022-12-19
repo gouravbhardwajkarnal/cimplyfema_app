@@ -133,3 +133,34 @@ body {
 	margin-right:20px;
 }
 /*===============================COC_FDI Area End==================================================*/
+
+.modal-body{
+	height: 25%;
+	overflow-y: scroll;
+}
+.modal-content{
+	height: 100vh;
+}
+
+.nav-pills .nav-link.active {
+    border-radius: unset !important;
+    background: #E5ECF2 !important;
+    border-top: 3px solid #08d9d6;
+}
+.btn-tbb .nav-pills .nav-link {
+    padding: 14px 25px !important;
+    border: none;
+}
+.btn-tbb .nav-pills .nav-item.active .nav-link {
+    border-radius: 5px !important;
+    color: #fff !important;
+    background: #08D9D6 !important;
+}
+.navbar-nav li.nav-item a.search_btn {
+    padding: 15px 10px;
+}
+
+.navbar-nav li.nav-item a.search_btn svg {
+    font-size: 1rem;
+    color: #a1a1a1;
+}

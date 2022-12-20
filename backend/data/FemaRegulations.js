@@ -1,28 +1,33 @@
 const mongoose = require('mongoose');
+const { stringify } = require('querystring');
 const Schema = mongoose.Schema;
 const femaRegulations = new Schema({
-    Topic: {
+   srNo:{
+      type:Number
+   },
+    topic: {
        type: String
     }, 
- FEMARegulationNoSubtopics: {
+    femaRegulationNoSubTopics: {
        type: String
     },
-    ShortDescriptiom: {
+    ShortDescription: {
        type: String
     },
-    BackgroundA: {
+    Background: {
+       backgroun1:String,
+       background:String
+    },
+   //  BackgroundB: {
+   //     type: String
+   //  },
+    regulatoryFramework: {
        type: String
     },
-    BackgroundB: {
+    delayReasons: {
        type: String
     },
-    RegulatoryFramework: {
-       type: String
-    },
-    DelayReasons: {
-       type: String
-    },
-    PetitionRequest: {
+    petitionRequest: {
        type: String
     },
  }, 

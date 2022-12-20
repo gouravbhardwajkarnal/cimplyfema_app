@@ -730,19 +730,19 @@ export class FormCocComponent implements OnInit {
       this.COC_FDIApplicantDetails = true;
     }
     if (Val == '3') {
-      // let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
-      // let check=true
-      // key.map((item)=>{
-      //   if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
-      //     this.COC_FDIFormlist.controls[item].markAsTouched();
-      //     check=false
-      //     this.COC_FDIApplicantDetails=true;
-      //     // return;
-      //   }
-      // })
-      // if(check){
+      let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
+      let check=true
+      key.map((item)=>{
+        if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
+          this.COC_FDIFormlist.controls[item].markAsTouched();
+          check=false
+          this.COC_FDIApplicantDetails=true;
+          // return;
+        }
+      })
+      if(check){
       this.COC_FDICompoundingDetails = true;
-      // }
+      }
     }
     if (Val == '4') {
       this.COC_FDICompoundingSubmissions = true;

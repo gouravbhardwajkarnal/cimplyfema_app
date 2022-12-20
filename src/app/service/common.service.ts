@@ -7,7 +7,8 @@ export class CommonService {
     disinvestmenttypes: DisinvetmentType[] = [
         { id: 1, name: "Investigation" },
         { id: 2, name: "Wilful Defaulter" },
-        { id: 3, name: "NPA Account" }
+        { id: 3, name: "NPA Account" },
+        { id: 4, name: "Others" },
     ];
     Jurisdictiontypes: DisinvetmentType[] = [
         { id: 1, name: "Startup" },

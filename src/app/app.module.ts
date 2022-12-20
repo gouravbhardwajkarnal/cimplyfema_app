@@ -30,6 +30,8 @@ import { FormEsopComponent } from './components/FDI/form-esop/form-esop.componen
 import { FormFcgprComponent } from './components/FDI/form-fcgpr/form-fcgpr.component';
 import { FormNiccodesComponent } from './Partial_Components/form-niccodes/form-niccodes.component';
 import { UtilService } from './service/util.service';
+import { FcInvestorComponent } from './Partial_Components/_partialform-fc/fc-investor/fc-investor.component';
+import { FCFormService } from './service/formfc.service';
 schemas:[NO_ERRORS_SCHEMA]
 
 @NgModule({
@@ -50,7 +52,8 @@ schemas:[NO_ERRORS_SCHEMA]
     FormCocComponent,
     FormCocFdiComponent,
     AprInstructionsComponent,
-    FormNiccodesComponent
+    FormNiccodesComponent,
+    FcInvestorComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -65,7 +68,7 @@ schemas:[NO_ERRORS_SCHEMA]
     ToastrModule.forRoot(),
   ],
   schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
-  providers: [CommonService,UtilService],
+  providers: [CommonService,UtilService,FCFormService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

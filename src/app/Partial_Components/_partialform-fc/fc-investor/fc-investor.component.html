@@ -1,0 +1,506 @@
+
+<div class="row g-4" [formGroup]="investorForm">
+    <div class="col-3 input-block mb-4">
+        <input type="text" id="investment_name" spellcheck="false" required class="form-control"
+            formControlName="investment_name" >        
+        <span class="placeholder">Name of IE/ RI/ Trust/ Society</span>
+        <div *ngIf="investorForm.get('investorForm').get('investment_name').errors?.['required']">
+            This field is required.
+        </div>
+       
+    </div>
+  <!--   <div class="col-3 input-block mb-4">
+        <input type="text" id="investor_pan" spellcheck="false" required class="form-control"
+            formControlName="investor_pan" >
+        <span class="placeholder">PAN</span>
+      
+    </div>
+    <div class="col-3 input-block mb-4">
+        <input type="text" id="investment_LEI" spellcheck="false" required class="form-control"
+            formControlName="investment_LEI" >
+        <span class="placeholder">Legal Entity Identifier (LEI)</span>
+
+    </div> -->
+</div>
+    <!-- <div class="col-3 mb-4">
+        <div class="input-block">
+            <input type="text" class="form-control" spellcheck="false" required formControlName="investment_name"
+                id="investment_name">
+            [class.is-invalid]="OpiFormlist.get('basicform.OPI_Sec_A_Name').invalid &&
+            (OpiFormlist.get('basicform.OPI_Sec_A_Name').dirty ||
+            OpiFormlist.get('basicform.OPI_Sec_A_Name').touched)">
+            <span class="placeholder">Name of IE/ RI/ Trust/ Society</span>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4">
+        <label for="investment_name" class="form-label">Name of IE/ RI/ Trust/ Society
+        </label>
+        <input type="text" id="investment_name" name="investment_name" formControlName="investment_name"
+            placeholder="Name of IE/ RI/ Trust/ Society" required minlength="1" maxlength="250"
+            class="form-control form-control-sm"
+            [class.is-invalid]="investment_name.invalid && (investment_name.dirty || investment_name.touched)">
+        <div *ngIf="investment_name.invalid && (investment_name.dirty || investment_name.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_name.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_name.errors?.['minlength']">
+                This field must have at least 1 character.
+            </div>
+            <div *ngIf="investment_name.errors?.['maxlength']">
+                This field must have at most 250 characters.
+            </div>
+        </div>
+    </div>
+    <div class="mb-3 col-sm-12 col-xl-4">
+        <label for="investment_pan" class="form-label">PAN
+        </label>
+        <input type="text" id="investment_pan" name="investment_pan" formControlName="investment_pan" placeholder="PAN"
+            required minlength="10" maxlength="10" class="form-control form-control-sm"
+            pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]$"
+            [class.is-invalid]="investment_pan.invalid && (investment_pan.dirty || investment_pan.touched)">
+        <div *ngIf="investment_pan.invalid && (investment_pan.dirty || investment_pan.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_pan.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_pan.errors?.['pattern']">
+                Invalid PAN Number Format
+            </div>
+            <div *ngIf="investment_pan.errors?.['maxlength']">
+                This field must have at most 10 characters.
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_LEI" class="form-label">Legal Entity Identifier (LEI)
+        </label>
+        <input type="text" id="investment_LEI" name="investment_LEI" formControlName="investment_LEI"
+            placeholder="Legal Entity Identifier (LEI)" required minlength="1" maxlength="250"
+            class="form-control form-control-sm"
+            [class.is-invalid]="investment_LEI.invalid && (investment_LEI.dirty || investment_LEI.touched)">
+        <div *ngIf="investment_LEI.invalid && (investment_LEI.dirty || investment_LEI.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_LEI.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_LEI.errors?.['minlength']">
+                This field must have at least 1 character.
+            </div>
+            <div *ngIf="investment_LEI.errors?.['maxlength']">
+                This field must have at most 250 characters.
+            </div>
+        </div>
+    </div> -->
+    <!-- </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="GroupIE" class="form-label">Group company of IE (where the guarantee is
+            extended by a
+            group
+            company)
+        </label>
+        <input type="text" id="investment_GroupIE" name="investment_GroupIE" formControlName="investment_GroupIE"
+            placeholder="Group company of IE" required minlength="1" maxlength="250"
+            class="form-control form-control-sm"
+            [class.is-invalid]="investment_GroupIE.invalid && (investment_GroupIE.dirty || investment_GroupIE.touched)">
+        <div *ngIf="investment_GroupIE.invalid && (investment_GroupIE.dirty || investment_GroupIE.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_GroupIE.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_GroupIE.errors?.['minlength']">
+                This field must have at least 1 character.
+            </div>
+            <div *ngIf="investment_GroupIE.errors?.['maxlength']">
+                This field must have at most 250 characters.
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_Address" class="form-label">Address of IE/ RI/ Trust/ Society
+        </label>
+        <input type="text" id="investment_Address" name="investment_Address" formControlName="investment_Address"
+            placeholder="Address of IE/ RI/ Trust/ Society" required minlength="1" maxlength="250"
+            class="form-control form-control-sm"
+            [class.is-invalid]="investment_Address.invalid && (investment_Address.dirty || investment_Address.touched)">
+        <div *ngIf="investment_Address.invalid && (investment_Address.dirty || investment_Address.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_Address.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_Address.errors?.['minlength']">
+                This field must have at least 1 character.
+            </div>
+            <div *ngIf="investment_Address.errors?.['maxlength']">
+                This field must have at most 250 characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_City" class="form-label">City
+        </label>
+
+        <input class="form-control" formControlName="investment_City" list="datalistOptions" id="exampleDataList"
+            placeholder="Type to search..."
+            [class.is-invalid]="investment_City.invalid && (investment_City.dirty || investment_City.touched)"><datalist
+            id="datalistOptions">
+            <option *ngFor="let list of CityList">{{list.city}}</option>
+        </datalist>
+        <input type="text" id="investment_City" name="investment_City" formControlName="investment_City"
+            list="datalistOptions" id="exampleDataList" placeholder="Type to search..."
+            class="form-control form-control-sm"
+            [class.is-invalid]="investment_City.invalid && (investment_City.dirty || investment_City.touched)">
+        <datalist id="datalistOptions">+
+            <option *ngFor="let list of CityList">{{list.name}}</option>
+        </datalist>
+        <div *ngIf="investment_City.invalid && (investment_City.dirty || investment_City.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_City.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_City.errors?.['minlength']">
+                This field must have at least 1 character.
+            </div>
+            <div *ngIf="investment_City.errors?.['maxlength']">
+                This field must have at most 250 characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_pin" class="form-label">PIN code
+        </label>
+        <input type="text" id="investment_pin" name="investment_pin" formControlName="investment_pin"
+            placeholder="PIN Code" required minlength="6" maxlength="6" class="form-control form-control-sm"
+            pattern="^[0-9]*$"
+            [class.is-invalid]="investment_pin.invalid && (investment_pin.dirty || investment_pin.touched)">
+        <div *ngIf="investment_pin.invalid && (investment_pin.dirty || investment_pin.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_pin.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_pin.errors?.['pattern']">
+                Invalid PIN Code
+            </div>
+            <div *ngIf="investment_pin.errors?.['minlength']">
+                This field must have at least 6 character.
+            </div>
+            <div *ngIf="investment_pin.errors?.['maxlength']">
+                This field must have at most 6 characters.
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label class="form-label">Contact Person
+        </label>
+        <input type="text" id="investment_ContactPerson" name="investment_ContactPerson"
+            formControlName="investment_ContactPerson" placeholder="Contact Person" required minlength="1"
+            maxlength="250" class="form-control form-control-sm"
+            [class.is-invalid]="investment_ContactPerson.invalid && (investment_ContactPerson.dirty || investment_ContactPerson.touched)">
+        <div *ngIf="investment_ContactPerson.invalid && (investment_ContactPerson.dirty || investment_ContactPerson.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_ContactPerson.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_ContactPerson.errors?.['maxlength']">
+                This field must have at most 6 characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label class="form-label">Designation of the contact person
+        </label>
+        <input type="text" id="investment_CPDesignation" name="investment_CPDesignation"
+            formControlName="investment_CPDesignation" placeholder="Designation of the Contact Person" required
+            minlength="1" maxlength="250" class="form-control form-control-sm"
+            [class.is-invalid]="investment_CPDesignation.invalid && (investment_CPDesignation.dirty || investment_CPDesignation.touched)">
+        <div *ngIf="investment_CPDesignation.invalid && (investment_CPDesignation.dirty || investment_CPDesignation.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_CPDesignation.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_CPDesignation.errors?.['maxlength']">
+                This field must have at most 6 characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_TelephoneNumber" class="form-label">Telephone Number
+        </label>
+        <input type="text" id="investment_TelephoneNumber" name="investment_TelephoneNumber"
+            formControlName="investment_TelephoneNumber" placeholder="Telephone Number" required minlength="1"
+            maxlength="250" class="form-control form-control-sm"
+            [class.is-invalid]="investment_TelephoneNumber.invalid && (investment_TelephoneNumber.dirty || investment_TelephoneNumber.touched)">
+        <div *ngIf="investment_TelephoneNumber.invalid && (investment_TelephoneNumber.dirty || investment_TelephoneNumber.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_TelephoneNumber.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_TelephoneNumber.errors?.['maxlength']">
+                This field must have at most 6 characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_MobileNumber" class="form-label">Mobile Number
+        </label>
+        <input type="text" id="investment_MobileNumber" name="investment_MobileNumber"
+            formControlName="investment_MobileNumber" placeholder="Mobile Number" required minlength="1" maxlength="250"
+            class="form-control form-control-sm"
+            [class.is-invalid]="investment_MobileNumber.invalid && (investment_MobileNumber.dirty || investment_MobileNumber.touched)">
+        <div *ngIf="investment_MobileNumber.invalid && (investment_MobileNumber.dirty || investment_MobileNumber.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_MobileNumber.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_MobileNumber.errors?.['maxlength']">
+                This field must have at most 6 characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_Email" class="form-label">E-mail ID
+        </label>
+        <input type="text" id="investment_Email" name="investment_Email" formControlName="investment_Email"
+            placeholder="Email" required minlength="1" maxlength="250" class="form-control form-control-sm"
+            [class.is-invalid]="investment_Email.invalid && (investment_Email.dirty || investment_Email.touched)">
+        <div *ngIf="investment_Email.invalid && (investment_Email.dirty || investment_Email.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_Email.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_Email.errors?.['maxlength']">
+                This field must have at most 6 characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_NetWorth" class="form-label">Net worth in INR as on last audited
+            balance sheet of the IE
+        </label>
+        <input type="number" id="investment_NetWorth" name="investment_NetWorth" formControlName="investment_NetWorth"
+            placeholder="Net Worth in INR" required minlength="1" maxlength="250" class="form-control form-control-sm"
+            [class.is-invalid]="investment_NetWorth.invalid && (investment_NetWorth.dirty || investment_NetWorth.touched)">
+        <div *ngIf="investment_NetWorth.invalid && (investment_NetWorth.dirty || investment_NetWorth.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_NetWorth.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_NetWorth.errors?.['minlength']">
+                This field must have at least 1 character.
+            </div>
+            <div *ngIf="investment_NetWorth.errors?.['maxlength']">
+                This field must have at most 250 characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_AmountINR" class="form-label">Amount (in INR)
+        </label>
+        <input type="text" id="investment_AmountINR" name="investment_AmountINR" formControlName="investment_AmountINR"
+            placeholder="Amount in INR" required minlength="1" maxlength="250" class="form-control form-control-sm"
+            [class.is-invalid]="investment_AmountINR.invalid && (investment_AmountINR.dirty || investment_AmountINR.touched)">
+        <div *ngIf="investment_AmountINR.invalid && (investment_AmountINR.dirty || investment_AmountINR.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_AmountINR.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_AmountINR.errors?.['minlength']">
+                This field must have at least 1 character.
+            </div>
+            <div *ngIf="investment_AmountINR.errors?.['maxlength']">
+                This field must have at most 250 characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-4 mb-3">
+        <label for="investment_NetWorthDate" class="form-label">Networth date
+        </label>
+        <input type="date" id="investment_NetWorthDate" name="investment_NetWorthDate"
+            formControlName="investment_NetWorthDate" placeholder="Net Worth Date" required minlength="1"
+            maxlength="250" class="form-control form-control-sm"
+            [class.is-invalid]="investment_NetWorthDate.invalid && (investment_NetWorthDate.dirty || investment_NetWorthDate.touched)">
+        <div *ngIf="investment_NetWorthDate.invalid && (investment_NetWorthDate.dirty || investment_NetWorthDate.touched)"
+            class="invalid-feedback">
+            <div *ngIf="investment_NetWorthDate.errors?.['required']">
+                This field is required.
+            </div>
+            <div *ngIf="investment_NetWorthDate.errors?.['minlength']">
+                This field must have at least 1 character.
+            </div>
+            <div *ngIf="investment_NetWorthDate.errors?.['maxlength']">
+                This field must have at most 250 characters.
+            </div>
+        </div>
+    </div>
+    <table class="table caption-top table-striped table-bordered table-responsive">
+        <caption>Sum of the Financial Commitment (FC) w.r.t. all foreign entities of the IE/ RI/
+            group
+            company/ Trust/ Society made until the date of the current transaction and FC being
+            undertaken
+            currently
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">NAME of the Entity </th>
+                <th scope="col">in Foreign Currency (FCY) </th>
+                <th scope="col">in INR </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dynamic of sumFCArray; let i = index;">
+                <td>
+                    <input [(ngModel)]="sumFCArray[i].EntityName" [ngModelOptions]="{standalone: true}"
+                        class="form-control" type="text" />
+                </td>
+                <td>
+                    <input [(ngModel)]="sumFCArray[i].FCY" [ngModelOptions]="{standalone: true}" class="form-control"
+                        type="number" />
+                </td>
+                <td>
+                    <input [(ngModel)]="sumFCArray[i].INR" [ngModelOptions]="{standalone: true}" class="form-control"
+                        type="number" />
+                </td>
+                <td>
+                    <button type="button" (click)="addsumFC()" class="btn btn-outline-primary me-2">+</button>
+                    <button type="button" *ngIf="sumFClength>1" (click)="deletesumFC(i)"
+                        class="btn btn-outline-primary me-2">-</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-striped table-bordered caption-top table-responsive">
+        <caption>Whether IE/ RI/ group company/ Trust/ Society making FC or undertaking
+            disinvestment is
+            under:
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">Investigation /
+                    Wilful Defaulter /
+                    NPA account
+                </th>
+                <th scope="col">From Date
+                </th>
+                <th scope="col">To Date (if applicable)
+                </th>
+                <th scope="col">Name of Regulator/ Agency/ Lender
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dynamic of FCDisinvestmentArray; let i = index;">
+                <td>
+
+                    <select class="form-control" [(ngModel)]="FCDisinvestmentArray[i].DisinvestmentType"
+                        [ngModelOptions]="{standalone: true}">
+                        <option ng-option value="">Select Type</option>
+                        <option *ngFor=" let object of disinvetmenttype" value="{{object.id}}">
+                            {{object.name}}
+                        </option>
+                    </select>
+
+                </td>
+                <td><input [(ngModel)]="FCDisinvestmentArray[i].FromDate" [ngModelOptions]="{standalone: true}"
+                        class="form-control" type="date" /></td>
+                <td><input [(ngModel)]="FCDisinvestmentArray[i].ToDate" [ngModelOptions]="{standalone: true}"
+                        class="form-control" type="date" /></td>
+                <td><input [(ngModel)]="FCDisinvestmentArray[i].Name" [ngModelOptions]="{standalone: true}"
+                        class="form-control" type="text" /></td>
+                <td>
+                    <button type="button" (click)="addFCDisinvestment()" class="btn btn-outline-primary me-2">+</button>
+                    <button type="button" *ngIf="FCDisinvestmentlength>1" (click)="deleteFCDisinvestment(i)"
+                        class="btn btn-outline-primary me-2">-</button>
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-striped table-bordered caption-top table-responsive">
+        <caption>Particulars of existing foreign entities of the IE/ RI/ group company/ Trust/
+            Society
+            already in operation or under implementation
+        </caption>
+        <thead>
+            <tr>
+
+                <th scope="col">Name of foreign entity
+
+                </th>
+                <th scope="col">Unique Identification Number (UIN) allotted by Reserve Bank
+
+                </th>
+                <th scope="col"> Name of the designated AD bank
+
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dynamic of PEFEntityArray; let i = index;">
+
+                <td>
+                    <input [(ngModel)]="PEFEntityArray[i].NameFE" [ngModelOptions]="{standalone: true}"
+                        class="form-control" type="text" />
+                </td>
+                <td>
+                    <input [(ngModel)]="PEFEntityArray[i].UIN" [ngModelOptions]="{standalone: true}"
+                        class="form-control" type="text" />
+                </td>
+                <td>
+                    <input [(ngModel)]="PEFEntityArray[i].BankName" [ngModelOptions]="{standalone: true}"
+                        class="form-control" type="text" />
+                </td>
+                <td>
+                    <button type="button" (click)="addPEFEntity()" class="btn btn-outline-primary me-2">+</button>
+                    <button type="button" *ngIf="PEFEntitylength>1" (click)="deletePEFEntity(i)"
+                        class="btn btn-outline-primary me-2">-</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+
+                <th scope="col">Activity code of IE (1987)
+                    Class + Description
+
+
+                </th>
+                <th scope="col">Activity code of IE (2008)
+                    Class + Description
+
+
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
+
+                <td>
+                    <input [(ngModel)]="CodeClassArray[i].Description1987" [ngModelOptions]="{standalone: true}"
+                        class="form-control" type="text" />
+                </td>
+                <td>
+                    <input [(ngModel)]="CodeClassArray[i].Description2008" [ngModelOptions]="{standalone: true}"
+                        class="form-control" type="text" />
+                </td>
+                <td>
+                    <button type="button" (click)="addCodeClassRow()" class="btn btn-outline-primary me-2">+</button>
+                    <button type="button" *ngIf="codeClasslength>1" (click)="deleteCodeClassRow(i)"
+                        class="btn btn-outline-primary me-2">-</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<button type="button" class="btn btn-sm btn-primary" (click)="validate()">Next</button> -->

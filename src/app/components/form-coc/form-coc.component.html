@@ -1,24 +1,32 @@
 <div clas="container">
   <div class="row mt-3">
     <div class="col-sm-12 col-xl-4">
-      <label class="form-label"> Select module
-      </label>
-      <ng-multiselect-dropdown [placeholder]="'Select Topic'" [settings]="ModuleSettings" [data]="modules"
-        [(ngModel)]="selectedItems" (onSelect)="onModuleSelect($event)" (onSelectAll)="onSelectAll($event)">
+      <label class="form-label"> Select module </label>
+      <ng-multiselect-dropdown
+        [placeholder]="'Select Topic'"
+        [settings]="ModuleSettings"
+        [data]="modules"
+        [(ngModel)]="selectedItems"
+        (onSelect)="onModuleSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
       </ng-multiselect-dropdown>
     </div>
     <div class="col-sm-12 col-xl-4">
-      <label class="form-label"> Select Submodule
-      </label>
-      <ng-multiselect-dropdown #multiSelect [placeholder]="'Select Sub Topic'" [settings]="SubModuleSettings"
-        [data]="filteredsubmodule" [(ngModel)]="SubselectedItems"
-        (onSelect)="onSubModuleSelect($event,filteredsubmodule)"
-        (onSelectAll)="onAllSubModuleSelect($event,filteredsubmodule)" (onDeSelect)="onItemDeSelect($event)"
-        (onDeSelectAll)="onUnSelectAll()">
+      <label class="form-label"> Select Submodule </label>
+      <ng-multiselect-dropdown
+        #multiSelect
+        [placeholder]="'Select Sub Topic'"
+        [settings]="SubModuleSettings"
+        [data]="filteredsubmodule"
+        [(ngModel)]="SubselectedItems"
+        (onSelect)="onSubModuleSelect($event, filteredsubmodule)"
+        (onSelectAll)="onAllSubModuleSelect($event, filteredsubmodule)"
+        (onDeSelect)="onItemDeSelect($event)"
+        (onDeSelectAll)="onUnSelectAll()"
+      >
       </ng-multiselect-dropdown>
-
     </div>
-
   </div>
   <table class="table table-striped table-no-bordered table-hover">
     <thead>
@@ -28,28 +36,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let Items of SubmodulenameArray; let i = index;">
-
+      <tr *ngFor="let Items of SubmodulenameArray; let i = index">
         <td>
-          <div>{{Items.Submodulename}}</div>
+          <div>{{ Items.Submodulename }}</div>
         </td>
         <td>
-          <div>{{Items.SubmodulenameDes}}</div>
-
+          <div>{{ Items.SubmodulenameDes }}</div>
         </td>
-
       </tr>
     </tbody>
   </table>
-  <br>
-  <br>
+  <br />
+  <br />
   <!--===============================Module and Sub Module Section End================================-->
   <!--===============================Stepper Section Start============================================-->
   <div class="md-stepper-horizontal orange">
-    <div class=" md-step active">
+    <div class="md-step active">
       <div class="md-step-circle"><span>1</span></div>
-      <div class="md-step-title">Instructions/Checklist
-      </div>
+      <div class="md-step-title">Instructions/Checklist</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
@@ -61,36 +65,31 @@
     </div>
     <div class="md-step active">
       <div class="md-step-circle"><span>3</span></div>
-      <div class="md-step-title">Compounding Details
-      </div>
+      <div class="md-step-title">Compounding Details</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
     <div class="md-step active">
       <div class="md-step-circle"><span>4</span></div>
-      <div class="md-step-title">Compounding Submissions
-      </div>
+      <div class="md-step-title">Compounding Submissions</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
     <div class="md-step active">
       <div class="md-step-circle"><span>5</span></div>
-      <div class="md-step-title">FDI/ODI/ECB/LO BO PO Form Details
-      </div>
+      <div class="md-step-title">FDI/ODI/ECB/LO BO PO Form Details</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
     <div class="md-step active">
       <div class="md-step-circle"><span>6</span></div>
-      <div class="md-step-title">Annexures List
-      </div>
+      <div class="md-step-title">Annexures List</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
     <div class="md-step active">
       <div class="md-step-circle"><span>7</span></div>
-      <div class="md-step-title">Documents Preview
-      </div>
+      <div class="md-step-title">Documents Preview</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
@@ -100,101 +99,216 @@
   <form [formGroup]="COC_FDIFormlist" #form="ngForm" *ngIf="COC_FDIFormDiv">
     <div class="container-fluid position-relative d-flex p-0">
       <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIInstructions">
-        <p>Loream Graph networks are a new machine learning (ML) paradigm that supports both relational reasoning and
-          combinatorial generalization. Here, we develop universal MatErials Graph Network (MEGNet) models for accurate
-          property prediction in both molecules and crystals. We demonstrate that the MEGNet models outperform prior ML
-          models such as the SchNet in 11 out of 13 properties of the QM9 molecule data set. Similarly, we show that
-          MEGNet models trained on ∼60 000 crystals in the Materials Project substantially outperform prior ML models in
-          the prediction of the formation energies, band gaps, and elastic moduli of crystals, achieving better than
-          density functional theory accuracy over a much larger data set. We present two new strategies to address data
-          limitations common in materials science and chemistry. First, we demonstrate a physically intuitive approach
-          to unify four separate molecular MEGNet models for the internal energy at 0 K and room temperature, enthalpy,
-          and Gibbs free energy into a single free energy MEGNet model by incorporating the temperature, pressure, and
-          entropy as global state inputs. Second, we show that the learned element embeddings in MEGNet models encode
-          periodic chemical trends and can be transfer-learned from a property model trained on a larger data set
-          (formation energies) to improve property models with smaller amounts of data (band gaps and elastic moduli).
+        <p>
+          Loream Graph networks are a new machine learning (ML) paradigm that
+          supports both relational reasoning and combinatorial generalization.
+          Here, we develop universal MatErials Graph Network (MEGNet) models for
+          accurate property prediction in both molecules and crystals. We
+          demonstrate that the MEGNet models outperform prior ML models such as
+          the SchNet in 11 out of 13 properties of the QM9 molecule data set.
+          Similarly, we show that MEGNet models trained on ∼60 000 crystals in
+          the Materials Project substantially outperform prior ML models in the
+          prediction of the formation energies, band gaps, and elastic moduli of
+          crystals, achieving better than density functional theory accuracy
+          over a much larger data set. We present two new strategies to address
+          data limitations common in materials science and chemistry. First, we
+          demonstrate a physically intuitive approach to unify four separate
+          molecular MEGNet models for the internal energy at 0 K and room
+          temperature, enthalpy, and Gibbs free energy into a single free energy
+          MEGNet model by incorporating the temperature, pressure, and entropy
+          as global state inputs. Second, we show that the learned element
+          embeddings in MEGNet models encode periodic chemical trends and can be
+          transfer-learned from a property model trained on a larger data set
+          (formation energies) to improve property models with smaller amounts
+          of data (band gaps and elastic moduli).
         </p>
-        <p>Graph networks are a new machine learning (ML) paradigm that supports both relational reasoning and
-          combinatorial generalization. Here, we develop universal MatErials Graph Network (MEGNet) models for accurate
-          property prediction in both molecules and crystals. We demonstrate that the MEGNet models outperform prior ML
-          models such as the SchNet in 11 out of 13 properties of the QM9 molecule data set. Similarly, we show that
-          MEGNet models trained on ∼60 000 crystals in the Materials Project substantially outperform prior ML models in
-          the prediction of the formation energies, band gaps, and elastic moduli of crystals, achieving better than
-          density functional theory accuracy over a much larger data set. We present two new strategies to address data
-          limitations common in materials science and chemistry. First, we demonstrate a physically intuitive approach
-          to unify four separate molecular MEGNet models for the internal energy at 0 K and room temperature, enthalpy,
-          and Gibbs free energy into a single free energy MEGNet model by incorporating the temperature, pressure, and
-          entropy as global state inputs. Second, we show that the learned element embeddings in MEGNet models encode
-          periodic chemical trends and can be transfer-learned from a property model trained on a larger data set
-          (formation energies) to improve property models with smaller amounts of data (band gaps and elastic moduli).
+        <p>
+          Graph networks are a new machine learning (ML) paradigm that supports
+          both relational reasoning and combinatorial generalization. Here, we
+          develop universal MatErials Graph Network (MEGNet) models for accurate
+          property prediction in both molecules and crystals. We demonstrate
+          that the MEGNet models outperform prior ML models such as the SchNet
+          in 11 out of 13 properties of the QM9 molecule data set. Similarly, we
+          show that MEGNet models trained on ∼60 000 crystals in the Materials
+          Project substantially outperform prior ML models in the prediction of
+          the formation energies, band gaps, and elastic moduli of crystals,
+          achieving better than density functional theory accuracy over a much
+          larger data set. We present two new strategies to address data
+          limitations common in materials science and chemistry. First, we
+          demonstrate a physically intuitive approach to unify four separate
+          molecular MEGNet models for the internal energy at 0 K and room
+          temperature, enthalpy, and Gibbs free energy into a single free energy
+          MEGNet model by incorporating the temperature, pressure, and entropy
+          as global state inputs. Second, we show that the learned element
+          embeddings in MEGNet models encode periodic chemical trends and can be
+          transfer-learned from a property model trained on a larger data set
+          (formation energies) to improve property models with smaller amounts
+          of data (band gaps and elastic moduli).
         </p>
-        <input class="form-check-input" type="checkbox" value="" (click)="CheckAgreeTerm($event)" id="flexCheckChecked">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          (click)="CheckAgreeTerm($event)"
+          id="flexCheckChecked"
+        />
         <label class="form-check-label" for="flexCheckChecked">
-          Yes I Agree With your Terms and Conditions.
-        </label><br>
-        <button type="button" [disabled]="COC_FDIInstructionsButton" (click)="RBI_FDISubmit('2')"
-          class="btn btn-primary">Next</button>
+          Yes I Agree With your Terms and Conditions. </label
+        ><br />
+        <button
+          type="button"
+          [disabled]="COC_FDIInstructionsButton"
+          (click)="RBI_FDISubmit('2')"
+          class="btn btn-primary"
+        >
+          Next
+        </button>
       </div>
       <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIApplicantDetails">
         <div class="container-fluid position-relative d-flex p-0">
           <div class="container-fluid pt-2">
             <div class="text-end">
-              <button type="button" (click)="RBI_FDISubmit('1')" class="btn btn-primary">Back</button>
-              <button type="button" (click)="RBI_FDISubmit('3')" class="btn btn-primary">Next</button>
+              <button
+                type="button"
+                (click)="RBI_FDISubmit('1')"
+                class="btn btn-primary"
+              >
+                Back
+              </button>
+              <button
+                type="button"
+                (click)="RBI_FDISubmit('3')"
+                class="btn btn-primary"
+              >
+                Next
+              </button>
             </div>
             <div class="row">
               <ul class="list-group">
-                <li class="list-group-item list-group-item-info">A.Business Profile</li>
+                <li class="list-group-item list-group-item-info">
+                  A.Business Profile
+                </li>
               </ul>
               <div class="col-2 mb-2">
-                <label class="form-label">CIN Number
-                </label>
-                <input type="text" placeholder="CIN Number" class="form-control" formControlName="COC_FDICIN" required
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDICIN').invalid && (COC_FDIFormlist.get('COC_FDICIN').dirty ||COC_FDIFormlist.get('COC_FDICIN').touched)">
+                <label class="form-label">CIN Number </label>
+                <input
+                  type="text"
+                  placeholder="CIN Number"
+                  class="form-control"
+                  formControlName="COC_FDICIN"
+                  required
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDICIN').invalid &&
+                    (COC_FDIFormlist.get('COC_FDICIN').dirty ||
+                      COC_FDIFormlist.get('COC_FDICIN').touched)
+                  "
+                />
               </div>
               <div class="col-3 mb-2">
-                <label class="form-label">Company/Entity/Individual Name
+                <label class="form-label"
+                  >Company/Entity/Individual Name
                 </label>
-                <input type="text" class="form-control" formControlName="COC_FDI_CompanyName"
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="COC_FDI_CompanyName"
                   placeholder="Company/Entity/Individual Name"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_CompanyName').invalid && (COC_FDIFormlist.get('COC_FDI_CompanyName').dirty ||COC_FDIFormlist.get('COC_FDI_CompanyName').touched)">
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDI_CompanyName').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_CompanyName').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_CompanyName').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDI_CompanyName').invalid && (COC_FDIFormlist.get('COC_FDI_CompanyName').dirty ||COC_FDIFormlist.get('COC_FDI_CompanyName').touched)"
-                  class="invalid-feedback">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDI_CompanyName').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_CompanyName').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_CompanyName').touched)
+                  "
+                  class="invalid-feedback"
+                >
                   This field is required.
                 </div>
               </div>
               <div class="col-3 mb-2">
-                <label class="form-label">Date of Incorporation/Registration
+                <label class="form-label"
+                  >Date of Incorporation/Registration
                 </label>
-                <input type="date" class="form-control" name="date-field" formControlName="COC_FDIIncorporationDate"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDIIncorporationDate').invalid && (COC_FDIFormlist.get('COC_FDIIncorporationDate').dirty ||COC_FDIFormlist.get('COC_FDIIncorporationDate').touched)" />
+                <input
+                  type="date"
+                  class="form-control"
+                  name="date-field"
+                  formControlName="COC_FDIIncorporationDate"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDIIncorporationDate').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIIncorporationDate').dirty ||
+                      COC_FDIFormlist.get('COC_FDIIncorporationDate').touched)
+                  "
+                />
               </div>
               <div class="col-2 mb-2">
-                <label class="form-label">PAN Number
-                </label>
-                <input type="text" class="form-control" placeholder="PAN Number" formControlName="COC_FDIBusPanNo"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDIBusPanNo').invalid && (COC_FDIFormlist.get('COC_FDIBusPanNo').dirty ||COC_FDIFormlist.get('COC_FDIBusPanNo').touched)">
+                <label class="form-label">PAN Number </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="PAN Number"
+                  formControlName="COC_FDIBusPanNo"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDIBusPanNo').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIBusPanNo').dirty ||
+                      COC_FDIFormlist.get('COC_FDIBusPanNo').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDIBusPanNo').invalid && (COC_FDIFormlist.get('COC_FDIBusPanNo').dirty ||COC_FDIFormlist.get('COC_FDIBusPanNo').touched)"
-                  class="invalid-feedback">
-                  <div *ngIf="COC_FDIFormlist.get('COC_FDIBusPanNo').errors['required']">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDIBusPanNo').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIBusPanNo').dirty ||
+                      COC_FDIFormlist.get('COC_FDIBusPanNo').touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDIBusPanNo').errors['required']
+                    "
+                  >
                     This field is required.
                   </div>
-                  <div *ngIf="COC_FDIFormlist.get('COC_FDIBusPanNo').errors['pattern']">
+                  <div
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDIBusPanNo').errors['pattern']
+                    "
+                  >
                     Invalid PAN Number Format
                   </div>
                 </div>
               </div>
               <div class="col-2 mb-2">
-                <label class="form-label">GST Number
-                </label>
-                <input type="number" class="form-control" placeholder="GST Number" formControlName="COC_FDIGSTNo"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDIGSTNo').invalid && (COC_FDIFormlist.get('COC_FDIGSTNo').dirty ||COC_FDIFormlist.get('COC_FDIGSTNo').touched)">
+                <label class="form-label">GST Number </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="GST Number"
+                  formControlName="COC_FDIGSTNo"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDIGSTNo').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIGSTNo').dirty ||
+                      COC_FDIFormlist.get('COC_FDIGSTNo').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDIGSTNo').invalid && (COC_FDIFormlist.get('COC_FDIGSTNo').dirty ||COC_FDIFormlist.get('COC_FDIGSTNo').touched)"
-                  class="invalid-feedback">
-                  <div *ngIf="COC_FDIFormlist.get('COC_FDIGSTNo').errors['required']">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDIGSTNo').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIGSTNo').dirty ||
+                      COC_FDIFormlist.get('COC_FDIGSTNo').touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDIGSTNo').errors['required']
+                    "
+                  >
                     This field is required.
                   </div>
                 </div>
@@ -202,26 +316,50 @@
             </div>
             <div class="row">
               <ul class="list-group">
-                <li class="list-group-item list-group-item-info">B.Registered Office Address</li>
+                <li class="list-group-item list-group-item-info">
+                  B.Registered Office Address
+                </li>
               </ul>
               <div class="col-3 mb-2">
-                <label class="form-label">Flat/Floor/Road/Street/Building Number
+                <label class="form-label"
+                  >Flat/Floor/Road/Street/Building Number
                 </label>
-                <input type="text" class="form-control" placeholder="Flat/Floor/Road/Street/Building Number"
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Flat/Floor/Road/Street/Building Number"
                   formControlName="COC_FDIRegOfficeAddress"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDIRegOfficeAddress').invalid && (COC_FDIFormlist.get('COC_FDIRegOfficeAddress').dirty ||COC_FDIFormlist.get('COC_FDIRegOfficeAddress').touched)">
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDIRegOfficeAddress').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIRegOfficeAddress').dirty ||
+                      COC_FDIFormlist.get('COC_FDIRegOfficeAddress').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDIRegOfficeAddress').invalid && (COC_FDIFormlist.get('COC_FDIRegOfficeAddress').dirty ||COC_FDIFormlist.get('COC_FDIRegOfficeAddress').touched)"
-                  class="invalid-feedback">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDIRegOfficeAddress').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIRegOfficeAddress').dirty ||
+                      COC_FDIFormlist.get('COC_FDIRegOfficeAddress').touched)
+                  "
+                  class="invalid-feedback"
+                >
                   This field is required.
                 </div>
               </div>
               <div class="col-3 mb-2">
-                <label class="form-label">State
-                </label>
-                <ng-select [items]="StateList" bindLabel="State" placeholder="Select State"
-                  formControlName="COC_FDIState" class="form-select"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDIState').invalid && (COC_FDIFormlist.get('COC_FDIState').dirty ||COC_FDIFormlist.get('COC_FDIState').touched)">
+                <label class="form-label">State </label>
+                <ng-select
+                  [items]="StateList"
+                  bindLabel="State"
+                  placeholder="Select State"
+                  formControlName="COC_FDIState"
+                  class="form-select"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDIState').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIState').dirty ||
+                      COC_FDIFormlist.get('COC_FDIState').touched)
+                  "
+                >
                 </ng-select>
                 <!-- <input class="form-control" formControlName="COC_FDIState" list="datalistOptionsstate" [class.is-invalid]="COC_FDIFormlist.get('COC_FDIState').invalid && (COC_FDIFormlist.get('COC_FDIState').dirty ||COC_FDIFormlist.get('COC_FDIState').touched)"
                   id="exampleDataList" placeholder="Select State"><datalist
@@ -230,9 +368,18 @@
               </div>
               <div class="col-3 mb-2">
                 <label class="form-label">City</label>
-                <ng-select [items]="CityList" bindLabel="city" placeholder="Select City" formControlName="COC_FDICity"
+                <ng-select
+                  [items]="CityList"
+                  bindLabel="city"
+                  placeholder="Select City"
+                  formControlName="COC_FDICity"
                   class="form-select"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDICity').invalid && (COC_FDIFormlist.get('COC_FDICity').dirty ||COC_FDIFormlist.get('COC_FDICity').touched)">
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDICity').invalid &&
+                    (COC_FDIFormlist.get('COC_FDICity').dirty ||
+                      COC_FDIFormlist.get('COC_FDICity').touched)
+                  "
+                >
                 </ng-select>
                 <!-- <input type="text" class="form-control" spellcheck="false" required
                         formControlName="OPI_Sec_A_State" id="OPI_Sec_A_State" [class.is-invalid]="OpiFormlist.get('basicform.OPI_Sec_A_State').invalid &&
@@ -245,68 +392,146 @@
                   <option *ngFor="let city of CityList">{{city.city}}</option></datalist>   -->
               </div>
               <div class="col-3 mb-2">
-                <label class="form-label">Pin-code
-                </label>
-                <input type="number" class="form-control" formControlName="COC_FDIPincode" placeholder="Pincode"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDIPincode').invalid && (COC_FDIFormlist.get('COC_FDIPincode').dirty ||COC_FDIFormlist.get('COC_FDIPincode').touched)">
+                <label class="form-label">Pin-code </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="COC_FDIPincode"
+                  placeholder="Pincode"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDIPincode').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIPincode').dirty ||
+                      COC_FDIFormlist.get('COC_FDIPincode').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDIPincode').invalid && (COC_FDIFormlist.get('COC_FDIPincode').dirty ||COC_FDIFormlist.get('COC_FDIPincode').touched)"
-                  class="invalid-feedback">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDIPincode').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIPincode').dirty ||
+                      COC_FDIFormlist.get('COC_FDIPincode').touched)
+                  "
+                  class="invalid-feedback"
+                >
                   This field is required.
                 </div>
               </div>
             </div>
             <div class="row">
               <ul class="list-group">
-                <li class="list-group-item list-group-item-info">C.Contact Information</li>
+                <li class="list-group-item list-group-item-info">
+                  C.Contact Information
+                </li>
               </ul>
               <div class="col-3 mb-2">
-                <label class="form-label">Email
-                </label>
-                <input type="text" class="form-control" formControlName="COC_FDI_Email" placeholder="Email"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_Email').invalid && (COC_FDIFormlist.get('COC_FDI_Email').dirty ||COC_FDIFormlist.get('COC_FDI_Email').touched)">
+                <label class="form-label">Email </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="COC_FDI_Email"
+                  placeholder="Email"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDI_Email').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_Email').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_Email').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDI_Email').invalid && (COC_FDIFormlist.get('COC_FDI_Email').dirty ||COC_FDIFormlist.get('COC_FDI_Email').touched)"
-                  class="invalid-feedback">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDI_Email').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_Email').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_Email').touched)
+                  "
+                  class="invalid-feedback"
+                >
                   This field is required.
                 </div>
               </div>
               <div class="col-3 mb-2">
-                <label class="form-label">Mobile Number
-                </label>
-                <input type="number" class="form-control" formControlName="COC_FDIMobile" placeholder="Mobile Number"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDIMobile').invalid && (COC_FDIFormlist.get('COC_FDIMobile').dirty ||COC_FDIFormlist.get('COC_FDIMobile').touched)">
+                <label class="form-label">Mobile Number </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="COC_FDIMobile"
+                  placeholder="Mobile Number"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDIMobile').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIMobile').dirty ||
+                      COC_FDIFormlist.get('COC_FDIMobile').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDIMobile').invalid && (COC_FDIFormlist.get('COC_FDIMobile').dirty ||COC_FDIFormlist.get('COC_FDIMobile').touched)"
-                  class="invalid-feedback">
-                  <div *ngIf="COC_FDIFormlist.get('COC_FDIMobile').errors['required']">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDIMobile').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIMobile').dirty ||
+                      COC_FDIFormlist.get('COC_FDIMobile').touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDIMobile').errors['required']
+                    "
+                  >
                     This field is required.
                   </div>
                 </div>
               </div>
               <div class="col-3 mb-2">
-                <label class="form-label">Office Telephone Number
-                </label>
-                <input type="text" class="form-control" formControlName="COC_FDITelephone"
+                <label class="form-label">Office Telephone Number </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="COC_FDITelephone"
                   placeholder="Office Telephone Number(STD Code)"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDITelephone').invalid && (COC_FDIFormlist.get('COC_FDITelephone').dirty ||COC_FDIFormlist.get('COC_FDITelephone').touched)">
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDITelephone').invalid &&
+                    (COC_FDIFormlist.get('COC_FDITelephone').dirty ||
+                      COC_FDIFormlist.get('COC_FDITelephone').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDITelephone').invalid && (COC_FDIFormlist.get('COC_FDITelephone').dirty ||COC_FDIFormlist.get('COC_FDITelephone').touched)"
-                  class="invalid-feedback">
-                  <div *ngIf="COC_FDIFormlist.get('COC_FDITelephone').errors['required']">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDITelephone').invalid &&
+                    (COC_FDIFormlist.get('COC_FDITelephone').dirty ||
+                      COC_FDIFormlist.get('COC_FDITelephone').touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDITelephone').errors['required']
+                    "
+                  >
                     This field is required.
                   </div>
                 </div>
               </div>
               <div class="col-3 mb-2">
-                <label class="form-label">Office FAX Number (with STD Code)
+                <label class="form-label"
+                  >Office FAX Number (with STD Code)
                 </label>
-                <input type="number" class="form-control" formControlName="COC_FDIFAX" placeholder="Office FAX Number"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDIFAX').invalid && (COC_FDIFormlist.get('COC_FDIFAX').dirty ||COC_FDIFormlist.get('COC_FDIFAX').touched)">
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="COC_FDIFAX"
+                  placeholder="Office FAX Number"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDIFAX').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIFAX').dirty ||
+                      COC_FDIFormlist.get('COC_FDIFAX').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDIFAX').invalid && (COC_FDIFormlist.get('COC_FDIFAX').dirty ||COC_FDIFormlist.get('COC_FDIFAX').touched)"
-                  class="invalid-feedback">
-                  <div *ngIf="COC_FDIFormlist.get('COC_FDIFAX').errors['required']">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDIFAX').invalid &&
+                    (COC_FDIFormlist.get('COC_FDIFAX').dirty ||
+                      COC_FDIFormlist.get('COC_FDIFAX').touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="COC_FDIFormlist.get('COC_FDIFAX').errors['required']"
+                  >
                     This field is required.
                   </div>
                 </div>
@@ -314,102 +539,213 @@
             </div>
             <div class="row">
               <ul class="list-group">
-                <li class="list-group-item list-group-item-info">D.Authorised Signatory</li>
+                <li class="list-group-item list-group-item-info">
+                  D.Authorised Signatory
+                </li>
               </ul>
               <div class="col-4 mb-2">
-                <label class="form-label">Name of the Person
-                </label>
-                <input type="text" class="form-control" formControlName="COC_FDI_AuthPerson"
+                <label class="form-label">Name of the Person </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="COC_FDI_AuthPerson"
                   placeholder="Authorised Signatory"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_AuthPerson').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPerson').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPerson').touched)">
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDI_AuthPerson').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_AuthPerson').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_AuthPerson').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPerson').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPerson').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPerson').touched)"
-                  class="invalid-feedback">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDI_AuthPerson').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_AuthPerson').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_AuthPerson').touched)
+                  "
+                  class="invalid-feedback"
+                >
                   This field is required.
                 </div>
               </div>
               <div class="col-4 mb-2">
-                <label class="form-label">Address of the Person
-                </label>
-                <input type="text" class="form-control" formControlName="COC_FDI_AuthPersonAddress"
+                <label class="form-label">Address of the Person </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="COC_FDI_AuthPersonAddress"
                   placeholder="Address of the Person"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').touched)">
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').touched)"
-                  class="invalid-feedback">
-                  <div *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').errors['required']">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').errors[
+                        'required'
+                      ]
+                    "
+                  >
                     This field is required.
                   </div>
                 </div>
               </div>
               <div class="col-4 mb-2">
-                <label class="form-label">PAN Number
-                </label>
-                <input type="text" class="form-control" formControlName="COC_FDI_AuthPAN" placeholder="PAN Number"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_AuthPAN').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPAN').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPAN').touched)">
+                <label class="form-label">PAN Number </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="COC_FDI_AuthPAN"
+                  placeholder="PAN Number"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDI_AuthPAN').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_AuthPAN').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_AuthPAN').touched)
+                  "
+                />
                 <div
-                  *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPAN').invalid && (COC_FDIFormlist.get('COC_FDI_AuthPAN').dirty ||COC_FDIFormlist.get('COC_FDI_AuthPAN').touched)"
-                  class="invalid-feedback">
-                  <div *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPAN').errors['required']">
+                  *ngIf="
+                    COC_FDIFormlist.get('COC_FDI_AuthPAN').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_AuthPAN').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_AuthPAN').touched)
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDI_AuthPAN').errors['required']
+                    "
+                  >
                     This field is required.
                   </div>
-                  <div *ngIf="COC_FDIFormlist.get('COC_FDI_AuthPAN').errors['pattern']">
+                  <div
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDI_AuthPAN').errors['pattern']
+                    "
+                  >
                     Invalid PAN Number Format.
                   </div>
                 </div>
               </div>
 
               <div class="col-4 mb-2">
-                <label class="form-label">Designation/Status
-                </label>
-                <select class="form-select" formControlName="COC_FDI_AuthDesignation"
-                  [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_AuthDesignation').invalid && (COC_FDIFormlist.get('COC_FDI_AuthDesignation').dirty ||COC_FDIFormlist.get('COC_FDI_AuthDesignation').touched)">
+                <label class="form-label">Designation/Status </label>
+                <select
+                  class="form-select"
+                  formControlName="COC_FDI_AuthDesignation"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDI_AuthDesignation').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_AuthDesignation').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_AuthDesignation').touched)
+                  "
+                >
                   <option value="">Designation/Status</option>
                   <option value="Director">Director</option>
                   <option value="Managing Director">Managing Director</option>
                   <option value="Company Secretary">Company Secretary</option>
-                  <option value="Chief Legal Officer">Chief Legal Officer</option>
-                  <option value="Chief Executive Officer">Chief Executive Officer</option>
-                  <option value="Chief Operations Officer">Chief Operations Officer</option>
-                  <option value="Chief Financial Officer">Chief Financial Officer</option>
+                  <option value="Chief Legal Officer">
+                    Chief Legal Officer
+                  </option>
+                  <option value="Chief Executive Officer">
+                    Chief Executive Officer
+                  </option>
+                  <option value="Chief Operations Officer">
+                    Chief Operations Officer
+                  </option>
+                  <option value="Chief Financial Officer">
+                    Chief Financial Officer
+                  </option>
                   <option value="Finance Manager">Finance Manager</option>
                   <option value="Manager">Manager</option>
-                  <option value="Authorised Signatory">Authorised Signatory</option>
+                  <option value="Authorised Signatory">
+                    Authorised Signatory
+                  </option>
                 </select>
               </div>
             </div>
           </div>
         </div>
-        <button type="submit" (click)="RBI_FDISubmit('1')" class="btn btn-primary">Back</button>
-        <button type="submit" (click)="RBI_FDISubmit('3')" class="btn btn-primary">Next</button>
+        <button
+          type="submit"
+          (click)="RBI_FDISubmit('1')"
+          class="btn btn-primary"
+        >
+          Back
+        </button>
+        <button
+          type="submit"
+          (click)="RBI_FDISubmit('3')"
+          class="btn btn-primary"
+        >
+          Next
+        </button>
       </div>
       <!--  -->
       <div class="container-fluid pt-4 px-4" *ngIf="COC_FDICompoundingDetails">
         <div class="row">
           <ul class="list-group">
-            <li class="list-group-item list-group-item-info">A.Business Activities with NIC Code</li>
+            <li class="list-group-item list-group-item-info">
+              A.Business Activities with NIC Code
+            </li>
           </ul>
           <div class="col-2 mb-2">
-            <label class="form-check-label" for="flexSwitchCheckCheckedw">NIC Code & Description</label>
+            <label class="form-check-label" for="flexSwitchCheckCheckedw"
+              >NIC Code & Description</label
+            >
           </div>
-          <div class="col-4 mb-2">
+          <div class="col-6 mb-2">
             <!-- Button trigger modal -->
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" (click)=" OnModuleTabClick(1987)"
-                id="flexSwitchCheckCheckedw" data-bs-toggle="modal" data-bs-target="#staticBackdropw">
+            <div
+              class="form-check form-switch"
+              (click)="OnModuleTabClick(1987)"
+            >
+              <input
+                class="form-text-input SearchInput"
+                disabled="true"
+                placeholder="Search NIC Codes"
+                type="text"
+                id="flexSwitchCheckCheckedw"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdropw"
+              />
             </div>
-            <br>
+            <br />
           </div>
           <div class="col-4 mb-2">
-            <label class="form-label">Business Activities
-            </label>
-            <input type="text" class="form-control" formControlName="COC_FDI_BusinessAct"
+            <label class="form-label">Business Activities </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDI_BusinessAct"
               placeholder="Business Activities"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_BusinessAct').invalid && (COC_FDIFormlist.get('COC_FDI_BusinessAct').dirty ||COC_FDIFormlist.get('COC_FDI_BusinessAct').touched)">
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDI_BusinessAct').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_BusinessAct').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_BusinessAct').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDI_BusinessAct').invalid && (COC_FDIFormlist.get('COC_FDI_BusinessAct').dirty ||COC_FDIFormlist.get('COC_FDI_BusinessAct').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDI_BusinessAct').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDI_BusinessAct').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_BusinessAct').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_BusinessAct').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDI_BusinessAct').errors['required']
+                "
+              >
                 This field is required.
               </div>
             </div>
@@ -424,88 +760,164 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let NicCode of SelectCOC_FDINICCodeDesArray; let i = index;">
+                <tr
+                  *ngFor="
+                    let NicCode of SelectCOC_FDINICCodeDesArray;
+                    let i = index
+                  "
+                >
                   <td>
-                    <div>{{NicCode.Year}}</div>
+                    <div>{{ NicCode.Year }}</div>
                   </td>
                   <td>
-                    <div>{{NicCode.Class}}</div>
+                    <div>{{ NicCode.Class }}</div>
                   </td>
                   <td>
-                    <div>{{NicCode.DescriptionClass}}</div>
-
+                    <div>{{ NicCode.DescriptionClass }}</div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <!-- Modal -->
-          <div class="modal fade" id="staticBackdropw" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div
+            class="modal fade"
+            id="staticBackdropw"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
             <div class="modal-dialog modal-xl">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">NIC Code & Description</h5>
+                  <h5 class="modal-title" id="staticBackdropLabel">
+                    NIC Code & Description
+                  </h5>
 
                   <div class="bg-white pt-3">
-                    <ul class="nav justify-content-center nav-pills mb-3" id="Snapshot-tab" role="tablist">
+                    <ul
+                      class="nav justify-content-center nav-pills mb-3"
+                      id="Snapshot-tab"
+                      role="tablist"
+                    >
                       <li class="nav-item">
-                        <a [ngClass]="ActiveTab == 1987 ? 'nav-link text-dark active' : 'nav-link text-dark'"
-                          (click)="OnModuleTabClick(1987)" id="nic1987-tab" data-toggle="tab" role="tab"
-                          aria-controls="gsr" aria-selected="false">NIC Code 1987</a>
+                        <a
+                          [ngClass]="
+                            ActiveTab == 1987
+                              ? 'nav-link text-dark active'
+                              : 'nav-link text-dark'
+                          "
+                          (click)="OnModuleTabClick(1987)"
+                          id="nic1987-tab"
+                          data-toggle="tab"
+                          role="tab"
+                          aria-controls="gsr"
+                          aria-selected="false"
+                          >NIC Code 1987</a
+                        >
                       </li>
                       <li class="nav-item">
-                        <a [ngClass]="ActiveTab == 2008 ? 'nav-link text-dark active' : 'nav-link text-dark'"
-                          (click)="OnModuleTabClick(2008)" id="nic2008-tab" data-toggle="tab" role="tab"
-                          aria-controls="regulation" aria-selected="false">NIC Code 2008</a>
+                        <a
+                          [ngClass]="
+                            ActiveTab == 2008
+                              ? 'nav-link text-dark active'
+                              : 'nav-link text-dark'
+                          "
+                          (click)="OnModuleTabClick(2008)"
+                          id="nic2008-tab"
+                          data-toggle="tab"
+                          role="tab"
+                          aria-controls="regulation"
+                          aria-selected="false"
+                          >NIC Code 2008</a
+                        >
                       </li>
-
                     </ul>
                   </div>
                   <div class="search_tbl">
                     <div class="input-group">
-
-                      <input type="text" class="form-control" name="search" placeholder="Search for codes"
-                        (keyup)="searchNicCode($event)">
-                      <span class="search_icon"> <button type="submit" style="border: 0;"><i class="fas fa-search"></i>
-                        </button></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="search"
+                        placeholder="Search for codes"
+                        (keyup)="searchNicCode($event)"
+                      />
+                      <span class="search_icon">
+                        <button type="submit" style="border: 0">
+                          <i class="fas fa-search"></i></button
+                      ></span>
                     </div>
                   </div>
 
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
                 </div>
                 <div class="modal-body">
-                  <table class="table table-striped table-no-bordered table-hover">
+                  <table
+                    class="table table-striped table-no-bordered table-hover"
+                  >
                     <thead>
                       <tr>
-                        <th scope="col"><input type="checkbox" (click)="SelectAllNicCodes($event)"></th>
+                        <th scope="col">
+                          <input
+                            type="checkbox"
+                            (click)="SelectAllNicCodes($event)"
+                          />
+                        </th>
                         <th scope="col">Year</th>
                         <th scope="col">NIC Code</th>
                         <th scope="col">Description</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let NIC_Code of NICCodeListShow; let i = index">
+                      <tr
+                        *ngFor="let NIC_Code of NICCodeListShow; let i = index"
+                      >
                         <td>
-                          <div><input type="checkbox" [(ngModel)]="NIC_Code.status"
-                              [ngModelOptions]="{standalone: true}" (click)="SelectCOC_FDINICCodeDes(NIC_Code)" /></div>
+                          <div>
+                            <input
+                              type="checkbox"
+                              [(ngModel)]="NIC_Code.status"
+                              [ngModelOptions]="{ standalone: true }"
+                              (click)="SelectCOC_FDINICCodeDes(NIC_Code)"
+                            />
+                          </div>
                         </td>
                         <td>
-                          <div>{{NIC_Code.Year}}</div>
+                          <div>{{ NIC_Code.Year }}</div>
                         </td>
                         <td>
-                          <div>{{NIC_Code.Class}}</div>
+                          <div>{{ NIC_Code.Class }}</div>
                         </td>
                         <td>
-                          <div>{{NIC_Code.DescriptionClass}}</div>
+                          <div>{{ NIC_Code.DescriptionClass }}</div>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                  >
+                    Done
+                  </button>
                 </div>
               </div>
             </div>
@@ -513,10 +925,14 @@
         </div>
         <div class="row">
           <ul class="list-group">
-            <li class="list-group-item list-group-item-info">B.Nature of Contravention</li>
+            <li class="list-group-item list-group-item-info">
+              B.Nature of Contravention
+            </li>
           </ul>
           <div class="col-12 mb-2">
-            <label class="form-check-label" for="flexSwitchCheck">FEMA Regulation Number Description</label>
+            <label class="form-check-label" for="flexSwitchCheck"
+              >FEMA Regulation Number Description</label
+            >
           </div>
           <div class="col-12 mb-2">
             <table class="table table-striped table-no-bordered table-hover">
@@ -527,12 +943,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let FemaNo of COC_FDIFemaRegNoArray; let i = index;">
+                <tr *ngFor="let FemaNo of COC_FDIFemaRegNoArray; let i = index">
                   <td>
-                    <div>{{FemaNo.COC_FDINatContname}}</div>
+                    <div>{{ FemaNo.COC_FDINatContname }}</div>
                   </td>
                   <td>
-                    <div>{{FemaNo.COC_FDINatContDes}}</div>
+                    <div>{{ FemaNo.COC_FDINatContDes }}</div>
                   </td>
                 </tr>
               </tbody>
@@ -541,18 +957,29 @@
         </div>
         <div class="row">
           <ul class="list-group">
-            <li class="list-group-item list-group-item-info">C.Compounding Authority</li>
+            <li class="list-group-item list-group-item-info">
+              C.Compounding Authority
+            </li>
           </ul>
           <div class="col-2 mb-2">
-            <label class="form-check-label" for="flexSwitchCheckChecked3">Central/Regional With Address</label>
+            <label class="form-check-label" for="flexSwitchCheckChecked3"
+              >Central/Regional With Address</label
+            >
           </div>
-          <div class="col-4 mb-2">
+          <div class="col-6 mb-2">
             <!-- Button trigger modal -->
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked3" data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop3">
+              <input
+                class="form-text-input SearchInput"
+                disabled="true"
+                type="text"
+                placeholder="Search Central / Regional- with Full Address"
+                id="flexSwitchCheckChecked3"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop3"
+              />
             </div>
-            <br>
+            <br />
           </div>
           <div class="col-12 mb-2">
             <table class="table table-striped table-no-bordered table-hover">
@@ -563,40 +990,64 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let cent of SelectCOC_FDICenResArray; let i = index;">
+                <tr
+                  *ngFor="let cent of SelectCOC_FDICenResArray; let i = index"
+                >
                   <td>
-                    <div>{{cent.RegionalOffices}}</div>
+                    <div>{{ cent.RegionalOffices }}</div>
                   </td>
                   <td>
-                    <div>{{cent.Address}}</div>
+                    <div>{{ cent.Address }}</div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <!-- Modal -->
-          <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel3" aria-hidden="true">
+          <div
+            class="modal fade"
+            id="staticBackdrop3"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel3"
+            aria-hidden="true"
+          >
             <div class="modal-dialog modal-xl">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel3">Central/Regional With Address</h5>
+                  <h5 class="modal-title" id="staticBackdropLabel3">
+                    Central/Regional With Address
+                  </h5>
                   <div class="search_tbl">
                     <div class="input-group">
-
-                      <input type="text" class="form-control" name="search" placeholder="Search Regional office"
-                        (keyup)="searchRegionalOfficeList($event)">
-                      <span class="search_icon"> <button type="submit" style="border: 0;"><i class="fas fa-search"></i>
-                        </button></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="search"
+                        placeholder="Search Regional office"
+                        (keyup)="searchRegionalOfficeList($event)"
+                      />
+                      <span class="search_icon">
+                        <button type="submit" style="border: 0">
+                          <i class="fas fa-search"></i></button
+                      ></span>
                     </div>
                   </div>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
                 </div>
                 <div class="modal-body">
-                  <table class="table table-striped table-no-bordered table-hover">
+                  <table
+                    class="table table-striped table-no-bordered table-hover"
+                  >
                     <thead>
                       <tr>
-                        <th scope="'col"><input type="checkbox"></th>
+                        <th scope="'col"><input type="checkbox" /></th>
                         <th scope="col">Topis</th>
                         <th scope="col">Regional Office</th>
                         <th scope="col">Address</th>
@@ -604,31 +1055,53 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let Regionallist of RegionalOfficeListShow; let i = index;">
+                      <tr
+                        *ngFor="
+                          let Regionallist of RegionalOfficeListShow;
+                          let i = index
+                        "
+                      >
                         <td>
-                          <div><input type="checkbox" [(ngModel)]="Regionallist.status"
-                              [ngModelOptions]="{standalone: true}" (click)="SelectCOC_FDIResCent(Regionallist)" />
+                          <div>
+                            <input
+                              type="checkbox"
+                              [(ngModel)]="Regionallist.status"
+                              [ngModelOptions]="{ standalone: true }"
+                              (click)="SelectCOC_FDIResCent(Regionallist)"
+                            />
                           </div>
                         </td>
                         <td>
-                          <div>{{Regionallist.Topic}}</div>
+                          <div>{{ Regionallist.Topic }}</div>
                         </td>
                         <td>
-                          <div>{{Regionallist.RegionalOffices}}</div>
+                          <div>{{ Regionallist.RegionalOffices }}</div>
                         </td>
                         <td>
-                          <div>{{Regionallist.Address}}</div>
+                          <div>{{ Regionallist.Address }}</div>
                         </td>
                         <td>
-                          <div>{{Regionallist.RegionalDirector}}</div>
+                          <div>{{ Regionallist.RegionalDirector }}</div>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                  >
+                    Done
+                  </button>
                 </div>
               </div>
             </div>
@@ -636,31 +1109,70 @@
         </div>
         <div class="row">
           <ul class="list-group">
-            <li class="list-group-item list-group-item-info">D.Compounding Subject and Reference(Whether the Applicant
-              is resident in India or resident outside India? (please refer to Section 2 (v) of the Act))</li>
+            <li class="list-group-item list-group-item-info">
+              D.Compounding Subject and Reference(Whether the Applicant is
+              resident in India or resident outside India? (please refer to
+              Section 2 (v) of the Act))
+            </li>
           </ul>
           <div class="col-6 mb-2">
-            <label class="form-label">Subject
-            </label>
-            <input type="text" class="form-control" formControlName="COC_FDI_CompoundSubject" placeholder="Subject"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_CompoundSubject').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundSubject').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundSubject').touched)">
+            <label class="form-label">Subject </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDI_CompoundSubject"
+              placeholder="Subject"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDI_CompoundSubject').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundSubject').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundSubject').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDI_CompoundSubject').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundSubject').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundSubject').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDI_CompoundSubject').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDI_CompoundSubject').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundSubject').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundSubject').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDI_CompoundSubject').errors[
+                    'required'
+                  ]
+                "
+              >
                 This field is required.
               </div>
             </div>
           </div>
           <div class="col-6 mb-2">
-            <label class="form-label">Reference
-            </label>
-            <input type="text" class="form-control" formControlName="COC_FDI_CompoundRef" placeholder="Reference"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_CompoundRef').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundRef').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundRef').touched)">
+            <label class="form-label">Reference </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDI_CompoundRef"
+              placeholder="Reference"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDI_CompoundRef').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundRef').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundRef').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDI_CompoundRef').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundRef').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundRef').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDI_CompoundRef').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDI_CompoundRef').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundRef').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundRef').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDI_CompoundRef').errors['required']
+                "
+              >
                 This field is required.
               </div>
             </div>
@@ -668,61 +1180,130 @@
         </div>
         <div class="row">
           <ul class="list-group">
-            <li class="list-group-item list-group-item-info">E.Compounding Application Fee Details</li>
+            <li class="list-group-item list-group-item-info">
+              E.Compounding Application Fee Details
+            </li>
           </ul>
           <div class="col-3 mb-2">
-            <label class="form-label">Amount
-            </label>
-            <input type="text" class="form-control" disabled formControlName="COC_FDI_CompoundAppFee">
+            <label class="form-label">Amount </label>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              formControlName="COC_FDI_CompoundAppFee"
+            />
           </div>
           <div class="col-3 mb-2">
-            <label class="form-label">Demand Draft Number
-            </label>
-            <input type="text" class="form-control" formControlName="COC_FDI_CompoundDemandNo"
+            <label class="form-label">Demand Draft Number </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDI_CompoundDemandNo"
               placeholder="Demand Draft Number"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').touched)">
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDI_CompoundDemandNo').errors[
+                    'required'
+                  ]
+                "
+              >
                 This field is required.
               </div>
             </div>
           </div>
           <div class="col-3 mb-2">
-            <label class="form-label">Demand Draft Date
-            </label>
-            <input type="date" class="form-control" formControlName="COC_FDI_CompoundDemandDate"
+            <label class="form-label">Demand Draft Date </label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="COC_FDI_CompoundDemandDate"
               placeholder="Demand Draft Date"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').touched)">
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDI_CompoundDemandDate').errors[
+                    'required'
+                  ]
+                "
+              >
                 This field is required.
               </div>
             </div>
           </div>
 
           <div class="col-3 mb-2">
-            <label class="form-label">City
-            </label>
-            <input class="form-control" formControlName="COC_FDI_CompoundCity" list="datalistOptionscity"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDI_CompoundCity').invalid && (COC_FDIFormlist.get('COC_FDI_CompoundCity').dirty ||COC_FDIFormlist.get('COC_FDI_CompoundCity').touched)"
-              id="exampleDataList" placeholder="Select City"><datalist id="datalistOptionscity">
-              <option *ngFor="let city of CityList">{{city.city}}</option>
+            <label class="form-label">City </label>
+            <input
+              class="form-control"
+              formControlName="COC_FDI_CompoundCity"
+              list="datalistOptionscity"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDI_CompoundCity').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundCity').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundCity').touched)
+              "
+              id="exampleDataList"
+              placeholder="Select City"
+            /><datalist id="datalistOptionscity">
+              <option *ngFor="let city of CityList">{{ city.city }}</option>
             </datalist>
           </div>
         </div>
-        <button type="button" (click)="RBI_FDISubmit('2')" class="btn btn-primary">Back</button>
-        <button type="button" (click)="RBI_FDISubmit('4')" class="btn btn-primary">Next</button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('2')"
+          class="btn btn-primary"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('4')"
+          class="btn btn-primary"
+        >
+          Next
+        </button>
       </div>
-      <div class="container-fluid pt-4 px-4" *ngIf="COC_FDICompoundingSubmissions">
+      <div
+        class="container-fluid pt-4 px-4"
+        *ngIf="COC_FDICompoundingSubmissions"
+      >
         <div class="row">
           <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Compounding Submissions</li>
+            <li class="list-group-item list-group-item-info">
+              Compounding Submissions
+            </li>
           </ul>
-          <table class="table table-striped table-bordered caption-top table-responsive">
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
             <thead>
               <tr>
                 <th>Background</th>
@@ -730,22 +1311,38 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let dynamic of BackSubmissionArray; let i = index;">
+              <tr *ngFor="let dynamic of BackSubmissionArray; let i = index">
                 <td>
-                  <textarea [(ngModel)]="BackSubmissionArray[i].COC_FDI_Background"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"></textarea>
+                  <textarea
+                    [(ngModel)]="BackSubmissionArray[i].COC_FDI_Background"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  ></textarea>
                 </td>
 
                 <td>
-                  <button type="button" class="btn btn-outline-primary me-2" (click)="addGrantData('back')">+</button>
-                  <button type="button" *ngIf="BackSubmissionArray.length>1" class="btn btn-outline-primary me-2"
-                    (click)="deleteGrantData('back',i)">-</button>
-
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addGrantData('back')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="BackSubmissionArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteGrantData('back', i)"
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <table class="table table-striped table-bordered caption-top table-responsive">
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
             <thead>
               <tr>
                 <th>Transaction Details</th>
@@ -753,20 +1350,44 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let dynamic of TransactionSubmissionArray; let i = index;">
+              <tr
+                *ngFor="
+                  let dynamic of TransactionSubmissionArray;
+                  let i = index
+                "
+              >
                 <td>
-                  <textarea [(ngModel)]="TransactionSubmissionArray[i].COC_FDI_Transaction"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"></textarea>
+                  <textarea
+                    [(ngModel)]="
+                      TransactionSubmissionArray[i].COC_FDI_Transaction
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  ></textarea>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary me-2" (click)="addGrantData('Trans')">+</button>
-                  <button type="button" *ngIf="TransactionSubmissionArray.length>1" class="btn btn-outline-primary me-2"
-                    (click)="deleteGrantData(Trans,i)">-</button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addGrantData('Trans')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="TransactionSubmissionArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteGrantData(Trans, i)"
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <table class="table table-striped table-bordered caption-top table-responsive">
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
             <thead>
               <tr>
                 <th>Regulatory Framework</th>
@@ -774,23 +1395,42 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let dynamic of RegulatorySubmissionArray; let i = index;">
+              <tr
+                *ngFor="let dynamic of RegulatorySubmissionArray; let i = index"
+              >
                 <td>
-                  <textarea [(ngModel)]="RegulatorySubmissionArray[i].COC_FDI_Regulatory"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"></textarea>
+                  <textarea
+                    [(ngModel)]="
+                      RegulatorySubmissionArray[i].COC_FDI_Regulatory
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  ></textarea>
                 </td>
 
                 <td>
-                  <button type="button" class="btn btn-outline-primary me-2"
-                    (click)="addGrantData('Regulatory')">+</button>
-                  <button type="button" *ngIf="RegulatorySubmissionArray.length>1" class="btn btn-outline-primary me-2"
-                    (click)="deleteGrantData('Regulatory',i)">-</button>
-
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addGrantData('Regulatory')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="RegulatorySubmissionArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteGrantData('Regulatory', i)"
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <table class="table table-striped table-bordered caption-top table-responsive">
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
             <thead>
               <tr>
                 <th>Delay Reasons</th>
@@ -798,22 +1438,45 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let dynamic of DelayReasonsSubmissionArray; let i = index;">
+              <tr
+                *ngFor="
+                  let dynamic of DelayReasonsSubmissionArray;
+                  let i = index
+                "
+              >
                 <td>
-                  <textarea [(ngModel)]="DelayReasonsSubmissionArray[i].COC_FDI_DelayReasons"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"></textarea>
+                  <textarea
+                    [(ngModel)]="
+                      DelayReasonsSubmissionArray[i].COC_FDI_DelayReasons
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  ></textarea>
                 </td>
 
                 <td>
-                  <button type="button" class="btn btn-outline-primary me-2" (click)="addGrantData('Delay')">+</button>
-                  <button type="button" *ngIf="DelayReasonsSubmissionArray.length>1"
-                    class="btn btn-outline-primary me-2" (click)="deleteGrantData('Delay',i)">-</button>
-
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addGrantData('Delay')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="DelayReasonsSubmissionArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteGrantData('Delay', i)"
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
-          <table class="table table-striped table-bordered caption-top table-responsive">
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
             <thead>
               <tr>
                 <th>Petition Request</th>
@@ -821,105 +1484,238 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let dynamic of PetitionRequestSubmissionArray; let i = index;">
+              <tr
+                *ngFor="
+                  let dynamic of PetitionRequestSubmissionArray;
+                  let i = index
+                "
+              >
                 <td>
-                  <textarea [(ngModel)]="PetitionRequestSubmissionArray[i].COC_FDI_PetitionRequest"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm"></textarea>
+                  <textarea
+                    [(ngModel)]="
+                      PetitionRequestSubmissionArray[i].COC_FDI_PetitionRequest
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  ></textarea>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary me-2"
-                    (click)="addGrantData('Petition')">+</button>
-                  <button type="button" *ngIf="PetitionRequestSubmissionArray.length>1"
-                    class="btn btn-outline-primary me-2" (click)="deleteGrantData('Petition',i)">-</button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addGrantData('Petition')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="PetitionRequestSubmissionArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteGrantData('Petition', i)"
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
-
         </div>
-        <button type="button" (click)="RBI_FDISubmit('3')" class="btn btn-primary">Back</button>
-        <button type="button" (click)="RBI_FDISubmit('5')" class="btn btn-primary">Next</button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('3')"
+          class="btn btn-primary"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('5')"
+          class="btn btn-primary"
+        >
+          Next
+        </button>
       </div>
       <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIODIECB">
         <div class="row">
           <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Details to be furnished a foreign-direct-investment along
-              with application for compounding of contravention relating to Foreign Direct Investment in India</li>
+            <li class="list-group-item list-group-item-info">
+              Details to be furnished a foreign-direct-investment along with
+              application for compounding of contravention relating to Foreign
+              Direct Investment in India
+            </li>
           </ul>
           <div class="col-6 mb-2">
-            <label class="form-label">Name of Applicant
-            </label>
-            <input type="text" class="form-control" formControlName="COC_FDIODIName" placeholder="Name of Applicant"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDIODIName').invalid && (COC_FDIFormlist.get('COC_FDIODIName').dirty ||COC_FDIFormlist.get('COC_FDIODIName').touched)">
+            <label class="form-label">Name of Applicant </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDIODIName"
+              placeholder="Name of Applicant"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIName').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIName').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIName').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDIODIName').invalid && (COC_FDIFormlist.get('COC_FDIODIName').dirty ||COC_FDIFormlist.get('COC_FDIODIName').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDIODIName').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIName').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIName').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIName').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="COC_FDIFormlist.get('COC_FDIODIName').errors['required']"
+              >
                 This field is required.
               </div>
             </div>
           </div>
           <div class="col-6 mb-2">
-            <label class="form-label">Date
-            </label>
-            <input type="date" class="form-control" name="date-field" formControlName="COC_FDIODIDate"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDIODIDate').invalid && (COC_FDIFormlist.get('COC_FDIODIDate').dirty ||COC_FDIFormlist.get('COC_FDIODIDate').touched)" />
+            <label class="form-label">Date </label>
+            <input
+              type="date"
+              class="form-control"
+              name="date-field"
+              formControlName="COC_FDIODIDate"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIDate').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIDate').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIDate').touched)
+              "
+            />
           </div>
           <div class="col-6 mb-2">
-            <label class="form-label">Income Tax PAN Number
-            </label>
-            <input type="text" class="form-control" placeholder="Income Tax PAN Number" formControlName="COC_FDIODIPAN"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDIODIPAN').invalid && (COC_FDIFormlist.get('COC_FDIODIPAN').dirty ||COC_FDIFormlist.get('COC_FDIODIPAN').touched)">
+            <label class="form-label">Income Tax PAN Number </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Income Tax PAN Number"
+              formControlName="COC_FDIODIPAN"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIPAN').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIPAN').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIPAN').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDIODIPAN').invalid && (COC_FDIFormlist.get('COC_FDIODIPAN').dirty ||COC_FDIFormlist.get('COC_FDIODIPAN').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDIODIPAN').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIPAN').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIPAN').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIPAN').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="COC_FDIFormlist.get('COC_FDIODIPAN').errors['required']"
+              >
                 This field is required.
               </div>
-              <div *ngIf="COC_FDIFormlist.get('COC_FDIODIPAN').errors['pattern']">
+              <div
+                *ngIf="COC_FDIFormlist.get('COC_FDIODIPAN').errors['pattern']"
+              >
                 Invalid PAN Number Format
               </div>
             </div>
           </div>
           <div class="col-6 mb-2">
-            <label class="form-label">Nature of Activities undertaken(Please give niccode-1987/2008)
+            <label class="form-label"
+              >Nature of Activities undertaken(Please give niccode-1987/2008)
             </label>
-            <input type="text" class="form-control" formControlName="COC_FDIODIActivities"
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDIODIActivities"
               placeholder="Nature of Activities undertaken(Please give niccode-1987/2008)"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDIODIActivities').invalid && (COC_FDIFormlist.get('COC_FDIODIActivities').dirty ||COC_FDIFormlist.get('COC_FDIODIActivities').touched)">
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIActivities').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIActivities').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIActivities').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDIODIActivities').invalid && (COC_FDIFormlist.get('COC_FDIODIActivities').dirty ||COC_FDIFormlist.get('COC_FDIODIActivities').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDIODIActivities').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIActivities').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIActivities').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIActivities').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDIODIActivities').errors['required']
+                "
+              >
                 This field is required.
               </div>
             </div>
           </div>
           <div class="col-12 mb-2">
-            <label class="form-label">Brief Particulars about the foregien insvestor
+            <label class="form-label"
+              >Brief Particulars about the foregien insvestor
             </label>
-            <input type="text" class="form-control" formControlName="COC_FDIODIaboutforegien"
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDIODIaboutforegien"
               placeholder="Brief Particulars about the foregien insvestor"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid && (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)">
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid && (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
+                    'required'
+                  ]
+                "
+              >
                 This field is required.
               </div>
             </div>
           </div>
           <div class="col-12 mb-2">
-            <label class="form-label">Details of foreign inward remittances received by Applicant Company from date of
-              incorporation till date
+            <label class="form-label"
+              >Details of foreign inward remittances received by Applicant
+              Company from date of incorporation till date
             </label>
-            <input type="text" class="form-control" formControlName="COC_FDIODIDetailforeign"
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDIODIDetailforeign"
               placeholder="Details of foreign inward remittances received by Applicant Company from date of incorporation till date"
-              [class.is-invalid]="COC_FDIFormlist.get('COC_FDIODIDetailforeign').invalid && (COC_FDIFormlist.get('COC_FDIODIDetailforeign').dirty ||COC_FDIFormlist.get('COC_FDIODIDetailforeign').touched)">
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIDetailforeign').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIDetailforeign').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIDetailforeign').touched)
+              "
+            />
             <div
-              *ngIf="COC_FDIFormlist.get('COC_FDIODIDetailforeign').invalid && (COC_FDIFormlist.get('COC_FDIODIDetailforeign').dirty ||COC_FDIFormlist.get('COC_FDIODIDetailforeign').touched)"
-              class="invalid-feedback">
-              <div *ngIf="COC_FDIFormlist.get('COC_FDIODIDetailforeign').errors['required']">
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIDetailforeign').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIDetailforeign').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIDetailforeign').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDIODIDetailforeign').errors[
+                    'required'
+                  ]
+                "
+              >
                 This field is required.
               </div>
             </div>
@@ -927,7 +1723,9 @@
           <ul class="list-group">
             <li class="list-group-item list-group-item-info">Table A</li>
           </ul>
-          <table class="table table-striped table-bordered caption-top table-responsive">
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
             <thead>
               <tr>
                 <th>Name of Remitter</th>
@@ -938,33 +1736,70 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let TableA of COC_FDIODITabAArray; let i = index;">
+              <tr *ngFor="let TableA of COC_FDIODITabAArray; let i = index">
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabARemitterName"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODITabAArray[i].COC_FDIODITabARemitterName
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="number" (blur)="TableATotAmount(COC_FDIODITabAArray[i])"
-                    [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabAAmount " [ngModelOptions]="{standalone: true}"
-                    class="form-control form-control-sm">
+                  <input
+                    type="number"
+                    (blur)="TableATotAmount(COC_FDIODITabAArray[i])"
+                    [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabAAmount"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="date" [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabAReceiptDate"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_FDIODITabAArray[i].COC_FDIODITabAReceiptDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabAReportedDate"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODITabAArray[i].COC_FDIODITabAReportedDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabADelay"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabADelay"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary me-2"
-                    (click)="addODIGrantData('TableA')">+</button>
-                  <button type="button" *ngIf="COC_FDIODITabAArray.length>1" class="btn btn-outline-primary me-2"
-                    (click)="deleteODIGrantData('TableA',i)">-</button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addODIGrantData('TableA')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_FDIODITabAArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteODIGrantData('TableA', i)"
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -972,10 +1807,14 @@
                   <label>Total</label>
                 </td>
                 <td>
-                  <input type="number" formControlName="TableATotAmount" [ngModelOptions]="{standalone: true}"
-                    class="form-control form-control-sm">
+                  <input
+                    type="number"
+                    formControlName="TableATotAmount"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
-                <td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -983,7 +1822,9 @@
           <ul class="list-group">
             <li class="list-group-item list-group-item-info">Table B</li>
           </ul>
-          <table class="table table-striped table-bordered caption-top table-responsive">
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
             <thead>
               <tr>
                 <th>Name of Investor</th>
@@ -995,36 +1836,81 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let TableB of COC_FDIODITableBArray; let i = index;">
+              <tr *ngFor="let TableB of COC_FDIODITableBArray; let i = index">
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITableBArray[i].COC_FDIODITabBInvestorName"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODITableBArray[i].COC_FDIODITabBInvestorName
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="date" [(ngModel)]="COC_FDIODITableBArray[i].COC_FDIODITabBShareDate"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_FDIODITableBArray[i].COC_FDIODITabBShareDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITableBArray[i].COC_FDIODITabBNumofShare"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODITableBArray[i].COC_FDIODITabBNumofShare
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITableBArray[i].COC_FDIODITabBAmtofShare"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODITableBArray[i].COC_FDIODITabBAmtofShare
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="date" [(ngModel)]="COC_FDIODITableBArray[i].COC_FDIODITabBReportingDate"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_FDIODITableBArray[i].COC_FDIODITabBReportingDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITableBArray[i].COC_FDIODITabBDelay"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="COC_FDIODITableBArray[i].COC_FDIODITabBDelay"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary me-2"
-                    (click)="addODIGrantData('TableB')">+</button>
-                  <button type="button" *ngIf="COC_FDIODITableBArray.length>1" class="btn btn-outline-primary me-2"
-                    (click)="deleteODIGrantData('TableB',i)">-</button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addODIGrantData('TableB')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_FDIODITableBArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteODIGrantData('TableB', i)"
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -1032,10 +1918,14 @@
                   <label>Total</label>
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITabBTotal" [ngModelOptions]="{standalone: true}"
-                    class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="COC_FDIODITabBTotal"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
-                <td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -1043,7 +1933,9 @@
             <label>* date of reporting to RBI and not AD</label>
             <li class="list-group-item list-group-item-info">Table C</li>
           </ul>
-          <table class="table table-striped table-bordered caption-top table-responsive">
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
             <thead>
               <tr>
                 <th>Name of Remitter</th>
@@ -1056,41 +1948,91 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let TableC of COC_FDIODITableCArray; let i = index;">
+              <tr *ngFor="let TableC of COC_FDIODITableCArray; let i = index">
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCRemitterName"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODITableCArray[i].COC_FDIODITabCRemitterName
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCAmount "
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCAmount"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="date" [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCReceiptDate"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_FDIODITableCArray[i].COC_FDIODITabCReceiptDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCExcessshare"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODITableCArray[i].COC_FDIODITabCExcessshare
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="date" [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCDateRefund"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_FDIODITableCArray[i].COC_FDIODITabCDateRefund
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCForexAmt"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODITableCArray[i].COC_FDIODITabCForexAmt
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="date" [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCapprovaldate"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_FDIODITableCArray[i].COC_FDIODITabCapprovaldate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary me-2"
-                    (click)="addODIGrantData('TableC')">+</button>
-                  <button type="button" *ngIf="COC_FDIODITableCArray.length>1" class="btn btn-outline-primary me-2"
-                    (click)="deleteODIGrantData('TableC',i)">-</button>
-
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addODIGrantData('TableC')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_FDIODITableCArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteODIGrantData('TableC', i)"
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -1098,17 +2040,25 @@
                   <label>Total</label>
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITabCTotal" [ngModelOptions]="{standalone: true}"
-                    class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="COC_FDIODITabCTotal"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
-                <td>
+                <td></td>
               </tr>
             </tbody>
           </table>
           <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Authorised Capital</li>
+            <li class="list-group-item list-group-item-info">
+              Authorised Capital
+            </li>
           </ul>
-          <table class="table table-striped table-bordered caption-top table-responsive">
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
             <thead>
               <tr>
                 <th>Date</th>
@@ -1119,32 +2069,83 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let Table of COC_FDIODIAuthorisedCapitalArray; let i = index;">
+              <tr
+                *ngFor="
+                  let Table of COC_FDIODIAuthorisedCapitalArray;
+                  let i = index
+                "
+              >
                 <td>
-                  <input type="date" [(ngModel)]="COC_FDIODIAuthorisedCapitalArray[i].COC_FDIODIAuthorisedDate"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_FDIODIAuthorisedCapitalArray[i]
+                        .COC_FDIODIAuthorisedDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODIAuthorisedCapitalArray[i].COC_FDIODIAuthorisedCapital "
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODIAuthorisedCapitalArray[i]
+                        .COC_FDIODIAuthorisedCapital
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODIAuthorisedCapitalArray[i].COC_FDIODIAuthorisedEffect"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_FDIODIAuthorisedCapitalArray[i]
+                        .COC_FDIODIAuthorisedEffect
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="date" [(ngModel)]="COC_FDIODIAuthorisedCapitalArray[i].COC_FDIODIAuthorisedMeetDate"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_FDIODIAuthorisedCapitalArray[i]
+                        .COC_FDIODIAuthorisedMeetDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <input type="date" [(ngModel)]="COC_FDIODIAuthorisedCapitalArray[i].COC_FDIODIAuthorisedROCDate"
-                    [ngModelOptions]="{standalone: true}" class="form-control form-control-sm">
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_FDIODIAuthorisedCapitalArray[i]
+                        .COC_FDIODIAuthorisedROCDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
                 <td>
-                  <button type="button" class="btn btn-outline-primary me-2"
-                    (click)="addODIGrantData('TableAuth')">+</button>
-                  <button type="button" *ngIf="COC_FDIODIAuthorisedCapitalArray.length>1"
-                    class="btn btn-outline-primary me-2" (click)="deleteODIGrantData('TableAuth',i)">-</button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addODIGrantData('TableAuth')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_FDIODIAuthorisedCapitalArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteODIGrantData('TableAuth', i)"
+                  >
+                    -
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -1152,16 +2153,32 @@
                   <label>Total</label>
                 </td>
                 <td>
-                  <input type="text" [(ngModel)]="COC_FDIODITableAuthTotal" [ngModelOptions]="{standalone: true}"
-                    class="form-control form-control-sm">
+                  <input
+                    type="text"
+                    [(ngModel)]="COC_FDIODITableAuthTotal"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
                 </td>
-                <td>
+                <td></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <button type="button" (click)="RBI_FDISubmit('4')" class="btn btn-primary">Back</button>
-        <button type="button" (click)="RBI_FDISubmit('6')" class="btn btn-primary">Next</button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('4')"
+          class="btn btn-primary"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('6')"
+          class="btn btn-primary"
+        >
+          Next
+        </button>
       </div>
       <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIOtherAnnexures">
         <div class="row">
@@ -1169,13 +2186,27 @@
             <li class="list-group-item list-group-item-info">Annexures List</li>
           </ul>
         </div>
-        <button type="button" (click)="RBI_FDISubmit('5')" class="btn btn-primary">Back</button>
-        <button type="button" (click)="RBI_FDISubmit('7')" class="btn btn-primary">Next</button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('5')"
+          class="btn btn-primary"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('7')"
+          class="btn btn-primary"
+        >
+          Next
+        </button>
       </div>
       <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIDocPreviewg">
         <div class="row">
           <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Document Preview</li>
+            <li class="list-group-item list-group-item-info">
+              Document Preview
+            </li>
           </ul>
           <div class="card p-2 mt-1">
             <div class="container-fluid position-relative d-flex p-0">
@@ -1185,13 +2216,13 @@
                     <table class="table table-borderless">
                       <thead>
                         <tr>
-                          <th style="width: 90%;">
+                          <th style="width: 90%">
                             <h6>Particulars</h6>
                           </th>
-                          <th style="width: 15%;">
+                          <th style="width: 15%">
                             <h6>Word</h6>
                           </th>
-                          <th style="width: 15%;">
+                          <th style="width: 15%">
                             <h6>Pdf</h6>
                           </th>
                         </tr>
@@ -1201,57 +2232,136 @@
                           <th scope="row">
                             <h6>A.RBI Covering Letter</h6>
                           </th>
-                          <td><img src="assets/images/word.png" (click)="ExportWord1()" style="cursor:pointer">
+                          <td>
+                            <img
+                              src="assets/images/word.png"
+                              (click)="ExportWord1()"
+                              style="cursor: pointer"
+                            />
                           </td>
-                          <td><img src="assets/images/pdf.png" (click)="downloadAsPDF1()" style="cursor:pointer"></td>
+                          <td>
+                            <img
+                              src="assets/images/pdf.png"
+                              (click)="downloadAsPDF1()"
+                              style="cursor: pointer"
+                            />
+                          </td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <h6>B.Compounding Application </h6>
+                            <h6>B.Compounding Application</h6>
                           </th>
-                          <td><img src="assets/images/word.png" (click)="ExportWord2()" style="cursor:pointer">
+                          <td>
+                            <img
+                              src="assets/images/word.png"
+                              (click)="ExportWord2()"
+                              style="cursor: pointer"
+                            />
                           </td>
-                          <td><img src="assets/images/pdf.png" (click)="downloadAsPDF2()" style="cursor:pointer"></td>
+                          <td>
+                            <img
+                              src="assets/images/pdf.png"
+                              (click)="downloadAsPDF2()"
+                              style="cursor: pointer"
+                            />
+                          </td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <h6>C.Submissions, compounding request and petition</h6>
+                            <h6>
+                              C.Submissions, compounding request and petition
+                            </h6>
                           </th>
-                          <td><img src="assets/images/word.png" (click)="ExportWord3()" style="cursor:pointer">
+                          <td>
+                            <img
+                              src="assets/images/word.png"
+                              (click)="ExportWord3()"
+                              style="cursor: pointer"
+                            />
                           </td>
-                          <td><img src="assets/images/pdf.png" (click)="downloadAsPDF3()" style="cursor:pointer"></td>
+                          <td>
+                            <img
+                              src="assets/images/pdf.png"
+                              (click)="downloadAsPDF3()"
+                              style="cursor: pointer"
+                            />
+                          </td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <h6>D.Declaration/Undertaking </h6>
+                            <h6>D.Declaration/Undertaking</h6>
                           </th>
-                          <td><img src="assets/images/word.png" (click)="ExportWord4()" style="cursor:pointer">
+                          <td>
+                            <img
+                              src="assets/images/word.png"
+                              (click)="ExportWord4()"
+                              style="cursor: pointer"
+                            />
                           </td>
-                          <td><img src="assets/images/pdf.png" (click)="downloadAsPDF4()" style="cursor:pointer"></td>
+                          <td>
+                            <img
+                              src="assets/images/pdf.png"
+                              (click)="downloadAsPDF4()"
+                              style="cursor: pointer"
+                            />
+                          </td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <h6>E.Letter of authority </h6>
+                            <h6>E.Letter of authority</h6>
                           </th>
-                          <td><img src="assets/images/word.png" (click)="ExportWord5()" style="cursor:pointer">
+                          <td>
+                            <img
+                              src="assets/images/word.png"
+                              (click)="ExportWord5()"
+                              style="cursor: pointer"
+                            />
                           </td>
-                          <td><img src="assets/images/pdf.png" (click)="downloadAsPDF5()" style="cursor:pointer"></td>
+                          <td>
+                            <img
+                              src="assets/images/pdf.png"
+                              (click)="downloadAsPDF5()"
+                              style="cursor: pointer"
+                            />
+                          </td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <h6>F.Undertaking </h6>
+                            <h6>F.Undertaking</h6>
                           </th>
-                          <td><img src="assets/images/word.png" (click)="ExportWord6()" style="cursor:pointer">
+                          <td>
+                            <img
+                              src="assets/images/word.png"
+                              (click)="ExportWord6()"
+                              style="cursor: pointer"
+                            />
                           </td>
-                          <td><img src="assets/images/pdf.png" (click)="downloadAsPDF6()" style="cursor:pointer"></td>
+                          <td>
+                            <img
+                              src="assets/images/pdf.png"
+                              (click)="downloadAsPDF6()"
+                              style="cursor: pointer"
+                            />
+                          </td>
                         </tr>
                         <tr>
                           <th scope="row">
-                            <h6>G.ECS Mandate Letter </h6>
+                            <h6>G.ECS Mandate Letter</h6>
                           </th>
-                          <td><img src="assets/images/word.png" (click)="ExportWord7()" style="cursor:pointer">
+                          <td>
+                            <img
+                              src="assets/images/word.png"
+                              (click)="ExportWord7()"
+                              style="cursor: pointer"
+                            />
                           </td>
-                          <td><img src="assets/images/pdf.png" (click)="downloadAsPDF7()" style="cursor:pointer"></td>
+                          <td>
+                            <img
+                              src="assets/images/pdf.png"
+                              (click)="downloadAsPDF7()"
+                              style="cursor: pointer"
+                            />
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -1261,13 +2371,31 @@
             </div>
           </div>
         </div>
-        <button type="button" (click)="RBI_FDISubmit('6')" class="btn btn-primary">Back</button>
-        <button type="button" (click)="onSubmitCOCFrom()" class="btn btn-primary">Submit</button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('6')"
+          class="btn btn-primary"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          (click)="onSubmitCOCFrom()"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
       </div>
-      <div style="display: none;">
-        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable1" #pdfTable1>
-
-          <p>Date : XX-XX-XXXX&lt;date on which application was created i.e. current date&gt;</p>
+      <div style="display: none">
+        <div
+          style="padding: 30px; font-family: Calibri; font-size: 11pt"
+          id="pdfTable1"
+          #pdfTable1
+        >
+          <p>
+            Date : XX-XX-XXXX&lt;date on which application was created i.e.
+            current date&gt;
+          </p>
           <p>&nbsp;</p>
           <p>To</p>
           <p>XXXXXXXXXXXXXXThe Compounding Authority</p>
@@ -1279,19 +2407,38 @@
           <p>&nbsp;</p>
           <p>Dear Sir / Madam</p>
           <p>&nbsp;</p>
-          <p><strong>Sub:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application for Compounding under the
-            </strong><strong>Foreign Exchange Management Act, 1999 for (1) XXXXXXXXXXXXXXXXXXXXXXX (2)
-              XXXXXXXXXXXXXXXXXXXXXXX ([Insert Sub-Topics] &ndash; [Insert Company Name]. </strong></p>
+          <p>
+            <strong
+              >Sub:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application for
+              Compounding under the </strong
+            ><strong
+              >Foreign Exchange Management Act, 1999 for (1)
+              XXXXXXXXXXXXXXXXXXXXXXX (2) XXXXXXXXXXXXXXXXXXXXXXX ([Insert
+              Sub-Topics] &ndash; [Insert Company Name].
+            </strong>
+          </p>
           <p><strong>&nbsp;</strong></p>
-          <p><strong>Ref:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Insert Entire RBI Reference] Dipesh &ndash; where do we
-              have to pick this value from</strong></p>
+          <p>
+            <strong
+              >Ref:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Insert Entire RBI
+              Reference] Dipesh &ndash; where do we have to pick this value
+              from</strong
+            >
+          </p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
-          <p><strong>[Insert Company Name]</strong>(&ldquo;the Company&rdquo;) is herewith submitting a compounding
-            application with the RBI for compounding of contraventions under <strong>(1) XXXXXXXXXXXXXXXXXXXXXXX (2)
-              XXXXXXXXXXXXXXXXXXXXXXX ([Insert Sub-Topics]</strong>in reference to the <strong>RBI Letter no. [Insert
-              Entire RBI Reference]</strong>In this regard, the Company is enclosing herewith the following documents as
-            under:</p>
+          <p>
+            <strong>[Insert Company Name]</strong>(&ldquo;the Company&rdquo;) is
+            herewith submitting a compounding application with the RBI for
+            compounding of contraventions under
+            <strong
+              >(1) XXXXXXXXXXXXXXXXXXXXXXX (2) XXXXXXXXXXXXXXXXXXXXXXX ([Insert
+              Sub-Topics]</strong
+            >in reference to the
+            <strong>RBI Letter no. [Insert Entire RBI Reference]</strong>In this
+            regard, the Company is enclosing herewith the following documents as
+            under:
+          </p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
@@ -1313,8 +2460,11 @@
                   <p>1.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="506">
-                  <p>Application for compounding in the specified format provided under Foreign Exchange (Compounding
-                    Proceedings) Rules, 2000 in duplicate</p>
+                  <p>
+                    Application for compounding in the specified format provided
+                    under Foreign Exchange (Compounding Proceedings) Rules, 2000
+                    in duplicate
+                  </p>
                 </td>
                 <td width="119">
                   <p>1</p>
@@ -1325,7 +2475,10 @@
                   <p>2.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="506">
-                  <p>Facts of the case, our submissions, compounding request and petition</p>
+                  <p>
+                    Facts of the case, our submissions, compounding request and
+                    petition
+                  </p>
                 </td>
                 <td width="119">
                   <p>2</p>
@@ -1336,8 +2489,14 @@
                   <p>3.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="506">
-                  <p>Copy of <strong>RBI Letter no. XXXXXXXXXXX / Email dated XX-XX-XXXX</strong><strong>&lt;date of
-                      application&gt;</strong> for approval of Downstream Investment.</p>
+                  <p>
+                    Copy of
+                    <strong
+                      >RBI Letter no. XXXXXXXXXXX / Email dated
+                      XX-XX-XXXX</strong
+                    ><strong>&lt;date of application&gt;</strong> for approval
+                    of Downstream Investment.
+                  </p>
                 </td>
                 <td width="119">
                   <p>3</p>
@@ -1348,8 +2507,12 @@
                   <p>4.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="506">
-                  <p>Details to be furnished in accordance with Annex &ndash; II &ndash; FDI of Master Circular No.9/
-                    2015-16 dated July 1, 2015 read with AP (DIR Series) Circular No. 20 dated August 12, 2013</p>
+                  <p>
+                    Details to be furnished in accordance with Annex &ndash; II
+                    &ndash; FDI of Master Circular No.9/ 2015-16 dated July 1,
+                    2015 read with AP (DIR Series) Circular No. 20 dated August
+                    12, 2013
+                  </p>
                 </td>
                 <td width="119">
                   <p>4</p>
@@ -1360,8 +2523,10 @@
                   <p>5.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="506">
-                  <p>Declaration in accordance with Annex &ndash; II &ndash; FDI of Master Circular No.9/ 2015-16 dated
-                    July 1, 2015</p>
+                  <p>
+                    Declaration in accordance with Annex &ndash; II &ndash; FDI
+                    of Master Circular No.9/ 2015-16 dated July 1, 2015
+                  </p>
                 </td>
                 <td width="119">
                   <p>5</p>
@@ -1405,8 +2570,12 @@
                   <p>9.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="506">
-                  <p>Demand Draft of INR 5000 in drawn in favour of Reserve Bank of India, payable at XXXXXXX&lt;value
-                    to be picked from &ldquo;Payable at&rdquo; field in Compounding Details Tab&gt;</p>
+                  <p>
+                    Demand Draft of INR 5000 in drawn in favour of Reserve Bank
+                    of India, payable at XXXXXXX&lt;value to be picked from
+                    &ldquo;Payable at&rdquo; field in Compounding Details
+                    Tab&gt;
+                  </p>
                 </td>
                 <td width="119">
                   <p>9</p>
@@ -1418,14 +2587,19 @@
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
-          <p>Should you require any further information/ clarifications, we request you to contact <strong>below
-              mentioned company/authorised representatives</strong></p>
+          <p>
+            Should you require any further information/ clarifications, we
+            request you to contact
+            <strong>below mentioned company/authorised representatives</strong>
+          </p>
           <p>&nbsp;</p>
           <table>
             <tbody>
               <tr>
                 <td colspan="2" width="354">
-                  <p><strong>Contact : Company&rsquo;s Representative</strong></p>
+                  <p>
+                    <strong>Contact : Company&rsquo;s Representative</strong>
+                  </p>
                 </td>
                 <td colspan="2" width="384">
                   <p><strong>Contact : Authorised Representative</strong></p>
@@ -1514,14 +2688,23 @@
             </tbody>
           </table>
           <p>&nbsp;</p>
-          <p>All the Company representative fields values will come from Applicant Details tab</p>
-          <p>All the Authorised Representative fields will come from Compounding Authority section in Compounding
-            Details Tab</p>
+          <p>
+            All the Company representative fields values will come from
+            Applicant Details tab
+          </p>
+          <p>
+            All the Authorised Representative fields will come from Compounding
+            Authority section in Compounding Details Tab
+          </p>
           <p>&nbsp;</p>
           <p>Yours sincerely,</p>
           <p>&nbsp;</p>
-          <p><strong>For [Insert Company Name]</strong><strong>&nbsp; - value will come from the Applicant Details tab
-            </strong></p>
+          <p>
+            <strong>For [Insert Company Name]</strong
+            ><strong
+              >&nbsp; - value will come from the Applicant Details tab
+            </strong>
+          </p>
           <p><strong>&nbsp;</strong></p>
           <p><strong>&nbsp;</strong></p>
           <p><strong>XXXXXXXXXX</strong></p>
@@ -1542,13 +2725,25 @@
           <p>&nbsp;</p>
           <p>&nbsp;</p>
         </div>
-        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable2" #pdfTable2>
-          <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              Annexure 1</strong></p>
+        <div
+          style="padding: 30px; font-family: Calibri; font-size: 11pt"
+          id="pdfTable2"
+          #pdfTable2
+        >
+          <p>
+            <strong
+              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Annexure 1</strong
+            >
+          </p>
           <p><strong>Form </strong></p>
           <p><strong>(See Rule 4 or 5)</strong></p>
-          <p><strong>(To be filled in duplicate and shall be accompanied by certified copy of the memorandum
-              issued)</strong></p>
+          <p>
+            <strong
+              >(To be filled in duplicate and shall be accompanied by certified
+              copy of the memorandum issued)</strong
+            >
+          </p>
           <p>&nbsp;</p>
           <table width="797">
             <tbody>
@@ -1624,12 +2819,19 @@
                   <p>3.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="259">
-                  <p>Whether the Applicant is resident in India or resident outside India? (please refer to Section 2
-                    (v) of the Act)</p>
+                  <p>
+                    Whether the Applicant is resident in India or resident
+                    outside India? (please refer to Section 2 (v) of the Act)
+                  </p>
                 </td>
                 <td colspan="2" width="486">
-                  <p><strong>The applicant is a Companyregistered under the provisions of Companies Act, 1956 /
-                      Companies Act, 2013 and is resident in India in terms of Section 2(v) of FEMA.&nbsp; </strong></p>
+                  <p>
+                    <strong
+                      >The applicant is a Companyregistered under the provisions
+                      of Companies Act, 1956 / Companies Act, 2013 and is
+                      resident in India in terms of Section 2(v) of FEMA.&nbsp;
+                    </strong>
+                  </p>
                 </td>
               </tr>
               <tr>
@@ -1637,7 +2839,10 @@
                   <p>4.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="259">
-                  <p>Name of the Adjudicating Authority before whom the case in pending</p>
+                  <p>
+                    Name of the Adjudicating Authority before whom the case in
+                    pending
+                  </p>
                 </td>
                 <td colspan="2" width="486">
                   <p><strong>Not Applicable</strong></p>
@@ -1648,10 +2853,17 @@
                   <p>5.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="259">
-                  <p>Nature of Contravention [according to sub-section (1) of section 13]</p>
+                  <p>
+                    Nature of Contravention [according to sub-section (1) of
+                    section 13]
+                  </p>
                 </td>
                 <td colspan="2" width="486">
-                  <p><strong>[Insert All Sub-topics]. The contraventions have been described in Annexure&nbsp;2</strong>
+                  <p>
+                    <strong
+                      >[Insert All Sub-topics]. The contraventions have been
+                      described in Annexure&nbsp;2</strong
+                    >
                   </p>
                 </td>
               </tr>
@@ -1674,11 +2886,17 @@
                   <p>Details of Fee for application for compounding</p>
                 </td>
                 <td colspan="2" width="486">
-                  <p><strong>Demand Draft No. XXXXXX</strong>&lt;value to be picked from &ldquo;Demand Draft No&rdquo;
-                    field in Compounding Details Tab&gt;<strong>dated XXXXXX</strong>&lt;value to be picked from
-                    &ldquo;Demand Draft Date&rdquo; field in Compounding Details Tab&gt;<strong>for Rs. 5,000/- (Rupees
-                      Five Thousand Only) in favor of Reserve Bank of India, payable at XXXXXX</strong>&lt;value to be
-                    picked from &ldquo;Payable at&rdquo; field in Compounding Details Tab&gt;</p>
+                  <p>
+                    <strong>Demand Draft No. XXXXXX</strong>&lt;value to be
+                    picked from &ldquo;Demand Draft No&rdquo; field in
+                    Compounding Details Tab&gt;<strong>dated XXXXXX</strong
+                    >&lt;value to be picked from &ldquo;Demand Draft Date&rdquo;
+                    field in Compounding Details Tab&gt;<strong
+                      >for Rs. 5,000/- (Rupees Five Thousand Only) in favor of
+                      Reserve Bank of India, payable at XXXXXX</strong
+                    >&lt;value to be picked from &ldquo;Payable at&rdquo; field
+                    in Compounding Details Tab&gt;
+                  </p>
                 </td>
               </tr>
               <tr>
@@ -1695,9 +2913,12 @@
             </tbody>
           </table>
           <p>&nbsp;</p>
-          <p>I declare that the particulars given are true and correct to the best of our knowledge and belief and that
-            I am willing to accept any direction/order of the Compounding Authority in connection with compounding of
-            our case.</p>
+          <p>
+            I declare that the particulars given are true and correct to the
+            best of our knowledge and belief and that I am willing to accept any
+            direction/order of the Compounding Authority in connection with
+            compounding of our case.
+          </p>
           <p>&nbsp;</p>
           <p>Yours sincerely,</p>
           <p>&nbsp;</p>
@@ -1709,72 +2930,85 @@
           <p><strong>Place:&nbsp; XXXXXXXXXX</strong></p>
           <p>&nbsp;</p>
         </div>
-        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable3" #pdfTable3>
-          <p>Annexure 2<br />All the values to be picked from Compounding Submissions according to the respective
-            sections.<br />1. BACKGROUND<br /> <br />1.1
+        <div
+          style="padding: 30px; font-family: Calibri; font-size: 11pt"
+          id="pdfTable3"
+          #pdfTable3
+        >
+          <p>
+            Annexure 2<br />All the values to be picked from Compounding
+            Submissions according to the respective sections.<br />1.
+            BACKGROUND<br />
+            <br />1.1
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
-          <p>1.2
+          <p>
+            1.2
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
-          <p>1.3
+          <p>
+            1.3
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
           <p>2. CONTRAVENTIONS AND REASONS FOR CONTRAVENTIONS</p>
-          <p>2.1
+          <p>
+            2.1
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
-          <p>2.2
+          <p>
+            2.2
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
-          <p>2.3
+          <p>
+            2.3
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
           <p>&nbsp;</p>
           <p>3. REGULATORY FRAMEWORK</p>
-          <p>3.1
+          <p>
+            3.1
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
-          <p>3.2
+          <p>
+            3.2
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
           <p>4. DELAY REASONS</p>
-          <p>3.3
+          <p>
+            3.3
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
-          <p>3.4
+          <p>
+            3.4
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
           <p><br />5. PETITION REQUEST</p>
-          <p>4.1
+          <p>
+            4.1
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
           <p><br />Yours sincerely, <br />For [Insert Company Name]</p>
-          <p><br />XXXXXXXXXX<br />[Authorised Signatory / Director]<br />Place: XXXXXXXXXX&lt;what value needs to be
-            populated here &gt;<br />Date: XXXXXXX&lt;date of application&gt;</p>
+          <p>
+            <br />XXXXXXXXXX<br />[Authorised Signatory / Director]<br />Place:
+            XXXXXXXXXX&lt;what value needs to be populated here &gt;<br />Date:
+            XXXXXXX&lt;date of application&gt;
+          </p>
           <p>&nbsp;</p>
         </div>
-        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable4" #pdfTable4>
-          PrivacyPrivacy
-          Facebook
-          Twitter
-          Linkedin
-          Reddit
-          Word to Clean HTML ConverterWord HTML
-
-          Undo New page indentation compress encoding
-          option ico
-          option2
-          option3
-          option4
-          option5
-          option6
-          option7
-          option8Clean
-          -
+        <div
+          style="padding: 30px; font-family: Calibri; font-size: 11pt"
+          id="pdfTable4"
+          #pdfTable4
+        >
+          PrivacyPrivacy Facebook Twitter Linkedin Reddit Word to Clean HTML
+          ConverterWord HTML Undo New page indentation compress encoding option
+          ico option2 option3 option4 option5 option6 option7 option8Clean -
           <p><strong>Annexure&nbsp;4</strong></p>
           <p>To</p>
-          <p>The Compounding Authority&lt;this would the same values as the RBI Covering Letter&gt;</p>
+          <p>
+            The Compounding Authority&lt;this would the same values as the RBI
+            Covering Letter&gt;
+          </p>
           <p>Cell for Effective Implementation of FEMA (CEFA)</p>
           <p>Reserve Bank of India</p>
           <p>&nbsp;</p>
@@ -1783,19 +3017,32 @@
           <p>&nbsp;</p>
           <p>Dear Sir/ Madam,</p>
           <p>&nbsp;</p>
-          <p><strong>Sub: Application for Compounding &ndash; Undertaking</strong></p>
+          <p>
+            <strong
+              >Sub: Application for Compounding &ndash; Undertaking</strong
+            >
+          </p>
           <p>&nbsp;</p>
-          <p>I/We, <strong>XXXXXXXXXXXXXXXXXXXXX</strong>hereby confirm/declare that we are not under any
-            enquiry/investigation/adjudication by any agency such as Directorate of Enforcement, CBI etc. as on the date
-            of this application.</p>
+          <p>
+            I/We, <strong>XXXXXXXXXXXXXXXXXXXXX</strong>hereby confirm/declare
+            that we are not under any enquiry/investigation/adjudication by any
+            agency such as Directorate of Enforcement, CBI etc. as on the date
+            of this application.
+          </p>
           <p>&nbsp;</p>
-          <p>I/We further undertake to inform to the Compounding Authority / Reserve Bank of India immediately, in
-            writing, if any enquiry/investigation/adjudication proceedings are initiated by any agency against us at any
-            time hereafter but on or before the date of issuance of the compounding order in respect of the compounding
-            application filed by us.</p>
+          <p>
+            I/We further undertake to inform to the Compounding Authority /
+            Reserve Bank of India immediately, in writing, if any
+            enquiry/investigation/adjudication proceedings are initiated by any
+            agency against us at any time hereafter but on or before the date of
+            issuance of the compounding order in respect of the compounding
+            application filed by us.
+          </p>
           <p>&nbsp;</p>
-          <p>We further undertake and confirm that no appeal has been filed by us under section 17 or section 19 of
-            FEMA, 1999.</p>
+          <p>
+            We further undertake and confirm that no appeal has been filed by us
+            under section 17 or section 19 of FEMA, 1999.
+          </p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>Yours sincerely,</p>
@@ -1812,127 +3059,122 @@
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
-          Characters: 1542
-          Sample
+          Characters: 1542 Sample × Paste or compose your doc in the editor and
+          switch to HTML view to get the code! Word Doc to HTML Online Converter
+          Word Document to HTML Online Converter Paste your doc and switch to
+          the HTML tab Free online Word to HTML converter with built-in code
+          cleaning features and easy switch between the visual and source
+          editors. It works perfectly for any document conversion, like
+          Microsoft Word, Excel, PowerPoint, PDF, Google Docs, Sheets, and many
+          more. You can also use this tool for composing web content from
+          scratch or just to tidy up the dirty markup. As a legacy of the
+          well-known but discontinued WordOff online tool we wanted to keep the
+          user interface as simple as possible and adding many new features
+          according to our visitors' feedbacks. How to Convert Doc to HTML? The
+          process is very simple with this free online tool and it requirest
+          just a few simple steps: Open your file with Microsoft Word, WPS
+          Writer or any other rich text editor. Copy-paste the content into the
+          area above. Switch to the HTML tab and clean the code. Wordpress HTML
+          Editor Word HTML is the perfect tool to edit the source code of
+          WordPress articles or any other content management system when their
+          built in composer doesn't provide all functionalities we need. Compose
+          the content right in your browser window without installing any
+          extension or plugin to handle the syntax highlighting and other text
+          editing features. How To Use? Paste the document you want to convert
+          in the Word Editor, then switch to HTML view using the big tabs at the
+          top of the page to generate the code. Clean the dirty markup with the
+          big button which performs the active (checked) options in the list.
+          You can also apply these features one-by-one with the execute icon.
+          When a clean operation is performed the program might add a paragraph
+          to the text, containing a backlink to one of our partner sites. Please
+          leave these unchange to support the this free website. styles – remove
+          style attributes from each tag:<span style="color: red"
+            >highlighted</span
+          >
+          empty icon – delete empty tags which don't contain anything:<span
+            >Hello<span></span> World</span
+          >
 
-          ×
-          Paste or compose your doc in the editor and switch to HTML view to get the code!
-          Word Doc to HTML Online Converter
-          Word Document to HTML Online Converter
-          Paste your doc and switch to the HTML tab
-          Free online Word to HTML converter with built-in code cleaning features and easy switch between the visual and
-          source editors. It works perfectly for any document conversion, like Microsoft Word, Excel, PowerPoint, PDF,
-          Google Docs, Sheets, and many more. You can also use this tool for composing web content from scratch or just
-          to tidy up the dirty markup.
+          spaces – clear successive non-breaking spaces and leave only one
+          instance:
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
-          As a legacy of the well-known but discontinued WordOff online tool we wanted to keep the user interface as
-          simple as possible and adding many new features according to our visitors' feedbacks.
-
-
-          How to Convert Doc to HTML?
-          The process is very simple with this free online tool and it requirest just a few simple steps:
-
-          Open your file with Microsoft Word, WPS Writer or any other rich text editor.
-          Copy-paste the content into the area above.
-          Switch to the HTML tab and clean the code.
-          Wordpress HTML Editor
-          Word HTML is the perfect tool to edit the source code of WordPress articles or any other content management
-          system when their built in composer doesn't provide all functionalities we need. Compose the content right in
-          your browser window without installing any extension or plugin to handle the syntax highlighting and other
-          text editing features.
-
-          How To Use?
-          Paste the document you want to convert in the Word Editor, then switch to HTML view using the big tabs at the
-          top of the page to generate the code.
-
-          Clean the dirty markup with the big button which performs the active (checked) options in the list. You can
-          also apply these features one-by-one with the execute icon. When a clean operation is performed the program
-          might add a paragraph to the text, containing a backlink to one of our partner sites. Please leave these
-          unchange to support the this free website.
-
-          styles – remove style attributes from each tag:<span style="color: red;">highlighted</span>
-          empty icon – delete empty tags which don't contain anything:<span>Hello<span></span> World</span>
-
-          spaces – clear successive non-breaking spaces and leave only one instance:<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </p>
-
-          attributes – get rid of tag attributes (except href of links and src of images):<img src="/icon.png"
-            alt="icon" width="52" height="52" id="pic52" />
-          class and id ico – strip classes and IDs:<img id="pic52" class="right" src="/icon.png" alt="icon"
-            width="52" />
-          space ico – wipe off elements that contain only a &nbsp; character:<p>&nbsp;</p>
+          attributes – get rid of tag attributes (except href of links and src
+          of images):<img
+            src="/icon.png"
+            alt="icon"
+            width="52"
+            height="52"
+            id="pic52"
+          />
+          class and id ico – strip classes and IDs:<img
+            id="pic52"
+            class="right"
+            src="/icon.png"
+            alt="icon"
+            width="52"
+          />
+          space ico – wipe off elements that contain only a &nbsp; character:
+          <p>&nbsp;</p>
           comments icon – dislodge HTML comments:<!-- comment -->
-          plain text icon – convert the document to plain text:<p><span class="header">text</span></p>
-          Additional editor controls
-          source editor commands – Undo, new page, indent markup, compress, activate encoding.
-
-          Our Sponsors
+          plain text icon – convert the document to plain text:
+          <p><span class="header">text</span></p>
+          Additional editor controls source editor commands – Undo, new page,
+          indent markup, compress, activate encoding. Our Sponsors
           Omnipapers.com reviews will help you to pick an honest essay company.
           My Homework Done can help with any subject, from math to programming.
-
-
-          Custom Writings will write your essay from scratch. Get professional help from academic experts.
-          Visit LegitimateEssayWriting.com to choose the best essay helper online.
-          Rapid Essay Service - best college essay writing service.
-          Read essay writing service reviews.
-          Goread.io is the best website to buy Instagram likes.
-          ShoppingArchives.com is a website that has the best online shopping sites all in one place.
-
-          Common Questions
-          How do I convert Word to HTML without dirty markup?
-          MS Word allows to save the document as an .html file but this will result in a lot of unwanted dirty markup.
-          This increases the file size and disrupts the website styles if you end up publishing it online. It's
-          recommended to clean the HTML with this free online tool.
-
-          dirty markup from MS Word
-          Get rid of the mess generated by Word Editors
-
-          How do I convert any visual text to HTML?
-          WordHTML editor works flawlessly for any visual document and allows them to convert with a couple clicks:
-
-          Microsoft Office products (Word, Excel, Powerpoint)
-          Google Docs, Google Sheets
-          OpenOffice and other WYSIWYG editors
-          ...any other visual text document (let us know if you find an exception)
-          Copy-paste your document in the online editor then switch to HTML view in the header to get the result
-          instantly.
-
-          How to open a .doc file in the editor?
-          First you need to open the document in a reader, select and paste de desired section in the web browser on
-          WordHTML.
-
-          How to save and publish the results?
-          To publish your file on the web you need to paste the HTML code in a .html file and upload it to the web.
-          If your site is using a CMS then you need to log in with editor credentials and publish the article in your
-          admin area.
-
-          How to clean the markup?
-          Switch to HTML view to see the code, review the cleaning settings and press the big Clean button.
-          Remove automatically inline styles, classes, empty tags, comments and other unwanted bits.
-
-          markup cleaning
-          The markup can be cleaned with the click of a button
-
-          Can I convert HTML code to Word document?
-          Inverse conversion is also possible with WordHTML. Insert your code when the HTML tab is active and switch to
-          Word Editor.
-
-          Is WordHTML an online Word editor?
-          Yes, and it's even more. It supports the most common WYSIWYG features but you can't save your document. To
-          save you'll have to copy the results in a desktop editor and save there.
-
-          This site uses cookies to collect visitor statistics and to save your settings.
-          By using this website you accept&our Terms&Conditions.
-          ©WordHTML.com
-
+          Custom Writings will write your essay from scratch. Get professional
+          help from academic experts. Visit LegitimateEssayWriting.com to choose
+          the best essay helper online. Rapid Essay Service - best college essay
+          writing service. Read essay writing service reviews. Goread.io is the
+          best website to buy Instagram likes. ShoppingArchives.com is a website
+          that has the best online shopping sites all in one place. Common
+          Questions How do I convert Word to HTML without dirty markup? MS Word
+          allows to save the document as an .html file but this will result in a
+          lot of unwanted dirty markup. This increases the file size and
+          disrupts the website styles if you end up publishing it online. It's
+          recommended to clean the HTML with this free online tool. dirty markup
+          from MS Word Get rid of the mess generated by Word Editors How do I
+          convert any visual text to HTML? WordHTML editor works flawlessly for
+          any visual document and allows them to convert with a couple clicks:
+          Microsoft Office products (Word, Excel, Powerpoint) Google Docs,
+          Google Sheets OpenOffice and other WYSIWYG editors ...any other visual
+          text document (let us know if you find an exception) Copy-paste your
+          document in the online editor then switch to HTML view in the header
+          to get the result instantly. How to open a .doc file in the editor?
+          First you need to open the document in a reader, select and paste de
+          desired section in the web browser on WordHTML. How to save and
+          publish the results? To publish your file on the web you need to paste
+          the HTML code in a .html file and upload it to the web. If your site
+          is using a CMS then you need to log in with editor credentials and
+          publish the article in your admin area. How to clean the markup?
+          Switch to HTML view to see the code, review the cleaning settings and
+          press the big Clean button. Remove automatically inline styles,
+          classes, empty tags, comments and other unwanted bits. markup cleaning
+          The markup can be cleaned with the click of a button Can I convert
+          HTML code to Word document? Inverse conversion is also possible with
+          WordHTML. Insert your code when the HTML tab is active and switch to
+          Word Editor. Is WordHTML an online Word editor? Yes, and it's even
+          more. It supports the most common WYSIWYG features but you can't save
+          your document. To save you'll have to copy the results in a desktop
+          editor and save there. This site uses cookies to collect visitor
+          statistics and to save your settings. By using this website you
+          accept&our Terms&Conditions. ©WordHTML.com
         </div>
-        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable5" #pdfTable5>
+        <div
+          style="padding: 30px; font-family: Calibri; font-size: 11pt"
+          id="pdfTable5"
+          #pdfTable5
+        >
           <p><strong>Annexure&nbsp;5</strong></p>
           <p><strong>&nbsp;</strong></p>
           <p>25 September 2019&lt;date of application&gt;</p>
           <p>&nbsp;</p>
           <p>To</p>
-          <p>The Chief General Manager in Charge&lt;same as RBI Reference Letter document&gt;</p>
+          <p>
+            The Chief General Manager in Charge&lt;same as RBI Reference Letter
+            document&gt;
+          </p>
           <p>Cell for Effective Implementation of FEMA (CEFA)</p>
           <p>Foreign Exchange Department</p>
           <p>Reserve Bank of India</p>
@@ -1942,23 +3184,43 @@
           <p>&nbsp;</p>
           <p>Dear Sir/ Madam,</p>
           <p><strong>&nbsp;</strong></p>
-          <p><strong>Sub: Application for Compounding &nbsp;- Letter of Authority</strong></p>
+          <p>
+            <strong
+              >Sub: Application for Compounding &nbsp;- Letter of
+              Authority</strong
+            >
+          </p>
           <p><strong>&nbsp;</strong></p>
-          <p>We hereby authorise<strong>XXXXXXXXXXX</strong><strong>&lt;what value should come here&gt;</strong> having
-            their office at <strong>XXXXXXXXXXX</strong>&lt;what value should come here &gt;(referred to as
-            &ldquo;Authorised Representatives&rdquo;), to appear and represent us before the Reserve Bank of India
-            (&lsquo;RBI&rsquo;), in connection with our application for compounding under the Foreign Exchange
-            Management Act, 1999 (the &lsquo;Application&rsquo;).</p>
-          <p>Further, we also authorize them to make necessary submissions, representations and amendments, as may be
-            required by the RBI, and to receive all notices or communications including Order, as may be addressed to
-            us, and generally to do all acts, deeds and things deemed necessary for the purpose of the application on
-            our behalf.</p>
-          <p>We hereby undertake to confirm, approve, ratify, adopt and abide by all the acts and statements made by our
-            Authorised Representatives in connection with the Application and their explanations and statements will be
-            binding on us.</p>
+          <p>
+            We hereby authorise<strong>XXXXXXXXXXX</strong
+            ><strong>&lt;what value should come here&gt;</strong> having their
+            office at <strong>XXXXXXXXXXX</strong>&lt;what value should come
+            here &gt;(referred to as &ldquo;Authorised Representatives&rdquo;),
+            to appear and represent us before the Reserve Bank of India
+            (&lsquo;RBI&rsquo;), in connection with our application for
+            compounding under the Foreign Exchange Management Act, 1999 (the
+            &lsquo;Application&rsquo;).
+          </p>
+          <p>
+            Further, we also authorize them to make necessary submissions,
+            representations and amendments, as may be required by the RBI, and
+            to receive all notices or communications including Order, as may be
+            addressed to us, and generally to do all acts, deeds and things
+            deemed necessary for the purpose of the application on our behalf.
+          </p>
+          <p>
+            We hereby undertake to confirm, approve, ratify, adopt and abide by
+            all the acts and statements made by our Authorised Representatives
+            in connection with the Application and their explanations and
+            statements will be binding on us.
+          </p>
           <p>&nbsp;</p>
           <p>Yours sincerely,</p>
-          <p><strong>For Fomento Resources Private Limited&lt;company name&gt;</strong></p>
+          <p>
+            <strong
+              >For Fomento Resources Private Limited&lt;company name&gt;</strong
+            >
+          </p>
           <p><strong>&nbsp;</strong></p>
           <p><strong>&nbsp;</strong></p>
           <p><strong>&nbsp;</strong></p>
@@ -1970,28 +3232,22 @@
           <p>&nbsp;</p>
           <p>&nbsp;</p>
         </div>
-        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable6" #pdfTable6>
-          PrivacyPrivacy
-          Facebook
-          Twitter
-          Linkedin
-          Reddit
-          Word to Clean HTML ConverterWord HTML
-
-          Undo New page indentation compress encoding
-          option ico
-          option2
-          option3
-          option4
-          option5
-          option6
-          option7
-          option8Clean
-          -
+        <div
+          style="padding: 30px; font-family: Calibri; font-size: 11pt"
+          id="pdfTable6"
+          #pdfTable6
+        >
+          PrivacyPrivacy Facebook Twitter Linkedin Reddit Word to Clean HTML
+          ConverterWord HTML Undo New page indentation compress encoding option
+          ico option2 option3 option4 option5 option6 option7 option8Clean -
           <p><strong>Annexure&nbsp;4</strong></p>
           <p><strong>&nbsp;</strong></p>
-          <p><strong><em>&nbsp;</em></strong></p>
-          <p><strong><em>&lt;&lt;Insert date&gt;&gt;</em></strong></p>
+          <p>
+            <strong><em>&nbsp;</em></strong>
+          </p>
+          <p>
+            <strong><em>&lt;&lt;Insert date&gt;&gt;</em></strong>
+          </p>
           <p>&nbsp;</p>
           <p>To</p>
           <p>The Compounding Authority</p>
@@ -2003,25 +3259,41 @@
           <p>&nbsp;</p>
           <p>Dear Sir/ Madam,</p>
           <p>&nbsp;</p>
-          <p><strong>Sub: Application for Compounding &ndash; Undertaking</strong></p>
-          <p>&nbsp;</p>
-          <p>* I/We, ___________________(Name of the Applicant), hereby confirm / declare that I/we am/are not under any
-            enquiry / investigation / adjudication by Directorate of Enforcement, as on the date of this application.
+          <p>
+            <strong
+              >Sub: Application for Compounding &ndash; Undertaking</strong
+            >
           </p>
           <p>&nbsp;</p>
-          <p>I/We further undertake to inform to the Compounding Authority / Reserve Bank of India immediately, in
-            writing, if any enquiry/investigation/adjudication proceedings are initiated by the Directorate of
-            Enforcement against me/us at any time hereafter but on or before the date of issuance of the compounding
-            order in respect of the compounding application filed by me/us.&rsquo;</p>
+          <p>
+            * I/We, ___________________(Name of the Applicant), hereby confirm /
+            declare that I/we am/are not under any enquiry / investigation /
+            adjudication by Directorate of Enforcement, as on the date of this
+            application.
+          </p>
+          <p>&nbsp;</p>
+          <p>
+            I/We further undertake to inform to the Compounding Authority /
+            Reserve Bank of India immediately, in writing, if any
+            enquiry/investigation/adjudication proceedings are initiated by the
+            Directorate of Enforcement against me/us at any time hereafter but
+            on or before the date of issuance of the compounding order in
+            respect of the compounding application filed by me/us.&rsquo;
+          </p>
           <p>&nbsp;</p>
           <p>OR</p>
           <p>&nbsp;</p>
-          <p>*I/We ___________________ (Name of the applicant) hereby confirm/declare that I/we am/are or was/were under
-            enquiry/investigation/adjudication by Directorate of Enforcement, and the details are given in the Annex.
+          <p>
+            *I/We ___________________ (Name of the applicant) hereby
+            confirm/declare that I/we am/are or was/were under
+            enquiry/investigation/adjudication by Directorate of Enforcement,
+            and the details are given in the Annex.
           </p>
           <p>&nbsp;</p>
-          <p>I/We further undertake and confirm that no appeal has been filed by me/us under section 17 or section 19 of
-            FEMA, 1999.</p>
+          <p>
+            I/We further undertake and confirm that no appeal has been filed by
+            me/us under section 17 or section 19 of FEMA, 1999.
+          </p>
           <p>&nbsp;</p>
           <p>(* Strike out one)</p>
           <p>&nbsp;</p>
@@ -2035,125 +3307,123 @@
           <p><strong>Date:&nbsp; XXXXXXX</strong></p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
-          Characters: 1876
-          Sample
+          Characters: 1876 Sample × Paste or compose your doc in the editor and
+          switch to HTML view to get the code! Word Doc to HTML Online Converter
+          Word Document to HTML Online Converter Paste your doc and switch to
+          the HTML tab Free online Word to HTML converter with built-in code
+          cleaning features and easy switch between the visual and source
+          editors. It works perfectly for any document conversion, like
+          Microsoft Word, Excel, PowerPoint, PDF, Google Docs, Sheets, and many
+          more. You can also use this tool for composing web content from
+          scratch or just to tidy up the dirty markup. As a legacy of the
+          well-known but discontinued WordOff online tool we wanted to keep the
+          user interface as simple as possible and adding many new features
+          according to our visitors' feedbacks. How to Convert Doc to HTML? The
+          process is very simple with this free online tool and it requirest
+          just a few simple steps: Open your file with Microsoft Word, WPS
+          Writer or any other rich text editor. Copy-paste the content into the
+          area above. Switch to the HTML tab and clean the code. Wordpress HTML
+          Editor Word HTML is the perfect tool to edit the source code of
+          WordPress articles or any other content management system when their
+          built in composer doesn't provide all functionalities we need. Compose
+          the content right in your browser window without installing any
+          extension or plugin to handle the syntax highlighting and other text
+          editing features. How To Use? Paste the document you want to convert
+          in the Word Editor, then switch to HTML view using the big tabs at the
+          top of the page to generate the code. Clean the dirty markup with the
+          big button which performs the active (checked) options in the list.
+          You can also apply these features one-by-one with the execute icon.
+          When a clean operation is performed the program might add a paragraph
+          to the text, containing a backlink to one of our partner sites. Please
+          leave these unchange to support the this free website. styles – remove
+          style attributes from each tag:<span style="color: red"
+            >highlighted</span
+          >
+          empty icon – delete empty tags which don't contain anything:<span
+            >Hello<span></span> World</span
+          >
 
-          ×
-          Paste or compose your doc in the editor and switch to HTML view to get the code!
-          Word Doc to HTML Online Converter
-          Word Document to HTML Online Converter
-          Paste your doc and switch to the HTML tab
-          Free online Word to HTML converter with built-in code cleaning features and easy switch between the visual and
-          source editors. It works perfectly for any document conversion, like Microsoft Word, Excel, PowerPoint, PDF,
-          Google Docs, Sheets, and many more. You can also use this tool for composing web content from scratch or just
-          to tidy up the dirty markup.
+          spaces – clear successive non-breaking spaces and leave only one
+          instance:
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
-          As a legacy of the well-known but discontinued WordOff online tool we wanted to keep the user interface as
-          simple as possible and adding many new features according to our visitors' feedbacks.
-
-
-          How to Convert Doc to HTML?
-          The process is very simple with this free online tool and it requirest just a few simple steps:
-
-          Open your file with Microsoft Word, WPS Writer or any other rich text editor.
-          Copy-paste the content into the area above.
-          Switch to the HTML tab and clean the code.
-          Wordpress HTML Editor
-          Word HTML is the perfect tool to edit the source code of WordPress articles or any other content management
-          system when their built in composer doesn't provide all functionalities we need. Compose the content right in
-          your browser window without installing any extension or plugin to handle the syntax highlighting and other
-          text editing features.
-
-          How To Use?
-          Paste the document you want to convert in the Word Editor, then switch to HTML view using the big tabs at the
-          top of the page to generate the code.
-
-          Clean the dirty markup with the big button which performs the active (checked) options in the list. You can
-          also apply these features one-by-one with the execute icon. When a clean operation is performed the program
-          might add a paragraph to the text, containing a backlink to one of our partner sites. Please leave these
-          unchange to support the this free website.
-
-          styles – remove style attributes from each tag:<span style="color: red;">highlighted</span>
-          empty icon – delete empty tags which don't contain anything:<span>Hello<span></span> World</span>
-
-          spaces – clear successive non-breaking spaces and leave only one instance:<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </p>
-
-          attributes – get rid of tag attributes (except href of links and src of images):<img src="/icon.png"
-            alt="icon" width="52" height="52" id="pic52" />
-          class and id ico – strip classes and IDs:<img id="pic52" class="right" src="/icon.png" alt="icon"
-            width="52" />
-          space ico – wipe off elements that contain only a &nbsp; character:<p>&nbsp;</p>
+          attributes – get rid of tag attributes (except href of links and src
+          of images):<img
+            src="/icon.png"
+            alt="icon"
+            width="52"
+            height="52"
+            id="pic52"
+          />
+          class and id ico – strip classes and IDs:<img
+            id="pic52"
+            class="right"
+            src="/icon.png"
+            alt="icon"
+            width="52"
+          />
+          space ico – wipe off elements that contain only a &nbsp; character:
+          <p>&nbsp;</p>
           comments icon – dislodge HTML comments:<!-- comment -->
-          plain text icon – convert the document to plain text:<p><span class="header">text</span></p>
-          Additional editor controls
-          source editor commands – Undo, new page, indent markup, compress, activate encoding.
-
-          Our Sponsors
+          plain text icon – convert the document to plain text:
+          <p><span class="header">text</span></p>
+          Additional editor controls source editor commands – Undo, new page,
+          indent markup, compress, activate encoding. Our Sponsors
           Omnipapers.com reviews will help you to pick an honest essay company.
           My Homework Done can help with any subject, from math to programming.
-
-
-          Custom Writings will write your essay from scratch. Get professional help from academic experts.
-          Visit LegitimateEssayWriting.com to choose the best essay helper online.
-          Rapid Essay Service - best college essay writing service.
-          Read essay writing service reviews.
-          Goread.io is the best website to buy Instagram likes.
-          ShoppingArchives.com is a website that has the best online shopping sites all in one place.
-
-          Common Questions
-          How do I convert Word to HTML without dirty markup?
-          MS Word allows to save the document as an .html file but this will result in a lot of unwanted dirty markup.
-          This increases the file size and disrupts the website styles if you end up publishing it online. It's
-          recommended to clean the HTML with this free online tool.
-
-          dirty markup from MS Word
-          Get rid of the mess generated by Word Editors
-
-          How do I convert any visual text to HTML?
-          WordHTML editor works flawlessly for any visual document and allows them to convert with a couple clicks:
-
-          Microsoft Office products (Word, Excel, Powerpoint)
-          Google Docs, Google Sheets
-          OpenOffice and other WYSIWYG editors
-          ...any other visual text document (let us know if you find an exception)
-          Copy-paste your document in the online editor then switch to HTML view in the header to get the result
-          instantly.
-
-          How to open a .doc file in the editor?
-          First you need to open the document in a reader, select and paste de desired section in the web browser on
-          WordHTML.
-
-          How to save and publish the results?
-          To publish your file on the web you need to paste the HTML code in a .html file and upload it to the web.
-          If your site is using a CMS then you need to log in with editor credentials and publish the article in your
-          admin area.
-
-          How to clean the markup?
-          Switch to HTML view to see the code, review the cleaning settings and press the big Clean button.
-          Remove automatically inline styles, classes, empty tags, comments and other unwanted bits.
-
-          markup cleaning
-          The markup can be cleaned with the click of a button
-
-          Can I convert HTML code to Word document?
-          Inverse conversion is also possible with WordHTML. Insert your code when the HTML tab is active and switch to
-          Word Editor.
-
-          Is WordHTML an online Word editor?
-          Yes, and it's even more. It supports the most common WYSIWYG features but you can't save your document. To
-          save you'll have to copy the results in a desktop editor and save there.
-
-          This site uses cookies to collect visitor statistics and to save your settings.
-          By using this website you accept&our Terms&Conditions.
-          ©WordHTML.com
-
+          Custom Writings will write your essay from scratch. Get professional
+          help from academic experts. Visit LegitimateEssayWriting.com to choose
+          the best essay helper online. Rapid Essay Service - best college essay
+          writing service. Read essay writing service reviews. Goread.io is the
+          best website to buy Instagram likes. ShoppingArchives.com is a website
+          that has the best online shopping sites all in one place. Common
+          Questions How do I convert Word to HTML without dirty markup? MS Word
+          allows to save the document as an .html file but this will result in a
+          lot of unwanted dirty markup. This increases the file size and
+          disrupts the website styles if you end up publishing it online. It's
+          recommended to clean the HTML with this free online tool. dirty markup
+          from MS Word Get rid of the mess generated by Word Editors How do I
+          convert any visual text to HTML? WordHTML editor works flawlessly for
+          any visual document and allows them to convert with a couple clicks:
+          Microsoft Office products (Word, Excel, Powerpoint) Google Docs,
+          Google Sheets OpenOffice and other WYSIWYG editors ...any other visual
+          text document (let us know if you find an exception) Copy-paste your
+          document in the online editor then switch to HTML view in the header
+          to get the result instantly. How to open a .doc file in the editor?
+          First you need to open the document in a reader, select and paste de
+          desired section in the web browser on WordHTML. How to save and
+          publish the results? To publish your file on the web you need to paste
+          the HTML code in a .html file and upload it to the web. If your site
+          is using a CMS then you need to log in with editor credentials and
+          publish the article in your admin area. How to clean the markup?
+          Switch to HTML view to see the code, review the cleaning settings and
+          press the big Clean button. Remove automatically inline styles,
+          classes, empty tags, comments and other unwanted bits. markup cleaning
+          The markup can be cleaned with the click of a button Can I convert
+          HTML code to Word document? Inverse conversion is also possible with
+          WordHTML. Insert your code when the HTML tab is active and switch to
+          Word Editor. Is WordHTML an online Word editor? Yes, and it's even
+          more. It supports the most common WYSIWYG features but you can't save
+          your document. To save you'll have to copy the results in a desktop
+          editor and save there. This site uses cookies to collect visitor
+          statistics and to save your settings. By using this website you
+          accept&our Terms&Conditions. ©WordHTML.com
         </div>
-        <div style="padding: 30px;font-family: Calibri; font-size: 11pt;" id="pdfTable7" #pdfTable7>
+        <div
+          style="padding: 30px; font-family: Calibri; font-size: 11pt"
+          id="pdfTable7"
+          #pdfTable7
+        >
           <p><strong>Annexure 6</strong></p>
-          <p><strong><u>&nbsp;</u></strong></p>
-          <p><strong><u>ELECTRONIC CLEARING SERVICE (ECS)</u></strong></p>
-          <p><strong><u>MANDATE FORM</u></strong></p>
+          <p>
+            <strong><u>&nbsp;</u></strong>
+          </p>
+          <p>
+            <strong><u>ELECTRONIC CLEARING SERVICE (ECS)</u></strong>
+          </p>
+          <p>
+            <strong><u>MANDATE FORM</u></strong>
+          </p>
           <p>&nbsp;</p>
           <table>
             <tbody>
@@ -2254,7 +3524,10 @@
                   <p>C.&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="270">
-                  <p>9 Digit MICR Code Number ((as appearing on the cheque issued by the Bank)</p>
+                  <p>
+                    9 Digit MICR Code Number ((as appearing on the cheque issued
+                    by the Bank)
+                  </p>
                 </td>
                 <td width="347">
                   <p>XXXXXXXX</p>
@@ -2296,7 +3569,10 @@
                   <p>F.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
                 </td>
                 <td width="270">
-                  <p>Account No (as appearing on the cheque book issued by the Bank)</p>
+                  <p>
+                    Account No (as appearing on the cheque book issued by the
+                    Bank)
+                  </p>
                 </td>
                 <td width="347">
                   <p>XXXXXXXX</p>
@@ -2307,15 +3583,21 @@
                   <p>&nbsp;</p>
                 </td>
                 <td colspan="3" width="669">
-                  <p>(Please attach photocopy of a blank cheque for verification of the bank account details)</p>
+                  <p>
+                    (Please attach photocopy of a blank cheque for verification
+                    of the bank account details)
+                  </p>
                 </td>
               </tr>
             </tbody>
           </table>
           <p>&nbsp;</p>
-          <p>I/We hereby declare that the particulars given above are correct and complete. If the transaction is
-            delayed or not effected at all for reasons of incomplete or incorrect information, I/We would not hold the
-            user institution responsible.</p>
+          <p>
+            I/We hereby declare that the particulars given above are correct and
+            complete. If the transaction is delayed or not effected at all for
+            reasons of incomplete or incorrect information, I/We would not hold
+            the user institution responsible.
+          </p>
           <p>&nbsp;</p>
           <p>Yours sincerely,</p>
           <p><strong>For XXXXXXXXXX</strong></p>

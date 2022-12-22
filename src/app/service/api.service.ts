@@ -37,6 +37,9 @@ export class ApiService {
   getState() {
     return this.http.get(`${this.baseUri}/State`);
   }
+  getRbiAuthorityCity() {
+    return this.http.get(`${this.baseUri}/rbiAuthorityCity`);
+  }
   getBank() {
     return this.http.get(`${this.baseUri}/Bank`);
   }

@@ -1047,7 +1047,7 @@
                   >
                     <thead>
                       <tr>
-                        <th scope="'col"><input type="checkbox" /></th>
+                        <th>-</th>
                         <th scope="col">Topis</th>
                         <th scope="col">Regional Office</th>
                         <th scope="col">Address</th>
@@ -1065,6 +1065,7 @@
                           <div>
                             <input
                               type="checkbox"
+                              [disabled]=""
                               [(ngModel)]="Regionallist.status"
                               [ngModelOptions]="{ standalone: true }"
                               (click)="SelectCOC_FDIResCent(Regionallist)"
@@ -1260,7 +1261,20 @@
 
           <div class="col-3 mb-2">
             <label class="form-label">City </label>
-            <input
+            <ng-select
+                  [items]="rbiAuthorityCityList"
+                  bindLabel="RegionalOffices"
+                  placeholder="Select City"
+                  formControlName="COC_FDI_CompoundCity"
+                  class="form-select"
+                  [class.is-invalid]="
+                    COC_FDIFormlist.get('COC_FDI_CompoundCity').invalid &&
+                    (COC_FDIFormlist.get('COC_FDI_CompoundCity').dirty ||
+                      COC_FDIFormlist.get('COC_FDI_CompoundCity').touched)
+                  "
+                >
+                </ng-select>
+            <!-- <input
               class="form-control"
               formControlName="COC_FDI_CompoundCity"
               list="datalistOptionscity"
@@ -1273,7 +1287,7 @@
               placeholder="Select City"
             /><datalist id="datalistOptionscity">
               <option *ngFor="let city of CityList">{{ city.city }}</option>
-            </datalist>
+            </datalist> -->
           </div>
         </div>
         <button
@@ -1809,6 +1823,7 @@
                 <td>
                   <input
                     type="number"
+                    [(ngModel)]="TableATotAmountData"
                     formControlName="TableATotAmount"
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control form-control-sm"

@@ -202,3 +202,12 @@ body {
 	min-height: 45px !important;
 	border-radius: 11px;
 }
+
+.disabled {
+	background-color: #757575;
+	opacity: 0.1;
+}
+
+.disableddiv{
+	cursor: not-allowed;
+}

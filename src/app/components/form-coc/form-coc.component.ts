@@ -97,6 +97,8 @@ export class FormCocComponent implements OnInit {
   ActiveTab: number = 1987;
   NICCodeListShow: any = [];
   RegionalOfficeListShow: any = [];
+  rbiAuthorityCityList:any=[];
+  
   constructor(
     private commonservice: CommonService,
     private fb: FormBuilder,
@@ -106,6 +108,7 @@ export class FormCocComponent implements OnInit {
     this.submodules = commonservice.getCOCsubmodules();
     this.readCity();
     this.readState();
+    this.readRbiAuthorityCity();
     this.readNICCodeDes();
     this.readRBIAuthority();
     this.readFemaRegulations();
@@ -118,8 +121,17 @@ export class FormCocComponent implements OnInit {
   readState() {
     this.apiService.getState().subscribe((data) => {
       this.StateList = data;
+      console.log(this.StateList)
     });
   }
+
+  readRbiAuthorityCity() {
+    this.apiService.getRbiAuthorityCity().subscribe((data) => {
+      this.rbiAuthorityCityList = data;
+      console.log(this.StateList)
+    });
+  }
+
   readFemaRegulations() {
     this.apiService.getFemaRegulations().subscribe((femadata) => {
       this.FemaRegulationsList = femadata;
@@ -128,6 +140,7 @@ export class FormCocComponent implements OnInit {
   readNICCodeDes() {
     this.apiService.getNICCodeDes().subscribe((Nicdata) => {
       this.NICCodeList = Nicdata;
+      console.log(this.NICCodeList)
     });
     // this.NICCodeList=this.NICCodeList.map((item)=>{
     //   item.status=false
@@ -526,7 +539,9 @@ export class FormCocComponent implements OnInit {
       SubmodulenameDes: this.SubmodulenameDes,
     });
   }
+
   TableATotAmount(data) {
+    console.log()
     if (
       this.TableATotAmountData == undefined &&
       data.COC_FDIODITabAAmount != ''
@@ -725,6 +740,7 @@ export class FormCocComponent implements OnInit {
         this.NICCodeList[i].status = false;
         // console.log(this.NICCodeList)
       }
+
     }
     if (Val == '2') {
       this.COC_FDIApplicantDetails = true;

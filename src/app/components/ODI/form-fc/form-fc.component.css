@@ -7,3 +7,10 @@
   .active{
     background: aliceblue;
   }
+  .toast-top-left {
+    bottom: 0;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    width: 100%;
+  }

@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="fcFormlist" #form="ngForm" (ngSubmit)="submit()">
+    <form [formGroup]="fcFormlist" #form="ngForm">
         <div class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Form FC
             </a>
@@ -15,8 +15,16 @@
                         <span class="placeholder">UIN No</span>
 
                     </div>
-
                     <div class="col-3 input-block mb-4">
+                        <select class="form-select" required (change)="InvestorChange($event.target.value)">
+                            <option ng-option value="">Select Investor type</option>
+                            <option *ngFor=" let object of fctypes" value="{{object.id}}">
+                                {{object.name}}
+                            </option>
+                        </select>
+                        <!-- <span class="placeholder">Select Form Type</span> -->
+                    </div>
+                    <div class="col-2 input-block mb-4">
                         <select class="form-select" spellcheck="true" required formControlName="investment_Route"
                             [class.is-invalid]="fcFormlist.get('investment_Route').invalid &&
                         (fcFormlist.get('investment_Route').dirty ||
@@ -27,7 +35,7 @@
                         </select>
                         <span class="placeholder">Entry Route</span>
                     </div>
-                    <div class="col-3 input-block mb-4">
+                    <div class="col-2 input-block mb-4">
                         <input type="number" id="investment_USD" spellcheck="false" required class="form-control"
                             formControlName="investment_USD" [class.is-invalid]="fcFormlist.get('investment_USD').invalid &&
                             (fcFormlist.get('investment_USD').dirty ||
@@ -35,7 +43,7 @@
                         <span class="placeholder">USD Amount (IN FCY)</span>
 
                     </div>
-                    <div class="col-3 input-block mb-4">
+                    <div class="col-2 input-block mb-4">
                         <input type="number" id="investment_INR" spellcheck="false" required class="form-control"
                             formControlName="investment_INR" [class.is-invalid]="fcFormlist.get('investment_INR').invalid &&
                             (fcFormlist.get('investment_INR').dirty ||
@@ -183,11 +191,6 @@
                                     <span class="placeholder">Networth Date</span>
                                 </div>
                             </div>
-
-
-
-
-
                         </div>
                         <table class="table caption-top table-striped table-bordered table-responsive">
                             <caption>Sum of the Financial Commitment (FC) w.r.t. all foreign entities of the IE/ RI/
@@ -509,748 +512,1154 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row">
-                            <ul class="list-group">
-                                <li class="list-group-item list-group-item-info">NIC Codes</li>
-                            </ul>
-                            <div class="col-2 mb-2">
-                                <label class="form-check-label" for="flexSwitchCheckCheckedw">NIC Code &
-                                    Description</label>
-                            </div>
-                            <div class="col-4 mb-2">
-                                
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" (click)="OnModuleTabClick(1987)"
-                                        id="flexSwitchCheckCheckedw" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdropw">
+                    </tab>
+                    <tab heading="JV/WOS Details" id="2" disabled="disabled">
+                        <div formGroupName="JVWOSform">
+                            <div class="row mt-4">
+                                <div class="col-2 input-block mb-4">
+                                    <input type="text" id="investment_ForeignEntity" spellcheck="false" required
+                                        class="form-control" formControlName="investment_ForeignEntity"
+                                        [class.is-invalid]="fcFormlist.get('JVWOSform.investment_ForeignEntity').invalid &&
+        (fcFormlist.get('JVWOSform.investment_ForeignEntity').dirty ||
+        fcFormlist.get('JVWOSform.investment_ForeignEntity').touched)">
+                                    <span class="placeholder">Name of foreign entity</span>
                                 </div>
-                                <br>
+                                <div class="col-2 input-block mb-4">
+                                    <ng-select [items]="CountryList" bindLabel="name" placeholder="Select Country"
+                                        formControlName="investment_Jurisdiction">
+                                    </ng-select>
+                                    <span class="placeholder">Country/Jurisdiction</span>
+                                </div>
+                                <div class="col-2 input-block mb-4">
+                                    <input type="date" id="investment_DateIncorpation" spellcheck="false" required
+                                        class="form-control" formControlName="investment_DateIncorpation"
+                                        [class.is-invalid]="fcFormlist.get('JVWOSform.investment_DateIncorpation').invalid &&
+        (fcFormlist.get('JVWOSform.investment_DateIncorpation').dirty ||
+        fcFormlist.get('JVWOSform.investment_DateIncorpation').touched)">
+                                    <span class="placeholder">Date of Incorporation</span>
+                                </div>
+                                <div class="col-2 input-block mb-4">
+                                    <input type="text" id="investment_WOS_LEI" spellcheck="false" required
+                                        class="form-control" formControlName="investment_WOS_LEI" [class.is-invalid]="fcFormlist.get('JVWOSform.investment_WOS_LEI').invalid &&
+        (fcFormlist.get('JVWOSform.investment_WOS_LEI').dirty ||
+        fcFormlist.get('JVWOSform.investment_WOS_LEI').touched)">
+                                    <span class="placeholder">Legal Entity Identifier (LEI)</span>
+                                </div>
+                                <div class="col-2 input-block mb-4">
+                                    <input type="text" id="investment_WOS_Email" spellcheck="false" required
+                                        class="form-control" formControlName="investment_WOS_Email" [class.is-invalid]="
+                                        fcFormlist.get('JVWOSform.investment_WOS_Email').invalid &&
+        (fcFormlist.get('JVWOSform.investment_WOS_Email').dirty ||
+        fcFormlist.get('JVWOSform.investment_WOS_Email').touched)">
+                                    <span class="placeholder">Email</span>
+                                </div>
+                                <div class="col-2 input-block mb-4">
+                                    <select class="form-select" id="investment_AccountingYear"
+                                        formControlName="investment_AccountingYear" required>
+                                        <option ng-option value="">Select Type</option>
+                                        <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
+                                            {{object.name}}
+                                        </option>
+                                    </select>
+                                    <span class="placeholder">Accounting Year</span>
+                                </div>
                             </div>
-                            <div class="col-4 mb-2">
+                            <div class="row mt-4">
+                                <div class="col-sm-12">
+                                    <label class="form-label">Whether the person resident in India has control in
+                                        foreign
+                                        entity (Refer to the definition of "control" in the OI Rules)
+                                    </label>
 
-                            </div>
-                            <div class="col-12 mb-2">
-                                <table class="table table-striped table-no-bordered table-hover">
+                                    <div class="form-check form-check-inline" style="margin-left: 48px;">
+                                        <input class="form-check-input" type="radio" required
+                                            formControlName="investment_ControlFE" id="investment_ControlFE"
+                                            name="investment_ControlFE" value="Yes" [class.is-invalid]="fcFormlist.get('JVWOSform.investment_ControlFE').invalid &&
+                                        (fcFormlist.get('JVWOSform.investment_ControlFE').dirty ||
+                                        fcFormlist.get('JVWOSform.investment_ControlFE').touched)">
+                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" required
+                                            formControlName="investment_ControlFE" id="investment_ControlFE"
+                                            name="investment_ControlFE" value="No" [class.is-invalid]="fcFormlist.get('JVWOSform.investment_ControlFE').invalid &&
+                                        (fcFormlist.get('JVWOSform.investment_ControlFE').dirty ||
+                                        fcFormlist.get('JVWOSform.investment_ControlFE').touched)">
+                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                    </div>
+
+                                </div>
+                                <div class="container">
+                                    <table class="table table-striped table-bordered mt-3">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th scope="col">Activity code of IE (1987)
+                                                    Class + Description
+
+
+                                                </th>
+                                                <th scope="col">Activity code of IE (2008)
+                                                    Class + Description
+
+
+                                                </th>
+                                                <!-- <th></th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
+                                                <td></td>
+                                                <td>
+                                                    <div class="search_tbl">
+                                                        <div class="input-group">
+
+                                                            <input type="text" class="form-control" name="search"
+                                                                placeholder="Search for codes"
+                                                                (keyup)="searchNicCodeWOS($event,'1987')">
+                                                            <span class="search_icon"> <button type="button"
+                                                                    data-bs-toggle="modal"
+                                                                    (click)="OnModuleTabClickWOS(1987)"
+                                                                    data-bs-target="#staticBackdropWOS"
+                                                                    style="border: 0;"><i class="fas fa-search"></i>
+                                                                </button></span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <input [(ngModel)]="CodeClassArray[i].Description1987"
+                                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                                    type="text" /> -->
+                                                </td>
+                                                <td>
+                                                    <div class="search_tbl">
+                                                        <div class="input-group">
+
+                                                            <input type="text" class="form-control" name="search"
+                                                                placeholder="Search for codes"
+                                                                (keyup)="searchNicCodewos($event,'2008')">
+                                                            <span class="search_icon"> <button type="button"
+                                                                    (click)="OnModuleTabClickWOS(2008)"
+                                                                    style="border: 0;" data-bs-toggle="modal"
+                                                                    data-bs-target="#staticBackdropWOS"><i
+                                                                        class="fas fa-search"></i>
+                                                                </button></span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <input [(ngModel)]="CodeClassArray[i].Description2008"
+                                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                                    type="text" /> -->
+                                                </td>
+                                                <!-- <td>
+                                                <button type="button" (click)="addCodeClassRow()"
+                                                    class="btn btn-outline-primary me-2">+</button>
+                                                <button type="button" *ngIf="codeClasslength>1"
+                                                    (click)="deleteCodeClassRow(i)"
+                                                    class="btn btn-outline-primary me-2">-</button>
+        
+                                            </td> -->
+                                            </tr>
+
+                                            <tr *ngFor="let NicCode of WOSFC_FDINICCodeDesArray; let i = index;">
+                                                <td>
+                                                    <div>{{NicCode.Year}}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{NicCode.Class}}</div>
+                                                </td>
+                                                <td>
+                                                    <div>{{NicCode.DescriptionClass}}</div>
+
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="modal fade" id="staticBackdropWOS" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropWOS"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title mb-3" id="staticBackdropWOS">NIC Code &
+                                                        Description
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="clearfix"></div>
+                                                    <div class="bg-white pt-3">
+                                                        <div class="row mb-3">
+                                                            <div class="col-3">
+                                                                <div class="row mb-3">
+                                                                    <a [ngClass]="ActiveTab == 1987 ? 'nav-item active' : 'nav-item'"
+                                                                        (click)="OnModuleTabClickWOS(1987)"
+                                                                        id="nic1987-tab" data-toggle="tab" role="tab"
+                                                                        aria-controls="gsr" aria-selected="false">NIC
+                                                                        Code 1987</a>
+
+                                                                    <a class="btn btn-danger" style="width: 39px;
+                                                            margin-top: -28px;
+                                                            margin-inline: 120px;" href="assets/NIC_Codes_1987.pdf"
+                                                                        download="NIC_Codes_1987.pdf"><i
+                                                                            class="fas fa-file-pdf"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="row mb-3">
+                                                                    <a [ngClass]="ActiveTab == 2008 ? 'nav-item active' : 'nav-item'"
+                                                                        (click)="OnModuleTabClickWOS(2008)"
+                                                                        id="nic2008-tab" data-toggle="tab" role="tab"
+                                                                        aria-controls="regulation"
+                                                                        aria-selected="false">NIC
+                                                                        Code 2008</a>
+                                                                    <a class="btn btn-danger" style="width: 39px;
+                                                            margin-top: -28px;
+                                                            margin-inline: 120px;" href="assets/NIC_Codes_1987.pdf"
+                                                                        download="NIC_Codes_2008.pdf"><i
+                                                                            class="fas fa-file-pdf"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="search_tbl">
+                                                                    <div class="input-group">
+
+                                                                        <input type="text" class="form-control"
+                                                                            name="search" placeholder="Search for codes"
+                                                                            (keyup)="searchNicCodeWOS($event)">
+                                                                        <span class="search_icon"> <button type="submit"
+                                                                                style="border: 0;"><i
+                                                                                    class="fas fa-search"></i>
+                                                                            </button></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <table class="table table-striped table-no-bordered table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col"><input type="checkbox"
+                                                                        (click)="SelectAllNicCodesWOS($event)"></th>
+                                                                <!-- <th scope="col">Year</th> -->
+                                                                <th scope="col">NIC Code</th>
+                                                                <th scope="col">Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr
+                                                                *ngFor="let NIC_Code of NICCodeListShowWOS; let i = index">
+                                                                <td>
+                                                                    <div><input type="checkbox"
+                                                                            [disabled]="NIC_Code.status"
+                                                                            [(ngModel)]="NIC_Code.SelectedValue"
+                                                                            [ngModelOptions]="{standalone: true}"
+                                                                            (click)="SelectWOSFC_FDINICCodeDes(NIC_Code)" />
+                                                                    </div>
+                                                                </td>
+                                                                <!-- <td>
+                                                            <div>{{NIC_Code.Year}}</div>
+                                                        </td> -->
+                                                                <td>
+                                                                    <div>{{NIC_Code.Class}}</div>
+                                                                </td>
+                                                                <td>
+                                                                    <div>{{NIC_Code.DescriptionClass}}</div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">Done</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <table class="table table-striped table-bordered mt-3">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Year</th>
-                                            <th scope="col">NIC Code</th>
-                                            <th scope="col">Description</th>
+
+                                            <th scope="col">Activity code of IE (1987)
+                                                Class + Description
+
+
+                                            </th>
+                                            <th scope="col">Activity code of IE (2008)
+                                                Class + Description
+
+
+                                            </th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let NicCode of SelectFC_FDINICCodeDesArray; let i = index;">
+                                        <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
+
                                             <td>
-                                                <div>{{NicCode.Year}}</div>
+                                                <input [(ngModel)]="CodeClassArray[i].Description1987"
+                                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                                    type="text" />
                                             </td>
                                             <td>
-                                                <div>{{NicCode.Class}}</div>
+                                                <input [(ngModel)]="CodeClassArray[i].Description2008"
+                                                    [ngModelOptions]="{standalone: true}" class="form-control"
+                                                    type="text" />
                                             </td>
                                             <td>
-                                                <div>{{NicCode.DescriptionClass}}</div>
+                                                <button type="button" (click)="addCodeClassRow()"
+                                                    class="btn btn-outline-primary me-2">+</button>
+                                                <button type="button" *ngIf="codeClasslength>1"
+                                                    (click)="deleteCodeClassRow(i)"
+                                                    class="btn btn-outline-primary me-2">-</button>
 
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> -->
+                                </div>
                             </div>
-                          
-                          
-                        </div> -->
-                        <!-- <table class="table table-striped table-bordered">
+                        </div>
+                    </tab>
+                    <tab heading="SDS Details" id="3" disabled="disabled">
+                        <div class="col-sm-12">
+                            <label class="form-label">Whether SDS Applicable
+                            </label>
+                            <div class="clearfix"></div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" required formControlName="FC_SDS_Control"
+                                    name="FC_SDS_Control" value="Yes"
+                                    [class.is-invalid]="fcFormlist.get('FC_SDS_Control').invalid &&
+                                     (fcFormlist.get('FC_SDS_Control').dirty || fcFormlist.get('FC_SDS_Control').touched)">
+
+                                <label class="form-check-label" for="FC_SDS_Control">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" required formControlName="FC_SDS_Control"
+                                    name="FC_SDS_Control" value="No" [class.is-invalid]="fcFormlist.get('FC_SDS_Control').invalid && (fcFormlist.get('FC_SDS_Control')
+                                    .dirty || fcFormlist.get('FC_SDS_Control').touched)">
+                                <label class="form-check-label" for="FC_SDS_Control">No</label>
+                            </div>
+
+                            <div *ngIf="fcFormlist.get('FC_SDS_Control').invalid && (fcFormlist.get('FC_SDS_Control').dirty ||
+                            fcFormlist.get('FC_SDS_Control').touched)" class="invalid-feedback">
+                                <div *ngIf="fcFormlist.get('FC_SDS_Control').errors?.['required']">
+                                    This field is required.
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row mt-4" *ngIf="fcFormlist.controls['FC_SDS_Control'].value=='Yes'">
+                            <div class="flex-nowrap my-2 overflow-auto row mt-3">
+                                <div class="col-4">
+                                    <div class="col mb-4">
+                                        Name of SDS
+                                    </div>
+                                    <div class="col mb-4">
+                                        Level of SDS
+                                    </div>
+                                    <div class="col mb-4">
+                                        Country/Jurisdiction of SDS
+                                    </div>
+                                    <div class="col mb-4">
+                                        Name of parent SDS/ foreign entity
+                                    </div>
+                                    <div class="col mb-4">
+                                        Level of parent SDS/ foreign entity
+                                    </div>
+                                    <div class="col mb-4">
+                                        Country/Jurisdiction of parent SDS/ foreign entity
+                                    </div>
+                                    <div class="col mb-4">
+                                        Investment amount (if any):
+                                    </div>
+                                    <div class="col mb-4">
+                                        Date of investment (if any):
+                                    </div>
+                                    <div class="col mb-4">
+                                        Legal Entity Identifier (LEI) of the SDS
+                                    </div>
+                                    <div class="col mb-4">
+                                        Type of SDS
+                                    </div>
+                                    <div class="col mb-4">
+                                        Activity code of SDS as per 1987 NIC code
+                                    </div>
+                                    <div class="col mb-4">
+                                        Activity code of SDS as per 2008 NIC code
+                                    </div>
+                                    <div class="col mb-4">
+                                        % stake held by the parent in the SDS
+                                    </div>
+                                </div>
+                                <div class="col-3" *ngFor="let dynamic of SDSArray; let i = index;">
+                                    <div class="col mb-2">
+                                        <input [(ngModel)]="SDSArray[i].investment_SDS_Name"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col mb-2">
+
+                                        <select class="form-control" [(ngModel)]="SDSArray[i].investment_SDS_Level"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <option ng-option value="">Select Level</option>
+                                            <option *ngFor=" let object of sdsleveltypes" value="{{object.id}}">
+                                                {{object.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <select class="form-control"
+                                            [(ngModel)]="SDSArray[i].investment_SDS_Jurisdiction"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <option ng-option value="">Select Jurisdiction Type</option>
+                                            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
+                                                {{object.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col mb-2">
+                                        <input [(ngModel)]="SDSArray[i].investment_SDS_ParentName"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col mb-2">
+                                        <select class="form-control"
+                                            [(ngModel)]="SDSArray[i].investment_SDS_ParentLevel"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <option ng-option value="">Select Level</option>
+                                            <option *ngFor=" let object of sdsleveltypes" value="{{object.id}}">
+                                                {{object.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <select class="form-control"
+                                            [(ngModel)]="SDSArray[i].investment_SDS_ParentJurisdiction"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <option ng-option value="">Select Jurisdiction Type</option>
+                                            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
+                                                {{object.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentAmount"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="number" />
+                                    </div>
+                                    <div class="col mb-2">
+                                        <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentDate"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="date" />
+                                    </div>
+                                    <div class="col mb-2">
+                                        <input [(ngModel)]="SDSArray[i].investment_SDS_LEI"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col mb-2">
+                                        <select class="form-control" [(ngModel)]="SDSArray[i].investment_SDS_Type"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <option ng-option value="">Select SDS Type</option>
+                                            <option *ngFor=" let object of sdstypes" value="{{object.id}}">
+                                                {{object.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <input [(ngModel)]="SDSArray[i].investment_SDS_1987NIC"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col mb-2">
+                                        <input [(ngModel)]="SDSArray[i].investment_SDS_2008NIC"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col mb-2">
+                                        <input [(ngModel)]="SDSArray[i].investment_SDS_Stake"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="number" />
+                                    </div>
+                                    <div>
+                                        <button type="button" (click)="addSDS()"
+                                            class="btn btn-outline-primary me-2">+</button>
+                                        <button type="button" *ngIf="SDSlength>1" (click)="deleteSDS(i)"
+                                            class="btn btn-outline-primary me-2">-</button>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="Shareholding" id="4" disabled="disabled">
+                        <table class="table caption-top table-responsive">
+                            <caption>Shareholding in Foreign Entity
+                            </caption>
                             <thead>
                                 <tr>
 
-                                    <th scope="col">Activity code of IE (1987)
-                                        Class + Description
-
-
+                                    <th scope="col" width="37%"> Person resident in India
                                     </th>
-                                    <th scope="col">Activity code of IE (2008)
-                                        Class + Description
-
-
+                                    <th scope="col" width="10%">%stake
                                     </th>
-                                    <th></th>
+                                    <th scope="col" width="37%">Foreign partner(s)
+                                    </th>
+                                    <th scope="col" width="8%">%stake
+                                    </th>
+                                    <th scope="col" width="8%">Total
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
+                                <tr *ngFor="let dynamic of ShareHoldingFEArray; let i = index;">
+
+                                    <td width="37%">
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].Person"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </td>
+                                    <td width="10%">
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].Pstake"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="number"
+                                            (blur)="onBlur(ShareHoldingFEArray[i])" />
+                                    </td>
+                                    <td width="37%">
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].ForeignPartner"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </td>
+                                    <td width="8%">
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].FPstake"
+                                            [ngModelOptions]="{standalone: true}"
+                                            (blur)="onBlur(ShareHoldingFEArray[i])" class="form-control"
+                                            type="number" />
+                                    </td>
+                                    <td width="8%">
+                                        <input [(ngModel)]="ShareHoldingFEArray[i].Total"
+                                            [ngModelOptions]="{standalone: true}" disabled class="form-control"
+                                            type="text" />
+                                    </td>
 
                                     <td>
-                                        <input [(ngModel)]="CodeClassArray[i].Description1987"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </td>
-                                    <td>
-                                        <input [(ngModel)]="CodeClassArray[i].Description2008"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </td>
-                                    <td>
-                                        <button type="button" (click)="addCodeClassRow()"
+                                        <button type="button" (click)="addShareHoldingFE()"
                                             class="btn btn-outline-primary me-2">+</button>
-                                        <button type="button" *ngIf="codeClasslength>1" (click)="deleteCodeClassRow(i)"
+                                        <button type="button" *ngIf="ShareHoldingFElength>1"
+                                            (click)="deleteShareHoldingFE(i)"
                                             class="btn btn-outline-primary me-2">-</button>
 
                                     </td>
                                 </tr>
                             </tbody>
-                        </table> -->
-                        <!-- <button type="button" class="btn btn-sm btn-primary" (click)="validate()">Next</button> -->
-                        <!-- </div> -->
-                        <!-- <app-fc-investor></app-fc-investor>  -->
-                        <!-- <app-fc-investor [formGroup]="investorForm"></app-fc-investor> -->
-                        <!-- </tab> -->
-
-                        <!-- 
-                  
-                    
-                    <tab heading="DECLARATION">
-                        <table class="caption-top table table-borderless">
-                            <caption> Declaration by the Indian entity (IE)/ Resident Individual (RI)</caption>
-                            <thead>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">A</th>
-                                    <td [ngClass]="investment_individual_A.value == true ? 'del' : 'notdel'"> I/ We have
-                                        an account appearing as Non-Performing Asset (NPA)/wilful
-                                        defaulter,
-                                        or am/ are under investigation by a financial sector regulator, or am/ are under
-                                        investigation by investigative agencies in India, viz., Central Bureau of
-                                        Investigation or Directorate of Enforcement or Serious Frauds Investigation
-                                        Office
-                                        Accordingly,
-                                        i. NOC has been obtained & enclosed herewith as prescribed under Rule 10 of the
-                                        OI
-                                        Rules, or
-                                        ii. The lender bank(s)/regulatory body/investigative agency concerned failed to
-                                        furnish the objection(s) within sixty days from the date of receipt of
-                                        application
-                                        for NOC.
-
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" value="investment_individual_A" class="form-check-input"
-                                            id="investment_individual_A" formControlName="investment_individual_A"
-                                            [class.is-invalid]="investment_individual_A.invalid && (investment_individual_A.dirty || investment_individual_A.touched)">
-                                        <div *ngIf="investment_individual_A.invalid && (investment_individual_A.dirty || investment_individual_A.touched)"
-                                            class="invalid-feedback">
-                                            <div *ngIf="investment_individual_A.errors?.['required']">
-                                                This field is required.
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">B</th>
-                                    <td [ngClass]="investment_individual_B.value == true ? 'del' : 'notdel'"> Wherever
-                                        applicable, the Share certificate/ other evidence as required in
-                                        Regulation 9 and other reporting requirement as required in terms of Regulation
-                                        10
-                                        of OI Regulations, as stipulated by the Reserve Bank from time to time, in
-                                        respect
-                                        of the foreign entity under this UIN has been submitted/completed.
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" value="investment_individual_B" class="form-check-input"
-                                            id="investment_individual_B" formControlName="investment_individual_B"
-                                            [class.is-invalid]="investment_individual_B.invalid && (investment_individual_B.dirty || investment_individual_B.touched)">
-                                        <div *ngIf="investment_individual_B.invalid && (investment_individual_B.dirty || investment_individual_B.touched)"
-                                            class="invalid-feedback">
-                                            <div *ngIf="investment_individual_B.errors?.['required']">
-                                                This field is required.
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">C</th>
-                                    <td [ngClass]="investment_individual_C.value == true ? 'del' : 'notdel'"> Financial
-                                        commitment undertaken by means of debt is in compliance with OI
-                                        Rules
-                                        and OI Regulations, or corresponding extant Regulations in case where the
-                                        transaction has been done under the earlier overseas investment framework**, as
-                                        stipulated by the Reserve Bank from time to time.
-                                    </td>
-                                    <td> <input type="checkbox" value="investment_individual_C" class="form-check-input"
-                                            id="investment_individual_C" formControlName="investment_individual_C"
-                                            [class.is-invalid]="investment_individual_C.invalid && (investment_individual_C.dirty 
-                                    || investment_individual_C.touched)">
-                                        <div *ngIf="investment_individual_C.invalid && (investment_individual_C.dirty || investment_individual_C.touched)"
-                                            class="invalid-feedback">
-                                            <div *ngIf="investment_individual_C.errors?.['required']">
-                                                This field is required.
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">D</th>
-                                    <td [ngClass]="investment_individual_D.value == true ? 'del' : 'notdel'"> Pricing
-                                        and valuation norms as per OI Rules and OI Regulations, or
-                                        corresponding
-                                        extant Regulations in case where the transaction has been done under the earlier
-                                        overseas investment framework**, as stipulated by the Reserve Bank from time to
-                                        time, wherever applicable, have been complied with.
-                                    </td>
-                                    <td> <input type="checkbox" value="investment_individual_D" class="form-check-input"
-                                            id="investment_individual_D" formControlName="investment_individual_D"
-                                            [class.is-invalid]="investment_individual_D.invalid && (investment_individual_D.dirty 
-                                        || investment_individual_D.touched)">
-                                        <div *ngIf="investment_individual_D.invalid && (investment_individual_D.dirty || investment_individual_D.touched)"
-                                            class="invalid-feedback">
-                                            <div *ngIf="investment_individual_D.errors?.['required']">
-                                                This field is required.
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">E</th>
-                                    <td [ngClass]="investment_individual_E.value == true ? 'del' : 'notdel'"> It is
-                                        certified that no delay in reporting is pending for regularization as
-                                        required under Regulation 12 of OI Regulations.
-                                    </td>
-                                    <td> <input type="checkbox" value="investment_individual_E" class="form-check-input"
-                                            id="investment_individual_E" formControlName="investment_individual_E"
-                                            [class.is-invalid]="investment_individual_E.invalid && (investment_individual_E.dirty 
-                                        || investment_individual_E.touched)">
-                                        <div *ngIf="investment_individual_E.invalid && (investment_individual_E.dirty || investment_individual_E.touched)"
-                                            class="invalid-feedback">
-                                            <div *ngIf="investment_individual_E.errors?.['required']">
-                                                This field is required.
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">F</th>
-                                    <td [ngClass]="investment_individual_F.value == true ? 'del' : 'notdel'"> The
-                                        foreign securities acquired by way of gift from a person resident
-                                        outside
-                                        India, is in accordance with the provisions contained in Foreign Contribution
-                                        (Regulation) Act, 2010, and the rules and regulations made thereunder and Para 2
-                                        of
-                                        Schedule III of OI Rules.
-                                    </td>
-                                    <td> <input type="checkbox" value="investment_individual_F" class="form-check-input"
-                                            id="investment_individual_F" formControlName="investment_individual_F"
-                                            [class.is-invalid]="investment_individual_F.invalid && (investment_individual_F.dirty 
-                                        || investment_individual_F.touched)">
-                                        <div *ngIf="investment_individual_F.invalid && (investment_individual_F.dirty || investment_individual_F.touched)"
-                                            class="invalid-feedback">
-                                            <div *ngIf="investment_individual_F.errors?.['required']">
-                                                This field is required.
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">G</th>
-                                    <td [ngClass]="investment_individual_G.value == true ? 'del' : 'notdel'">This
-                                        remittance/transaction amount together with earlier
-                                        remittances/transactions
-                                        relating to
-                                        all the current and capital account transactions under the Liberalised
-                                        Remittance
-                                        Scheme during this Financial Year
-                                        is within the limit as provided under the scheme. The total amount of
-                                        remittances/transactions done by me during the
-                                        Financial Year until the date of this certificate is ___________(in FCY) the INR
-                                        equivalent of which works out to INR __________.
-                                    </td>
-                                    <td> <input type="checkbox" value="investment_individual_G" class="form-check-input"
-                                            id="investment_individual_G" formControlName="investment_individual_G"
-                                            [class.is-invalid]="investment_individual_G.invalid && (investment_individual_G.dirty 
-                                        || investment_individual_G.touched)">
-                                        <div *ngIf="investment_individual_G.invalid && (investment_individual_G.dirty || investment_individual_G.touched)"
-                                            class="invalid-feedback">
-                                            <div *ngIf="investment_individual_G.errors?.['required']">
-                                                This field is required.
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td>
-                                        I/ We hereby certify that the information furnished above are true and correct.
-                                        I/We also duly acknowledge that if any information furnished by me/us is found
-                                        to be
-                                        false and/or
-                                        incorrect, it shall be construed that the reporting requirements under FEMA,
-                                        1999,
-                                        have not been
-                                        complied with.
-                                        <div class="row">
-                                            <div class="col-sm-12 col-xl-8">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-xl-6">
-                                                        <label for="investment_Individual_Place" class="form-label">
-                                                            Place
-                                                        </label>
-                                                        <input type="text" id="investment_Individual_Place"
-                                                            name="investment_Individual_Place"
-                                                            formControlName="investment_Individual_Place"
-                                                            placeholder="Place" required minlength="1" maxlength="250"
-                                                            class="form-control form-control-sm"
-                                                            [class.is-invalid]="investment_Individual_Place.invalid && (investment_Individual_Place.dirty || investment_Individual_Place.touched)">
-                                                        <div *ngIf="investment_Individual_Place.invalid && (investment_Individual_Place.dirty || investment_Individual_Place.touched)"
-                                                            class="invalid-feedback">
-                                                            <div
-                                                                *ngIf="investment_Individual_Place.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                            <div
-                                                                *ngIf="investment_Individual_Place.errors?.['minlength']">
-                                                                This field must have at least 1 character.
-                                                            </div>
-                                                            <div
-                                                                *ngIf="investment_Individual_Place.errors?.['maxlength']">
-                                                                This field must have at most 250 characters.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-xl-6">
-                                                        <label for="investment_Individual_Date" class="form-label">
-                                                            Date
-                                                        </label>
-                                                        <input type="date" id="investment_Individual_Date"
-                                                            name="investment_Individual_Date"
-                                                            formControlName="investment_Individual_Date"
-                                                            placeholder="Date" required minlength="1" maxlength="250"
-                                                            class="form-control form-control-sm"
-                                                            [class.is-invalid]="investment_Individual_Date.invalid && (investment_Individual_Date.dirty || investment_Individual_Date.touched)">
-                                                        <div *ngIf="investment_Individual_Date.invalid && (investment_Individual_Date.dirty || investment_Individual_Date.touched)"
-                                                            class="invalid-feedback">
-                                                            <div
-                                                                *ngIf="investment_Individual_Date.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-xl-6">
-                                                        <label for="investment_Individual_Telephone" class="form-label">
-                                                            Telephone
-                                                        </label>
-                                                        <input type="text" id="investment_Individual_Telephone"
-                                                            name="investment_Individual_Telephone"
-                                                            formControlName="investment_Individual_Telephone"
-                                                            placeholder="Telephone" required minlength="1"
-                                                            maxlength="250" class="form-control form-control-sm"
-                                                            [class.is-invalid]="investment_Individual_Telephone.invalid && (investment_Individual_Telephone.dirty || investment_Individual_Telephone.touched)">
-                                                        <div *ngIf="investment_Individual_Telephone.invalid && (investment_Individual_Telephone.dirty || investment_Individual_Telephone.touched)"
-                                                            class="invalid-feedback">
-                                                            <div
-                                                                *ngIf="investment_Individual_Telephone.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                            <div
-                                                                *ngIf="investment_Individual_Telephone.errors?.['minlength']">
-                                                                This field must have at least 1 character.
-                                                            </div>
-                                                            <div
-                                                                *ngIf="investment_Individual_Telephone.errors?.['maxlength']">
-                                                                This field must have at most 250 characters.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-xl-6">
-                                                        <label for="investment_Individual_Email" class="form-label">
-                                                            Email
-                                                        </label>
-                                                        <input type="text" id="investment_Individual_Email"
-                                                            name="investment_Individual_Email"
-                                                            formControlName="investment_Individual_Email"
-                                                            placeholder="Email" required minlength="1" maxlength="250"
-                                                            class="form-control form-control-sm"
-                                                            [class.is-invalid]="investment_Individual_Email.invalid && (investment_Individual_Email.dirty || investment_Individual_Email.touched)">
-                                                        <div *ngIf="investment_Individual_Email.invalid && (investment_Individual_Email.dirty || investment_Individual_Email.touched)"
-                                                            class="invalid-feedback">
-                                                            <div
-                                                                *ngIf="investment_Individual_Email.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                            <div
-                                                                *ngIf="investment_Individual_Email.errors?.['minlength']">
-                                                                This field must have at least 1 character.
-                                                            </div>
-                                                            <div
-                                                                *ngIf="investment_Individual_Email.errors?.['maxlength']">
-                                                                This field must have at most 250 characters.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-12 col-xl-4">
-                                                <label for="investment_Individual_Stamp" class="form-label"> Stamp/Seal
-                                                </label>
-                                                <input type="text" id="investment_Individual_Stamp"
-                                                    name="investment_Individual_Stamp"
-                                                    formControlName="investment_Individual_Stamp"
-                                                    placeholder="Stamp/Seal" required minlength="1" maxlength="250"
-                                                    class="form-control form-control-sm"
-                                                    [class.is-invalid]="investment_Individual_Stamp.invalid && (investment_Individual_Stamp.dirty || investment_Individual_Stamp.touched)">
-                                                <div *ngIf="investment_Individual_Stamp.invalid && (investment_Individual_Stamp.dirty || investment_Individual_Stamp.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="investment_Individual_Stamp.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="investment_Individual_Stamp.errors?.['minlength']">
-                                                        This field must have at least 1 character.
-                                                    </div>
-                                                    <div *ngIf="investment_Individual_Stamp.errors?.['maxlength']">
-                                                        This field must have at most 250 characters.
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
                             <tfoot>
-                                <th scope="row">List of Enclosure
-                                </th>
-                                <td>XXXXXXXXXXXXXXXXXXXXXX
-                                </td>
-                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                                <td class="p-3">Total</td>
+                                <td class="p-3">{{TotalPstake}}</td>
+                                <td></td>
+                                <td class="p-3">{{TotalFPstake}}</td>
+                                <td class="p-3">{{Totalstake}}</td>
                             </tfoot>
                         </table>
-                        <table class="caption-top table table-borderless">
-                            <caption>Certificate by the Statutory Auditors of the Indian Entity (IE)/ Group Company, as
-                                applicable
+
+                    </tab>
+                    <tab heading="Financial Commitment" id="5" disabled="disabled">
+                        <table class="table table-striped table-bordered caption-top table-responsive">
+                            <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY)
+                                SECTION C OF FORM-FC TO BE IMPLEMENTED
                             </caption>
                             <thead>
+                                <tr>
 
+                                    <th scope="col">Method or source of investments
+                                    </th>
+                                    <th scope="col">Category of investments
+                                    </th>
+                                    <th scope="col"> Date
+                                    </th>
+                                    <th scope="col">Amount (in FCY)</th>
+                                    <th> Amount (in INR)
+                                    </th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td>It is certified that the terms and conditions contained in OI Rules and OI
-                                        Regulations
-                                        have been complied with by the Indian Entity/ Group Company, as applicable,
-                                        _____________________________________
-                                        (Name of the Indian Entity/ Group Company) in respect of the investment under
-                                        report. In particular, it is certified that
-                                        (strike out whichever is not applicable):
+                                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">i</th>
-                                    <td>i. The investment is not in violation of the provisions contained in Rule 19 of
-                                        Foreign Exchange Management
-                                        (Overseas Investment) Rules, 2022 or corresponding extant Regulations in case
-                                        where
-                                        the transaction has been
-                                        done under the earlier overseas investment framework**,
-                                        as stipulated by the Reserve Bank from time to time.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">ii</th>
-                                    <td>ii. The NOC as required in terms of Rule 10 of Foreign Exchange Management
-                                        (Overseas
-                                        Investment) Rules,
-                                        2022 has been obtained, wherever applicable.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">iii</th>
-                                    <td>iii. The remittance/transaction amount towards the investment together with
-                                        earlier
-                                        Financial Commitment is within the
-                                        limit as stipulated by the Reserve Bank from time to time. The total financial
-                                        commitment of the Indian entity __________________________ (Name of the Indian
-                                        entity) is _______(in foreign currency) the INR equivalent^ of which works out
-                                        to
-                                        INR______that works out to ____%
-                                        of its Net Worth which is INR ___________/-, as on the date of last audited
-                                        balance
-                                        sheet, i.e., (date ________)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">iv</th>
-                                    <td>iv. Indian entity has complied with the pricing/valuation norms prescribed in
-                                        Foreign Exchange Management (Overseas Investment)
-                                        Rules, 2022, or corresponding extant Regulations in case where the transaction
-                                        has
-                                        been done under the earlier overseas investment
-                                        framework**, as stipulated by the Reserve Bank from time to time.
-                                        The valuation for the investment in _______ (no of shares/% stake) is arrived at
-                                        _________ (amount in FCY).@
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">v</th>
-                                    <td>v. Indian entity has complied with the conditions prescribed in para 2 of
-                                        Schedule I
-                                        of Foreign Exchange Management
-                                        (Overseas Investment) Rules, 2022 on ODI in Financial services activity, or
-                                        corresponding extant Regulations in case where
-                                        the transaction has been done under the earlier overseas
-                                        investment framework**, as stipulated by the Reserve Bank from time to time,
-                                        wherever applicable.
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">vi</th>
-                                    <td>vi. We have verified the records and certify that no delay in reporting is
-                                        pending
-                                        for regularization as required under Regulation 12 of Foreign Exchange
-                                        Management
-                                        (Overseas Investment) Regulations, 2022.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">vii</th>
-                                    <td>vii. vii. The amount of the guarantee(s) given by the group company of the
-                                        Indian
-                                        entity
-                                        (as holding/ subsidiary/ promoter group company), together with the Financial
-                                        Commitment/s of the
-                                        group company, if any, are within the limit as provided in Foreign Exchange
-                                        Management
-                                        (Overseas Investment) Rules, 2022 read with the provisions contained in Foreign
-                                        Exchange Management
-                                        (Overseas Investment) Regulations, 2022 and Foreign Exchange Management
-                                        (Overseas
-                                        Investment)
-                                        Directions, 2022. The total financial commitment of the Indian
-                                        entity __________________________ (Name of the Indian entity) is -------(in
-                                        foreign
-                                        currency)
-                                        the INR equivalent^ of which works out to INR that works out to ____% of
-                                        its Net Worth which is INR ___________/-, as on the date of last audited balance
-                                        sheet, i.e.,
-                                        (date ________) </td>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td>Note: @ Valuation certificate is attached
-                                        * Please refer to Regulation 5(2) of OI Regulations, in case of a guarantee
-                                        extended
-                                        by a group company.
-                                        ^ Exchange rate of INR shall be taken on the date of financial commitment or
-                                        this
-                                        certificate, whichever is earlier
-                                        ** Notification No. FEMA.19/RB-2000 dated 3rd May 2000 and Notification
-                                        No.FEMA.120/RB-2004 dated July 7, 2004, as amended from time to time
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"></th>
                                     <td>
-                                        <div class="row">
-                                            <div class="col-sm-12 col-xl-8">
-                                                <div class="col-sm-12 col-xl-12">
-                                                    <label for="investment_Email" class="form-label"> Signature of the
-                                                        Statutory Auditors of the Indian entity
-                                                    </label>
-                                                    <input type="text" id="investment_Group_Signature"
-                                                        name="investment_Group_Signature"
-                                                        formControlName="investment_Group_Signature"
-                                                        placeholder=" Signature of the Statutory Auditors of the Indian entity"
-                                                        required minlength="1" maxlength="250"
-                                                        class="form-control form-control-sm"
-                                                        [class.is-invalid]="investment_Group_Signature.invalid && (investment_Group_Signature.dirty || investment_Group_Signature.touched)">
-                                                    <div *ngIf="investment_Group_Signature.invalid && (investment_Group_Signature.dirty || investment_Group_Signature.touched)"
-                                                        class="invalid-feedback">
-                                                        <div *ngIf="investment_Group_Signature.errors?.['required']">
-                                                            This field is required.
-                                                        </div>
-                                                        <div *ngIf="investment_Group_Signature.errors?.['minlength']">
-                                                            This field must have at least 1 character.
-                                                        </div>
-                                                        <div *ngIf="investment_Group_Signature.errors?.['maxlength']">
-                                                            This field must have at most 250 characters.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-12 col-xl-12">
-                                                    <label for="investment_Group_Name" class="form-label"> Name of the
-                                                        audit
-                                                        firm, Registration number and UDIN
-                                                    </label>
-                                                    <input type="text" id="investment_Group_Name"
-                                                        name="investment_Group_Name"
-                                                        formControlName="investment_Group_Name"
-                                                        placeholder="Name of the audit firm, Registration number and UDIN"
-                                                        required minlength="1" maxlength="250"
-                                                        class="form-control form-control-sm"
-                                                        [class.is-invalid]="investment_Group_Name.invalid && (investment_Group_Name.dirty || investment_Group_Name.touched)">
-                                                    <div *ngIf="investment_Group_Name.invalid && (investment_Group_Name.dirty || investment_Group_Name.touched)"
-                                                        class="invalid-feedback">
-                                                        <div *ngIf="investment_Group_Name.errors?.['required']">
-                                                            This field is required.
-                                                        </div>
-                                                        <div *ngIf="investment_Group_Name.errors?.['minlength']">
-                                                            This field must have at least 1 character.
-                                                        </div>
-                                                        <div *ngIf="investment_Group_Name.errors?.['maxlength']">
-                                                            This field must have at most 250 characters.
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </td>
+                                    <td>
+                                        <select class="form-control"
+                                            [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <option ng-option value="">Select Category Type</option>
+                                            <option *ngFor=" let object of invetmentsCategorytypes"
+                                                value="{{object.id}}">
+                                                {{object.name}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input [(ngModel)]="FinancialCommitmentArray[i].Date"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="date" />
+                                    </td>
+                                    <td>
 
+                                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
+                                    </td>
+                                    <td>
+                                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
+                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
 
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-xl-6">
-                                                        <label for="investment_Group_Place" class="form-label"> Place
-                                                        </label>
-                                                        <input type="text" id="investment_Group_Place"
-                                                            name="investment_Group_Place"
-                                                            formControlName="investment_Group_Place" placeholder="Place"
-                                                            required minlength="1" maxlength="250"
-                                                            class="form-control form-control-sm"
-                                                            [class.is-invalid]="investment_Group_Place.invalid && (investment_Group_Place.dirty || investment_Group_Place.touched)">
-                                                        <div *ngIf="investment_Group_Place.invalid && (investment_Group_Place.dirty || investment_Group_Place.touched)"
-                                                            class="invalid-feedback">
-                                                            <div *ngIf="investment_Group_Place.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                            <div *ngIf="investment_Group_Place.errors?.['minlength']">
-                                                                This field must have at least 1 character.
-                                                            </div>
-                                                            <div *ngIf="investment_Group_Place.errors?.['maxlength']">
-                                                                This field must have at most 250 characters.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-xl-6">
-                                                        <label for="investment_Group_Date" class="form-label">
-                                                            Date
-                                                        </label>
-                                                        <input type="text" id="investment_Group_Date"
-                                                            name="investment_Group_Date"
-                                                            formControlName="investment_Group_Date" placeholder="Date"
-                                                            required minlength="1" maxlength="250"
-                                                            class="form-control form-control-sm"
-                                                            [class.is-invalid]="investment_Group_Date.invalid && (investment_Group_Date.dirty || investment_Group_Date.touched)">
-                                                        <div *ngIf="investment_Group_Date.invalid && (investment_Group_Date.dirty || investment_Group_Date.touched)"
-                                                            class="invalid-feedback">
-                                                            <div *ngIf="investment_Group_Date.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" (click)="addFinancialCommitment()"
+                                            class="btn btn-outline-primary me-2">+</button>
+                                        <button type="button" *ngIf="FinancialCommitmentlength>1"
+                                            (click)="deleteFinancialCommitment(i)"
+                                            class="btn btn-outline-primary me-2">-</button>
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-xl-6">
-                                                        <label for="investment_Group_Telephone" class="form-label">
-                                                            Telephone
-                                                        </label>
-                                                        <input type="text" id="investment_Group_Telephone"
-                                                            name="investment_Group_Telephone"
-                                                            formControlName="investment_Group_Telephone"
-                                                            placeholder="Telephone" required minlength="1"
-                                                            maxlength="250" class="form-control form-control-sm"
-                                                            [class.is-invalid]="investment_Group_Telephone.invalid && (investment_Group_Telephone.dirty || investment_Group_Telephone.touched)">
-                                                        <div *ngIf="investment_Group_Telephone.invalid && (investment_Group_Telephone.dirty || investment_Group_Telephone.touched)"
-                                                            class="invalid-feedback">
-                                                            <div
-                                                                *ngIf="investment_Group_Telephone.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                            <div
-                                                                *ngIf="investment_Group_Telephone.errors?.['minlength']">
-                                                                This field must have at least 1 character.
-                                                            </div>
-                                                            <div
-                                                                *ngIf="investment_Group_Telephone.errors?.['maxlength']">
-                                                                This field must have at most 250 characters.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-xl-6">
-                                                        <label for="investment_Group_Email" class="form-label"> Email
-                                                        </label>
-                                                        <input type="text" id="investment_Group_Email"
-                                                            name="investment_Group_Email"
-                                                            formControlName="investment_Group_Email" placeholder="Email"
-                                                            required minlength="1" maxlength="250"
-                                                            class="form-control form-control-sm"
-                                                            [class.is-invalid]="investment_Group_Email.invalid && (investment_Group_Email.dirty || investment_Group_Email.touched)">
-                                                        <div *ngIf="investment_Group_Email.invalid && (investment_Group_Email.dirty || investment_Group_Email.touched)"
-                                                            class="invalid-feedback">
-                                                            <div *ngIf="investment_Group_Email.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                            <div *ngIf="investment_Group_Email.errors?.['minlength']">
-                                                                This field must have at least 1 character.
-                                                            </div>
-                                                            <div *ngIf="investment_Group_Email.errors?.['maxlength']">
-                                                                This field must have at most 250 characters.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-12 col-xl-4">
-                                                <label for="investment_Group_Stamp" class="form-label"> Stamp/Seal
-                                                </label>
-                                                <input type="text" id="investment_Group_Stamp"
-                                                    name="investment_Group_Stamp"
-                                                    formControlName="investment_Group_Stamp" placeholder=" Stamp/Seal"
-                                                    required minlength="1" maxlength="250"
-                                                    class="form-control form-control-sm"
-                                                    [class.is-invalid]="investment_Group_Stamp.invalid && (investment_Group_Stamp.dirty || investment_Group_Stamp.touched)">
-                                                <div *ngIf="investment_Group_Stamp.invalid && (investment_Group_Stamp.dirty || investment_Group_Stamp.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="investment_Group_Stamp.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="investment_Group_Stamp.errors?.['minlength']">
-                                                        This field must have at least 1 character.
-                                                    </div>
-                                                    <div *ngIf="investment_Group_Stamp.errors?.['maxlength']">
-                                                        This field must have at most 250 characters.
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
-                            <tfoot>
-                                <th scope="row">List of Enclosure
-                                </th>
-                                <td>XXXXXXXXXXXXXXXXXXXXXX
-                                </td>
-                                <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                            </tfoot>
                         </table>
-                        <button type="button" class="btn btn-sm btn-primary" (click)="validate()">Next</button>
                     </tab>
-                    <tab heading="Restructring">
+                    <tab heading="Declaration" id="6" disabled="disabled">
+                        <div formGroupName="Declarationform">
+                            <table class="caption-top table table-borderless">
+                                <caption> Declaration by the Indian entity (IE)/ Resident Individual (RI)</caption>
+                                <thead>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A</th>
+                                        <td
+                                            [ngClass]="fcFormlist.get('Declarationform.investment_individual_A').value == true ? 'del' : 'notdel'">
+                                            I/ We
+                                            have
+                                            an account appearing as Non-Performing Asset (NPA)/wilful
+                                            defaulter,
+                                            or am/ are under investigation by a financial sector regulator, or am/ are
+                                            under
+                                            investigation by investigative agencies in India, viz., Central Bureau of
+                                            Investigation or Directorate of Enforcement or Serious Frauds Investigation
+                                            Office
+                                            Accordingly,
+                                            i. NOC has been obtained & enclosed herewith as prescribed under Rule 10 of
+                                            the
+                                            OI
+                                            Rules, or
+                                            ii. The lender bank(s)/regulatory body/investigative agency concerned failed
+                                            to
+                                            furnish the objection(s) within sixty days from the date of receipt of
+                                            application
+                                            for NOC.
+
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" value="investment_individual_A"
+                                                class="form-check-input" id="investment_individual_A"
+                                                formControlName="investment_individual_A" [class.is-invalid]="fcFormlist.get('Declarationform.investment_individual_A').invalid &&
+        (fcFormlist.get('Declarationform.investment_individual_A').dirty ||
+        fcFormlist.get('Declarationform.investment_individual_A').touched)">
+                                            <div *ngIf="fcFormlist.get('Declarationform.investment_individual_A').invalid &&
+                                        (fcFormlist.get('Declarationform.investment_individual_A').dirty ||
+                                        fcFormlist.get('Declarationform.investment_individual_A').touched)"
+                                                class="invalid-feedback">
+                                                <div *ngIf="investment_individual_A.errors?.['required']">
+                                                    This field is required.
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">B</th>
+                                        <td
+                                            [ngClass]="fcFormlist.get('Declarationform.investment_individual_B').value == true ? 'del' : 'notdel'">
+                                            Wherever
+                                            applicable, the Share certificate/ other evidence as required in
+                                            Regulation 9 and other reporting requirement as required in terms of
+                                            Regulation
+                                            10
+                                            of OI Regulations, as stipulated by the Reserve Bank from time to time, in
+                                            respect
+                                            of the foreign entity under this UIN has been submitted/completed.
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" value="investment_individual_B"
+                                                class="form-check-input" id="investment_individual_B"
+                                                formControlName="investment_individual_B" [class.is-invalid]="fcFormlist.get('Declarationform.investment_individual_B').invalid &&
+                                                (fcFormlist.get('Declarationform.investment_individual_B').dirty ||
+                                                fcFormlist.get('Declarationform.investment_individual_B').touched)">
+                                            <div *ngIf="fcFormlist.get('Declarationform.investment_individual_B').invalid &&
+                                            (fcFormlist.get('Declarationform.investment_individual_B').dirty ||
+                                            fcFormlist.get('Declarationform.investment_individual_B').touched)"
+                                                class="invalid-feedback">
+                                                <div *ngIf="investment_individual_B.errors?.['required']">
+                                                    This field is required.
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">C</th>
+                                        <td
+                                            [ngClass]="fcFormlist.get('Declarationform.investment_individual_C').value == true ? 'del' : 'notdel'">
+                                            Financial
+                                            commitment undertaken by means of debt is in compliance with OI
+                                            Rules
+                                            and OI Regulations, or corresponding extant Regulations in case where the
+                                            transaction has been done under the earlier overseas investment framework**,
+                                            as
+                                            stipulated by the Reserve Bank from time to time.
+                                        </td>
+                                        <td> <input type="checkbox" value="investment_individual_C"
+                                                class="form-check-input" id="investment_individual_C"
+                                                formControlName="investment_individual_C" [class.is-invalid]="fcFormlist.get('Declarationform.investment_individual_C').invalid &&
+                                                (fcFormlist.get('Declarationform.investment_individual_C').dirty ||
+                                                fcFormlist.get('Declarationform.investment_individual_C').touched)">
+                                            <div *ngIf="fcFormlist.get('Declarationform.investment_individual_C').invalid &&
+                                            (fcFormlist.get('Declarationform.investment_individual_C').dirty ||
+                                            fcFormlist.get('Declarationform.investment_individual_C').touched)"
+                                                class="invalid-feedback">
+                                                <div *ngIf="investment_individual_C.errors?.['required']">
+                                                    This field is required.
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">D</th>
+                                        <td
+                                            [ngClass]="fcFormlist.get('Declarationform.investment_individual_D').value == true ? 'del' : 'notdel'">
+                                            Pricing
+                                            and valuation norms as per OI Rules and OI Regulations, or
+                                            corresponding
+                                            extant Regulations in case where the transaction has been done under the
+                                            earlier
+                                            overseas investment framework**, as stipulated by the Reserve Bank from time
+                                            to
+                                            time, wherever applicable, have been complied with.
+                                        </td>
+                                        <td> <input type="checkbox" value="investment_individual_D"
+                                                class="form-check-input" id="investment_individual_D"
+                                                formControlName="investment_individual_D" [class.is-invalid]="fcFormlist.get('Declarationform.investment_individual_D').invalid &&
+                                                (fcFormlist.get('Declarationform.investment_individual_D').dirty ||
+                                                fcFormlist.get('Declarationform.investment_individual_D').touched)">
+                                            <div *ngIf="fcFormlist.get('Declarationform.investment_individual_D').invalid &&
+                                            (fcFormlist.get('Declarationform.investment_individual_D').dirty ||
+                                            fcFormlist.get('Declarationform.investment_individual_D').touched)"
+                                                class="invalid-feedback">
+                                                <div *ngIf="investment_individual_D.errors?.['required']">
+                                                    This field is required.
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">E</th>
+                                        <td
+                                            [ngClass]="fcFormlist.get('Declarationform.investment_individual_E').value == true ? 'del' : 'notdel'">
+                                            It is
+                                            certified that no delay in reporting is pending for regularization as
+                                            required under Regulation 12 of OI Regulations.
+                                        </td>
+                                        <td> <input type="checkbox" value="investment_individual_E"
+                                                class="form-check-input" id="investment_individual_E"
+                                                formControlName="investment_individual_E" [class.is-invalid]="fcFormlist.get('Declarationform.investment_individual_E').invalid &&
+                                                (fcFormlist.get('Declarationform.investment_individual_E').dirty ||
+                                                fcFormlist.get('Declarationform.investment_individual_E').touched)">
+                                            <div *ngIf="fcFormlist.get('Declarationform.investment_individual_E').invalid &&
+                                            (fcFormlist.get('Declarationform.investment_individual_E').dirty ||
+                                            fcFormlist.get('Declarationform.investment_individual_E').touched)"
+                                                class="invalid-feedback">
+                                                <div *ngIf="investment_individual_E.errors?.['required']">
+                                                    This field is required.
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">F</th>
+                                        <td
+                                            [ngClass]="fcFormlist.get('Declarationform.investment_individual_F').value == true ? 'del' : 'notdel'">
+                                            The
+                                            foreign securities acquired by way of gift from a person resident
+                                            outside
+                                            India, is in accordance with the provisions contained in Foreign
+                                            Contribution
+                                            (Regulation) Act, 2010, and the rules and regulations made thereunder and
+                                            Para 2
+                                            of
+                                            Schedule III of OI Rules.
+                                        </td>
+                                        <td> <input type="checkbox" value="investment_individual_F"
+                                                class="form-check-input" id="investment_individual_F"
+                                                formControlName="investment_individual_F" [class.is-invalid]="fcFormlist.get('Declarationform.investment_individual_F').invalid &&
+                                                (fcFormlist.get('Declarationform.investment_individual_F').dirty ||
+                                                fcFormlist.get('Declarationform.investment_individual_F').touched)">
+                                            <div *ngIf="fcFormlist.get('Declarationform.investment_individual_F').invalid &&
+                                            (fcFormlist.get('Declarationform.investment_individual_F').dirty ||
+                                            fcFormlist.get('Declarationform.investment_individual_F').touched)"
+                                                class="invalid-feedback">
+                                                <div *ngIf="investment_individual_F.errors?.['required']">
+                                                    This field is required.
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">G</th>
+                                        <td
+                                            [ngClass]="fcFormlist.get('Declarationform.investment_individual_G').value == true ? 'del' : 'notdel'">
+                                            This
+                                            remittance/transaction amount together with earlier
+                                            remittances/transactions
+                                            relating to
+                                            all the current and capital account transactions under the Liberalised
+                                            Remittance
+                                            Scheme during this Financial Year
+                                            is within the limit as provided under the scheme. The total amount of
+                                            remittances/transactions done by me during the
+                                            Financial Year until the date of this certificate is ___________(in FCY) the
+                                            INR
+                                            equivalent of which works out to INR __________.
+                                        </td>
+                                        <td> <input type="checkbox" value="investment_individual_G"
+                                                class="form-check-input" id="investment_individual_G"
+                                                formControlName="investment_individual_G" [class.is-invalid]="fcFormlist.get('Declarationform.investment_individual_G').invalid &&
+                                                (fcFormlist.get('Declarationform.investment_individual_G').dirty ||
+                                                fcFormlist.get('Declarationform.investment_individual_G').touched)">
+                                            <div *ngIf="fcFormlist.get('Declarationform.investment_individual_G').invalid &&
+                                            (fcFormlist.get('Declarationform.investment_individual_G').dirty ||
+                                            fcFormlist.get('Declarationform.investment_individual_G').touched)"
+                                                class="invalid-feedback">
+                                                <div *ngIf="investment_individual_G.errors?.['required']">
+                                                    This field is required.
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>
+                                            I/ We hereby certify that the information furnished above are true and
+                                            correct.
+                                            I/We also duly acknowledge that if any information furnished by me/us is
+                                            found
+                                            to be
+                                            false and/or
+                                            incorrect, it shall be construed that the reporting requirements under FEMA,
+                                            1999,
+                                            have not been
+                                            complied with.
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xl-12">
+                                                    <div class="row">
+                                                        <div class="col-3 input-block mb-4">
+                                                            <input type="text" id="investment_Individual_Place"
+                                                                spellcheck="false" required class="form-control"
+                                                                formControlName="investment_Individual_Place"
+                                                                [class.is-invalid]="fcFormlist.get('Declarationform.investment_Individual_Place').invalid &&
+                                    (fcFormlist.get('Declarationform.investment_Individual_Place').dirty ||
+                                    fcFormlist.get('Declarationform.investment_Individual_Place').touched)">
+                                                            <span class="placeholder">Place</span>
+                                                        </div>
+                                                        <div class="col-3 input-block mb-4">
+                                                            <input type="date" id="investment_Individual_Date"
+                                                                spellcheck="false" required class="form-control"
+                                                                formControlName="investment_Individual_Date"
+                                                                [class.is-invalid]="fcFormlist.get('Declarationform.investment_Individual_Date').invalid &&
+                                    (fcFormlist.get('Declarationform.investment_Individual_Date').dirty ||
+                                    fcFormlist.get('Declarationform.investment_Individual_Date').touched)">
+                                                            <span class="placeholder">Date</span>
+                                                        </div>
+                                                        <div class="col-3 input-block mb-4">
+                                                            <input type="text" id="investment_Individual_Telephone"
+                                                                spellcheck="false" class="form-control"
+                                                                formControlName="investment_Individual_Telephone"
+                                                                [class.is-invalid]="fcFormlist.get('Declarationform.investment_Individual_Telephone').invalid &&
+                                    (fcFormlist.get('Declarationform.investment_Individual_Telephone').dirty ||
+                                    fcFormlist.get('Declarationform.investment_Individual_Telephone').touched)">
+                                                            <span class="placeholder">Telephone</span>
+                                                        </div>
+                                                        <div class="col-3 input-block mb-4">
+                                                            <input type="text" id="investment_Individual_Email"
+                                                                spellcheck="false" required class="form-control"
+                                                                formControlName="investment_Individual_Email"
+                                                                [class.is-invalid]="fcFormlist.get('Declarationform.investment_Individual_Email').invalid &&
+                                    (fcFormlist.get('Declarationform.investment_Individual_Email').dirty ||
+                                    fcFormlist.get('Declarationform.investment_Individual_Email').touched)">
+                                                            <span class="placeholder">Email</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-xl-4 input-block mb-4">
+                                                    <input type="text" id="investment_Individual_Stamp"
+                                                        spellcheck="false" class="form-control"
+                                                        formControlName="investment_Individual_Stamp"
+                                                        [class.is-invalid]="fcFormlist.get('Declarationform.investment_Individual_Stamp').invalid &&
+                            (fcFormlist.get('Declarationform.investment_Individual_Stamp').dirty ||
+                            fcFormlist.get('Declarationform.investment_Individual_Stamp').touched)">
+                                                    <span class="placeholder"> Stamp/Seal</span>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <th scope="row">List of Enclosure
+                                    </th>
+                                    <td>XXXXXXXXXXXXXXXXXXXXXX
+                                    </td>
+                                    <!-- <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td> -->
+                                </tfoot>
+                            </table>
+                        </div>
+                    </tab>
+                    <tab heading="Certificate" id="7" disabled="disabled">
+                        <div formGroupName="Certificateform">
+                            <table class="caption-top table table-borderless">
+                                <caption>Certificate by the Statutory Auditors of the Indian Entity (IE)/ Group Company,
+                                    as
+                                    applicable
+                                </caption>
+                                <thead>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>It is certified that the terms and conditions contained in OI Rules and OI
+                                            Regulations
+                                            have been complied with by the Indian Entity/ Group Company, as applicable,
+                                            <b>{{fcFormlist.get('investorForm.investor_name').value}}</b>
+                                            (Name of the Indian Entity/ Group Company) in respect of the investment
+                                            under
+                                            report. In particular, it is certified that
+                                            (strike out whichever is not applicable):
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">i</th>
+                                        <td>i. The investment is not in violation of the provisions contained in Rule 19
+                                            of
+                                            Foreign Exchange Management
+                                            (Overseas Investment) Rules, 2022 or corresponding extant Regulations in
+                                            case
+                                            where
+                                            the transaction has been
+                                            done under the earlier overseas investment framework**,
+                                            as stipulated by the Reserve Bank from time to time.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">ii</th>
+                                        <td>ii. The NOC as required in terms of Rule 10 of Foreign Exchange Management
+                                            (Overseas
+                                            Investment) Rules,
+                                            2022 has been obtained, wherever applicable.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">iii</th>
+                                        <td>iii. The remittance/transaction amount towards the investment together with
+                                            earlier
+                                            Financial Commitment is within the
+                                            limit as stipulated by the Reserve Bank from time to time. The total
+                                            financial
+                                            commitment of the Indian entity
+                                            <b>{{fcFormlist.get('investorForm.investor_name').value}}</b>(Name of the
+                                            Indian
+                                            entity) is <b>{{fcFormlist.get('investment_USD').value}}</b>(in foreign
+                                            currency) the INR equivalent^ of which works
+                                            out
+                                            to
+                                            INR______that works out to ____%
+                                            of its Net Worth which is INR ___________/-, as on the date of last audited
+                                            balance
+                                            sheet, i.e., (date ________)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">iv</th>
+                                        <td>iv. Indian entity has complied with the pricing/valuation norms prescribed
+                                            in
+                                            Foreign Exchange Management (Overseas Investment)
+                                            Rules, 2022, or corresponding extant Regulations in case where the
+                                            transaction
+                                            has
+                                            been done under the earlier overseas investment
+                                            framework**, as stipulated by the Reserve Bank from time to time.
+                                            The valuation for the investment in _______ (no of shares/% stake) is
+                                            arrived at
+                                            _________ (amount in FCY).@
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">v</th>
+                                        <td>v. Indian entity has complied with the conditions prescribed in para 2 of
+                                            Schedule I
+                                            of Foreign Exchange Management
+                                            (Overseas Investment) Rules, 2022 on ODI in Financial services activity, or
+                                            corresponding extant Regulations in case where
+                                            the transaction has been done under the earlier overseas
+                                            investment framework**, as stipulated by the Reserve Bank from time to time,
+                                            wherever applicable.
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">vi</th>
+                                        <td>vi. We have verified the records and certify that no delay in reporting is
+                                            pending
+                                            for regularization as required under Regulation 12 of Foreign Exchange
+                                            Management
+                                            (Overseas Investment) Regulations, 2022.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">vii</th>
+                                        <td>vii. vii. The amount of the guarantee(s) given by the group company of the
+                                            Indian
+                                            entity
+                                            (as holding/ subsidiary/ promoter group company), together with the
+                                            Financial
+                                            Commitment/s of the
+                                            group company, if any, are within the limit as provided in Foreign Exchange
+                                            Management
+                                            (Overseas Investment) Rules, 2022 read with the provisions contained in
+                                            Foreign
+                                            Exchange Management
+                                            (Overseas Investment) Regulations, 2022 and Foreign Exchange Management
+                                            (Overseas
+                                            Investment)
+                                            Directions, 2022. The total financial commitment of the Indian
+                                            entity <b>{{fcFormlist.get('investorForm.investor_name').value}}</b> (Name
+                                            of the Indian entity) is
+                                            <b>{{fcFormlist.get('investment_USD').value}}</b>(in
+                                            foreign
+                                            currency)
+                                            the INR equivalent^ of which works out to INR that works out to ____% of
+                                            its Net Worth which is INR ___________/-, as on the date of last audited
+                                            balance
+                                            sheet, i.e.,
+                                            (date ________)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <td>Note: @ Valuation certificate is attached
+                                            * Please refer to Regulation 5(2) of OI Regulations, in case of a guarantee
+                                            extended
+                                            by a group company.
+                                            ^ Exchange rate of INR shall be taken on the date of financial commitment or
+                                            this
+                                            certificate, whichever is earlier
+                                            ** Notification No. FEMA.19/RB-2000 dated 3rd May 2000 and Notification
+                                            No.FEMA.120/RB-2004 dated July 7, 2004, as amended from time to time
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-3 input-block mb-4">
+                                                    <input type="text" id="investment_Group_Signature"
+                                                        spellcheck="false" class="form-control"
+                                                        formControlName="investment_Group_Signature" [class.is-invalid]="fcFormlist.get('Certificateform.investment_Group_Signature').invalid &&
+                                (fcFormlist.get('Certificateform.investment_Group_Signature').dirty ||
+                                fcFormlist.get('Certificateform.investment_Group_Signature').touched)">
+                                                    <span class="placeholder"> Signature of
+                                                        the
+                                                        Statutory Auditors</span>
+                                                </div>
+                                                <div class="col-3 input-block mb-4">
+                                                    <input type="text" id="investment_Group_NameAudit"
+                                                        spellcheck="false" required class="form-control"
+                                                        formControlName="investment_Group_NameAudit" [class.is-invalid]="fcFormlist.get('Certificateform.investment_Group_NameAudit').invalid &&
+                                (fcFormlist.get('Certificateform.investment_Group_NameAudit').dirty ||
+                                fcFormlist.get('Certificateform.investment_Group_NameAudit').touched)">
+                                                    <span class="placeholder">Name of Audit Firm</span>
+                                                </div>
+                                                <div class="col-3 input-block mb-4">
+                                                    <input type="text" id="investment_Group_RegistrationNo"
+                                                        spellcheck="false" required class="form-control"
+                                                        formControlName="investment_Group_RegistrationNo"
+                                                        [class.is-invalid]="fcFormlist.get('Certificateform.investment_Group_RegistrationNo').invalid &&
+                                (fcFormlist.get('Certificateform.investment_Group_RegistrationNo').dirty ||
+                                fcFormlist.get('Certificateform.investment_Group_RegistrationNo').touched)">
+                                                    <span class="placeholder">Registration number</span>
+                                                </div>
+                                                <div class="col-3 input-block mb-4">
+                                                    <input type="text" id="investment_Group_UDIN" spellcheck="false"
+                                                        required class="form-control"
+                                                        formControlName="investment_Group_UDIN" [class.is-invalid]="fcFormlist.get('Certificateform.investment_Group_UDIN').invalid &&
+                                (fcFormlist.get('Certificateform.investment_Group_UDIN').dirty ||
+                                fcFormlist.get('Certificateform.investment_Group_UDIN').touched)">
+                                                    <span class="placeholder">UDIN</span>
+                                                </div>
+                                                <div class="col-3 input-block mb-4">
+                                                    <input type="text" id="investment_Group_Place" spellcheck="false"
+                                                        required class="form-control"
+                                                        formControlName="investment_Group_Place" [class.is-invalid]="fcFormlist.get('Certificateform.investment_Group_Place').invalid &&
+                                (fcFormlist.get('Certificateform.investment_Group_Place').dirty ||
+                                fcFormlist.get('Certificateform.investment_Group_Place').touched)">
+                                                    <span class="placeholder">Place</span>
+                                                </div>
+                                                <div class="col-3 input-block mb-4">
+                                                    <input type="date" id="investment_Group_Date" spellcheck="false"
+                                                        required class="form-control"
+                                                        formControlName="investment_Group_Date" [class.is-invalid]="fcFormlist.get('Certificateform.investment_Group_Date').invalid &&
+                                (fcFormlist.get('Certificateform.investment_Group_Date').dirty ||
+                                fcFormlist.get('Certificateform.investment_Group_Date').touched)">
+                                                    <span class="placeholder">Date</span>
+                                                </div>
+                                                <div class="col-3 input-block mb-4">
+                                                    <input type="text" id="investment_Group_Telephone"
+                                                        spellcheck="false" class="form-control"
+                                                        formControlName="investment_Group_Telephone" [class.is-invalid]="fcFormlist.get('Certificateform.investment_Group_Telephone').invalid &&
+                                (fcFormlist.get('Certificateform.investment_Group_Telephone').dirty ||
+                                fcFormlist.get('Certificateform.investment_Group_Telephone').touched)">
+                                                    <span class="placeholder">Telephone</span>
+                                                </div>
+                                                <div class="col-3 input-block mb-4">
+                                                    <input type="text" id="investment_Group_Email" spellcheck="false"
+                                                        required class="form-control"
+                                                        formControlName="investment_Group_Email" [class.is-invalid]="fcFormlist.get('Certificateform.investment_Group_Email').invalid &&
+                                (fcFormlist.get('Certificateform.investment_Group_Email').dirty ||
+                                fcFormlist.get('Certificateform.investment_Group_Email').touched)">
+                                                    <span class="placeholder">Email</span>
+                                                </div>
+                                                <div class="col-3 input-block mb-4">
+                                                    <input type="text" id="investment_Group_Stamp" spellcheck="false"
+                                                     class="form-control"
+                                                        formControlName="investment_Group_Stamp" [class.is-invalid]="fcFormlist.get('Certificateform.investment_Group_Stamp').invalid &&
+                                (fcFormlist.get('Certificateform.investment_Group_Stamp').dirty ||
+                                fcFormlist.get('Certificateform.investment_Group_Stamp').touched)">
+                                                    <span class="placeholder"> Stamp/Seal</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <th scope="row">List of Enclosure
+                                    </th>
+                                    <td>XXXXXXXXXXXXXXXXXXXXXX
+                                    </td>
+                                    <!-- <td><input type="checkbox" class="form-check-input" id="exampleCheck1"></td> -->
+                                </tfoot>
+                            </table>
+                        </div>
+
+                    </tab>
+                    <tab heading="Restructring" id="8" disabled="disabled">
                         <h4>Reporting of restructuring of the balance sheet of the foreign entity involving diminution
                             in
                             the total value of the outstanding dues towards person resident in India on account of
                             investment in equity and debt</h4>
                         <h5 class="mt-3">Note: All amounts should be in a single foreign currency and in actuals</h5>
-                        <div class="col-sm-12 col-xl-12">
-                            <label for="investment_Email" class="form-label"> 13 digit Unique Identification Number
-                                allotted
-                                by the Reserve Bank
-                            </label>
-                            <input type="text" class="form-control">
-                            <h6>
-                                Name, AD Code and branch of the designated AD bank
-                            </h6>
-                        </div>
                         <div class="row g-3 mt-3">
                             <div class="col-sm-1">
                                 <span><b>S.No</b></span>
@@ -1559,608 +1968,8 @@
                             </table>
                         </div>
                     </tab>
-                    <tab heading="Disinvestment">
+                    <tab heading="Disinvestment" id="9" disabled="disabled">
                         <app-form-fc-disinvestment [reactiveForm]="reactiveForm"></app-form-fc-disinvestment>
-                    </tab> -->
-                    </tab>
-                    <tab heading="JV/WOS DETAILS" id="2" disabled="disabled">
-                        <div class="row mt-4" formGroupName="JVWOSform">
-                            <div class="col-2 input-block mb-4">
-                                <input type="text" id="investment_ForeignEntity" spellcheck="false" required
-                                    class="form-control" formControlName="investment_ForeignEntity" [class.is-invalid]="fcFormlist.get('JVWOSform.investment_ForeignEntity').invalid &&
-        (fcFormlist.get('JVWOSform.investment_ForeignEntity').dirty ||
-        fcFormlist.get('JVWOSform.investment_ForeignEntity').touched)">
-                                <span class="placeholder">Name of foreign entity</span>
-                            </div>
-                            <div class="col-2 input-block mb-4">
-                                <ng-select [items]="CountryList" bindLabel="name" placeholder="Select Country"
-                                    formControlName="investment_Jurisdiction">
-                                </ng-select>
-                                <span class="placeholder">Country/Jurisdiction</span>
-                            </div>
-                            <div class="col-2 input-block mb-4">
-                                <input type="date" id="investment_DateIncorpation" spellcheck="false" required
-                                    class="form-control" formControlName="investment_DateIncorpation"
-                                    [class.is-invalid]="fcFormlist.get('JVWOSform.investment_DateIncorpation').invalid &&
-        (fcFormlist.get('JVWOSform.investment_DateIncorpation').dirty ||
-        fcFormlist.get('JVWOSform.investment_DateIncorpation').touched)">
-                                <span class="placeholder">Date of Incorporation</span>
-                            </div>
-                            <div class="col-2 input-block mb-4">
-                                <input type="text" id="investment_WOS_LEI" spellcheck="false" required
-                                    class="form-control" formControlName="investment_WOS_LEI" [class.is-invalid]="fcFormlist.get('JVWOSform.investment_WOS_LEI').invalid &&
-        (fcFormlist.get('JVWOSform.investment_WOS_LEI').dirty ||
-        fcFormlist.get('JVWOSform.investment_WOS_LEI').touched)">
-                                <span class="placeholder">Legal Entity Identifier (LEI)</span>
-                            </div>
-                            <div class="col-2 input-block mb-4">
-                                <input type="text" id="investment_WOS_Email" spellcheck="false" required
-                                    class="form-control" formControlName="investment_WOS_Email" [class.is-invalid]="fcFormlist.get('JVWOSform.investment_WOS_Email').invalid &&
-        (fcFormlist.get('JVWOSform.investment_WOS_Email').dirty ||
-        fcFormlist.get('JVWOSform.investment_WOS_Email').touched)">
-                                <span class="placeholder">Email</span>
-                            </div>
-                            <div class="col-2 input-block mb-4">
-                                <select class="form-select">
-                                    <option ng-option value="">Select Type</option>
-                                    <option *ngFor=" let object of accountingtypes" value="{{object.id}}">
-                                        {{object.name}}
-                                    </option>
-                                </select>
-                                <span class="placeholder">Accounting Year</span>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-sm-12">
-                                <label class="form-label">Whether the person resident in India has control in foreign
-                                    entity (Refer to the definition of "control" in the OI Rules)
-                                </label>
-
-                                <div class="form-check form-check-inline" style="margin-left: 48px;">
-                                    <input class="form-check-input" type="radio" required
-                                        formControlName="investment_ControlFE" id="investment_ControlFE"
-                                        name="investment_ControlFE" value="Yes" [class.is-invalid]="fcFormlist.get('JVWOSform.investment_ControlFE').invalid &&
-                                        (fcFormlist.get('JVWOSform.investment_ControlFE').dirty ||
-                                        fcFormlist.get('JVWOSform.investment_ControlFE').touched)">
-                                    <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" required
-                                        formControlName="investment_ControlFE" id="investment_ControlFE"
-                                        name="investment_ControlFE" value="No" [class.is-invalid]="fcFormlist.get('JVWOSform.investment_ControlFE').invalid &&
-                                        (fcFormlist.get('JVWOSform.investment_ControlFE').dirty ||
-                                        fcFormlist.get('JVWOSform.investment_ControlFE').touched)">
-                                    <label class="form-check-label" for="inlineRadio2">No</label>
-                                </div>
-
-                            </div>
-                            <div class="container">
-                                <table class="table table-striped table-bordered mt-3">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th scope="col">Activity code of IE (1987)
-                                                Class + Description
-
-
-                                            </th>
-                                            <th scope="col">Activity code of IE (2008)
-                                                Class + Description
-
-
-                                            </th>
-                                            <!-- <th></th> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
-                                            <td></td>
-                                            <td>
-                                                <div class="search_tbl">
-                                                    <div class="input-group">
-
-                                                        <input type="text" class="form-control" name="search"
-                                                            placeholder="Search for codes"
-                                                            (keyup)="searchNicCodeWOS($event,'1987')">
-                                                        <span class="search_icon"> <button type="button"
-                                                                data-bs-toggle="modal"
-                                                                (click)="OnModuleTabClickWOS(1987)"
-                                                                data-bs-target="#staticBackdropWOS"
-                                                                style="border: 0;"><i class="fas fa-search"></i>
-                                                            </button></span>
-                                                    </div>
-                                                </div>
-                                                <!-- <input [(ngModel)]="CodeClassArray[i].Description1987"
-                                                    [ngModelOptions]="{standalone: true}" class="form-control"
-                                                    type="text" /> -->
-                                            </td>
-                                            <td>
-                                                <div class="search_tbl">
-                                                    <div class="input-group">
-
-                                                        <input type="text" class="form-control" name="search"
-                                                            placeholder="Search for codes"
-                                                            (keyup)="searchNicCodewos($event,'2008')">
-                                                        <span class="search_icon"> <button type="button"
-                                                                (click)="OnModuleTabClickWOS(2008)" style="border: 0;"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#staticBackdropWOS"><i
-                                                                    class="fas fa-search"></i>
-                                                            </button></span>
-                                                    </div>
-                                                </div>
-                                                <!-- <input [(ngModel)]="CodeClassArray[i].Description2008"
-                                                    [ngModelOptions]="{standalone: true}" class="form-control"
-                                                    type="text" /> -->
-                                            </td>
-                                            <!-- <td>
-                                                <button type="button" (click)="addCodeClassRow()"
-                                                    class="btn btn-outline-primary me-2">+</button>
-                                                <button type="button" *ngIf="codeClasslength>1"
-                                                    (click)="deleteCodeClassRow(i)"
-                                                    class="btn btn-outline-primary me-2">-</button>
-        
-                                            </td> -->
-                                        </tr>
-
-                                        <tr *ngFor="let NicCode of WOSFC_FDINICCodeDesArray; let i = index;">
-                                            <td>
-                                                <div>{{NicCode.Year}}</div>
-                                            </td>
-                                            <td>
-                                                <div>{{NicCode.Class}}</div>
-                                            </td>
-                                            <td>
-                                                <div>{{NicCode.DescriptionClass}}</div>
-
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <div class="modal fade" id="staticBackdropWOS" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropWOS"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-xl">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title mb-3" id="staticBackdropWOS">NIC Code &
-                                                    Description
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="clearfix"></div>
-                                                <div class="bg-white pt-3">
-                                                    <div class="row mb-3">
-                                                        <div class="col-3">
-                                                            <div class="row mb-3">
-                                                                <a [ngClass]="ActiveTab == 1987 ? 'nav-item active' : 'nav-item'"
-                                                                    (click)="OnModuleTabClickWOS(1987)" id="nic1987-tab"
-                                                                    data-toggle="tab" role="tab" aria-controls="gsr"
-                                                                    aria-selected="false">NIC Code 1987</a>
-
-                                                                <a class="btn btn-danger" style="width: 39px;
-                                                            margin-top: -28px;
-                                                            margin-inline: 120px;" href="assets/NIC_Codes_1987.pdf"
-                                                                    download="NIC_Codes_1987.pdf"><i
-                                                                        class="fas fa-file-pdf"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <div class="row mb-3">
-                                                                <a [ngClass]="ActiveTab == 2008 ? 'nav-item active' : 'nav-item'"
-                                                                    (click)="OnModuleTabClickWOS(2008)" id="nic2008-tab"
-                                                                    data-toggle="tab" role="tab"
-                                                                    aria-controls="regulation" aria-selected="false">NIC
-                                                                    Code 2008</a>
-                                                                <a class="btn btn-danger" style="width: 39px;
-                                                            margin-top: -28px;
-                                                            margin-inline: 120px;" href="assets/NIC_Codes_1987.pdf"
-                                                                    download="NIC_Codes_2008.pdf"><i
-                                                                        class="fas fa-file-pdf"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <div class="search_tbl">
-                                                                <div class="input-group">
-
-                                                                    <input type="text" class="form-control"
-                                                                        name="search" placeholder="Search for codes"
-                                                                        (keyup)="searchNicCodeWOS($event)">
-                                                                    <span class="search_icon"> <button type="submit"
-                                                                            style="border: 0;"><i
-                                                                                class="fas fa-search"></i>
-                                                                        </button></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <table class="table table-striped table-no-bordered table-hover">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col"><input type="checkbox"
-                                                                    (click)="SelectAllNicCodesWOS($event)"></th>
-                                                            <!-- <th scope="col">Year</th> -->
-                                                            <th scope="col">NIC Code</th>
-                                                            <th scope="col">Description</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr *ngFor="let NIC_Code of NICCodeListShowWOS; let i = index">
-                                                            <td>
-                                                                <div><input type="checkbox" [disabled]="NIC_Code.status"
-                                                                        [(ngModel)]="NIC_Code.SelectedValue"
-                                                                        [ngModelOptions]="{standalone: true}"
-                                                                        (click)="SelectWOSFC_FDINICCodeDes(NIC_Code)" />
-                                                                </div>
-                                                            </td>
-                                                            <!-- <td>
-                                                            <div>{{NIC_Code.Year}}</div>
-                                                        </td> -->
-                                                            <td>
-                                                                <div>{{NIC_Code.Class}}</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>{{NIC_Code.DescriptionClass}}</div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary"
-                                                    data-bs-dismiss="modal">Done</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <table class="table table-striped table-bordered mt-3">
-                                    <thead>
-                                        <tr>
-
-                                            <th scope="col">Activity code of IE (1987)
-                                                Class + Description
-
-
-                                            </th>
-                                            <th scope="col">Activity code of IE (2008)
-                                                Class + Description
-
-
-                                            </th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let dynamic of CodeClassArray; let i = index;">
-
-                                            <td>
-                                                <input [(ngModel)]="CodeClassArray[i].Description1987"
-                                                    [ngModelOptions]="{standalone: true}" class="form-control"
-                                                    type="text" />
-                                            </td>
-                                            <td>
-                                                <input [(ngModel)]="CodeClassArray[i].Description2008"
-                                                    [ngModelOptions]="{standalone: true}" class="form-control"
-                                                    type="text" />
-                                            </td>
-                                            <td>
-                                                <button type="button" (click)="addCodeClassRow()"
-                                                    class="btn btn-outline-primary me-2">+</button>
-                                                <button type="button" *ngIf="codeClasslength>1"
-                                                    (click)="deleteCodeClassRow(i)"
-                                                    class="btn btn-outline-primary me-2">-</button>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table> -->
-                            </div>
-                        </div>
-                    </tab>
-                    <tab heading="SDS Details" id="3" disabled="disabled">
-                        <div class="col-sm-12">
-                            <label class="form-label">Whether SDS Applicable
-                            </label>
-                            <div class="clearfix"></div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" required formControlName="FC_SDS_Control"
-                                    name="FC_SDS_Control" value="Yes"
-                                    [class.is-invalid]="fcFormlist.get('FC_SDS_Control').invalid &&
-                                     (fcFormlist.get('FC_SDS_Control').dirty || fcFormlist.get('FC_SDS_Control').touched)">
-
-                                <label class="form-check-label" for="FC_SDS_Control">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" required formControlName="FC_SDS_Control"
-                                    name="FC_SDS_Control" value="No"
-                                    [class.is-invalid]="fcFormlist.get('FC_SDS_Control').invalid && (fcFormlist.get('FC_SDS_Control')
-                                    .dirty || fcFormlist.get('FC_SDS_Control').touched)">
-                                <label class="form-check-label" for="FC_SDS_Control">No</label>
-                            </div>
-
-                            <div *ngIf="fcFormlist.get('FC_SDS_Control').invalid && (fcFormlist.get('FC_SDS_Control').dirty ||
-                            fcFormlist.get('FC_SDS_Control').touched)"
-                                class="invalid-feedback">
-                                <div *ngIf="fcFormlist.get('FC_SDS_Control').errors?.['required']">
-                                    This field is required.
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row mt-4" *ngIf="fcFormlist.controls['FC_SDS_Control'].value=='Yes'">
-                            <div class="flex-nowrap my-2 overflow-auto row mt-3">
-                                <div class="col-4">
-                                    <div class="col mb-4">
-                                        Name of SDS
-                                    </div>
-                                    <div class="col mb-4">
-                                        Level of SDS
-                                    </div>
-                                    <div class="col mb-4">
-                                        Country/Jurisdiction of SDS
-                                    </div>
-                                    <div class="col mb-4">
-                                        Name of parent SDS/ foreign entity
-                                    </div>
-                                    <div class="col mb-4">
-                                        Level of parent SDS/ foreign entity
-                                    </div>
-                                    <div class="col mb-4">
-                                        Country/Jurisdiction of parent SDS/ foreign entity
-                                    </div>
-                                    <div class="col mb-4">
-                                        Investment amount (if any):
-                                    </div>
-                                    <div class="col mb-4">
-                                        Date of investment (if any):
-                                    </div>
-                                    <div class="col mb-4">
-                                        Legal Entity Identifier (LEI) of the SDS
-                                    </div>
-                                    <div class="col mb-4">
-                                        Type of SDS
-                                    </div>
-                                    <div class="col mb-4">
-                                        Activity code of SDS as per 1987 NIC code
-                                    </div>
-                                    <div class="col mb-4">
-                                        Activity code of SDS as per 2008 NIC code
-                                    </div>
-                                    <div class="col mb-4">
-                                        % stake held by the parent in the SDS
-                                    </div>
-                                </div>
-                                <div class="col-3" *ngFor="let dynamic of SDSArray; let i = index;">
-                                    <div class="col mb-2">
-                                        <input [(ngModel)]="SDSArray[i].investment_SDS_Name"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </div>
-                                    <div class="col mb-2">
-
-                                        <select class="form-control" [(ngModel)]="SDSArray[i].investment_SDS_Level"
-                                            [ngModelOptions]="{standalone: true}">
-                                            <option ng-option value="">Select Level</option>
-                                            <option *ngFor=" let object of sdsleveltypes" value="{{object.id}}">
-                                                {{object.name}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="col mb-2">
-                                        <select class="form-control"
-                                            [(ngModel)]="SDSArray[i].investment_SDS_Jurisdiction"
-                                            [ngModelOptions]="{standalone: true}">
-                                            <option ng-option value="">Select Jurisdiction Type</option>
-                                            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
-                                                {{object.name}}
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col mb-2">
-                                        <input [(ngModel)]="SDSArray[i].investment_SDS_ParentName"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </div>
-                                    <div class="col mb-2">
-                                        <select class="form-control"
-                                            [(ngModel)]="SDSArray[i].investment_SDS_ParentLevel"
-                                            [ngModelOptions]="{standalone: true}">
-                                            <option ng-option value="">Select Level</option>
-                                            <option *ngFor=" let object of sdsleveltypes" value="{{object.id}}">
-                                                {{object.name}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="col mb-2">
-                                        <select class="form-control"
-                                            [(ngModel)]="SDSArray[i].investment_SDS_ParentJurisdiction"
-                                            [ngModelOptions]="{standalone: true}">
-                                            <option ng-option value="">Select Jurisdiction Type</option>
-                                            <option *ngFor=" let object of Jurisdictiontypes" value="{{object.id}}">
-                                                {{object.name}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="col mb-2">
-                                        <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentAmount"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="number" />
-                                    </div>
-                                    <div class="col mb-2">
-                                        <input [(ngModel)]="SDSArray[i].investment_SDS_InvestmentDate"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="date" />
-                                    </div>
-                                    <div class="col mb-2">
-                                        <input [(ngModel)]="SDSArray[i].investment_SDS_LEI"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </div>
-                                    <div class="col mb-2">
-                                        <select class="form-control" [(ngModel)]="SDSArray[i].investment_SDS_Type"
-                                            [ngModelOptions]="{standalone: true}">
-                                            <option ng-option value="">Select SDS Type</option>
-                                            <option *ngFor=" let object of sdstypes" value="{{object.id}}">
-                                                {{object.name}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="col mb-2">
-                                        <input [(ngModel)]="SDSArray[i].investment_SDS_1987NIC"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </div>
-                                    <div class="col mb-2">
-                                        <input [(ngModel)]="SDSArray[i].investment_SDS_2008NIC"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </div>
-                                    <div class="col mb-2">
-                                        <input [(ngModel)]="SDSArray[i].investment_SDS_Stake"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="number" />
-                                    </div>
-                                    <div>
-                                        <button type="button" (click)="addSDS()"
-                                            class="btn btn-outline-primary me-2">+</button>
-                                        <button type="button" *ngIf="SDSlength>1" (click)="deleteSDS(i)"
-                                            class="btn btn-outline-primary me-2">-</button>
-                                    </div>
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                    </tab>
-                    <tab heading="Shareholding" id="4" disabled="disabled">
-                        <table class="table caption-top table-responsive">
-                            <caption>Whether IE/ RI/ group company/ Trust/ Society making FC or undertaking
-                                disinvestment is
-                                under:
-                            </caption>
-                            <thead>
-                                <tr>
-
-                                    <th scope="col"> Person resident in India
-                                    </th>
-                                    <th scope="col">%stake
-                                    </th>
-                                    <th scope="col">Foreign partner(s)
-                                    </th>
-                                    <th scope="col">%stake
-                                    </th>
-                                    <th scope="col">Total
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let dynamic of ShareHoldingFEArray; let i = index;">
-
-                                    <td>
-                                        <input [(ngModel)]="ShareHoldingFEArray[i].Person"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </td>
-                                    <td>
-                                        <input [(ngModel)]="ShareHoldingFEArray[i].Pstake"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="number"
-                                            (blur)="onBlur(ShareHoldingFEArray[i])" />
-                                    </td>
-                                    <td>
-                                        <input [(ngModel)]="ShareHoldingFEArray[i].ForeignPartner"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </td>
-                                    <td>
-                                        <input [(ngModel)]="ShareHoldingFEArray[i].FPstake"
-                                            [ngModelOptions]="{standalone: true}"
-                                            (blur)="onBlur(ShareHoldingFEArray[i])" class="form-control"
-                                            type="number" />
-                                    </td>
-                                    <td>
-                                        <input [(ngModel)]="ShareHoldingFEArray[i].Total"
-                                            [ngModelOptions]="{standalone: true}" disabled class="form-control"
-                                            type="text" />
-                                    </td>
-
-                                    <td>
-                                        <button type="button" (click)="addShareHoldingFE()"
-                                            class="btn btn-outline-primary me-2">+</button>
-                                        <button type="button" *ngIf="ShareHoldingFElength>1"
-                                            (click)="deleteShareHoldingFE(i)"
-                                            class="btn btn-outline-primary me-2">-</button>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <td>Total</td>
-                                <td>{{TotalPstake}}</td>
-                                <td></td>
-                                <td>{{TotalFPstake}}</td>
-                                <td>{{Totalstake}}</td>
-                            </tfoot>
-                        </table>
-                    </tab>
-                    <tab heading="Financial Commitment" id="5" disabled="disabled">
-                        <table class="table table-striped table-bordered caption-top table-responsive">
-                            <caption>Financial commitment being made w.r.t above foreign entity (in INR and FCY)
-                                SECTION C OF FORM-FC TO BE IMPLEMENTED
-                            </caption>
-                            <thead>
-                                <tr>
-
-                                    <th scope="col">Method or source of investments
-                                    </th>
-                                    <th scope="col">Category of investments
-                                    </th>
-                                    <th scope="col"> Date
-                                    </th>
-                                    <th scope="col">Amount (in FCY)</th>
-                                    <th> Amount (in INR)
-                                    </th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let dynamic of FinancialCommitmentArray; let i = index;">
-
-                                    <td>
-                                        <input [(ngModel)]="FinancialCommitmentArray[i].InvestSource"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </td>
-                                    <td>
-                                        <select class="form-control"
-                                            [(ngModel)]="FinancialCommitmentArray[i].CategoryType"
-                                            [ngModelOptions]="{standalone: true}">
-                                            <option ng-option value="">Select Category Type</option>
-                                            <option *ngFor=" let object of invetmentsCategorytypes"
-                                                value="{{object.id}}">
-                                                {{object.name}}
-                                            </option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input [(ngModel)]="FinancialCommitmentArray[i].Date"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="date" />
-                                    </td>
-                                    <td>
-
-                                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountFCY"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-                                    </td>
-                                    <td>
-                                        <input [(ngModel)]="FinancialCommitmentArray[i].AmountINR"
-                                            [ngModelOptions]="{standalone: true}" class="form-control" type="text" />
-
-                                    </td>
-                                    <td>
-                                        <button type="button" (click)="addFinancialCommitment()"
-                                            class="btn btn-outline-primary me-2">+</button>
-                                        <button type="button" *ngIf="FinancialCommitmentlength>1"
-                                            (click)="deleteFinancialCommitment(i)"
-                                            class="btn btn-outline-primary me-2">-</button>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </tab>
 
                 </tabset>
@@ -2170,10 +1979,9 @@
                     <button class="btn btn-sm btn-primary" *ngIf="btnShowNext" (click)="updateNext()">
                         Next </button>
                 </div>
-                <!-- [disabled]="fcFormlist.invalid" -->
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" *ngIf="!tabactive" class="btn btn-primary" (click)="submit()">Submit</button>
     </form>
 </div>
 <!-- <app-form-niccodes></app-form-niccodes> -->

@@ -22,6 +22,7 @@ const esopRoute = require('./routes/FormEsop.route')
 const aprRoute = require('./routes/FormAPR.route')
 const opiRoute = require('./routes/FormOpi.route')
 const cocRoute = require('./routes/FormCoc.route')
+const fcRoute = require('./routes/FormFC.route')
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -38,6 +39,7 @@ app.use('/api', esopRoute)
 app.use('/api', aprRoute)
 app.use('/api', opiRoute)
 app.use('/api', cocRoute)
+app.use('/api', fcRoute)
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {

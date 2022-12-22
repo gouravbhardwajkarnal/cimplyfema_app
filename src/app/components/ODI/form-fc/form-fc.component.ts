@@ -9,18 +9,23 @@ import { CommonService } from "src/app/service/common.service";
 import { Subscription } from 'rxjs';
 import { FCFormService } from 'src/app/service/formfc.service';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
+import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-form-fc',
   templateUrl: './form-fc.component.html',
-  styleUrls: ['./form-fc.component.css']
+  styleUrls: ['./form-fc.component.css'],
+  providers: [DatePipe]
 })
 export class FormFcComponent implements OnInit {
   CountryList: any = [];
   disinvetmenttype: DisinvetmentType[];
   id: string = '0';
+  typeshow: string = '0';
   CityList: any = [];
+  fctypes: DisinvetmentType[];
   basicCityList: any = [];
   basicStateList: any = [];
   // reactiveForm!: FormGroup;
@@ -44,6 +49,7 @@ export class FormFcComponent implements OnInit {
   TotalPstake: number = 0;
   TotalFPstake: number = 0;
   Totalstake: number = 0;
+  tabactive: boolean = true;
 
   sumFC: any = {};
   sumFClength: number = 0;
@@ -59,7 +65,7 @@ export class FormFcComponent implements OnInit {
   dataModel: any = {};
   NICCodeListShow: any = [];
   NICCodeListShowWOS: any = [];
-  
+
   NICCodeList: any = [];
   NICCodeListWOS: any = [];
   SelectFC_FDINICCodeDesArray: any = [];
@@ -77,15 +83,18 @@ export class FormFcComponent implements OnInit {
   SDSlength: number = 0;
   FinancialCommitmentArray: Array<FinancialCommitmentGrid> = [];
   FinancialCommitment: any = {};
-  FinancialCommitmentlength: number = 0;
+  FinancialCommitmentlength: number = 0; Today: Date;
   constructor(private readonly route: ActivatedRoute, private apiService: ApiService,
-    private commonservice: CommonService, private fb: FormBuilder, private fcformService: FCFormService) {
+    private commonservice: CommonService, private fb: FormBuilder, public datepipe: DatePipe, private fcformService: FCFormService, private toastr: ToastrService) {
+    this.fctypes = commonservice.getAllfctypes();
+    this.Today = new Date();
     this.btnShowNext = true;
     this.readBank();
     this.readNICCodeDes();
     this.readCountry();
     this.sdstypes = commonservice.getAllsdstypes();
     this.sdsleveltypes = commonservice.getAllsdsleveltypes();
+    var today = new Date();
     this.fcFormlist = this.fb.group({
       investment_UIN: ['', Validators.required],
       investment_Route: ['', Validators.required],
@@ -111,79 +120,70 @@ export class FormFcComponent implements OnInit {
         'investor_NetworthDate': new FormControl('', Validators.required),
       }),
       JVWOSform: new FormGroup({
-      'investment_ForeignEntity': new FormControl('', Validators.required),
-      'investment_Jurisdiction': new FormControl('', Validators.required),
-      'investment_DateIncorpation': new FormControl('', Validators.required),
-      'investment_WOS_LEI': new FormControl('', Validators.required),
-      'investment_ControlFE': new FormControl('', Validators.required),
-      'investment_AccountingYear': new FormControl('', Validators.required),
-      'investment_WOS_Email': new FormControl('', Validators.required),
+        'investment_ForeignEntity': new FormControl('', Validators.required),
+        'investment_Jurisdiction': new FormControl('', Validators.required),
+        'investment_DateIncorpation': new FormControl('', Validators.required),
+        'investment_WOS_LEI': new FormControl('', Validators.required),
+        'investment_ControlFE': new FormControl('', Validators.required),
+        'investment_AccountingYear': new FormControl('', Validators.required),
+        'investment_WOS_Email': new FormControl('', Validators.required),
+      }),
+      Declarationform: new FormGroup({
+        'investment_Individual_Place': new FormControl('', Validators.required),
+        'investment_Individual_Date': new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
+        'investment_Individual_Stamp': new FormControl(''),
+        'investment_Individual_Telephone': new FormControl(''),
+        'investment_Individual_Email': new FormControl('', Validators.required),
+        'investment_individual_A': new FormControl(''),
+        'investment_individual_B': new FormControl(''),
+        'investment_individual_C': new FormControl(''),
+        'investment_individual_D': new FormControl(''),
+        'investment_individual_E': new FormControl(''),
+        'investment_individual_F': new FormControl(''),
+        'investment_individual_G': new FormControl(''),
+      }),
+      Certificateform: new FormGroup({
+        'investment_Group_Signature': new FormControl(''),
+        'investment_Group_NameAudit': new FormControl('', Validators.required),
+        'investment_Group_UDIN': new FormControl('', Validators.required),
+        'investment_Group_RegistrationNo': new FormControl('', Validators.required),
+        'investment_Group_Place': new FormControl('', Validators.required),
+        'investment_Group_Date': new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
+        'investment_Group_Stamp': new FormControl(''),
+        'investment_Group_Telephone': new FormControl(''),
+        'investment_Group_Email': new FormControl('', Validators.required),
       })
-
-      // investment_Individual_Place: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Individual_Date: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Individual_Stamp: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Individual_Telephone: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Individual_Email: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Group_Signature: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Group_Name: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Group_Place: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Group_Date: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Group_Stamp: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Group_Telephone: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_Group_Email: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-      // investment_individual_A: ['', Validators.required],
-      // investment_individual_B: ['', Validators.required],
-      // investment_individual_C: ['', Validators.required],
-      // investment_individual_D: ['', Validators.required],
-      // investment_individual_E: ['', Validators.required],
-      // investment_individual_F: ['', Validators.required],
-      // investment_individual_G: ['', Validators.required],
-
-      // disinvestment_UIN: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
     });
     this.readCity();
     this.readState();
     // this.investment_model = {} as IinvestmentWOS;
     this.Jurisdictiontypes = commonservice.getAllJurisdictiontypes();
-    this.accountingtypes=commonservice.getAllaccountingtypes();
-    this.invetmentsCategorytypes=commonservice.getAllinvetmentsCategorytypes();
-    // const control = <FormArray>this.fcFormlist.controls['investorform'];
-
-    // control.push(this.fb.group({
-    //   investment_name: ['', Validators.required, Validators.minLength(1), Validators.maxLength(250)],
-    //   investment_pan: ['', Validators.required, Validators.maxLength(10), Validators.minLength(1)],
-    //   investment_LEI: ['', Validators.required, Validators.maxLength(250), Validators.minLength(1)],
-    // }));
-
-    //});
+    this.accountingtypes = commonservice.getAllaccountingtypes();
+    this.invetmentsCategorytypes = commonservice.getAllinvetmentsCategorytypes();
     this.setForm();
     this.disinvetmenttype = commonservice.getAllDisinvestmentTypes();
     console.log(this.disinvetmenttype);
     this.investment_model = {} as Iinvestment;
-    // this.fcFormlistSub = this.fcformService.fcForm$
-    //   .subscribe(form => {
-    //       this.fcFormlist = form
-    //       this.investordetails = this.fcFormlist.get('investordetails') as FormArray
-    //     })
   }
 
   ngOnInit(): void {
-    this.SDS = {  investment_SDS_Name: "",
-    investment_SDS_Level: "",
-    investment_SDS_Jurisdiction: "",
-    investment_SDS_ParentName: "",
-    investment_SDS_ParentLevel: "",
-    investment_SDS_ParentJurisdiction: "",
-    investment_SDS_InvestmentAmount: "",
-    investment_SDS_InvestmentDate: "", 
-    investment_SDS_LEI: "",
-    investment_SDS_Type: "", 
-    investment_SDS_1987NIC: "", 
-    investment_SDS_2008NIC: "", 
-    investment_SDS_Stake: ""}
-  this.SDSArray.push(this.SDS);
-  this.SDSlength = this.SDSArray.length;
+    this.SDS = {
+      investment_SDS_Name: "",
+      investment_SDS_Level: "",
+      investment_SDS_Jurisdiction: "",
+      investment_SDS_ParentName: "",
+      investment_SDS_ParentLevel: "",
+      investment_SDS_ParentJurisdiction: "",
+      investment_SDS_InvestmentAmount: "",
+      investment_SDS_InvestmentDate: "",
+      investment_SDS_LEI: "",
+      investment_SDS_Type: "",
+      investment_SDS_1987NIC: "",
+      investment_SDS_2008NIC: "",
+      investment_SDS_Stake: ""
+    }
+    this.SDSArray.push(this.SDS);
+    this.SDSlength = this.SDSArray.length;
     this.ShareHoldingFE = { Person: "", Pstake: 0, ForeignPartner: "", FPstake: 0, Total: 0 };
     this.ShareHoldingFEArray.push(this.ShareHoldingFE);
     this.ShareHoldingFElength = this.ShareHoldingFEArray.length;
@@ -200,83 +200,9 @@ export class FormFcComponent implements OnInit {
     this.PEFEntity = { NameFE: "", UIN: "", BankName: "" }
     this.PEFEntityArray.push(this.PEFEntity);
     this.PEFEntitylength = this.PEFEntityArray.length;
-    // this.codeClass = { Description1987: "", Description2008: "" };
-    // this.CodeClassArray.push(this.codeClass);
-    // this.codeClasslength = this.CodeClassArray.length;
-    this.FinancialCommitment = { InvestSource: "", CategoryType: "",Date:"",AmountFCY:"",AmountINR: ""}
+    this.FinancialCommitment = { InvestSource: "", CategoryType: "", Date: "", AmountFCY: "", AmountINR: "" }
     this.FinancialCommitmentArray.push(this.FinancialCommitment);
     this.FinancialCommitmentlength = this.FinancialCommitmentArray.length;
-    // this.reactiveForm = new FormGroup({
-
-    //   investment_LEI: new FormControl(this.investment_model.investment_LEI, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //     // emailValidator(),
-    //   ]),
-    //   investment_pin: new FormControl(this.investment_model.investment_pin, [
-    //     Validators.required,
-    //     Validators.minLength(6),
-    //     Validators.maxLength(6),
-    //   ]),
-    //   investment_Address: new FormControl(this.investment_model.investment_Address, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_City: new FormControl(this.investment_model.investment_City, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_GroupIE: new FormControl(this.investment_model.investment_GroupIE, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_ContactPerson: new FormControl(this.investment_model.investment_GroupIE, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_CPDesignation: new FormControl(this.investment_model.investment_GroupIE, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_TelephoneNumber: new FormControl(this.investment_model.investment_GroupIE, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_MobileNumber: new FormControl(this.investment_model.investment_GroupIE, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_Email: new FormControl(this.investment_model.investment_GroupIE, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_NetWorth: new FormControl(this.investment_model.investment_GroupIE, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_AmountINR: new FormControl(this.investment_model.investment_AmountINR, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-    //   investment_NetWorthDate: new FormControl(this.investment_model.investment_NetWorthDate, [
-    //     Validators.required,
-    //     Validators.minLength(1),
-    //     Validators.maxLength(250),
-    //   ]),
-
-
-    // });
   }
   readCountry() {
     this.apiService.getCountry().subscribe((data) => {
@@ -289,7 +215,7 @@ export class FormFcComponent implements OnInit {
     console.log(item)
     let itemExist = this.SelectFC_FDINICCodeDesArray.findIndex(nicCode => nicCode.Class === item.Class);
     if (item.SelectedValue == true) {
-      this.NICCodeListShow.forEach(function(checkbox) {
+      this.NICCodeListShow.forEach(function (checkbox) {
         if (checkbox.Class !== item.Class) {
           checkbox.status = !checkbox.status;
         }
@@ -301,15 +227,15 @@ export class FormFcComponent implements OnInit {
       this.SelectFC_FDINICCodeDesArray.splice(itemExist, 1)
     }
     else {
-      this.SelectFC_FDINICCodeDesArray.push({ Year: item.Year, Class: item.Class, DescriptionClass: item.DescriptionClass ,SelectedValue:true})
-      this.NICCodeListShow.forEach(function(checkbox) {
+      this.SelectFC_FDINICCodeDesArray.push({ Year: item.Year, Class: item.Class, DescriptionClass: item.DescriptionClass, SelectedValue: true })
+      this.NICCodeListShow.forEach(function (checkbox) {
         if (checkbox.Class !== item.Class) {
           checkbox.status = !checkbox.status;
         }
         if (checkbox.Class == item.Class) {
           checkbox.SelectedValue = true;
         }
-      
+
       })
     }
   }
@@ -318,7 +244,7 @@ export class FormFcComponent implements OnInit {
     console.log(item)
     let itemExist = this.WOSFC_FDINICCodeDesArray.findIndex(nicCode => nicCode.Class === item.Class);
     if (item.SelectedValue == true) {
-      this.NICCodeListShowWOS.forEach(function(checkbox) {
+      this.NICCodeListShowWOS.forEach(function (checkbox) {
         if (checkbox.Class !== item.Class) {
           checkbox.status = !checkbox.status;
         }
@@ -330,26 +256,21 @@ export class FormFcComponent implements OnInit {
       this.WOSFC_FDINICCodeDesArray.splice(itemExist, 1)
     }
     else {
-      this.WOSFC_FDINICCodeDesArray.push({ Year: item.Year, Class: item.Class, DescriptionClass: item.DescriptionClass ,SelectedValue:true})
-      this.NICCodeListShowWOS.forEach(function(checkbox) {
+      this.WOSFC_FDINICCodeDesArray.push({ Year: item.Year, Class: item.Class, DescriptionClass: item.DescriptionClass, SelectedValue: true })
+      this.NICCodeListShowWOS.forEach(function (checkbox) {
         if (checkbox.Class !== item.Class) {
           checkbox.status = !checkbox.status;
         }
         if (checkbox.Class == item.Class) {
           checkbox.SelectedValue = true;
         }
-      
+
       })
     }
   }
   readNICCodeDes() {
-
     this.apiService.getNICCodeDes().subscribe((Nicdata) => { this.NICCodeList = Nicdata; });
     this.apiService.getNICCodeDes().subscribe((Nicdata) => { this.NICCodeListWOS = Nicdata; });
-    // this.NICCodeList=this.NICCodeList.map((item)=>{
-    //   item.status=false
-    // // })
-    // console.log('hiii',this.NICCodeList)
   }
   OnModuleTabClick(year: any) {
     debugger;
@@ -360,10 +281,10 @@ export class FormFcComponent implements OnInit {
   OnModuleTabClickWOS(year: any) {
     debugger;
     console.log(this.NICCodeList)
-    this.NICCodeListShowWOS= this.NICCodeListWOS.filter(x => x.Year == year)
+    this.NICCodeListShowWOS = this.NICCodeListWOS.filter(x => x.Year == year)
     this.ActiveTab = year
   }
-  searchNicCode(event: any,code?:any) {
+  searchNicCode(event: any, code?: any) {
     debugger;
     console.log(typeof event.target.value)
     this.NICCodeListShow = this.NICCodeList.filter((x) => {
@@ -372,7 +293,7 @@ export class FormFcComponent implements OnInit {
       }
     })
   }
-  searchNicCodeWOS(event: any,code?:any) {
+  searchNicCodeWOS(event: any, code?: any) {
     debugger;
     console.log(typeof event.target.value)
     this.NICCodeListShowWOS = this.NICCodeListWOS.filter((x) => {
@@ -424,161 +345,192 @@ export class FormFcComponent implements OnInit {
   ngOnDestroy() {
     this.fcFormlistSub.unsubscribe()
   }
-  GetCityStateValue(value, field) {
-    if (value != undefined) {
-      // if (field == 'OPI_Sec_A_State') {
-      //   this.OpiFormlist.value.basicform.OPI_Sec_A_State = value.State;
-      // }
-      // if (field == 'OPI_Sec_A_City') {
-      //   this.OpiFormlist.value.basicform.OPI_Sec_A_City = value.city;
-
-      //   (<FormGroup>this.OpiFormlist.controls['SectionC']).controls['OPI_Sec_C_Place'].patchValue(value.city);
-
-      // }
-      // if (field == 'OPI_Sec_B_City') {
-      //   this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_City = value.city;
-      //   (<FormGroup>this.OpiFormlist.controls['SectionC']).controls['OPI_Sec_C_Place'].patchValue(value.city);
-      // }
-      // if (field == 'OPI_Sec_B_State') {
-      //   this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_State = value.State;
-      // }
-      // if (field == 'OPI_Sec_B_VCF_State') {
-      //   this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_State = value.State;
-      // }
-      // if (field == 'OPI_Sec_B_VCF_City') {
-      //   this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_City = value.city;
-      // }
-    }
-  }
   updatePrev() {
     debugger;
     this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
     let count = this.tabset.tabs.length;
-    if (Number(this.id) >= 0) {
+    if (Number(this.id) >= 0 && (Number(this.typeshow) == 4 || Number(this.typeshow) == 1)) {
       this.tabset.tabs[(Number(this.id)) - 1].disabled = false;
       this.tabset.tabs[(Number(this.id)) - 1].active = true;
-      this.btnShow=true;
+      this.btnShow = true;
     }
-    else
-    {
-      this.btnShow=false;
+    else {
+      this.btnShow = false;
     }
-    // if (Number(this.id) - 1 >= 0) {
-    //   this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) - 1)
-    //   if (Number(this.id) != 3) {
-    //     if (Number(this.typeshow) <= 3) {
-    //       this.tabset.tabs[(Number(this.id)) - 1].disabled = false;
-    //       this.tabset.tabs[(Number(this.id)) - 1].active = true;
-    //     }
-    //   }
-    //   if (Number(this.typeshow) <= 3 && (Number(this.id) == 3 || Number(this.id) == 2)) {
-    //     this.tabset.tabs[(Number(this.id)) - 2].disabled = false;
-    //     this.tabset.tabs[(Number(this.id)) - 2].active = true;
-    //   }
-    //   else if (Number(this.typeshow) > 3) {
-    //     this.tabset.tabs[(Number(this.id)) - 2].disabled = true;
-    //     if (Number(this.id) == 3 || Number(this.id) == 4) {
-    //       this.tabset.tabs[(Number(this.id)) - 1].disabled = false;
-    //       this.tabset.tabs[(Number(this.id)) - 1].active = true;
-    //     }
-    //     else if (Number(this.id) == 2) {
-    //       this.tabset.tabs[(Number(this.id)) - 2].disabled = false;
-    //       this.tabset.tabs[(Number(this.id)) - 2].active = true;
-    //     }
-    //   }
-    //   if (Number(this.id) - 1 == 0) {
-    //     this.btnShow = false;
-    //     this.tabset.tabs[(Number(this.id))].disabled = true;
-    //   }
-    //   if (Number(this.id) == 3 || Number(this.id) == 4) {
-    //     this.btnShowNext = true;
-    //     this.btnShow = true;
-    //   }
-    // }
   }
   updateNext() {
     debugger;
-    this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
-    let count = this.tabset.tabs.length;
-    if (Number(this.id) >= 0) {
-      this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
-      this.tabset.tabs[(Number(this.id)) + 1].active = true;
-      this.btnShow=true;
-    }
-    if (Number(this.id) >= 0) {
-      if (this.fcFormlist.controls["investorForm"].invalid) {
-        this.fcFormlist.controls["investorForm"].markAllAsTouched();
-        return;
-        //}
+    if (Number(this.typeshow) == 0) {
+      this.toastr.warning("Please select investor type", 'Warning', {
+        closeButton: true,
+        positionClass: 'toast-top-right'
+      });
+    } else {
+      this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
+      let count = this.tabset.tabs.length;
+      if (Number(this.typeshow) == 1) {
+        if (this.fcFormlist.controls["investorForm"].invalid) {
+          this.fcFormlist.controls["investorForm"].markAllAsTouched();
+          this.tabactive = true;
+          return;
+        }
+        else {
+          this.tabactive = false;
+        }
+        if (this.sumFCArray.length == 1 && (this.sumFCArray[0].EntityName == "" || this.sumFCArray[0].FCY == "" || this.sumFCArray[0].INR == "")) {
+          this.toastr.warning("Please add Sum of the Financial Commitment Details", 'Warning', {
+            closeButton: true,
+            positionClass: 'toast-top-right'
+          });
+          this.tabactive = true;
+          return;
+        }
+        else if (this.FCDisinvestmentArray.length == 1 &&
+          (this.FCDisinvestmentArray[0].DisinvestmentType == "" ||
+            String(this.FCDisinvestmentArray[0].FromDate) == "" ||
+            String(this.FCDisinvestmentArray[0].ToDate) == "" || this.FCDisinvestmentArray[0].Name == "")) {
+          this.toastr.warning("Please add IE/ RI/ group company/ Trust/ Society making FC", 'Warning', {
+            closeButton: true,
+            positionClass: 'toast-top-right'
+          });
+          this.tabactive = true;
+          return;
+        }
+        else if (this.PEFEntityArray.length == 1 && (this.PEFEntityArray[0].NameFE == ""
+          || this.PEFEntityArray[0].UIN == "" || this.PEFEntityArray[0].BankName == "")) {
+          this.toastr.warning("Please add Particulars of existing foreign entities", 'Warning', {
+            closeButton: true,
+            positionClass: 'toast-top-right'
+          });
+          this.tabactive = true;
+          return;
+        }
+        else if (this.SelectFC_FDINICCodeDesArray.length == 0) {
+          this.toastr.warning("Please add Activity Code", 'Warning', {
+            closeButton: true,
+            positionClass: 'toast-top-right'
+          });
+          this.tabactive = true;
+          return;
+        }
+        else {
+          if (Number(this.id) == 2) {
+            if (this.fcFormlist.controls["JVWOSform"].invalid) {
+              this.fcFormlist.controls["JVWOSform"].markAllAsTouched();
+              this.tabactive = true;
+              return;
+            }
+            if (this.WOSFC_FDINICCodeDesArray.length == 0) {
+              this.toastr.warning("Please add Activity Code", 'Warning', {
+                closeButton: true,
+                positionClass: 'toast-top-right'
+              });
+              this.tabactive = true;
+              return;
+            }
+          }
+          else if (Number(this.id) == 3) {
+            if (this.fcFormlist.controls['FC_SDS_Control'].value == 'Yes') {
+              if (this.SDSArray.length == 0) {
+                this.toastr.warning("Please add SDS Details", 'Warning', {
+                  closeButton: true,
+                  positionClass: 'toast-top-right'
+                });
+                this.tabactive = true;
+                return;
+              }
+            }
+            else {
+              if (this.fcFormlist.controls['FC_SDS_Control'].value == '') {
+                this.toastr.warning("Please select SDS Details", 'Warning', {
+                  closeButton: true,
+                  positionClass: 'toast-top-right'
+                });
+                this.tabactive = true;
+                return;
+              }
+            }
+          }
+          else if (Number(this.id) == 4) {
+            if (Number(this.Totalstake) < 100) {
+              this.toastr.warning("Please add Shareholding details", 'Warning', {
+                closeButton: true,
+                positionClass: 'toast-top-right'
+              });
+              this.tabactive = true;
+              return;
+            }
+
+          }
+          else if (Number(this.id) == 5) {
+            if (this.FinancialCommitmentArray.length == 1 &&
+              (String(this.FinancialCommitmentArray[0].AmountFCY) == "" ||
+                String(this.FinancialCommitmentArray[0].AmountINR) == "" ||
+                String(this.FinancialCommitmentArray[0].Date) == "" ||
+                String(this.FinancialCommitmentArray[0].CategoryType) == "" ||
+                String(this.FinancialCommitmentArray[0].InvestSource) == "")) {
+              this.toastr.warning("Please add Financial Commitment details", 'Warning', {
+                closeButton: true,
+                positionClass: 'toast-top-right'
+              });
+              this.tabactive = true;
+              return;
+            }
+          }
+          else if (Number(this.id) == 6) {
+            if (this.fcFormlist.controls["Declarationform"].invalid) {
+              this.fcFormlist.controls["Declarationform"].markAllAsTouched();
+              this.tabactive = true;
+              return;
+            }
+            else {
+              this.tabactive = false;
+            }
+          }
+          else if (Number(this.id) == 7) {
+            if (this.fcFormlist.controls["Certificateform"].invalid) {
+              this.fcFormlist.controls["Certificateform"].markAllAsTouched();
+              this.tabactive = true;
+              return;
+            }
+            else {
+              this.tabactive = false;
+            }
+          }
+          this.tabactive = false;
+        }
+        if (this.tabactive == false) {
+          this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
+          this.tabset.tabs[(Number(this.id)) + 1].active = true;
+          if (Number(this.typeshow) == 1 && Number(this.id) + 1 == 7) {
+            this.btnShowNext = false;
+          }
+          else {
+            this.btnShow = true;
+          }
+        }
       }
+      // if (Number(this.id) >= 0 && Number(this.typeshow) == 4) {
+
+      //   if ((Number(this.id)) + 1 == 7 && Number(this.typeshow) == 1) {
+      //     this.btnShowNext = false;
+      //     this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
+      //     this.tabset.tabs[(Number(this.id)) + 1].active = true;
+      //   }
+      //   else {
+      //     this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
+      //     this.tabset.tabs[(Number(this.id)) + 1].active = true;
+      //     this.btnShow = true;
+      //   }
+      // }
+      // if (Number(this.id) >= 0) {
+      //   if (this.fcFormlist.controls["investorForm"].invalid) {
+      //     this.fcFormlist.controls["investorForm"].markAllAsTouched();
+      //     return;
+      //     //}
+      //   }
+      // }
     }
-    
-    // if (Number(this.typeshow) == 1) {
-    //   if (this.OpiFormlist.controls["IndianEntitysform"].invalid) {
-    //     this.OpiFormlist.controls["IndianEntitysform"].markAllAsTouched();
-    //     return;
-    //   }
-    // }
-    // else if (Number(this.typeshow) == 2) {
-    //   if (this.OpiFormlist.controls["MutualFundform"].invalid) {
-    //     this.OpiFormlist.controls["MutualFundform"].markAllAsTouched();
-    //     return;
-    //   }
-    // }
-    // else if (Number(this.typeshow) == 3) {
-
-    //   if (this.OpiFormlist.controls["ResidentIndividualform"].invalid) {
-    //     this.OpiFormlist.controls["ResidentIndividualform"].markAllAsTouched();
-    //     return;
-    //   }
-    // }
-
-    // if (Number(this.typeshow) <= 3) {
-    //   if (Number(this.id) <= 2 && Number(this.id) != 0) {
-    //     this.tabset.tabs[(Number(this.id)) + 2].disabled = false;
-    //     this.tabset.tabs[(Number(this.id)) + 2].active = true;
-
-    //   }
-    //   else if (Number(this.id) <= 2) {
-    //     this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
-    //     this.tabset.tabs[(Number(this.id)) + 1].active = true;
-    //     this.tabset.tabs[(Number(this.id)) + 2].disabled = true;
-    //   }
-
-    // else {
-    //   if (this.OpiFormlist.controls["VCFAIFform"].invalid) {
-    //     this.OpiFormlist.controls["VCFAIFform"].markAllAsTouched();
-    //     return;
-    //   }
-    //   if (Number(this.typeshow) > 3) {
-    //     if (Number(this.id) > 0) {
-    //       this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
-    //       this.tabset.tabs[(Number(this.id)) + 1].active = true;
-    //       if (Number(this.id) + 1 == 4) {
-    //         this.btnShowNext = false;
-    //       }
-    //     }
-    //     else {
-    //       this.tabset.tabs[(Number(this.id)) + 1].disabled = true;
-    //       this.tabset.tabs[(Number(this.id)) + 2].disabled = false;
-    //       this.tabset.tabs[(Number(this.id)) + 2].active = true;
-    //     }
-    //   }
-    // }
-
-    // if (Number(this.id) == 3) {
-    //   this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
-    //   this.tabset.tabs[(Number(this.id)) + 1].active = true;
-    // }
-    // if (Number(this.id) + 1 == 4 || Number(this.id) == 4) {
-    //   this.btnShowNext = false;
-    //   this.btnShow = true;
-    // }
-    // else {
-    //   this.btnShow = true;
-    // }
-
-
   }
   setForm() {
     // var today = new Date();
@@ -670,34 +622,31 @@ export class FormFcComponent implements OnInit {
     }
 
   }
-  // addCodeClassRow() {
-  //   this.codeClass = { Description1987: "", Description2008: "" };
-  //   this.CodeClassArray.push(this.codeClass);
-  //   this.codeClasslength = this.CodeClassArray.length;
-
-  //   return true;
-  // }
-  // deleteCodeClassRow(index) {
-  //   if (this.CodeClassArray.length == 1) {
-  //     //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
-  //     return false;
-  //   } else {
-  //     this.CodeClassArray.splice(index, 1);
-  //     //this.toastr.warning('Row deleted successfully', 'Delete row');  
-  //     return true;
-  //   }
-  // }
   addShareHoldingFE() {
+    if (this.Totalstake == 100) {
+      this.toastr.warning("Already entered the 100% stake", 'Warning', {
+        closeButton: true,
+        positionClass: 'toast-top-right'
+      });
+      return false;
+    }
     this.ShareHoldingFE = { Person: "", Pstake: 0, ForeignPartner: "", FPstake: 0, Total: 0 };
     this.ShareHoldingFEArray.push(this.ShareHoldingFE);
     this.ShareHoldingFElength = this.ShareHoldingFEArray.length;
     this.TotalPstake = 0;
     this.TotalFPstake = 0;
     this.Totalstake = 0;
+
     this.ShareHoldingFEArray.forEach(element => {
       this.TotalPstake += element.Pstake;
       this.TotalFPstake += element.FPstake;
       this.Totalstake += element.Total;
+      if (this.Totalstake > 100) {
+        element.Pstake = 0;
+        element.FPstake = 0;
+        return false;
+      }
+
 
     });
     return true;
@@ -705,11 +654,17 @@ export class FormFcComponent implements OnInit {
 
   deleteShareHoldingFE(index) {
     if (this.ShareHoldingFEArray.length == 1) {
-      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+      this.toastr.warning("Can't delete the row when there is only one row", 'Warning', {
+        closeButton: true,
+        positionClass: 'toast-top-right'
+      });
       return false;
     } else {
       this.ShareHoldingFEArray.splice(index, 1);
-      //this.toastr.warning('Row deleted successfully', 'Delete row'); 
+      this.toastr.warning("Row deleted successfully", 'Warning', {
+        closeButton: true,
+        positionClass: 'toast-top-right'
+      });
       this.TotalPstake = 0;
       this.TotalFPstake = 0;
       this.Totalstake = 0;
@@ -721,8 +676,31 @@ export class FormFcComponent implements OnInit {
       return true;
     }
   }
+  onBlur(values) {
+    console.log(values);
+    values.Total = values.FPstake + values.Pstake;
+    if (values.Total > 100) {
+      values.FPstake = 0;
+      values.Pstake = 0;
+      values.Total = 0;
+      return false;
+    }
+    this.TotalPstake = 0;
+    this.TotalFPstake = 0;
+    this.Totalstake = 0;
+    this.ShareHoldingFEArray.forEach(element => {
+      this.TotalPstake += element.Pstake;
+      this.TotalFPstake += element.FPstake;
+      this.Totalstake += element.Total;
+    });
+    if (this.Totalstake > 100) {
+      values.FPstake = 0;
+      values.Pstake = 0;
+      values.Total = 0;
+      return false;
+    }
+  }
   public validate(): void {
-
     this.investment_model = this.reactiveForm.value;
     this.investment_model.investment_SumFC = this.sumFCArray;
     this.investment_model.investment_FCDisinvestment = this.FCDisinvestmentArray;
@@ -740,123 +718,6 @@ export class FormFcComponent implements OnInit {
     console.log(this.investment_model);
   }
 
-  get investment_UIN() {
-    return this.fcFormlist.get('fcFormlist')!;
-  }
-  get investment_Route() {
-    return this.fcFormlist.get('investment_Route')!;
-  }
-  get investment_USD() {
-    return this.fcFormlist.get('investment_USD')!;
-  }
-  get investment_INR() {
-    return this.fcFormlist.get('investment_INR')!;
-  }
-  get investment_name() {
-    return this.reactiveForm.get('investment_name')!;
-  }
-  get investment_pan() {
-    return this.reactiveForm.get('investment_pan')!;
-  }
-  get investment_LEI() {
-    return this.reactiveForm.get('investment_LEI')!;
-  }
-  get investment_pin() {
-    return this.reactiveForm.get('investment_pin')!;
-  }
-  get investment_Address() {
-    return this.reactiveForm.get('investment_Address')!;
-  }
-  get investment_City() {
-    return this.reactiveForm.get('investment_City')!;
-  }
-  get investment_CPDesignation() {
-    return this.reactiveForm.get('investment_CPDesignation')!;
-  }
-  get investment_ContactPerson() {
-    return this.reactiveForm.get('investment_ContactPerson')!;
-  }
-  get investment_TelephoneNumber() {
-    return this.reactiveForm.get('investment_GroupIE')!;
-  }
-  get investment_MobileNumber() {
-    return this.reactiveForm.get('investment_MobileNumber')!;
-  }
-  get investment_Email() {
-    return this.reactiveForm.get('investment_Email')!;
-  }
-  get investment_GroupIE() {
-    return this.reactiveForm.get('investment_GroupIE')!;
-  }
-  get investment_NetWorth() {
-    return this.reactiveForm.get('investment_NetWorth');
-  }
-  get investment_AmountINR() {
-    return this.reactiveForm.get('investment_AmountINR');
-  }
-  get investment_NetWorthDate() {
-    return this.reactiveForm.get('investment_NetWorthDate');
-  }
-  get investment_Individual_Place() {
-    return this.reactiveForm.get('investment_Individual_Place');
-  }
-  get investment_Individual_Date() {
-    return this.reactiveForm.get('investment_Individual_Date');
-  }
-  get investment_Individual_Stamp() {
-    return this.reactiveForm.get('investment_Individual_Stamp');
-  }
-  get investment_Individual_Telephone() {
-    return this.reactiveForm.get('investment_Individual_Telephone');
-  }
-  get investment_Individual_Email() {
-    return this.reactiveForm.get('investment_Individual_Email');
-  }
-  get investment_Group_Signature() {
-    return this.reactiveForm.get('investment_Group_Signature');
-  }
-  get investment_Group_Name() {
-    return this.reactiveForm.get('investment_Group_Name');
-  }
-  get investment_Group_Place() {
-    return this.reactiveForm.get('investment_Group_Place');
-  }
-  get investment_Group_Date() {
-    return this.reactiveForm.get('investment_Group_Date');
-  }
-  get investment_Group_Stamp() {
-    return this.reactiveForm.get('investment_Group_Stamp');
-  }
-  get investment_Group_Telephone() {
-    return this.reactiveForm.get('investment_Group_Telephone');
-  }
-  get investment_Group_Email() {
-    return this.reactiveForm.get('investment_Group_Email');
-  }
-  get investment_individual_A() {
-    return this.reactiveForm.get('investment_individual_A');
-  }
-  get investment_individual_B() {
-    return this.reactiveForm.get('investment_individual_B');
-  }
-  get investment_individual_C() {
-    return this.reactiveForm.get('investment_individual_C');
-  }
-  get investment_individual_D() {
-    return this.reactiveForm.get('investment_individual_D');
-  }
-  get investment_individual_E() {
-    return this.reactiveForm.get('investment_individual_E');
-  }
-  get investment_individual_F() {
-    return this.reactiveForm.get('investment_individual_F');
-  }
-  get investment_individual_G() {
-    return this.reactiveForm.get('investment_individual_G');
-  }
-  get disinvestment_UIN() {
-    return this.reactiveForm.get('disinvestment_UIN');
-  }
   datalist: {
     OPI_Sec_A_ForeignName: "",
     OPI_Sec_A_SharesRepurchased: "",
@@ -1071,57 +932,55 @@ export class FormFcComponent implements OnInit {
   }
   onSelected(event) {
     // this.fcFormlist.controls['BankName'].setValue(event.BankName);
-
-    // this.form1.controls['test'].value =  {code: 'A',description: 'TEST A'}
   }
-  public submit() {
+  submit() {
     debugger;
-    if (this.fcFormlist.controls["investorForm"].invalid) {
-      this.fcFormlist.controls["investorForm"].markAllAsTouched();
-      return;
-    }
-    else {
-      // if (Number(this.typeshow) <= 3)
-      // {
-      // this.OpiFormlist.value.basicform.OPI_Sec_A_City = this.OpiFormlist.value.basicform.OPI_Sec_A_City.city;
-      // this.OpiFormlist.value.basicform.OPI_Sec_A_State =this.OpiFormlist.value.basicform.OPI_Sec_A_State.State;
-      // }
-      // else if (Number(this.typeshow) > 3)
-      // {
-      // this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_City = this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_City.city;
-      // this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_State =this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_State.State;
-      // this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_City = this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_City.city;
-      // this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_State =this.OpiFormlist.value.VCFAIFform.OPI_Sec_B_VCF_State.State;
+    if (this.tabactive == false) {
 
-      // }
-      this.dataModel['investorForm'] = this.fcFormlist.value.investorForm;
+      this.fcFormlist.value.investorForm.investor_City = this.fcFormlist.value.investorForm.investor_City.city;
+      this.fcFormlist.value.investorForm.investor_State = this.fcFormlist.value.investorForm.investor_State.State;
+      this.fcFormlist.value.JVWOSform.investment_Jurisdiction = this.fcFormlist.value.JVWOSform.investment_Jurisdiction.BankName;
+
       const sumFCArray: FormArray = this.fb.array(this.sumFCArray);
       this.fcFormlist.setControl('FCDetails', sumFCArray);
+
       const FCDisinvestmentArray: FormArray = this.fb.array(this.FCDisinvestmentArray);
       this.fcFormlist.setControl('InvestmentDetails', FCDisinvestmentArray);
+
       const PEFEntityArray: FormArray = this.fb.array(this.PEFEntityArray);
       this.fcFormlist.setControl('PEFEntityDetails', PEFEntityArray);
+
       const FC_FDINICCodeDesArray: FormArray = this.fb.array(this.SelectFC_FDINICCodeDesArray);
       this.fcFormlist.setControl('FC_FDINICCodeDesDetails', FC_FDINICCodeDesArray);
-      // this.dataModel['IndianEntitysDetails'] = this.OpiFormlist.value.IndianEntitysform;
-      // this.dataModel['ResidentIndividualDetails'] = this.OpiFormlist.value.ResidentIndividualform;
-      // this.dataModel['MutualFundDetails'] = this.OpiFormlist.value.MutualFundform;
-      // this.dataModel['VCFAIFDetails'] = this.OpiFormlist.value.VCFAIFform;
-      // this.dataModel['SectionCDetails'] = this.OpiFormlist.value.SectionC;
-      return this.apiService.createFormOpi(this.dataModel).subscribe({
+
+      const WOSFC_FDINICCodeDesArray: FormArray = this.fb.array(this.WOSFC_FDINICCodeDesArray);
+      this.fcFormlist.setControl('WOSFC_FDINICCodeDesDetails', WOSFC_FDINICCodeDesArray);
+
+      const SDSArray: FormArray = this.fb.array(this.SDSArray);
+      this.fcFormlist.setControl('SDSDetails', SDSArray);
+
+      const ShareHoldingFEArray: FormArray = this.fb.array(this.ShareHoldingFEArray);
+      this.fcFormlist.setControl('ShareHoldingDetails', ShareHoldingFEArray);
+
+      const FinancialCommitmentArray: FormArray = this.fb.array(this.FinancialCommitmentArray);
+      this.fcFormlist.setControl('FinancialCommitmentDetails', FinancialCommitmentArray);
+
+      this.dataModel['investorDetails'] = this.fcFormlist.value.investorForm;
+      this.dataModel['JVWOSDetails'] = this.fcFormlist.value.JVWOSform;
+      this.dataModel['DeclarationDetails'] = this.fcFormlist.value.Declarationform;
+      this.dataModel['CertificateDetails'] = this.fcFormlist.value.Certificateform;
+      this.dataModel = this.fcFormlist.value;
+      console.log(this.dataModel);
+
+      return this.apiService.createFormFC(this.dataModel).subscribe({
         complete: () => {
           this.datalist = this.fcFormlist.value;
           console.log(this.datalist);
-          //result.insertedId.toString() 
-          alert('Fromfc successfully created!');
-          // this.tabset.tabs[(Number(4))].disabled = false;
-          // this.tabset.tabs[(Number(4))].active = true;
-
+          this.toastr.success("Data Save Successfully", 'Success', {
+            closeButton: true,
+            positionClass: 'toast-bottom-right'
+          });
           this.btnShowNext = false;
-
-          //this.childComponent.downloadAsPDF();
-          //console.log('FromEsop successfully created!');
-          //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
         },
         error: (e) => {
           console.log(e);
@@ -1129,33 +988,18 @@ export class FormFcComponent implements OnInit {
       });
     }
 
-    // }
-    // if (this.fcFormlist.invalid) {
-    //   for (const control of Object.keys(this.fcFormlist.controls)) {
-    //     this.fcFormlist.controls[control].markAllAsTouched();
-    //   }
-    //   return;
-    // }
-    // if (this.fcFormlist.controls["investorForm"].invalid) {
-    //   this.fcFormlist.controls["investorForm"].markAllAsTouched();
-    //   return;
-    // }
-    // Object.keys(this.fcFormlist.controls).forEach(field => { // {1}
-    //   const control = this.fcFormlist.get(field);            // {2}
-    //   control.markAsTouched({ onlySelf: true });       // {3}
-    // });
   }
-  onBlur(values) {
-    console.log(values);
-    values.Total = values.FPstake + values.Pstake;
-    this.TotalPstake = 0;
-    this.TotalFPstake = 0;
-    this.Totalstake = 0;
-    this.ShareHoldingFEArray.forEach(element => {
-      this.TotalPstake += element.Pstake;
-      this.TotalFPstake += element.FPstake;
-      this.Totalstake += element.Total;
-    });
+  GetCityStateValue(value, field) {
+    debugger;
+    if (value != undefined) {
+      if (field == 'investor_City') {
+        this.fcFormlist.value.investorForm.investor_City = value.city;
+
+        (<FormGroup>this.fcFormlist.controls['Declarationform']).controls['investment_Individual_Place'].patchValue(value.city);
+        (<FormGroup>this.fcFormlist.controls['Certificateform']).controls['investment_Group_Place'].patchValue(value.city);
+
+      }
+    }
   }
 
   addCodeClassRow() {
@@ -1177,7 +1021,7 @@ export class FormFcComponent implements OnInit {
     }
   }
   addFinancialCommitment() {
-    this.FinancialCommitment = { InvestSource: "", CategoryType: "",Date:"",AmountFCY:"",AmountINR: ""}
+    this.FinancialCommitment = { InvestSource: "", CategoryType: "", Date: "", AmountFCY: "", AmountINR: "" }
     this.FinancialCommitmentArray.push(this.FinancialCommitment);
     console.log(this.FinancialCommitmentArray);
     this.FinancialCommitmentlength = this.FinancialCommitmentArray.length;
@@ -1193,10 +1037,10 @@ export class FormFcComponent implements OnInit {
       //this.toastr.warning('Row deleted successfully', 'Delete row');  
       return true;
     }
-    
+
   }
   addSDS() {
-    this.SDS = {  
+    this.SDS = {
       investment_SDS_Name: "",
       investment_SDS_Level: "",
       investment_SDS_Jurisdiction: "",
@@ -1204,12 +1048,13 @@ export class FormFcComponent implements OnInit {
       investment_SDS_ParentLevel: "",
       investment_SDS_ParentJurisdiction: "",
       investment_SDS_InvestmentAmount: "",
-      investment_SDS_InvestmentDate: "", 
+      investment_SDS_InvestmentDate: "",
       investment_SDS_LEI: "",
-      investment_SDS_Type: "", 
-      investment_SDS_1987NIC: "", 
-      investment_SDS_2008NIC: "", 
-      investment_SDS_Stake: ""};
+      investment_SDS_Type: "",
+      investment_SDS_1987NIC: "",
+      investment_SDS_2008NIC: "",
+      investment_SDS_Stake: ""
+    };
     this.SDSArray.push(this.SDS)
     console.log(this.SDSArray);
     this.SDSlength = this.SDSArray.length;
@@ -1225,7 +1070,42 @@ export class FormFcComponent implements OnInit {
       //this.toastr.warning('Row deleted successfully', 'Delete row');  
       return true;
     }
-    
-  }
 
+  }
+  InvestorChange(type) {
+    debugger;
+    this.typeshow = type;
+    this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
+    this.tabset.tabs[0].disabled = false;
+    if (type == 1 || type == 4) {
+      this.tabset.tabs[1].disabled = false;
+      this.tabset.tabs[1].active = true;
+    }
+    else if (type == 2) {
+      this.tabset.tabs[8].disabled = false;
+      this.tabset.tabs[8].active = true;
+    }
+    else if (type == 3) {
+      this.tabset.tabs[9].disabled = false;
+      this.tabset.tabs[9].active = true;
+    }
+    this.tabset.tabs.forEach(function (item) {
+      if (type == 1 || type == 4) {
+        if (Number(item.id) != 1 && Number(item.id) != 0) {
+          item.disabled = true;
+        }
+      }
+      else if (type == 2) {
+        if (Number(item.id) != 8 && Number(item.id) != 0) {
+          item.disabled = true;
+        }
+      }
+      else if (type == 3) {
+        if (Number(item.id) != 9 && Number(item.id) != 0) {
+          item.disabled = true;
+        }
+      }
+    });
+
+  }
 }

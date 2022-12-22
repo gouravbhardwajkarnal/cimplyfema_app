@@ -44,6 +44,12 @@ export class CommonService {
         { id: 4, name: "OPI – Venture Capital Fund (VCF)" },
         { id: 5, name: "OPI – Alternate Investment Fund (AIF)" },
     ];
+    fctypes: DisinvetmentType[] = [
+        { id: 1, name: "Form FC (Section A-E) - Overseas Direct Investments (ODI)" },
+        { id: 2, name: "Form FC (Section F) - ODI Restructuring" },
+        { id: 3, name: "Form FC (Section G) - ODI Disinvestment" },
+        { id: 4, name: "Form FC (Section A-G) - ODI Investment-cum-Disinvestment" },
+    ];
     modules: Modules[] = [
         { id: 1, name: "Foreign Direct Investment" },
         { id: 2, name: "Overseas Direct Investment" }
@@ -144,6 +150,9 @@ cocsubmodules: COCsubmodules[] = [
     }
     getAllopitypes(): DisinvetmentType[] {
         return this.opitypes;
+    }
+    getAllfctypes(): DisinvetmentType[] {
+        return this.fctypes;
     }
     getAllmodules(): Modules[] {
         return this.modules;

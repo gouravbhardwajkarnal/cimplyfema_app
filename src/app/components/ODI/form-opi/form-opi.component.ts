@@ -586,16 +586,8 @@ export class FormOpiComponent implements OnInit {
     if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2 || Number(this.typeshow) == 3) {
       let count = this.tabset.tabs.length;
       if (this.OpiFormlist.controls["basicform"].invalid) {
-        // if(this.OpiFormlist.value.basicform.OPI_Sec_A_ForeignName=='' && this.OpiFormlist.value.basicform.OPI_Sec_A_SharesIssued==''
-        // && this.OpiFormlist.value.basicform.OPI_Sec_A_SharesRepurchased=='')
-        // {
-        //   this.OpiFormlist.controls["basicform"].markAllAsTouched();
-        // }
-        // else
-        // {
         this.OpiFormlist.controls["basicform"].markAllAsTouched();
         return;
-        //}
       }
       if (Number(this.typeshow) == 1) {
         if (this.OpiFormlist.controls["IndianEntitysform"].invalid) {
@@ -663,14 +655,6 @@ export class FormOpiComponent implements OnInit {
     else {
       this.btnShow = true;
     }
-
-    // if (Number(this.id) + 1 < count) {
-    //   this.tabset.tabs.filter(tab => Number(tab.id) == (Number(this.id)) + 1)
-
-
-
-    // }
-
   }
 
 

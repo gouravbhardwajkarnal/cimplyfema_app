@@ -6,11 +6,11 @@ const masterRoute = express.Router()
 let Country = require('../data/countries')
 let cities = require('../data/cities')
 let bank = require('../data/banks')
-let currencycode= require('../data/currency')
+let currencycode = require('../data/currency')
 let locations = require('../data/locations');
 let masterniccode = require('../data/MasterNICCode');
 let rbiAuthority = require('../data/RBIAuthority');
-let femaRegulations=require('../data/FemaRegulations');
+let femaRegulations = require('../data/FemaRegulations');
 var countryarray = [];
 masterRoute.route('/bank').get((req, res) => {
   bank.find((error, data) => {
@@ -30,6 +30,7 @@ masterRoute.route('/currencycode').get((req, res) => {
     }
   })
 })
+
 masterRoute.route('/country').get((req, res) => {
   Country.distinct("country", function (error, data) {
     if (error) {
@@ -39,26 +40,80 @@ masterRoute.route('/country').get((req, res) => {
     }
   })
 })
-//masterRoute.route('/City').get((req, res) => {
-masterRoute.route('/City').get((req, res) => {
-  Country.find({country: 'India'}, function (error, data) {
-      if (error) {
-        return next(error)
-      } else {
-        res.json(data);
-      }
-    })
-  });
 
-  masterRoute.route('/State').get((req, res) => {
-    Country.find({country: 'India'}, function (error, data) {
-        if (error) {
-          return next(error)
-        } else {
-          res.json(data);
+//masterRoute.route('/City').get((req, res) => {
+
+masterRoute.route('/City').get((req, res) => {
+  Country.find({ country: 'India' }, function (error, data) {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data);
+    }
+  })
+});
+
+masterRoute.route('/State').get((req, res) => {
+  Country.aggregate([
+    {
+      '$match': {
+        'country': 'India'
+      }
+    }, {
+      '$group': {
+        '_id': '$State',
+        'State': {
+          '$addToSet': '$State'
         }
-      })
-    });
+      }
+    }, {
+      '$unwind': {
+        'path': '$State',
+        'preserveNullAndEmptyArrays': false
+      }
+    }
+  ], function (error, data) {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data);
+    }
+  })
+
+  // Country.find({country: 'India'}, function (error, data) {
+  //     if (error) {
+  //       return next(error)
+  //     } else {
+  //       res.json(data);
+  //     }
+  //   })
+});
+
+masterRoute.route('/rbiAuthorityCity').get((req, res) => {
+  rbiAuthority.aggregate([
+    {
+      '$group': {
+        '_id': '$RegionalOffices', 
+        'RegionalOffices': {
+          '$addToSet': '$RegionalOffices'
+        }
+      }
+    }, {
+      '$unwind': {
+        'path': '$RegionalOffices', 
+        'preserveNullAndEmptyArrays': false
+      }
+    }
+  ], function (error, data) {
+    if (error) {
+      return next(error)
+    } else {
+      console.log(data)
+      res.json(data);
+    }
+  })
+});
+
 //    let statesList =  await Country.find({country: "India"}).lean()
 
 //  for(let y in statesList){
@@ -209,30 +264,30 @@ masterRoute.route('/City').get((req, res) => {
 // module.exports = employeeRoute
 masterRoute.route('/Master_NIC_Codes').get((req, res) => {
   masterniccode.find((error, data) => {
-         if (error) {
-           return next(error)
-         } else {
-           res.json(data)
-         }
-      })
-  });
-  masterRoute.route('/RBIAuthority').get((req, res) => {
-    rbiAuthority.find((error, data) => {
-           if (error) {
-             return next(error)
-           } else {
-             res.json(data)
-           }
-        })
-    });
-    masterRoute.route('/FemaRegulations').get((req, res) => {
-      femaRegulations.find((error, data) => {
-             if (error) {
-               return next(error)
-             } else {
-               res.json(data)
-             }
-          })
-      });
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+});
+masterRoute.route('/RBIAuthority').get((req, res) => {
+  rbiAuthority.find((error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+});
+masterRoute.route('/FemaRegulations').get((req, res) => {
+  femaRegulations.find((error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+});
 
 module.exports = masterRoute;

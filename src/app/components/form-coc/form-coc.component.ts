@@ -91,13 +91,14 @@ export class FormCocComponent implements OnInit {
   SelectCOC_FDINICCodeDesArray: any = [];
   SelectCOC_FDICenResArray: any = [];
   COC_FDIFemaRegNoArray: any = [];
-  TableATotAmountData: number;
+  TableATotAmountData: number=0;
   isLinear = false;
 
   ActiveTab: number = 1987;
   NICCodeListShow: any = [];
   RegionalOfficeListShow: any = [];
   rbiAuthorityCityList:any=[];
+  cityListShow:any=[];
   
   constructor(
     private commonservice: CommonService,
@@ -372,12 +373,16 @@ export class FormCocComponent implements OnInit {
     return true;
   }
   deleteODIGrantData(data, index) {
-    debugger;
     if (data == 'TableA') {
       if (this.COC_FDIODITabAArray.length == 1) {
         return false;
       } else {
         this.COC_FDIODITabAArray.splice(index, 1);
+        this.TableATotAmountData=0;
+        this.COC_FDIODITabAArray.forEach(element => {
+          this.TableATotAmountData += parseFloat(element.COC_FDIODITabAAmount);
+        });
+
         return true;
       }
     }
@@ -540,17 +545,35 @@ export class FormCocComponent implements OnInit {
     });
   }
 
-  TableATotAmount(data) {
-    console.log()
-    if (
-      this.TableATotAmountData == undefined &&
-      data.COC_FDIODITabAAmount != ''
-    ) {
-      this.TableATotAmountData = parseFloat(data.COC_FDIODITabAAmount);
-    } else if (this.TableATotAmountData != undefined) {
-      this.TableATotAmountData =
-        this.TableATotAmountData + parseFloat(data.COC_FDIODITabAAmount);
+  //Change city list on state selection 
+  changeCityList(event:any){
+    console.log('event',event)
+    if(event){
+      this.cityListShow=this.CityList.filter(x=>x.State==event.State)
     }
+    else{
+      this.cityListShow=[];
+    }
+  }
+
+  TableATotAmount(data) {
+    console.log("COC_FDIODITabAArray",this.COC_FDIODITabAArray)
+    this.TableATotAmountData=0
+    this.COC_FDIODITabAArray.forEach(element => {
+      console.log("element",element)
+      this.TableATotAmountData += parseFloat(element.COC_FDIODITabAAmount);
+      console.log("TableATotAmountData",this.TableATotAmountData)
+    });
+    console.log("TableATotAmountData",this.TableATotAmountData)
+    // if (
+    //   this.TableATotAmountData == undefined &&
+    //   data.COC_FDIODITabAAmount != ''
+    // ) {
+    //   this.TableATotAmountData = parseFloat(data.COC_FDIODITabAAmount);
+    // } else if (this.TableATotAmountData != undefined) {
+    //   this.TableATotAmountData =
+    //     this.TableATotAmountData + parseFloat(data.COC_FDIODITabAAmount);
+    // }
   }
 
   onModuleSelect(selectedModule) {
@@ -746,19 +769,19 @@ export class FormCocComponent implements OnInit {
       this.COC_FDIApplicantDetails = true;
     }
     if (Val == '3') {
-      let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
-      let check=true
-      key.map((item)=>{
-        if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
-          this.COC_FDIFormlist.controls[item].markAsTouched();
-          check=false
-          this.COC_FDIApplicantDetails=true;
-          // return;
-        }
-      })
-      if(check){
+      // let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
+      // let check=true
+      // key.map((item)=>{
+      //   if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
+      //     this.COC_FDIFormlist.controls[item].markAsTouched();
+      //     check=false
+      //     this.COC_FDIApplicantDetails=true;
+      //     // return;
+      //   }
+      // })
+      // if(check){
       this.COC_FDICompoundingDetails = true;
-      }
+      // }
     }
     if (Val == '4') {
       this.COC_FDICompoundingSubmissions = true;

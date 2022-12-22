@@ -351,6 +351,7 @@
                 <ng-select
                   [items]="StateList"
                   bindLabel="State"
+                  (change)="changeCityList($event)"
                   placeholder="Select State"
                   formControlName="COC_FDIState"
                   class="form-select"
@@ -369,7 +370,7 @@
               <div class="col-3 mb-2">
                 <label class="form-label">City</label>
                 <ng-select
-                  [items]="CityList"
+                  [items]="cityListShow"
                   bindLabel="city"
                   placeholder="Select City"
                   formControlName="COC_FDICity"
@@ -1824,6 +1825,7 @@
                   <input
                     type="number"
                     [(ngModel)]="TableATotAmountData"
+                    disabled
                     formControlName="TableATotAmount"
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control form-control-sm"

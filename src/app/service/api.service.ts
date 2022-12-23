@@ -12,10 +12,10 @@ import {
 })
 export class ApiService {
   baseUri: string = 'http://13.234.13.221:4000/api';
-  //baseUri: string = 'http://localhost:4000/api';
+  // baseUri: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Create
   createEmployee(data): Observable<any> {
@@ -91,34 +91,34 @@ export class ApiService {
     let url = `${this.baseUri}/createAPR`;
     return this.http.post(url, data).pipe(catchError(this.errorMgmt));
   }
-//Create FromOPI
-createFormOpi(data): Observable<any> {
-  console.log(data);
-  let url = `${this.baseUri}/createOpi`;
-  return this.http.post(url, data).pipe(catchError(this.errorMgmt));
-}
- //Create FromCOC
- createFormcoc(data): Observable<any> {
-  console.log(data);
-  let url = `${this.baseUri}/createCoc`;
-  return this.http.post(url, data).pipe(catchError(this.errorMgmt));
-}
-// Get all OpiFormData
-getopiData() {
-  return this.http.get(`${this.baseUri}/getOpi`);
-}
+  //Create FromOPI
+  createFormOpi(data): Observable<any> {
+    console.log(data);
+    let url = `${this.baseUri}/createOpi`;
+    return this.http.post(url, data).pipe(catchError(this.errorMgmt));
+  }
+  //Create FromCOC
+  createFormcoc(data): Observable<any> {
+    console.log(data);
+    let url = `${this.baseUri}/createCoc`;
+    return this.http.post(url, data).pipe(catchError(this.errorMgmt));
+  }
+  // Get all OpiFormData
+  getopiData() {
+    return this.http.get(`${this.baseUri}/getOpi`);
+  }
 
-//===============COC FDI Area Start===============
-getNICCodeDes() {
-  return this.http.get(`${this.baseUri}/Master_NIC_Codes`);
-}
-getRBIAuthority() {
-  return this.http.get(`${this.baseUri}/RBIAuthority`);
-}
-getFemaRegulations() {
-  return this.http.get(`${this.baseUri}/FemaRegulations`);
-}
-//===============COC FDI Area End=================
+  //===============COC FDI Area Start===============
+  getNICCodeDes() {
+    return this.http.get(`${this.baseUri}/Master_NIC_Codes`);
+  }
+  getRBIAuthority() {
+    return this.http.get(`${this.baseUri}/RBIAuthority`);
+  }
+  getFemaRegulations() {
+    return this.http.get(`${this.baseUri}/FemaRegulations`);
+  }
+  //===============COC FDI Area End=================
   // Error handling
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

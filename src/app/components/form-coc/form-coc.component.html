@@ -690,8 +690,26 @@
           Next
         </button>
       </div>
+
       <!--  -->
+
       <div class="container-fluid pt-4 px-4" *ngIf="COC_FDICompoundingDetails">
+        <div class="text-end">
+          <button
+            type="button"
+            (click)="RBI_FDISubmit('2')"
+            class="btn btn-primary"
+          >
+            Back
+          </button>
+          <button
+            type="button"
+            (click)="RBI_FDISubmit('4')"
+            class="btn btn-primary"
+          >
+            Next
+          </button>
+        </div>
         <div class="row">
           <ul class="list-group">
             <li class="list-group-item list-group-item-info">
@@ -1066,7 +1084,10 @@
                           <div>
                             <input
                               type="checkbox"
-                              [disabled]=""
+                              [disabled]="
+                                SelectCOC_FDICenResArray.length > 0 &&
+                                !Regionallist.status
+                              "
                               [(ngModel)]="Regionallist.status"
                               [ngModelOptions]="{ standalone: true }"
                               (click)="SelectCOC_FDIResCent(Regionallist)"
@@ -1263,18 +1284,18 @@
           <div class="col-3 mb-2">
             <label class="form-label">City </label>
             <ng-select
-                  [items]="rbiAuthorityCityList"
-                  bindLabel="RegionalOffices"
-                  placeholder="Select City"
-                  formControlName="COC_FDI_CompoundCity"
-                  class="form-select"
-                  [class.is-invalid]="
-                    COC_FDIFormlist.get('COC_FDI_CompoundCity').invalid &&
-                    (COC_FDIFormlist.get('COC_FDI_CompoundCity').dirty ||
-                      COC_FDIFormlist.get('COC_FDI_CompoundCity').touched)
-                  "
-                >
-                </ng-select>
+              [items]="rbiAuthorityCityList"
+              bindLabel="RegionalOffices"
+              placeholder="Select City"
+              formControlName="COC_FDI_CompoundCity"
+              class="form-select"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDI_CompoundCity').invalid &&
+                (COC_FDIFormlist.get('COC_FDI_CompoundCity').dirty ||
+                  COC_FDIFormlist.get('COC_FDI_CompoundCity').touched)
+              "
+            >
+            </ng-select>
             <!-- <input
               class="form-control"
               formControlName="COC_FDI_CompoundCity"
@@ -1306,10 +1327,30 @@
           Next
         </button>
       </div>
+
+      <!-- step-4  -->
+
       <div
         class="container-fluid pt-4 px-4"
         *ngIf="COC_FDICompoundingSubmissions"
       >
+        <div class="text-end">
+          <button
+            type="button"
+            (click)="RBI_FDISubmit('3')"
+            class="btn btn-primary"
+          >
+            Back
+          </button>
+          <button
+            type="button"
+            (click)="RBI_FDISubmit('5')"
+            class="btn btn-primary"
+          >
+            Next
+          </button>
+        </div>
+
         <div class="row">
           <ul class="list-group">
             <li class="list-group-item list-group-item-info">
@@ -1550,7 +1591,26 @@
           Next
         </button>
       </div>
+
+      <!-- step-5 -->
+
       <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIODIECB">
+        <div class="text-end">
+          <button
+            type="button"
+            (click)="RBI_FDISubmit('4')"
+            class="btn btn-primary"
+          >
+            Back
+          </button>
+          <button
+            type="button"
+            (click)="RBI_FDISubmit('6')"
+            class="btn btn-primary"
+          >
+            Next
+          </button>
+        </div>
         <div class="row">
           <ul class="list-group">
             <li class="list-group-item list-group-item-info">

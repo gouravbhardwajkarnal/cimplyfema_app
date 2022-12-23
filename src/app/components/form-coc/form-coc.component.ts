@@ -91,15 +91,15 @@ export class FormCocComponent implements OnInit {
   SelectCOC_FDINICCodeDesArray: any = [];
   SelectCOC_FDICenResArray: any = [];
   COC_FDIFemaRegNoArray: any = [];
-  TableATotAmountData: number=0;
+  TableATotAmountData: number = 0;
   isLinear = false;
 
   ActiveTab: number = 1987;
   NICCodeListShow: any = [];
   RegionalOfficeListShow: any = [];
-  rbiAuthorityCityList:any=[];
-  cityListShow:any=[];
-  
+  rbiAuthorityCityList: any = [];
+  cityListShow: any = [];
+
   constructor(
     private commonservice: CommonService,
     private fb: FormBuilder,
@@ -122,14 +122,14 @@ export class FormCocComponent implements OnInit {
   readState() {
     this.apiService.getState().subscribe((data) => {
       this.StateList = data;
-      console.log(this.StateList)
+      console.log(this.StateList);
     });
   }
 
   readRbiAuthorityCity() {
     this.apiService.getRbiAuthorityCity().subscribe((data) => {
       this.rbiAuthorityCityList = data;
-      console.log(this.StateList)
+      console.log(this.StateList);
     });
   }
 
@@ -141,7 +141,7 @@ export class FormCocComponent implements OnInit {
   readNICCodeDes() {
     this.apiService.getNICCodeDes().subscribe((Nicdata) => {
       this.NICCodeList = Nicdata;
-      console.log(this.NICCodeList)
+      console.log(this.NICCodeList);
     });
     // this.NICCodeList=this.NICCodeList.map((item)=>{
     //   item.status=false
@@ -378,8 +378,8 @@ export class FormCocComponent implements OnInit {
         return false;
       } else {
         this.COC_FDIODITabAArray.splice(index, 1);
-        this.TableATotAmountData=0;
-        this.COC_FDIODITabAArray.forEach(element => {
+        this.TableATotAmountData = 0;
+        this.COC_FDIODITabAArray.forEach((element) => {
           this.TableATotAmountData += parseFloat(element.COC_FDIODITabAAmount);
         });
 
@@ -518,7 +518,11 @@ export class FormCocComponent implements OnInit {
 
   searchRegionalOfficeList(event: any) {
     this.RegionalOfficeListShow = this.RegionalOfficeList.filter((x) => {
-      if (x.RegionalOffices.includes(event.target.value)) {
+      if (
+        x.RegionalOffices.toLowerCase().includes(
+          event.target.value.toLowerCase()
+        )
+      ) {
         return x;
       }
     });
@@ -545,26 +549,25 @@ export class FormCocComponent implements OnInit {
     });
   }
 
-  //Change city list on state selection 
-  changeCityList(event:any){
-    console.log('event',event)
-    if(event){
-      this.cityListShow=this.CityList.filter(x=>x.State==event.State)
-    }
-    else{
-      this.cityListShow=[];
+  //Change city list on state selection
+  changeCityList(event: any) {
+    console.log('event', event);
+    if (event) {
+      this.cityListShow = this.CityList.filter((x) => x.State == event.State);
+    } else {
+      this.cityListShow = [];
     }
   }
 
   TableATotAmount(data) {
-    console.log("COC_FDIODITabAArray",this.COC_FDIODITabAArray)
-    this.TableATotAmountData=0
-    this.COC_FDIODITabAArray.forEach(element => {
-      console.log("element",element)
+    console.log('COC_FDIODITabAArray', this.COC_FDIODITabAArray);
+    this.TableATotAmountData = 0;
+    this.COC_FDIODITabAArray.forEach((element) => {
+      console.log('element', element);
       this.TableATotAmountData += parseFloat(element.COC_FDIODITabAAmount);
-      console.log("TableATotAmountData",this.TableATotAmountData)
+      console.log('TableATotAmountData', this.TableATotAmountData);
     });
-    console.log("TableATotAmountData",this.TableATotAmountData)
+    console.log('TableATotAmountData', this.TableATotAmountData);
     // if (
     //   this.TableATotAmountData == undefined &&
     //   data.COC_FDIODITabAAmount != ''
@@ -717,15 +720,57 @@ export class FormCocComponent implements OnInit {
               (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
             )
           );
+
           // this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].BackgroundA});
           // this.BackSubmissionArray.push({ COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].BackgroundB});
           // this.DelayReasonsSubmissionArray.push({ COC_FDI_DelayReasons:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].DelayReasons});
           // this.RegulatorySubmissionArray.push({ COC_FDI_Regulatory:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].RegulatoryFramework});
           // this.PetitionRequestSubmissionArray.push({ COC_FDI_PetitionRequest:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===Fema.Submodulename)[0].PetitionRequest});
+
           console.log(this.COC_FDIFormlist.value.COC_FDI_CompanyName);
+
+          // Exact match on moduleName
+
+          // this.BackSubmissionArray.push({
+          //   COC_FDI_Background: this.FemaRegulationsList.filter(
+          //     (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+          //   )[0]?.background.background1.replace(
+          //     '[Insert Company Name] (‘Company’  or ‘Applicant’)',
+          //     this.COC_FDIFormlist.value.COC_FDI_CompanyName
+          //   ),
+          // });
+          // this.BackSubmissionArray.push({
+          //   COC_FDI_Background: this.FemaRegulationsList.filter(
+          //     (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+          //   )[0]?.background.background2.replace(
+          //     '[Insert Company Name] (‘Company’  or ‘Applicant’)',
+          //     this.COC_FDIFormlist.value.COC_FDI_CompanyName
+          //   ),
+          // });
+          // this.DelayReasonsSubmissionArray.push({
+          //   COC_FDI_DelayReasons: this.FemaRegulationsList.filter(
+          //     (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+          //   )[0]?.delayReasons,
+          // });
+          // this.RegulatorySubmissionArray.push({
+          //   COC_FDI_Regulatory: this.FemaRegulationsList.filter(
+          //     (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+          //   )[0]?.regulatoryFramework,
+          // });
+          // this.PetitionRequestSubmissionArray.push({
+          //   COC_FDI_PetitionRequest: this.FemaRegulationsList.filter(
+          //     (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+          //   )[0]?.petitionRequest,
+          // });
+
+          // Starting string match module name
           this.BackSubmissionArray.push({
             COC_FDI_Background: this.FemaRegulationsList.filter(
-              (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+              (x) =>
+                x.femaRegulationNoSubTopics.slice(
+                  0,
+                  Fema.Submodulename.length
+                ) === Fema.Submodulename
             )[0]?.background.background1.replace(
               '[Insert Company Name] (‘Company’  or ‘Applicant’)',
               this.COC_FDIFormlist.value.COC_FDI_CompanyName
@@ -733,7 +778,11 @@ export class FormCocComponent implements OnInit {
           });
           this.BackSubmissionArray.push({
             COC_FDI_Background: this.FemaRegulationsList.filter(
-              (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+              (x) =>
+                x.femaRegulationNoSubTopics.slice(
+                  0,
+                  Fema.Submodulename.length
+                ) === Fema.Submodulename
             )[0]?.background.background2.replace(
               '[Insert Company Name] (‘Company’  or ‘Applicant’)',
               this.COC_FDIFormlist.value.COC_FDI_CompanyName
@@ -741,17 +790,29 @@ export class FormCocComponent implements OnInit {
           });
           this.DelayReasonsSubmissionArray.push({
             COC_FDI_DelayReasons: this.FemaRegulationsList.filter(
-              (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+              (x) =>
+                x.femaRegulationNoSubTopics.slice(
+                  0,
+                  Fema.Submodulename.length
+                ) === Fema.Submodulename
             )[0]?.delayReasons,
           });
           this.RegulatorySubmissionArray.push({
             COC_FDI_Regulatory: this.FemaRegulationsList.filter(
-              (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+              (x) =>
+                x.femaRegulationNoSubTopics.slice(
+                  0,
+                  Fema.Submodulename.length
+                ) === Fema.Submodulename
             )[0]?.regulatoryFramework,
           });
           this.PetitionRequestSubmissionArray.push({
             COC_FDI_PetitionRequest: this.FemaRegulationsList.filter(
-              (x) => x.femaRegulationNoSubTopics === Fema.Submodulename
+              (x) =>
+                x.femaRegulationNoSubTopics.slice(
+                  0,
+                  Fema.Submodulename.length
+                ) === Fema.Submodulename
             )[0]?.petitionRequest,
           });
         }
@@ -763,7 +824,6 @@ export class FormCocComponent implements OnInit {
         this.NICCodeList[i].status = false;
         // console.log(this.NICCodeList)
       }
-
     }
     if (Val == '2') {
       this.COC_FDIApplicantDetails = true;

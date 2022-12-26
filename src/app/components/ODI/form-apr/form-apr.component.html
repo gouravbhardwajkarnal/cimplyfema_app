@@ -3,7 +3,7 @@
     <div class="bg-transparent border-0 p-0 panel-body topic_drop">
         <div class="act-sec">
             <div class="fema_tabs">
-                
+
                 <form [formGroup]="mainform">
                     <div class="border-0 card container-fluid pt-4 shadow">
                         <div class="row">
@@ -63,8 +63,8 @@
                                 <span class="placeholder">FCY</span>
                             </div>
                             <div class="col-3 input-block mb-4">
-                                <ng-select [items]="BankList"  (change)="onSelected($event)" bindLabel="BankName" placeholder="Select Bank"
-                                    formControlName="APR_Bank">
+                                <ng-select [items]="BankList" (change)="onSelected($event)" bindLabel="BankName"
+                                    placeholder="Select Bank" formControlName="APR_Bank">
                                 </ng-select>
 
 
@@ -104,9 +104,11 @@
                 <nav class="mt-4">
                     <div id="myTab" role="tablist" class="nav nav-tabs">
                         <div class="text-end w-100 p-2">
-                            <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white me-2" *ngIf="btnShow" (click)="updatePrev()">
+                            <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white me-2"
+                                *ngIf="btnShow" (click)="updatePrev()">
                                 Previous </button>
-                            <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white" *ngIf="btnShowNext" (click)="updateNext()">
+                            <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white"
+                                *ngIf="btnShowNext" (click)="updateNext()">
                                 Next </button>
                         </div>
                         <tabset #tabset>
@@ -128,7 +130,8 @@
                                             </div>
                                             <div class="col-5 mb-4">
                                                 <div class="input-group input-block">
-                                                    <span class="input-group-text" id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
+                                                    <span class="input-group-text"
+                                                        id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     <input type="number" class="form-control" spellcheck="false"
                                                         required (keydown)="CapitalstructureFE()"
                                                         formControlName="APR_Indian_Amount" id="APR_Indian_Amount"
@@ -142,7 +145,7 @@
                                                             This field is required.
                                                         </div>
                                                     </div>
-                                                  </div>
+                                                </div>
                                                 <!-- <div class="input-group input-block">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"
@@ -326,25 +329,26 @@
                                                 <label class="form-label">i)Net Profit/ (Loss)
                                                 </label>
                                             </div>
-                                            
+
                                             <div class="col-5 mb-4">
                                                 <div class="input-group input-block">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                            
-                                                <input type="number" class="form-control" spellcheck="false" required=""
-                                                    name="APR_Profit_Current" formControlName="APR_Profit_Current"
-                                                    [class.is-invalid]="APR_Profit_Current.invalid && (APR_Profit_Current.dirty || APR_Profit_Current.touched)">
-                                                <div *ngIf="APR_Profit_Current.invalid && (APR_Profit_Current.dirty || APR_Profit_Current.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Profit_Current.errors?.['required']">
-                                                        This field is required.
+
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required="" name="APR_Profit_Current"
+                                                        formControlName="APR_Profit_Current"
+                                                        [class.is-invalid]="APR_Profit_Current.invalid && (APR_Profit_Current.dirty || APR_Profit_Current.touched)">
+                                                    <div *ngIf="APR_Profit_Current.invalid && (APR_Profit_Current.dirty || APR_Profit_Current.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Profit_Current.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Previous Year </span>
                                                 </div>
-                                                <span class="placeholder">Previous Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-5 mb-4">
                                                 <div class="input-group input-block">
@@ -352,17 +356,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                               
-                                                <input type="number" class="form-control" spellcheck="false" required=""
-                                                    name="APR_Profit_Last" formControlName="APR_Profit_Last"
-                                                    [class.is-invalid]="APR_Profit_Last.invalid && (APR_Profit_Last.dirty || APR_Profit_Last.touched)">
-                                                <div *ngIf="APR_Profit_Last.invalid && (APR_Profit_Last.dirty || APR_Profit_Last.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Profit_Last.errors?.['required']">
-                                                        This field is required.
+
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required="" name="APR_Profit_Last"
+                                                        formControlName="APR_Profit_Last"
+                                                        [class.is-invalid]="APR_Profit_Last.invalid && (APR_Profit_Last.dirty || APR_Profit_Last.touched)">
+                                                    <div *ngIf="APR_Profit_Last.invalid && (APR_Profit_Last.dirty || APR_Profit_Last.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Profit_Last.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <span class="placeholder">Current Year </span>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
                                             </div>
                                             <div class="col-2 mb-4">
@@ -375,18 +380,19 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    name="APR_Dividend_Current" formControlName="APR_Dividend_Current"
-                                                    [class.is-invalid]="APR_Dividend_Current.invalid && (APR_Dividend_Current.dirty || APR_Dividend_Current.touched)">
-                                                <div *ngIf="APR_Dividend_Current.invalid && (APR_Dividend_Current.dirty || APR_Dividend_Current.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Dividend_Current.errors?.['required']">
-                                                        This field is required.
+
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required name="APR_Dividend_Current"
+                                                        formControlName="APR_Dividend_Current"
+                                                        [class.is-invalid]="APR_Dividend_Current.invalid && (APR_Dividend_Current.dirty || APR_Dividend_Current.touched)">
+                                                    <div *ngIf="APR_Dividend_Current.invalid && (APR_Dividend_Current.dirty || APR_Dividend_Current.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Dividend_Current.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Previous Year </span>
                                                 </div>
-                                                <span class="placeholder">Previous Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-5 mb-4 input-block">
                                                 <div class="input-group input-block">
@@ -394,19 +400,20 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                               
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    name="APR_Dividend_Last" formControlName="APR_Dividend_Last"
-                                                    [class.is-invalid]="APR_Dividend_Last.invalid && (APR_Dividend_Last.dirty || APR_Dividend_Last.touched)">
-                                                <div *ngIf="APR_Dividend_Last.invalid && (APR_Dividend_Last.dirty || APR_Dividend_Last.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Dividend_Last.errors?.['required']">
-                                                        This field is required.
+
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required name="APR_Dividend_Last"
+                                                        formControlName="APR_Dividend_Last"
+                                                        [class.is-invalid]="APR_Dividend_Last.invalid && (APR_Dividend_Last.dirty || APR_Dividend_Last.touched)">
+                                                    <div *ngIf="APR_Dividend_Last.invalid && (APR_Dividend_Last.dirty || APR_Dividend_Last.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Dividend_Last.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
                                             </div>
-                                            </div>  
                                             <div class="col-2 mb-4">
                                                 <label class="form-label">iii)Net worth
                                                 </label>
@@ -417,35 +424,36 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    name="APR_Worth_Current" formControlName="APR_Worth_Current"
-                                                    [class.is-invalid]="APR_Worth_Current.invalid && (APR_Worth_Current.dirty || APR_Worth_Current.touched)">
-                                                <div *ngIf="APR_Worth_Current.invalid && (APR_Worth_Current.dirty || APR_Worth_Current.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Worth_Current.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required name="APR_Worth_Current"
+                                                        formControlName="APR_Worth_Current"
+                                                        [class.is-invalid]="APR_Worth_Current.invalid && (APR_Worth_Current.dirty || APR_Worth_Current.touched)">
+                                                    <div *ngIf="APR_Worth_Current.invalid && (APR_Worth_Current.dirty || APR_Worth_Current.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Worth_Current.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Previous Year </span>
                                                 </div>
-                                                <span class="placeholder">Previous Year </span>
                                             </div>
-                                        </div>
                                             <div class="col-5 mb-4">
                                                 <div class="input-group input-block">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    name="APR_Worth_Last" formControlName="APR_Worth_Last"
-                                                    [class.is-invalid]="APR_Worth_Last.invalid && (APR_Worth_Last.dirty || APR_Worth_Last.touched)">
-                                                <div *ngIf="APR_Worth_Last.invalid && (APR_Worth_Last.dirty || APR_Worth_Last.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Worth_Last.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required name="APR_Worth_Last" formControlName="APR_Worth_Last"
+                                                        [class.is-invalid]="APR_Worth_Last.invalid && (APR_Worth_Last.dirty || APR_Worth_Last.touched)">
+                                                    <div *ngIf="APR_Worth_Last.invalid && (APR_Worth_Last.dirty || APR_Worth_Last.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Worth_Last.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
                                             </div>
                                             <hr>
                                             <div class="col-12 mb-4">
@@ -463,18 +471,19 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    name="APR_Dividend_CurYear" formControlName="APR_Dividend_CurYear"
-                                                    [class.is-invalid]="APR_Dividend_CurYear.invalid && (APR_Dividend_CurYear.dirty || APR_Dividend_CurYear.touched)">
-                                                <div *ngIf="APR_Dividend_CurYear.invalid && (APR_Dividend_CurYear.dirty || APR_Dividend_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Dividend_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required name="APR_Dividend_CurYear"
+                                                        formControlName="APR_Dividend_CurYear"
+                                                        [class.is-invalid]="APR_Dividend_CurYear.invalid && (APR_Dividend_CurYear.dirty || APR_Dividend_CurYear.touched)">
+                                                    <div *ngIf="APR_Dividend_CurYear.invalid && (APR_Dividend_CurYear.dirty || APR_Dividend_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Dividend_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
+                                                    <span class="placeholder">Current Year </span>
+                                                </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <div class="input-group input-block">
@@ -482,18 +491,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    formControlName="APR_Dividend_commencement"
-                                                    name="APR_Dividend_commencement"
-                                                    [class.is-invalid]="APR_Dividend_commencement.invalid && (APR_Dividend_commencement.dirty || APR_Dividend_commencement.touched)">
-                                                <div *ngIf="APR_Dividend_commencement.invalid && (APR_Dividend_commencement.dirty || APR_Dividend_commencement.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Dividend_commencement.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required formControlName="APR_Dividend_commencement"
+                                                        name="APR_Dividend_commencement"
+                                                        [class.is-invalid]="APR_Dividend_commencement.invalid && (APR_Dividend_commencement.dirty || APR_Dividend_commencement.touched)">
+                                                    <div *ngIf="APR_Dividend_commencement.invalid && (APR_Dividend_commencement.dirty || APR_Dividend_commencement.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Dividend_commencement.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
-                                                <span class="placeholder"> Since commencement of business </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <label class="form-label">ii)Repayment of loan
@@ -505,17 +514,19 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" name="APR_Repayment_CurYear"
-                                                    formControlName="APR_Repayment_CurYear" spellcheck="false" required
-                                                    [class.is-invalid]="APR_Repayment_CurYear.invalid && (APR_Repayment_CurYear.dirty || APR_Repayment_CurYear.touched)">
-                                                <div *ngIf="APR_Repayment_CurYear.invalid && (APR_Repayment_CurYear.dirty || APR_Repayment_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Repayment_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control"
+                                                        name="APR_Repayment_CurYear"
+                                                        formControlName="APR_Repayment_CurYear" spellcheck="false"
+                                                        required
+                                                        [class.is-invalid]="APR_Repayment_CurYear.invalid && (APR_Repayment_CurYear.dirty || APR_Repayment_CurYear.touched)">
+                                                    <div *ngIf="APR_Repayment_CurYear.invalid && (APR_Repayment_CurYear.dirty || APR_Repayment_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Repayment_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <div class="input-group input-block">
@@ -523,18 +534,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required=""
-                                                    formControlName="APR_Repayment_commencement"
-                                                    name="APR_Repayment_commencement"
-                                                    [class.is-invalid]="APR_Repayment_commencement.invalid && (APR_Repayment_commencement.dirty || APR_Repayment_commencement.touched)">
-                                                <div *ngIf="APR_Repayment_commencement.invalid && (APR_Repayment_commencement.dirty || APR_Repayment_commencement.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Repayment_commencement.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required="" formControlName="APR_Repayment_commencement"
+                                                        name="APR_Repayment_commencement"
+                                                        [class.is-invalid]="APR_Repayment_commencement.invalid && (APR_Repayment_commencement.dirty || APR_Repayment_commencement.touched)">
+                                                    <div *ngIf="APR_Repayment_commencement.invalid && (APR_Repayment_commencement.dirty || APR_Repayment_commencement.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Repayment_commencement.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
-                                                <span class="placeholder"> Since commencement of business </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <label class="form-label">iii)Non-Equity Exports Realised (in INR)
@@ -543,40 +554,38 @@
                                             <div class="col-4 mb-4">
                                                 <div class="input-group input-block">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"
-                                                            id="APR_Indian_Amount">INR</span>
+                                                        <span class="input-group-text" id="APR_Indian_Amount">INR</span>
                                                     </div>
-                                                <input type="number" class="form-control"
-                                                    formControlName="APR_EquityExport_CurYear" spellcheck="false"
-                                                    required name="APR_EquityExport_CurYear"
-                                                    [class.is-invalid]="APR_EquityExport_CurYear.invalid && (APR_EquityExport_CurYear.dirty || APR_EquityExport_CurYear.touched)">
-                                                <div *ngIf="APR_EquityExport_CurYear.invalid && (APR_EquityExport_CurYear.dirty || APR_EquityExport_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_EquityExport_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control"
+                                                        formControlName="APR_EquityExport_CurYear" spellcheck="false"
+                                                        required name="APR_EquityExport_CurYear"
+                                                        [class.is-invalid]="APR_EquityExport_CurYear.invalid && (APR_EquityExport_CurYear.dirty || APR_EquityExport_CurYear.touched)">
+                                                    <div *ngIf="APR_EquityExport_CurYear.invalid && (APR_EquityExport_CurYear.dirty || APR_EquityExport_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_EquityExport_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <div class="input-group input-block">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"
-                                                            id="APR_Indian_Amount">INR</span>
+                                                        <span class="input-group-text" id="APR_Indian_Amount">INR</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    formControlName="APR_EquityExport_commencement"
-                                                    name="APR_EquityExport_commencement"
-                                                    [class.is-invalid]="APR_EquityExport_commencement.invalid && (APR_EquityExport_commencement.dirty || APR_EquityExport_commencement.touched)">
-                                                <div *ngIf="APR_EquityExport_commencement.invalid && (APR_EquityExport_commencement.dirty || APR_EquityExport_commencement.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_EquityExport_commencement.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required formControlName="APR_EquityExport_commencement"
+                                                        name="APR_EquityExport_commencement"
+                                                        [class.is-invalid]="APR_EquityExport_commencement.invalid && (APR_EquityExport_commencement.dirty || APR_EquityExport_commencement.touched)">
+                                                    <div *ngIf="APR_EquityExport_commencement.invalid && (APR_EquityExport_commencement.dirty || APR_EquityExport_commencement.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_EquityExport_commencement.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
-                                                <span class="placeholder"> Since commencement of business </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <label class="form-label">iv)Royalties
@@ -588,17 +597,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    formControlName="APR_Royalties_CurYear" name="APR_Royalties_CurYear"
-                                                    [class.is-invalid]="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)">
-                                                <div *ngIf="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Royalties_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required formControlName="APR_Royalties_CurYear"
+                                                        name="APR_Royalties_CurYear"
+                                                        [class.is-invalid]="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)">
+                                                    <div *ngIf="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Royalties_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <div class="input-group input-block">
@@ -606,18 +616,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    formControlName="APR_Royalties_commencement"
-                                                    name="APR_Royalties_commencement"
-                                                    [class.is-invalid]="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)">
-                                                <div *ngIf="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Royalties_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required formControlName="APR_Royalties_commencement"
+                                                        name="APR_Royalties_commencement"
+                                                        [class.is-invalid]="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)">
+                                                    <div *ngIf="APR_Royalties_CurYear.invalid && (APR_Royalties_CurYear.dirty || APR_Royalties_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Royalties_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
-                                                <span class="placeholder"> Since commencement of business </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <label class="form-label">v)Technical know-how Fees
@@ -629,18 +639,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control"
-                                                    formControlName="APR_Technical_CurYear" required spellcheck="false"
-                                                    name="APR_Royalties_commencement"
-                                                    [class.is-invalid]="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)">
-                                                <div *ngIf="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Technical_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control"
+                                                        formControlName="APR_Technical_CurYear" required
+                                                        spellcheck="false" name="APR_Royalties_commencement"
+                                                        [class.is-invalid]="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)">
+                                                    <div *ngIf="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Technical_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <div class="input-group input-block">
@@ -648,17 +658,17 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_Technical_commencement"
-                                                    name="APR_Technical_commencement"
-                                                    [class.is-invalid]="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)">
-                                                <div *ngIf="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Technical_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false" formControlName="APR_Technical_commencement"
+                                                        name="APR_Technical_commencement"
+                                                        [class.is-invalid]="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)">
+                                                    <div *ngIf="APR_Technical_CurYear.invalid && (APR_Technical_CurYear.dirty || APR_Technical_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Technical_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <span class="placeholder"> Since commencement of business </span>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
                                             </div>
                                             <div class="col-4 mb-4">
@@ -671,18 +681,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    formControlName="APR_Consultancyfee_CurYear"
-                                                    name="APR_Consultancyfee_CurYear"
-                                                    [class.is-invalid]="APR_Consultancyfee_CurYear.invalid && (APR_Consultancyfee_CurYear.dirty || APR_Consultancyfee_CurYear.touched)">
-                                                <div *ngIf="APR_Consultancyfee_CurYear.invalid && (APR_Consultancyfee_CurYear.dirty || APR_Consultancyfee_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Consultancyfee_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required formControlName="APR_Consultancyfee_CurYear"
+                                                        name="APR_Consultancyfee_CurYear"
+                                                        [class.is-invalid]="APR_Consultancyfee_CurYear.invalid && (APR_Consultancyfee_CurYear.dirty || APR_Consultancyfee_CurYear.touched)">
+                                                    <div *ngIf="APR_Consultancyfee_CurYear.invalid && (APR_Consultancyfee_CurYear.dirty || APR_Consultancyfee_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Consultancyfee_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <div class="input-group input-block">
@@ -690,18 +700,19 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" spellcheck="false" required
-                                                    formControlName="APR_Consultancyfee_commencement"
-                                                    name="APR_Consultancyfee_commencement"
-                                                    [class.is-invalid]="APR_Consultancyfee_commencement.invalid && (APR_Consultancyfee_commencement.dirty || APR_Consultancyfee_commencement.touched)">
-                                                <div *ngIf="APR_Consultancyfee_commencement.invalid && (APR_Consultancyfee_commencement.dirty || APR_Consultancyfee_commencement.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Consultancyfee_commencement.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" spellcheck="false"
+                                                        required formControlName="APR_Consultancyfee_commencement"
+                                                        name="APR_Consultancyfee_commencement"
+                                                        [class.is-invalid]="APR_Consultancyfee_commencement.invalid && (APR_Consultancyfee_commencement.dirty || APR_Consultancyfee_commencement.touched)">
+                                                    <div *ngIf="APR_Consultancyfee_commencement.invalid && (APR_Consultancyfee_commencement.dirty || APR_Consultancyfee_commencement.touched)"
+                                                        class="invalid-feedback">
+                                                        <div
+                                                            *ngIf="APR_Consultancyfee_commencement.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
-                                                <span class="placeholder"> Since commencement of business </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <label class="form-label">vii)Others (please specify)
@@ -713,17 +724,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_Others_CurYear" name="APR_Others_CurYear"
-                                                    [class.is-invalid]="APR_Others_CurYear.invalid && (APR_Others_CurYear.dirty || APR_Others_CurYear.touched)">
-                                                <div *ngIf="APR_Others_CurYear.invalid && (APR_Others_CurYear.dirty || APR_Others_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Others_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false" formControlName="APR_Others_CurYear"
+                                                        name="APR_Others_CurYear"
+                                                        [class.is-invalid]="APR_Others_CurYear.invalid && (APR_Others_CurYear.dirty || APR_Others_CurYear.touched)">
+                                                    <div *ngIf="APR_Others_CurYear.invalid && (APR_Others_CurYear.dirty || APR_Others_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Others_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <div class="input-group input-block">
@@ -731,18 +743,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_Others_commencement"
-                                                    name="APR_Others_commencement"
-                                                    [class.is-invalid]="APR_Others_commencement.invalid && (APR_Others_commencement.dirty || APR_Others_commencement.touched)">
-                                                <div *ngIf="APR_Others_commencement.invalid && (APR_Others_commencement.dirty || APR_Others_commencement.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Others_commencement.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false" formControlName="APR_Others_commencement"
+                                                        name="APR_Others_commencement"
+                                                        [class.is-invalid]="APR_Others_commencement.invalid && (APR_Others_commencement.dirty || APR_Others_commencement.touched)">
+                                                    <div *ngIf="APR_Others_commencement.invalid && (APR_Others_commencement.dirty || APR_Others_commencement.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Others_commencement.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
-                                                <span class="placeholder"> Since commencement of business </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <label class="form-label">viii)Profit
@@ -754,17 +766,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_Profit_CurYear" name="APR_Profit_CurYear"
-                                                    [class.is-invalid]="APR_Profit_CurYear.invalid && (APR_Profit_CurYear.dirty || APR_Profit_CurYear.touched)">
-                                                <div *ngIf="APR_Profit_CurYear.invalid && (APR_Profit_CurYear.dirty || APR_Profit_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Profit_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false" formControlName="APR_Profit_CurYear"
+                                                        name="APR_Profit_CurYear"
+                                                        [class.is-invalid]="APR_Profit_CurYear.invalid && (APR_Profit_CurYear.dirty || APR_Profit_CurYear.touched)">
+                                                    <div *ngIf="APR_Profit_CurYear.invalid && (APR_Profit_CurYear.dirty || APR_Profit_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Profit_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
                                                 <div class="input-group input-block">
@@ -772,18 +785,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control"
-                                                    formControlName="APR_Profit_commencement"
-                                                    name="APR_Profit_commencement" required spellcheck="false"
-                                                    [class.is-invalid]="APR_Profit_commencement.invalid && (APR_Profit_commencement.dirty || APR_Profit_commencement.touched)">
-                                                <div *ngIf="APR_Profit_commencement.invalid && (APR_Profit_commencement.dirty || APR_Profit_commencement.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Profit_commencement.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control"
+                                                        formControlName="APR_Profit_commencement"
+                                                        name="APR_Profit_commencement" required spellcheck="false"
+                                                        [class.is-invalid]="APR_Profit_commencement.invalid && (APR_Profit_commencement.dirty || APR_Profit_commencement.touched)">
+                                                    <div *ngIf="APR_Profit_commencement.invalid && (APR_Profit_commencement.dirty || APR_Profit_commencement.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Profit_commencement.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
-                                                <span class="placeholder"> Since commencement of business </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <label class="form-label">ix)Retained earnings
@@ -795,17 +808,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_Retained_CurYear" name="APR_Retained_CurYear"
-                                                    [class.is-invalid]="APR_Retained_CurYear.invalid && (APR_Retained_CurYear.dirty || APR_Retained_CurYear.touched)">
-                                                <div *ngIf="APR_Retained_CurYear.invalid && (APR_Retained_CurYear.dirty || APR_Retained_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Retained_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false" formControlName="APR_Retained_CurYear"
+                                                        name="APR_Retained_CurYear"
+                                                        [class.is-invalid]="APR_Retained_CurYear.invalid && (APR_Retained_CurYear.dirty || APR_Retained_CurYear.touched)">
+                                                    <div *ngIf="APR_Retained_CurYear.invalid && (APR_Retained_CurYear.dirty || APR_Retained_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Retained_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year </span>
                                                 </div>
-                                                <span class="placeholder">Current Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
                                                 <div class="input-group">
@@ -813,18 +827,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_Retained_commencement"
-                                                    name="APR_Retained_commencement"
-                                                    [class.is-invalid]="APR_Retained_commencement.invalid && (APR_Retained_commencement.dirty || APR_Retained_commencement.touched)">
-                                                <div *ngIf="APR_Retained_commencement.invalid && (APR_Retained_commencement.dirty || APR_Retained_commencement.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_Retained_commencement.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false" formControlName="APR_Retained_commencement"
+                                                        name="APR_Retained_commencement"
+                                                        [class.is-invalid]="APR_Retained_commencement.invalid && (APR_Retained_commencement.dirty || APR_Retained_commencement.touched)">
+                                                    <div *ngIf="APR_Retained_commencement.invalid && (APR_Retained_commencement.dirty || APR_Retained_commencement.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_Retained_commencement.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
-                                                <span class="placeholder"> Since commencement of business </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <label class="form-label">x)FDI by foreign entity/ SDS into India
@@ -836,18 +850,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_FDIforeign_CurYear"
-                                                    name="APR_Retained_commencement"
-                                                    [class.is-invalid]="APR_FDIforeign_CurYear.invalid && (APR_FDIforeign_CurYear.dirty || APR_FDIforeign_CurYear.touched)">
-                                                <div *ngIf="APR_FDIforeign_CurYear.invalid && (APR_FDIforeign_CurYear.dirty || APR_FDIforeign_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_FDIforeign_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false" formControlName="APR_FDIforeign_CurYear"
+                                                        name="APR_Retained_commencement"
+                                                        [class.is-invalid]="APR_FDIforeign_CurYear.invalid && (APR_FDIforeign_CurYear.dirty || APR_FDIforeign_CurYear.touched)">
+                                                    <div *ngIf="APR_FDIforeign_CurYear.invalid && (APR_FDIforeign_CurYear.dirty || APR_FDIforeign_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_FDIforeign_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Current Year </span>
                                                 </div>
-                                                <span class="placeholder"> Current Year </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
                                                 <div class="input-group">
@@ -855,18 +869,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_FDIforeign_commencement"
-                                                    name="APR_FDIforeign_commencement"
-                                                    [class.is-invalid]="APR_FDIforeign_commencement.invalid && (APR_FDIforeign_commencement.dirty || APR_FDIforeign_commencement.touched)">
-                                                <div *ngIf="APR_FDIforeign_commencement.invalid && (APR_FDIforeign_commencement.dirty || APR_FDIforeign_commencement.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_FDIforeign_commencement.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false" formControlName="APR_FDIforeign_commencement"
+                                                        name="APR_FDIforeign_commencement"
+                                                        [class.is-invalid]="APR_FDIforeign_commencement.invalid && (APR_FDIforeign_commencement.dirty || APR_FDIforeign_commencement.touched)">
+                                                    <div *ngIf="APR_FDIforeign_commencement.invalid && (APR_FDIforeign_commencement.dirty || APR_FDIforeign_commencement.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_FDIforeign_commencement.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder"> Since commencement of business </span>
                                                 </div>
-                                                <span class="placeholder"> Since commencement of business </span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4">
                                                 <label class="form-label">xi) Refund of excess share application money
@@ -880,18 +894,18 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_exces_sshare_CurYear"
-                                                    name="APR_exces_sshare_CurYear"
-                                                    [class.is-invalid]="APR_exces_sshare_CurYear.invalid && (APR_exces_sshare_CurYear.dirty || APR_exces_sshare_CurYear.touched)">
-                                                <div *ngIf="APR_exces_sshare_CurYear.invalid && (APR_exces_sshare_CurYear.dirty || APR_exces_sshare_CurYear.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_exces_sshare_CurYear.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false" formControlName="APR_exces_sshare_CurYear"
+                                                        name="APR_exces_sshare_CurYear"
+                                                        [class.is-invalid]="APR_exces_sshare_CurYear.invalid && (APR_exces_sshare_CurYear.dirty || APR_exces_sshare_CurYear.touched)">
+                                                    <div *ngIf="APR_exces_sshare_CurYear.invalid && (APR_exces_sshare_CurYear.dirty || APR_exces_sshare_CurYear.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_exces_sshare_CurYear.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Current Year</span>
                                                 </div>
-                                                <span class="placeholder">Current Year</span>
-                                            </div>
                                             </div>
                                             <div class="col-4 mb-4 input-block">
                                                 <div class="input-group">
@@ -899,18 +913,19 @@
                                                         <span class="input-group-text"
                                                             id="APR_Indian_Amount">{{mainform.controls['APR_Currency'].value}}</span>
                                                     </div>
-                                                <input type="number" class="form-control" required spellcheck="false"
-                                                    formControlName="APR_exces_sshare_commencement"
-                                                    name="APR_exces_sshare_commencement"
-                                                    [class.is-invalid]="APR_exces_sshare_commencement.invalid && (APR_exces_sshare_commencement.dirty || APR_exces_sshare_commencement.touched)">
-                                                <div *ngIf="APR_exces_sshare_commencement.invalid && (APR_exces_sshare_commencement.dirty || APR_exces_sshare_commencement.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_exces_sshare_commencement.errors?.['required']">
-                                                        This field is required.
+                                                    <input type="number" class="form-control" required
+                                                        spellcheck="false"
+                                                        formControlName="APR_exces_sshare_commencement"
+                                                        name="APR_exces_sshare_commencement"
+                                                        [class.is-invalid]="APR_exces_sshare_commencement.invalid && (APR_exces_sshare_commencement.dirty || APR_exces_sshare_commencement.touched)">
+                                                    <div *ngIf="APR_exces_sshare_commencement.invalid && (APR_exces_sshare_commencement.dirty || APR_exces_sshare_commencement.touched)"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="APR_exces_sshare_commencement.errors?.['required']">
+                                                            This field is required.
+                                                        </div>
                                                     </div>
+                                                    <span class="placeholder">Since commencement of business</span>
                                                 </div>
-                                                <span class="placeholder">Since commencement of business</span>
-                                            </div>
                                             </div>
                                             <hr>
 
@@ -1416,8 +1431,8 @@
                                                             <div class="col-sm-4 col-xl-4 input-block">
                                                                 <input type="text" id="APR_Dec_Email"
                                                                     name="APR_Dec_Email" formControlName="APR_Dec_Email"
-                                                                    spellcheck="false" minlength="1"
-                                                                    maxlength="250" class="form-control form-control-sm"
+                                                                    spellcheck="false" minlength="1" maxlength="250"
+                                                                    class="form-control form-control-sm"
                                                                     [class.is-invalid]="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)">
                                                                 <div *ngIf="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)"
                                                                     class="invalid-feedback">
@@ -1839,7 +1854,7 @@
                                     </div>
                                 </div>
                             </tab>
-                            <tab heading="Preview" id="6">
+                            <tab heading="Preview" id="6" disabled="disabled">
                                 <div class="card p-4 rounded-0 border-info1">
                                     <table class="table table-borderless">
                                         <thead>
@@ -1867,7 +1882,7 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">
-                                                    <h6>B. Form APR</h6>
+                                                    <h6>B. Form APR(New Format)</h6>
                                                 </th>
                                                 <td><img src="assets/images/word.png" (click)="ExportWordAPR()"
                                                         style="cursor:pointer"></td>
@@ -1876,12 +1891,23 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">
-                                                    <h6>C. Statutory Auditor / Chartered Accountant Certificate</h6>
+                                                    <h6>C. Form APR(Old Format)</h6>
                                                 </th>
-                                                <td><img src="assets/images/word.png" style="cursor:pointer" (click)="ExportWordpdfCAcertificate()"></td>
-                                                <td><img src="assets/images/pdf.png" style="cursor:pointer" (click)="downloadpdfCAcertificate()"></td>
+                                                <td><img src="assets/images/word.png" (click)="ExportWordAPROld()"
+                                                        style="cursor:pointer"></td>
+                                                <td><img src="assets/images/pdf.png" (click)="downloadAsPDFAPROld()"
+                                                        style="cursor:pointer"></td>
                                             </tr>
-                                            
+                                            <tr>
+                                                <th scope="row">
+                                                    <h6>D. Statutory Auditor / Chartered Accountant Certificate</h6>
+                                                </th>
+                                                <td><img src="assets/images/word.png" style="cursor:pointer"
+                                                        (click)="ExportWordpdfCAcertificate()"></td>
+                                                <td><img src="assets/images/pdf.png" style="cursor:pointer"
+                                                        (click)="downloadpdfCAcertificate()"></td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                     <div id="pdfCovering" #pdfCovering style="display:none; ">
@@ -1900,12 +1926,12 @@
                                         <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 UIN: {{dataModel.APR_UIN}}</strong></p>
                                         <p><strong>&nbsp;</strong></p>
-                                 
+
                                         <p>In relation to the above subject, please find enclosed the Annual Performance
                                             Report (APR) for the captioned UIN. We request you to kindly take the above
                                             on record. We also request you to provide us with the confirmations for
                                             submission of APR in the RBI records, if any.</p>
-                                      
+
                                         <table style="border:1px" cellpadding='1' cellspacing='1'>
                                             <tbody>
                                                 <tr>
@@ -1947,17 +1973,17 @@
                                             </tbody>
                                         </table>
                                         <p>&nbsp;</p>
-                                        
+
                                         <p>Yours sincerely,</p>
                                         <p>For <strong>{{dataModel.APR_NameIE}}</strong></p>
                                         <p>&nbsp;</p>
                                         <p>&nbsp;</p>
                                         <p>&nbsp;</p>
-                                        
+
                                         <p>Director/Authorised Signatory</p>
                                         <p>&nbsp;</p>
                                         <p>&nbsp;</p>
-                                        
+
                                     </div>
                                     <div id="pdfTableAPR" #pdfTableAPR style="display:none; ">
                                         <table width="100%" class="table table-bordered">
@@ -2177,7 +2203,8 @@
                                                         <p>Dividend</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Dividend_Current}}
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Dividend_Current}}
                                                         </p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
@@ -2230,10 +2257,12 @@
                                                         <p>Dividend</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Dividend_CurYear}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Dividend_CurYear}}</p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Dividend_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Dividend_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2244,11 +2273,13 @@
                                                         <p>Repayment of loan</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Repayment_CurYear}}
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Repayment_CurYear}}
                                                         </p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Repayment_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Repayment_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2259,11 +2290,13 @@
                                                         <p>Non-Equity Exports Realised (in INR)&nbsp;</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_EquityExport_CurYear}}
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_EquityExport_CurYear}}
                                                         </p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_EquityExport_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_EquityExport_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2274,11 +2307,13 @@
                                                         <p>Royalties&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Royalties_CurYear}}
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Royalties_CurYear}}
                                                         </p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p>{{dataModel.APR_Currency}} {{dataModel.APR_Royalties_commencement}}
+                                                        <p>{{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Royalties_commencement}}
                                                         </p>
                                                     </td>
                                                 </tr>
@@ -2290,10 +2325,12 @@
                                                         <p>Technical know-how Fees&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Technical_CurYear}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Technical_CurYear}}</p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Technical_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Technical_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2304,10 +2341,12 @@
                                                         <p>Consultancy fees&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Consultancyfee_CurYear}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Consultancyfee_CurYear}}</p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Consultancyfee_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Consultancyfee_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2322,7 +2361,8 @@
                                                         </p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Others_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Others_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2337,7 +2377,8 @@
                                                         </p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Profit_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Profit_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2348,10 +2389,12 @@
                                                         <p>Retained earnings</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Retained_CurYear}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Retained_CurYear}}</p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Retained_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Retained_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2362,10 +2405,12 @@
                                                         <p>FDI by foreign entity/ SDS into India</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_FDIforeign_CurYear}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_FDIforeign_CurYear}}</p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_FDIforeign_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_FDIforeign_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2377,10 +2422,12 @@
                                                         <p>@Transaction No. -</p>
                                                     </td>
                                                     <td style="width: 24.878%;" colspan="14">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_exces_sshare_CurYear}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_exces_sshare_CurYear}}</p>
                                                     </td>
                                                     <td style="width: 28.1451%;" colspan="10">
-                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_exces_sshare_commencement}}</p>
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_exces_sshare_commencement}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -2917,66 +2964,160 @@
                                         <p>&nbsp;</p>
 
                                     </div>
+                                    <div id="pdfTableAPROld" #pdfTableAPROld style="display:none;">
+                                    </div>
                                     <div id="pdfCAcertificate" #pdfCAcertificate style="display:none;">
                                         <table width="100%" style="border:1px;">
                                             <tbody>
-                                            <tr>
-                                            <td colspan="5" width="100%">
-                                            <p><strong>Certificate of the Statutory Auditor (in case of Indian entity) / Chartered Accountant in case of resident individuals (strike out whichever is not applicable)</strong></p>
-                                            </td>
-                                            </tr>
-                                            <tr>
-                                            <td colspan="5" width="100%">
-                                            <p>We hereby certify that:</p>
-                                            <p>&nbsp;&nbsp;&nbsp; i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; APR for the year ended {{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}} is prepared on the basis of audited/ unaudited balance sheet of the foreign entity for the year ended {{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}}.&nbsp;</p>
-                                            <p>&nbsp;&nbsp; ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; APR for the year ended {{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}} is prepared on the basis of unaudited balance sheet of the foreign entity since audit is not mandatory in host country/jurisdiction and the IE/RI does not have &lsquo;control&rsquo; in the foreign entity in compliance with explanation (a) to Regulation 10(4) of Foreign Exchange Management (Overseas Investment) Regulations, 2022.</p>
-                                            <p>&nbsp; iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The IE/ RI repatriated to India, all dues receivable from the foreign entity under this UIN, as required under Regulation 9 (4) of Foreign Exchange Management (Overseas Investment) Regulations, 2022 or corresponding extant Regulations in case where the reporting is being done under the earlier overseas investment framework** as stipulated by the Reserve Bank from time to time, and it has been verified from the Foreign Inward Remittance Certificate issued by the AD bank/s.</p>
-                                            </td>
-                                            </tr>
-                                            <tr>
-                                            <td colspan="2" width="39%">
-                                            <p>Signature of the Statutory Auditors /Chartered Accountant</p>
-                                            </td>
-                                            <td colspan="2" width="42%">
-                                            <p>{{dataModel.APR_CA_Signature}}</p>
-                                            </td>
-                                            <td rowspan="3" width="18%">
-                                            <p><u>{{dataModel.APR_CA_Stamp}}</u></p>
-                                            </td>
-                                            </tr>
-                                            <tr>
-                                            <td colspan="2" width="39%">
-                                            <p>Name of the audit firm, Registration number and UDIN</p>
-                                            </td>
-                                            <td colspan="2" width="42%">
-                                            <p> {{dataModel.APR_CA_FirmName}} {{dataModel.APR_CA_RegNo}}
-                                                {{dataModel.APR_CA_UDIN}}</p>
-                                            </td>
-                                            </tr>
-                                            <tr>
-                                            <td width="14%">
-                                            <p>Place</p>
-                                            </td>
-                                            <td width="24%">
-                                            <p>{{dataModel.APR_CA_Place}}</p>
-                                            </td>
-                                            <td width="18%">
-                                            <p>Date</p>
-                                            </td>
-                                            <td width="24%">
-                                            <p>{{dataModel.APR_CA_Date}}</p>
-                                            </td>
-                                            </tr>
-                                            <tr>
-                                            <td colspan="4" width="81%">
-                                            <p>Email</p>
-                                            </td>
-                                            <td width="18%">
-                                            <p>{{dataModel.APR_CA_Email}}</p>
-                                            </td>
-                                            </tr>
+                                                <tr>
+                                                    <td colspan="5" width="100%">
+                                                        <p><strong>Certificate of the Statutory Auditor (in case of
+                                                                Indian entity) / Chartered Accountant in case of
+                                                                resident individuals (strike out whichever is not
+                                                                applicable)</strong></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" width="100%">
+                                                        <p>We hereby certify that:</p>
+                                                        <p [ngSwitch]="dataModel.APR_CA_A">
+                                                            <span *ngSwitchCase=true
+                                                                style="text-decoration: line-through;">
+                                                                i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                APR for the year ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}} is prepared on the basis of audited/
+                                                                unaudited balance sheet of the foreign entity for the
+                                                                year
+                                                                ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}}.&nbsp;</span>
+                                                            <span *ngSwitchCase=false>
+                                                                i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                APR for the year ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}} is prepared on the basis of audited/
+                                                                unaudited balance sheet of the foreign entity for the
+                                                                year
+                                                                ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}}.&nbsp;</span>
+                                                            &nbsp;
+                                                        </p>
+                                                        <p [ngSwitch]="dataModel.APR_CA_B">&nbsp;&nbsp;
+                                                            ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span *ngSwitchCase=true
+                                                                style="text-decoration: line-through;">&nbsp;&nbsp;
+                                                                ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                APR for the year ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}} is prepared on the basis of unaudited
+                                                                balance
+                                                                sheet of the foreign entity since audit is not mandatory
+                                                                in
+                                                                host country/jurisdiction and the IE/RI does not have
+                                                                &lsquo;control&rsquo; in the foreign entity in
+                                                                compliance
+                                                                with explanation (a) to Regulation 10(4) of Foreign
+                                                                Exchange
+                                                                Management (Overseas Investment) Regulations, 2022.
+                                                            </span>
+                                                            <span *ngSwitchCase=false> &nbsp;&nbsp;
+                                                                ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                APR for the year ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}} is prepared on the basis of unaudited
+                                                                balance
+                                                                sheet of the foreign entity since audit is not mandatory
+                                                                in
+                                                                host country/jurisdiction and the IE/RI does not have
+                                                                &lsquo;control&rsquo; in the foreign entity in
+                                                                compliance
+                                                                with explanation (a) to Regulation 10(4) of Foreign
+                                                                Exchange
+                                                                Management (Overseas Investment) Regulations, 2022.
+                                                            </span>
+                                                        </p>
+                                                        <p [ngSwitch]="dataModel.APR_CA_C">
+                                                            <span *ngSwitchCase=true
+                                                                style="text-decoration: line-through;"> &nbsp;
+                                                                iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                The IE/ RI repatriated to India, all dues receivable
+                                                                from
+                                                                the foreign entity under this UIN, as required under
+                                                                Regulation 9 (4) of Foreign Exchange Management
+                                                                (Overseas
+                                                                Investment) Regulations, 2022 or corresponding extant
+                                                                Regulations in case where the reporting is being done
+                                                                under
+                                                                the earlier overseas investment framework** as
+                                                                stipulated by
+                                                                the Reserve Bank from time to time, and it has been
+                                                                verified
+                                                                from the Foreign Inward Remittance Certificate issued by
+                                                                the
+                                                                AD bank/s.
+                                                            </span>
+                                                            <span *ngSwitchCase=false>&nbsp;
+                                                                iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                The IE/ RI repatriated to India, all dues receivable
+                                                                from
+                                                                the foreign entity under this UIN, as required under
+                                                                Regulation 9 (4) of Foreign Exchange Management
+                                                                (Overseas
+                                                                Investment) Regulations, 2022 or corresponding extant
+                                                                Regulations in case where the reporting is being done
+                                                                under
+                                                                the earlier overseas investment framework** as
+                                                                stipulated by
+                                                                the Reserve Bank from time to time, and it has been
+                                                                verified
+                                                                from the Foreign Inward Remittance Certificate issued by
+                                                                the
+                                                                AD bank/s.
+                                                            </span>
+                                                        </p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="39%">
+                                                        <p>Signature of the Statutory Auditors /Chartered Accountant</p>
+                                                    </td>
+                                                    <td colspan="2" width="42%">
+                                                        <p>{{dataModel.APR_CA_Signature}}</p>
+                                                    </td>
+                                                    <td rowspan="3" width="18%">
+                                                        <p><u>{{dataModel.APR_CA_Stamp}}</u></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="39%">
+                                                        <p>Name of the audit firm, Registration number and UDIN</p>
+                                                    </td>
+                                                    <td colspan="2" width="42%">
+                                                        <p> {{dataModel.APR_CA_FirmName}} {{dataModel.APR_CA_RegNo}}
+                                                            {{dataModel.APR_CA_UDIN}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="14%">
+                                                        <p>Place</p>
+                                                    </td>
+                                                    <td width="24%">
+                                                        <p>{{dataModel.APR_CA_Place}}</p>
+                                                    </td>
+                                                    <td width="18%">
+                                                        <p>Date</p>
+                                                    </td>
+                                                    <td width="24%">
+                                                        <p>{{dataModel.APR_CA_Date}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4" width="81%">
+                                                        <p>Email</p>
+                                                    </td>
+                                                    <td width="18%">
+                                                        <p>{{dataModel.APR_CA_Email}}</p>
+                                                    </td>
+                                                </tr>
                                             </tbody>
-                                            </table>
+                                        </table>
                                     </div>
 
                                 </div>
@@ -2988,9 +3129,11 @@
                     </div>
                 </nav>
                 <div class="text-center p-3">
-                    <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white me-2" *ngIf="btnShow" (click)="updatePrev()">
+                    <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white me-2"
+                        *ngIf="btnShow" (click)="updatePrev()">
                         Previous </button>
-                    <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white" *ngIf="btnShowNext" (click)="updateNext()">
+                    <button class="bg-info1 btn btn-sm fw-semibold px-4 py-2 text-uppercase text-white"
+                        *ngIf="btnShowNext" (click)="updateNext()">
                         Next </button>
                 </div>
             </div>

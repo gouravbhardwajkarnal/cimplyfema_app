@@ -123,7 +123,7 @@
                                     <span class="placeholder">State</span>
                                 </div>
                                 <div class="col-3 input-block mb-4">
-                                    <ng-select [items]="basicCityList"
+                                    <ng-select [items]="cityListShow"
                                         (change)="GetCityStateValue($event,'investor_City')" bindLabel="city"
                                         placeholder="Select City" formControlName="investor_City" class="form-select">
                                     </ng-select>

@@ -14,6 +14,7 @@ import htmlToPdfmake from 'html-to-pdfmake';
 import { asBlob } from 'html-docx-js-typescript';
 import { saveAs } from 'file-saver';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -51,7 +52,8 @@ export class FormAprComponent implements OnInit {
   phoneNumber: string;
   Today: Date;
   constructor(private readonly route: ActivatedRoute, private apiService: ApiService, private fb: FormBuilder,
-    private commonservice: CommonService, public datepipe: DatePipe) {
+    private commonservice: CommonService, public datepipe: DatePipe,private toastr: ToastrService) {
+
     this.investment_model = {} as Iinvestment;
     this.emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
     // this.phoneNumber = "^(\+\d{1,3}[- ]?)?\d{10}$";
@@ -738,12 +740,22 @@ export class FormAprComponent implements OnInit {
 
       }
       else {
+        debugger;
         var stakepercentage = 0;
+        var indianpercentage = 0;
+        var foreignpercentage = 0;
+        var indianshare=this.aprForm.get("APR_Indian_Share").value;
+        var foreignshare=this.aprForm.get("APR_Foreign_Share").value;
         for (const control of this.ShareHoldingFEArray) {
           stakepercentage += control.Total;
+          indianpercentage += control.Pstake;
+          foreignpercentage += control.FPstake
         }
-        if (stakepercentage < 100) {
-          alert("%stake should be 100")
+        if (stakepercentage < 100 || indianpercentage!=indianshare || foreignpercentage!=foreignshare) {
+          this.toastr.warning("%stake should be 100 and Capital Structure for indian and foreign share", 'Warning', {
+            closeButton: true,
+            positionClass: 'toast-bottom-right'
+          });
           return;
         }
         const ShareHoldingFE: FormArray = this.fb.array(this.ShareHoldingFEArray);
@@ -805,10 +817,27 @@ export class FormAprComponent implements OnInit {
   }
   @ViewChild('pdfTableAPR') pdfTableAPR: ElementRef;
   @ViewChild('pdfCovering') pdfCovering: ElementRef;
+  @ViewChild('pdfTableAPROld') pdfTableAPROld: ElementRef;
   @ViewChild('pdfCAcertificate') pdfCAcertificate: ElementRef;
   
-  downloadAsPDFAPR() {
+  
+  downloadAsPDFAPROld() {
+    const doc = new jsPDF();
+    const pdfTable = this.pdfTableAPROld.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
 
+  }
+  async ExportWordAPROld() {
+    const pdfTable = this.pdfTableAPROld.nativeElement;
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'APRFormOld.docx');
+  }
+  downloadAsPDFAPR() {
     const doc = new jsPDF();
     const pdfTable = this.pdfTableAPR.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML);

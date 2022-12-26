@@ -65,7 +65,7 @@ export class FormFcComponent implements OnInit {
   dataModel: any = {};
   NICCodeListShow: any = [];
   NICCodeListShowWOS: any = [];
-
+  cityListShow:any=[];
   NICCodeList: any = [];
   NICCodeListWOS: any = [];
   SelectFC_FDINICCodeDesArray: any = [];
@@ -992,6 +992,12 @@ export class FormFcComponent implements OnInit {
   GetCityStateValue(value, field) {
     debugger;
     if (value != undefined) {
+      if(value){
+        this.cityListShow=this.basicCityList.filter(x=>x.State==value.State)
+      }
+      else{
+        this.cityListShow=[];
+      }
       if (field == 'investor_City') {
         this.fcFormlist.value.investorForm.investor_City = value.city;
 

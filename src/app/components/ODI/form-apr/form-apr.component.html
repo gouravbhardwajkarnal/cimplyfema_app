@@ -2965,6 +2965,917 @@
 
                                     </div>
                                     <div id="pdfTableAPROld" #pdfTableAPROld style="display:none;">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="20" width="620">
+                                                        <p style="text-align: center;"><strong>Form ODI PART II</strong>
+                                                        </p>
+                                                        <p style="text-align: center;"><strong>ANNUAL PERFORMANCE REPORT
+                                                                (APR)</strong></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="20" width="620">
+                                                        <p>Note: all amounts should be in actuals and <strong>NOT
+                                                            </strong>in thousands. All the figures should be in a single
+                                                        </p>
+                                                        <p>foreign currency except for Non-Equity Exports Realized i.e.
+                                                            item V (iii).</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p><strong>I</strong><strong>.</strong></p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p><strong>A</strong><strong>PR for the period</strong></p>
+                                                    </td>
+                                                    <td colspan="4" width="91">
+                                                        <p>From date</p>
+                                                    </td>
+                                                    <td colspan="5" width="90">
+                                                        <p>{{dataModel.APR_From_Date | date: 'dd-MM-yyyy'}}</p>
+                                                    </td>
+                                                    <td colspan="5" width="77">
+                                                        <p>To Date</p>
+                                                    </td>
+                                                    <td colspan="8" width="100">
+                                                        <p>{{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p><strong>II</strong><strong>.</strong></p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p><strong>U</strong><strong>nique Identification
+                                                                Number</strong></p>
+                                                        <p><strong>(UIN)</strong></p>
+                                                    </td>
+                                                    <td colspan="18" width="290"> {{dataModel.APR_UIN}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p><strong>III</strong><strong>.</strong></p>
+                                                    </td>
+                                                    <td colspan="19" width="577">
+                                                        <p><strong>C</strong><strong>apital structure as on the last day
+                                                                of the accounting year of JV/ WOS</strong></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p>Amount</p>
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p>% share</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>i)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Indian</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p>{{dataModel.APR_Currency}} {{dataModel.APR_Indian_Amount}}
+                                                        </p>
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p>{{dataModel.APR_Indian_Share}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>ii)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Foreign</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Foreign_Amount}}
+                                                        </p>
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Foreign_Share}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p><strong>I</strong><strong>V.</strong></p>
+                                                    </td>
+                                                    <td colspan="19" width="577">
+                                                        <p><strong>Operational details of the JV/ WOS for the last two
+                                                                years</strong></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p>Previous Year</p>
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p>Current Year</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>i)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Net Profit / (Loss)</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Profit_Current}}
+                                                        </p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Profit_Last}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>ii)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Dividend</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Dividend_Current}}
+                                                        </p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p>{{dataModel.APR_Currency}} {{dataModel.APR_Dividend_Last}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>iii)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Net worth</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Worth_Current}}
+                                                        </p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Worth_Last}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p><strong>V.</strong></p>
+                                                    </td>
+                                                    <td colspan="19" width="577">
+                                                        <p><strong>R</strong><strong>epatriation from the JV /
+                                                                WOS</strong></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p>Current Year</p>
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p>Since commencement of</p>
+                                                        <p>business</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(i)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Dividend</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Dividend_CurYear}}</p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Dividend_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(ii)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Repayment of Loan</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Repayment_CurYear}}
+                                                        </p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Repayment_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(iii)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Non-Equity Exports Realised (in</p>
+                                                        <p>INR)</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_EquityExport_CurYear}}
+                                                        </p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_EquityExport_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(iv)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Royalties</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Royalties_CurYear}}
+                                                        </p>
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p>{{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Royalties_commencement}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(v)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Technical Know-how Fees</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Technical_CurYear}}</p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Technical_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(vi)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Consultancy Fees</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Consultancyfee_CurYear}}</p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Consultancyfee_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(vii)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Others (Please specify)</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Others_CurYear}}
+                                                        </p>
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Others_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(viii)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Profit</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}} {{dataModel.APR_Profit_CurYear}}
+                                                        </p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Profit_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(ix)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Retained Earnings</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Retained_CurYear}}</p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_Retained_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(x)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>FDI &nbsp;by &nbsp;JV/ &nbsp;WOS/ &nbsp;SDS &nbsp;into</p>
+                                                        <p>India</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_FDIforeign_CurYear}}</p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_FDIforeign_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p>(xi)</p>
+                                                    </td>
+                                                    <td width="204">
+                                                        <p>Refund&nbsp;&nbsp;&nbsp;&nbsp; of&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            excess&nbsp;&nbsp;&nbsp;&nbsp; share</p>
+                                                        <p>application money @ Transaction No. -</p>
+                                                    </td>
+                                                    <td colspan="8" width="191">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_exces_sshare_CurYear}}</p>
+
+                                                    </td>
+                                                    <td colspan="10" width="183">
+                                                        <p> {{dataModel.APR_Currency}}
+                                                            {{dataModel.APR_exces_sshare_commencement}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">&nbsp;</td>
+                                                    <td width="204">&nbsp;</td>
+                                                    <td width="29">&nbsp;</td>
+                                                    <td width="29">&nbsp;</td>
+                                                    <td width="29">&nbsp;</td>
+                                                    <td width="5">&nbsp;</td>
+                                                    <td width="24">&nbsp;</td>
+                                                    <td width="25">&nbsp;</td>
+                                                    <td width="26">&nbsp;</td>
+                                                    <td width="18">&nbsp;</td>
+                                                    <td width="10">&nbsp;</td>
+                                                    <td width="29">&nbsp;</td>
+                                                    <td width="29">&nbsp;</td>
+                                                    <td width="9">&nbsp;</td>
+                                                    <td width="20">&nbsp;</td>
+                                                    <td width="10">&nbsp;</td>
+                                                    <td width="18">&nbsp;</td>
+                                                    <td width="6">&nbsp;</td>
+                                                    <td width="22">&nbsp;</td>
+                                                    <td width="24">&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="9" width="620">
+                                                        <p>@ furnish 15 / 17 digit transaction number allotted by
+                                                            Reserve Bank allotted at the time of reporting on</p>
+                                                        <p>the online OID application</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="43">
+                                                        <p><strong>VI.</strong></p>
+                                                    </td>
+                                                    <td colspan="8" width="577">
+                                                        <p><strong>Furnish the details of investment in either Wholly
+                                                                owned of a Joint Venture Step down</strong></p>
+                                                        <p><strong>subsidiary (SDS) of JV/ WOS in the prescribed format
+                                                                (attach separate sheet if the number of SDS is more than
+                                                                one)</strong></p>
+                                                    </td>
+                                                </tr>
+                                                <span *ngFor="let dynamic of SDSArray; let i = index;">
+                                                    <tr>
+                                                        <td width="43">
+                                                            <p>(i)</p>
+                                                        </td>
+                                                        <td width="249">
+                                                            <p>Name, Level and Country name of SDS</p>
+                                                        </td>
+                                                        <td colspan="7" width="328">
+                                                            <p> {{SDSArray[i].investment_SDS_Name}},
+                                                                {{SDSArray[i].investment_SDS_Level}},
+                                                                {{SDSArray[i].investment_SDS_Jurisdiction}}</p>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="43">
+                                                            <p>(ii)</p>
+                                                        </td>
+                                                        <td width="249">
+                                                            <p>Name, Level and Country name of the parent of SDS</p>
+                                                        </td>
+                                                        <td colspan="7" width="328">
+                                                            <p> {{SDSArray[i].investment_SDS_ParentName}},
+                                                                {{SDSArray[i].investment_SDS_ParentLevel}},
+                                                                {{SDSArray[i].investment_SDS_ParentJurisdiction}},</p>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="43">
+                                                            <p>(iii)</p>
+                                                        </td>
+                                                        <td width="249">
+                                                            <p>Investment Amount in FCY and Date of</p>
+                                                            <p>investment (if any)</p>
+                                                        </td>
+                                                        <td colspan="3" width="164">
+                                                            <p>Currency: {{dataModel.APR_Currency}}</p>
+                                                            <p>Amount: {{SDSArray[i].investment_SDS_InvestmentAmount}}
+                                                            </p>
+                                                        </td>
+                                                        <td colspan="4" width="164">
+                                                            <p>Date: {{SDSArray[i].investment_SDS_InvestmentDate}}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="43">
+                                                            <p>(iv)</p>
+                                                        </td>
+                                                        <td width="249">
+                                                            <p>Investment type</p>
+                                                        </td>
+                                                        <td colspan="2" width="156">
+                                                            <p>WO SDS</p>
+                                                        </td>
+                                                        <td colspan="5" width="172">
+                                                            <p>JV SDS</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="43">
+                                                            <p>(v)</p>
+                                                        </td>
+                                                        <td width="249">
+                                                            <p>Type of Step Down Subsidiary</p>
+                                                        </td>
+                                                        <td width="114">
+                                                            <p>SPV/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Holding</p>
+                                                            <p>company</p>
+                                                        </td>
+                                                        <td colspan="4" width="99">
+                                                            <p>Operating</p>
+                                                        </td>
+                                                        <td colspan="2" width="115">
+                                                            <p>Operating&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                Cum</p>
+                                                            <p>SPV</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="43">
+                                                            <p>(vi)</p>
+                                                        </td>
+                                                        <td width="249">
+                                                            <p>Activity code as per 1987</p>
+                                                        </td>
+                                                        <td colspan="7" width="328">
+                                                            <p> {{SDSArray[i].investment_SDS_1987NIC}}</p>
+
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="43">
+                                                            <p>(vii)</p>
+                                                        </td>
+                                                        <td width="249">
+                                                            <p>% stake held in SDS</p>
+                                                        </td>
+                                                        <td colspan="7" width="328">
+                                                            <p> {{SDSArray[i].investment_SDS_Stake}}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="43">
+                                                            <p>(viii)</p>
+                                                        </td>
+                                                        <td colspan="5" width="433">
+                                                            <p>Is the activity of SDS into financial services (tick)</p>
+                                                        </td>
+                                                        <td colspan="2" width="72">
+                                                            <p>Yes</p>
+                                                        </td>
+                                                        <td width="72">
+                                                            <p>No</p>
+                                                        </td>
+                                                    </tr>
+                                                </span>
+                                                <tr>
+                                                    <td width="41">&nbsp;</td>
+                                                    <td width="208">&nbsp;</td>
+                                                    <td width="105">&nbsp;</td>
+                                                    <td width="38">&nbsp;</td>
+                                                    <td width="8">&nbsp;</td>
+                                                    <td width="19">&nbsp;</td>
+                                                    <td width="26">&nbsp;</td>
+                                                    <td width="37">&nbsp;</td>
+                                                    <td width="66">&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="5" width="619">
+                                                        <p><strong>Certificate from Indian Party/ Resident Individual
+                                                                (Strike out whichever is not applicable)</strong></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" width="619">
+                                                        <p>We/ I the Indian Party/ Resident Individual (wherever
+                                                            applicable) further confirm that:</p>
+                                                        <p>&nbsp;</p>
+                                                        <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Investment in step
+                                                            down subsidiary (SDS) has been reported to RBI from time to
+                                                            time in terms of</p>
+                                                        <p>Regulation 13 of Notification No. FEMA.120/RB-2004 dated July
+                                                            7, 2004 as amended;</p>
+                                                        <p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If the activity of
+                                                            the SDS is related to financial services - it is certified
+                                                            that Regulation 7(2) of</p>
+                                                        <p>Notification No FEMA 120/RB-2004 dated July 7, 2004 as
+                                                            amended has been complied with;</p>
+                                                        <p>iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Changes in the
+                                                            capital structure of the JV/ WOS since last APR has been
+                                                            reported under Section C</p>
+                                                        <p>of Form ODI Part I.</p>
+                                                        <p>iv.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;We have received share
+                                                            certificate/s (or any other proof of investment) and
+                                                            submitted the same to the designated AD bank for
+                                                            verification within 6 months of making the remittance/s for
+                                                            all (equity/CCPS) investment made as per Regulation 15 (i)
+                                                            of FEMA Notification <em>ibid</em>.</p>
+                                                        <p>v.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The previous APRs for
+                                                            all JV/ WOS have been filed to the respective designated AD
+                                                            bank.</p>
+                                                        <p>vi.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Repatriated to &nbsp;India,
+                                                            all &nbsp;dues receivable from&nbsp; the &nbsp;overseas JV
+                                                            &nbsp;/ &nbsp;WOS, like &nbsp;dividend, royalty, technical
+                                                            know-how fees etc., within 60 days of its falling due or as
+                                                            prescribed by Reserve Bank from time to time.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="242">
+                                                        <p>Signature of the authorized official of the</p>
+                                                        <p>IP approved by the Board / RI</p>
+                                                    </td>
+                                                    <td colspan="2" width="265">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td rowspan="3" width="111">
+                                                        <p><u>Stamp/Seal</u></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="242">
+                                                        <p>Name &amp; Designation of the Authorized</p>
+                                                        <p>Official of the IP</p>
+                                                    </td>
+                                                    <td colspan="2" width="265">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="92">
+                                                        <p>Place:</p>
+                                                    </td>
+                                                    <td width="151">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td width="115">
+                                                        <p>Date:</p>
+                                                    </td>
+                                                    <td width="151">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" width="619">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="5" width="619">
+                                                        <p><strong>Certificate of the statutory auditor (only in case of
+                                                                Indian Party) / self-certification in case
+                                                                Resident</strong></p>
+                                                        <p><strong>individuals (strike out whichever is not
+                                                                applicable)</strong></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" width="619">
+                                                        <p>We hereby certify that:</p>
+                                                        <p [ngSwitch]="dataModel.APR_CA_A">&nbsp;&nbsp;&nbsp;
+                                                            i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span *ngSwitchCase=true
+                                                                style="text-decoration: line-through;"> APR for the year
+                                                                ended
+                                                                {{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}} is
+                                                                prepared on the basis of audited/ unaudited balance
+                                                                sheet of the foreign entity for the year
+                                                                ended {{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}}
+                                                                .</span>
+                                                            <span *ngSwitchCase=false> APR for the year ended
+                                                                {{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}} is
+                                                                prepared on the basis of audited/ unaudited balance
+                                                                sheet of the foreign entity for the year
+                                                                ended {{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}}
+                                                                .</span>
+                                                            &nbsp;
+                                                        </p>
+                                                        <p [ngSwitch]="dataModel.APR_CA_B">&nbsp;&nbsp;
+                                                            ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span *ngSwitchCase=true
+                                                                style="text-decoration: line-through;"> APR for the year
+                                                                ended {{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}} is
+                                                                prepared on the basis of unaudited balance sheet of the
+                                                                foreign entity since audit is not mandatory in host
+                                                                country/jurisdiction and the IE/RI does not have
+                                                                &lsquo;control&rsquo; in the foreign entity in
+                                                                compliance with explanation (a) to Regulation 10(4) of
+                                                                Foreign Exchange Management (Overseas Investment)
+                                                                Regulations, 2022.
+                                                            </span>
+                                                            <span *ngSwitchCase=false> APR for the year ended
+                                                                {{dataModel.APR_To_Date | date: 'dd-MM-yyyy'}} is
+                                                                prepared on the basis of unaudited balance sheet of the
+                                                                foreign entity since audit is not mandatory in host
+                                                                country/jurisdiction and the IE/RI does not have
+                                                                &lsquo;control&rsquo; in the foreign entity in
+                                                                compliance with explanation (a) to Regulation 10(4) of
+                                                                Foreign Exchange Management (Overseas Investment)
+                                                                Regulations, 2022.
+                                                            </span>
+                                                        </p>
+                                                        <p [ngSwitch]="dataModel.APR_CA_C">&nbsp;
+                                                            iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span *ngSwitchCase=true
+                                                                style="text-decoration: line-through;"> The IE/ RI
+                                                                repatriated to India, all dues receivable from the
+                                                                foreign entity under this UIN, as required under
+                                                                Regulation 9 (4) of Foreign Exchange Management
+                                                                (Overseas Investment) Regulations, 2022 or corresponding
+                                                                extant Regulations in case where the reporting is being
+                                                                done under the earlier overseas investment framework**
+                                                                as stipulated by the Reserve Bank from time to time, and
+                                                                it has been verified from the Foreign Inward Remittance
+                                                                Certificate issued by the AD bank/s.
+                                                            </span>
+                                                            <span *ngSwitchCase=false> The IE/ RI repatriated to India,
+                                                                all dues receivable from the foreign entity under this
+                                                                UIN, as required under Regulation 9 (4) of Foreign
+                                                                Exchange Management (Overseas Investment) Regulations,
+                                                                2022 or corresponding extant Regulations in case where
+                                                                the reporting is being done under the earlier overseas
+                                                                investment framework** as stipulated by the Reserve Bank
+                                                                from time to time, and it has been verified from the
+                                                                Foreign Inward Remittance Certificate issued by the AD
+                                                                bank/s.
+                                                            </span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="242">
+                                                        <p>Signature of &nbsp;the &nbsp;Statutory&nbsp; Auditors
+                                                            &nbsp;of</p>
+                                                        <p>the Indian Party</p>
+                                                    </td>
+                                                    <td colspan="2" width="265">
+                                                        <p> {{dataModel.APR_CA_Signature}}</p>
+                                                    </td>
+                                                    <td rowspan="3" width="111">
+                                                        <p><u>Stamp/Seal</u>                                                            {{dataModel.APR_CA_Stamp}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="242">
+                                                        <p>(Name &nbsp;of &nbsp;the &nbsp;firm &nbsp;and
+                                                            &nbsp;Registration</p>
+                                                        <p>number)</p>
+                                                    </td>
+                                                    <td colspan="2" width="265">
+                                                        <p> {{dataModel.APR_CA_FirmName}} {{dataModel.APR_CA_RegNo}}
+                                                            {{dataModel.APR_CA_UDIN}}</p>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="92">
+                                                        <p>Place:</p>
+                                                    </td>
+                                                    <td width="151">
+                                                        <p> {{dataModel.APR_CA_Place}}
+                                                        </p>
+
+                                                    </td>
+                                                    <td width="115">
+                                                        <p>Date:</p>
+                                                    </td>
+                                                    <td width="151">
+                                                        <p> {{dataModel.APR_CA_Date}}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" width="619">
+                                                        <p><strong>Certificate by the Authorized Dealer bank</strong>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" width="619">
+                                                        <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In terms of Para 3 of
+                                                            <a
+                                                                href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=4445&amp;amp;Mode=0">AP
+                                                                (Dir. Series) Circular No. 14 dated September 5, 2008
+                                                            </a>the branch has</p>
+                                                        <p>received the share certificate/s or any other document as
+                                                            evidence of investment and are satisfied about the bonafide
+                                                            of the documents so received.</p>
+                                                        <p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The duly filled in
+                                                            Form ODI Part II (Annual Performance Report) was submitted
+                                                            by the IP/ RI on</p>
+                                                        <p><u>&nbsp;</u><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </u>day of
+                                                            <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </u>&nbsp;(month)
+                                                            <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </u>&nbsp;(year).</p>
+                                                        <p>iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All &nbsp;the
+                                                            &nbsp;previous year &nbsp;APRs &nbsp;submitted by &nbsp;the
+                                                            &nbsp;IP &nbsp;/ &nbsp;RI &nbsp;have &nbsp;been
+                                                            &nbsp;reported in &nbsp;the &nbsp;online &nbsp;OID</p>
+                                                        <p>application.</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="242">
+                                                        <p>Signature of&nbsp; the Authorized Official of</p>
+                                                        <p>the AD bank</p>
+                                                    </td>
+                                                    <td colspan="2" width="265">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td rowspan="3" width="111">
+                                                        <p><u>Stamp/Seal</u></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="242">
+                                                        <p>Name and designation of the AD bank</p>
+                                                        <p>official</p>
+                                                    </td>
+                                                    <td colspan="2" width="265">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="92">
+                                                        <p>Place:</p>
+                                                    </td>
+                                                    <td width="151">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                    <td width="115">
+                                                        <p>Date:</p>
+                                                    </td>
+                                                    <td width="151">
+                                                        <p>&nbsp;</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p><strong>Instruction for submission of Form ODI Part II:</strong></p>
+                                        <p><em>a) APR is to be certified by statutory auditors of the IP and submitted,
+                                                through the designated AD</em></p>
+                                        <p><em>bank every year by
+                                            </em><em>40</em><em>D</em><em>e</em><em>c</em><em>em</em><em>ber 31 as long
+                                                as the JV / WOS is in existence.</em></p>
+                                        <p><em>b) The IP / RI shall ensure that all the previous year APR has been be
+                                                submitted to the designated AD bank.</em>&nbsp;</p>
+                                        <p><em>c</em><em>) Para I: Please mention the date in format DD/MM/</em></p>
+                                        <p><em>d) Please indicate the name of the foreign currency (FCY) as per SWIFT
+                                                code</em>&nbsp;</p>
+                                        <p><em>e) Para II: Please indicate 13 digit UIN issued by RBI.</em>&nbsp;</p>
+                                        <p><em>f</em><em>) Para III: Capital structure should be in cumulative and the %
+                                                stake should be a total of all the</em></p>
+                                        <p><em>I</em><em>P / RIs in the JV/ WOS</em>&nbsp;</p>
+                                        <p><em>g) Para IV (i) &ndash; the figure reported for loss should be mentioned
+                                                in brackets.</em></p>
+                                        <p>&nbsp;</p>
+                                        <p>40 Inserted on May 5, 2016. Prior to insertion, it by mistake read as
+                                            <em>&ldquo;June 30</em><em>t</em><em>h</em><em>.</em>&rdquo;</p>
+                                        <p>&nbsp;</p>
+                                        <p><em>h) Para V: Figures under &ldquo;since commencement of business&rdquo;
+                                                should be equal to or more than the figure mentioned under current
+                                                y</em></p>
+                                        <p><em>i) Para V (ii): Redemption of preference shares (not in the nature of
+                                                compulsorily convertible preference shares (CCPS)) should also be
+                                                reporte</em></p>
+                                        <p><em>j) Para V (ix): Represents part of the profits of the JV/WOS which is
+                                                retained and reinvested in the JV/</em></p>
+                                        <p><em>k</em><em>) Para VI (x) &ndash; Represents interest on loan or license
+                                                fee etc. l)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Para VI Step down
+                                                subsidiary can be:</em></p>
+                                        <p><em> Operating company</em></p>
+                                        <p><em> Holding Company/ Special Purpose Vehicle c.&nbsp; &nbsp;Holding cum
+                                                Operating company</em></p>
+                                        <p><em>m</em><em>) Para VI (iv): Type of investment can be wholly owned step
+                                                down subsidiary (WO SDS) or Step</em></p>
+                                        <p><em>D</em><em>o</em><em>w</em><em>n Joint Venture (JV SDS).</em></p>
+                                        <p><em>n) Level of step down Subsidiary (SDS) should be calculated treating the
+                                                JV/ WOS as the parent. So an SDS under the direct JV/ WOS should be
+                                                treated as first level SD Accordingly an SDS under the first level SDS
+                                                would be treated as second level SDS.</em></p>
+                                        <p><em>o) Retained earnings is to be calculated as per the procedure laid down
+                                                by the International Monetary Fund &nbsp;in &nbsp;the &nbsp;latest
+                                                &nbsp;version &nbsp;of &nbsp;their &nbsp;publication
+                                                &nbsp;&ldquo;Balance &nbsp;of &nbsp;Payments &nbsp;and International
+                                                Investment Position Manual&rdquo;. It is to be noted that the negative
+                                                retained earnings is to be treated as &lsquo;0&rsquo; (zero).</em></p>
+                                        <p><em>p) The certificate by statutory auditor shall be required only in case of
+                                                IP and not in case of RIs.</em></p>
+                                        <p><em>q) Each page of the Part II of Form ODI (APR) should be duly signed and
+                                                stamped with date, by the RI / authorized person of the I</em></p>
                                     </div>
                                     <div id="pdfCAcertificate" #pdfCAcertificate style="display:none;">
                                         <table width="100%" style="border:1px;">

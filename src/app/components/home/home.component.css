@@ -1,0 +1,41 @@
+/* .container {
+    position: absolute;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 5877px;
+
+background: #ECFAFF;
+border-radius: 0px;
+} */
+
+.background {
+    background: #ECFAFF;
+    height: 700px;
+    width: 100%;
+    /* position: absolute; */
+}
+
+.title {
+    /* top: 243px; */
+    position: relative;
+    font-weight: 700;
+    font-size: 74px;
+
+}
+
+.header-button{
+    height: 50px;
+    width: 188px;
+    font-size: 18px;
+    color: white;
+    background-color: aqua;
+    border-radius: 7px;
+    border: aliceblue;
+    margin-left: 5px;
+}
+
+.header-button:hover{
+    background-color:#02B1F3;
+}
+

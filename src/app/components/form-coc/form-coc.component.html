@@ -9,6 +9,8 @@
         [(ngModel)]="selectedItems"
         (onSelect)="onModuleSelect($event)"
         (onSelectAll)="onSelectAll($event)"
+        (change)="onModuleSelect($event)"
+
       >
       </ng-multiselect-dropdown>
     </div>
@@ -75,7 +77,7 @@
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
-    <div class="md-step active">
+    <div class="md-step active" [ngClass]="step5disable ? 'disabled' : ''">
       <div class="md-step-circle"><span>5</span></div>
       <div class="md-step-title">FDI/ODI/ECB/LO BO PO Form Details</div>
       <div class="md-step-bar-left"></div>
@@ -1351,7 +1353,7 @@
           </button>
           <button
             type="button"
-            (click)="RBI_FDISubmit('5')"
+            (click)="step5disable ? RBI_FDISubmit('6') : RBI_FDISubmit('5')"
             class="btn btn-primary"
           >
             Next
@@ -1592,7 +1594,7 @@
         </button>
         <button
           type="button"
-          (click)="RBI_FDISubmit('5')"
+          (click)="step5disable ? RBI_FDISubmit('6') : RBI_FDISubmit('5')"
           class="btn btn-primary"
         >
           Next
@@ -1618,678 +1620,29 @@
             Next
           </button>
         </div>
-        <!-- Step 5 -->
         <div class="row">
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-info">
-              Details to be furnished a foreign-direct-investment along with
-              application for compounding of contravention relating to Foreign
-              Direct Investment in India
-            </li>
-          </ul>
-          <div class="col-6 mb-2">
-            <label class="form-label">Name of Applicant </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="COC_FDIODIName"
-              placeholder="Name of Applicant"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIName').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIName').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIName').touched)
-              "
-            />
-            <div
-              *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIName').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIName').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIName').touched)
-              "
-              class="invalid-feedback"
-            >
-              <div
-                *ngIf="COC_FDIFormlist.get('COC_FDIODIName').errors['required']"
-              >
-                This field is required.
-              </div>
-            </div>
-          </div>
-          <div class="col-6 mb-2">
-            <label class="form-label">Date </label>
-            <input
-              type="date"
-              class="form-control"
-              name="date-field"
-              formControlName="COC_FDIODIDate"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIDate').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIDate').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIDate').touched)
-              "
-            />
-          </div>
-          <div class="col-6 mb-2">
-            <label class="form-label">Income Tax PAN Number </label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Income Tax PAN Number"
-              formControlName="COC_FDIODIPAN"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIPAN').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIPAN').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIPAN').touched)
-              "
-            />
-            <div
-              *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIPAN').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIPAN').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIPAN').touched)
-              "
-              class="invalid-feedback"
-            >
-              <div
-                *ngIf="COC_FDIFormlist.get('COC_FDIODIPAN').errors['required']"
-              >
-                This field is required.
-              </div>
-              <div
-                *ngIf="COC_FDIFormlist.get('COC_FDIODIPAN').errors['pattern']"
-              >
-                Invalid PAN Number Format
-              </div>
-            </div>
-          </div>
-          <div class="col-6 mb-2">
-            <label class="form-label"
-              >Nature of Activities undertaken(Please give niccode-1987/2008)
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="COC_FDIODIActivities"
-              placeholder="Nature of Activities undertaken(Please give niccode-1987/2008)"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIActivities').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIActivities').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIActivities').touched)
-              "
-            />
-            <div
-              *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIActivities').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIActivities').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIActivities').touched)
-              "
-              class="invalid-feedback"
-            >
-              <div
-                *ngIf="
-                  COC_FDIFormlist.get('COC_FDIODIActivities').errors['required']
-                "
-              >
-                This field is required.
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mb-2">
-            <label class="form-label"
-              >Brief Particulars about the foregien insvestor
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="COC_FDIODIaboutforegien"
-              placeholder="Brief Particulars about the foregien insvestor"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
-              "
-            />
-            <div
-              *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
-              "
-              class="invalid-feedback"
-            >
-              <div
-                *ngIf="
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
-                    'required'
-                  ]
-                "
-              >
-                This field is required.
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mb-2">
-            <label class="form-label"
-              >Details of foreign inward remittances received by Applicant
-              Company from date of incorporation till date
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="COC_FDIODIDetailforeign"
-              placeholder="Details of foreign inward remittances received by Applicant Company from date of incorporation till date"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIDetailforeign').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIDetailforeign').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIDetailforeign').touched)
-              "
-            />
-            <div
-              *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIDetailforeign').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIDetailforeign').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIDetailforeign').touched)
-              "
-              class="invalid-feedback"
-            >
-              <div
-                *ngIf="
-                  COC_FDIFormlist.get('COC_FDIODIDetailforeign').errors[
-                    'required'
-                  ]
-                "
-              >
-                This field is required.
-              </div>
-            </div>
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Table A</li>
-          </ul>
-          <table
-            class="table table-striped table-bordered caption-top table-responsive"
-          >
-            <thead>
-              <tr>
-                <th>Name of Remitter</th>
-                <th>Total Amount (INR)</th>
-                <th>Date of Receipt</th>
-                <th>Reported to RBI on*</th>
-                <th>Delay if any</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let TableA of COC_FDIODITabAArray; let i = index">
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODITabAArray[i].COC_FDIODITabARemitterName
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    (blur)="TableATotAmount(COC_FDIODITabAArray[i])"
-                    [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabAAmount"
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    [(ngModel)]="
-                      COC_FDIODITabAArray[i].COC_FDIODITabAReceiptDate
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODITabAArray[i].COC_FDIODITabAReportedDate
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="COC_FDIODITabAArray[i].COC_FDIODITabADelay"
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-primary me-2"
-                    (click)="addODIGrantData('TableA')"
-                  >
-                    +
-                  </button>
-                  <button
-                    type="button"
-                    *ngIf="COC_FDIODITabAArray.length > 1"
-                    class="btn btn-outline-primary me-2"
-                    (click)="deleteODIGrantData('TableA', i)"
-                  >
-                    -
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Total</label>
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    [(ngModel)]="TableATotAmountData"
-                    disabled
-                    formControlName="TableATotAmount"
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-          <label>* date of reporting to RBI and not AD</label>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Table B</li>
-          </ul>
-          <table
-            class="table table-striped table-bordered caption-top table-responsive"
-          >
-            <thead>
-              <tr>
-                <th>Name of Investor</th>
-                <th>Date of allotment of shares</th>
-                <th>Number of shares allotted</th>
-                <th>Amount for which shares allotted</th>
-                <th>Date of reporting to RBI*</th>
-                <th>Delay if any</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let TableB of COC_FDIODITableBArray; let i = index">
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODITableBArray[i].COC_FDIODITabBInvestorName
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    [(ngModel)]="
-                      COC_FDIODITableBArray[i].COC_FDIODITabBShareDate
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODITableBArray[i].COC_FDIODITabBNumofShare
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODITableBArray[i].COC_FDIODITabBAmtofShare
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    [(ngModel)]="
-                      COC_FDIODITableBArray[i].COC_FDIODITabBReportingDate
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="COC_FDIODITableBArray[i].COC_FDIODITabBDelay"
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-primary me-2"
-                    (click)="addODIGrantData('TableB')"
-                  >
-                    +
-                  </button>
-                  <button
-                    type="button"
-                    *ngIf="COC_FDIODITableBArray.length > 1"
-                    class="btn btn-outline-primary me-2"
-                    (click)="deleteODIGrantData('TableB', i)"
-                  >
-                    -
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Total</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="COC_FDIODITabBTotal"
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-          <ul class="list-group">
-            <label>* date of reporting to RBI and not AD</label>
-            <li class="list-group-item list-group-item-info">Table C</li>
-          </ul>
-          <table
-            class="table table-striped table-bordered caption-top table-responsive"
-          >
-            <thead>
-              <tr>
-                <th>Name of Remitter</th>
-                <th>Total Amount (INR)</th>
-                <th>Date of Receipt</th>
-                <th>Excess share application money</th>
-                <th>Date of refund of share application money</th>
-                <th>Amount in forex</th>
-                <th>RBI approval letter and date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let TableC of COC_FDIODITableCArray; let i = index">
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODITableCArray[i].COC_FDIODITabCRemitterName
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="COC_FDIODITableCArray[i].COC_FDIODITabCAmount"
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    [(ngModel)]="
-                      COC_FDIODITableCArray[i].COC_FDIODITabCReceiptDate
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODITableCArray[i].COC_FDIODITabCExcessshare
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    [(ngModel)]="
-                      COC_FDIODITableCArray[i].COC_FDIODITabCDateRefund
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODITableCArray[i].COC_FDIODITabCForexAmt
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    [(ngModel)]="
-                      COC_FDIODITableCArray[i].COC_FDIODITabCapprovaldate
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-primary me-2"
-                    (click)="addODIGrantData('TableC')"
-                  >
-                    +
-                  </button>
-                  <button
-                    type="button"
-                    *ngIf="COC_FDIODITableCArray.length > 1"
-                    class="btn btn-outline-primary me-2"
-                    (click)="deleteODIGrantData('TableC', i)"
-                  >
-                    -
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Total</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="COC_FDIODITabCTotal"
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-info">
-              Authorised Capital
-            </li>
-          </ul>
-          <table
-            class="table table-striped table-bordered caption-top table-responsive"
-          >
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Authorised Capital</th>
-                <th>With effect from</th>
-                <th>Date of Board meeting</th>
-                <th>Date of filing with ROC</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                *ngFor="
-                  let Table of COC_FDIODIAuthorisedCapitalArray;
-                  let i = index
-                "
-              >
-                <td>
-                  <input
-                    type="date"
-                    [(ngModel)]="
-                      COC_FDIODIAuthorisedCapitalArray[i]
-                        .COC_FDIODIAuthorisedDate
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODIAuthorisedCapitalArray[i]
-                        .COC_FDIODIAuthorisedCapital
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="
-                      COC_FDIODIAuthorisedCapitalArray[i]
-                        .COC_FDIODIAuthorisedEffect
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    [(ngModel)]="
-                      COC_FDIODIAuthorisedCapitalArray[i]
-                        .COC_FDIODIAuthorisedMeetDate
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    [(ngModel)]="
-                      COC_FDIODIAuthorisedCapitalArray[i]
-                        .COC_FDIODIAuthorisedROCDate
-                    "
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-primary me-2"
-                    (click)="addODIGrantData('TableAuth')"
-                  >
-                    +
-                  </button>
-                  <button
-                    type="button"
-                    *ngIf="COC_FDIODIAuthorisedCapitalArray.length > 1"
-                    class="btn btn-outline-primary me-2"
-                    (click)="deleteODIGrantData('TableAuth', i)"
-                  >
-                    -
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Total</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="COC_FDIODITableAuthTotal"
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button
-          type="button"
-          (click)="RBI_FDISubmit('4')"
-          class="btn btn-primary"
-        >
-          Back
-        </button>
-        <button
-          type="button"
-          (click)="RBI_FDISubmit('6')"
-          class="btn btn-primary"
-        >
-          Next
-        </button>
-      </div>
-      <!-- Step 6 -->
-      <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIOtherAnnexures">
-        <div class="row">
-          <ul class="list-group" *ngIf="annexureFdiForm">
+          <ul class="list-group" *ngIf="step5FdiForm">
             <li class="list-group-item list-group-item-info">
               Details to be furnished along with application for compounding of
               contravention relating to Foreign Direct Investment in India
             </li>
           </ul>
 
-          <ul class="list-group" *ngIf="annexureOdiForm">
+          <ul class="list-group" *ngIf="step5OdiForm">
             <li class="list-group-item list-group-item-info">
               Details to be furnished along with application for compounding of
               contravention relating to Overseas Investment
             </li>
           </ul>
 
-          <ul class="list-group" *ngIf="annexureECBForm">
+          <ul class="list-group" *ngIf="step5ECBForm">
             <li class="list-group-item list-group-item-info">
               Details to be furnished along with application for compounding of
               contravention relating to External Commercial Borrowing
             </li>
           </ul>
 
-          <ul class="list-group" *ngIf="annexureLiasionForm">
+          <ul class="list-group" *ngIf="step5LiasionForm">
             <li class="list-group-item list-group-item-info">
               Details to be furnished along with application for compounding of
               contravention relating to Branch/Liaison Office in India
@@ -2344,6 +1697,7 @@
               type="text"
               class="form-control"
               placeholder="Income Tax PAN Number"
+              disabled
               formControlName="COC_FDIODIPAN"
               [class.is-invalid]="
                 COC_FDIFormlist.get('COC_FDIODIPAN').invalid &&
@@ -2405,124 +1759,8 @@
           </div>
         </div>
 
-        <div class="row" *ngIf="annexureFdiForm">
-          <!-- <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Annexures List</li>
-          </ul> -->
-          <!-- <ul class="list-group">
-            <li class="list-group-item list-group-item-info">
-              Details to be furnished along with
-              application for compounding of contravention relating to Foreign
-              Direct Investment in India
-            </li>
-          </ul>
-          <div class="col-6 mb-2">
-            <label class="form-label">Name of Applicant </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="COC_FDIODIName"
-              placeholder="Name of Applicant"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIName').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIName').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIName').touched)
-              "
-            />
-            <div
-              *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIName').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIName').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIName').touched)
-              "
-              class="invalid-feedback"
-            >
-              <div
-                *ngIf="COC_FDIFormlist.get('COC_FDIODIName').errors['required']"
-              >
-                This field is required.
-              </div>
-            </div>
-          </div>
-          <div class="col-6 mb-2">
-            <label class="form-label">Date </label>
-            <input
-              type="date"
-              class="form-control"
-              name="date-field"
-              formControlName="COC_FDIODIDate"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIDate').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIDate').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIDate').touched)
-              "
-            />
-          </div>
-          <div class="col-6 mb-2">
-            <label class="form-label">Income Tax PAN Number </label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Income Tax PAN Number"
-              formControlName="COC_FDIODIPAN"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIPAN').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIPAN').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIPAN').touched)
-              "
-            />
-            <div
-              *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIPAN').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIPAN').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIPAN').touched)
-              "
-              class="invalid-feedback"
-            >
-              <div
-                *ngIf="COC_FDIFormlist.get('COC_FDIODIPAN').errors['required']"
-              >
-                This field is required.
-              </div>
-              <div
-                *ngIf="COC_FDIFormlist.get('COC_FDIODIPAN').errors['pattern']"
-              >
-                Invalid PAN Number Format
-              </div>
-            </div>
-          </div>
-          <div class="col-6 mb-2">
-            <label class="form-label"
-              >Nature of Activities undertaken(Please give niccode-1987/2008)
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="COC_FDIODIActivities"
-              placeholder="Nature of Activities undertaken(Please give niccode-1987/2008)"
-              [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIActivities').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIActivities').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIActivities').touched)
-              "
-            />
-            <div
-              *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIActivities').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIActivities').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIActivities').touched)
-              "
-              class="invalid-feedback"
-            >
-              <div
-                *ngIf="
-                  COC_FDIFormlist.get('COC_FDIODIActivities').errors['required']
-                "
-              >
-                This field is required.
-              </div>
-            </div>
-          </div> -->
+        <!--  step 5 FDIform -->
+        <div class="row" *ngIf="step5FdiForm">
           <div class="col-12 mb-2">
             <label class="form-label"
               >Brief Particulars about the foregien insvestor
@@ -3139,9 +2377,311 @@
           </table>
         </div>
 
+        <!-- step 5 ECBform -->
+        <div class="row" *ngIf="step5ECBForm">
+          <div class="col-12 mb-2">
+            <label class="form-label"
+              >Brief Particulars about the foregien insvestor
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDIODIaboutforegien"
+              placeholder="Brief Particulars about the foregien insvestor"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-2">
+            <label class="form-label"
+              >Is the applicant an eligible borrower
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDIODIaboutforegien"
+              placeholder="Is the applicant an eligible borrower"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-2">
+            <label class="form-label"
+              >Is the lender eligible lender
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDIODIaboutforegien"
+              placeholder="Is the lender eligible lender"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-2">
+            <label class="form-label"
+              >Is the lender an equity holder
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDIODIaboutforegien"
+              placeholder="Is the lender an equity holder"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-2">
+            <label class="form-label"
+              >What is the level of his holding at the time of loan agreement?
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_FDIODIaboutforegien"
+              placeholder="What is the level of his holding at the time of loan agreement?"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
+                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info">Details of ECB</li>
+          </ul>
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
+            <thead>
+              <tr>
+                <th>LRN No.</th>
+                <th>Description</th>
+                <th>Loan Currency</th>
+                <th>Amount(in FCY)</th>
+                <th>Amount(in INR)</th>
+                <th>Transaction Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ecbDetail of COC_ECBDetails; let i = index">
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="ecbDetail[i].COC_ECBDetailLrn"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="ecbDetail[i].COC_ECBDetailDescription"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      ecbDetail[i].COC_ECBDetailLoanCurency"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      ecbDetail[i].COC_ECBDetailAmountFcy"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="ecbDetail[i].COC_ECBDetailAmountInr"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="date"
+                    [(ngModel)]="ecbDetail[i].COC_ECBDetailTransactionDate"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addODIGrantData('TableA')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_ECBDetails.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteODIGrantData('TableA', i)"
+                  >
+                    -
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Total</label>
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    [(ngModel)]="TableATotAmountData"
+                    disabled
+                    formControlName="TableATotAmount"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
         <button
           type="button"
-          (click)="RBI_FDISubmit('5')"
+          (click)="RBI_FDISubmit('4')"
+          class="btn btn-primary"
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          (click)="RBI_FDISubmit('6')"
+          class="btn btn-primary"
+        >
+          Next
+        </button>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="container-fluid pt-4 px-4" *ngIf="COC_FDIOtherAnnexures">
+        <div class="row">
+          <p>Annexure List</p>
+        </div>
+
+        <button
+          type="button"
+          (click)="step5disable ? RBI_FDISubmit('4') : RBI_FDISubmit('5')"
           class="btn btn-primary"
         >
           Back

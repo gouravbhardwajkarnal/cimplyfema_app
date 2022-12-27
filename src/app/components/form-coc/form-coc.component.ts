@@ -28,6 +28,7 @@ import {
   CompoundingRegulatoryList,
   CompoundingDelayReasonsList,
   CompoundingPetitionRequestList,
+  COC_ECBDetailsList,
 } from 'src/app/model/COCFdi.model';
 import { asBlob } from 'html-docx-js-typescript';
 @Component({
@@ -100,10 +101,22 @@ export class FormCocComponent implements OnInit {
   rbiAuthorityCityList: any = [];
   cityListShow: any = [];
 
-  annexureFdiForm: boolean = false;
-  annexureOdiForm: boolean = false;
-  annexureECBForm: boolean = false;
-  annexureLiasionForm: boolean = false;
+  step5FdiForm: boolean = false;
+  step5OdiForm: boolean = false;
+  step5ECBForm: boolean = false;
+  step5LiasionForm: boolean = false;
+  step5disable: boolean = false;
+
+  COC_ECBDetails: Array<COC_ECBDetailsList> = [];
+  COC_ECBDeatailsData: any = {
+    COC_ECBDetailLrn: '',
+    COC_ECBDetailDescription: '',
+    COC_ECBDetailLoanCurency: '',
+    COC_ECBDetailAmountFcy: '',
+    COC_ECBDetailAmountInr: '',
+    COC_ECBDetailTransactionDate: '',
+  };
+
   hkl = ' Validators.email';
 
   constructor(
@@ -284,7 +297,7 @@ export class FormCocComponent implements OnInit {
       COC_FDIGSTNo: new FormControl('', [
         Validators.required,
         Validators.pattern(
-          '/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/'
+          '^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$'
         ),
       ]),
       SelectCOC_FDICenResDetails: new FormArray([]),
@@ -324,7 +337,10 @@ export class FormCocComponent implements OnInit {
       COC_FDIODIBalanceSheetCopy: new FormControl('', Validators.required),
       COC_FDIODIContraventionNature: new FormControl('', Validators.required),
       COC_FDIODIContraventionReason: new FormControl('', Validators.required),
+      COC_ECBDetailsTable: new FormArray([]),
     });
+
+    this.COC_ECBDetails.push(this.COC_ECBDeatailsData);
   }
   deleteGrantData(data, index) {
     debugger;
@@ -491,11 +507,9 @@ export class FormCocComponent implements OnInit {
       (nicCode) => nicCode.Class === item.Class
     );
     if (item.status == true) {
-      // this.NICCodeListShow[itemExist].status=false
       item.status = false;
       this.SelectCOC_FDINICCodeDesArray.splice(itemExist, 1);
     } else {
-      // this.NICCodeListShow[itemExist].status=true
       item.status = true;
       this.SelectCOC_FDINICCodeDesArray.push({
         Year: item.Year,
@@ -583,15 +597,10 @@ export class FormCocComponent implements OnInit {
   }
 
   TableATotAmount(data) {
-    console.log('COC_FDIODITabAArray', this.COC_FDIODITabAArray);
     this.TableATotAmountData = 0;
     this.COC_FDIODITabAArray.forEach((element) => {
-      console.log('element', element);
       this.TableATotAmountData += parseFloat(element.COC_FDIODITabAAmount);
-      console.log('TableATotAmountData', this.TableATotAmountData);
     });
-    console.log('TableATotAmountData', this.TableATotAmountData);
-    // if (
     //   this.TableATotAmountData == undefined &&
     //   data.COC_FDIODITabAAmount != ''
     // ) {
@@ -612,18 +621,23 @@ export class FormCocComponent implements OnInit {
     let selectedModuleId = selectedModule.id;
     switch (selectedModuleId) {
       case 1:
-        this.annexureFdiForm = true;
+        this.step5FdiForm = true;
+        this.step5disable = false;
         break;
       case 2:
-        this.annexureOdiForm = true;
+        this.step5OdiForm = true;
+        this.step5disable = false;
         break;
       case 3:
-        this.annexureECBForm = true;
+        this.step5ECBForm = true;
+        this.step5disable = false;
         break;
       case 4:
-        this.annexureLiasionForm = true;
+        this.step5LiasionForm = true;
+        this.step5disable = false;
         break;
       default:
+        this.step5disable = true;
     }
     //this.multiSelect.toggleSelectAll();
     if (selectedModule.id == 1) {
@@ -873,19 +887,19 @@ export class FormCocComponent implements OnInit {
       this.COC_FDIApplicantDetails = true;
     }
     if (Val == '3') {
-      // let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
-      // let check=true
-      // key.map((item)=>{
-      //   if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
-      //     this.COC_FDIFormlist.controls[item].markAsTouched();
-      //     check=false
-      //     this.COC_FDIApplicantDetails=true;
-      //     // return;
-      //   }
-      // })
-      // if(check){
+      let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
+      let check=true
+      key.map((item)=>{
+        if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
+          this.COC_FDIFormlist.controls[item].markAsTouched();
+          check=false
+          this.COC_FDIApplicantDetails=true;
+          // return;
+        }
+      })
+      if(check){
       this.COC_FDICompoundingDetails = true;
-      // }
+      }
     }
     if (Val == '4') {
       this.COC_FDICompoundingSubmissions = true;
@@ -990,6 +1004,10 @@ export class FormCocComponent implements OnInit {
       'COC_FDIODIAuthorisedCapitalDetails',
       AuthCapFormArray
     );
+
+    const EcbDetails: FormArray = this.fb.array(this.COC_ECBDetails);
+    this.COC_FDIFormlist.setControl('c', EcbDetails);
+
     console.log(this.COC_FDIFormlist.value);
     if (this.COC_FDIFormlist.invalid) {
       for (const control of Object.keys(this.COC_FDIFormlist.controls)) {

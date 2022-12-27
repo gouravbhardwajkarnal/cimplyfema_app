@@ -84,3 +84,13 @@ export class COC_FDIODIAuthorisedCapitalList{
     COC_FDIODIAuthorisedMeetDate:Date;
     COC_FDIODIAuthorisedROCDate:string;  
 }
+
+// Step 5 ECBDetailsList 
+export class COC_ECBDetailsList{     
+    COC_ECBDetailLrn:string;
+    COC_ECBDetailDescription:string;
+    COC_ECBDetailLoanCurency:string;
+    COC_ECBDetailAmountFcy:string;
+    COC_ECBDetailAmountInr:string;
+    COC_ECBDetailTransactionDate:Date;
+}

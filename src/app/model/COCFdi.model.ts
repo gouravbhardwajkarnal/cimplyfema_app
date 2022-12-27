@@ -8,7 +8,7 @@ export class COC_FDI_DetailsList{
     COC_FDIState:string;
     COC_FDIPincode:number;
     COC_FDI_Email:string;
-    COC_FDIMobile:number;
+    COC_FDIMobile:string;
     COC_FDIFAX:string;
     COC_FDITelephone:string;
     COC_FDI_AuthPerson:string;
@@ -93,4 +93,10 @@ export class COC_ECBDetailsList{
     COC_ECBDetailAmountFcy:string;
     COC_ECBDetailAmountInr:string;
     COC_ECBDetailTransactionDate:Date;
+}
+
+export class COC_ECBRepaymentList{
+    COC_ECBRepaymentDrawn: Date ;
+    COC_ECBRepaymentAmountFc:String; 
+    COC_ECBRepaymentAmountInr:String;
 }

@@ -10,7 +10,6 @@
         (onSelect)="onModuleSelect($event)"
         (onSelectAll)="onSelectAll($event)"
         (change)="onModuleSelect($event)"
-
       >
       </ng-multiselect-dropdown>
     </div>
@@ -459,7 +458,7 @@
               <div class="col-3 mb-2">
                 <label class="form-label">Mobile Number </label>
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   formControlName="COC_FDIMobile"
                   placeholder="Mobile Number"
@@ -468,6 +467,8 @@
                     (COC_FDIFormlist.get('COC_FDIMobile').dirty ||
                       COC_FDIFormlist.get('COC_FDIMobile').touched)
                   "
+                  (keydown.space)="$event.preventDefault()" 
+                  onkeypress="return /[0-9]/.test(event.key)"
                 />
                 <div
                   *ngIf="
@@ -483,6 +484,16 @@
                     "
                   >
                     This field is required.
+                  </div>
+                  <div
+                    *ngIf=" COC_FDIFormlist.get('COC_FDIMobile').errors['minlength']"
+                  >
+                  Mobile Number must be at least 10 characters long.
+                  </div>
+                  <div
+                    *ngIf=" COC_FDIFormlist.get('COC_FDIMobile').errors['maxlength']"
+                  >
+                  Mobile Number can be max 15 characters long.
                   </div>
                 </div>
               </div>
@@ -2420,25 +2431,25 @@
             <input
               type="text"
               class="form-control"
-              formControlName="COC_FDIODIaboutforegien"
+              formControlName="COC_ECBApplicantBorrower"
               placeholder="Is the applicant an eligible borrower"
               [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+                COC_FDIFormlist.get('COC_ECBApplicantBorrower').invalid &&
+                (COC_FDIFormlist.get('COC_ECBApplicantBorrower').dirty ||
+                  COC_FDIFormlist.get('COC_ECBApplicantBorrower').touched)
               "
             />
             <div
               *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+                COC_FDIFormlist.get('COC_ECBApplicantBorrower').invalid &&
+                (COC_FDIFormlist.get('COC_ECBApplicantBorrower').dirty ||
+                  COC_FDIFormlist.get('COC_ECBApplicantBorrower').touched)
               "
               class="invalid-feedback"
             >
               <div
                 *ngIf="
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
+                  COC_FDIFormlist.get('COC_ECBApplicantBorrower').errors[
                     'required'
                   ]
                 "
@@ -2448,31 +2459,29 @@
             </div>
           </div>
           <div class="col-12 mb-2">
-            <label class="form-label"
-              >Is the lender eligible lender
-            </label>
+            <label class="form-label">Is the lender eligible lender </label>
             <input
               type="text"
               class="form-control"
-              formControlName="COC_FDIODIaboutforegien"
+              formControlName="COC_ECBLenderEligible"
               placeholder="Is the lender eligible lender"
               [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+                COC_FDIFormlist.get('COC_ECBLenderEligible').invalid &&
+                (COC_FDIFormlist.get('COC_ECBLenderEligible').dirty ||
+                  COC_FDIFormlist.get('COC_ECBLenderEligible').touched)
               "
             />
             <div
               *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+                COC_FDIFormlist.get('COC_ECBLenderEligible').invalid &&
+                (COC_FDIFormlist.get('COC_ECBLenderEligible').dirty ||
+                  COC_FDIFormlist.get('COC_ECBLenderEligible').touched)
               "
               class="invalid-feedback"
             >
               <div
                 *ngIf="
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
+                  COC_FDIFormlist.get('COC_ECBLenderEligible').errors[
                     'required'
                   ]
                 "
@@ -2482,31 +2491,29 @@
             </div>
           </div>
           <div class="col-12 mb-2">
-            <label class="form-label"
-              >Is the lender an equity holder
-            </label>
+            <label class="form-label">Is the lender an equity holder </label>
             <input
               type="text"
               class="form-control"
-              formControlName="COC_FDIODIaboutforegien"
+              formControlName="COC_ECBLenderEquityHolder"
               placeholder="Is the lender an equity holder"
               [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+                COC_FDIFormlist.get('COC_ECBLenderEquityHolder').invalid &&
+                (COC_FDIFormlist.get('COC_ECBLenderEquityHolder').dirty ||
+                  COC_FDIFormlist.get('COC_ECBLenderEquityHolder').touched)
               "
             />
             <div
               *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+                COC_FDIFormlist.get('COC_ECBLenderEquityHolder').invalid &&
+                (COC_FDIFormlist.get('COC_ECBLenderEquityHolder').dirty ||
+                  COC_FDIFormlist.get('COC_ECBLenderEquityHolder').touched)
               "
               class="invalid-feedback"
             >
               <div
                 *ngIf="
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
+                  COC_FDIFormlist.get('COC_ECBLenderEquityHolder').errors[
                     'required'
                   ]
                 "
@@ -2522,27 +2529,25 @@
             <input
               type="text"
               class="form-control"
-              formControlName="COC_FDIODIaboutforegien"
+              formControlName="COC_ECBHoldingLevel"
               placeholder="What is the level of his holding at the time of loan agreement?"
               [class.is-invalid]="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+                COC_FDIFormlist.get('COC_ECBHoldingLevel').invalid &&
+                (COC_FDIFormlist.get('COC_ECBHoldingLevel').dirty ||
+                  COC_FDIFormlist.get('COC_ECBHoldingLevel').touched)
               "
             />
             <div
               *ngIf="
-                COC_FDIFormlist.get('COC_FDIODIaboutforegien').invalid &&
-                (COC_FDIFormlist.get('COC_FDIODIaboutforegien').dirty ||
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').touched)
+                COC_FDIFormlist.get('COC_ECBHoldingLevel').invalid &&
+                (COC_FDIFormlist.get('COC_ECBHoldingLevel').dirty ||
+                  COC_FDIFormlist.get('COC_ECBHoldingLevel').touched)
               "
               class="invalid-feedback"
             >
               <div
                 *ngIf="
-                  COC_FDIFormlist.get('COC_FDIODIaboutforegien').errors[
-                    'required'
-                  ]
+                  COC_FDIFormlist.get('COC_ECBHoldingLevel').errors['required']
                 "
               >
                 This field is required.
@@ -2567,19 +2572,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let ecbDetail of COC_ECBDetails; let i = index">
+              <tr *ngFor="let ecbDetail of COC_ECBDetailsArray; let i = index">
                 <td>
                   <input
                     type="text"
-                    [(ngModel)]="ecbDetail[i].COC_ECBDetailLrn"
-                    [ngModelOptions]="{ standalone: true }"
-                    class="form-control form-control-sm"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    [(ngModel)]="ecbDetail[i].COC_ECBDetailDescription"
+                    [(ngModel)]="COC_ECBDetailsArray[i].COC_ECBDetailLrn"
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control form-control-sm"
                   />
@@ -2588,7 +2585,8 @@
                   <input
                     type="text"
                     [(ngModel)]="
-                      ecbDetail[i].COC_ECBDetailLoanCurency"
+                      COC_ECBDetailsArray[i].COC_ECBDetailDescription
+                    "
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control form-control-sm"
                   />
@@ -2597,7 +2595,8 @@
                   <input
                     type="text"
                     [(ngModel)]="
-                      ecbDetail[i].COC_ECBDetailAmountFcy"
+                      COC_ECBDetailsArray[i].COC_ECBDetailLoanCurency
+                    "
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control form-control-sm"
                   />
@@ -2605,7 +2604,15 @@
                 <td>
                   <input
                     type="text"
-                    [(ngModel)]="ecbDetail[i].COC_ECBDetailAmountInr"
+                    [(ngModel)]="COC_ECBDetailsArray[i].COC_ECBDetailAmountFcy"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="COC_ECBDetailsArray[i].COC_ECBDetailAmountInr"
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control form-control-sm"
                   />
@@ -2613,50 +2620,201 @@
                 <td>
                   <input
                     type="date"
-                    [(ngModel)]="ecbDetail[i].COC_ECBDetailTransactionDate"
+                    [(ngModel)]="
+                      COC_ECBDetailsArray[i].COC_ECBDetailTransactionDate
+                    "
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control form-control-sm"
                   />
                 </td>
                 <td>
-
                   <button
                     type="button"
                     class="btn btn-outline-primary me-2"
-                    (click)="addODIGrantData('TableA')"
+                    (click)="addECBDetailsData('ecbDetails')"
                   >
                     +
                   </button>
                   <button
                     type="button"
-                    *ngIf="COC_ECBDetails.length > 1"
+                    *ngIf="COC_ECBDetailsArray.length > 1"
                     class="btn btn-outline-primary me-2"
-                    (click)="deleteODIGrantData('TableA', i)"
+                    (click)="deleteECBDetailsData('ecbDetails', i)"
                   >
                     -
                   </button>
                 </td>
               </tr>
+            </tbody>
+          </table>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info"></li>
+          </ul>
+
+          <div class="col-4 mb-2">
+            <label class="form-label">Date of Loan agreement </label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="COC_ECBLoanDate"
+              placeholder="Date of Loan agreement"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ECBLoanDate').invalid &&
+                (COC_FDIFormlist.get('COC_ECBLoanDate').dirty ||
+                  COC_FDIFormlist.get('COC_ECBLoanDate').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ECBLoanDate').invalid &&
+                (COC_FDIFormlist.get('COC_ECBLoanDate').dirty ||
+                  COC_FDIFormlist.get('COC_ECBLoanDate').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ECBLoanDate').errors['required']
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4 mb-2">
+            <label class="form-label">Rate of interest </label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="COC_ECBIntrestRate"
+              placeholder="Rate of interest"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ECBIntrestRate').invalid &&
+                (COC_FDIFormlist.get('COC_ECBIntrestRate').dirty ||
+                  COC_FDIFormlist.get('COC_ECBIntrestRate').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ECBIntrestRate').invalid &&
+                (COC_FDIFormlist.get('COC_ECBIntrestRate').dirty ||
+                  COC_FDIFormlist.get('COC_ECBIntrestRate').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ECBIntrestRate').errors['required']
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4 mb-2">
+            <label class="form-label">Period of loan </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ECBLoanPeriod"
+              placeholder="Period of loan"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ECBLoanPeriod').invalid &&
+                (COC_FDIFormlist.get('COC_ECBLoanPeriod').dirty ||
+                  COC_FDIFormlist.get('COC_ECBLoanPeriod').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ECBLoanPeriod').invalid &&
+                (COC_FDIFormlist.get('COC_ECBLoanPeriod').dirty ||
+                  COC_FDIFormlist.get('COC_ECBLoanPeriod').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ECBLoanPeriod').errors['required']
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+              Repayment particulars
+            </li>
+          </ul>
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
+            <thead>
               <tr>
-                <td>
-                  <label>Total</label>
-                </td>
+                <th>Date of draw down</th>
+                <th>Amount in Foreign Currency</th>
+                <th>Amount in INR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let ecbDetail of COC_ECBRepaymentArray; let i = index"
+              >
                 <td>
                   <input
-                    type="number"
-                    [(ngModel)]="TableATotAmountData"
-                    disabled
-                    formControlName="TableATotAmount"
+                    type="date"
+                    [(ngModel)]="COC_ECBRepaymentArray[i].COC_ECBRepaymentDrawn"
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control form-control-sm"
                   />
                 </td>
-                <td></td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_ECBRepaymentArray[i].COC_ECBRepaymentAmountFc
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_ECBRepaymentArray[i].COC_ECBRepaymentAmountInr
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addECBDetailsData('repaymentParticulars')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_ECBRepaymentArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteECBDetailsData('repaymentParticulars', i)"
+                  >
+                    -
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
-
         </div>
+
+
         <button
           type="button"
           (click)="RBI_FDISubmit('4')"

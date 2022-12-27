@@ -14,7 +14,7 @@ let FormCoc = new Schema({
     COC_FDIState: { type: String },
     COC_FDIPincode: { type: Number },
     COC_FDI_Email: { type: String },
-    COC_FDIMobile: { type: Number },
+    COC_FDIMobile: { type: String },
     COC_FDITelephone: { type: String },
     COC_FDIFAX: { type: Number },
     COC_FDI_AuthPerson: { type: String },
@@ -82,9 +82,13 @@ let FormCoc = new Schema({
         COC_ECBDetailAmountFcy: { type: String },
         COC_ECBDetailAmountInr: { type: String },
         COC_ECBDetailTransactionDate: { type: Date }
+    }],
+
+    COC_ECBRepaymentTable: [{
+        COC_ECBRepaymentDrawn: { type: Date },
+        COC_ECBRepaymentAmountFc: { type: String },
+        COC_ECBRepaymentAmountInr: { type: String },
     }]
-
-
 
 
 }, {

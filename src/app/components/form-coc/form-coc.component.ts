@@ -29,6 +29,7 @@ import {
   CompoundingDelayReasonsList,
   CompoundingPetitionRequestList,
   COC_ECBDetailsList,
+  COC_ECBRepaymentList,
 } from 'src/app/model/COCFdi.model';
 import { asBlob } from 'html-docx-js-typescript';
 @Component({
@@ -107,17 +108,11 @@ export class FormCocComponent implements OnInit {
   step5LiasionForm: boolean = false;
   step5disable: boolean = false;
 
-  COC_ECBDetails: Array<COC_ECBDetailsList> = [];
-  COC_ECBDeatailsData: any = {
-    COC_ECBDetailLrn: '',
-    COC_ECBDetailDescription: '',
-    COC_ECBDetailLoanCurency: '',
-    COC_ECBDetailAmountFcy: '',
-    COC_ECBDetailAmountInr: '',
-    COC_ECBDetailTransactionDate: '',
-  };
+  COC_ECBDetailsArray: Array<COC_ECBDetailsList> = [];
+  COC_ECBDetailsData: any = {};
 
-  hkl = ' Validators.email';
+  COC_ECBRepaymentArray: Array<COC_ECBRepaymentList> = [];
+  COC_ECBRepaymentData: any = {};
 
   constructor(
     private commonservice: CommonService,
@@ -278,7 +273,8 @@ export class FormCocComponent implements OnInit {
       ]),
       COC_FDIMobile: new FormControl('', [
         Validators.required,
-        Validators.maxLength(10),
+        Validators.maxLength(15),
+        Validators.minLength(10)
       ]),
       COC_FDITelephone: new FormControl('', Validators.required),
       COC_FDIFAX: new FormControl('', Validators.required),
@@ -330,18 +326,47 @@ export class FormCocComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
       ]),
+
+      // New fields
       COC_FDIODIActivities: new FormControl('', Validators.required),
       COC_FDIODIaboutforegien: new FormControl('', Validators.required),
       COC_FDIODIDetailforeign: new FormControl('', Validators.required),
-
       COC_FDIODIBalanceSheetCopy: new FormControl('', Validators.required),
       COC_FDIODIContraventionNature: new FormControl('', Validators.required),
       COC_FDIODIContraventionReason: new FormControl('', Validators.required),
+
+      //Step 5 ECB
+      COC_ECBApplicantBorrower: new FormControl('', Validators.required),
+      COC_ECBLenderEligible: new FormControl('', Validators.required),
+      COC_ECBLenderEquityHolder: new FormControl('', Validators.required),
+      COC_ECBHoldingLevel: new FormControl('', Validators.required),
       COC_ECBDetailsTable: new FormArray([]),
+      COC_ECBLoanDate: new FormControl('', Validators.required),
+      COC_ECBIntrestRate: new FormControl('', Validators.required),
+      COC_ECBLoanPeriod: new FormControl('', Validators.required),
+
+      COC_ECBRepaymentTable: new FormArray([]),
     });
 
-    this.COC_ECBDetails.push(this.COC_ECBDeatailsData);
+    this.COC_ECBDetailsData = {
+      COC_ECBDetailLrn: '',
+      COC_ECBDetailDescription: '',
+      COC_ECBDetailLoanCurency: '',
+      COC_ECBDetailAmountFcy: '',
+      COC_ECBDetailAmountInr: '',
+      COC_ECBDetailTransactionDate: '',
+    };
+    this.COC_ECBDetailsArray.push(this.COC_ECBDetailsData);
+
+    this.COC_ECBRepaymentData = {
+      COC_ECBRepaymentDrawn: '',
+      COC_ECBRepaymentAmountFc: '',
+      COC_ECBRepaymentAmountInr: '',
+    };
+    this.COC_ECBRepaymentArray.push(this.COC_ECBRepaymentData);
+    // this.COC_ECBDetailsArray.push(this.COC_ECBDetailsData);
   }
+
   deleteGrantData(data, index) {
     debugger;
     if (data == 'back') {
@@ -385,6 +410,7 @@ export class FormCocComponent implements OnInit {
       }
     }
   }
+
   addGrantData(data) {
     debugger;
     if (data == 'back') {
@@ -411,6 +437,7 @@ export class FormCocComponent implements OnInit {
     }
     return true;
   }
+
   deleteODIGrantData(data, index) {
     if (data == 'TableA') {
       if (this.COC_FDIODITabAArray.length == 1) {
@@ -450,8 +477,8 @@ export class FormCocComponent implements OnInit {
       }
     }
   }
+
   addODIGrantData(data) {
-    debugger;
     if (data == 'TableA') {
       this.COC_FDIODITableAdata = {
         COC_FDIODITabARemitterName: '',
@@ -498,6 +525,52 @@ export class FormCocComponent implements OnInit {
       );
     }
     return true;
+  }
+
+  // Step 5 ECB detail add rows in table
+  addECBDetailsData(data) {
+    if (data == 'ecbDetails') {
+      this.COC_ECBDetailsData = {
+        COC_ECBDetailLrn: '',
+        COC_ECBDetailDescription: '',
+        COC_ECBDetailLoanCurency: '',
+        COC_ECBDetailAmountFcy: '',
+        COC_ECBDetailAmountInr: '',
+        COC_ECBDetailTransactionDate: '',
+      };
+      this.COC_ECBDetailsArray.push(this.COC_ECBDetailsData);
+      console.log(this.COC_ECBDetailsArray);
+    }
+    if (data == 'repaymentParticulars') {
+      this.COC_ECBRepaymentData = {
+        COC_ECBRepaymentDrawn: '',
+        COC_ECBRepaymentAmountFc: '',
+        COC_ECBRepaymentAmountInr: '',
+      };
+      this.COC_ECBRepaymentArray.push(this.COC_ECBRepaymentData);
+    }
+    return true;
+  }
+
+  // Step 5 ECB detail delete rows in table
+  deleteECBDetailsData(data, index) {
+    if (data == 'ecbDetails') {
+      if (this.COC_ECBDetailsArray.length == 1) {
+        return false;
+      } else {
+        this.COC_ECBDetailsArray.splice(index, 1);
+        return true;
+      }
+    }
+
+    if (data == 'repaymentParticulars') {
+      if (this.COC_ECBRepaymentArray.length == 1) {
+        return false;
+      } else {
+        this.COC_ECBRepaymentArray.splice(index, 1);
+        return true;
+      }
+    }
   }
 
   // Step 3 select nicCode in modal
@@ -889,6 +962,7 @@ export class FormCocComponent implements OnInit {
     if (Val == '3') {
       let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
       let check=true
+      console.log(this.COC_FDIFormlist)
       key.map((item)=>{
         if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
           this.COC_FDIFormlist.controls[item].markAsTouched();
@@ -1005,8 +1079,11 @@ export class FormCocComponent implements OnInit {
       AuthCapFormArray
     );
 
-    const EcbDetails: FormArray = this.fb.array(this.COC_ECBDetails);
-    this.COC_FDIFormlist.setControl('c', EcbDetails);
+    const EcbDetails: FormArray = this.fb.array(this.COC_ECBDetailsArray);
+    this.COC_FDIFormlist.setControl('COC_ECBDetailsTable', EcbDetails);
+
+    const EcbRepayment: FormArray = this.fb.array(this.COC_ECBRepaymentArray);
+    this.COC_FDIFormlist.setControl('COC_ECBRepaymentTable', EcbRepayment);
 
     console.log(this.COC_FDIFormlist.value);
     if (this.COC_FDIFormlist.invalid) {

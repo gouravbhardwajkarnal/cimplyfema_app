@@ -6,8 +6,8 @@ const bodyParser = require('body-parser')
 
 // Connecting with mongo db
 mongoose
-  // .connect('mongodb://127.0.0.1:27017/cimplyfema')
-  .connect('mongodb://admin:CimplyFema@13.234.13.221/cimplyfema?authSource=admin')
+  .connect('mongodb://127.0.0.1:27017/cimplyfema')
+  // .connect('mongodb://admin:CimplyFema@13.234.13.221/cimplyfema?authSource=admin')
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

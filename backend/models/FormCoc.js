@@ -24,7 +24,7 @@ let FormCoc = new Schema({
     COC_FDI_BusinessAct: { type: String},
     SelectCOC_FDINICCodeDesDetails:[{ Year:{type: Number},Class:{type:String},DescriptionClass:{type:String}}],
     COC_FDIFemaRegNoDetails: [{ COC_FDINatContDes:{type:String},COC_FDINatContname:{type:String}}],
-    COC_FDIGSTNo: { type: Number},
+    COC_FDIGSTNo: { type: String},
     SelectCOC_FDICenResDetails: [{ RegionalOffice:{type:String},Address:{type:String}}],
     COC_FDI_CompoundSubject: { type: String},
     COC_FDI_CompoundRef: { type: String},

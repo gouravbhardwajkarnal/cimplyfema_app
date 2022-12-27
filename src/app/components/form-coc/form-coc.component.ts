@@ -100,6 +100,12 @@ export class FormCocComponent implements OnInit {
   rbiAuthorityCityList: any = [];
   cityListShow: any = [];
 
+  annexureFdiForm: boolean = false;
+  annexureOdiForm: boolean = false;
+  annexureECBForm: boolean = false;
+  annexureLiasionForm: boolean = false;
+  hkl = ' Validators.email';
+
   constructor(
     private commonservice: CommonService,
     private fb: FormBuilder,
@@ -253,21 +259,34 @@ export class FormCocComponent implements OnInit {
       COC_FDICity: new FormControl('', Validators.required),
       COC_FDIState: new FormControl('', Validators.required),
       COC_FDIPincode: new FormControl('', Validators.required),
-      COC_FDI_Email: new FormControl('', Validators.required),
-      COC_FDIMobile: new FormControl('', Validators.required),
+      COC_FDI_Email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      COC_FDIMobile: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(10),
+      ]),
       COC_FDITelephone: new FormControl('', Validators.required),
       COC_FDIFAX: new FormControl('', Validators.required),
       COC_FDI_AuthPerson: new FormControl('', Validators.required),
       COC_FDI_AuthPersonAddress: new FormControl('', Validators.required),
       COC_FDI_AuthPAN: new FormControl('', [
         Validators.required,
+        Validators.maxLength(15),
         Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
       ]),
+
       COC_FDI_AuthDesignation: new FormControl('', Validators.required),
       COC_FDI_BusinessAct: new FormControl('', Validators.required),
       SelectCOC_FDINICCodeDesDetails: new FormArray([]),
       COC_FDIFemaRegNoDetails: new FormArray([]),
-      COC_FDIGSTNo: new FormControl('', Validators.required),
+      COC_FDIGSTNo: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          '/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/'
+        ),
+      ]),
       SelectCOC_FDICenResDetails: new FormArray([]),
       COC_FDI_CompoundSubject: new FormControl('', Validators.required),
       COC_FDI_CompoundRef: new FormControl('', Validators.required),
@@ -301,6 +320,10 @@ export class FormCocComponent implements OnInit {
       COC_FDIODIActivities: new FormControl('', Validators.required),
       COC_FDIODIaboutforegien: new FormControl('', Validators.required),
       COC_FDIODIDetailforeign: new FormControl('', Validators.required),
+
+      COC_FDIODIBalanceSheetCopy: new FormControl('', Validators.required),
+      COC_FDIODIContraventionNature: new FormControl('', Validators.required),
+      COC_FDIODIContraventionReason: new FormControl('', Validators.required),
     });
   }
   deleteGrantData(data, index) {
@@ -580,7 +603,28 @@ export class FormCocComponent implements OnInit {
   }
 
   onModuleSelect(selectedModule) {
+    console.log('in module', selectedModule);
+    this.SubselectedItems = [];
+    this.COC_FDIFemaRegNoArray = [];
     this.SubmodulenameArray.length = 0;
+
+    // For step 5(form dependent on module selected)
+    let selectedModuleId = selectedModule.id;
+    switch (selectedModuleId) {
+      case 1:
+        this.annexureFdiForm = true;
+        break;
+      case 2:
+        this.annexureOdiForm = true;
+        break;
+      case 3:
+        this.annexureECBForm = true;
+        break;
+      case 4:
+        this.annexureLiasionForm = true;
+        break;
+      default:
+    }
     //this.multiSelect.toggleSelectAll();
     if (selectedModule.id == 1) {
       /* this.COC_FDIFormDiv=true; */
@@ -829,19 +873,19 @@ export class FormCocComponent implements OnInit {
       this.COC_FDIApplicantDetails = true;
     }
     if (Val == '3') {
-      let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
-      let check=true
-      key.map((item)=>{
-        if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
-          this.COC_FDIFormlist.controls[item].markAsTouched();
-          check=false
-          this.COC_FDIApplicantDetails=true;
-          // return;
-        }
-      })
-      if(check){
+      // let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
+      // let check=true
+      // key.map((item)=>{
+      //   if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
+      //     this.COC_FDIFormlist.controls[item].markAsTouched();
+      //     check=false
+      //     this.COC_FDIApplicantDetails=true;
+      //     // return;
+      //   }
+      // })
+      // if(check){
       this.COC_FDICompoundingDetails = true;
-      }
+      // }
     }
     if (Val == '4') {
       this.COC_FDICompoundingSubmissions = true;

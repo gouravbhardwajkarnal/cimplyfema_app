@@ -87,9 +87,25 @@ let FormCoc = new Schema({
     COC_ECBRepaymentTable: [{
         COC_ECBRepaymentDrawn: { type: Date },
         COC_ECBRepaymentAmountFc: { type: String },
-        COC_ECBRepaymentAmountInr: { type: String },
-    }]
+        COC_ECBRepaymentAmountInr: { type: String }
+    }],
 
+    COC_ODIRemittanceDetailsTable: [{
+        COC_ODIRemittanceDate: { type: Date },
+        COC_ODIRemittanceAmountFcy: { type: String },
+        COC_ODIRemittanceAmountInr: { type: String }
+    }],
+
+    COC_ODIReceiptShareDetailsTable: [{
+        COC_ODIShareNumber: { type: String },
+        COC_ODIReceiptDate: { type: Date }
+    }],
+
+    COC_ODIAprsDetailTable: [{
+        COC_ODIAprTransactionNo: { type: String },
+        COC_ODIAprPeriodEnded: { type: String },
+        COC_ODIAprSubmissionDate: { type: Date }
+    }]
 
 }, {
     collection: 'formcoc'

@@ -30,6 +30,9 @@ import {
   CompoundingPetitionRequestList,
   COC_ECBDetailsList,
   COC_ECBRepaymentList,
+  COC_ODIRemittanceList,
+  COC_ODIReceiptShareList,
+  COC_ODIAprsDetailList,
 } from 'src/app/model/COCFdi.model';
 import { asBlob } from 'html-docx-js-typescript';
 @Component({
@@ -96,6 +99,7 @@ export class FormCocComponent implements OnInit {
   TableATotAmountData: number = 0;
   isLinear = false;
 
+  // New fields
   ActiveTab: number = 1987;
   NICCodeListShow: any = [];
   RegionalOfficeListShow: any = [];
@@ -113,6 +117,15 @@ export class FormCocComponent implements OnInit {
 
   COC_ECBRepaymentArray: Array<COC_ECBRepaymentList> = [];
   COC_ECBRepaymentData: any = {};
+
+  COC_ODIRemittanceArray: Array<COC_ODIRemittanceList> = [];
+  COC_ODIRemittanceData: any = {};
+
+  COC_ODIReceiptShareArray: Array<COC_ODIReceiptShareList> = [];
+  COC_ODIReceiptShareData: any = {};
+
+  COC_ODIAprsDetailArray: Array<COC_ODIAprsDetailList> = [];
+  COC_ODIAprsDetailData: any = {};
 
   constructor(
     private commonservice: CommonService,
@@ -274,7 +287,7 @@ export class FormCocComponent implements OnInit {
       COC_FDIMobile: new FormControl('', [
         Validators.required,
         Validators.maxLength(15),
-        Validators.minLength(10)
+        Validators.minLength(10),
       ]),
       COC_FDITelephone: new FormControl('', Validators.required),
       COC_FDIFAX: new FormControl('', Validators.required),
@@ -344,10 +357,27 @@ export class FormCocComponent implements OnInit {
       COC_ECBLoanDate: new FormControl('', Validators.required),
       COC_ECBIntrestRate: new FormControl('', Validators.required),
       COC_ECBLoanPeriod: new FormControl('', Validators.required),
-
       COC_ECBRepaymentTable: new FormArray([]),
+
+      // Step 5 ODI
+      COC_ODIOverseasEntity: new FormControl('', Validators.required),
+      COC_ODIOverseasEntityDate: new FormControl('', Validators.required),
+      COC_ODIOverseasActivities: new FormControl('', Validators.required),
+      COC_ODIEntityNature: new FormControl('', Validators.required),
+      COC_ODIRemittanceDetailsTable: new FormArray([]),
+      COC_ODIFinancialDetails: new FormControl('', Validators.required),
+      COC_ODIUinDetails: new FormControl('', Validators.required),
+      COC_ODIReceiptShareTable: new FormArray([]),
+      COC_ODIRegulatorsApproval: new FormControl('', Validators.required),
+      COC_ODIAprsDetailTable: new FormArray([]),
+      COC_ODIContraventionNature: new FormControl('', Validators.required),
+      COC_ODIContraventionReason: new FormControl('', Validators.required),
+      COC_ODISuppDocuments: new FormControl('', Validators.required),
+
+
     });
 
+    // Step-5 ECB Form
     this.COC_ECBDetailsData = {
       COC_ECBDetailLrn: '',
       COC_ECBDetailDescription: '',
@@ -364,7 +394,28 @@ export class FormCocComponent implements OnInit {
       COC_ECBRepaymentAmountInr: '',
     };
     this.COC_ECBRepaymentArray.push(this.COC_ECBRepaymentData);
-    // this.COC_ECBDetailsArray.push(this.COC_ECBDetailsData);
+
+    // step-5 ODI Form
+
+    this.COC_ODIRemittanceData = {
+      COC_ODIRemittanceDate: '',
+      COC_ODIRemittanceAmountFcy: '',
+      COC_ODIRemittanceAmountInr: '',
+    };
+    this.COC_ODIRemittanceArray.push(this.COC_ODIRemittanceData);
+
+    this.COC_ODIReceiptShareData = {
+      COC_ODIShareNumber: '',
+      COC_ODIReceiptDate: '',
+    };
+    this.COC_ODIReceiptShareArray.push(this.COC_ODIReceiptShareData);
+
+    this.COC_ODIAprsDetailData = {
+      COC_ODIAprTransactionNo: '',
+      COC_ODIAprPeriodEnded: '',
+      COC_ODIAprSubmissionDate: '',
+    };
+    this.COC_ODIAprsDetailArray.push(this.COC_ODIAprsDetailData);
   }
 
   deleteGrantData(data, index) {
@@ -568,6 +619,64 @@ export class FormCocComponent implements OnInit {
         return false;
       } else {
         this.COC_ECBRepaymentArray.splice(index, 1);
+        return true;
+      }
+    }
+  }
+
+  // Step 5 ODI detail add rows in table
+  addODIDetailsData(data) {
+    if (data == 'remittanceDetails') {
+      this.COC_ODIRemittanceData = {
+        COC_ODIRemittanceDate: '',
+        COC_ODIRemittanceAmountFcy: '',
+        COC_ODIRemittanceAmountInr: '',
+      };
+      this.COC_ODIRemittanceArray.push(this.COC_ODIRemittanceData);
+    }
+    if (data == 'receiptShare') {
+      this.COC_ODIReceiptShareData = {
+        COC_ODIShareNumber: '',
+        COC_ODIReceiptDate: '',
+      };
+      this.COC_ODIReceiptShareArray.push(this.COC_ODIReceiptShareData);
+    }
+    if (data == 'aprsDetails') {
+      this.COC_ODIAprsDetailData = {
+        COC_ODIAprTransactionNo: '',
+        COC_ODIAprPeriodEnded: '',
+        COC_ODIAprSubmissionDate: '',
+      };
+      this.COC_ODIAprsDetailArray.push(this.COC_ODIAprsDetailData);
+      return true;
+    }
+  }
+
+  // Step 5 ODI detail delete rows in table
+  deleteODIDetailsData(data, index) {
+    if (data == 'remittanceDetails') {
+      if (this.COC_ODIRemittanceArray.length == 1) {
+        return false;
+      } else {
+        this.COC_ODIRemittanceArray.splice(index, 1);
+        return true;
+      }
+    }
+
+    if (data == 'receiptShare') {
+      if (this.COC_ODIReceiptShareArray.length == 1) {
+        return false;
+      } else {
+        this.COC_ODIReceiptShareArray.splice(index, 1);
+        return true;
+      }
+    }
+
+    if (data == 'aprsDetails') {
+      if (this.COC_ODIAprsDetailArray.length == 1) {
+        return false;
+      } else {
+        this.COC_ODIAprsDetailArray.splice(index, 1);
         return true;
       }
     }
@@ -1079,11 +1188,37 @@ export class FormCocComponent implements OnInit {
       AuthCapFormArray
     );
 
+    // step-5 Ecbform
     const EcbDetails: FormArray = this.fb.array(this.COC_ECBDetailsArray);
     this.COC_FDIFormlist.setControl('COC_ECBDetailsTable', EcbDetails);
 
     const EcbRepayment: FormArray = this.fb.array(this.COC_ECBRepaymentArray);
     this.COC_FDIFormlist.setControl('COC_ECBRepaymentTable', EcbRepayment);
+
+    // step-5 Odiform
+    const OdiRemittanceDetails: FormArray = this.fb.array(
+      this.COC_ODIRemittanceArray
+    );
+    this.COC_FDIFormlist.setControl(
+      'COC_ODIRemittanceDetailsTable',
+      OdiRemittanceDetails
+    );
+
+    const OdiReceiptShareDetails: FormArray = this.fb.array(
+      this.COC_ODIReceiptShareArray
+    );
+    this.COC_FDIFormlist.setControl(
+      'COC_ODIReceiptShareTable',
+      OdiReceiptShareDetails
+    );
+
+    const OdiAprsDetails: FormArray = this.fb.array(
+      this.COC_ODIAprsDetailArray
+    );
+    this.COC_FDIFormlist.setControl(
+      'COC_ODIAprsDetailTable',
+      OdiAprsDetails
+    );
 
     console.log(this.COC_FDIFormlist.value);
     if (this.COC_FDIFormlist.invalid) {

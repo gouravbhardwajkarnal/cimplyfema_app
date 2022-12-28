@@ -467,7 +467,7 @@
                     (COC_FDIFormlist.get('COC_FDIMobile').dirty ||
                       COC_FDIFormlist.get('COC_FDIMobile').touched)
                   "
-                  (keydown.space)="$event.preventDefault()" 
+                  (keydown.space)="$event.preventDefault()"
                   onkeypress="return /[0-9]/.test(event.key)"
                 />
                 <div
@@ -486,14 +486,18 @@
                     This field is required.
                   </div>
                   <div
-                    *ngIf=" COC_FDIFormlist.get('COC_FDIMobile').errors['minlength']"
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDIMobile').errors['minlength']
+                    "
                   >
-                  Mobile Number must be at least 10 characters long.
+                    Mobile Number must be at least 10 characters long.
                   </div>
                   <div
-                    *ngIf=" COC_FDIFormlist.get('COC_FDIMobile').errors['maxlength']"
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDIMobile').errors['maxlength']
+                    "
                   >
-                  Mobile Number can be max 15 characters long.
+                    Mobile Number can be max 15 characters long.
                   </div>
                 </div>
               </div>
@@ -2762,7 +2766,10 @@
             </thead>
             <tbody>
               <tr
-                *ngFor="let ecbDetail of COC_ECBRepaymentArray; let i = index"
+                *ngFor="
+                  let ecbRepayment of COC_ECBRepaymentArray;
+                  let i = index
+                "
               >
                 <td>
                   <input
@@ -2814,6 +2821,545 @@
           </table>
         </div>
 
+        <!-- step 5 ODIform -->
+        <div class="row" *ngIf="step5OdiForm">
+          <div class="col-6 mb-2">
+            <label class="form-label">Name of Overseas entity </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ODIOverseasEntity"
+              placeholder="Name of Overseas entity"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODIOverseasEntity').invalid &&
+                (COC_FDIFormlist.get('COC_ODIOverseasEntity').dirty ||
+                  COC_FDIFormlist.get('COC_ODIOverseasEntity').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODIOverseasEntity').invalid &&
+                (COC_FDIFormlist.get('COC_ODIOverseasEntity').dirty ||
+                  COC_FDIFormlist.get('COC_ODIOverseasEntity').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODIOverseasEntity').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 mb-2">
+            <label class="form-label"
+              >Date of incorporation of overseas entity
+            </label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="COC_ODIOverseasEntityDate"
+              placeholder="Date of incorporation of overseas entity"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODIOverseasEntityDate').invalid &&
+                (COC_FDIFormlist.get('COC_ODIOverseasEntityDate').dirty ||
+                  COC_FDIFormlist.get('COC_ODIOverseasEntityDate').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODIOverseasEntityDate').invalid &&
+                (COC_FDIFormlist.get('COC_ODIOverseasEntityDate').dirty ||
+                  COC_FDIFormlist.get('COC_ODIOverseasEntityDate').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODIOverseasEntityDate').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 mb-2">
+            <label class="form-label"
+              >Nature of Activities undertaken by overseas entity
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ODIOverseasActivities"
+              placeholder="Nature of Activities undertaken by overseas entity"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODIOverseasActivities').invalid &&
+                (COC_FDIFormlist.get('COC_ODIOverseasActivities').dirty ||
+                  COC_FDIFormlist.get('COC_ODIOverseasActivities').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODIOverseasActivities').invalid &&
+                (COC_FDIFormlist.get('COC_ODIOverseasActivities').dirty ||
+                  COC_FDIFormlist.get('COC_ODIOverseasActivities').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODIOverseasActivities').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 mb-2">
+            <label class="form-label">Nature of entity- WOS/JV </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ODIEntityNature"
+              placeholder="Nature of entity- WOS/JV"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODIEntityNature').invalid &&
+                (COC_FDIFormlist.get('COC_ODIEntityNature').dirty ||
+                  COC_FDIFormlist.get('COC_ODIEntityNature').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODIEntityNature').invalid &&
+                (COC_FDIFormlist.get('COC_ODIEntityNature').dirty ||
+                  COC_FDIFormlist.get('COC_ODIEntityNature').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODIEntityNature').errors['required']
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+              Details of remittance sent
+            </li>
+          </ul>
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
+            <thead>
+              <tr>
+                <th>Date of remittance</th>
+                <th>Amount in FCY</th>
+                <th>Amount in INR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let ecbDetail of COC_ODIRemittanceArray; let i = index"
+              >
+                <td>
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_ODIRemittanceArray[i].COC_ODIRemittanceDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_ODIRemittanceArray[i].COC_ODIRemittanceAmountFcy
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_ODIRemittanceArray[i].COC_ODIRemittanceAmountInr
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addODIDetailsData('remittanceDetails')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_ODIRemittanceArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteODIDetailsData('remittanceDetails', i)"
+                  >
+                    -
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="col-6 mb-2">
+            <label class="form-label"
+              >Details of other financial Commitment
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ODIFinancialDetails"
+              placeholder="Details of other financial Commitment"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODIFinancialDetails').invalid &&
+                (COC_FDIFormlist.get('COC_ODIFinancialDetails').dirty ||
+                  COC_FDIFormlist.get('COC_ODIFinancialDetails').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODIFinancialDetails').invalid &&
+                (COC_FDIFormlist.get('COC_ODIFinancialDetails').dirty ||
+                  COC_FDIFormlist.get('COC_ODIFinancialDetails').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODIFinancialDetails').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 mb-2">
+            <label class="form-label"
+              >Details of UIN applied and received
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ODIUinDetails"
+              placeholder="Details of UIN applied and received"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODIUinDetails').invalid &&
+                (COC_FDIFormlist.get('COC_ODIUinDetails').dirty ||
+                  COC_FDIFormlist.get('COC_ODIUinDetails').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODIUinDetails').invalid &&
+                (COC_FDIFormlist.get('COC_ODIUinDetails').dirty ||
+                  COC_FDIFormlist.get('COC_ODIUinDetails').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODIUinDetails').errors['required']
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+              Date of receipt of share certificate
+            </li>
+          </ul>
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
+            <thead>
+              <tr>
+                <th>No. of shares</th>
+                <th>Date of Receipt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let receiptShare of COC_ODIReceiptShareArray;
+                  let i = index
+                "
+              >
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="COC_ODIReceiptShareArray[i].COC_ODIShareNumber"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="date"
+                    [(ngModel)]="COC_ODIReceiptShareArray[i].COC_ODIReceiptDate"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addODIDetailsData('receiptShare')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_ODIReceiptShareArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteODIDetailsData('receiptShare', i)"
+                  >
+                    -
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="col-12 mb-2">
+            <label class="form-label"
+              >Approval of other regulators if required
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ODIRegulatorsApproval"
+              placeholder="Approval of other regulators if required"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODIRegulatorsApproval').invalid &&
+                (COC_FDIFormlist.get('COC_ODIRegulatorsApproval').dirty ||
+                  COC_FDIFormlist.get('COC_ODIRegulatorsApproval').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODIRegulatorsApproval').invalid &&
+                (COC_FDIFormlist.get('COC_ODIRegulatorsApproval').dirty ||
+                  COC_FDIFormlist.get('COC_ODIRegulatorsApproval').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODIRegulatorsApproval').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+              Details of APRs submitted
+            </li>
+          </ul>
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
+            <thead>
+              <tr>
+                <th>Transaction No</th>
+                <th>For the period ended</th>
+                <th>Date of submission</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let receiptShare of COC_ODIAprsDetailArray;
+                  let i = index
+                "
+              >
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_ODIAprsDetailArray[i].COC_ODIAprTransactionNo
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_ODIAprsDetailArray[i].COC_ODIAprPeriodEnded
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_ODIAprsDetailArray[i].COC_ODIAprSubmissionDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addODIDetailsData('aprsDetails')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_ODIAprsDetailArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteODIDetailsData('aprsDetails', i)"
+                  >
+                    -
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="col-12 mb-2">
+            <label class="form-label">Nature of contravention </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ODIContraventionNature"
+              placeholder="Nature of contravention"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODIContraventionNature').invalid &&
+                (COC_FDIFormlist.get('COC_ODIContraventionNature').dirty ||
+                  COC_FDIFormlist.get('COC_ODIContraventionNature').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODIContraventionNature').invalid &&
+                (COC_FDIFormlist.get('COC_ODIContraventionNature').dirty ||
+                  COC_FDIFormlist.get('COC_ODIContraventionNature').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODIContraventionNature').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mb-2">
+            <label class="form-label">Reason for the Contravention </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ODIContraventionReason"
+              placeholder="Reason for the Contravention"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODIContraventionReason').invalid &&
+                (COC_FDIFormlist.get('COC_ODIContraventionReason').dirty ||
+                  COC_FDIFormlist.get('COC_ODIContraventionReason').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODIContraventionReason').invalid &&
+                (COC_FDIFormlist.get('COC_ODIContraventionReason').dirty ||
+                  COC_FDIFormlist.get('COC_ODIContraventionReason').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODIContraventionReason').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mb-2">
+            <label class="form-label"
+              >All supporting documents may be submitted
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_ODISuppDocuments"
+              placeholder="All supporting documents may be submitted"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_ODISuppDocuments').invalid &&
+                (COC_FDIFormlist.get('COC_ODISuppDocuments').dirty ||
+                  COC_FDIFormlist.get('COC_ODISuppDocuments').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_ODISuppDocuments').invalid &&
+                (COC_FDIFormlist.get('COC_ODISuppDocuments').dirty ||
+                  COC_FDIFormlist.get('COC_ODISuppDocuments').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_ODISuppDocuments').errors['required']
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+        </div>
 
         <button
           type="button"

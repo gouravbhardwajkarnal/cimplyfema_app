@@ -113,7 +113,7 @@ let FormCoc = new Schema({
     }],
 
     COC_LiasonAnnualActivityTable: [{
-        COC_LiasonFinancialYear: { type: string },
+        COC_LiasonFinancialYear: { type: String },
         COC_LiasonAnnualSubmissionDate: { type: Date },
     }]
 

@@ -105,6 +105,16 @@ let FormCoc = new Schema({
         COC_ODIAprTransactionNo: { type: String },
         COC_ODIAprPeriodEnded: { type: String },
         COC_ODIAprSubmissionDate: { type: Date }
+    }],
+
+    COC_LiasonOfficeDetailTable: [{
+        COC_LiasonOfficeDate: { type: Date },
+        COC_LiasonOfficePeriod: { type: String }
+    }],
+
+    COC_LiasonAnnualActivityTable: [{
+        COC_LiasonFinancialYear: { type: string },
+        COC_LiasonAnnualSubmissionDate: { type: Date },
     }]
 
 }, {

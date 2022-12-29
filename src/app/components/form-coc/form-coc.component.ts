@@ -33,6 +33,8 @@ import {
   COC_ODIRemittanceList,
   COC_ODIReceiptShareList,
   COC_ODIAprsDetailList,
+  COC_LiasonOfficeDetailsList,
+  COC_LiasonAnnualActivityList,
 } from 'src/app/model/COCFdi.model';
 import { asBlob } from 'html-docx-js-typescript';
 @Component({
@@ -126,6 +128,12 @@ export class FormCocComponent implements OnInit {
 
   COC_ODIAprsDetailArray: Array<COC_ODIAprsDetailList> = [];
   COC_ODIAprsDetailData: any = {};
+
+  COC_LiasonOfficeDetailsArray: Array<COC_LiasonOfficeDetailsList> = [];
+  COC_LiasonOfficeDetailsData: any = {};
+
+  COC_LiasonAnnualActivityArray: Array<COC_LiasonAnnualActivityList> = [];
+  COC_LiasonAnnualActivityData: any = {};
 
   constructor(
     private commonservice: CommonService,
@@ -374,7 +382,13 @@ export class FormCocComponent implements OnInit {
       COC_ODIContraventionReason: new FormControl('', Validators.required),
       COC_ODISuppDocuments: new FormControl('', Validators.required),
 
-
+      // Step 5 Liason
+      COC_LiasonOfficeDetailTable: new FormArray([]),
+      COC_LiasonIncomeExpenditure: new FormControl('', Validators.required),
+      COC_LiasonAnnualActivityTable: new FormArray([]),
+      COC_LiasonContraventionNature: new FormControl('', Validators.required),
+      COC_LiasonContraventionReason: new FormControl('', Validators.required),
+      COC_LiasonSuppDocuments: new FormControl('', Validators.required),
     });
 
     // Step-5 ECB Form
@@ -416,6 +430,20 @@ export class FormCocComponent implements OnInit {
       COC_ODIAprSubmissionDate: '',
     };
     this.COC_ODIAprsDetailArray.push(this.COC_ODIAprsDetailData);
+
+    // step-5 LIASON Form
+
+    this.COC_LiasonOfficeDetailsData = {
+      COC_LiasonOfficeDate: '',
+      COC_LiasonOfficePeriod: '',
+    };
+    this.COC_LiasonOfficeDetailsArray.push(this.COC_LiasonOfficeDetailsData);
+
+    this.COC_LiasonAnnualActivityData = {
+      COC_LiasonFinancialYear: '',
+      COC_LiasonAnnualSubmissionDate: '',
+    };
+    this.COC_LiasonAnnualActivityArray.push(this.COC_LiasonAnnualActivityData);
   }
 
   deleteGrantData(data, index) {
@@ -677,6 +705,47 @@ export class FormCocComponent implements OnInit {
         return false;
       } else {
         this.COC_ODIAprsDetailArray.splice(index, 1);
+        return true;
+      }
+    }
+  }
+
+  // Step 5 Liason detail add rows in table
+  addLiasonDetailsData(data) {
+    if (data == 'liasonOfficeDetails') {
+      this.COC_LiasonOfficeDetailsData = {
+        COC_LiasonOfficeDate: '',
+        COC_LiasonOfficePeriod: '',
+      };
+      this.COC_LiasonOfficeDetailsArray.push(this.COC_LiasonOfficeDetailsData);
+    }
+    if (data == 'liasonAnnualActivity') {
+      this.COC_LiasonAnnualActivityData = {
+        COC_LiasonFinancialYear: '',
+        COC_LiasonAnnualSubmissionDate: '',
+      };
+      this.COC_LiasonAnnualActivityArray.push(
+        this.COC_LiasonAnnualActivityData
+      );
+    }
+  }
+
+  // Step 5 Liason detail delete rows in table
+  deleteLiasonDetailsData(data, index) {
+    if (data == 'liasonOfficeDetails') {
+      if (this.COC_LiasonOfficeDetailsArray.length == 1) {
+        return false;
+      } else {
+        this.COC_LiasonOfficeDetailsArray.splice(index, 1);
+        return true;
+      }
+    }
+
+    if (data == 'liasonAnnualActivity') {
+      if (this.COC_LiasonAnnualActivityArray.length == 1) {
+        return false;
+      } else {
+        this.COC_LiasonAnnualActivityArray.splice(index, 1);
         return true;
       }
     }
@@ -1069,19 +1138,37 @@ export class FormCocComponent implements OnInit {
       this.COC_FDIApplicantDetails = true;
     }
     if (Val == '3') {
-      let key=['COC_FDICIN','COC_FDI_CompanyName','COC_FDIIncorporationDate','COC_FDIBusPanNo','COC_FDIGSTNo','COC_FDIRegOfficeAddress','COC_FDIState','COC_FDICity','COC_FDIPincode','COC_FDI_Email','COC_FDIMobile','COC_FDITelephone','COC_FDIFAX','COC_FDI_AuthPerson','COC_FDI_AuthPersonAddress','COC_FDI_AuthPAN','COC_FDI_AuthDesignation']
-      let check=true
-      console.log(this.COC_FDIFormlist)
-      key.map((item)=>{
-        if (this.COC_FDIFormlist.controls[item].status=='INVALID') {
+      let key = [
+        'COC_FDICIN',
+        'COC_FDI_CompanyName',
+        'COC_FDIIncorporationDate',
+        'COC_FDIBusPanNo',
+        'COC_FDIGSTNo',
+        'COC_FDIRegOfficeAddress',
+        'COC_FDIState',
+        'COC_FDICity',
+        'COC_FDIPincode',
+        'COC_FDI_Email',
+        'COC_FDIMobile',
+        'COC_FDITelephone',
+        'COC_FDIFAX',
+        'COC_FDI_AuthPerson',
+        'COC_FDI_AuthPersonAddress',
+        'COC_FDI_AuthPAN',
+        'COC_FDI_AuthDesignation',
+      ];
+      let check = true;
+      console.log(this.COC_FDIFormlist);
+      key.map((item) => {
+        if (this.COC_FDIFormlist.controls[item].status == 'INVALID') {
           this.COC_FDIFormlist.controls[item].markAsTouched();
-          check=false
-          this.COC_FDIApplicantDetails=true;
+          check = false;
+          this.COC_FDIApplicantDetails = true;
           // return;
         }
-      })
-      if(check){
-      this.COC_FDICompoundingDetails = true;
+      });
+      if (check) {
+        this.COC_FDICompoundingDetails = true;
       }
     }
     if (Val == '4') {
@@ -1215,9 +1302,24 @@ export class FormCocComponent implements OnInit {
     const OdiAprsDetails: FormArray = this.fb.array(
       this.COC_ODIAprsDetailArray
     );
+    this.COC_FDIFormlist.setControl('COC_ODIAprsDetailTable', OdiAprsDetails);
+
+    //Step 5 Liason office
+
+    const LiasonOffice: FormArray = this.fb.array(
+      this.COC_LiasonOfficeDetailsArray
+    );
     this.COC_FDIFormlist.setControl(
-      'COC_ODIAprsDetailTable',
-      OdiAprsDetails
+      'COC_LiasonOfficeDetailTable',
+      LiasonOffice
+    );
+
+    const LiasonAnnual: FormArray = this.fb.array(
+      this.COC_LiasonAnnualActivityArray
+    );
+    this.COC_FDIFormlist.setControl(
+      'COC_LiasonAnnualActivityTable',
+      LiasonAnnual
     );
 
     console.log(this.COC_FDIFormlist.value);

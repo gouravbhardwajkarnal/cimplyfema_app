@@ -3361,6 +3361,271 @@
           </div>
         </div>
 
+        <div class="row" *ngIf="step5LiasionForm">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info"></li>
+          </ul>
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
+            <thead>
+              <tr>
+                <th>
+                  Date of approval for opening of Liason Office/ Branch Office
+                </th>
+                <th>Period of Approval</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let liasonOffice of COC_LiasonOfficeDetailsArray;
+                  let i = index
+                "
+              >
+                <td>
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_LiasonOfficeDetailsArray[i].COC_LiasonOfficeDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_LiasonOfficeDetailsArray[i].COC_LiasonOfficePeriod
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addLiasonDetailsData('liasonOfficeDetails')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_LiasonOfficeDetailsArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteLiasonDetailsData('liasonOfficeDetails', i)"
+                  >
+                    -
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="col-12 mb-2">
+            <label class="form-label"
+              >Income and expenditure of the LO/BO
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_LiasonIncomeExpenditure"
+              placeholder="Income and expenditure of the LO/BO"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_LiasonIncomeExpenditure').invalid &&
+                (COC_FDIFormlist.get('COC_LiasonIncomeExpenditure').dirty ||
+                  COC_FDIFormlist.get('COC_LiasonIncomeExpenditure').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_LiasonIncomeExpenditure').invalid &&
+                (COC_FDIFormlist.get('COC_LiasonIncomeExpenditure').dirty ||
+                  COC_FDIFormlist.get('COC_LiasonIncomeExpenditure').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_LiasonIncomeExpenditure').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info">
+              Dates of submission of Annual activity Certificates
+            </li>
+          </ul>
+          <table
+            class="table table-striped table-bordered caption-top table-responsive"
+          >
+            <thead>
+              <tr>
+                <th>Financial Year</th>
+                <th>Date of submission</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let liasonAnnualActivity of COC_LiasonAnnualActivityArray;
+                  let i = index
+                "
+              >
+                <td>
+                  <input
+                    type="date"
+                    [(ngModel)]="
+                      COC_LiasonAnnualActivityArray[i].COC_LiasonFinancialYear
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="
+                      COC_LiasonAnnualActivityArray[i]
+                        .COC_LiasonAnnualSubmissionDate
+                    "
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control form-control-sm"
+                  />
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="addLiasonDetailsData('liasonAnnualActivity')"
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    *ngIf="COC_LiasonAnnualActivityArray.length > 1"
+                    class="btn btn-outline-primary me-2"
+                    (click)="deleteLiasonDetailsData('liasonAnnualActivity', i)"
+                  >
+                    -
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="col-12 mb-2">
+            <label class="form-label">Nature of Contravention </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_LiasonContraventionNature"
+              placeholder="Nature of contravention"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_LiasonContraventionNature').invalid &&
+                (COC_FDIFormlist.get('COC_LiasonContraventionNature').dirty ||
+                  COC_FDIFormlist.get('COC_LiasonContraventionNature').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_LiasonContraventionNature').invalid &&
+                (COC_FDIFormlist.get('COC_LiasonContraventionNature').dirty ||
+                  COC_FDIFormlist.get('COC_LiasonContraventionNature').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_LiasonContraventionNature').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mb-2">
+            <label class="form-label">Reason for the Contravention </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_LiasonContraventionReason"
+              placeholder="Reason for the Contravention"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_LiasonContraventionReason').invalid &&
+                (COC_FDIFormlist.get('COC_LiasonContraventionReason').dirty ||
+                  COC_FDIFormlist.get('COC_LiasonContraventionReason').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_LiasonContraventionReason').invalid &&
+                (COC_FDIFormlist.get('COC_LiasonContraventionReason').dirty ||
+                  COC_FDIFormlist.get('COC_LiasonContraventionReason').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_LiasonContraventionReason').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mb-2">
+            <label class="form-label"
+              >All supporting documents may be submitted
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="COC_LiasonSuppDocuments"
+              placeholder="All supporting documents may be submitted"
+              [class.is-invalid]="
+                COC_FDIFormlist.get('COC_LiasonSuppDocuments').invalid &&
+                (COC_FDIFormlist.get('COC_LiasonSuppDocuments').dirty ||
+                  COC_FDIFormlist.get('COC_LiasonSuppDocuments').touched)
+              "
+            />
+            <div
+              *ngIf="
+                COC_FDIFormlist.get('COC_LiasonSuppDocuments').invalid &&
+                (COC_FDIFormlist.get('COC_LiasonSuppDocuments').dirty ||
+                  COC_FDIFormlist.get('COC_LiasonSuppDocuments').touched)
+              "
+              class="invalid-feedback"
+            >
+              <div
+                *ngIf="
+                  COC_FDIFormlist.get('COC_LiasonSuppDocuments').errors[
+                    'required'
+                  ]
+                "
+              >
+                This field is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
         <button
           type="button"
           (click)="RBI_FDISubmit('4')"

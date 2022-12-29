@@ -117,3 +117,13 @@ export class COC_ODIAprsDetailList {
   COC_ODIAprPeriodEnded: string;
   COC_ODIAprSubmissionDate: Date;
 }
+
+export class COC_LiasonOfficeDetailsList {
+  COC_LiasonOfficeDate: Date;
+  COC_LiasonOfficePeriod: string;
+}
+
+export class COC_LiasonAnnualActivityList {
+  COC_LiasonFinancialYear: string;
+  COC_LiasonAnnualSubmissionDate: Date;
+}

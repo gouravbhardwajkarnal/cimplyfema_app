@@ -135,6 +135,8 @@ export class FormCocComponent implements OnInit {
   COC_LiasonAnnualActivityArray: Array<COC_LiasonAnnualActivityList> = [];
   COC_LiasonAnnualActivityData: any = {};
 
+  todayDate:string=new Date().toISOString().slice(0, 10).split('-').reverse().join('/')
+
   constructor(
     private commonservice: CommonService,
     private fb: FormBuilder,
@@ -193,6 +195,11 @@ export class FormCocComponent implements OnInit {
     }
   }
 
+  change(){
+    console.log(this.COC_FDIFormlist.get('COC_FDICity').value);
+    
+  }
+  
   ngOnInit(): void {
     this.BackSubmissiondata = { COC_FDI_Background: '' };
     this.BackSubmissionArray.push(this.BackSubmissiondata);
@@ -1138,38 +1145,38 @@ export class FormCocComponent implements OnInit {
       this.COC_FDIApplicantDetails = true;
     }
     if (Val == '3') {
-      let key = [
-        'COC_FDICIN',
-        'COC_FDI_CompanyName',
-        'COC_FDIIncorporationDate',
-        'COC_FDIBusPanNo',
-        'COC_FDIGSTNo',
-        'COC_FDIRegOfficeAddress',
-        'COC_FDIState',
-        'COC_FDICity',
-        'COC_FDIPincode',
-        'COC_FDI_Email',
-        'COC_FDIMobile',
-        'COC_FDITelephone',
-        'COC_FDIFAX',
-        'COC_FDI_AuthPerson',
-        'COC_FDI_AuthPersonAddress',
-        'COC_FDI_AuthPAN',
-        'COC_FDI_AuthDesignation',
-      ];
-      let check = true;
-      console.log(this.COC_FDIFormlist);
-      key.map((item) => {
-        if (this.COC_FDIFormlist.controls[item].status == 'INVALID') {
-          this.COC_FDIFormlist.controls[item].markAsTouched();
-          check = false;
-          this.COC_FDIApplicantDetails = true;
-          // return;
-        }
-      });
-      if (check) {
+      // let key = [
+      //   'COC_FDICIN',
+      //   'COC_FDI_CompanyName',
+      //   'COC_FDIIncorporationDate',
+      //   'COC_FDIBusPanNo',
+      //   'COC_FDIGSTNo',
+      //   'COC_FDIRegOfficeAddress',
+      //   'COC_FDIState',
+      //   'COC_FDICity',
+      //   'COC_FDIPincode',
+      //   'COC_FDI_Email',
+      //   'COC_FDIMobile',
+      //   'COC_FDITelephone',
+      //   'COC_FDIFAX',
+      //   'COC_FDI_AuthPerson',
+      //   'COC_FDI_AuthPersonAddress',
+      //   'COC_FDI_AuthPAN',
+      //   'COC_FDI_AuthDesignation',
+      // ];
+      // let check = true;
+      // console.log(this.COC_FDIFormlist);
+      // key.map((item) => {
+      //   if (this.COC_FDIFormlist.controls[item].status == 'INVALID') {
+      //     this.COC_FDIFormlist.controls[item].markAsTouched();
+      //     check = false;
+      //     this.COC_FDIApplicantDetails = true;
+      //     // return;
+      //   }
+      // });
+      // if (check) {
         this.COC_FDICompoundingDetails = true;
-      }
+      // }
     }
     if (Val == '4') {
       this.COC_FDICompoundingSubmissions = true;
@@ -1352,7 +1359,7 @@ export class FormCocComponent implements OnInit {
   @ViewChild('pdfTable6') pdfTable6: ElementRef;
   @ViewChild('pdfTable7') pdfTable7: ElementRef;
 
-  downloadAsPDF1() {
+  downloadAsPDFRbi() {
     const doc = new jsPDF();
     const pdfTable = this.pdfTable1.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML);
@@ -1402,14 +1409,15 @@ export class FormCocComponent implements OnInit {
     const documentDefinition = { content: html };
     pdfMake.createPdf(documentDefinition).open();
   }
-  async ExportWord1() {
+  async ExportWordRbi() {
     const pdfTable = this.pdfTable1.nativeElement;
 
+    console.log("pdfTable.innerHTML",pdfTable.innerHTML)
     var converted = await asBlob(pdfTable.innerHTML, {
       orientation: 'portrait',
       margins: { top: 720 },
     });
-    saveAs(converted, 'Covering.docx');
+    saveAs(converted, 'RBI Covering Letter.docx');
   }
 
   async ExportWord2() {

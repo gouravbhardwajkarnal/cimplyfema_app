@@ -112,10 +112,10 @@
                                 Next </button>
                         </div>
                         <tabset #tabset>
-                            <tab heading="Instructions" id="0" disabled="disabled">
+                            <tab heading="Instructions & Checklist" id="0">
                                 <app-apr-instructions></app-apr-instructions>
                             </tab>
-                            <tab heading="APR Detail" id="1" disabled="disabled">
+                            <tab heading="Basic Detail" id="1">
                                 <form [formGroup]="aprForm">
                                     <div class="card p-4 rounded-0 border-info1">
                                         <div class="row">
@@ -935,7 +935,7 @@
                                     </div>
                                 </form>
                             </tab>
-                            <tab heading="APR SDS" id="2" disabled="disabled">
+                            <tab heading="SDS" id="2">
                                 <div class="card p-2">
                                     <div class="col-sm-12 mb-4 mt-2 ">
                                         <label class="form-label">@ Furnish 15 / 17-digit transaction number
@@ -1122,739 +1122,1481 @@
                                     </div>
                                 </div>
                             </tab>
-                            <tab heading="APR Declaration" id="3" disabled="disabled">
-                                <div class="card p-2">
-                                    <form [formGroup]="declaration">
-                                        <table class="caption-top table table-borderless">
-                                            <caption> Declaration by the Indian entity (IE)/ Resident Individual (RI)
-                                            </caption>
-                                            <thead>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">A</th>
-                                                    <td [ngClass]="APR_Dec_A.value == true ? 'del' : 'notdel'">
-                                                        Acquisition/ setting up/ winding up/transfer of the SDS and
-                                                        changes
-                                                        in the
-                                                        shareholding pattern of the foreign entity since last APR have
-                                                        been
-                                                        reported as
-                                                        required in terms of Regulation 10(4)(c) of OI Regulations or
-                                                        corresponding
-                                                        extant Regulations in case where the reporting is being done
-                                                        under
-                                                        the earlier
-                                                        overseas investment framework** as stipulated by the Reserve
-                                                        Bank
-                                                        from time to
-                                                        time.
-
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" value="APR_Dec_A"
-                                                            class="form-check-input" id="APR_Dec_A"
-                                                            formControlName="APR_Dec_A"
-                                                            [class.is-invalid]="APR_Dec_A.invalid && (APR_Dec_A.dirty || APR_Dec_A.touched)">
-                                                        <div *ngIf="APR_Dec_A.invalid && (APR_Dec_A.dirty || APR_Dec_A.touched)"
-                                                            class="invalid-feedback">
-                                                            <div *ngIf="APR_Dec_A.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">B</th>
-                                                    <td [ngClass]="APR_Dec_B.value == true ? 'del' : 'notdel'"> The
-                                                        structure of SDS is
-                                                        in compliance with the structural requirements of the foreign
-                                                        entity
-                                                        as provided
-                                                        in OI Rules.
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" value="APR_Dec_B"
-                                                            class="form-check-input" id="APR_Dec_B"
-                                                            formControlName="APR_Dec_B"
-                                                            [class.is-invalid]="APR_Dec_B.invalid && (APR_Dec_B.dirty || APR_Dec_B.touched)">
-                                                        <div *ngIf="APR_Dec_B.invalid && (APR_Dec_B.dirty || APR_Dec_B.touched)"
-                                                            class="invalid-feedback">
-                                                            <div *ngIf="APR_Dec_B.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">C</th>
-                                                    <td [ngClass]="APR_Dec_C.value == true ? 'del' : 'notdel'">We have
-                                                        received share
-                                                        certificate/s (or any other evidence of investment as per the
-                                                        applicable laws of
-                                                        the host jurisdiction) and submitted the same to the designated
-                                                        AD
-                                                        bank for
-                                                        verification within 6 months of making the remittance/s for all
-                                                        investments/
-                                                        capitalization which are reckoned as ODI in the foreign entity
-                                                        under
-                                                        this UIN,
-                                                        as per Regulation 9 (1) of OI Regulations or corresponding
-                                                        extant
-                                                        Regulations in
-                                                        case where the reporting is being done under the earlier
-                                                        overseas
-                                                        investment
-                                                        framework** as stipulated by the Reserve Bank from time to time.
-                                                    </td>
-                                                    <td> <input type="checkbox" value="APR_Dec_C"
-                                                            class="form-check-input" id="APR_Dec_C"
-                                                            formControlName="APR_Dec_C" [class.is-invalid]="APR_Dec_C.invalid && (APR_Dec_C.dirty 
-                                            || APR_Dec_C.touched)">
-                                                        <div *ngIf="APR_Dec_C.invalid && (APR_Dec_C.dirty || APR_Dec_C.touched)"
-                                                            class="invalid-feedback">
-                                                            <div *ngIf="APR_Dec_C.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">D</th>
-                                                    <td [ngClass]="APR_Dec_D.value == true ? 'del' : 'notdel'"> The
-                                                        previous
-                                                        APRs for
-                                                        the foreign entity under this UIN, have been filed.
-                                                    </td>
-                                                    <td> <input type="checkbox" value="APR_Dec_D"
-                                                            class="form-check-input" id="APR_Dec_D"
-                                                            formControlName="APR_Dec_D" [class.is-invalid]="APR_Dec_D.invalid && (APR_Dec_D.dirty 
-                                                || APR_Dec_D.touched)">
-                                                        <div *ngIf="APR_Dec_D.invalid && (APR_Dec_D.dirty || APR_Dec_D.touched)"
-                                                            class="invalid-feedback">
-                                                            <div *ngIf="APR_Dec_D.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">E</th>
-                                                    <td [ngClass]="APR_Dec_E.value == true ? 'del' : 'notdel'">
-                                                        Repatriated
-                                                        to India, all
-                                                        dues receivable from the foreign entity under this UIN, as
-                                                        required
-                                                        under
-                                                        Regulation 9 (4) of OI Regulations or corresponding extant
-                                                        Regulations in case
-                                                        where the reporting is being done under the earlier overseas
-                                                        investment
-                                                        framework** as stipulated by the Reserve Bank from time to time
-                                                    </td>
-                                                    <td> <input type="checkbox" value="APR_Dec_E"
-                                                            class="form-check-input" id="APR_Dec_E"
-                                                            formControlName="APR_Dec_E" [class.is-invalid]="APR_Dec_E.invalid && (APR_Dec_E.dirty 
-                                                || APR_Dec_E.touched)">
-                                                        <div *ngIf="APR_Dec_E.invalid && (APR_Dec_E.dirty || APR_Dec_E.touched)"
-                                                            class="invalid-feedback">
-                                                            <div *ngIf="APR_Dec_E.errors?.['required']">
-                                                                This field is required.
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"></th>
-                                                    <td>
-                                                        I/ We hereby certify that the information furnished above are
-                                                        true
-                                                        and correct.
-                                                        I/We also duly acknowledge that if any information furnished by
-                                                        me/us is found
-                                                        to be false and/or incorrect, it shall be construed that the
-                                                        reporting
-                                                        requirements under FEMA, 1999 have not been complied with.
-                                                        <div class="row mt-3">
-
-                                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-                                                                <input type="text" id="APR_Authorized_Signature"
-                                                                    name="APR_Authorized_Signature" spellcheck="false"
-                                                                    formControlName="APR_Authorized_Signature"
-                                                                    minlength="5" maxlength="250"
-                                                                    class="form-control form-control-sm"
-                                                                    [class.is-invalid]="APR_Authorized_Signature.invalid && (APR_Authorized_Signature.dirty || APR_Authorized_Signature.touched)">
-                                                                <div *ngIf="APR_Authorized_Signature.invalid && (APR_Authorized_Signature.dirty || APR_Authorized_Signature.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div
-                                                                        *ngIf="APR_Authorized_Signature.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                    <div
-                                                                        *ngIf="APR_Authorized_Signature.errors?.['minlength']">
-                                                                        This field must have at least 5 character.
-                                                                    </div>
-                                                                    <div
-                                                                        *ngIf="APR_Authorized_Signature.errors?.['maxlength']">
-                                                                        This field must have at most 250 characters.
-                                                                    </div>
-                                                                </div>
-                                                                <span class="placeholder">Signature of authorized
-                                                                    official
-                                                                    of the IE/ RI
-                                                                </span>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-                                                                <input type="text" id="APR_Authorized_Name"
-                                                                    spellcheck="false" required
-                                                                    name="APR_Authorized_Name"
-                                                                    formControlName="APR_Authorized_Name" required
-                                                                    minlength="5" maxlength="250"
-                                                                    class="form-control form-control-sm"
-                                                                    [class.is-invalid]="APR_Authorized_Name.invalid && (APR_Authorized_Name.dirty || APR_Authorized_Name.touched)">
-                                                                <div *ngIf="APR_Authorized_Name.invalid && (APR_Authorized_Name.dirty || APR_Authorized_Name.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div
-                                                                        *ngIf="APR_Authorized_Name.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                    <div
-                                                                        *ngIf="APR_Authorized_Name.errors?.['minlength']">
-                                                                        This field must have at least 5 character.
-                                                                    </div>
-                                                                    <div
-                                                                        *ngIf="APR_Authorized_Name.errors?.['maxlength']">
-                                                                        This field must have at most 250 characters.
-                                                                    </div>
-                                                                </div>
-                                                                <span class="placeholder">Name of the
-                                                                    Authorized
-                                                                    Official of the IE/
-                                                                    RI </span>
-
-                                                            </div>
-                                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-                                                                <input type="text" id="APR_Authorized_Designation"
-                                                                    name="APR_Authorized_Designation" spellcheck="false"
-                                                                    required
-                                                                    formControlName="APR_Authorized_Designation"
-                                                                    required minlength="5" maxlength="250"
-                                                                    class="form-control form-control-sm"
-                                                                    [class.is-invalid]="APR_Authorized_Designation.invalid && (APR_Authorized_Designation.dirty || APR_Authorized_Designation.touched)">
-                                                                <div *ngIf="APR_Authorized_Designation.invalid && (APR_Authorized_Designation.dirty || APR_Authorized_Designation.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div
-                                                                        *ngIf="APR_Authorized_Designation.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                    <div
-                                                                        *ngIf="APR_Authorized_Designation.errors?.['minlength']">
-                                                                        This field must have at least 5 character.
-                                                                    </div>
-                                                                    <div
-                                                                        *ngIf="APR_Authorized_Designation.errors?.['maxlength']">
-                                                                        This field must have at most 250 characters.
-                                                                    </div>
-                                                                </div>
-                                                                <span class="placeholder">Designation of the
-                                                                    Authorized
-                                                                    Official of the IE/
-                                                                    RI </span>
-                                                            </div>
-
-                                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-
-                                                                <input type="text" id="APR_Dec_Place"
-                                                                    name="APR_Dec_Place" formControlName="APR_Dec_Place"
-                                                                    spellcheck="false" required minlength="1"
-                                                                    maxlength="250" class="form-control form-control-sm"
-                                                                    [class.is-invalid]="APR_Dec_Place.invalid && (APR_Dec_Place.dirty || APR_Dec_Place.touched)">
-                                                                <div *ngIf="APR_Dec_Place.invalid && (APR_Dec_Place.dirty || APR_Dec_Place.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div *ngIf="APR_Dec_Place.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                    <div *ngIf="APR_Dec_Place.errors?.['minlength']">
-                                                                        This field must have at least 1 character.
-                                                                    </div>
-                                                                    <div *ngIf="APR_Dec_Place.errors?.['maxlength']">
-                                                                        This field must have at most 250 characters.
-                                                                    </div>
-                                                                </div>
-                                                                <span class="placeholder">
-                                                                    Place
-                                                                </span>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-                                                                <input type="date" id="APR_Dec_Date" name="APR_Dec_Date"
-                                                                    formControlName="APR_Dec_Date" spellcheck="false"
-                                                                    disabled required
-                                                                    class="form-control form-control-sm"
-                                                                    [class.is-invalid]="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)">
-                                                                <div *ngIf="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div *ngIf="APR_Dec_Date.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                </div>
-                                                                <span class="placeholder">
-                                                                    Date
-                                                                </span>
-                                                            </div>
-
-                                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-                                                                <input type="text" id="APR_Dec_Telephone"
-                                                                    name="APR_Dec_Telephone"
-                                                                    formControlName="APR_Dec_Telephone"
-                                                                    spellcheck="false" required minlength="1"
-                                                                    maxlength="250" class="form-control form-control-sm"
-                                                                    [class.is-invalid]="APR_Dec_Telephone.invalid && (APR_Dec_Telephone.dirty || APR_Dec_Telephone.touched)">
-                                                                <div *ngIf="APR_Dec_Telephone.invalid && (APR_Dec_Telephone.dirty || APR_Dec_Telephone.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div *ngIf="APR_Dec_Telephone.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                    <div
-                                                                        *ngIf="APR_Dec_Telephone.errors?.['minlength']">
-                                                                        This field must have at least 10 character.
-                                                                    </div>
-                                                                    <div
-                                                                        *ngIf="APR_Dec_Telephone.errors?.['maxlength']">
-                                                                        This field must have at most 250 characters.
-                                                                    </div>
-                                                                </div>
-                                                                <span class="placeholder">Telephone</span>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xl-4 input-block">
-                                                                <input type="text" id="APR_Dec_Email"
-                                                                    name="APR_Dec_Email" formControlName="APR_Dec_Email"
-                                                                    spellcheck="false" minlength="1" maxlength="250"
-                                                                    class="form-control form-control-sm"
-                                                                    [class.is-invalid]="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)">
-                                                                <div *ngIf="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div *ngIf="APR_Dec_Email.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                    <div *ngIf="APR_Dec_Email.errors?.['minlength']">
-                                                                        This field must have at least 1 character.
-                                                                    </div>
-                                                                    <div *ngIf="APR_Dec_Email.errors?.['maxlength']">
-                                                                        This field must have at most 250 characters.
-                                                                    </div>
-                                                                </div>
-                                                                <span class="placeholder">
-                                                                    Email
-                                                                </span>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xl-4 input-block">
-
-                                                                <input type="text" id="APR_Dec_Stamp" spellcheck="false"
-                                                                    name="APR_Dec_Stamp" formControlName="APR_Dec_Stamp"
-                                                                    minlength="1" maxlength="250"
-                                                                    class="form-control form-control-sm"
-                                                                    [class.is-invalid]="APR_Dec_Stamp.invalid && (APR_Dec_Stamp.dirty || APR_Dec_Stamp.touched)">
-                                                                <div *ngIf="APR_Dec_Stamp.invalid && (APR_Dec_Stamp.dirty || APR_Dec_Stamp.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div *ngIf="APR_Dec_Stamp.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                    <div *ngIf="APR_Dec_Stamp.errors?.['minlength']">
-                                                                        This field must have at least 1 character.
-                                                                    </div>
-                                                                    <div *ngIf="APR_Dec_Stamp.errors?.['maxlength']">
-                                                                        This field must have at most 250 characters.
-                                                                    </div>
-                                                                </div>
-                                                                <span class="placeholder">
-                                                                    Stamp/Seal
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                            </tfoot>
-                                        </table>
-                                    </form>
-                                </div>
-                            </tab>
-                            <tab heading="Statutory Auditor/CA Certificate" id="4" disabled="disabled">
-                                <form [formGroup]="CAform">
-                                    <div class="card p-4 rounded-0 border-info1">
-                                        <div class="row">
-
-                                            <div class="card-header">
-                                                Certificate of the Statutory Auditor (in case of Indian entity) /
-                                                Chartered
-                                                Accountant in case of resident individuals (strike out whichever is
-                                                not
-                                                applicable)
-                                            </div>
-
-                                            <div class="card p-2">
-                                                <h5>I/We the Indian entity/ resident individual (wherever
-                                                    applicable)
-                                                    further confirm
-                                                    that:
-                                                </h5>
+                            <tab heading="Declaration & Certificate - NEW Format" id="3">
+                                <tabset #tabset>
+                                    <tab heading="Declaration">
+                                        <div class="card p-2">
+                                            <form [formGroup]="declaration">
                                                 <table class="caption-top table table-borderless">
-
+                                                    <caption> Declaration by the Indian entity (IE)/ Resident Individual (RI)
+                                                    </caption>
                                                     <thead>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <th scope="row">i.</th>
-                                                            <td [ngClass]="APR_CA_A.value == true ? 'del' : 'notdel'">
-                                                                APR for the year ended
-                                                                <span>{{mainform.controls['APR_To_Date'].value | date:
-                                                                    'dd-MM-yyyy'}}</span> is
-                                                                prepared on the basis of
-                                                                audited/
-                                                                unaudited balance sheet of the foreign entity for the
-                                                                year
-                                                                ended <span>{{mainform.controls['APR_To_Date'].value |
-                                                                    date: 'dd-MM-yyyy'}}</span>.
-
-                                                            </td>
-                                                            <td>
-                                                                <input type="checkbox" value="APR_CA_A"
-                                                                    class="form-check-input" id="APR_CA_A"
-                                                                    formControlName="APR_CA_A"
-                                                                    [class.is-invalid]="APR_CA_A.invalid && (APR_CA_A.dirty || APR_CA_A.touched)">
-                                                                <div *ngIf="APR_CA_A.invalid && (APR_CA_A.dirty || APR_CA_A.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div *ngIf="APR_CA_A.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">ii.</th>
-                                                            <td [ngClass]="APR_CA_B.value == true ? 'del' : 'notdel'">
-                                                                APR for the year ended
-                                                                <span>{{mainform.controls['APR_To_Date'].value | date:
-                                                                    'dd-MM-yyyy'}}</span> is
-                                                                prepared on the basis of
-                                                                unaudited
-                                                                balance sheet of the foreign entity since audit is not
-                                                                mandatory
-                                                                in host
-                                                                country/jurisdiction and the IE/RI does not have
-                                                                ‘control’
-                                                                in
-                                                                the foreign
-                                                                entity in compliance with explanation (a) to Regulation
-                                                                10(4) of
-                                                                Foreign
-                                                                Exchange Management (Overseas Investment) Regulations,
-                                                                2022..
-
-                                                            </td>
-                                                            <td>
-                                                                <input type="checkbox" value="APR_CA_B"
-                                                                    class="form-check-input" id="APR_CA_B"
-                                                                    formControlName="APR_CA_B"
-                                                                    [class.is-invalid]="APR_CA_B.invalid && (APR_CA_B.dirty || APR_CA_B.touched)">
-                                                                <div *ngIf="APR_CA_B.invalid && (APR_CA_B.dirty || APR_CA_B.touched)"
-                                                                    class="invalid-feedback">
-                                                                    <div *ngIf="APR_CA_B.errors?.['required']">
-                                                                        This field is required.
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">iii.</th>
-                                                            <td [ngClass]="APR_CA_C.value == true ? 'del' : 'notdel'">
-                                                                The IE/RI repatriated to India, all dues receivable from
-                                                                the
-                                                                foreign
-                                                                entity under this UIN, as required under Regulation 9
-                                                                (4) of
-                                                                Foreign
-                                                                Exchange Management (Overseas Investment) Regulations,
-                                                                2022
-                                                                or
+                                                            <th scope="row">A</th>
+                                                            <td [ngClass]="APR_Dec_A.value == true ? 'del' : 'notdel'">
+                                                                Acquisition/ setting up/ winding up/transfer of the SDS and
+                                                                changes
+                                                                in the
+                                                                shareholding pattern of the foreign entity since last APR have
+                                                                been
+                                                                reported as
+                                                                required in terms of Regulation 10(4)(c) of OI Regulations or
                                                                 corresponding
-                                                                extant Regulations in case where the reporting is being
-                                                                done
-                                                                under the
-                                                                earlier overseas investment framework** as stipulated by
-                                                                the
-                                                                Reserve Bank
-                                                                from time to time, and it has been verified from the
-                                                                Foreign
-                                                                Inward
-                                                                Remittance Certificate issued by the AD bank/s.
+                                                                extant Regulations in case where the reporting is being done
+                                                                under
+                                                                the earlier
+                                                                overseas investment framework** as stipulated by the Reserve
+                                                                Bank
+                                                                from time to
+                                                                time.
+        
                                                             </td>
                                                             <td>
-                                                                <input type="checkbox" value="APR_CA_C"
-                                                                    class="form-check-input" id="APR_CA_C"
-                                                                    formControlName="APR_CA_C"
-                                                                    [class.is-invalid]="APR_CA_C.invalid && (APR_CA_C.dirty || APR_CA_C.touched)">
-                                                                <div *ngIf="APR_CA_C.invalid && (APR_CA_C.dirty || APR_CA_C.touched)"
+                                                                <input type="checkbox" value="APR_Dec_A"
+                                                                    class="form-check-input" id="APR_Dec_A"
+                                                                    formControlName="APR_Dec_A"
+                                                                    [class.is-invalid]="APR_Dec_A.invalid && (APR_Dec_A.dirty || APR_Dec_A.touched)">
+                                                                <div *ngIf="APR_Dec_A.invalid && (APR_Dec_A.dirty || APR_Dec_A.touched)"
                                                                     class="invalid-feedback">
-                                                                    <div *ngIf="APR_CA_C.errors?.['required']">
+                                                                    <div *ngIf="APR_Dec_A.errors?.['required']">
                                                                         This field is required.
                                                                     </div>
                                                                 </div>
                                                             </td>
-
+        
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">B</th>
+                                                            <td [ngClass]="APR_Dec_B.value == true ? 'del' : 'notdel'"> The
+                                                                structure of SDS is
+                                                                in compliance with the structural requirements of the foreign
+                                                                entity
+                                                                as provided
+                                                                in OI Rules.
+                                                            </td>
+                                                            <td>
+                                                                <input type="checkbox" value="APR_Dec_B"
+                                                                    class="form-check-input" id="APR_Dec_B"
+                                                                    formControlName="APR_Dec_B"
+                                                                    [class.is-invalid]="APR_Dec_B.invalid && (APR_Dec_B.dirty || APR_Dec_B.touched)">
+                                                                <div *ngIf="APR_Dec_B.invalid && (APR_Dec_B.dirty || APR_Dec_B.touched)"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="APR_Dec_B.errors?.['required']">
+                                                                        This field is required.
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+        
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">C</th>
+                                                            <td [ngClass]="APR_Dec_C.value == true ? 'del' : 'notdel'">We have
+                                                                received share
+                                                                certificate/s (or any other evidence of investment as per the
+                                                                applicable laws of
+                                                                the host jurisdiction) and submitted the same to the designated
+                                                                AD
+                                                                bank for
+                                                                verification within 6 months of making the remittance/s for all
+                                                                investments/
+                                                                capitalization which are reckoned as ODI in the foreign entity
+                                                                under
+                                                                this UIN,
+                                                                as per Regulation 9 (1) of OI Regulations or corresponding
+                                                                extant
+                                                                Regulations in
+                                                                case where the reporting is being done under the earlier
+                                                                overseas
+                                                                investment
+                                                                framework** as stipulated by the Reserve Bank from time to time.
+                                                            </td>
+                                                            <td> <input type="checkbox" value="APR_Dec_C"
+                                                                    class="form-check-input" id="APR_Dec_C"
+                                                                    formControlName="APR_Dec_C" [class.is-invalid]="APR_Dec_C.invalid && (APR_Dec_C.dirty 
+                                                    || APR_Dec_C.touched)">
+                                                                <div *ngIf="APR_Dec_C.invalid && (APR_Dec_C.dirty || APR_Dec_C.touched)"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="APR_Dec_C.errors?.['required']">
+                                                                        This field is required.
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">D</th>
+                                                            <td [ngClass]="APR_Dec_D.value == true ? 'del' : 'notdel'"> The
+                                                                previous
+                                                                APRs for
+                                                                the foreign entity under this UIN, have been filed.
+                                                            </td>
+                                                            <td> <input type="checkbox" value="APR_Dec_D"
+                                                                    class="form-check-input" id="APR_Dec_D"
+                                                                    formControlName="APR_Dec_D" [class.is-invalid]="APR_Dec_D.invalid && (APR_Dec_D.dirty 
+                                                        || APR_Dec_D.touched)">
+                                                                <div *ngIf="APR_Dec_D.invalid && (APR_Dec_D.dirty || APR_Dec_D.touched)"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="APR_Dec_D.errors?.['required']">
+                                                                        This field is required.
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">E</th>
+                                                            <td [ngClass]="APR_Dec_E.value == true ? 'del' : 'notdel'">
+                                                                Repatriated
+                                                                to India, all
+                                                                dues receivable from the foreign entity under this UIN, as
+                                                                required
+                                                                under
+                                                                Regulation 9 (4) of OI Regulations or corresponding extant
+                                                                Regulations in case
+                                                                where the reporting is being done under the earlier overseas
+                                                                investment
+                                                                framework** as stipulated by the Reserve Bank from time to time
+                                                            </td>
+                                                            <td> <input type="checkbox" value="APR_Dec_E"
+                                                                    class="form-check-input" id="APR_Dec_E"
+                                                                    formControlName="APR_Dec_E" [class.is-invalid]="APR_Dec_E.invalid && (APR_Dec_E.dirty 
+                                                        || APR_Dec_E.touched)">
+                                                                <div *ngIf="APR_Dec_E.invalid && (APR_Dec_E.dirty || APR_Dec_E.touched)"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="APR_Dec_E.errors?.['required']">
+                                                                        This field is required.
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"></th>
+                                                            <td>
+                                                                I/ We hereby certify that the information furnished above are
+                                                                true
+                                                                and correct.
+                                                                I/We also duly acknowledge that if any information furnished by
+                                                                me/us is found
+                                                                to be false and/or incorrect, it shall be construed that the
+                                                                reporting
+                                                                requirements under FEMA, 1999 have not been complied with.
+                                                                <div class="row mt-3">
+        
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="text" id="APR_Authorized_Signature"
+                                                                            name="APR_Authorized_Signature" spellcheck="false"
+                                                                            formControlName="APR_Authorized_Signature"
+                                                                            minlength="5" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Authorized_Signature.invalid && (APR_Authorized_Signature.dirty || APR_Authorized_Signature.touched)">
+                                                                        <div *ngIf="APR_Authorized_Signature.invalid && (APR_Authorized_Signature.dirty || APR_Authorized_Signature.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Signature.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Signature.errors?.['minlength']">
+                                                                                This field must have at least 5 character.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Signature.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">Signature of authorized
+                                                                            official
+                                                                            of the IE/ RI
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="text" id="APR_Authorized_Name"
+                                                                            spellcheck="false" required
+                                                                            name="APR_Authorized_Name"
+                                                                            formControlName="APR_Authorized_Name" required
+                                                                            minlength="5" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Authorized_Name.invalid && (APR_Authorized_Name.dirty || APR_Authorized_Name.touched)">
+                                                                        <div *ngIf="APR_Authorized_Name.invalid && (APR_Authorized_Name.dirty || APR_Authorized_Name.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Name.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Name.errors?.['minlength']">
+                                                                                This field must have at least 5 character.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Name.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">Name of the
+                                                                            Authorized
+                                                                            Official of the IE/
+                                                                            RI </span>
+        
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="text" id="APR_Authorized_Designation"
+                                                                            name="APR_Authorized_Designation" spellcheck="false"
+                                                                            required
+                                                                            formControlName="APR_Authorized_Designation"
+                                                                            required minlength="5" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Authorized_Designation.invalid && (APR_Authorized_Designation.dirty || APR_Authorized_Designation.touched)">
+                                                                        <div *ngIf="APR_Authorized_Designation.invalid && (APR_Authorized_Designation.dirty || APR_Authorized_Designation.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Designation.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Designation.errors?.['minlength']">
+                                                                                This field must have at least 5 character.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Designation.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">Designation of the
+                                                                            Authorized
+                                                                            Official of the IE/
+                                                                            RI </span>
+                                                                    </div>
+        
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                                        <input type="text" id="APR_Dec_Place"
+                                                                            name="APR_Dec_Place" formControlName="APR_Dec_Place"
+                                                                            spellcheck="false" required minlength="1"
+                                                                            maxlength="250" class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Place.invalid && (APR_Dec_Place.dirty || APR_Dec_Place.touched)">
+                                                                        <div *ngIf="APR_Dec_Place.invalid && (APR_Dec_Place.dirty || APR_Dec_Place.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Place.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Place.errors?.['minlength']">
+                                                                                This field must have at least 1 character.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Place.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">
+                                                                            Place
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="date" id="APR_Dec_Date" name="APR_Dec_Date"
+                                                                            formControlName="APR_Dec_Date" spellcheck="false"
+                                                                            disabled required
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)">
+                                                                        <div *ngIf="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Date.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">
+                                                                            Date
+                                                                        </span>
+                                                                    </div>
+        
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="text" id="APR_Dec_Telephone"
+                                                                            name="APR_Dec_Telephone"
+                                                                            formControlName="APR_Dec_Telephone"
+                                                                            spellcheck="false" required minlength="1"
+                                                                            maxlength="250" class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Telephone.invalid && (APR_Dec_Telephone.dirty || APR_Dec_Telephone.touched)">
+                                                                        <div *ngIf="APR_Dec_Telephone.invalid && (APR_Dec_Telephone.dirty || APR_Dec_Telephone.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Telephone.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Dec_Telephone.errors?.['minlength']">
+                                                                                This field must have at least 10 character.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Dec_Telephone.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">Telephone</span>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 input-block">
+                                                                        <input type="text" id="APR_Dec_Email"
+                                                                            name="APR_Dec_Email" formControlName="APR_Dec_Email"
+                                                                            spellcheck="false" minlength="1" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)">
+                                                                        <div *ngIf="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Email.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Email.errors?.['minlength']">
+                                                                                This field must have at least 1 character.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Email.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">
+                                                                            Email
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 input-block">
+        
+                                                                        <input type="text" id="APR_Dec_Stamp" spellcheck="false"
+                                                                            name="APR_Dec_Stamp" formControlName="APR_Dec_Stamp"
+                                                                            minlength="1" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Stamp.invalid && (APR_Dec_Stamp.dirty || APR_Dec_Stamp.touched)">
+                                                                        <div *ngIf="APR_Dec_Stamp.invalid && (APR_Dec_Stamp.dirty || APR_Dec_Stamp.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Stamp.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Stamp.errors?.['minlength']">
+                                                                                This field must have at least 1 character.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Stamp.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">
+                                                                            Stamp/Seal
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                     <tfoot>
                                                     </tfoot>
                                                 </table>
-
-                                            </div>
-                                            <hr>
-                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-
-                                                <input type="text" id="APR_CA_Signature" name="APR_CA_Signature"
-                                                    formControlName="APR_CA_Signature" spellcheck="false" minlength="1"
-                                                    maxlength="250" class="form-control form-control-sm"
-                                                    [class.is-invalid]="APR_CA_Signature.invalid && (APR_CA_Signature.dirty || APR_CA_Signature.touched)">
-                                                <div *ngIf="APR_CA_Signature.invalid && (APR_CA_Signature.dirty || APR_CA_Signature.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_CA_Signature.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="APR_CA_Signature.errors?.['maxlength']">
-                                                        This field must have at most 250 characters.
-                                                    </div>
-                                                </div>
-                                                <span class="placeholder">
-                                                    Signature of the Statutory Auditors /Chartered
-                                                    Accountant
-                                                </span>
-                                            </div>
-                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-
-                                                <input type="text" id="APR_CA_FirmName" name="APR_CA_FirmName"
-                                                    formControlName="APR_CA_FirmName" spellcheck="false" minlength="1"
-                                                    maxlength="250" class="form-control form-control-sm"
-                                                    [class.is-invalid]="APR_CA_FirmName.invalid && (APR_CA_FirmName.dirty || APR_CA_FirmName.touched)">
-                                                <div *ngIf="APR_CA_FirmName.invalid && (APR_CA_FirmName.dirty || APR_CA_FirmName.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_CA_FirmName.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="APR_CA_FirmName.errors?.['maxlength']">
-                                                        This field must have at most 250 characters.
-
-                                                    </div>
-                                                </div>
-                                                <span class="placeholder">
-                                                    Name of the audit firm
-                                                </span>
-                                            </div>
-                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-
-                                                <input type="text" id="APR_CA_RegNo" name="APR_CA_RegNo"
-                                                    formControlName="APR_CA_RegNo" spellcheck="false" minlength="1"
-                                                    maxlength="250" class="form-control form-control-sm"
-                                                    [class.is-invalid]="APR_CA_RegNo.invalid && (APR_CA_RegNo.dirty || APR_CA_RegNo.touched)">
-                                                <div *ngIf="APR_CA_RegNo.invalid && (APR_CA_RegNo.dirty || APR_CA_RegNo.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_CA_RegNo.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="APR_CA_RegNo.errors?.['maxlength']">
-                                                        This field must have at most 250 characters.
-                                                    </div>
-                                                </div>
-                                                <span class="placeholder">
-                                                    Registration number of the audit firm
-                                                </span>
-                                            </div>
-                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-
-                                                <input type="text" id="APR_CA_UDIN" name="APR_CA_UDIN"
-                                                    formControlName="APR_CA_UDIN" spellcheck="false" minlength="1"
-                                                    maxlength="250" class="form-control form-control-sm"
-                                                    [class.is-invalid]="APR_CA_UDIN.invalid && (APR_CA_UDIN.dirty || APR_CA_UDIN.touched)">
-                                                <div *ngIf="APR_CA_UDIN.invalid && (APR_CA_UDIN.dirty || APR_CA_UDIN.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_CA_UDIN.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="APR_CA_UDIN.errors?.['maxlength']">
-                                                        This field must have at most 250 characters.
-                                                    </div>
-                                                </div>
-                                                <span class="placeholder">
-                                                    UDIN of the audit firm
-                                                </span>
-                                            </div>
-                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-
-                                                <input type="text" id="APR_CA_Place" name="APR_CA_Place"
-                                                    formControlName="APR_CA_Place" spellcheck="false" minlength="1"
-                                                    maxlength="250" class="form-control form-control-sm"
-                                                    [class.is-invalid]="APR_CA_Place.invalid && (APR_CA_Place.dirty || APR_CA_Place.touched)">
-                                                <div *ngIf="APR_CA_Place.invalid && (APR_CA_Place.dirty || APR_CA_Place.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_CA_Place.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="APR_CA_Place.errors?.['maxlength']">
-                                                        This field must have at most 250 characters.
-                                                    </div>
-                                                </div>
-                                                <span class="placeholder">
-                                                    Place
-                                                </span>
-                                            </div>
-                                            <div class="col-sm-4 col-xl-4 mb-3 input-block">
-                                                <input type="date" id="APR_CA_Date" name="APR_CA_Date"
-                                                    formControlName="APR_CA_Date" spellcheck="false"
-                                                    class="form-control form-control-sm"
-                                                    [class.is-invalid]="APR_CA_Date.invalid && (APR_CA_Date.dirty || APR_CA_Date.touched)">
-                                                <div *ngIf="APR_CA_Date.invalid && (APR_CA_Date.dirty || APR_CA_Date.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_CA_Date.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                </div>
-                                                <span class="placeholder">
-                                                    Date
-                                                </span>
-                                            </div>
-                                            <div class="col-sm-4 col-xl-4 input-block">
-                                                <input type="text" id="APR_CA_Email" name="APR_CA_Email"
-                                                    formControlName="APR_CA_Email" spellcheck="false" minlength="1"
-                                                    maxlength="250" class="form-control form-control-sm"
-                                                    [class.is-invalid]="APR_CA_Email.invalid && (APR_CA_Email.dirty || APR_CA_Email.touched)">
-                                                <div *ngIf="APR_CA_Email.invalid && (APR_CA_Email.dirty || APR_CA_Email.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_CA_Email.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="APR_CA_Email.errors?.['maxlength']">
-                                                        This field must have at most 250 characters.
-                                                    </div>
-                                                </div>
-                                                <span class="placeholder">
-                                                    Email
-                                                </span>
-                                            </div>
-                                            <div class="col-sm-4 col-xl-4 input-block">
-
-                                                <input type="text" id="APR_CA_Stamp" spellcheck="false"
-                                                    name="APR_CA_Stamp" formControlName="APR_CA_Stamp" minlength="1"
-                                                    maxlength="250" class="form-control form-control-sm"
-                                                    [class.is-invalid]="APR_CA_Stamp.invalid && (APR_CA_Stamp.dirty || APR_CA_Stamp.touched)">
-                                                <div *ngIf="APR_CA_Stamp.invalid && (APR_CA_Stamp.dirty || APR_CA_Stamp.touched)"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="APR_CA_Stamp.errors?.['required']">
-                                                        This field is required.
-                                                    </div>
-                                                    <div *ngIf="APR_CA_Stamp.errors?.['minlength']">
-                                                        This field must have at least 1 character.
-                                                    </div>
-                                                    <div *ngIf="APR_CA_Stamp.errors?.['maxlength']">
-                                                        This field must have at most 250 characters.
-                                                    </div>
-                                                </div>
-                                                <span class="placeholder">
-                                                    Stamp/Seal
-                                                </span>
-                                            </div>
-
-
+                                            </form>
                                         </div>
-                                    </div>
-                                </form>
+                                    </tab>
+                                    <tab heading="SA / CA Certificate">
+                                        <form [formGroup]="CAform">
+                                            <div class="card p-4 rounded-0 border-info1">
+                                                <div class="row">
+        
+                                                    <div class="card-header">
+                                                        Certificate of the Statutory Auditor (in case of Indian entity) /
+                                                        Chartered
+                                                        Accountant in case of resident individuals (strike out whichever is
+                                                        not
+                                                        applicable)
+                                                    </div>
+        
+                                                    <div class="card p-2">
+                                                        <h5>I/We the Indian entity/ resident individual (wherever
+                                                            applicable)
+                                                            further confirm
+                                                            that:
+                                                        </h5>
+                                                        <table class="caption-top table table-borderless">
+        
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row">i.</th>
+                                                                    <td [ngClass]="APR_CA_A.value == true ? 'del' : 'notdel'">
+                                                                        APR for the year ended
+                                                                        <span>{{mainform.controls['APR_To_Date'].value | date:
+                                                                            'dd-MM-yyyy'}}</span> is
+                                                                        prepared on the basis of
+                                                                        audited/
+                                                                        unaudited balance sheet of the foreign entity for the
+                                                                        year
+                                                                        ended <span>{{mainform.controls['APR_To_Date'].value |
+                                                                            date: 'dd-MM-yyyy'}}</span>.
+        
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" value="APR_CA_A"
+                                                                            class="form-check-input" id="APR_CA_A"
+                                                                            formControlName="APR_CA_A"
+                                                                            [class.is-invalid]="APR_CA_A.invalid && (APR_CA_A.dirty || APR_CA_A.touched)">
+                                                                        <div *ngIf="APR_CA_A.invalid && (APR_CA_A.dirty || APR_CA_A.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_CA_A.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+        
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">ii.</th>
+                                                                    <td [ngClass]="APR_CA_B.value == true ? 'del' : 'notdel'">
+                                                                        APR for the year ended
+                                                                        <span>{{mainform.controls['APR_To_Date'].value | date:
+                                                                            'dd-MM-yyyy'}}</span> is
+                                                                        prepared on the basis of
+                                                                        unaudited
+                                                                        balance sheet of the foreign entity since audit is not
+                                                                        mandatory
+                                                                        in host
+                                                                        country/jurisdiction and the IE/RI does not have
+                                                                        ‘control’
+                                                                        in
+                                                                        the foreign
+                                                                        entity in compliance with explanation (a) to Regulation
+                                                                        10(4) of
+                                                                        Foreign
+                                                                        Exchange Management (Overseas Investment) Regulations,
+                                                                        2022..
+        
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" value="APR_CA_B"
+                                                                            class="form-check-input" id="APR_CA_B"
+                                                                            formControlName="APR_CA_B"
+                                                                            [class.is-invalid]="APR_CA_B.invalid && (APR_CA_B.dirty || APR_CA_B.touched)">
+                                                                        <div *ngIf="APR_CA_B.invalid && (APR_CA_B.dirty || APR_CA_B.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_CA_B.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+        
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">iii.</th>
+                                                                    <td [ngClass]="APR_CA_C.value == true ? 'del' : 'notdel'">
+                                                                        The IE/RI repatriated to India, all dues receivable from
+                                                                        the
+                                                                        foreign
+                                                                        entity under this UIN, as required under Regulation 9
+                                                                        (4) of
+                                                                        Foreign
+                                                                        Exchange Management (Overseas Investment) Regulations,
+                                                                        2022
+                                                                        or
+                                                                        corresponding
+                                                                        extant Regulations in case where the reporting is being
+                                                                        done
+                                                                        under the
+                                                                        earlier overseas investment framework** as stipulated by
+                                                                        the
+                                                                        Reserve Bank
+                                                                        from time to time, and it has been verified from the
+                                                                        Foreign
+                                                                        Inward
+                                                                        Remittance Certificate issued by the AD bank/s.
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" value="APR_CA_C"
+                                                                            class="form-check-input" id="APR_CA_C"
+                                                                            formControlName="APR_CA_C"
+                                                                            [class.is-invalid]="APR_CA_C.invalid && (APR_CA_C.dirty || APR_CA_C.touched)">
+                                                                        <div *ngIf="APR_CA_C.invalid && (APR_CA_C.dirty || APR_CA_C.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_CA_C.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+        
+                                                                </tr>
+                                                            </tbody>
+                                                            <tfoot>
+                                                            </tfoot>
+                                                        </table>
+        
+                                                    </div>
+                                                    <hr>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_Signature" name="APR_CA_Signature"
+                                                            formControlName="APR_CA_Signature" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Signature.invalid && (APR_CA_Signature.dirty || APR_CA_Signature.touched)">
+                                                        <div *ngIf="APR_CA_Signature.invalid && (APR_CA_Signature.dirty || APR_CA_Signature.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Signature.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Signature.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Signature of the Statutory Auditors /Chartered
+                                                            Accountant
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_FirmName" name="APR_CA_FirmName"
+                                                            formControlName="APR_CA_FirmName" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_FirmName.invalid && (APR_CA_FirmName.dirty || APR_CA_FirmName.touched)">
+                                                        <div *ngIf="APR_CA_FirmName.invalid && (APR_CA_FirmName.dirty || APR_CA_FirmName.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_FirmName.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_FirmName.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+        
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Name of the audit firm
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_RegNo" name="APR_CA_RegNo"
+                                                            formControlName="APR_CA_RegNo" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_RegNo.invalid && (APR_CA_RegNo.dirty || APR_CA_RegNo.touched)">
+                                                        <div *ngIf="APR_CA_RegNo.invalid && (APR_CA_RegNo.dirty || APR_CA_RegNo.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_RegNo.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_RegNo.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Registration number of the audit firm
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_UDIN" name="APR_CA_UDIN"
+                                                            formControlName="APR_CA_UDIN" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_UDIN.invalid && (APR_CA_UDIN.dirty || APR_CA_UDIN.touched)">
+                                                        <div *ngIf="APR_CA_UDIN.invalid && (APR_CA_UDIN.dirty || APR_CA_UDIN.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_UDIN.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_UDIN.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            UDIN of the audit firm
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_Place" name="APR_CA_Place"
+                                                            formControlName="APR_CA_Place" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Place.invalid && (APR_CA_Place.dirty || APR_CA_Place.touched)">
+                                                        <div *ngIf="APR_CA_Place.invalid && (APR_CA_Place.dirty || APR_CA_Place.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Place.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Place.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Place
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                        <input type="date" id="APR_CA_Date" name="APR_CA_Date"
+                                                            formControlName="APR_CA_Date" spellcheck="false"
+                                                            class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Date.invalid && (APR_CA_Date.dirty || APR_CA_Date.touched)">
+                                                        <div *ngIf="APR_CA_Date.invalid && (APR_CA_Date.dirty || APR_CA_Date.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Date.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Date
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 input-block">
+                                                        <input type="text" id="APR_CA_Email" name="APR_CA_Email"
+                                                            formControlName="APR_CA_Email" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Email.invalid && (APR_CA_Email.dirty || APR_CA_Email.touched)">
+                                                        <div *ngIf="APR_CA_Email.invalid && (APR_CA_Email.dirty || APR_CA_Email.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Email.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Email.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Email
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 input-block">
+        
+                                                        <input type="text" id="APR_CA_Stamp" spellcheck="false"
+                                                            name="APR_CA_Stamp" formControlName="APR_CA_Stamp" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Stamp.invalid && (APR_CA_Stamp.dirty || APR_CA_Stamp.touched)">
+                                                        <div *ngIf="APR_CA_Stamp.invalid && (APR_CA_Stamp.dirty || APR_CA_Stamp.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Stamp.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Stamp.errors?.['minlength']">
+                                                                This field must have at least 1 character.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Stamp.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Stamp/Seal
+                                                        </span>
+                                                    </div>
+        
+        
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </tab>
+                                    <tab heading="AD Bank Certificate">
+                                        <div class="card p-4 rounded-0 border-info1">
+                                            <div class="row">
+                                                <div class="card-header">
+                                                    <div class="card-header">
+                                                        Certificate by the Authorized Dealer bank
+                                                    </div>
+                                                </div>
+                                                <div class="card p-2">
+                                                    I/We the Indian entity/ resident individual (wherever applicable)
+                                                    further confirm
+                                                    that:
+                                                    <ul>
+                                                        <li>i.In terms of Regulation 9 (1) of OI Regulations, the AD Bank
+                                                            has received
+                                                            the share certificate/s or any other document as evidence of
+                                                            investment as
+                                                            per the applicable laws of the host jurisdiction and we are
+                                                            satisfied about
+                                                            the bonafides of the documents so received. </li>
+                                                        <li>ii.The duly filled in Form (Annual Performance Report) was
+                                                            submitted by the
+                                                            Indian entity/resident individual on ___________ day of
+                                                            ___________ (month)
+                                                            ________________________ (year).
+                                                        </li>
+                                                        <li>iii.All the previous year APRs submitted by the(Name of
+                                                            theIndian entity/
+                                                            resident individual) have been reported in the online OID
+                                                            application.</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-6 mb-4">
+                                                    <label class="form-label">Signature of the Authorized Official of the AD
+                                                        bank...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-6 mb-4">
+                                                    <label class="form-label">Name and designation of the AD bank
+                                                        official...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-6 mb-4">
+        
+                                                </div>
+                                                <div class="col-6 mb-4">
+        
+                                                </div>
+                                                <div class="col-6 mb-4">
+                                                    <label
+                                                        class="form-label">Place...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-6 mb-4">
+                                                    <label class="form-label">Date
+                                                        ...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-6 mb-4">
+        
+                                                </div>
+                                                <div class="col-6 mb-4">
+        
+                                                </div>
+                                                <div class="col-8 mb-4">
+                                                    <label
+                                                        class="form-label">Stamp/seal...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-4 mb-4">
+        
+                                                </div>
+                                                <div class="col-lg-10 text-center">
+                                                    <input type="button" value="Submit & Preview" (click)="onSubmitAPRFrom()"
+                                                        class="btn btn-primary">
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                    </tab>
+                                    </tabset>
+                            
                             </tab>
-                            <tab heading="AD bank Certificate" id="5" disabled="disabled">
-                                <div class="card p-4 rounded-0 border-info1">
-                                    <div class="row">
-                                        <div class="card-header">
-                                            <div class="card-header">
-                                                Certificate by the Authorized Dealer bank
-                                            </div>
-                                        </div>
+                            <tab heading="Declaration & Certificate OLD Format" id="4">
+                                <tabset #tabset>
+                                    <tab heading="Declaration">
                                         <div class="card p-2">
-                                            I/We the Indian entity/ resident individual (wherever applicable)
-                                            further confirm
-                                            that:
-                                            <ul>
-                                                <li>i.In terms of Regulation 9 (1) of OI Regulations, the AD Bank
-                                                    has received
-                                                    the share certificate/s or any other document as evidence of
-                                                    investment as
-                                                    per the applicable laws of the host jurisdiction and we are
-                                                    satisfied about
-                                                    the bonafides of the documents so received. </li>
-                                                <li>ii.The duly filled in Form (Annual Performance Report) was
-                                                    submitted by the
-                                                    Indian entity/resident individual on ___________ day of
-                                                    ___________ (month)
-                                                    ________________________ (year).
-                                                </li>
-                                                <li>iii.All the previous year APRs submitted by the(Name of
-                                                    theIndian entity/
-                                                    resident individual) have been reported in the online OID
-                                                    application.</li>
-                                            </ul>
+                                            <form [formGroup]="declaration">
+                                                <table class="caption-top table table-borderless">
+                                                    <caption> Declaration by the Indian entity (IE)/ Resident Individual (RI)
+                                                    </caption>
+                                                    <thead>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">A</th>
+                                                            <td [ngClass]="APR_Dec_A.value == true ? 'del' : 'notdel'">
+                                                                Acquisition/ setting up/ winding up/transfer of the SDS and
+                                                                changes
+                                                                in the
+                                                                shareholding pattern of the foreign entity since last APR have
+                                                                been
+                                                                reported as
+                                                                required in terms of Regulation 10(4)(c) of OI Regulations or
+                                                                corresponding
+                                                                extant Regulations in case where the reporting is being done
+                                                                under
+                                                                the earlier
+                                                                overseas investment framework** as stipulated by the Reserve
+                                                                Bank
+                                                                from time to
+                                                                time.
+        
+                                                            </td>
+                                                            <td>
+                                                                <input type="checkbox" value="APR_Dec_A"
+                                                                    class="form-check-input" id="APR_Dec_A"
+                                                                    formControlName="APR_Dec_A"
+                                                                    [class.is-invalid]="APR_Dec_A.invalid && (APR_Dec_A.dirty || APR_Dec_A.touched)">
+                                                                <div *ngIf="APR_Dec_A.invalid && (APR_Dec_A.dirty || APR_Dec_A.touched)"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="APR_Dec_A.errors?.['required']">
+                                                                        This field is required.
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+        
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">B</th>
+                                                            <td [ngClass]="APR_Dec_B.value == true ? 'del' : 'notdel'"> The
+                                                                structure of SDS is
+                                                                in compliance with the structural requirements of the foreign
+                                                                entity
+                                                                as provided
+                                                                in OI Rules.
+                                                            </td>
+                                                            <td>
+                                                                <input type="checkbox" value="APR_Dec_B"
+                                                                    class="form-check-input" id="APR_Dec_B"
+                                                                    formControlName="APR_Dec_B"
+                                                                    [class.is-invalid]="APR_Dec_B.invalid && (APR_Dec_B.dirty || APR_Dec_B.touched)">
+                                                                <div *ngIf="APR_Dec_B.invalid && (APR_Dec_B.dirty || APR_Dec_B.touched)"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="APR_Dec_B.errors?.['required']">
+                                                                        This field is required.
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+        
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">C</th>
+                                                            <td [ngClass]="APR_Dec_C.value == true ? 'del' : 'notdel'">We have
+                                                                received share
+                                                                certificate/s (or any other evidence of investment as per the
+                                                                applicable laws of
+                                                                the host jurisdiction) and submitted the same to the designated
+                                                                AD
+                                                                bank for
+                                                                verification within 6 months of making the remittance/s for all
+                                                                investments/
+                                                                capitalization which are reckoned as ODI in the foreign entity
+                                                                under
+                                                                this UIN,
+                                                                as per Regulation 9 (1) of OI Regulations or corresponding
+                                                                extant
+                                                                Regulations in
+                                                                case where the reporting is being done under the earlier
+                                                                overseas
+                                                                investment
+                                                                framework** as stipulated by the Reserve Bank from time to time.
+                                                            </td>
+                                                            <td> <input type="checkbox" value="APR_Dec_C"
+                                                                    class="form-check-input" id="APR_Dec_C"
+                                                                    formControlName="APR_Dec_C" [class.is-invalid]="APR_Dec_C.invalid && (APR_Dec_C.dirty 
+                                                    || APR_Dec_C.touched)">
+                                                                <div *ngIf="APR_Dec_C.invalid && (APR_Dec_C.dirty || APR_Dec_C.touched)"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="APR_Dec_C.errors?.['required']">
+                                                                        This field is required.
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">D</th>
+                                                            <td [ngClass]="APR_Dec_D.value == true ? 'del' : 'notdel'"> The
+                                                                previous
+                                                                APRs for
+                                                                the foreign entity under this UIN, have been filed.
+                                                            </td>
+                                                            <td> <input type="checkbox" value="APR_Dec_D"
+                                                                    class="form-check-input" id="APR_Dec_D"
+                                                                    formControlName="APR_Dec_D" [class.is-invalid]="APR_Dec_D.invalid && (APR_Dec_D.dirty 
+                                                        || APR_Dec_D.touched)">
+                                                                <div *ngIf="APR_Dec_D.invalid && (APR_Dec_D.dirty || APR_Dec_D.touched)"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="APR_Dec_D.errors?.['required']">
+                                                                        This field is required.
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">E</th>
+                                                            <td [ngClass]="APR_Dec_E.value == true ? 'del' : 'notdel'">
+                                                                Repatriated
+                                                                to India, all
+                                                                dues receivable from the foreign entity under this UIN, as
+                                                                required
+                                                                under
+                                                                Regulation 9 (4) of OI Regulations or corresponding extant
+                                                                Regulations in case
+                                                                where the reporting is being done under the earlier overseas
+                                                                investment
+                                                                framework** as stipulated by the Reserve Bank from time to time
+                                                            </td>
+                                                            <td> <input type="checkbox" value="APR_Dec_E"
+                                                                    class="form-check-input" id="APR_Dec_E"
+                                                                    formControlName="APR_Dec_E" [class.is-invalid]="APR_Dec_E.invalid && (APR_Dec_E.dirty 
+                                                        || APR_Dec_E.touched)">
+                                                                <div *ngIf="APR_Dec_E.invalid && (APR_Dec_E.dirty || APR_Dec_E.touched)"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="APR_Dec_E.errors?.['required']">
+                                                                        This field is required.
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"></th>
+                                                            <td>
+                                                                I/ We hereby certify that the information furnished above are
+                                                                true
+                                                                and correct.
+                                                                I/We also duly acknowledge that if any information furnished by
+                                                                me/us is found
+                                                                to be false and/or incorrect, it shall be construed that the
+                                                                reporting
+                                                                requirements under FEMA, 1999 have not been complied with.
+                                                                <div class="row mt-3">
+        
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="text" id="APR_Authorized_Signature"
+                                                                            name="APR_Authorized_Signature" spellcheck="false"
+                                                                            formControlName="APR_Authorized_Signature"
+                                                                            minlength="5" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Authorized_Signature.invalid && (APR_Authorized_Signature.dirty || APR_Authorized_Signature.touched)">
+                                                                        <div *ngIf="APR_Authorized_Signature.invalid && (APR_Authorized_Signature.dirty || APR_Authorized_Signature.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Signature.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Signature.errors?.['minlength']">
+                                                                                This field must have at least 5 character.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Signature.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">Signature of authorized
+                                                                            official
+                                                                            of the IE/ RI
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="text" id="APR_Authorized_Name"
+                                                                            spellcheck="false" required
+                                                                            name="APR_Authorized_Name"
+                                                                            formControlName="APR_Authorized_Name" required
+                                                                            minlength="5" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Authorized_Name.invalid && (APR_Authorized_Name.dirty || APR_Authorized_Name.touched)">
+                                                                        <div *ngIf="APR_Authorized_Name.invalid && (APR_Authorized_Name.dirty || APR_Authorized_Name.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Name.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Name.errors?.['minlength']">
+                                                                                This field must have at least 5 character.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Name.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">Name of the
+                                                                            Authorized
+                                                                            Official of the IE/
+                                                                            RI </span>
+        
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="text" id="APR_Authorized_Designation"
+                                                                            name="APR_Authorized_Designation" spellcheck="false"
+                                                                            required
+                                                                            formControlName="APR_Authorized_Designation"
+                                                                            required minlength="5" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Authorized_Designation.invalid && (APR_Authorized_Designation.dirty || APR_Authorized_Designation.touched)">
+                                                                        <div *ngIf="APR_Authorized_Designation.invalid && (APR_Authorized_Designation.dirty || APR_Authorized_Designation.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Designation.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Designation.errors?.['minlength']">
+                                                                                This field must have at least 5 character.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Authorized_Designation.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">Designation of the
+                                                                            Authorized
+                                                                            Official of the IE/
+                                                                            RI </span>
+                                                                    </div>
+        
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                                        <input type="text" id="APR_Dec_Place"
+                                                                            name="APR_Dec_Place" formControlName="APR_Dec_Place"
+                                                                            spellcheck="false" required minlength="1"
+                                                                            maxlength="250" class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Place.invalid && (APR_Dec_Place.dirty || APR_Dec_Place.touched)">
+                                                                        <div *ngIf="APR_Dec_Place.invalid && (APR_Dec_Place.dirty || APR_Dec_Place.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Place.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Place.errors?.['minlength']">
+                                                                                This field must have at least 1 character.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Place.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">
+                                                                            Place
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="date" id="APR_Dec_Date" name="APR_Dec_Date"
+                                                                            formControlName="APR_Dec_Date" spellcheck="false"
+                                                                            disabled required
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)">
+                                                                        <div *ngIf="APR_Dec_Date.invalid && (APR_Dec_Date.dirty || APR_Dec_Date.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Date.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">
+                                                                            Date
+                                                                        </span>
+                                                                    </div>
+        
+                                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                                        <input type="text" id="APR_Dec_Telephone"
+                                                                            name="APR_Dec_Telephone"
+                                                                            formControlName="APR_Dec_Telephone"
+                                                                            spellcheck="false" required minlength="1"
+                                                                            maxlength="250" class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Telephone.invalid && (APR_Dec_Telephone.dirty || APR_Dec_Telephone.touched)">
+                                                                        <div *ngIf="APR_Dec_Telephone.invalid && (APR_Dec_Telephone.dirty || APR_Dec_Telephone.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Telephone.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Dec_Telephone.errors?.['minlength']">
+                                                                                This field must have at least 10 character.
+                                                                            </div>
+                                                                            <div
+                                                                                *ngIf="APR_Dec_Telephone.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">Telephone</span>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 input-block">
+                                                                        <input type="text" id="APR_Dec_Email"
+                                                                            name="APR_Dec_Email" formControlName="APR_Dec_Email"
+                                                                            spellcheck="false" minlength="1" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)">
+                                                                        <div *ngIf="APR_Dec_Email.invalid && (APR_Dec_Email.dirty || APR_Dec_Email.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Email.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Email.errors?.['minlength']">
+                                                                                This field must have at least 1 character.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Email.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">
+                                                                            Email
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xl-4 input-block">
+        
+                                                                        <input type="text" id="APR_Dec_Stamp" spellcheck="false"
+                                                                            name="APR_Dec_Stamp" formControlName="APR_Dec_Stamp"
+                                                                            minlength="1" maxlength="250"
+                                                                            class="form-control form-control-sm"
+                                                                            [class.is-invalid]="APR_Dec_Stamp.invalid && (APR_Dec_Stamp.dirty || APR_Dec_Stamp.touched)">
+                                                                        <div *ngIf="APR_Dec_Stamp.invalid && (APR_Dec_Stamp.dirty || APR_Dec_Stamp.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_Dec_Stamp.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Stamp.errors?.['minlength']">
+                                                                                This field must have at least 1 character.
+                                                                            </div>
+                                                                            <div *ngIf="APR_Dec_Stamp.errors?.['maxlength']">
+                                                                                This field must have at most 250 characters.
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="placeholder">
+                                                                            Stamp/Seal
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                    </tfoot>
+                                                </table>
+                                            </form>
                                         </div>
-                                        <div class="col-6 mb-4">
-                                            <label class="form-label">Signature of the Authorized Official of the AD
-                                                bank...................................................................
-                                            </label>
+                                    </tab>
+                                    <tab heading="SA / CA Certificate">
+                                        <form [formGroup]="CAform">
+                                            <div class="card p-4 rounded-0 border-info1">
+                                                <div class="row">
+        
+                                                    <div class="card-header">
+                                                        Certificate of the Statutory Auditor (in case of Indian entity) /
+                                                        Chartered
+                                                        Accountant in case of resident individuals (strike out whichever is
+                                                        not
+                                                        applicable)
+                                                    </div>
+        
+                                                    <div class="card p-2">
+                                                        <h5>I/We the Indian entity/ resident individual (wherever
+                                                            applicable)
+                                                            further confirm
+                                                            that:
+                                                        </h5>
+                                                        <table class="caption-top table table-borderless">
+        
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row">i.</th>
+                                                                    <td [ngClass]="APR_CA_A.value == true ? 'del' : 'notdel'">
+                                                                        APR for the year ended
+                                                                        <span>{{mainform.controls['APR_To_Date'].value | date:
+                                                                            'dd-MM-yyyy'}}</span> is
+                                                                        prepared on the basis of
+                                                                        audited/
+                                                                        unaudited balance sheet of the foreign entity for the
+                                                                        year
+                                                                        ended <span>{{mainform.controls['APR_To_Date'].value |
+                                                                            date: 'dd-MM-yyyy'}}</span>.
+        
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" value="APR_CA_A"
+                                                                            class="form-check-input" id="APR_CA_A"
+                                                                            formControlName="APR_CA_A"
+                                                                            [class.is-invalid]="APR_CA_A.invalid && (APR_CA_A.dirty || APR_CA_A.touched)">
+                                                                        <div *ngIf="APR_CA_A.invalid && (APR_CA_A.dirty || APR_CA_A.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_CA_A.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+        
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">ii.</th>
+                                                                    <td [ngClass]="APR_CA_B.value == true ? 'del' : 'notdel'">
+                                                                        APR for the year ended
+                                                                        <span>{{mainform.controls['APR_To_Date'].value | date:
+                                                                            'dd-MM-yyyy'}}</span> is
+                                                                        prepared on the basis of
+                                                                        unaudited
+                                                                        balance sheet of the foreign entity since audit is not
+                                                                        mandatory
+                                                                        in host
+                                                                        country/jurisdiction and the IE/RI does not have
+                                                                        ‘control’
+                                                                        in
+                                                                        the foreign
+                                                                        entity in compliance with explanation (a) to Regulation
+                                                                        10(4) of
+                                                                        Foreign
+                                                                        Exchange Management (Overseas Investment) Regulations,
+                                                                        2022..
+        
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" value="APR_CA_B"
+                                                                            class="form-check-input" id="APR_CA_B"
+                                                                            formControlName="APR_CA_B"
+                                                                            [class.is-invalid]="APR_CA_B.invalid && (APR_CA_B.dirty || APR_CA_B.touched)">
+                                                                        <div *ngIf="APR_CA_B.invalid && (APR_CA_B.dirty || APR_CA_B.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_CA_B.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+        
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">iii.</th>
+                                                                    <td [ngClass]="APR_CA_C.value == true ? 'del' : 'notdel'">
+                                                                        The IE/RI repatriated to India, all dues receivable from
+                                                                        the
+                                                                        foreign
+                                                                        entity under this UIN, as required under Regulation 9
+                                                                        (4) of
+                                                                        Foreign
+                                                                        Exchange Management (Overseas Investment) Regulations,
+                                                                        2022
+                                                                        or
+                                                                        corresponding
+                                                                        extant Regulations in case where the reporting is being
+                                                                        done
+                                                                        under the
+                                                                        earlier overseas investment framework** as stipulated by
+                                                                        the
+                                                                        Reserve Bank
+                                                                        from time to time, and it has been verified from the
+                                                                        Foreign
+                                                                        Inward
+                                                                        Remittance Certificate issued by the AD bank/s.
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" value="APR_CA_C"
+                                                                            class="form-check-input" id="APR_CA_C"
+                                                                            formControlName="APR_CA_C"
+                                                                            [class.is-invalid]="APR_CA_C.invalid && (APR_CA_C.dirty || APR_CA_C.touched)">
+                                                                        <div *ngIf="APR_CA_C.invalid && (APR_CA_C.dirty || APR_CA_C.touched)"
+                                                                            class="invalid-feedback">
+                                                                            <div *ngIf="APR_CA_C.errors?.['required']">
+                                                                                This field is required.
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+        
+                                                                </tr>
+                                                            </tbody>
+                                                            <tfoot>
+                                                            </tfoot>
+                                                        </table>
+        
+                                                    </div>
+                                                    <hr>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_Signature" name="APR_CA_Signature"
+                                                            formControlName="APR_CA_Signature" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Signature.invalid && (APR_CA_Signature.dirty || APR_CA_Signature.touched)">
+                                                        <div *ngIf="APR_CA_Signature.invalid && (APR_CA_Signature.dirty || APR_CA_Signature.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Signature.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Signature.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Signature of the Statutory Auditors /Chartered
+                                                            Accountant
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_FirmName" name="APR_CA_FirmName"
+                                                            formControlName="APR_CA_FirmName" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_FirmName.invalid && (APR_CA_FirmName.dirty || APR_CA_FirmName.touched)">
+                                                        <div *ngIf="APR_CA_FirmName.invalid && (APR_CA_FirmName.dirty || APR_CA_FirmName.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_FirmName.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_FirmName.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+        
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Name of the audit firm
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_RegNo" name="APR_CA_RegNo"
+                                                            formControlName="APR_CA_RegNo" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_RegNo.invalid && (APR_CA_RegNo.dirty || APR_CA_RegNo.touched)">
+                                                        <div *ngIf="APR_CA_RegNo.invalid && (APR_CA_RegNo.dirty || APR_CA_RegNo.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_RegNo.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_RegNo.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Registration number of the audit firm
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_UDIN" name="APR_CA_UDIN"
+                                                            formControlName="APR_CA_UDIN" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_UDIN.invalid && (APR_CA_UDIN.dirty || APR_CA_UDIN.touched)">
+                                                        <div *ngIf="APR_CA_UDIN.invalid && (APR_CA_UDIN.dirty || APR_CA_UDIN.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_UDIN.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_UDIN.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            UDIN of the audit firm
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+        
+                                                        <input type="text" id="APR_CA_Place" name="APR_CA_Place"
+                                                            formControlName="APR_CA_Place" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Place.invalid && (APR_CA_Place.dirty || APR_CA_Place.touched)">
+                                                        <div *ngIf="APR_CA_Place.invalid && (APR_CA_Place.dirty || APR_CA_Place.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Place.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Place.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Place
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                        <input type="date" id="APR_CA_Date" name="APR_CA_Date"
+                                                            formControlName="APR_CA_Date" spellcheck="false"
+                                                            class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Date.invalid && (APR_CA_Date.dirty || APR_CA_Date.touched)">
+                                                        <div *ngIf="APR_CA_Date.invalid && (APR_CA_Date.dirty || APR_CA_Date.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Date.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Date
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 input-block">
+                                                        <input type="text" id="APR_CA_Email" name="APR_CA_Email"
+                                                            formControlName="APR_CA_Email" spellcheck="false" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Email.invalid && (APR_CA_Email.dirty || APR_CA_Email.touched)">
+                                                        <div *ngIf="APR_CA_Email.invalid && (APR_CA_Email.dirty || APR_CA_Email.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Email.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Email.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Email
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-sm-4 col-xl-4 input-block">
+        
+                                                        <input type="text" id="APR_CA_Stamp" spellcheck="false"
+                                                            name="APR_CA_Stamp" formControlName="APR_CA_Stamp" minlength="1"
+                                                            maxlength="250" class="form-control form-control-sm"
+                                                            [class.is-invalid]="APR_CA_Stamp.invalid && (APR_CA_Stamp.dirty || APR_CA_Stamp.touched)">
+                                                        <div *ngIf="APR_CA_Stamp.invalid && (APR_CA_Stamp.dirty || APR_CA_Stamp.touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="APR_CA_Stamp.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Stamp.errors?.['minlength']">
+                                                                This field must have at least 1 character.
+                                                            </div>
+                                                            <div *ngIf="APR_CA_Stamp.errors?.['maxlength']">
+                                                                This field must have at most 250 characters.
+                                                            </div>
+                                                        </div>
+                                                        <span class="placeholder">
+                                                            Stamp/Seal
+                                                        </span>
+                                                    </div>
+        
+        
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </tab>
+                                    <tab heading="AD Bank Certificate">
+                                        <div class="card p-4 rounded-0 border-info1">
+                                            <div class="row">
+                                                <div class="card-header">
+                                                    <div class="card-header">
+                                                        Certificate by the Authorized Dealer bank
+                                                    </div>
+                                                </div>
+                                                <div class="card p-2">
+                                                    I/We the Indian entity/ resident individual (wherever applicable)
+                                                    further confirm
+                                                    that:
+                                                    <ul>
+                                                        <li>i.In terms of Regulation 9 (1) of OI Regulations, the AD Bank
+                                                            has received
+                                                            the share certificate/s or any other document as evidence of
+                                                            investment as
+                                                            per the applicable laws of the host jurisdiction and we are
+                                                            satisfied about
+                                                            the bonafides of the documents so received. </li>
+                                                        <li>ii.The duly filled in Form (Annual Performance Report) was
+                                                            submitted by the
+                                                            Indian entity/resident individual on ___________ day of
+                                                            ___________ (month)
+                                                            ________________________ (year).
+                                                        </li>
+                                                        <li>iii.All the previous year APRs submitted by the(Name of
+                                                            theIndian entity/
+                                                            resident individual) have been reported in the online OID
+                                                            application.</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-6 mb-4">
+                                                    <label class="form-label">Signature of the Authorized Official of the AD
+                                                        bank...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-6 mb-4">
+                                                    <label class="form-label">Name and designation of the AD bank
+                                                        official...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-6 mb-4">
+        
+                                                </div>
+                                                <div class="col-6 mb-4">
+        
+                                                </div>
+                                                <div class="col-6 mb-4">
+                                                    <label
+                                                        class="form-label">Place...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-6 mb-4">
+                                                    <label class="form-label">Date
+                                                        ...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-6 mb-4">
+        
+                                                </div>
+                                                <div class="col-6 mb-4">
+        
+                                                </div>
+                                                <div class="col-8 mb-4">
+                                                    <label
+                                                        class="form-label">Stamp/seal...................................................................
+                                                    </label>
+                                                </div>
+                                                <div class="col-4 mb-4">
+        
+                                                </div>
+                                                <div class="col-lg-10 text-center">
+                                                    <input type="button" value="Submit & Preview" (click)="onSubmitAPRFrom()"
+                                                        class="btn btn-primary">
+                                                </div>
+        
+                                            </div>
                                         </div>
-                                        <div class="col-6 mb-4">
-                                            <label class="form-label">Name and designation of the AD bank
-                                                official...................................................................
-                                            </label>
-                                        </div>
-                                        <div class="col-6 mb-4">
-
-                                        </div>
-                                        <div class="col-6 mb-4">
-
-                                        </div>
-                                        <div class="col-6 mb-4">
-                                            <label
-                                                class="form-label">Place...................................................................
-                                            </label>
-                                        </div>
-                                        <div class="col-6 mb-4">
-                                            <label class="form-label">Date
-                                                ...................................................................
-                                            </label>
-                                        </div>
-                                        <div class="col-6 mb-4">
-
-                                        </div>
-                                        <div class="col-6 mb-4">
-
-                                        </div>
-                                        <div class="col-8 mb-4">
-                                            <label
-                                                class="form-label">Stamp/seal...................................................................
-                                            </label>
-                                        </div>
-                                        <div class="col-4 mb-4">
-
-                                        </div>
-                                        <div class="col-lg-10 text-center">
-                                            <input type="button" value="Submit & Preview" (click)="onSubmitAPRFrom()"
-                                                class="btn btn-primary">
-                                        </div>
-
-                                    </div>
-                                </div>
+                                    </tab>
+                                    </tabset>
+                               
                             </tab>
-                            <tab heading="Preview" id="6" disabled="disabled">
+                            <tab heading="Preview" id="5">
                                 <div class="card p-4 rounded-0 border-info1">
                                     <table class="table table-borderless">
                                         <thead>

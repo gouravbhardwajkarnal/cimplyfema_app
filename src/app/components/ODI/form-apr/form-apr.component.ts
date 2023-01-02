@@ -29,6 +29,8 @@ export class FormAprComponent implements OnInit {
   public aprForm: FormGroup;
   public declaration: FormGroup;
   public CAform: FormGroup;
+  public CAformOld: FormGroup;
+  public declarationOld: FormGroup;
   public sdsform: FormGroup;
   public mainform: FormGroup;
   dataModel: any = {};
@@ -126,6 +128,7 @@ export class FormAprComponent implements OnInit {
     this.sdsform = this.fb.group({
       APR_SDS_Control: new FormControl('', Validators.required),
     });
+    
     this.declaration = this.fb.group({
       APR_Dec_A: new FormControl(false),
       APR_Dec_B: new FormControl(false),
@@ -137,7 +140,25 @@ export class FormAprComponent implements OnInit {
       APR_Authorized_Designation: new FormControl('', Validators.required),
       APR_Dec_Place: new FormControl('', Validators.required),
       APR_Dec_Date: new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
-      APR_Dec_Telephone: new FormControl('', Validators.required),
+      APR_Dec_Telephone: new FormControl(''),
+      APR_Dec_Email: new FormControl('', Validators.pattern(this.emailPattern)),
+      APR_Dec_Stamp: new FormControl(''),
+      SDSDetails: new FormArray([]),
+      ShareHoldingFE: new FormArray([]),
+    });
+    this.declarationOld = this.fb.group({
+      APR_Dec_A: new FormControl(false),
+      APR_Dec_B: new FormControl(false),
+      APR_Dec_C: new FormControl(false),
+      APR_Dec_D: new FormControl(false),
+      APR_Dec_E: new FormControl(false),
+      APR_Dec_F: new FormControl(false),
+      APR_Authorized_Signature: new FormControl(''),
+      APR_Authorized_Name: new FormControl('', Validators.required),
+      APR_Authorized_Designation: new FormControl('', Validators.required),
+      APR_Dec_Place: new FormControl('', Validators.required),
+      APR_Dec_Date: new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
+      APR_Dec_Telephone: new FormControl(''),
       APR_Dec_Email: new FormControl('', Validators.pattern(this.emailPattern)),
       APR_Dec_Stamp: new FormControl(''),
       SDSDetails: new FormArray([]),
@@ -148,9 +169,9 @@ export class FormAprComponent implements OnInit {
       APR_CA_B: new FormControl(false),
       APR_CA_C: new FormControl(false),
       APR_CA_Signature: new FormControl(''),
-      APR_CA_FirmName: new FormControl(''),
-      APR_CA_RegNo: new FormControl(''),
-      APR_CA_UDIN: new FormControl(''),
+      APR_CA_FirmName: new FormControl('', Validators.required),
+      APR_CA_RegNo: new FormControl('', Validators.required),
+      APR_CA_UDIN: new FormControl('', Validators.required),
       APR_CA_Date: new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd')),
       APR_CA_Place: new FormControl(''),
       APR_CA_Email: new FormControl('', Validators.pattern(this.emailPattern)),
@@ -158,6 +179,22 @@ export class FormAprComponent implements OnInit {
       SDSDetails: new FormArray([]),
       ShareHoldingFE: new FormArray([]),
     });
+    this.CAformOld = this.fb.group({
+      APR_CA_A: new FormControl(false),
+      APR_CA_B: new FormControl(false),
+      APR_CA_C: new FormControl(false),
+      APR_CA_Signature: new FormControl(''),
+      APR_CA_FirmName: new FormControl('', Validators.required),
+      APR_CA_RegNo: new FormControl('', Validators.required),
+      APR_CA_UDIN: new FormControl('', Validators.required),
+      APR_CA_Date: new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd')),
+      APR_CA_Place: new FormControl(''),
+      APR_CA_Email: new FormControl('', Validators.pattern(this.emailPattern)),
+      APR_CA_Stamp: new FormControl(''),
+      SDSDetails: new FormArray([]),
+      ShareHoldingFE: new FormArray([]),
+    });
+ 
 
   }
   Indianshare: number = 0;
@@ -447,11 +484,15 @@ export class FormAprComponent implements OnInit {
       complete: () => {
         //alert('FromAPR successfully created!');
         // this.generatePDF();
-        console.log('FromAPR successfully created!');
+        //console.log('FromAPR successfully created!');
+        this.toastr.success("FromAPR successfully created!", 'Success', {
+          closeButton: true,
+          positionClass: 'toast-bottom-right'
+        });
         //this.ngZone.run(() => this.router.navigateByUrl('/employees-list'));
-        this.tabset.tabs[(Number(6))].disabled = false;
-        this.tabset.tabs[(Number(6))].active = true;
-        if (Number(6) == 6) {
+        this.tabset.tabs[(Number(5))].disabled = false;
+        this.tabset.tabs[(Number(5))].active = true;
+        if (Number(5) == 5) {
           this.btnShowNext = false;
         }
       },
@@ -608,6 +649,10 @@ export class FormAprComponent implements OnInit {
   }
   get APR_Dec_E() {
     return this.declaration.get('APR_Dec_E')!;
+  }
+  
+  get APR_Dec_F() {
+    return this.declarationOld.get('APR_Dec_F')!;
   }
 
   get APR_Authorized_Signature() {
@@ -772,12 +817,13 @@ export class FormAprComponent implements OnInit {
         return;
 
       }
-      // if (this.SDSArray.length == 0) {
-      //   for (const control of Object.keys(this.aprForm.controls)) {
-      //     this.aprForm.controls[control].markAsTouched();
-      //   }
-      //   return;
-      // }
+      if (this.SDSArray.length == 0) {
+        this.toastr.warning("please enter sds details if selected Yes", 'Warning', {
+          closeButton: true,
+          positionClass: 'toast-bottom-right'
+        });
+        return;
+      }
       else {
         const SDSArray: FormArray = this.fb.array(this.SDSArray);
         this.aprForm.setControl('SDSDetails', SDSArray);
@@ -792,16 +838,39 @@ export class FormAprComponent implements OnInit {
         return;
 
       }
-    }
-    else if (Number(this.id) == 4) {
       if (this.CAform.invalid) {
 
         for (const control of Object.keys(this.CAform.controls)) {
           this.CAform.controls[control].markAsTouched();
         }
+        this.toastr.warning("please fill SA/CA Certificate details", 'Warning', {
+          closeButton: true,
+          positionClass: 'toast-bottom-right'
+        });
         return;
 
       }
+      this.declarationOld.patchValue(this.declaration.value);
+      this.CAformOld.patchValue(this.CAform.value);
+    }
+    else if (Number(this.id) == 4) {
+      if (this.declarationOld.invalid) {
+
+        for (const control of Object.keys(this.declarationOld.controls)) {
+          this.declarationOld.controls[control].markAsTouched();
+        }
+        return;
+
+      }
+      if (this.CAformOld.invalid) {
+
+        for (const control of Object.keys(this.CAformOld.controls)) {
+          this.CAformOld.controls[control].markAsTouched();
+        }
+        return;
+
+      }
+    
     }
 
     if (Number(this.id) + 1 < count) {

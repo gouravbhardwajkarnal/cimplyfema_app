@@ -4251,6 +4251,7 @@
         <!-- </html> -->
         <!-- </div>  -->
 
+        <!-- Compounding submission -->
         <div
           style="padding: 30px; font-family: Calibri; font-size: 11pt"
           id="pdfTable2"
@@ -4283,7 +4284,7 @@
                 <td colspan="2" width="486">
                   <p>
                     <strong>{{
-                      COC_FDIFormlist.get("COC_FDI_CompanyName").value
+                      COC_FDIFormlist.get("COC_FDI_CompanyName").value.toUpperCase()
                     }}</strong>
                   </p>
                 </td>
@@ -4508,26 +4509,29 @@
           <p>&nbsp;</p>
         </div>
 
+        <!-- compounding request and petition  -->
         <div
           style="padding: 30px; font-family: Calibri; font-size: 11pt"
           id="pdfTable3"
           #pdfTable3
         >
-          <p>
-            Annexure 2<br />All the values to be picked from Compounding
-            Submissions according to the respective sections.<br />1.
-            BACKGROUND<br />
-            <br />1.1
-            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+          <p>Annexure 2</p>
+          <br />
+          <p>1.BACKGROUND</p>
+          <br />
+
+          <p *ngFor="let backSubmission of BackSubmissionArray; let i = index">
+            1.{{ i + 1 }} {{ backSubmission.COC_FDI_Background }}
+            <!-- 1.1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
           </p>
-          <p>
+          <!-- <p>
             1.2
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
           </p>
           <p>
             1.3
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-          </p>
+          </p> -->
           <p>2. CONTRAVENTIONS AND REASONS FOR CONTRAVENTIONS</p>
           <p>
             2.1
@@ -4543,52 +4547,75 @@
           </p>
           <p>&nbsp;</p>
           <p>3. REGULATORY FRAMEWORK</p>
-          <p>
-            3.1
-            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+          <p
+            *ngFor="
+              let regulatorySubmission of RegulatorySubmissionArray;
+              let i = index
+            "
+          >
+            3.{{ i + 1 }} {{ regulatorySubmission.COC_FDI_Regulatory }}
+            <!-- 3.1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
           </p>
-          <p>
+          <!-- <p>
             3.2
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-          </p>
+          </p> -->
           <p>4. DELAY REASONS</p>
-          <p>
-            3.3
-            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+          <p
+            *ngFor="
+              let delaySubmission of DelayReasonsSubmissionArray;
+              let i = index
+            "
+          >
+            4.{{ i + 1 }} {{ delaySubmission.COC_FDI_DelayReasons }}
+            <!-- 3.3XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
           </p>
-          <p>
+          <!-- <p>
             3.4
             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-          </p>
+          </p> -->
           <p><br />5. PETITION REQUEST</p>
-          <p>
-            4.1
-            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+          <p
+            *ngFor="
+              let petitionSubmission of PetitionRequestSubmissionArray;
+              let i = index
+            "
+          >
+            5.{{ i + 1 }} {{ petitionSubmission.COC_FDI_PetitionRequest }}
+            <!-- 4.1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
           </p>
-          <p><br />Yours sincerely, <br />For [Insert Company Name]</p>
           <p>
-            <br />XXXXXXXXXX<br />[Authorised Signatory / Director]<br />Place:
-            XXXXXXXXXX&lt;what value needs to be populated here &gt;<br />Date:
-            XXXXXXX&lt;date of application&gt;
+            <br />Yours sincerely, <br />
+            {{ COC_FDIFormlist.get("COC_FDI_CompanyName").value }}
+          </p>
+          <p>
+            <br />{{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}/{{
+              COC_FDIFormlist.get("COC_FDI_AuthDesignation").value
+            }}<br />[Authorised Signatory / Director]<br />Place:
+            {{ COC_FDIFormlist.get("COC_FDICity").value.city }}<br />Date:
+            {{ todayDate }}
           </p>
           <p>&nbsp;</p>
         </div>
+
         <div
           style="padding: 30px; font-family: Calibri; font-size: 11pt"
           id="pdfTable4"
           #pdfTable4
         >
-          PrivacyPrivacy Facebook Twitter Linkedin Reddit Word to Clean HTML
-          ConverterWord HTML Undo New page indentation compress encoding option
-          ico option2 option3 option4 option5 option6 option7 option8Clean -
           <p><strong>Annexure&nbsp;4</strong></p>
           <p>To</p>
-          <p>
+          <p>Cell for Effective Implementation of FEMA (CEFA)</p>
+          <p
+            *ngFor="let item of SelectCOC_FDICenResArray[0]?.Address.split(',')"
+          >
+            {{ item }},<br />
+          </p>
+          <!-- <p>
             The Compounding Authority&lt;this would the same values as the RBI
             Covering Letter&gt;
-          </p>
-          <p>Cell for Effective Implementation of FEMA (CEFA)</p>
-          <p>Reserve Bank of India</p>
+          </p> -->
+          <!-- <p>Reserve Bank of India</p> -->
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
@@ -4602,10 +4629,13 @@
           </p>
           <p>&nbsp;</p>
           <p>
-            I/We, <strong>XXXXXXXXXXXXXXXXXXXXX</strong>hereby confirm/declare
-            that we are not under any enquiry/investigation/adjudication by any
-            agency such as Directorate of Enforcement, CBI etc. as on the date
-            of this application.
+            I/We,
+            <strong>{{
+              COC_FDIFormlist.get("COC_FDI_CompanyName").value
+            }}</strong
+            >hereby confirm/declare that we are not under any
+            enquiry/investigation/adjudication by any agency such as Directorate
+            of Enforcement, CBI etc. as on the date of this application.
           </p>
           <p>&nbsp;</p>
           <p>
@@ -4622,16 +4652,29 @@
             under section 17 or section 19 of FEMA, 1999.
           </p>
           <p>&nbsp;</p>
-          <p>&nbsp;</p>
+          <!-- <p>&nbsp;</p> -->
           <p>Yours sincerely,</p>
-          <p><strong>For XXXXXXXXXXXXXXXXXXXXX</strong></p>
+          <p>
+            <strong
+              >For
+              {{ COC_FDIFormlist.get("COC_FDI_CompanyName").value }}</strong
+            >
+          </p>
+          <!-- <p><strong>&nbsp;</strong></p> -->
           <p><strong>&nbsp;</strong></p>
-          <p><strong>&nbsp;</strong></p>
-          <p><strong>XXXXXXXXXXX</strong></p>
+          <p>
+            <strong
+              >{{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}/{{
+                COC_FDIFormlist.get("COC_FDI_AuthDesignation").value
+              }}</strong
+            >
+          </p>
           <p><strong>[Director]</strong></p>
           <p><strong>Place: Bangalore</strong></p>
-          <p><strong>Date: XXXXXXX</strong></p>
-          <p>&nbsp;</p>
+          <p>
+            <strong>Date: {{ todayDate }}</strong>
+          </p>
+          <!-- <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
@@ -4694,7 +4737,7 @@
           />
           space ico – wipe off elements that contain only a &nbsp; character:
           <p>&nbsp;</p>
-          comments icon – dislodge HTML comments:<!-- comment -->
+          comments icon – dislodge HTML comments: comment
           plain text icon – convert the document to plain text:
           <p><span class="header">text</span></p>
           Additional editor controls source editor commands – Undo, new page,
@@ -4737,7 +4780,7 @@
           your document. To save you'll have to copy the results in a desktop
           editor and save there. This site uses cookies to collect visitor
           statistics and to save your settings. By using this website you
-          accept&our Terms&Conditions. ©WordHTML.com
+          accept&our Terms&Conditions. ©WordHTML.com -->
         </div>
         <div
           style="padding: 30px; font-family: Calibri; font-size: 11pt"
@@ -4746,7 +4789,7 @@
         >
           <p><strong>Annexure&nbsp;5</strong></p>
           <p><strong>&nbsp;</strong></p>
-          <p>25 September 2019&lt;date of application&gt;</p>
+          <p>{{todayDate}}</p>
           <p>&nbsp;</p>
           <p>To</p>
           <p>
@@ -4754,11 +4797,16 @@
             document&gt;
           </p>
           <p>Cell for Effective Implementation of FEMA (CEFA)</p>
-          <p>Foreign Exchange Department</p>
-          <p>Reserve Bank of India</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+          <!-- <p>Foreign Exchange Department</p> -->
+          <p
+            *ngFor="let item of SelectCOC_FDICenResArray[0]?.Address.split(',')"
+          >
+            {{ item }},<br />
+          </p>
+          <!-- <p>Reserve Bank of India</p> -->
+          <!-- <p>&nbsp;</p> -->
+          <!-- <p>&nbsp;</p> -->
+          <!-- <p>&nbsp;</p> -->
           <p>&nbsp;</p>
           <p>Dear Sir/ Madam,</p>
           <p><strong>&nbsp;</strong></p>
@@ -4770,10 +4818,9 @@
           </p>
           <p><strong>&nbsp;</strong></p>
           <p>
-            We hereby authorise<strong>XXXXXXXXXXX</strong
-            ><strong>&lt;what value should come here&gt;</strong> having their
-            office at <strong>XXXXXXXXXXX</strong>&lt;what value should come
-            here &gt;(referred to as &ldquo;Authorised Representatives&rdquo;),
+            We hereby authorise <strong> {{COC_FDIFormlist.get('COC_FDI_AuthPerson').value}}</strong
+            >having their
+            office at <strong>{{COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').value}}</strong>(referred to as &ldquo;Authorised Representatives&rdquo;),
             to appear and represent us before the Reserve Bank of India
             (&lsquo;RBI&rsquo;), in connection with our application for
             compounding under the Foreign Exchange Management Act, 1999 (the
@@ -4796,44 +4843,51 @@
           <p>Yours sincerely,</p>
           <p>
             <strong
-              >For Fomento Resources Private Limited&lt;company name&gt;</strong
+              >For {{ COC_FDIFormlist.get("COC_FDI_CompanyName").value }}</strong
             >
           </p>
+          <!-- <p><strong>&nbsp;</strong></p> -->
+          <!-- <p><strong>&nbsp;</strong></p> -->
           <p><strong>&nbsp;</strong></p>
-          <p><strong>&nbsp;</strong></p>
-          <p><strong>&nbsp;</strong></p>
-          <p><strong>XXXXXXXXXX</strong></p>
+          <p><strong>{{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}/{{
+            COC_FDIFormlist.get("COC_FDI_AuthDesignation").value
+          }}</strong></p>
+          <p><strong>[Authorised Signatory / Director]</strong></p>
           <p>&nbsp;</p>
-          <p><strong>Place:&nbsp; XXXXXXXXXX</strong></p>
+          <p><strong>Place:&nbsp; {{ COC_FDIFormlist.get("COC_FDICity").value.city }}</strong></p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
         </div>
+
+        <!--  -->
         <div
           style="padding: 30px; font-family: Calibri; font-size: 11pt"
           id="pdfTable6"
           #pdfTable6
         >
-          PrivacyPrivacy Facebook Twitter Linkedin Reddit Word to Clean HTML
-          ConverterWord HTML Undo New page indentation compress encoding option
-          ico option2 option3 option4 option5 option6 option7 option8Clean -
           <p><strong>Annexure&nbsp;4</strong></p>
           <p><strong>&nbsp;</strong></p>
           <p>
             <strong><em>&nbsp;</em></strong>
           </p>
           <p>
-            <strong><em>&lt;&lt;Insert date&gt;&gt;</em></strong>
+            <strong>{{todayDate}}</strong>
           </p>
           <p>&nbsp;</p>
           <p>To</p>
           <p>The Compounding Authority</p>
           <p>Cell for Effective Implementation of FEMA (CEFA)</p>
-          <p>Reserve Bank of India</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+          <p
+            *ngFor="let item of SelectCOC_FDICenResArray[0]?.Address.split(',')"
+          >
+            {{ item }},<br />
+          </p>
+          <!-- <p>Reserve Bank of India</p> -->
+          <!-- <p>&nbsp;</p> -->
+          <!-- <p>&nbsp;</p> -->
+          <!-- <p>&nbsp;</p> -->
           <p>&nbsp;</p>
           <p>Dear Sir/ Madam,</p>
           <p>&nbsp;</p>
@@ -4876,117 +4930,19 @@
           <p>(* Strike out one)</p>
           <p>&nbsp;</p>
           <p>Yours sincerely,</p>
-          <p><strong>For [Insert Company Name]</strong></p>
+          <p><strong>For {{ COC_FDIFormlist.get("COC_FDI_CompanyName").value }}</strong></p>
           <p><strong>&nbsp;</strong></p>
           <p><strong>&nbsp;</strong></p>
-          <p><strong>XXXXXXXXXX</strong></p>
+          <p><strong>{{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}/{{
+            COC_FDIFormlist.get("COC_FDI_AuthDesignation").value
+          }}</strong></p>
           <p>&nbsp;</p>
-          <p><strong>Place:&nbsp; XXXXXXXXXX</strong></p>
-          <p><strong>Date:&nbsp; XXXXXXX</strong></p>
+          <p><strong>Place:&nbsp; {{ COC_FDIFormlist.get("COC_FDICity").value.city }}</strong></p>
+          <p><strong>Date:&nbsp; {{todayDate}}</strong></p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
-          Characters: 1876 Sample × Paste or compose your doc in the editor and
-          switch to HTML view to get the code! Word Doc to HTML Online Converter
-          Word Document to HTML Online Converter Paste your doc and switch to
-          the HTML tab Free online Word to HTML converter with built-in code
-          cleaning features and easy switch between the visual and source
-          editors. It works perfectly for any document conversion, like
-          Microsoft Word, Excel, PowerPoint, PDF, Google Docs, Sheets, and many
-          more. You can also use this tool for composing web content from
-          scratch or just to tidy up the dirty markup. As a legacy of the
-          well-known but discontinued WordOff online tool we wanted to keep the
-          user interface as simple as possible and adding many new features
-          according to our visitors' feedbacks. How to Convert Doc to HTML? The
-          process is very simple with this free online tool and it requirest
-          just a few simple steps: Open your file with Microsoft Word, WPS
-          Writer or any other rich text editor. Copy-paste the content into the
-          area above. Switch to the HTML tab and clean the code. Wordpress HTML
-          Editor Word HTML is the perfect tool to edit the source code of
-          WordPress articles or any other content management system when their
-          built in composer doesn't provide all functionalities we need. Compose
-          the content right in your browser window without installing any
-          extension or plugin to handle the syntax highlighting and other text
-          editing features. How To Use? Paste the document you want to convert
-          in the Word Editor, then switch to HTML view using the big tabs at the
-          top of the page to generate the code. Clean the dirty markup with the
-          big button which performs the active (checked) options in the list.
-          You can also apply these features one-by-one with the execute icon.
-          When a clean operation is performed the program might add a paragraph
-          to the text, containing a backlink to one of our partner sites. Please
-          leave these unchange to support the this free website. styles – remove
-          style attributes from each tag:<span style="color: red"
-            >highlighted</span
-          >
-          empty icon – delete empty tags which don't contain anything:<span
-            >Hello<span></span> World</span
-          >
-
-          spaces – clear successive non-breaking spaces and leave only one
-          instance:
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-          attributes – get rid of tag attributes (except href of links and src
-          of images):<img
-            src="/icon.png"
-            alt="icon"
-            width="52"
-            height="52"
-            id="pic52"
-          />
-          class and id ico – strip classes and IDs:<img
-            id="pic52"
-            class="right"
-            src="/icon.png"
-            alt="icon"
-            width="52"
-          />
-          space ico – wipe off elements that contain only a &nbsp; character:
-          <p>&nbsp;</p>
-          comments icon – dislodge HTML comments:<!-- comment -->
-          plain text icon – convert the document to plain text:
-          <p><span class="header">text</span></p>
-          Additional editor controls source editor commands – Undo, new page,
-          indent markup, compress, activate encoding. Our Sponsors
-          Omnipapers.com reviews will help you to pick an honest essay company.
-          My Homework Done can help with any subject, from math to programming.
-          Custom Writings will write your essay from scratch. Get professional
-          help from academic experts. Visit LegitimateEssayWriting.com to choose
-          the best essay helper online. Rapid Essay Service - best college essay
-          writing service. Read essay writing service reviews. Goread.io is the
-          best website to buy Instagram likes. ShoppingArchives.com is a website
-          that has the best online shopping sites all in one place. Common
-          Questions How do I convert Word to HTML without dirty markup? MS Word
-          allows to save the document as an .html file but this will result in a
-          lot of unwanted dirty markup. This increases the file size and
-          disrupts the website styles if you end up publishing it online. It's
-          recommended to clean the HTML with this free online tool. dirty markup
-          from MS Word Get rid of the mess generated by Word Editors How do I
-          convert any visual text to HTML? WordHTML editor works flawlessly for
-          any visual document and allows them to convert with a couple clicks:
-          Microsoft Office products (Word, Excel, Powerpoint) Google Docs,
-          Google Sheets OpenOffice and other WYSIWYG editors ...any other visual
-          text document (let us know if you find an exception) Copy-paste your
-          document in the online editor then switch to HTML view in the header
-          to get the result instantly. How to open a .doc file in the editor?
-          First you need to open the document in a reader, select and paste de
-          desired section in the web browser on WordHTML. How to save and
-          publish the results? To publish your file on the web you need to paste
-          the HTML code in a .html file and upload it to the web. If your site
-          is using a CMS then you need to log in with editor credentials and
-          publish the article in your admin area. How to clean the markup?
-          Switch to HTML view to see the code, review the cleaning settings and
-          press the big Clean button. Remove automatically inline styles,
-          classes, empty tags, comments and other unwanted bits. markup cleaning
-          The markup can be cleaned with the click of a button Can I convert
-          HTML code to Word document? Inverse conversion is also possible with
-          WordHTML. Insert your code when the HTML tab is active and switch to
-          Word Editor. Is WordHTML an online Word editor? Yes, and it's even
-          more. It supports the most common WYSIWYG features but you can't save
-          your document. To save you'll have to copy the results in a desktop
-          editor and save there. This site uses cookies to collect visitor
-          statistics and to save your settings. By using this website you
-          accept&our Terms&Conditions. ©WordHTML.com
         </div>
+        
         <div
           style="padding: 30px; font-family: Calibri; font-size: 11pt"
           id="pdfTable7"

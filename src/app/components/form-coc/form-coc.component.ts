@@ -135,7 +135,12 @@ export class FormCocComponent implements OnInit {
   COC_LiasonAnnualActivityArray: Array<COC_LiasonAnnualActivityList> = [];
   COC_LiasonAnnualActivityData: any = {};
 
-  todayDate:string=new Date().toISOString().slice(0, 10).split('-').reverse().join('/')
+  todayDate: string = new Date()
+    .toISOString()
+    .slice(0, 10)
+    .split('-')
+    .reverse()
+    .join('/');
 
   constructor(
     private commonservice: CommonService,
@@ -195,11 +200,10 @@ export class FormCocComponent implements OnInit {
     }
   }
 
-  change(){
+  change() {
     console.log(this.COC_FDIFormlist.get('COC_FDICity').value);
-    
   }
-  
+
   ngOnInit(): void {
     this.BackSubmissiondata = { COC_FDI_Background: '' };
     this.BackSubmissionArray.push(this.BackSubmissiondata);
@@ -1133,6 +1137,7 @@ export class FormCocComponent implements OnInit {
           });
         }
       }
+      console.log('this.BackSubmissionArray', this.BackSubmissionArray);
     }
     if (Val == '1') {
       this.COC_FDIInstructions = true;
@@ -1145,38 +1150,38 @@ export class FormCocComponent implements OnInit {
       this.COC_FDIApplicantDetails = true;
     }
     if (Val == '3') {
-      // let key = [
-      //   'COC_FDICIN',
-      //   'COC_FDI_CompanyName',
-      //   'COC_FDIIncorporationDate',
-      //   'COC_FDIBusPanNo',
-      //   'COC_FDIGSTNo',
-      //   'COC_FDIRegOfficeAddress',
-      //   'COC_FDIState',
-      //   'COC_FDICity',
-      //   'COC_FDIPincode',
-      //   'COC_FDI_Email',
-      //   'COC_FDIMobile',
-      //   'COC_FDITelephone',
-      //   'COC_FDIFAX',
-      //   'COC_FDI_AuthPerson',
-      //   'COC_FDI_AuthPersonAddress',
-      //   'COC_FDI_AuthPAN',
-      //   'COC_FDI_AuthDesignation',
-      // ];
-      // let check = true;
-      // console.log(this.COC_FDIFormlist);
-      // key.map((item) => {
-      //   if (this.COC_FDIFormlist.controls[item].status == 'INVALID') {
-      //     this.COC_FDIFormlist.controls[item].markAsTouched();
-      //     check = false;
-      //     this.COC_FDIApplicantDetails = true;
-      //     // return;
-      //   }
-      // });
-      // if (check) {
-        this.COC_FDICompoundingDetails = true;
-      // }
+      let key = [
+        'COC_FDICIN',
+        'COC_FDI_CompanyName',
+        'COC_FDIIncorporationDate',
+        'COC_FDIBusPanNo',
+        'COC_FDIGSTNo',
+        'COC_FDIRegOfficeAddress',
+        'COC_FDIState',
+        'COC_FDICity',
+        'COC_FDIPincode',
+        'COC_FDI_Email',
+        'COC_FDIMobile',
+        'COC_FDITelephone',
+        'COC_FDIFAX',
+        'COC_FDI_AuthPerson',
+        'COC_FDI_AuthPersonAddress',
+        'COC_FDI_AuthPAN',
+        'COC_FDI_AuthDesignation',
+      ];
+      let check = true;
+      console.log(this.COC_FDIFormlist);
+      key.map((item) => {
+        if (this.COC_FDIFormlist.controls[item].status == 'INVALID') {
+          this.COC_FDIFormlist.controls[item].markAsTouched();
+          check = false;
+          this.COC_FDIApplicantDetails = true;
+          // return;
+        }
+      });
+      if (check) {
+      this.COC_FDICompoundingDetails = true;
+      }
     }
     if (Val == '4') {
       this.COC_FDICompoundingSubmissions = true;
@@ -1380,6 +1385,7 @@ export class FormCocComponent implements OnInit {
     const documentDefinition = { content: html };
     pdfMake.createPdf(documentDefinition).open();
   }
+
   downloadAsPDF4() {
     const doc = new jsPDF();
     const pdfTable = this.pdfTable4.nativeElement;
@@ -1412,7 +1418,7 @@ export class FormCocComponent implements OnInit {
   async ExportWordRbi() {
     const pdfTable = this.pdfTable1.nativeElement;
 
-    console.log("pdfTable.innerHTML",pdfTable.innerHTML)
+    console.log('pdfTable.innerHTML', pdfTable.innerHTML);
     var converted = await asBlob(pdfTable.innerHTML, {
       orientation: 'portrait',
       margins: { top: 720 },
@@ -1436,7 +1442,7 @@ export class FormCocComponent implements OnInit {
       orientation: 'portrait',
       margins: { top: 720 },
     });
-    saveAs(converted, 'Declaration.docx');
+    saveAs(converted, 'Submissions.docx');
   }
   async ExportWord4() {
     const pdfTable = this.pdfTable4.nativeElement;
@@ -1445,7 +1451,7 @@ export class FormCocComponent implements OnInit {
       orientation: 'portrait',
       margins: { top: 720 },
     });
-    saveAs(converted, 'Annexure.docx');
+    saveAs(converted, 'Declaration.docx');
   }
   async ExportWord5() {
     const pdfTable = this.pdfTable5.nativeElement;
@@ -1454,7 +1460,7 @@ export class FormCocComponent implements OnInit {
       orientation: 'portrait',
       margins: { top: 720 },
     });
-    saveAs(converted, 'Annexure.docx');
+    saveAs(converted, 'Letter of authority.docx');
   }
   async ExportWord6() {
     const pdfTable = this.pdfTable6.nativeElement;
@@ -1463,7 +1469,7 @@ export class FormCocComponent implements OnInit {
       orientation: 'portrait',
       margins: { top: 720 },
     });
-    saveAs(converted, 'Annexure.docx');
+    saveAs(converted, 'Undertaking.docx');
   }
   async ExportWord7() {
     const pdfTable = this.pdfTable7.nativeElement;
@@ -1472,6 +1478,6 @@ export class FormCocComponent implements OnInit {
       orientation: 'portrait',
       margins: { top: 720 },
     });
-    saveAs(converted, 'Annexure.docx');
+    saveAs(converted, 'ECS Mandate Letter.docx');
   }
 }

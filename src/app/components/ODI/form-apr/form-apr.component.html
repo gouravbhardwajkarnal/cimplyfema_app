@@ -2480,7 +2480,7 @@
                                                             Registration number of the audit firm
                                                         </span>
                                                     </div>
-                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                    <!-- <div class="col-sm-4 col-xl-4 mb-3 input-block">
 
                                                         <input type="text" id="APR_CA_UDIN" name="APR_CA_UDIN"
                                                             formControlName="APR_CA_UDIN" spellcheck="false"
@@ -2499,8 +2499,8 @@
                                                         <span class="placeholder">
                                                             UDIN of the audit firm
                                                         </span>
-                                                    </div>
-                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                    </div> -->
+                                                    <div class="col-sm-3 col-xl-3 mb-3 input-block">
 
                                                         <input type="text" id="APR_CA_Place" name="APR_CA_Place"
                                                             formControlName="APR_CA_Place" spellcheck="false"
@@ -2520,7 +2520,7 @@
                                                             Place
                                                         </span>
                                                     </div>
-                                                    <div class="col-sm-4 col-xl-4 mb-3 input-block">
+                                                    <div class="col-sm-3 col-xl-3 mb-3 input-block">
                                                         <input type="date" id="APR_CA_Date" name="APR_CA_Date"
                                                             formControlName="APR_CA_Date" spellcheck="false"
                                                             class="form-control form-control-sm"
@@ -2535,7 +2535,7 @@
                                                             Date
                                                         </span>
                                                     </div>
-                                                    <div class="col-sm-4 col-xl-4 input-block">
+                                                    <div class="col-sm-3 col-xl-3 input-block">
                                                         <input type="text" id="APR_CA_Email" name="APR_CA_Email"
                                                             formControlName="APR_CA_Email" spellcheck="false"
                                                             minlength="1" maxlength="250"
@@ -2554,7 +2554,7 @@
                                                             Email
                                                         </span>
                                                     </div>
-                                                    <div class="col-sm-4 col-xl-4 input-block">
+                                                    <div class="col-sm-3 col-xl-3 input-block">
 
                                                         <input type="text" id="APR_CA_Stamp" spellcheck="false"
                                                             name="APR_CA_Stamp" formControlName="APR_CA_Stamp"
@@ -2703,24 +2703,34 @@
                                                 <td><img src="assets/images/pdf.png" (click)="downloadAsPDFAPR()"
                                                         style="cursor:pointer"></td>
                                             </tr>
-                                            <tr>
+                                              <tr>
                                                 <th scope="row">
-                                                    <h6>C. Form APR(Old Format)</h6>
-                                                </th>
-                                                <td><img src="assets/images/word.png" (click)="ExportWordAPROld()"
-                                                        style="cursor:pointer"></td>
-                                                <td><img src="assets/images/pdf.png" (click)="downloadAsPDFAPROld()"
-                                                        style="cursor:pointer"></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    <h6>D. Statutory Auditor / Chartered Accountant Certificate</h6>
+                                                    <h6>C. Statutory Auditor / Chartered Accountant Certificate</h6>
                                                 </th>
                                                 <td><img src="assets/images/word.png" style="cursor:pointer"
                                                         (click)="ExportWordpdfCAcertificate()"></td>
                                                 <td><img src="assets/images/pdf.png" style="cursor:pointer"
                                                         (click)="downloadpdfCAcertificate()"></td>
                                             </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <h6>D. Form APR(Old Format)</h6>
+                                                </th>
+                                                <td><img src="assets/images/word.png" (click)="ExportWordAPROld()"
+                                                        style="cursor:pointer"></td>
+                                                <td><img src="assets/images/pdf.png" (click)="downloadAsPDFAPROld()"
+                                                        style="cursor:pointer"></td>
+                                            </tr>
+                                              <tr>
+                                                <th scope="row">
+                                                    <h6>E. Statutory Auditor / Self Certificate</h6>
+                                                </th>
+                                                <td><img src="assets/images/word.png" style="cursor:pointer"
+                                                        (click)="ExportWordpdfCAcertificateOld()"></td>
+                                                <td><img src="assets/images/pdf.png" style="cursor:pointer"
+                                                        (click)="downloadpdfCAcertificateOld()"></td>
+                                            </tr>
+                                          
 
                                         </tbody>
                                     </table>
@@ -3291,7 +3301,7 @@
                                                         <td style="width: 47.7549%;" colspan="21">
                                                             <p> {{SDSArray[i].investment_SDS_ParentName}},
                                                                 {{SDSArray[i].investment_SDS_ParentLevel}},
-                                                                {{SDSArray[i].investment_SDS_ParentJurisdiction}},</p>
+                                                                {{SDSArray[i].investment_SDS_ParentJurisdiction}}</p>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -3308,7 +3318,7 @@
                                                             <p>{{SDSArray[i].investment_SDS_InvestmentAmount}}</p>
                                                         </td>
                                                         <td style="width: 28.7305%;" colspan="11">
-                                                            <p>Date: {{SDSArray[i].investment_SDS_InvestmentAmount}}</p>
+                                                            <p>Date: {{SDSArray[i].investment_SDS_InvestmentDate}}</p>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -3520,7 +3530,7 @@
                                                         <p>Date</p>
                                                     </td>
                                                     <td style="width: 17.3659%;" colspan="10">
-                                                        <p> {{dataModel.APR_Dec_Date}}</p>
+                                                        <p> {{dataModel.APR_Dec_Date | date: 'dd-MM-yyyy'}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -3652,7 +3662,8 @@
                                                         <p>Date</p>
                                                     </td>
                                                     <td style="width: 17.3659%;" colspan="10">
-                                                        <p> {{dataModel.APR_CA_Date}}</p>
+                                                        <p> {{dataModel.APR_CA_Date | date: 'dd-MM-yyyy'}}</p>
+                                                     
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4193,6 +4204,7 @@
                                                                 one)</strong></p>
                                                     </td>
                                                 </tr>
+                                                <span *ngFor="let dynamic of SDSArray; let i = index;">
                                                 <tr>
                                                     <td width="43">
                                                         <p>(i)</p>
@@ -4201,7 +4213,9 @@
                                                         <p>Name, Level and Country name of SDS</p>
                                                     </td>
                                                     <td colspan="7" width="328">
-                                                        <p>&nbsp;</p>
+                                                        <p> {{SDSArray[i].investment_SDS_Name}},
+                                                            {{SDSArray[i].investment_SDS_Level}},
+                                                            {{SDSArray[i].investment_SDS_Jurisdiction}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4212,7 +4226,9 @@
                                                         <p>Name, Level and Country name of the parent of SDS</p>
                                                     </td>
                                                     <td colspan="7" width="328">
-                                                        <p>&nbsp;</p>
+                                                        <p> {{SDSArray[i].investment_SDS_ParentName}},
+                                                            {{SDSArray[i].investment_SDS_ParentLevel}},
+                                                            {{SDSArray[i].investment_SDS_ParentJurisdiction}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4224,10 +4240,10 @@
                                                     </td>
                                                     <td colspan="3" width="164">
                                                         <p>Currency:</p>
-                                                        <p>Amount:</p>
+                                                        <p>Amount: {{SDSArray[i].investment_SDS_InvestmentAmount}}</p>
                                                     </td>
                                                     <td colspan="4" width="164">
-                                                        <p>Date:</p>
+                                                        <p>Date: {{SDSArray[i].investment_SDS_InvestmentDate}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4269,7 +4285,10 @@
                                                         <p>Activity code as per 1987</p>
                                                     </td>
                                                     <td colspan="7" width="328">
-                                                        <p>&nbsp;</p>
+                                                        <p> {{SDSArray[i].investment_SDS_1987NIC}}
+                                                            <br>
+                                                            {{SDSArray[i].investment_SDS_2008NIC}}
+                                                        </p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4280,7 +4299,7 @@
                                                         <p>% stake held in SDS</p>
                                                     </td>
                                                     <td colspan="7" width="328">
-                                                        <p>&nbsp;</p>
+                                                        <p> {{SDSArray[i].investment_SDS_Stake}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4308,6 +4327,7 @@
                                                     <td width="37">&nbsp;</td>
                                                     <td width="66">&nbsp;</td>
                                                 </tr>
+                                                </span>
                                             </tbody>
                                         </table>
                                         <table>
@@ -4356,10 +4376,11 @@
                                                         <p>Signature of the authorized official of the IP approved by the Board / RI</p>
                                                     </td>
                                                     <td colspan="2" width="265">
-                                                        <p>&nbsp;</p>
+                                                        <p> {{dataModel.APR_Authorized_Signature}}</p>
                                                     </td>
                                                     <td rowspan="3" width="111">
                                                         <p><u>Stamp/Seal</u></p>
+                                                        <p> {{dataModel.APR_Dec_Stamp}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4367,7 +4388,7 @@
                                                         <p>Name &amp; Designation of the Authorized Official of the IP</p>
                                                     </td>
                                                     <td colspan="2" width="265">
-                                                        <p>&nbsp;</p>
+                                                        <p> {{dataModel.APR_Authorized_Name}}&nbsp;{{dataModel.APR_Authorized_Designation}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4375,13 +4396,13 @@
                                                         <p>Place:</p>
                                                     </td>
                                                     <td width="151">
-                                                        <p>&nbsp;</p>
+                                                        <p> {{dataModel.APR_Dec_Place}}</p>
                                                     </td>
                                                     <td width="115">
                                                         <p>Date:</p>
                                                     </td>
                                                     <td width="151">
-                                                        <p>&nbsp;</p>
+                                                        <p> {{dataModel.APR_Dec_Date | date: 'dd-MM-yyyy'}}</p>
                                                     </td>
                                                 </tr>
                                                                                          
@@ -4401,25 +4422,19 @@
                                                     <td colspan="5" width="619">
                                                         <p>We hereby certify that:</p>
                                                       
-                                                        <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; APR for the year ended
-                                                            <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            </u>is prepared on the basis of audited/ unaudited balance
-                                                            sheet of the
-                                                        JV/WOS for the year ended
-                                                            <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            </u>.
+                                                        <p>i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            APR for the year ended {{dataModel.APR_To_Date | date:
+                                                            'dd-MM-yyyy'}} is prepared on the basis of audited/
+                                                            unaudited balance sheet of the foreign entity for the
+                                                            year
+                                                            ended {{dataModel.APR_To_Date | date:
+                                                            'dd-MM-yyyy'}}.&nbsp;
                                                         </p>
-                                                        <p>ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; APR for the year
-                                                            ended
-                                                            <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>is
-                                                            prepared on the basis of unaudited balance sheet of the
-                                                            JV/WOS since audit is not mandatory in host country and in
-                                                            compliance with Regulation 15 (iii) read with 15 (v) of FEMA
-                                                            Notification ibid and Para 6 of &nbsp;<a
-                                                                href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=7560&amp;amp;Mode=0">A.P.
-                                                                (DIR Series) Circular No. 29 dated September 12,</a>
-                                                        <a
-                                                                href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=7560&amp;amp;Mode=0">2012.</a>
+                                                        <p>     ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            APR for the year ended {{dataModel.APR_To_Date | date:
+                                                            'dd-MM-yyyy'}} is prepared on the basis of unaudited
+                                                            balance
+                                                            sheet of the JV/WOS since audit is not mandatory in host country and in compliance with Regulation 15 (iii) read with 15 (v) of FEMA Notification ibid and Para 6 of &nbsp;<a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=7560&amp;amp;Mode=0">A.P. (DIR Series) Circular No. 29 dated September 12,</a>
                                                         </p>
                                                         <p>iii.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;The IP repatriated to
                                                             India, all dues receivable from the foreign entity, like
@@ -4436,10 +4451,11 @@
                                                             &nbsp;of the Indian Party</p>
                                                     </td>
                                                     <td colspan="2" width="265">
-                                                        <p>&nbsp;</p>
+                                                        <p> {{dataModel.APR_CA_Signature}}</p>
                                                     </td>
                                                     <td rowspan="3" width="111">
                                                         <p><u>Stamp/Seal</u></p>
+                                                        <p> {{dataModel.APR_CA_Stamp}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4448,7 +4464,7 @@
                                                             Registration number)</p>
                                                     </td>
                                                     <td colspan="2" width="265">
-                                                        <p>&nbsp;</p>
+                                                        <p>{{dataModel.APR_CA_FirmName}} {{dataModel.APR_CA_RegNo}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4456,13 +4472,14 @@
                                                         <p>Place:</p>
                                                     </td>
                                                     <td width="151">
-                                                        <p>&nbsp;</p>
+                                                        <p>{{dataModel.APR_CA_Place}}</p>
                                                     </td>
                                                     <td width="115">
                                                         <p>Date:</p>
                                                     </td>
                                                     <td width="151">
-                                                        <p>&nbsp;</p>
+                                                        <p>{{dataModel.APR_CA_Date | date:
+                                                            'dd-MM-yyyy'}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4728,7 +4745,8 @@
                                                         <p>Date</p>
                                                     </td>
                                                     <td width="24%">
-                                                        <p>{{dataModel.APR_CA_Date}}</p>
+                                                        <p>{{dataModel.APR_CA_Date | date:
+                                                            'dd-MM-yyyy'}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4742,13 +4760,117 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div id="pdfCAcertificateOld" #pdfCAcertificateOld style="display:none;">
+                                        <table width="100%" style="border:1px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="5" width="100%">
+                                                        <p><strong>Certificate of the statutory auditor (only in case of Indian Party) / self-certification in case Resident
+                                                            individuals (strike out whichever is not applicable)
+                                                            </strong></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" width="100%">
+                                                        <p>We hereby certify that:</p>
+                                                        <p [ngSwitch]="dataModel.APR_CA_A">
+                                                            <span *ngSwitchCase=true
+                                                                style="text-decoration: line-through;">
+                                                                i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                APR for the year ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}} is prepared on the basis of audited/
+                                                                unaudited balance sheet of the JV/WOS for the year ended
+                                                                {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}}.&nbsp;</span>
+                                                            <span *ngSwitchCase=false>
+                                                                i.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                APR for the year ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}} is prepared on the basis of audited/
+                                                                unaudited balance sheet of the JV/WOS for the year ended
+                                                                {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}}.&nbsp;</span>
+                                                            &nbsp;
+                                                        </p>
+                                                        <p [ngSwitch]="dataModel.APR_CA_B">&nbsp;&nbsp;
+                                                            ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span *ngSwitchCase=true
+                                                                style="text-decoration: line-through;">&nbsp;&nbsp;
+                                                                ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                APR for the year ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}} is prepared on the basis of unaudited
+                                                                balance
+                                                                sheet of the JV/WOS since audit is not mandatory in host country and in compliance with Regulation 15 (iii) read with 15 (v) of FEMA Notification ibid and Para 6 of &nbsp;<a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=7560&amp;amp;Mode=0">A.P. (DIR Series) Circular No. 29 dated September 12,</a>
+                                                            </span>
+                                                            <span *ngSwitchCase=false> &nbsp;&nbsp;
+                                                                ii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                APR for the year ended {{dataModel.APR_To_Date | date:
+                                                                'dd-MM-yyyy'}} is prepared on the basis of unaudited
+                                                                balance
+                                                                sheet of the JV/WOS since audit is not mandatory in host country and in compliance with Regulation 15 (iii) read with 15 (v) of FEMA Notification ibid and Para 6 of &nbsp;<a href="https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=7560&amp;amp;Mode=0">A.P. (DIR Series) Circular No. 29 dated September 12,</a>
+                                                          
+                                                            </span>
+                                                        </p>
+                                                        <p [ngSwitch]="dataModel.APR_CA_C">
+                                                            <span *ngSwitchCase=true
+                                                                style="text-decoration: line-through;"> &nbsp;
+                                                                iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                The IP repatriated to India, all dues receivable from the foreign entity, like dividend, royalty, technical know-how fees etc., within 60 days of its falling due or as prescribed by the Reserve Bank from time to time. Repatriation from the JV/WOS has been verified from the Foreign Inward Remittance Certificate issued by the AD bank/s.
+                                                            </span>
+                                                            <span *ngSwitchCase=false>&nbsp;
+                                                                iii.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                The IP repatriated to India, all dues receivable from the foreign entity, like dividend, royalty, technical know-how fees etc., within 60 days of its falling due or as prescribed by the Reserve Bank from time to time. Repatriation from the JV/WOS has been verified from the Foreign Inward Remittance Certificate issued by the AD bank/s.
+                                                          
+                                                            </span>
+                                                        </p>
 
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="39%">
+                                                        <p>Signature of  the  Statutory  Auditors  of
+                                                            the Indian Party
+                                                            </p>
+                                                    </td>
+                                                    <td colspan="2" width="42%">
+                                                        <p>{{dataModel.APR_CA_Signature}}</p>
+                                                    </td>
+                                                    <td rowspan="3" width="18%">
+                                                        <p><u>{{dataModel.APR_CA_Stamp}}</u></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="39%">
+                                                        <p>(Name  of  the  firm  and  Registration
+                                                            number)
+                                                            </p>
+                                                    </td>
+                                                    <td colspan="2" width="42%">
+                                                        <p> {{dataModel.APR_CA_FirmName}} {{dataModel.APR_CA_RegNo}}
+                                                            </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="14%">
+                                                        <p>Place</p>
+                                                    </td>
+                                                    <td width="24%">
+                                                        <p>{{dataModel.APR_CA_Place}}</p>
+                                                    </td>
+                                                    <td width="18%">
+                                                        <p>Date</p>
+                                                    </td>
+                                                    <td width="24%">
+                                                        <p>{{dataModel.APR_CA_Date | date:
+                                                            'dd-MM-yyyy'}}</p>
+                                                    </td>
+                                                </tr>
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </tab>
-
                         </tabset>
-
-
                     </div>
                 </nav>
                 <div class="text-center p-3">

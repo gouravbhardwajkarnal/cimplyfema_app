@@ -888,6 +888,7 @@ export class FormAprComponent implements OnInit {
   @ViewChild('pdfCovering') pdfCovering: ElementRef;
   @ViewChild('pdfTableAPROld') pdfTableAPROld: ElementRef;
   @ViewChild('pdfCAcertificate') pdfCAcertificate: ElementRef;
+  @ViewChild('pdfCAcertificateOld') pdfCAcertificateOld: ElementRef;
   
   
   downloadAsPDFAPROld() {
@@ -951,6 +952,23 @@ export class FormAprComponent implements OnInit {
 
     const doc = new jsPDF();
     const pdfTable = this.pdfCAcertificate.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+
+  }
+  async ExportWordpdfCAcertificateOld() {
+    const pdfTable = this.pdfCAcertificateOld.nativeElement;
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'AuditorCertificateOld.docx');
+  }
+  downloadpdfCAcertificateOld() {
+
+    const doc = new jsPDF();
+    const pdfTable = this.pdfCAcertificateOld.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML);
     const documentDefinition = { content: html };
     pdfMake.createPdf(documentDefinition).open();

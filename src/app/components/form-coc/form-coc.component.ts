@@ -37,6 +37,9 @@ import {
   COC_LiasonAnnualActivityList,
 } from 'src/app/model/COCFdi.model';
 import { asBlob } from 'html-docx-js-typescript';
+
+import { ConfirmedValidator } from '../../service/gstpan.validator';
+
 @Component({
   selector: 'app-form-coc',
   templateUrl: './form-coc.component.html',
@@ -113,6 +116,7 @@ export class FormCocComponent implements OnInit {
   step5ECBForm: boolean = false;
   step5LiasionForm: boolean = false;
   step5disable: boolean = false;
+  step5FormName: string = '';
 
   COC_ECBDetailsArray: Array<COC_ECBDetailsList> = [];
   COC_ECBDetailsData: any = {};
@@ -287,120 +291,128 @@ export class FormCocComponent implements OnInit {
     this.secondFormGroup = this.fb.group({
       secondCtrl: ['', Validators.required],
     });
-    this.COC_FDIFormlist = this.fb.group({
-      COC_FDICIN: new FormControl('', Validators.required),
-      COC_FDI_CompanyName: new FormControl('', Validators.required),
-      COC_FDIIncorporationDate: new FormControl('', Validators.required),
-      COC_FDIBusPanNo: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
-      ]),
-      COC_FDIRegOfficeAddress: new FormControl('', Validators.required),
-      COC_FDICity: new FormControl('', Validators.required),
-      COC_FDIState: new FormControl('', Validators.required),
-      COC_FDIPincode: new FormControl('', Validators.required),
-      COC_FDI_Email: new FormControl('', [
-        Validators.required,
-        Validators.email,
-      ]),
-      COC_FDIMobile: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(15),
-        Validators.minLength(10),
-      ]),
-      COC_FDITelephone: new FormControl('', Validators.required),
-      COC_FDIFAX: new FormControl('', Validators.required),
-      COC_FDI_AuthPerson: new FormControl('', Validators.required),
-      COC_FDI_AuthPersonAddress: new FormControl('', Validators.required),
-      COC_FDI_AuthPAN: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(15),
-        Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
-      ]),
+    this.COC_FDIFormlist = this.fb.group(
+      {
+        COC_FDICIN: new FormControl('', Validators.required),
+        COC_FDI_CompanyName: new FormControl('', Validators.required),
+        COC_FDIIncorporationDate: new FormControl('', Validators.required),
+        COC_FDIBusPanNo: new FormControl('', [
+          Validators.required,
+          Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
+          // this.gstpanValidator
+        ]),
+        COC_FDIRegOfficeAddress: new FormControl('', Validators.required),
+        COC_FDICity: new FormControl('', Validators.required),
+        COC_FDIState: new FormControl('', Validators.required),
+        COC_FDIPincode: new FormControl('', Validators.required),
+        COC_FDI_Email: new FormControl('', [
+          Validators.required,
+          Validators.email,
+        ]),
+        COC_FDIMobile: new FormControl('', [
+          Validators.required,
+          Validators.maxLength(15),
+          Validators.minLength(10),
+        ]),
+        COC_FDITelephone: new FormControl('', Validators.required),
+        COC_FDIFAX: new FormControl('', Validators.required),
+        COC_FDI_AuthPerson: new FormControl('', Validators.required),
+        COC_FDI_AuthPersonAddress: new FormControl('', Validators.required),
+        COC_FDI_AuthPAN: new FormControl('', [
+          Validators.required,
+          Validators.maxLength(15),
+          Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
+        ]),
 
-      COC_FDI_AuthDesignation: new FormControl('', Validators.required),
-      COC_FDI_BusinessAct: new FormControl('', Validators.required),
-      SelectCOC_FDINICCodeDesDetails: new FormArray([]),
-      COC_FDIFemaRegNoDetails: new FormArray([]),
-      COC_FDIGSTNo: new FormControl('', [
-        Validators.required,
-        Validators.pattern(
-          '^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$'
+        COC_FDI_AuthDesignation: new FormControl('', Validators.required),
+        COC_FDI_BusinessAct: new FormControl('', Validators.required),
+        SelectCOC_FDINICCodeDesDetails: new FormArray([]),
+        COC_FDIFemaRegNoDetails: new FormArray([]),
+        COC_FDIGSTNo: new FormControl('', [
+          Validators.required,
+          Validators.pattern(
+            '^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$'
+          ),
+          // this.gstpanValidator
+        ]),
+        SelectCOC_FDICenResDetails: new FormArray([]),
+        COC_FDI_CompoundSubject: new FormControl('', Validators.required),
+        COC_FDI_CompoundRef: new FormControl('', Validators.required),
+        COC_FDI_CompoundAppFee: new FormControl(
+          'INR 5000',
+          Validators.required
         ),
-      ]),
-      SelectCOC_FDICenResDetails: new FormArray([]),
-      COC_FDI_CompoundSubject: new FormControl('', Validators.required),
-      COC_FDI_CompoundRef: new FormControl('', Validators.required),
-      COC_FDI_CompoundAppFee: new FormControl('INR 5000', Validators.required),
-      COC_FDI_CompoundDemandNo: new FormControl('', Validators.required),
-      COC_FDI_CompoundDemandDate: new FormControl(
-        formatDate(new Date(), 'yyyy-MM-dd', 'en'),
-        Validators.required
-      ),
-      COC_FDI_CompoundCity: new FormControl('', Validators.required),
-      //COC_FDI_CompSubBackground:new FormControl('', Validators.required),
-      BackSubmissionDetails: new FormArray([]),
-      TransactionSubmissionDetails: new FormArray([]),
-      RegulatorySubmissionDetails: new FormArray([]),
-      DelayReasonsSubmissionDetails: new FormArray([]),
-      PetitionRequestSubmissionDetails: new FormArray([]),
-      COC_FDIODITabADetails: new FormArray([]),
-      TableATotAmount: new FormControl(
-        this.TableATotAmountData,
-        Validators.required
-      ),
-      COC_FDIODITableBDetails: new FormArray([]),
-      COC_FDIODITableCDetails: new FormArray([]),
-      COC_FDIODIAuthorisedCapitalDetails: new FormArray([]),
-      COC_FDIODIName: new FormControl('', Validators.required),
-      COC_FDIODIDate: new FormControl('', Validators.required),
-      COC_FDIODIPAN: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
-      ]),
+        COC_FDI_CompoundDemandNo: new FormControl('', Validators.required),
+        COC_FDI_CompoundDemandDate: new FormControl(
+          formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+          Validators.required
+        ),
+        COC_FDI_CompoundCity: new FormControl('', Validators.required),
+        //COC_FDI_CompSubBackground:new FormControl('', Validators.required),
+        BackSubmissionDetails: new FormArray([]),
+        TransactionSubmissionDetails: new FormArray([]),
+        RegulatorySubmissionDetails: new FormArray([]),
+        DelayReasonsSubmissionDetails: new FormArray([]),
+        PetitionRequestSubmissionDetails: new FormArray([]),
+        COC_FDIODITabADetails: new FormArray([]),
+        TableATotAmount: new FormControl(
+          this.TableATotAmountData,
+          Validators.required
+        ),
+        COC_FDIODITableBDetails: new FormArray([]),
+        COC_FDIODITableCDetails: new FormArray([]),
+        COC_FDIODIAuthorisedCapitalDetails: new FormArray([]),
+        COC_FDIODIName: new FormControl('', Validators.required),
+        COC_FDIODIDate: new FormControl('', Validators.required),
+        COC_FDIODIPAN: new FormControl('', [
+          Validators.required,
+          Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
+        ]),
 
-      // New fields
-      COC_FDIODIActivities: new FormControl('', Validators.required),
-      COC_FDIODIaboutforegien: new FormControl('', Validators.required),
-      COC_FDIODIDetailforeign: new FormControl('', Validators.required),
-      COC_FDIODIBalanceSheetCopy: new FormControl('', Validators.required),
-      COC_FDIODIContraventionNature: new FormControl('', Validators.required),
-      COC_FDIODIContraventionReason: new FormControl('', Validators.required),
+        // New fields
+        COC_FDIODIActivities: new FormControl('', Validators.required),
+        COC_FDIODIaboutforegien: new FormControl('', Validators.required),
+        COC_FDIODIDetailforeign: new FormControl('', Validators.required),
+        COC_FDIODIBalanceSheetCopy: new FormControl('', Validators.required),
+        COC_FDIODIContraventionNature: new FormControl('', Validators.required),
+        COC_FDIODIContraventionReason: new FormControl('', Validators.required),
 
-      //Step 5 ECB
-      COC_ECBApplicantBorrower: new FormControl('', Validators.required),
-      COC_ECBLenderEligible: new FormControl('', Validators.required),
-      COC_ECBLenderEquityHolder: new FormControl('', Validators.required),
-      COC_ECBHoldingLevel: new FormControl('', Validators.required),
-      COC_ECBDetailsTable: new FormArray([]),
-      COC_ECBLoanDate: new FormControl('', Validators.required),
-      COC_ECBIntrestRate: new FormControl('', Validators.required),
-      COC_ECBLoanPeriod: new FormControl('', Validators.required),
-      COC_ECBRepaymentTable: new FormArray([]),
+        //Step 5 ECB
+        COC_ECBApplicantBorrower: new FormControl('', Validators.required),
+        COC_ECBLenderEligible: new FormControl('', Validators.required),
+        COC_ECBLenderEquityHolder: new FormControl('', Validators.required),
+        COC_ECBHoldingLevel: new FormControl('', Validators.required),
+        COC_ECBDetailsTable: new FormArray([]),
+        COC_ECBLoanDate: new FormControl('', Validators.required),
+        COC_ECBIntrestRate: new FormControl('', Validators.required),
+        COC_ECBLoanPeriod: new FormControl('', Validators.required),
+        COC_ECBRepaymentTable: new FormArray([]),
 
-      // Step 5 ODI
-      COC_ODIOverseasEntity: new FormControl('', Validators.required),
-      COC_ODIOverseasEntityDate: new FormControl('', Validators.required),
-      COC_ODIOverseasActivities: new FormControl('', Validators.required),
-      COC_ODIEntityNature: new FormControl('', Validators.required),
-      COC_ODIRemittanceDetailsTable: new FormArray([]),
-      COC_ODIFinancialDetails: new FormControl('', Validators.required),
-      COC_ODIUinDetails: new FormControl('', Validators.required),
-      COC_ODIReceiptShareTable: new FormArray([]),
-      COC_ODIRegulatorsApproval: new FormControl('', Validators.required),
-      COC_ODIAprsDetailTable: new FormArray([]),
-      COC_ODIContraventionNature: new FormControl('', Validators.required),
-      COC_ODIContraventionReason: new FormControl('', Validators.required),
-      COC_ODISuppDocuments: new FormControl('', Validators.required),
+        // Step 5 ODI
+        COC_ODIOverseasEntity: new FormControl('', Validators.required),
+        COC_ODIOverseasEntityDate: new FormControl('', Validators.required),
+        COC_ODIOverseasActivities: new FormControl('', Validators.required),
+        COC_ODIEntityNature: new FormControl('', Validators.required),
+        COC_ODIRemittanceDetailsTable: new FormArray([]),
+        COC_ODIFinancialDetails: new FormControl('', Validators.required),
+        COC_ODIUinDetails: new FormControl('', Validators.required),
+        COC_ODIReceiptShareTable: new FormArray([]),
+        COC_ODIRegulatorsApproval: new FormControl('', Validators.required),
+        COC_ODIAprsDetailTable: new FormArray([]),
+        COC_ODIContraventionNature: new FormControl('', Validators.required),
+        COC_ODIContraventionReason: new FormControl('', Validators.required),
+        COC_ODISuppDocuments: new FormControl('', Validators.required),
 
-      // Step 5 Liason
-      COC_LiasonOfficeDetailTable: new FormArray([]),
-      COC_LiasonIncomeExpenditure: new FormControl('', Validators.required),
-      COC_LiasonAnnualActivityTable: new FormArray([]),
-      COC_LiasonContraventionNature: new FormControl('', Validators.required),
-      COC_LiasonContraventionReason: new FormControl('', Validators.required),
-      COC_LiasonSuppDocuments: new FormControl('', Validators.required),
-    });
+        // Step 5 Liason
+        COC_LiasonOfficeDetailTable: new FormArray([]),
+        COC_LiasonIncomeExpenditure: new FormControl('', Validators.required),
+        COC_LiasonAnnualActivityTable: new FormArray([]),
+        COC_LiasonContraventionNature: new FormControl('', Validators.required),
+        COC_LiasonContraventionReason: new FormControl('', Validators.required),
+        COC_LiasonSuppDocuments: new FormControl('', Validators.required),
+      },
+      { validator: ConfirmedValidator('COC_FDIBusPanNo', 'COC_FDIGSTNo') }
+    );
 
     // Step-5 ECB Form
     this.COC_ECBDetailsData = {
@@ -884,22 +896,39 @@ export class FormCocComponent implements OnInit {
     switch (selectedModuleId) {
       case 1:
         this.step5FdiForm = true;
+        this.step5OdiForm = false;
+        this.step5ECBForm = false;
+        this.step5LiasionForm = false;
         this.step5disable = false;
+        this.step5FormName = 'FDI Annexure';
         break;
       case 2:
         this.step5OdiForm = true;
+        this.step5FdiForm = false;
+        this.step5ECBForm = false;
+        this.step5LiasionForm = false;
         this.step5disable = false;
+        this.step5FormName = 'ODI Annexure';
         break;
       case 3:
         this.step5ECBForm = true;
+        this.step5FdiForm = false;
+        this.step5OdiForm = false;
+        this.step5LiasionForm = false;
         this.step5disable = false;
+        this.step5FormName = 'ECB Annexure';
         break;
       case 4:
         this.step5LiasionForm = true;
+        this.step5FdiForm = false;
+        this.step5OdiForm = false;
+        this.step5ECBForm = false;
         this.step5disable = false;
+        this.step5FormName = 'LO/BO/PO Annexure';
         break;
       default:
         this.step5disable = true;
+        this.step5FormName = '';
     }
     //this.multiSelect.toggleSelectAll();
     if (selectedModule.id == 1) {
@@ -1170,7 +1199,10 @@ export class FormCocComponent implements OnInit {
         'COC_FDI_AuthDesignation',
       ];
       let check = true;
-      console.log(this.COC_FDIFormlist);
+      console.log(
+        this.COC_FDIFormlist,
+        this.COC_FDIFormlist.get('COC_FDIBusPanNo').value
+      );
       key.map((item) => {
         if (this.COC_FDIFormlist.controls[item].status == 'INVALID') {
           this.COC_FDIFormlist.controls[item].markAsTouched();
@@ -1180,7 +1212,7 @@ export class FormCocComponent implements OnInit {
         }
       });
       if (check) {
-      this.COC_FDICompoundingDetails = true;
+        this.COC_FDICompoundingDetails = true;
       }
     }
     if (Val == '4') {
@@ -1203,6 +1235,21 @@ export class FormCocComponent implements OnInit {
     this.NICCodeListShow = this.NICCodeList.filter((x) => x.Year == year);
     this.ActiveTab = year;
   }
+
+  // gstpanValidator(pan:string,gst:any) {
+  //   console.log("control",pan,gst)
+  //   let gstNo = '';
+  //   if (gstNo && gstNo.length > 0 && gstNo.slice(2,12)!=pan) {
+  //     console.log("inn vv")
+  //     gst.setErrors({ gstpanError: true });
+  //     // return {
+  //     //   gstpanError: {
+  //     //     enteredGst: gstNo
+  //     //   }
+  //     // }
+  //   }
+  //   return null;
+  // }
 
   searchNicCode(event: any) {
     console.log(typeof event.target.value);

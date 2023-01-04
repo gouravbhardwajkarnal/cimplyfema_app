@@ -78,7 +78,7 @@
     </div>
     <div class="md-step active" [ngClass]="step5disable ? 'disabled' : ''">
       <div class="md-step-circle"><span>5</span></div>
-      <div class="md-step-title">FDI/ODI/ECB/LO BO PO Form Details</div>
+      <div class="md-step-title">{{ step5FormName }}</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
@@ -318,6 +318,16 @@
                     "
                   >
                     Invalid GST Number Format
+                  </div>
+
+                  <div
+                    *ngIf="
+                      COC_FDIFormlist.get('COC_FDIGSTNo').errors[
+                        'confirmedValidator'
+                      ]
+                    "
+                  >
+                    GST and PAN Number do not match
                   </div>
                 </div>
               </div>
@@ -4284,7 +4294,9 @@
                 <td colspan="2" width="486">
                   <p>
                     <strong>{{
-                      COC_FDIFormlist.get("COC_FDI_CompanyName").value.toUpperCase()
+                      COC_FDIFormlist.get(
+                        "COC_FDI_CompanyName"
+                      ).value.toUpperCase()
                     }}</strong>
                   </p>
                 </td>
@@ -4789,7 +4801,7 @@
         >
           <p><strong>Annexure&nbsp;5</strong></p>
           <p><strong>&nbsp;</strong></p>
-          <p>{{todayDate}}</p>
+          <p>{{ todayDate }}</p>
           <p>&nbsp;</p>
           <p>To</p>
           <p>
@@ -4818,10 +4830,15 @@
           </p>
           <p><strong>&nbsp;</strong></p>
           <p>
-            We hereby authorise <strong> {{COC_FDIFormlist.get('COC_FDI_AuthPerson').value}}</strong
-            >having their
-            office at <strong>{{COC_FDIFormlist.get('COC_FDI_AuthPersonAddress').value}}</strong>(referred to as &ldquo;Authorised Representatives&rdquo;),
-            to appear and represent us before the Reserve Bank of India
+            We hereby authorise
+            <strong>
+              {{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}</strong
+            >having their office at
+            <strong>{{
+              COC_FDIFormlist.get("COC_FDI_AuthPersonAddress").value
+            }}</strong
+            >(referred to as &ldquo;Authorised Representatives&rdquo;), to
+            appear and represent us before the Reserve Bank of India
             (&lsquo;RBI&rsquo;), in connection with our application for
             compounding under the Foreign Exchange Management Act, 1999 (the
             &lsquo;Application&rsquo;).
@@ -4843,18 +4860,28 @@
           <p>Yours sincerely,</p>
           <p>
             <strong
-              >For {{ COC_FDIFormlist.get("COC_FDI_CompanyName").value }}</strong
+              >For
+              {{ COC_FDIFormlist.get("COC_FDI_CompanyName").value }}</strong
             >
           </p>
           <!-- <p><strong>&nbsp;</strong></p> -->
           <!-- <p><strong>&nbsp;</strong></p> -->
           <p><strong>&nbsp;</strong></p>
-          <p><strong>{{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}/{{
-            COC_FDIFormlist.get("COC_FDI_AuthDesignation").value
-          }}</strong></p>
+          <p>
+            <strong
+              >{{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}/{{
+                COC_FDIFormlist.get("COC_FDI_AuthDesignation").value
+              }}</strong
+            >
+          </p>
           <p><strong>[Authorised Signatory / Director]</strong></p>
           <p>&nbsp;</p>
-          <p><strong>Place:&nbsp; {{ COC_FDIFormlist.get("COC_FDICity").value.city }}</strong></p>
+          <p>
+            <strong
+              >Place:&nbsp;
+              {{ COC_FDIFormlist.get("COC_FDICity").value.city }}</strong
+            >
+          </p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
@@ -4873,7 +4900,7 @@
             <strong><em>&nbsp;</em></strong>
           </p>
           <p>
-            <strong>{{todayDate}}</strong>
+            <strong>{{ todayDate }}</strong>
           </p>
           <p>&nbsp;</p>
           <p>To</p>
@@ -4930,19 +4957,35 @@
           <p>(* Strike out one)</p>
           <p>&nbsp;</p>
           <p>Yours sincerely,</p>
-          <p><strong>For {{ COC_FDIFormlist.get("COC_FDI_CompanyName").value }}</strong></p>
+          <p>
+            <strong
+              >For
+              {{ COC_FDIFormlist.get("COC_FDI_CompanyName").value }}</strong
+            >
+          </p>
           <p><strong>&nbsp;</strong></p>
           <p><strong>&nbsp;</strong></p>
-          <p><strong>{{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}/{{
-            COC_FDIFormlist.get("COC_FDI_AuthDesignation").value
-          }}</strong></p>
+          <p>
+            <strong
+              >{{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}/{{
+                COC_FDIFormlist.get("COC_FDI_AuthDesignation").value
+              }}</strong
+            >
+          </p>
           <p>&nbsp;</p>
-          <p><strong>Place:&nbsp; {{ COC_FDIFormlist.get("COC_FDICity").value.city }}</strong></p>
-          <p><strong>Date:&nbsp; {{todayDate}}</strong></p>
+          <p>
+            <strong
+              >Place:&nbsp;
+              {{ COC_FDIFormlist.get("COC_FDICity").value.city }}</strong
+            >
+          </p>
+          <p>
+            <strong>Date:&nbsp; {{ todayDate }}</strong>
+          </p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
         </div>
-        
+
         <div
           style="padding: 30px; font-family: Calibri; font-size: 11pt"
           id="pdfTable7"
@@ -5005,7 +5048,7 @@
                   <p>Name of the Bank</p>
                 </td>
                 <td width="347">
-                  <p>XXXXXXXX</p>
+                  <p></p>
                 </td>
               </tr>
               <tr>
@@ -5019,7 +5062,7 @@
                   <p>Name of the Branch</p>
                 </td>
                 <td width="347">
-                  <p>XXXXXXXX</p>
+                  <p></p>
                 </td>
               </tr>
               <tr>
@@ -5033,7 +5076,9 @@
                   <p>Address</p>
                 </td>
                 <td width="347">
-                  <p>XXXXXXXX</p>
+                  <p>
+                    {{ COC_FDIFormlist.get("COC_FDIRegOfficeAddress").value }}
+                  </p>
                 </td>
               </tr>
               <tr>
@@ -5047,7 +5092,7 @@
                   <p>Telephone no.</p>
                 </td>
                 <td width="347">
-                  <p>XXXXXXXX</p>
+                  <p>{{ COC_FDIFormlist.get("COC_FDITelephone").value }}</p>
                 </td>
               </tr>
               <tr>
@@ -5064,7 +5109,7 @@
                   </p>
                 </td>
                 <td width="347">
-                  <p>XXXXXXXX</p>
+                  <p></p>
                 </td>
               </tr>
               <tr>
@@ -5078,7 +5123,7 @@
                   <p>IFSC Code</p>
                 </td>
                 <td width="347">
-                  <p>XXXXXXXX</p>
+                  <p></p>
                 </td>
               </tr>
               <tr>
@@ -5092,7 +5137,7 @@
                   <p>Type of Account (Strike Off whichever not applicable)</p>
                 </td>
                 <td width="347">
-                  <p>XXXXXXXX</p>
+                  <p></p>
                 </td>
               </tr>
               <tr>
@@ -5109,7 +5154,7 @@
                   </p>
                 </td>
                 <td width="347">
-                  <p>XXXXXXXX</p>
+                  <p></p>
                 </td>
               </tr>
               <tr>
@@ -5134,14 +5179,30 @@
           </p>
           <p>&nbsp;</p>
           <p>Yours sincerely,</p>
-          <p><strong>For XXXXXXXXXX</strong></p>
+          <p>
+            <strong
+              >For
+              {{ COC_FDIFormlist.get("COC_FDI_CompanyName").value }}</strong
+            >
+          </p>
           <p><strong>&nbsp;</strong></p>
           <p><strong>&nbsp;</strong></p>
           <p><strong>&nbsp;</strong></p>
           <p><strong>&nbsp;</strong></p>
-          <p><strong>XXXXXXXXXX</strong></p>
+          <p>
+            <strong
+              >{{ COC_FDIFormlist.get("COC_FDI_AuthPerson").value }}/{{
+                COC_FDIFormlist.get("COC_FDI_AuthDesignation").value
+              }}</strong
+            >
+          </p>
           <p><strong>[Designation]</strong></p>
-          <p><strong>Place:&nbsp; XXXXXXXXXX</strong></p>
+          <p>
+            <strong
+              >Place:&nbsp;
+              {{ COC_FDIFormlist.get("COC_FDICity").value.city }}</strong
+            >
+          </p>
           <p><strong>&nbsp;</strong></p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>

@@ -146,6 +146,9 @@ export class FormCocComponent implements OnInit {
     .reverse()
     .join('/');
 
+  contraventionNatureArray: any = [];
+  contraventionReasonArray: any = [];
+
   constructor(
     private commonservice: CommonService,
     private fb: FormBuilder,
@@ -362,6 +365,7 @@ export class FormCocComponent implements OnInit {
         COC_FDIODITableBDetails: new FormArray([]),
         COC_FDIODITableCDetails: new FormArray([]),
         COC_FDIODIAuthorisedCapitalDetails: new FormArray([]),
+
         COC_FDIODIName: new FormControl('', Validators.required),
         COC_FDIODIDate: new FormControl('', Validators.required),
         COC_FDIODIPAN: new FormControl('', [
@@ -369,11 +373,23 @@ export class FormCocComponent implements OnInit {
           Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'),
         ]),
 
+        // common fields
+        COC_contraventionNature: new FormControl([], Validators.required),
+        COC_contraventionReason: new FormControl([], Validators.required),
         // New fields
         COC_FDIODIActivities: new FormControl('', Validators.required),
-        COC_FDIODIaboutforegien: new FormControl('', Validators.required),
-        COC_FDIODIDetailforeign: new FormControl('', Validators.required),
-        COC_FDIODIBalanceSheetCopy: new FormControl('', Validators.required),
+        COC_FDIODIaboutforegien: new FormControl(
+          'Provided in the format below',
+          Validators.required
+        ),
+        COC_FDIODIDetailforeign: new FormControl(
+          'Provided in the format below',
+          Validators.required
+        ),
+        COC_FDIODIBalanceSheetCopy: new FormControl(
+          'Enclosed',
+          Validators.required
+        ),
         COC_FDIODIContraventionNature: new FormControl('', Validators.required),
         COC_FDIODIContraventionReason: new FormControl('', Validators.required),
 
@@ -780,17 +796,46 @@ export class FormCocComponent implements OnInit {
     let itemExist = this.SelectCOC_FDINICCodeDesArray.findIndex(
       (nicCode) => nicCode.Class === item.Class
     );
-    if (item.status == true) {
-      item.status = false;
+
+    if (item.SelectedValue == true) {
+      this.NICCodeListShow.forEach(function (checkbox) {
+        if (checkbox.Class !== item.Class) {
+          checkbox.status = !checkbox.status;
+        }
+        if (checkbox.Class == item.Class) {
+          checkbox.SelectedValue = true;
+          item.SelectedValue = false;
+        }
+      });
       this.SelectCOC_FDINICCodeDesArray.splice(itemExist, 1);
     } else {
-      item.status = true;
       this.SelectCOC_FDINICCodeDesArray.push({
         Year: item.Year,
         Class: item.Class,
         DescriptionClass: item.DescriptionClass,
+        SelectedValue: true,
+      });
+      this.NICCodeListShow.forEach(function (checkbox) {
+        if (checkbox.Class !== item.Class) {
+          checkbox.status = !checkbox.status;
+        }
+        if (checkbox.Class == item.Class) {
+          checkbox.SelectedValue = true;
+        }
       });
     }
+
+    // if (item.status == true) {
+    //   item.status = false;
+    //   this.SelectCOC_FDINICCodeDesArray.splice(itemExist, 1);
+    // } else {
+    //   item.status = true;
+    //   this.SelectCOC_FDINICCodeDesArray.push({
+    //     Year: item.Year,
+    //     Class: item.Class,
+    //     DescriptionClass: item.DescriptionClass,
+    //   });
+    // }
   }
 
   SelectAllNicCodes(event: any) {
@@ -970,6 +1015,7 @@ export class FormCocComponent implements OnInit {
       });
     }
     this.OpenFdiForm(items);
+    this.contraventionNatureArray = this.SubmodulenameArray;
   }
 
   OpenFdiForm(selectedModule?: any) {
@@ -997,12 +1043,14 @@ export class FormCocComponent implements OnInit {
       }
     }
     this.OpenFdiForm(); // TO close the tab if nothing is selected
+    this.contraventionNatureArray = this.SubmodulenameArray;
   }
 
   // Unselect all subModules in header dropdown
   onUnSelectAll() {
     this.SubmodulenameArray.length = 0;
     this.OpenFdiForm(); // To close the tab if nothing is selected
+    this.contraventionNatureArray = this.SubmodulenameArray;
   }
 
   onSubModuleSelect(selectedSubModule, val) {
@@ -1031,6 +1079,8 @@ export class FormCocComponent implements OnInit {
     });
     //this.BackSubmissionArray.push({COC_FDI_Background:this.FemaRegulationsList.filter(x=>x.FEMARegulationNoSubtopics===selectedSubModule.name)[0].BackgroundB});
     this.OpenFdiForm(selectedSubModule);
+    this.contraventionNatureArray = this.SubmodulenameArray;
+    console.log('this.contraventionNatureArray', this.contraventionNatureArray);
   }
 
   // Check agree checkbox in instruction
@@ -1167,6 +1217,12 @@ export class FormCocComponent implements OnInit {
         }
       }
       console.log('this.BackSubmissionArray', this.BackSubmissionArray);
+      this.contraventionReasonArray = this.DelayReasonsSubmissionArray;
+
+      console.log(
+        'this.contraventionReasonArray',
+        this.contraventionReasonArray
+      );
     }
     if (Val == '1') {
       this.COC_FDIInstructions = true;
@@ -1379,6 +1435,22 @@ export class FormCocComponent implements OnInit {
     this.COC_FDIFormlist.setControl(
       'COC_LiasonAnnualActivityTable',
       LiasonAnnual
+    );
+
+    const contraventionNature: FormArray = this.fb.array(
+      this.contraventionNatureArray
+    );
+    this.COC_FDIFormlist.setControl(
+      'COC_contraventionNature',
+      contraventionNature
+    );
+
+    const contraventionReason: FormArray = this.fb.array(
+      this.contraventionReasonArray
+    );
+    this.COC_FDIFormlist.setControl(
+      'COC_contraventionReason',
+      contraventionReason
     );
 
     console.log(this.COC_FDIFormlist.value);

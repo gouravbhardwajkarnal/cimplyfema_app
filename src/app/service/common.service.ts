@@ -45,10 +45,15 @@ export class CommonService {
         { id: 5, name: "OPI – Alternate Investment Fund (AIF)" },
     ];
     fctypes: DisinvetmentType[] = [
-        { id: 1, name: "Form FC (Section A-E) - Overseas Direct Investments (ODI)" },
-        { id: 2, name: "Form FC (Section F) - ODI Restructuring" },
-        { id: 3, name: "Form FC (Section G) - ODI Disinvestment" },
-        { id: 4, name: "Form FC (Section A-G) - ODI Investment-cum-Disinvestment" },
+        // { id: 1, name: "Form FC (Section A-E) - Overseas Direct Investments (ODI)" },
+        // { id: 2, name: "Form FC (Section F) - ODI Restructuring" },
+        // { id: 3, name: "Form FC (Section G) - ODI Disinvestment" },
+        // { id: 4, name: "Form FC (Section A-G) - ODI Investment-cum-Disinvestment" },
+        { id: 1, name: "Form FC (Section A-E) - ODI Fresh Remittance" },
+        { id: 2, name: "Form FC (Section B-E) - ODI Subsequent Remittance" },
+        { id: 3, name: "Form FC (Section F) - ODI Restructuring" },
+        { id: 4, name: "Form FC (Section G) - ODI Disinvestment" },
+        { id: 5, name: "Form FC (Section A-E & G) - ODI Investment-cum-Disinvestment" },
     ];
     modules: Modules[] = [
         { id: 1, name: "Foreign Direct Investment" },

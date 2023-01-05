@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Iinvestment, IinvestmentSDS, IinvestmentWOS } from 'src/app/model/iinvestment';
@@ -11,6 +11,13 @@ import { FCFormService } from 'src/app/service/formfc.service';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import jsPDF from 'jspdf';
+import htmlToPdfmake from 'html-to-pdfmake';
+import { asBlob } from 'html-docx-js-typescript';
+import { saveAs } from 'file-saver';
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
 @Component({
@@ -35,6 +42,7 @@ export class FormFcComponent implements OnInit {
   investment_model: Iinvestment;
   @Input() name: string;
   @ViewChild('tabset') tabset: TabsetComponent;
+  @ViewChild('tabset') tabsetsubmenu: TabsetComponent;
   dynamicArray: Array<DynamicGrid> = [];
   sumFCArray: Array<SumFCGrid> = [];
   FCDisinvestmentArray: Array<FCDisinvestmentGrid> = [];
@@ -65,12 +73,13 @@ export class FormFcComponent implements OnInit {
   dataModel: any = {};
   NICCodeListShow: any = [];
   NICCodeListShowWOS: any = [];
-  cityListShow:any=[];
+  cityListShow: any = [];
   NICCodeList: any = [];
   NICCodeListWOS: any = [];
   SelectFC_FDINICCodeDesArray: any = [];
   WOSFC_FDINICCodeDesArray: any = [];
   ActiveTab: number = 1987;
+  emailPattern: string;
   // investment_model: IinvestmentWOS;
   Jurisdictiontypes: DisinvetmentType[];
   accountingtypes: DisinvetmentType[];
@@ -90,6 +99,7 @@ export class FormFcComponent implements OnInit {
     this.Today = new Date();
     this.btnShowNext = true;
     this.readBank();
+    this.emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
     this.readNICCodeDes();
     this.readCountry();
     this.sdstypes = commonservice.getAllsdstypes();
@@ -104,18 +114,20 @@ export class FormFcComponent implements OnInit {
       investorForm: new FormGroup({
         'investor_CIN': new FormControl('', Validators.required),
         'investor_name': new FormControl('', Validators.required),
-        'investor_pan': new FormControl('', Validators.required),
+        'investor_pan': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'), Validators.maxLength(10)]),
         'investor_LEI': new FormControl('', Validators.required),
         'investor_GroupIE': new FormControl('', Validators.required),
         'investor_Address': new FormControl('', Validators.required),
         'investor_State': new FormControl('', Validators.required),
         'investor_City': new FormControl('', Validators.required),
-        'investor_Pin': new FormControl('', Validators.required),
+        'investor_Pin': new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{6}"), Validators.minLength(6),
+        Validators.maxLength(6)]),
         'investor_ContactPerson': new FormControl('', Validators.required),
         'investor_CPDesignation': new FormControl('', Validators.required),
         'investor_TelephoneNumber': new FormControl('', Validators.required),
-        'investor_Mobile': new FormControl('', Validators.required),
-        'investor_Email': new FormControl('', Validators.required),
+        'investor_Mobile': new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{10}"), Validators.minLength(10),
+        Validators.maxLength(10)]),
+        'investor_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
         'investor_NetworthAmount': new FormControl('', Validators.required),
         'investor_NetworthDate': new FormControl('', Validators.required),
       }),
@@ -126,14 +138,14 @@ export class FormFcComponent implements OnInit {
         'investment_WOS_LEI': new FormControl('', Validators.required),
         'investment_ControlFE': new FormControl('', Validators.required),
         'investment_AccountingYear': new FormControl('', Validators.required),
-        'investment_WOS_Email': new FormControl('', Validators.required),
+        'investment_WOS_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       }),
       Declarationform: new FormGroup({
         'investment_Individual_Place': new FormControl('', Validators.required),
         'investment_Individual_Date': new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
         'investment_Individual_Stamp': new FormControl(''),
         'investment_Individual_Telephone': new FormControl(''),
-        'investment_Individual_Email': new FormControl('', Validators.required),
+        'investment_Individual_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
         'investment_individual_A': new FormControl(''),
         'investment_individual_B': new FormControl(''),
         'investment_individual_C': new FormControl(''),
@@ -151,7 +163,7 @@ export class FormFcComponent implements OnInit {
         'investment_Group_Date': new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
         'investment_Group_Stamp': new FormControl(''),
         'investment_Group_Telephone': new FormControl(''),
-        'investment_Group_Email': new FormControl('', Validators.required),
+        'investment_Group_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       })
     });
     this.readCity();
@@ -361,59 +373,61 @@ export class FormFcComponent implements OnInit {
   updateNext() {
     debugger;
     if (Number(this.typeshow) == 0) {
-      this.toastr.warning("Please select investor type", 'Warning', {
+      this.toastr.warning("Please select investment type", 'Warning', {
         closeButton: true,
         positionClass: 'toast-top-right'
       });
     } else {
       this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
       let count = this.tabset.tabs.length;
-      if (Number(this.typeshow) == 1) {
-        if (this.fcFormlist.controls["investorForm"].invalid) {
-          this.fcFormlist.controls["investorForm"].markAllAsTouched();
-          this.tabactive = true;
-          return;
+      if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2) {
+        if (Number(this.typeshow) == 1) {
+          if (this.fcFormlist.controls["investorForm"].invalid) {
+            this.fcFormlist.controls["investorForm"].markAllAsTouched();
+            this.tabactive = true;
+            return;
+          }
+          else {
+            this.tabactive = false;
+          }
+          if (this.sumFCArray.length == 1 && (this.sumFCArray[0].EntityName == "" || this.sumFCArray[0].FCY == "" || this.sumFCArray[0].INR == "")) {
+            this.toastr.warning("Please add Sum of the Financial Commitment Details", 'Warning', {
+              closeButton: true,
+              positionClass: 'toast-top-right'
+            });
+            this.tabactive = true;
+            return;
+          }
+          else if (this.FCDisinvestmentArray.length == 1 &&
+            (this.FCDisinvestmentArray[0].DisinvestmentType == "" ||
+              String(this.FCDisinvestmentArray[0].FromDate) == "" ||
+              String(this.FCDisinvestmentArray[0].ToDate) == "" || this.FCDisinvestmentArray[0].Name == "")) {
+            this.toastr.warning("Please add IE/ RI/ group company/ Trust/ Society making FC", 'Warning', {
+              closeButton: true,
+              positionClass: 'toast-top-right'
+            });
+            this.tabactive = true;
+            return;
+          }
+          else if (this.PEFEntityArray.length == 1 && (this.PEFEntityArray[0].NameFE == ""
+            || this.PEFEntityArray[0].UIN == "" || this.PEFEntityArray[0].BankName == "")) {
+            this.toastr.warning("Please add Particulars of existing foreign entities", 'Warning', {
+              closeButton: true,
+              positionClass: 'toast-top-right'
+            });
+            this.tabactive = true;
+            return;
+          }
+          else if (this.SelectFC_FDINICCodeDesArray.length == 0) {
+            this.toastr.warning("Please add Activity Code", 'Warning', {
+              closeButton: true,
+              positionClass: 'toast-top-right'
+            });
+            this.tabactive = true;
+            return;
+          }
         }
-        else {
-          this.tabactive = false;
-        }
-        if (this.sumFCArray.length == 1 && (this.sumFCArray[0].EntityName == "" || this.sumFCArray[0].FCY == "" || this.sumFCArray[0].INR == "")) {
-          this.toastr.warning("Please add Sum of the Financial Commitment Details", 'Warning', {
-            closeButton: true,
-            positionClass: 'toast-top-right'
-          });
-          this.tabactive = true;
-          return;
-        }
-        else if (this.FCDisinvestmentArray.length == 1 &&
-          (this.FCDisinvestmentArray[0].DisinvestmentType == "" ||
-            String(this.FCDisinvestmentArray[0].FromDate) == "" ||
-            String(this.FCDisinvestmentArray[0].ToDate) == "" || this.FCDisinvestmentArray[0].Name == "")) {
-          this.toastr.warning("Please add IE/ RI/ group company/ Trust/ Society making FC", 'Warning', {
-            closeButton: true,
-            positionClass: 'toast-top-right'
-          });
-          this.tabactive = true;
-          return;
-        }
-        else if (this.PEFEntityArray.length == 1 && (this.PEFEntityArray[0].NameFE == ""
-          || this.PEFEntityArray[0].UIN == "" || this.PEFEntityArray[0].BankName == "")) {
-          this.toastr.warning("Please add Particulars of existing foreign entities", 'Warning', {
-            closeButton: true,
-            positionClass: 'toast-top-right'
-          });
-          this.tabactive = true;
-          return;
-        }
-        else if (this.SelectFC_FDINICCodeDesArray.length == 0) {
-          this.toastr.warning("Please add Activity Code", 'Warning', {
-            closeButton: true,
-            positionClass: 'toast-top-right'
-          });
-          this.tabactive = true;
-          return;
-        }
-        else {
+        if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2) {
           if (Number(this.id) == 2) {
             if (this.fcFormlist.controls["JVWOSform"].invalid) {
               this.fcFormlist.controls["JVWOSform"].markAllAsTouched();
@@ -428,8 +442,6 @@ export class FormFcComponent implements OnInit {
               this.tabactive = true;
               return;
             }
-          }
-          else if (Number(this.id) == 3) {
             if (this.fcFormlist.controls['FC_SDS_Control'].value == 'Yes') {
               if (this.SDSArray.length == 0) {
                 this.toastr.warning("Please add SDS Details", 'Warning', {
@@ -450,8 +462,6 @@ export class FormFcComponent implements OnInit {
                 return;
               }
             }
-          }
-          else if (Number(this.id) == 4) {
             if (Number(this.Totalstake) < 100) {
               this.toastr.warning("Please add Shareholding details", 'Warning', {
                 closeButton: true,
@@ -460,9 +470,8 @@ export class FormFcComponent implements OnInit {
               this.tabactive = true;
               return;
             }
-
           }
-          else if (Number(this.id) == 5) {
+          else if (Number(this.id) == 3) {
             if (this.FinancialCommitmentArray.length == 1 &&
               (String(this.FinancialCommitmentArray[0].AmountFCY) == "" ||
                 String(this.FinancialCommitmentArray[0].AmountINR) == "" ||
@@ -477,7 +486,7 @@ export class FormFcComponent implements OnInit {
               return;
             }
           }
-          else if (Number(this.id) == 6) {
+          else if (Number(this.id) == 4) {
             if (this.fcFormlist.controls["Declarationform"].invalid) {
               this.fcFormlist.controls["Declarationform"].markAllAsTouched();
               this.tabactive = true;
@@ -486,8 +495,9 @@ export class FormFcComponent implements OnInit {
             else {
               this.tabactive = false;
             }
+
           }
-          else if (Number(this.id) == 7) {
+          else if (Number(this.id) == 5) {
             if (this.fcFormlist.controls["Certificateform"].invalid) {
               this.fcFormlist.controls["Certificateform"].markAllAsTouched();
               this.tabactive = true;
@@ -497,12 +507,25 @@ export class FormFcComponent implements OnInit {
               this.tabactive = false;
             }
           }
-          this.tabactive = false;
+          else if (Number(this.id) == 6) {
+
+          }
+          else if (Number(this.id) == 7) {
+
+          }
+          debugger;
+          if ((Number(this.typeshow) == 1 || Number(this.typeshow) == 2) && Number(this.id) == 5) {
+            this.btnShowNext = false;
+            this.tabactive = false;
+          }
+       
+        
         }
-        if (this.tabactive == false) {
+        if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2) {
+          this.tabset.tabs[2].disabled = false;
           this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
           this.tabset.tabs[(Number(this.id)) + 1].active = true;
-          if (Number(this.typeshow) == 1 && Number(this.id) + 1 == 7) {
+          if (Number(this.id)+1 == 5) {
             this.btnShowNext = false;
           }
           else {
@@ -981,6 +1004,12 @@ export class FormFcComponent implements OnInit {
             positionClass: 'toast-bottom-right'
           });
           this.btnShowNext = false;
+          if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2)
+          {
+            this.tabset.tabs[8].disabled = false;
+            this.tabset.tabs[8].active = true;
+            this.tabactive=true;
+          }
         },
         error: (e) => {
           console.log(e);
@@ -992,11 +1021,11 @@ export class FormFcComponent implements OnInit {
   GetCityStateValue(value, field) {
     debugger;
     if (value != undefined) {
-      if(value){
-        this.cityListShow=this.basicCityList.filter(x=>x.State==value.State)
+      if (value) {
+        this.cityListShow = this.basicCityList.filter(x => x.State == value.State)
       }
-      else{
-        this.cityListShow=[];
+      else {
+        this.cityListShow = [];
       }
       if (field == 'investor_City') {
         this.fcFormlist.value.investorForm.investor_City = value.city;
@@ -1083,17 +1112,21 @@ export class FormFcComponent implements OnInit {
     this.typeshow = type;
     this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
     this.tabset.tabs[0].disabled = false;
-    if (type == 1 || type == 4) {
+    if (type == 1 || type == 5) {
       this.tabset.tabs[1].disabled = false;
       this.tabset.tabs[1].active = true;
     }
     else if (type == 2) {
-      this.tabset.tabs[8].disabled = false;
-      this.tabset.tabs[8].active = true;
+      this.tabset.tabs[2].disabled = false;
+      this.tabset.tabs[2].active = true;
     }
     else if (type == 3) {
-      this.tabset.tabs[9].disabled = false;
-      this.tabset.tabs[9].active = true;
+      this.tabset.tabs[6].disabled = false;
+      this.tabset.tabs[6].active = true;
+    }
+    else if (type == 4) {
+      this.tabset.tabs[7].disabled = false;
+      this.tabset.tabs[7].active = true;
     }
     this.tabset.tabs.forEach(function (item) {
       if (type == 1 || type == 4) {
@@ -1114,4 +1147,102 @@ export class FormFcComponent implements OnInit {
     });
 
   }
+  @ViewChild('pdfCovering') pdfCovering: ElementRef;
+  @ViewChild('pdfFormFC') pdfFormFC: ElementRef;
+  @ViewChild('pdfDeclarationIE') pdfDeclarationIE: ElementRef;
+  @ViewChild('pdfDeclarationRI') pdfDeclarationRI: ElementRef;
+  @ViewChild('pdfDebitAL') pdfDebitAL: ElementRef;
+  @ViewChild('pdfSACertificate') pdfSACertificate: ElementRef;
+
+  downloadCoveringLetter() {
+    const doc = new jsPDF();
+    const pdfTable = this.pdfCovering.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+  }
+  async ExportWordCoveringLetter() {
+    const pdfTable = this.pdfCovering.nativeElement;
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'RBICoveringLetter.docx');
+  }
+  DownloadFormFC() {
+    const doc = new jsPDF();
+    const pdfTable = this.pdfFormFC.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+  }
+  async ExportWordFormFC() {
+    const pdfTable = this.pdfFormFC.nativeElement;
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'FormFC.docx');
+  }
+  DownloadDeclarationIE() {
+    const doc = new jsPDF();
+    const pdfTable = this.pdfDeclarationIE.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+  }
+  async ExportWordDeclarationIE() {
+    const pdfTable = this.pdfDeclarationIE.nativeElement;
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'DeclarationIE.docx');
+  }
+  DownloadDeclarationRI() {
+    const doc = new jsPDF();
+    const pdfTable = this.pdfDeclarationRI.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+  }
+  async ExportWordDeclarationRI() {
+    const pdfTable = this.pdfDeclarationRI.nativeElement;
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'DeclarationRI.docx');
+  }
+  DownloadDebitAL() {
+    const doc = new jsPDF();
+    const pdfTable = this.pdfDebitAL.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+  }
+  async ExportWordDebitAL() {
+    const pdfTable = this.pdfDebitAL.nativeElement;
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'DebitAuthorityLetter.docx');
+  }
+  DownloadSACertificate() {
+    const doc = new jsPDF();
+    const pdfTable = this.pdfSACertificate.nativeElement;
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).open();
+  }
+  async ExportWordSACertificate() {
+    const pdfTable = this.pdfSACertificate.nativeElement;
+    var converted = await asBlob(pdfTable.innerHTML, {
+      orientation: 'portrait',
+      margins: { top: 720 },
+    });
+    saveAs(converted, 'SACertificate.docx');
+  }
+  
 }

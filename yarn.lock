@@ -3201,6 +3201,11 @@
   "resolved" "http://18.223.31.210/esbuild-wasm/-/esbuild-wasm-0.14.22.tgz"
   "version" "0.14.22"
 
+"esbuild-windows-64@0.14.22":
+  "integrity" "sha512-AxjIDcOmx17vr31C5hp20HIwz1MymtMjKqX4qL6whPj0dT9lwxPexmLj6G1CpR3vFhui6m75EnBEe4QL82SYqw=="
+  "resolved" "http://18.223.31.210/esbuild-windows-64/-/esbuild-windows-64-0.14.22.tgz"
+  "version" "0.14.22"
+
 "esbuild@0.14.22":
   "integrity" "sha512-CjFCFGgYtbFOPrwZNJf7wsuzesx8kqwAffOlbYcFDLFuUtP8xloK1GH+Ai13Qr0RZQf9tE7LMTHJ2iVGJ1SKZA=="
   "resolved" "http://18.223.31.210/esbuild/-/esbuild-0.14.22.tgz"

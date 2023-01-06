@@ -111,10 +111,10 @@
                                 Next </button>
                         </div>
                         <tabset #tabset>
-                            <tab heading="Instructions & Checklist" id="0">
+                            <tab heading="Instructions & Checklist" id="0" disabled="disabled">
                                 <app-apr-instructions></app-apr-instructions>
                             </tab>
-                            <tab heading="Basic Detail" id="1">
+                            <tab heading="Basic Detail" id="1" disabled="disabled">
                                 <form [formGroup]="aprForm">
                                     <div class="card p-4 rounded-0 border-info1">
                                         <div class="row">
@@ -934,7 +934,7 @@
                                     </div>
                                 </form>
                             </tab>
-                            <tab heading="SDS" id="2">
+                            <tab heading="SDS" id="2" disabled="disabled">
                                 <div class="card p-2">
                                     <div class="col-sm-12 mb-4 mt-2 ">
                                         <label class="form-label">@ Furnish 15 / 17-digit transaction number
@@ -1121,7 +1121,7 @@
                                     </div>
                                 </div>
                             </tab>
-                            <tab heading="Declaration & Certificate NEW Format" id="3">
+                            <tab heading="Declaration & Certificate NEW Format" id="3" disabled="disabled">
                                 <tabset #tabset>
                                     <tab heading="Declaration">
                                         <div class="card p-2">
@@ -1943,7 +1943,7 @@
                                 </tabset>
 
                             </tab>
-                            <tab heading="Declaration & Certificate OLD Format" id="4">
+                            <tab heading="Declaration & Certificate OLD Format" id="4" disabled="disabled">
                                 <tabset #tabset>
                                     <tab heading="Declaration">
                                         <div class="card p-2">
@@ -2667,7 +2667,7 @@
                                         class="btn btn-primary">
                                 </div>
                             </tab>
-                            <tab heading="Preview" id="5">
+                            <tab heading="Preview" id="5" disabled="disabled">
                                 <div class="card p-4 rounded-0 border-info1">
                                     <table class="table table-borderless">
                                         <thead>

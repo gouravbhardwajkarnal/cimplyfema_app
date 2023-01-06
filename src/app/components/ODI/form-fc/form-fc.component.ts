@@ -43,6 +43,9 @@ export class FormFcComponent implements OnInit {
   @Input() name: string;
   @ViewChild('tabset') tabset: TabsetComponent;
   @ViewChild('tabset') tabsetsubmenu: TabsetComponent;
+  @ViewChild('tabset') tabsetrestructuring: TabsetComponent;
+  @ViewChild('tabset') tabsetdisinvestment: TabsetComponent;
+
   dynamicArray: Array<DynamicGrid> = [];
   sumFCArray: Array<SumFCGrid> = [];
   FCDisinvestmentArray: Array<FCDisinvestmentGrid> = [];
@@ -106,13 +109,14 @@ export class FormFcComponent implements OnInit {
     this.sdsleveltypes = commonservice.getAllsdsleveltypes();
     var today = new Date();
     this.fcFormlist = this.fb.group({
-      investment_UIN: ['', Validators.required],
+      investment_UIN: new FormControl('', [Validators.required, Validators.pattern("[A-Za-z]{5}[0-9]{8}"), Validators.maxLength(13)]),
       investment_Route: ['', Validators.required],
       investment_USD: ['', Validators.required],
       investment_INR: ['', Validators.required],
+      investment_Type: ['', Validators.required],
       FC_SDS_Control: new FormControl('', Validators.required),
       investorForm: new FormGroup({
-        'investor_CIN': new FormControl('', Validators.required),
+        'investor_CIN': new FormControl('', [Validators.required, Validators.pattern("[A-Za-z]{1}[0-9]{5}[A-Za-z]{2}[0-9]{4}[A-Za-z]{3}[0-9]{6}"), Validators.maxLength(21)]),
         'investor_name': new FormControl('', Validators.required),
         'investor_pan': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'), Validators.maxLength(10)]),
         'investor_LEI': new FormControl('', Validators.required),
@@ -120,12 +124,12 @@ export class FormFcComponent implements OnInit {
         'investor_Address': new FormControl('', Validators.required),
         'investor_State': new FormControl('', Validators.required),
         'investor_City': new FormControl('', Validators.required),
-        'investor_Pin': new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{6}"), Validators.minLength(6),
+        'investor_Pin': new FormControl('', [Validators.required, Validators.pattern("[0-9]{6}"), Validators.minLength(6),
         Validators.maxLength(6)]),
         'investor_ContactPerson': new FormControl('', Validators.required),
         'investor_CPDesignation': new FormControl('', Validators.required),
         'investor_TelephoneNumber': new FormControl('', Validators.required),
-        'investor_Mobile': new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{10}"), Validators.minLength(10),
+        'investor_Mobile': new FormControl('', [Validators.required, Validators.pattern("[0-9]{10}"), Validators.minLength(10),
         Validators.maxLength(10)]),
         'investor_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
         'investor_NetworthAmount': new FormControl('', Validators.required),
@@ -164,6 +168,115 @@ export class FormFcComponent implements OnInit {
         'investment_Group_Stamp': new FormControl(''),
         'investment_Group_Telephone': new FormControl(''),
         'investment_Group_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      }),
+      Restructingform: new FormGroup({
+        'restructing_Name_IE': new FormControl('', Validators.required),
+        'restructing_PAN_IE':  new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'), Validators.maxLength(10)]),
+        'restructing_Name_FE': new FormControl('', Validators.required),
+        'restructing_Date': new FormControl('', Validators.required),
+        'restructing_Valuation_Date': new FormControl('', Validators.required),
+        'restructing_Stake_FE': new FormControl('', Validators.required),
+        'restructing_Stake_PostRestructing': new FormControl(''),
+        'restructing_Total_ALosses': new FormControl(''),
+        'restructing_Proportionate_Amount': new FormControl(''),
+        'restructing_Total_Outstanding': new FormControl(''),
+
+        'restructing_Equity_FC': new FormControl(''),
+        'restructing_Equity_AD': new FormControl(''),
+        'restructing_Equity_TotalFC': new FormControl(''),
+        'restructing_Debt_FC': new FormControl(''),
+        'restructing_Debt_AD': new FormControl(''),
+        'restructing_Debt_TotalFC': new FormControl(''),
+        'restructing_Guarantee_FC': new FormControl(''),
+        'restructing_Guarantee_AD': new FormControl(''),
+        'restructing_Guarantee_TotalFC': new FormControl(''),
+        'restructing_Receivables_FC': new FormControl(''),
+        'restructing_Receivables_AD': new FormControl(''),
+        'restructing_Receivables_TotalFC': new FormControl(''),
+        'restructing_Ainterest_FC': new FormControl(''),
+        'restructing_Ainterest_AD': new FormControl(''),
+        'restructing_Ainterest_TotalFC': new FormControl(''),
+        'restructing_BDividend_FC': new FormControl(''),
+        'restructing_BDividend_AD': new FormControl(''),
+        'restructing_BDividend_TotalFC': new FormControl(''),
+        'restructing_COther_FC': new FormControl(''),
+        'restructing_COther_AD': new FormControl(''),
+        'restructing_COther_TotalFC': new FormControl(''),
+
+        'restructing_IE_Place': new FormControl('', Validators.required),
+        'restructing_AD_Place': new FormControl('', Validators.required),
+        'restructing_IE_Date': new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
+        'restructing_AD_Date': new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
+        'restructing_IE_Signature': new FormControl(''),
+        'restructing_AD_Signature': new FormControl(''),
+        'restructing_IE_Name': new FormControl(''),
+        'restructing_AD_Name': new FormControl(''),
+        'restructing_IE_Designation': new FormControl(''),
+        'restructing_AD_Designation': new FormControl(''),
+        'restructing_IE_Telephone': new FormControl(''),
+        'restructing_AD_Telephone': new FormControl(''),
+        'restructing_IE_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+        'restructing_AD_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+        'restructing_IE_A': new FormControl(''),
+        'restructing_IE_B': new FormControl(''),
+        'restructing_IE_B1': new FormControl(''),
+        'restructing_IE_C': new FormControl(''),
+        'restructing_IE_C1': new FormControl(''),
+      }),
+      Disinvestmentform: new FormGroup({
+        'disinvestment_Name_IE': new FormControl('', Validators.required),
+        'disinvestment_PAN_IE':  new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'), Validators.maxLength(10)]),
+        'disinvestment_Date': new FormControl('', Validators.required),
+        'disinvestment_Route': new FormControl('', Validators.required),
+        'disinvestment_Type': new FormControl('', Validators.required),
+        'disinvestment_Stake_Time': new FormControl(''),
+        'disinvestment_Stake_Partial': new FormControl(''),
+        'disinvestment_Total_Fair': new FormControl(''),
+        'disinvestment_ValuationDate': new FormControl(''),
+        'disinvestment_SubmissionDate': new FormControl(''),
+        'disinvestment_APRPeriod': new FormControl(''),
+
+        'disinvestment_Equity_FC': new FormControl(''),
+        'disinvestment_Equity_AD': new FormControl(''),
+        'disinvestment_Equity_TotalFC': new FormControl(''),
+        'disinvestment_Debt_FC': new FormControl(''),
+        'disinvestment_Debt_AD': new FormControl(''),
+        'disinvestment_Debt_TotalFC': new FormControl(''),
+        'disinvestment_Guarantee_FC': new FormControl(''),
+        'disinvestment_Guarantee_AD': new FormControl(''),
+        'disinvestment_Guarantee_TotalFC': new FormControl(''),
+        'disinvestment_Receivables_FC': new FormControl(''),
+        'disinvestment_Receivables_AD': new FormControl(''),
+        'disinvestment_Receivables_TotalFC': new FormControl(''),
+        'disinvestment_Ainterest_FC': new FormControl(''),
+        'disinvestment_Ainterest_AD': new FormControl(''),
+        'disinvestment_Ainterest_TotalFC': new FormControl(''),
+        'disinvestment_BDividend_FC': new FormControl(''),
+        'disinvestment_BDividend_AD': new FormControl(''),
+        'disinvestment_BDividend_TotalFC': new FormControl(''),
+        'disinvestment_COther_FC': new FormControl(''),
+        'disinvestment_COther_AD': new FormControl(''),
+        'disinvestment_COther_TotalFC': new FormControl(''),
+
+        'disinvestment_IE_Place': new FormControl('', Validators.required),
+        'disinvestment_AD_Place': new FormControl('', Validators.required),
+        'disinvestment_IE_Date': new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
+        'disinvestment_AD_Date': new FormControl(this.datepipe.transform(today, 'yyyy-MM-dd'), Validators.required),
+        'disinvestment_IE_Signature': new FormControl(''),
+        'disinvestment_AD_Signature': new FormControl(''),
+        'disinvestment_IE_Name': new FormControl(''),
+        'disinvestment_AD_Name': new FormControl(''),
+        'disinvestment_IE_Designation': new FormControl(''),
+        'disinvestment_AD_Designation': new FormControl(''),
+        'disinvestment_IE_Telephone': new FormControl(''),
+        'disinvestment_AD_Telephone': new FormControl(''),
+        'disinvestment_IE_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+        'disinvestment_AD_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+        'disinvestment_IE_A': new FormControl(''),
+        'disinvestment_IE_B': new FormControl(''),
+        'disinvestment_IE_B1': new FormControl(''),
+        'disinvestment_IE_C': new FormControl(''),
+        'disinvestment_IE_C1': new FormControl(''),
       })
     });
     this.readCity();
@@ -373,15 +486,29 @@ export class FormFcComponent implements OnInit {
   updateNext() {
     debugger;
     if (Number(this.typeshow) == 0) {
-      this.toastr.warning("Please select investment type", 'Warning', {
-        closeButton: true,
-        positionClass: 'toast-top-right'
-      });
+      if (this.fcFormlist.invalid) {
+        for (const control of Object.keys(this.fcFormlist.controls)) {
+          this.fcFormlist.controls[control].markAsTouched();
+        }
+        return;
+      }
+      // this.toastr.warning("Please select investment type", 'Warning', {
+      //   closeButton: true,
+      //   positionClass: 'toast-top-right'
+      // });
     } else {
       this.id = this.tabset.tabs.filter(tab => tab.active == true)[0].id;
       let count = this.tabset.tabs.length;
-      if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2) {
-        if (Number(this.typeshow) == 1) {
+      if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2 || Number(this.typeshow) == 5) {
+        if (this.fcFormlist.controls["FC_SDS_Control"].value == "" && this.fcFormlist.controls["investment_Type"].value == "") {
+          if (this.fcFormlist.invalid) {
+            for (const control of Object.keys(this.fcFormlist.controls)) {
+              this.fcFormlist.controls[control].markAsTouched();
+            }
+            return;
+          }
+        }
+        if (Number(this.typeshow) == 1 || Number(this.typeshow) == 5) {
           if (this.fcFormlist.controls["investorForm"].invalid) {
             this.fcFormlist.controls["investorForm"].markAllAsTouched();
             this.tabactive = true;
@@ -427,7 +554,7 @@ export class FormFcComponent implements OnInit {
             return;
           }
         }
-        if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2) {
+        if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2 || Number(this.typeshow) == 5) {
           if (Number(this.id) == 2) {
             if (this.fcFormlist.controls["JVWOSform"].invalid) {
               this.fcFormlist.controls["JVWOSform"].markAllAsTouched();
@@ -518,19 +645,34 @@ export class FormFcComponent implements OnInit {
             this.btnShowNext = false;
             this.tabactive = false;
           }
-       
-        
+
+
         }
-        if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2) {
+        if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2 || Number(this.typeshow) == 5) {
           this.tabset.tabs[2].disabled = false;
           this.tabset.tabs[(Number(this.id)) + 1].disabled = false;
           this.tabset.tabs[(Number(this.id)) + 1].active = true;
-          if (Number(this.id)+1 == 5) {
-            this.btnShowNext = false;
+          if (Number(this.typeshow) != 5) {
+            if (Number(this.id) + 1 == 5) {
+              this.btnShowNext = false;
+            }
+            else {
+              this.btnShow = true;
+            }
           }
           else {
-            this.btnShow = true;
+            if (Number(this.id) == 5) {
+              this.tabset.tabs[(Number(6))].disabled = true;
+              this.tabset.tabs[(Number(7))].disabled = false;
+              this.tabset.tabs[(Number(7))].active = true;
+            }
           }
+        }
+      }
+      else if (Number(this.typeshow) == 3) {
+        if (this.fcFormlist.controls["Restructingform"].invalid) {
+          this.fcFormlist.controls["Restructingform"].markAllAsTouched();
+          return;
         }
       }
       // if (Number(this.id) >= 0 && Number(this.typeshow) == 4) {
@@ -699,30 +841,7 @@ export class FormFcComponent implements OnInit {
       return true;
     }
   }
-  onBlur(values) {
-    console.log(values);
-    values.Total = values.FPstake + values.Pstake;
-    if (values.Total > 100) {
-      values.FPstake = 0;
-      values.Pstake = 0;
-      values.Total = 0;
-      return false;
-    }
-    this.TotalPstake = 0;
-    this.TotalFPstake = 0;
-    this.Totalstake = 0;
-    this.ShareHoldingFEArray.forEach(element => {
-      this.TotalPstake += element.Pstake;
-      this.TotalFPstake += element.FPstake;
-      this.Totalstake += element.Total;
-    });
-    if (this.Totalstake > 100) {
-      values.FPstake = 0;
-      values.Pstake = 0;
-      values.Total = 0;
-      return false;
-    }
-  }
+ 
   public validate(): void {
     this.investment_model = this.reactiveForm.value;
     this.investment_model.investment_SumFC = this.sumFCArray;
@@ -960,6 +1079,12 @@ export class FormFcComponent implements OnInit {
     debugger;
     if (this.tabactive == false) {
 
+      if (Number(this.typeshow) == 3) {
+        if (this.fcFormlist.controls["Restructingform"].invalid) {
+          this.fcFormlist.controls["Restructingform"].markAllAsTouched();
+          return;
+        }
+      }
       this.fcFormlist.value.investorForm.investor_City = this.fcFormlist.value.investorForm.investor_City.city;
       this.fcFormlist.value.investorForm.investor_State = this.fcFormlist.value.investorForm.investor_State.State;
       this.fcFormlist.value.JVWOSform.investment_Jurisdiction = this.fcFormlist.value.JVWOSform.investment_Jurisdiction.BankName;
@@ -992,6 +1117,7 @@ export class FormFcComponent implements OnInit {
       this.dataModel['JVWOSDetails'] = this.fcFormlist.value.JVWOSform;
       this.dataModel['DeclarationDetails'] = this.fcFormlist.value.Declarationform;
       this.dataModel['CertificateDetails'] = this.fcFormlist.value.Certificateform;
+      this.dataModel['RestructuringDetails'] = this.fcFormlist.value.Restructingform;
       this.dataModel = this.fcFormlist.value;
       console.log(this.dataModel);
 
@@ -1004,11 +1130,10 @@ export class FormFcComponent implements OnInit {
             positionClass: 'toast-bottom-right'
           });
           this.btnShowNext = false;
-          if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2)
-          {
+          if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2) {
             this.tabset.tabs[8].disabled = false;
             this.tabset.tabs[8].active = true;
-            this.tabactive=true;
+            this.tabactive = true;
           }
         },
         error: (e) => {
@@ -1123,10 +1248,15 @@ export class FormFcComponent implements OnInit {
     else if (type == 3) {
       this.tabset.tabs[6].disabled = false;
       this.tabset.tabs[6].active = true;
+      this.tabactive = false;
     }
     else if (type == 4) {
       this.tabset.tabs[7].disabled = false;
       this.tabset.tabs[7].active = true;
+    }
+    else {
+      this.tabset.tabs[0].disabled = false;
+      this.tabset.tabs[0].active = true;
     }
     this.tabset.tabs.forEach(function (item) {
       if (type == 1 || type == 4) {
@@ -1144,7 +1274,13 @@ export class FormFcComponent implements OnInit {
           item.disabled = true;
         }
       }
+      else {
+        if (Number(item.id) != 0) {
+          item.disabled = true;
+        }
+      }
     });
+
 
   }
   @ViewChild('pdfCovering') pdfCovering: ElementRef;
@@ -1244,5 +1380,36 @@ export class FormFcComponent implements OnInit {
     });
     saveAs(converted, 'SACertificate.docx');
   }
+  onBlur(values) {
+    var restructing_Equity_FC=this.fcFormlist.value.Restructingform.restructing_Equity_FC;
+    var restructing_Equity_AD=this.fcFormlist.value.Restructingform.restructing_Equity_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Equity_TotalFC").patchValue(restructing_Equity_FC-restructing_Equity_AD);
   
+    var restructing_Debt_FC=this.fcFormlist.value.Restructingform.restructing_Debt_FC;
+    var restructing_Debt_AD=this.fcFormlist.value.Restructingform.restructing_Debt_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Debt_TotalFC").patchValue(restructing_Debt_FC-restructing_Debt_AD);
+  
+    var restructing_Guarantee_FC=this.fcFormlist.value.Restructingform.restructing_Guarantee_FC;
+    var restructing_Guarantee_AD=this.fcFormlist.value.Restructingform.restructing_Guarantee_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Guarantee_TotalFC").patchValue(restructing_Guarantee_FC-restructing_Guarantee_AD);
+  
+    var restructing_Receivables_FC=this.fcFormlist.value.Restructingform.restructing_Receivables_FC;
+    var restructing_Receivables_AD=this.fcFormlist.value.Restructingform.restructing_Receivables_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Receivables_TotalFC").patchValue(restructing_Receivables_FC-restructing_Receivables_AD);
+  
+    var restructing_Ainterest_FC=this.fcFormlist.value.Restructingform.restructing_Ainterest_FC;
+    var restructing_Ainterest_AD=this.fcFormlist.value.Restructingform.restructing_Ainterest_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Ainterest_TotalFC").patchValue(restructing_Ainterest_FC-restructing_Ainterest_AD);
+  
+    var restructing_BDividend_FC=this.fcFormlist.value.Restructingform.restructing_BDividend_FC;
+    var restructing_BDividend_AD=this.fcFormlist.value.Restructingform.restructing_BDividend_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_BDividend_TotalFC").patchValue(restructing_BDividend_FC-restructing_BDividend_AD);
+  
+    var restructing_COther_FC=this.fcFormlist.value.Restructingform.restructing_COther_FC;
+    var restructing_COther_AD=this.fcFormlist.value.Restructingform.restructing_COther_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_COther_TotalFC").patchValue(restructing_COther_FC-restructing_COther_AD);
+  
+  
+  }
+
 }

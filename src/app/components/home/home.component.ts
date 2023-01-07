@@ -7,6 +7,7 @@ import { CommonService } from 'src/app/service/common.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  panelOpenState = false;
 
   modules: any[];
   submodules: any[];

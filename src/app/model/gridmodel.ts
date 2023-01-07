@@ -43,3 +43,8 @@ export class ShareHoldingFEGrid
     FPstake:number;
     Total: number;
 }
+export class DisinvestmentMethodGrid
+{
+    Method:string;
+    Details:string;
+}

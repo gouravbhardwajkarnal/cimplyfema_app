@@ -14,3 +14,22 @@
     left: 0;
     width: 100%;
   }
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }
+  .restructuring-form {
+    width: 100%;
+  }  
+  .restructuring-form mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  .restructuring-form mat-form-field {
+    width: 300px;
+  }
+  .restructuring-full-width {
+    width: 100%;
+    padding-right: 8px;
+  }
+  table {
+    width: 100%;
+  }

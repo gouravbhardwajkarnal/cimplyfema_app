@@ -37,6 +37,23 @@ export class CommonService {
         { id: 2, name: "2nd Level" },
         { id: 3, name: "3rd Level" },
     ];
+    Disinvestmentroutetypes: DisinvetmentType[] = [
+        { id: 1, name: "Approval Route" },
+        { id: 2, name: "Automatic Route" },
+    ];
+    disinvestmentmaintypes: DisinvetmentType[] = [
+        { id: 1, name: "Full Disinvestment" },
+        { id: 2, name: "Partial Disinvestment" },
+    ];
+    disinvestmentmethodtypes: DisinvetmentType[] = [
+        { id: 1, name: "Sale or transfer of equity capital to another person resident in India/ foreign partner/ Individual or merger/ liquidation of IE " },
+        { id: 2, name: "Closure/voluntary liquidation of the foreign entity" },
+        { id: 3, name: "Buy back by the foreign entity" },
+        { id: 4, name: "Merger of two or more foreign entities of the same person resident in India" },
+        { id: 5, name: "Merger of the foreign entity with the step down subsidiaries of the same person resident in India or another" },
+        { id: 6, name: "Merger of foreign entity with an independent foreign company not having any relation with the IE/ RI/ Trust/ Society" },
+    ];
+
     opitypes: DisinvetmentType[] = [
         { id: 1, name: "OPI – Indian Entity " },
         { id: 2, name: "OPI – Mutual Funds" },
@@ -170,6 +187,15 @@ cocsubmodules: COCsubmodules[] = [
     }
     getCOCsubmodules(): COCsubmodules[] {
         return this.cocsubmodules;
+    }
+    getDisinvestmentroutetypes(): DisinvetmentType[] {
+        return this.Disinvestmentroutetypes;
+    }
+    getdisinvestmentmaintypes(): DisinvetmentType[] {
+        return this.disinvestmentmaintypes;
+    }
+    getdisinvestmentmethodtypes(): DisinvetmentType[] {
+        return this.disinvestmentmethodtypes;
     }
 
 }

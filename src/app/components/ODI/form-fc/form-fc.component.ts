@@ -1,12 +1,12 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Iinvestment, IinvestmentSDS, IinvestmentWOS } from 'src/app/model/iinvestment';
 import { ApiService } from 'src/app/service/api.service';
-import { CodeClassGrid, DynamicGrid, FCDisinvestmentGrid, FinancialCommitmentGrid, PEFEntityGrid, ShareHoldingFEGrid, SumFCGrid } from 'src/app/model/gridmodel';
+import { CodeClassGrid, DisinvestmentMethodGrid, DynamicGrid, FCDisinvestmentGrid, FinancialCommitmentGrid, PEFEntityGrid, ShareHoldingFEGrid, SumFCGrid } from 'src/app/model/gridmodel';
 import { DisinvetmentType } from 'src/app/model/common.model';
 import { CommonService } from "src/app/service/common.service";
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { FCFormService } from 'src/app/service/formfc.service';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { ToastrService } from 'ngx-toastr';
@@ -17,9 +17,13 @@ import { asBlob } from 'html-docx-js-typescript';
 import { saveAs } from 'file-saver';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import { MatTable } from '@angular/material/table';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-
+export interface TableData {
+  from: Date;
+  to: Date;
+}
 @Component({
   selector: 'app-form-fc',
   templateUrl: './form-fc.component.html',
@@ -27,6 +31,12 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   providers: [DatePipe]
 })
 export class FormFcComponent implements OnInit {
+
+  data: TableData[] = [ { from: new Date(), to: new Date() } ];
+  dataSource = new BehaviorSubject<AbstractControl[]>([]);
+  displayColumns = ['from', 'to', 'Actions'];
+  rows: FormArray = this.fb.array([]);
+  @ViewChild(MatTable,{static:true}) table: MatTable<any>;
   CountryList: any = [];
   disinvetmenttype: DisinvetmentType[];
   id: string = '0';
@@ -62,6 +72,10 @@ export class FormFcComponent implements OnInit {
   Totalstake: number = 0;
   tabactive: boolean = true;
 
+  DisinvestmentMethodArray: Array<DisinvestmentMethodGrid> = [];
+  DisinvestmentMethod: any = {};
+  DisinvestmentMethodlength: number = 0;
+
   sumFC: any = {};
   sumFClength: number = 0;
   FCDisinvestment: any = {};
@@ -96,9 +110,17 @@ export class FormFcComponent implements OnInit {
   FinancialCommitmentArray: Array<FinancialCommitmentGrid> = [];
   FinancialCommitment: any = {};
   FinancialCommitmentlength: number = 0; Today: Date;
+  Disinvestmentroutetypes: DisinvetmentType[];
+  disinvestmentmaintypes: DisinvetmentType[];
+  disinvestmentmethodtypes: DisinvetmentType[];
+  
   constructor(private readonly route: ActivatedRoute, private apiService: ApiService,
     private commonservice: CommonService, private fb: FormBuilder, public datepipe: DatePipe, private fcformService: FCFormService, private toastr: ToastrService) {
     this.fctypes = commonservice.getAllfctypes();
+    this.Disinvestmentroutetypes = commonservice.getDisinvestmentroutetypes();
+    this.disinvestmentmaintypes = commonservice.getdisinvestmentmaintypes();
+    this.disinvestmentmethodtypes = commonservice.getdisinvestmentmethodtypes();
+
     this.Today = new Date();
     this.btnShowNext = true;
     this.readBank();
@@ -171,7 +193,7 @@ export class FormFcComponent implements OnInit {
       }),
       Restructingform: new FormGroup({
         'restructing_Name_IE': new FormControl('', Validators.required),
-        'restructing_PAN_IE':  new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'), Validators.maxLength(10)]),
+        'restructing_PAN_IE': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'), Validators.maxLength(10)]),
         'restructing_Name_FE': new FormControl('', Validators.required),
         'restructing_Date': new FormControl('', Validators.required),
         'restructing_Valuation_Date': new FormControl('', Validators.required),
@@ -225,16 +247,16 @@ export class FormFcComponent implements OnInit {
       }),
       Disinvestmentform: new FormGroup({
         'disinvestment_Name_IE': new FormControl('', Validators.required),
-        'disinvestment_PAN_IE':  new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'), Validators.maxLength(10)]),
+        'disinvestment_PAN_IE': new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$'), Validators.maxLength(10)]),
         'disinvestment_Date': new FormControl('', Validators.required),
         'disinvestment_Route': new FormControl('', Validators.required),
         'disinvestment_Type': new FormControl('', Validators.required),
-        'disinvestment_Stake_Time': new FormControl(''),
-        'disinvestment_Stake_Partial': new FormControl(''),
-        'disinvestment_Total_Fair': new FormControl(''),
-        'disinvestment_ValuationDate': new FormControl(''),
-        'disinvestment_SubmissionDate': new FormControl(''),
-        'disinvestment_APRPeriod': new FormControl(''),
+        'disinvestment_Stake_Time': new FormControl('', Validators.required),
+        'disinvestment_Stake_Partial': new FormControl('', Validators.required),
+        'disinvestment_Total_Fair': new FormControl('', Validators.required),
+        'disinvestment_ValuationDate': new FormControl('', Validators.required),
+        'disinvestment_SubmissionDate': new FormControl('', Validators.required),
+        'disinvestment_APRPeriod': new FormControl('', Validators.required),
 
         'disinvestment_Equity_FC': new FormControl(''),
         'disinvestment_Equity_AD': new FormControl(''),
@@ -289,9 +311,11 @@ export class FormFcComponent implements OnInit {
     this.disinvetmenttype = commonservice.getAllDisinvestmentTypes();
     console.log(this.disinvetmenttype);
     this.investment_model = {} as Iinvestment;
+
   }
 
   ngOnInit(): void {
+    this.data.forEach((d: TableData) => this.addRow(d, false));
     this.SDS = {
       investment_SDS_Name: "",
       investment_SDS_Level: "",
@@ -313,6 +337,12 @@ export class FormFcComponent implements OnInit {
     this.ShareHoldingFEArray.push(this.ShareHoldingFE);
     this.ShareHoldingFElength = this.ShareHoldingFEArray.length;
 
+    debugger;
+    this.DisinvestmentMethod = { Method: "test", Details: "test" };
+    this.DisinvestmentMethodArray.push(this.DisinvestmentMethod);
+
+    
+
     this.codeClass = { Description1987: "", Description2008: "" };
     this.CodeClassArray.push(this.codeClass);
     this.codeClasslength = this.CodeClassArray.length;
@@ -329,11 +359,40 @@ export class FormFcComponent implements OnInit {
     this.FinancialCommitmentArray.push(this.FinancialCommitment);
     this.FinancialCommitmentlength = this.FinancialCommitmentArray.length;
   }
+  updateView() {
+    this.dataSource.next(this.rows.controls);
+  }
+  addRow(d?: TableData, noUpdate?: boolean) {
+    const row = this.fb.group({
+      'from'   : [d && d.from ? d.from : null, []],
+      'to'     : [d && d.to   ? d.to   : null, []]
+    });
+    this.rows.push(row);
+    if (!noUpdate) { this.updateView(); }
+  }
   readCountry() {
     this.apiService.getCountry().subscribe((data) => {
       this.CountryList = data;
       console.log(this.CountryList);
     });
+  }
+  
+  // data = [
+  //   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  //   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  //   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+  //   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  //   {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+  //   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+  //   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+  //   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+  //   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+  //   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  // ];
+
+
+  capitalize(s: string): string {
+    return s.charAt(0).toUpperCase() + s.slice(1);
   }
   SelectFC_FDINICCodeDes(item: any) {
     debugger;
@@ -841,7 +900,7 @@ export class FormFcComponent implements OnInit {
       return true;
     }
   }
- 
+
   public validate(): void {
     this.investment_model = this.reactiveForm.value;
     this.investment_model.investment_SumFC = this.sumFCArray;
@@ -1381,35 +1440,35 @@ export class FormFcComponent implements OnInit {
     saveAs(converted, 'SACertificate.docx');
   }
   onBlur(values) {
-    var restructing_Equity_FC=this.fcFormlist.value.Restructingform.restructing_Equity_FC;
-    var restructing_Equity_AD=this.fcFormlist.value.Restructingform.restructing_Equity_AD;
-    this.fcFormlist.controls["Restructingform"].get("restructing_Equity_TotalFC").patchValue(restructing_Equity_FC-restructing_Equity_AD);
-  
-    var restructing_Debt_FC=this.fcFormlist.value.Restructingform.restructing_Debt_FC;
-    var restructing_Debt_AD=this.fcFormlist.value.Restructingform.restructing_Debt_AD;
-    this.fcFormlist.controls["Restructingform"].get("restructing_Debt_TotalFC").patchValue(restructing_Debt_FC-restructing_Debt_AD);
-  
-    var restructing_Guarantee_FC=this.fcFormlist.value.Restructingform.restructing_Guarantee_FC;
-    var restructing_Guarantee_AD=this.fcFormlist.value.Restructingform.restructing_Guarantee_AD;
-    this.fcFormlist.controls["Restructingform"].get("restructing_Guarantee_TotalFC").patchValue(restructing_Guarantee_FC-restructing_Guarantee_AD);
-  
-    var restructing_Receivables_FC=this.fcFormlist.value.Restructingform.restructing_Receivables_FC;
-    var restructing_Receivables_AD=this.fcFormlist.value.Restructingform.restructing_Receivables_AD;
-    this.fcFormlist.controls["Restructingform"].get("restructing_Receivables_TotalFC").patchValue(restructing_Receivables_FC-restructing_Receivables_AD);
-  
-    var restructing_Ainterest_FC=this.fcFormlist.value.Restructingform.restructing_Ainterest_FC;
-    var restructing_Ainterest_AD=this.fcFormlist.value.Restructingform.restructing_Ainterest_AD;
-    this.fcFormlist.controls["Restructingform"].get("restructing_Ainterest_TotalFC").patchValue(restructing_Ainterest_FC-restructing_Ainterest_AD);
-  
-    var restructing_BDividend_FC=this.fcFormlist.value.Restructingform.restructing_BDividend_FC;
-    var restructing_BDividend_AD=this.fcFormlist.value.Restructingform.restructing_BDividend_AD;
-    this.fcFormlist.controls["Restructingform"].get("restructing_BDividend_TotalFC").patchValue(restructing_BDividend_FC-restructing_BDividend_AD);
-  
-    var restructing_COther_FC=this.fcFormlist.value.Restructingform.restructing_COther_FC;
-    var restructing_COther_AD=this.fcFormlist.value.Restructingform.restructing_COther_AD;
-    this.fcFormlist.controls["Restructingform"].get("restructing_COther_TotalFC").patchValue(restructing_COther_FC-restructing_COther_AD);
-  
-  
+    var restructing_Equity_FC = this.fcFormlist.value.Restructingform.restructing_Equity_FC;
+    var restructing_Equity_AD = this.fcFormlist.value.Restructingform.restructing_Equity_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Equity_TotalFC").patchValue(restructing_Equity_FC - restructing_Equity_AD);
+
+    var restructing_Debt_FC = this.fcFormlist.value.Restructingform.restructing_Debt_FC;
+    var restructing_Debt_AD = this.fcFormlist.value.Restructingform.restructing_Debt_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Debt_TotalFC").patchValue(restructing_Debt_FC - restructing_Debt_AD);
+
+    var restructing_Guarantee_FC = this.fcFormlist.value.Restructingform.restructing_Guarantee_FC;
+    var restructing_Guarantee_AD = this.fcFormlist.value.Restructingform.restructing_Guarantee_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Guarantee_TotalFC").patchValue(restructing_Guarantee_FC - restructing_Guarantee_AD);
+
+    var restructing_Receivables_FC = this.fcFormlist.value.Restructingform.restructing_Receivables_FC;
+    var restructing_Receivables_AD = this.fcFormlist.value.Restructingform.restructing_Receivables_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Receivables_TotalFC").patchValue(restructing_Receivables_FC - restructing_Receivables_AD);
+
+    var restructing_Ainterest_FC = this.fcFormlist.value.Restructingform.restructing_Ainterest_FC;
+    var restructing_Ainterest_AD = this.fcFormlist.value.Restructingform.restructing_Ainterest_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_Ainterest_TotalFC").patchValue(restructing_Ainterest_FC - restructing_Ainterest_AD);
+
+    var restructing_BDividend_FC = this.fcFormlist.value.Restructingform.restructing_BDividend_FC;
+    var restructing_BDividend_AD = this.fcFormlist.value.Restructingform.restructing_BDividend_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_BDividend_TotalFC").patchValue(restructing_BDividend_FC - restructing_BDividend_AD);
+
+    var restructing_COther_FC = this.fcFormlist.value.Restructingform.restructing_COther_FC;
+    var restructing_COther_AD = this.fcFormlist.value.Restructingform.restructing_COther_AD;
+    this.fcFormlist.controls["Restructingform"].get("restructing_COther_TotalFC").patchValue(restructing_COther_FC - restructing_COther_AD);
+
+
   }
 
 }

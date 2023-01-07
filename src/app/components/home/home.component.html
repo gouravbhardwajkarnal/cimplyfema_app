@@ -1,24 +1,19 @@
-<div class="container">
-  <div class="static-slider-head background">
+<div class=" background  pt-5">
+  <div class="static-slider-head d-flex align-items-center h-100">
     <div class="container">
       <!-- Row  -->
       <div class="row justify-content-center">
         <!-- Column -->
-        <div
-          class="col-lg-9 col-md-6 align-self-center text-center title"
-          data-aos="fade-up"
-          data-aos-duration="1200"
-        >
+        <div class="col-lg-9 col-md-6 align-self-center text-center title" data-aos="fade-up" data-aos-duration="1200">
           <h1 class="title">
-            <span style="color: #02b1f3">Save Money.</span
-            ><span style="color: black"> Save Time.</span>
+            <span style="color: #02b1f3">Save Money.</span><span style="color: black"> Save Time.</span>
           </h1>
-          <h5 class="subtitle op-5">
+          <h1 color="#46586B" class="pt-4">
             India's largest tax and financial services software platform
-          </h5>
+          </h1>
 
-          <button class="header-button">Get Started</button>
-          <button class="header-button">Request a Demo</button>
+          <button mat-flat-button color="primary" class="me-3 text-light">Get Started</button>
+          <button mat-stroked-button class="bg-white">Request a Demo</button>
 
           <!-- <a  routerLink="https://www.wrappixel.com/free-wrapkit-angular-blog" class="btn btn-md m-t-30 btn-danger-gradiant font-14">Get Started</a> -->
           <!-- <a  routerLink="https://www.wrappixel.com/free-wrapkit-angular-blog" class="btn btn-md m-t-30 btn-danger-gradiant font-14">Down</a> -->
@@ -28,9 +23,64 @@
     </div>
   </div>
 
-  
 </div>
+<div class="container">
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile>
+      <div class="border rounded p-3 w-100 h-100">
+        <h3>E-Invoicing</h3>
 
+      </div>
+
+    </mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+  </mat-grid-list>
+
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Who should file an ITR?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>An individual whose annual income is more than the basic exemption limit of Rs 2.5 lakh should file an ITR. The
+        basic exemption limit for senior citizens (60 years onwards and less than 80 years) is Rs 3 lakh, and for super
+        senior citizens is Rs 5 lakh.</p>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          How can I claim deductions for tax saving?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>An individual whose annual income is more than the basic exemption limit of Rs 2.5 lakh should file an ITR. The
+        basic exemption limit for senior citizens (60 years onwards and less than 80 years) is Rs 3 lakh, and for super
+        senior citizens is Rs 5 lakh.</p>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          I receive my salary income after deduction of TDS. Am I required to file an income tax return?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>An individual whose annual income is more than the basic exemption limit of Rs 2.5 lakh should file an ITR. The
+        basic exemption limit for senior citizens (60 years onwards and less than 80 years) is Rs 3 lakh, and for super
+        senior citizens is Rs 5 lakh.</p>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          How can I claim an income tax refund?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>An individual whose annual income is more than the basic exemption limit of Rs 2.5 lakh should file an ITR. The
+        basic exemption limit for senior citizens (60 years onwards and less than 80 years) is Rs 3 lakh, and for super
+        senior citizens is Rs 5 lakh.</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
 <!-- <div clas="container">
   
 

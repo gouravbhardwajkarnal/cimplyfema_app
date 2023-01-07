@@ -34,6 +34,7 @@ import { FcInvestorComponent } from './Partial_Components/_partialform-fc/fc-inv
 import { FCFormService } from './service/formfc.service';
 import {MatButtonModule} from '@angular/material/button';
 import { MaterialModule } from './material.module';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 schemas:[NO_ERRORS_SCHEMA]
 
@@ -70,7 +71,8 @@ schemas:[NO_ERRORS_SCHEMA]
     NgSelectModule,
     ToastrModule.forRoot(),
     MatButtonModule,
-    MaterialModule
+    MaterialModule,
+    MatExpansionModule
   ],
   schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
   providers: [CommonService,UtilService,FCFormService],

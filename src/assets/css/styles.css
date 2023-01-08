@@ -292,6 +292,25 @@ body {
   height: 100vh;
   font-family: 'NotoSerif Regular';
 }
+
+.border-site{
+  border: 1px solid #D7E4F3
+}
+.shadow-main {
+  box-shadow: 0px 0px 30px rgb(19 159 194 / 8%);
+}
+
+.lh-26 {
+  line-height: 26px;
+}
+ .size14{
+  font-size: 14px;
+}
+
+
+
+
+
 label {
   margin-bottom: 10px;
 }

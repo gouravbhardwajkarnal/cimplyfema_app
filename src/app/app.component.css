@@ -37,3 +37,35 @@
   margin-left: .1rem;
   margin-right: .1rem;
 }
+
+.quote_bg {
+  background: url('../assets/images/home/Quote.png') center center/cover;
+  border-radius: 20px;
+  padding: 57px 117px;
+  position: relative;
+  bottom: -57px;
+}
+
+.footer_site {
+  margin-bottom: 40px;
+  position: relative;
+}
+.footer_site:after {
+  content: '';
+  height: 3px;
+  width: 64px;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+}
+.copy_r {
+  border-top: 1px solid #ffffff26;
+  padding: 25px 0;
+  margin-top: 40px;
+}
+footer {
+  padding-top: 150px;
+  background: #02B1F3;
+
+}

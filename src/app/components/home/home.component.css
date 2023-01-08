@@ -38,3 +38,62 @@ border-radius: 0px;
     background-color:#02B1F3;
 }
 
+
+.bg-itr{
+    background: #F2FBFF;
+  }
+  .bg-itr1{
+    background: #F9F9FF;
+  }
+  .bg-itr2{
+    background: #F8FFF3;
+  }
+  .bg-itr3{
+    background: #FFF8FE;
+  }
+  .bg-itr4{
+    background: #FFFBF3;
+  }
+  .bg-itr5{
+    background: #EBFEFF;
+  }
+  .py-36 {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+  .px-40 {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .rounded16 {
+    border-radius: 16px;
+  }
+  .img {
+    max-width: 76px;
+    flex: 0 0 76px;
+  }
+  .b_trust{
+    background: url(../../../assets/images/home/trustedbg.jpg);
+  }
+
+  .trusted {
+    background: #F2FBFF;
+    border-radius: 20px;
+  }
+  
+  .site_title {
+    position: relative;
+    padding-bottom: 70px;
+  }
+  .site_title:after {
+    content: '';
+    background: #02B1F3;
+    height: 4px;
+    width: 120px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 50px;
+  }
+ 
+  

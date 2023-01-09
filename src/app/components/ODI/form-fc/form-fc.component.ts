@@ -17,7 +17,6 @@ import { asBlob } from 'html-docx-js-typescript';
 import { saveAs } from 'file-saver';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { MatTable } from '@angular/material/table';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export interface TableData {
@@ -36,7 +35,6 @@ export class FormFcComponent implements OnInit {
   dataSource = new BehaviorSubject<AbstractControl[]>([]);
   displayColumns = ['from', 'to', 'Actions'];
   rows: FormArray = this.fb.array([]);
-  @ViewChild(MatTable,{static:true}) table: MatTable<any>;
   CountryList: any = [];
   disinvetmenttype: DisinvetmentType[];
   id: string = '0';

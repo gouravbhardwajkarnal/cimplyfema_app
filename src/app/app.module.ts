@@ -32,9 +32,6 @@ import { FormNiccodesComponent } from './Partial_Components/form-niccodes/form-n
 import { UtilService } from './service/util.service';
 import { FcInvestorComponent } from './Partial_Components/_partialform-fc/fc-investor/fc-investor.component';
 import { FCFormService } from './service/formfc.service';
-import {MatButtonModule} from '@angular/material/button';
-import { MaterialModule } from './material.module';
-import {MatExpansionModule} from '@angular/material/expansion';
 
 schemas:[NO_ERRORS_SCHEMA]
 
@@ -69,10 +66,7 @@ schemas:[NO_ERRORS_SCHEMA]
     BrowserAnimationsModule,
     TabsModule.forRoot(),
     NgSelectModule,
-    ToastrModule.forRoot(),
-    MatButtonModule,
-    MaterialModule,
-    MatExpansionModule
+    ToastrModule.forRoot()
   ],
   schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
   providers: [CommonService,UtilService,FCFormService],

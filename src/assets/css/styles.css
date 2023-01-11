@@ -183,7 +183,6 @@ footer h5, footer h6 {
   font-size: 14px;
 }
 section.get_quote {
-  position: absolute;
   width: 100%;
   left: 0;
   top: -50%;

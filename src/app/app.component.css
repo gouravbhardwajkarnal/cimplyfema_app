@@ -46,7 +46,7 @@
 }
 
 .get_quote {
-  position: absolute;
+  margin: -150px 0 0;
   width: 100%;
   left: 0;
   top: 0;

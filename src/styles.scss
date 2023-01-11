@@ -1,13 +1,152 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+$primary-color : #02B1F3;
+$theme-colors: (
+    "primary": #02B1F3
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
 .bg-mat-primary {
-  background-color: "";
+    background-color: "";
 }
 
 .border-primary {
     border-color: "#28bdf5" !important;
-  }
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+.pb-160 {
+    padding-bottom: 160px !important;
+}
+
+.border {
+    border: 1px solid #EAF3FD !important;
+}
+
+.shadow {
+    box-shadow: 0px 2px 14px rgba(17, 27, 38, 0.06) !important;
+}
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+    width: 50px !important;
+    height: 57px !important;
+    top: 1px !important;
+    padding: 16px !important;
+    background: #EEF3F9 !important;
+    border-radius: 0px 4px 4px 0px !important;
+    border-left: 1px solid #D7E1EC !important;
+}
+
+.multiselect-dropdown .dropdown-btn {
+    border: 1px solid #D7E1EC !important;
+    padding: 16px !important;
+    border-radius: 4px !important;
+}
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
+    transform: rotateZ(0deg) !important;
+}
+
+.multiselect-dropdown .dropdown-btn .selected-item-container .selected-item {
+    border: none !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    color: #212529 !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+}
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret:before {
+    top: 3px !important;
+    margin-top: 0 !important;
+    border-style: none !important;
+    border-width: 8px 8px 0 !important;
+    border-color: transparent !important;
+    background: url(./assets/images/arrow.svg) center center no-repeat;
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.theme-textfield {
+    position: relative;
+
+    label {
+        position: absolute;
+        font-size: 1rem;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: white;
+        color: gray;
+        padding: 0 0.3rem;
+        margin: 0 0.5rem;
+        transition: .1s ease-out;
+        transform-origin: left top;
+        pointer-events: none;
+    }
+    .ng-select{
+        padding: 0px !important;
+        .ng-select-container{
+            border: 0px !important;
+            height: 55px;
+            .ng-arrow-wrapper {
+                width: 50px !important;
+                height: 57px !important;
+                top: 1px !important;
+                padding: 16px !important;
+                background: #EEF3F9 !important;
+                border-radius: 0px 4px 4px 0px !important;
+                border-left: 1px solid #D7E1EC !important;
+                .ng-arrow{
+                    background: url(./assets/images/arrow.svg) center center no-repeat;
+                    border: 0;
+                    height: 10px;
+                    width: 10px;
+                }
+            }
+        }
+    }
+    input,ng-select,select {
+        font-size: 1rem;
+        outline: none;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 1rem 0.7rem;
+        color: gray;
+        transition: 0.1s ease-out;
+
+
+        &:focus {
+            border-color: $primary-color;
+
+            + {
+                label {
+                    color: $primary-color;
+                    top: 0;
+                    transform: translateY(-50%) scale(.9);
+                }
+            }
+        }
+
+        &:not(:placeholder-shown) {
+            + {
+                label {
+                    top: 0;
+                    transform: translateY(-50%) scale(.9);
+                }
+            }
+        }
+    }
+}

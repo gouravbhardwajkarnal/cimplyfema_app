@@ -43,7 +43,13 @@
   border-radius: 20px;
   padding: 57px 117px;
   position: relative;
-  bottom: -57px;
+}
+
+.get_quote {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 
 .footer_site {
@@ -67,5 +73,4 @@
 footer {
   padding-top: 150px;
   background: #02B1F3;
-
 }

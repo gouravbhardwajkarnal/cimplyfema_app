@@ -1,6 +1,6 @@
 <div class="active-karde fff main-content main-content-hidden">
   <section id="wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-expand-md start-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-expand-md start-0 top-0">
       <div class="container-fluid">
         <a routerLink="/home" class="navbar-brand nav-link"><img class="logo" src="assets/images/logo.png" alt="logo">
         </a>
@@ -67,8 +67,8 @@
               <a class="nav-link" href="#" id="basic-addon1"><i class="fas fa-search"></i></a>
             </li>
             <li class="nav-item">
-              <button mat-stroked-button>Sign in</button>
-              <button mat-flat-button color="primary" class="ms-3 text-light">Register</button>
+              <button class="btn text-primary border-primary border me-2">Sign in</button>
+              <button class="btn btn-primary text-white">Register</button>
             </li>
           </ul>
         </div>
@@ -76,7 +76,7 @@
     </nav>
   </section>
   <router-outlet></router-outlet>
-  <section class="pt-5">
+  <!-- <section class="pt-5">
     <div class="container-fluid">
       <div class="row pt-5 pb-4 guest">
         <div class="welcome">
@@ -84,25 +84,25 @@
         </div>
       </div>
     </div>
-  </section>
-  <section class="get_quote">
-    <div class="container quote_bg text-white">
-      <div class="align-items-center row">
-        <div class="col-md-6">
-          <h2 class="mb-0">Request for a Quote <br>
-            and Get Started</h2>
-        </div>
-        <div class="col-md-6 text-end">
-          <div class="btns">
-            <a href="#" class="bg-info btn text-white me-3">Try For Free</a>
-            <a href="#" class="bg-white btn">Get Started</a>
+  </section> -->
+  
+  <footer class="position-relative text-white">
+    <div class="container">
+      <section class="get_quote translate-middle-y">
+        <div class="container quote_bg text-white">
+          <div class="align-items-center row">
+            <div class="col-md-6">
+              <h2 class="mb-0 text-white">Request for a Quote <br> and Get Started</h2>
+            </div>
+            <div class="col-md-6 text-end">
+              <div class="btns">
+                <a href="#" class="btn btn-primary text-white me-3">Try For Free</a>
+                <a href="#" class="bg-white btn text-primary">Get Started</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <footer class="bg-mat-primary text-white">
-    <div class="container">
+      </section>
       <div class="row">
         <div class="col-5">
           <div class="row mb-4">
@@ -137,7 +137,7 @@
         </div>
         <div class="col-4">
           <div>
-            <h3 class="footer_site fw-bold h5">Quick Links</h3>
+            <h3 class="footer_site fw-bold h5 text-white">Quick Links</h3>
             <ul class="row row-cols-2 list-unstyled">
               <li>
                 <a routerlink="/pre/aboutus" href="/pre/aboutus"
@@ -171,11 +171,11 @@
         </div>
         <div class="col-3">
           <div>
-            <h3 class="footer_site fw-bold h5">Subscribe to Newsletter</h3>
+            <h3 class="footer_site fw-bold h5 text-white">Subscribe to Newsletter</h3>
             <p class="text-light h6 py-3">Enter your email address for receiving valuable newsletters.</p>
             <div class="bg-white rounded p-1 d-flex">
               <input placeholder="Enter your email address" class="border-0 form-control w-100">
-              <button mat-flat-button color="primary" class="ms-3 text-light w-50">Subscribe</button>
+              <button mat-flat-button color="primary" class="ms-3 text-light w-50 btn btn-primary">Subscribe</button>
 
             </div>
           </div>

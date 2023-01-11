@@ -39,6 +39,7 @@ import {
 import { asBlob } from 'html-docx-js-typescript';
 
 import { ConfirmedValidator } from '../../service/gstpan.validator';
+import { valHooks } from 'jquery';
 
 @Component({
   selector: 'app-form-coc',
@@ -148,6 +149,7 @@ export class FormCocComponent implements OnInit {
 
   contraventionNatureArray: any = [];
   contraventionReasonArray: any = [];
+  currentTab : number = 1
 
   constructor(
     private commonservice: CommonService,
@@ -1094,6 +1096,7 @@ export class FormCocComponent implements OnInit {
 
   // Stepper back/next button
   RBI_FDISubmit(Val) {
+    this.currentTab = parseInt(Val);
     this.COC_FDIInstructions = false;
     this.COC_FDIApplicantDetails = false;
     this.COC_FDIInstructionsButton = true;

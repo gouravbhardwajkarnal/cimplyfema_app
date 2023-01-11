@@ -96,6 +96,7 @@ export class FormAprComponent implements OnInit {
       APR_Foreign_Amount: new FormControl('', Validators.required),
       APR_Foreign_Share: new FormControl('', Validators.required),
       APR_FE_Control: new FormControl('', Validators.required),
+      APR_SH_Control: new FormControl('',Validators.required),
       APR_Profit_Current: new FormControl('', Validators.required),
       APR_Profit_Last: new FormControl('', Validators.required),
       APR_Dividend_Current: new FormControl('', Validators.required),
@@ -194,7 +195,7 @@ export class FormAprComponent implements OnInit {
       SDSDetails: new FormArray([]),
       ShareHoldingFE: new FormArray([]),
     });
- 
+    this.aprForm.get("APR_SH_Control").patchValue('No');
 
   }
   Indianshare: number = 0;
@@ -333,6 +334,7 @@ export class FormAprComponent implements OnInit {
     //     'APR_G':new FormControl('',Validators.required),   
     //   }
     // )
+
   }
   readBank() {
     this.apiService.getBank().subscribe((data) => {
@@ -633,6 +635,10 @@ export class FormAprComponent implements OnInit {
 
   get APR_SDS_Control() {
     return this.sdsform.get('APR_SDS_Control');
+  }
+  
+  get APR_SH_Control() {
+    return this.aprForm.get('APR_SH_Control');
   }
 
   get APR_Dec_A() {

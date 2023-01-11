@@ -11,35 +11,11 @@
     font-size: .875em;
     color: #dc3545 !important;
 }
-/* 
-div.input-block span.placeholder {
-  position: absolute;
-  padding: 12px 5px 6px 51px;
-  font-family: Roboto, sans-serif;
-  color: black;
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  top: 0;
-  left: 17px;
-  transition: all 0.2s;
-  transform-origin: 0% 0%;
-  background: transparent;
-  pointer-events: none;
-} */
-@page {
-    size: landscape;
-}
-.tblBorder{
-    border-top: 1px solid #000000; 
-    border-bottom: 1px solid #000000; 
-    border-left: 1px solid #000000; 
-    border-right: none; 
-    padding-top: 0.04in; 
-    padding-bottom: 0.04in; 
-    padding-left: 0.04in; 
-    padding-right: 0in
-}
-.tblBorder2{
-    border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: var(--bs-nav-tabs-link-active-color);
+  background-color: var(--bs-nav-tabs-link-active-bg);
+  border-color: var(--bs-nav-tabs-link-active-border-color);
+  color: #fff;
+  background: #02B1F3;
+  border-radius: 10px 10px 0px 0px;
 }

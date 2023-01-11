@@ -117,6 +117,10 @@ let FormAPR = new Schema({
    {
       type: String
    },
+   APR_SH_Control:
+   {
+      type: String
+   },
    APR_SDS_Control:
    {
       type: String 

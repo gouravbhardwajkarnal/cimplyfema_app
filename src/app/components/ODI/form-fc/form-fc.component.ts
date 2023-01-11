@@ -3,7 +3,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { ActivatedRoute } from '@angular/router';
 import { Iinvestment, IinvestmentSDS, IinvestmentWOS } from 'src/app/model/iinvestment';
 import { ApiService } from 'src/app/service/api.service';
-import { CodeClassGrid, DisinvestmentMethodGrid, DynamicGrid, FCDisinvestmentGrid, FinancialCommitmentGrid, PEFEntityGrid, ShareHoldingFEGrid, SumFCGrid } from 'src/app/model/gridmodel';
+import { CodeClassGrid, DisinvestmentMethodGrid, DisinvestmentRemittanceGrid, DynamicGrid, FCDisinvestmentGrid, FinancialCommitmentGrid, PEFEntityGrid, ShareHoldingFEGrid, SumFCGrid } from 'src/app/model/gridmodel';
 import { DisinvetmentType } from 'src/app/model/common.model';
 import { CommonService } from "src/app/service/common.service";
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -31,9 +31,7 @@ export interface TableData {
 })
 export class FormFcComponent implements OnInit {
 
-  data: TableData[] = [ { from: new Date(), to: new Date() } ];
-  dataSource = new BehaviorSubject<AbstractControl[]>([]);
-  displayColumns = ['from', 'to', 'Actions'];
+  public sectionfData: {};
   rows: FormArray = this.fb.array([]);
   CountryList: any = [];
   disinvetmenttype: DisinvetmentType[];
@@ -74,18 +72,23 @@ export class FormFcComponent implements OnInit {
   DisinvestmentMethod: any = {};
   DisinvestmentMethodlength: number = 0;
 
+  DisinvestmentRemittanceArray: Array<DisinvestmentRemittanceGrid> = [];
+  DisinvestmentRemittance: any = {};
+  DisinvestmentRemittancelength: number = 0;
+
   sumFC: any = {};
   sumFClength: number = 0;
   FCDisinvestment: any = {};
   FCDisinvestmentlength: number = 0;
   PEFEntity: any = {};
   PEFEntitylength: number = 0;
-  fcFormlist: FormGroup
+  public fcFormlist: FormGroup
   investorForm: FormGroup
   fcFormlistSub: Subscription
   formInvalid: boolean = false;
   investordetails: FormArray
-  dataModel: any = {};
+  public dataModel: any = {};
+  public dataList: any = {};
   NICCodeListShow: any = [];
   NICCodeListShowWOS: any = [];
   cityListShow: any = [];
@@ -111,7 +114,7 @@ export class FormFcComponent implements OnInit {
   Disinvestmentroutetypes: DisinvetmentType[];
   disinvestmentmaintypes: DisinvetmentType[];
   disinvestmentmethodtypes: DisinvetmentType[];
-  
+
   constructor(private readonly route: ActivatedRoute, private apiService: ApiService,
     private commonservice: CommonService, private fb: FormBuilder, public datepipe: DatePipe, private fcformService: FCFormService, private toastr: ToastrService) {
     this.fctypes = commonservice.getAllfctypes();
@@ -256,27 +259,23 @@ export class FormFcComponent implements OnInit {
         'disinvestment_SubmissionDate': new FormControl('', Validators.required),
         'disinvestment_APRPeriod': new FormControl('', Validators.required),
 
-        'disinvestment_Equity_FC': new FormControl(''),
-        'disinvestment_Equity_AD': new FormControl(''),
-        'disinvestment_Equity_TotalFC': new FormControl(''),
-        'disinvestment_Debt_FC': new FormControl(''),
-        'disinvestment_Debt_AD': new FormControl(''),
-        'disinvestment_Debt_TotalFC': new FormControl(''),
-        'disinvestment_Guarantee_FC': new FormControl(''),
-        'disinvestment_Guarantee_AD': new FormControl(''),
-        'disinvestment_Guarantee_TotalFC': new FormControl(''),
-        'disinvestment_Receivables_FC': new FormControl(''),
-        'disinvestment_Receivables_AD': new FormControl(''),
-        'disinvestment_Receivables_TotalFC': new FormControl(''),
-        'disinvestment_Ainterest_FC': new FormControl(''),
-        'disinvestment_Ainterest_AD': new FormControl(''),
-        'disinvestment_Ainterest_TotalFC': new FormControl(''),
-        'disinvestment_BDividend_FC': new FormControl(''),
-        'disinvestment_BDividend_AD': new FormControl(''),
-        'disinvestment_BDividend_TotalFC': new FormControl(''),
-        'disinvestment_COther_FC': new FormControl(''),
-        'disinvestment_COther_AD': new FormControl(''),
-        'disinvestment_COther_TotalFC': new FormControl(''),
+        'disinvestment_Equity_FC': new FormControl('', Validators.required),
+        'disinvestment_Equity_AD': new FormControl('', Validators.required),
+        'disinvestment_Equity_ADAPR': new FormControl('', Validators.required),
+        'disinvestment_Equity_WriteOff': new FormControl('', Validators.required),
+        'disinvestment_Loan_FC': new FormControl('', Validators.required),
+        'disinvestment_Loan_AD': new FormControl('', Validators.required),
+        'disinvestment_Loan_ADAPR': new FormControl('', Validators.required),
+        'disinvestment_Loan_WriteOff': new FormControl('', Validators.required),
+        'disinvestment_Issued_FC': new FormControl('', Validators.required),
+        'disinvestment_Issued_AD': new FormControl('', Validators.required),
+        'disinvestment_Issued_ADAPR': new FormControl('', Validators.required),
+        'disinvestment_Issued_WriteOff': new FormControl('', Validators.required),
+        'disinvestment_Invoked_FC': new FormControl('', Validators.required),
+        'disinvestment_Invoked_AD': new FormControl('', Validators.required),
+        'disinvestment_Invoked_ADAPR': new FormControl('', Validators.required),
+        'disinvestment_Invoked_WriteOff': new FormControl('', Validators.required),
+
 
         'disinvestment_IE_Place': new FormControl('', Validators.required),
         'disinvestment_AD_Place': new FormControl('', Validators.required),
@@ -292,11 +291,14 @@ export class FormFcComponent implements OnInit {
         'disinvestment_AD_Telephone': new FormControl(''),
         'disinvestment_IE_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
         'disinvestment_AD_Email': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
+
         'disinvestment_IE_A': new FormControl(''),
         'disinvestment_IE_B': new FormControl(''),
-        'disinvestment_IE_B1': new FormControl(''),
         'disinvestment_IE_C': new FormControl(''),
-        'disinvestment_IE_C1': new FormControl(''),
+        'disinvestment_IE_D': new FormControl(''),
+        'disinvestment_IE_E': new FormControl(''),
+        'disinvestment_IE_F': new FormControl(''),
+        'disinvestment_IE_G': new FormControl(''),
       })
     });
     this.readCity();
@@ -313,7 +315,6 @@ export class FormFcComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data.forEach((d: TableData) => this.addRow(d, false));
     this.SDS = {
       investment_SDS_Name: "",
       investment_SDS_Level: "",
@@ -335,11 +336,13 @@ export class FormFcComponent implements OnInit {
     this.ShareHoldingFEArray.push(this.ShareHoldingFE);
     this.ShareHoldingFElength = this.ShareHoldingFEArray.length;
 
-    debugger;
-    this.DisinvestmentMethod = { Method: "test", Details: "test" };
+    this.DisinvestmentMethod = { Method: "", Details: "" };
     this.DisinvestmentMethodArray.push(this.DisinvestmentMethod);
+    this.DisinvestmentMethodlength = this.DisinvestmentMethodArray.length;
 
-    
+    this.DisinvestmentRemittance = { RemittanceDate: "", InvestmentMethod: "", InvestmentCategory: "", Amount: "" };
+    this.DisinvestmentRemittanceArray.push(this.DisinvestmentRemittance);
+    this.DisinvestmentRemittancelength = this.DisinvestmentRemittanceArray.length;
 
     this.codeClass = { Description1987: "", Description2008: "" };
     this.CodeClassArray.push(this.codeClass);
@@ -356,17 +359,57 @@ export class FormFcComponent implements OnInit {
     this.FinancialCommitment = { InvestSource: "", CategoryType: "", Date: "", AmountFCY: "", AmountINR: "" }
     this.FinancialCommitmentArray.push(this.FinancialCommitment);
     this.FinancialCommitmentlength = this.FinancialCommitmentArray.length;
-  }
-  updateView() {
-    this.dataSource.next(this.rows.controls);
-  }
-  addRow(d?: TableData, noUpdate?: boolean) {
-    const row = this.fb.group({
-      'from'   : [d && d.from ? d.from : null, []],
-      'to'     : [d && d.to   ? d.to   : null, []]
-    });
-    this.rows.push(row);
-    if (!noUpdate) { this.updateView(); }
+    this.dataList =
+    {
+      disinvestment_Name_IE: "",
+      disinvestment_PAN_IE: "",
+      disinvestment_Date: "",
+      disinvestment_Route: "",
+      disinvestment_Type: "",
+      disinvestment_Stake_Time: "",
+      disinvestment_Stake_Partial: "",
+      disinvestment_Total_Fair: "",
+      disinvestment_ValuationDate: "",
+      disinvestment_SubmissionDate: "",
+      disinvestment_APRPeriod: "",
+      disinvestment_Equity_FC: "",
+      disinvestment_Equity_AD: "",
+      disinvestment_Equity_ADAPR: "",
+      disinvestment_Equity_WriteOff: "",
+      disinvestment_Loan_FC: "",
+      disinvestment_Loan_AD: "",
+      disinvestment_Loan_ADAPR: "",
+      disinvestment_Loan_WriteOff: "",
+      disinvestment_Issued_FC: "",
+      disinvestment_Issued_AD: "",
+      disinvestment_Issued_ADAPR: "",
+      disinvestment_Issued_WriteOff: "",
+      disinvestment_Invoked_FC: "",
+      disinvestment_Invoked_AD: "",
+      disinvestment_Invoked_ADAPR: "",
+      disinvestment_Invoked_WriteOff: "",
+      disinvestment_IE_Place: "",
+      disinvestment_AD_Place: "",
+      disinvestment_IE_Date: "",
+      disinvestment_AD_Date: "",
+      disinvestment_IE_Signature: "",
+      disinvestment_AD_Signature: "",
+      disinvestment_IE_Name: "",
+      disinvestment_AD_Name: "",
+      disinvestment_IE_Designation: "",
+      disinvestment_AD_Designation: "",
+      disinvestment_IE_Telephone: "",
+      disinvestment_AD_Telephone: "",
+      disinvestment_IE_Email: "",
+      disinvestment_AD_Email: "",
+      disinvestment_IE_A: "",
+      disinvestment_IE_B: "",
+      disinvestment_IE_C: "",
+      disinvestment_IE_D: "",
+      disinvestment_IE_E: "",
+      disinvestment_IE_F: "",
+      disinvestment_IE_G: "",
+    }
   }
   readCountry() {
     this.apiService.getCountry().subscribe((data) => {
@@ -374,21 +417,6 @@ export class FormFcComponent implements OnInit {
       console.log(this.CountryList);
     });
   }
-  
-  // data = [
-  //   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  //   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  //   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  //   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  //   {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  //   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  //   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  //   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  //   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  //   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  // ];
-
-
   capitalize(s: string): string {
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
@@ -917,218 +945,6 @@ export class FormFcComponent implements OnInit {
     console.log(this.investment_model);
   }
 
-  datalist: {
-    OPI_Sec_A_ForeignName: "",
-    OPI_Sec_A_SharesRepurchased: "",
-    OPI_Sec_A_SharesIssued: "",
-    UserId: "",
-    OPI_Sec_A_Name: "",
-    OPI_Sec_A_LEI: "",
-    OPI_Sec_A_PAN: "",
-    OPI_Sec_A_Address: "",
-    OPI_Sec_A_City: "",
-    OPI_Sec_A_State: "",
-    OPI_Sec_A_PIN: "",
-    OPI_Sec_A_NetINR: "",
-    WhetherIElist: "",
-    OPI_Sec_A_ContactPersonName: "",
-    OPI_Sec_A_ContactPersonDesignation: "",
-    OPI_Sec_A_Mobile: "",
-    OPI_Sec_A_EmailId: "",
-    OPI_Sec_A_NetAmount_USD: "",
-    OPI_Sec_A_NetAmount_INR: "",
-    OPI_Sec_A_Investments_USD: "",
-    OPI_Sec_A_Investments_INR: "",
-    OPI_Sec_A_Sale_USD: "",
-    OPI_Sec_A_Sale_INR: "",
-    OPI_Sec_A_NetAmountClosing_USD: "",
-    OPI_Sec_A_NetAmountClosing_INR: "",
-    OPI_Sec_A_RemittanceAmt_USD: "",
-    OPI_Sec_A_RemittanceAmt_INR: "",
-    OPI_Sec_A_Repatriation_USD: "",
-    OPI_Sec_A_Repatriation_INR: "",
-    OPI_Sec_A_EBS_NetAmt_USD: "",
-    OPI_Sec_A_EBS_NetAmt_INR: "",
-    OPI_Sec_A_EBS_Investments_USD: "",
-    OPI_Sec_A_EBS_Investments_INR: "",
-    OPI_Sec_A_EBS_Disinvestment_USD: "",
-    OPI_Sec_A_EBS_Disinvestment_INR: "",
-    OPI_Sec_A_EBS_NetAmtClose_USD: "",
-    OPI_Sec_A_EBS_NetAmtClose_INR: "",
-    OPI_Sec_A_EBS_RemittanceAmt_USD: "",
-    OPI_Sec_A_EBS_RemittanceAmt_INR: "",
-    OPI_Sec_A_EBS_RepatriationAmt_USD: "",
-    OPI_Sec_A_EBS_RepatriationAmt_INR: "",
-    OPI_Sec_A_Equity1_USD: "",
-    OPI_Sec_A_Equity2_INR: "",
-    OPI_Sec_A_Equity3_USD: "",
-    OPI_Sec_A_Equity4_INR: "",
-    OPI_Sec_A_Equity5_USD: "",
-    OPI_Sec_A_Equity6_INR: "",
-    OPI_Sec_A_Equity7_USD: "",
-    OPI_Sec_A_Equity8_INR: "",
-    OPI_Sec_A_Equity9_USD: "",
-    OPI_Sec_A_Equity10_INR: "",
-    OPI_Sec_A_Equity11_USD: "",
-    OPI_Sec_A_Equity12_INR: "",
-    OPI_Sec_A_DebtInstrument1_USD: "",
-    OPI_Sec_A_DebtInstrument2_INR: "",
-    OPI_Sec_A_DebtInstrument3_USD: "",
-    OPI_Sec_A_DebtInstrument4_INR: "",
-    OPI_Sec_A_DebtInstrument5_USD: "",
-    OPI_Sec_A_DebtInstrument6_INR: "",
-    OPI_Sec_A_DebtInstrument7_USD: "",
-    OPI_Sec_A_DebtInstrument8_INR: "",
-    OPI_Sec_A_DebtInstrument9_USD: "",
-    OPI_Sec_A_DebtInstrument10_INR: "",
-    OPI_Sec_A_DebtInstrument11_USD: "",
-    OPI_Sec_A_DebtInstrument12_INR: "",
-    OPI_Sec_A_ADR_GDR1_USD: "",
-    OPI_Sec_A_ADR_GDR2_INR: "",
-    OPI_Sec_A_ADR_GDR3_USD: "",
-    OPI_Sec_A_ADR_GDR4_INR: "",
-    OPI_Sec_A_ADR_GDR5_USD: "",
-    OPI_Sec_A_ADR_GDR6_INR: "",
-    OPI_Sec_A_ADR_GDR7_USD: "",
-    OPI_Sec_A_ADR_GDR8_INR: "",
-    OPI_Sec_A_ADR_GDR9_USD: "",
-    OPI_Sec_A_ADR_GDR10_INR: "",
-    OPI_Sec_A_ADR_GDR11_USD: "",
-    OPI_Sec_A_ADR_GDR12_INR: "",
-    OPI_Sec_A_ETF1_USD: "",
-    OPI_Sec_A_ETF2_INR: "",
-    OPI_Sec_A_ETF3_USD: "",
-    OPI_Sec_A_ETF4_INR: "",
-    OPI_Sec_A_ETF5_USD: "",
-    OPI_Sec_A_ETF6_INR: "",
-    OPI_Sec_A_ETF7_USD: "",
-    OPI_Sec_A_ETF8_INR: "",
-    OPI_Sec_A_ETF9_USD: "",
-    OPI_Sec_A_ETF10_INR: "",
-    OPI_Sec_A_ETF11_USD: "",
-    OPI_Sec_A_ETF12_INR: "",
-    OPI_Sec_A_Mutual1_USD: "",
-    OPI_Sec_A_Mutual2_INR: "",
-    OPI_Sec_A_Mutual3_USD: "",
-    OPI_Sec_A_Mutual4_INR: "",
-    OPI_Sec_A_Mutual5_USD: "",
-    OPI_Sec_A_Mutual6_INR: "",
-    OPI_Sec_A_Mutual7_USD: "",
-    OPI_Sec_A_Mutual8_INR: "",
-    OPI_Sec_A_Mutual9_USD: "",
-    OPI_Sec_A_Mutual10_INR: "",
-    OPI_Sec_A_Mutual11_USD: "",
-    OPI_Sec_A_Mutual12_INR: "",
-    OPI_Sec_A_Others1_USD: "",
-    OPI_Sec_A_Others2_INR: "",
-    OPI_Sec_A_Others3_USD: "",
-    OPI_Sec_A_Others4_INR: "",
-    OPI_Sec_A_Others5_USD: "",
-    OPI_Sec_A_Others6_INR: "",
-    OPI_Sec_A_Others7_USD: "",
-    OPI_Sec_A_Others8_INR: "",
-    OPI_Sec_A_Others9_USD: "",
-    OPI_Sec_A_Others10_INR: "",
-    OPI_Sec_A_Others11_USD: "",
-    OPI_Sec_A_Others12_INR: "",
-    OPI_Sec_A_Total1_USD: "",
-    OPI_Sec_A_Total2_INR: "",
-    OPI_Sec_A_Total3_USD: "",
-    OPI_Sec_A_Total4_INR: "",
-    OPI_Sec_A_Total5_USD: "",
-    OPI_Sec_A_Total6_INR: "",
-    OPI_Sec_A_Total7_USD: "",
-    OPI_Sec_A_Total8_INR: "",
-    OPI_Sec_A_Total9_USD: "",
-    OPI_Sec_A_Total10_INR: "",
-    OPI_Sec_A_Total11_USD: "",
-    OPI_Sec_A_Total12_INR: "",
-    OPI_Sec_B_Name: "",
-    OPI_Sec_B_LEI: "",
-    OPI_Sec_B_PAN: "",
-    OPI_Sec_B_Activity: "",
-    OPI_Sec_B_Address: "",
-    OPI_Sec_B_City: "",
-    OPI_Sec_B_State: "",
-    OPI_Sec_B_PINCode: "",
-    OPI_Sec_B_ContactPerson: "",
-    OPI_Sec_B_Designation: "",
-    OPI_Sec_B_Telephone: "",
-    OPI_Sec_B_MobileCP: "",
-    OPI_Sec_B_FaxNo: "",
-    OPI_Sec_B_Email: "",
-    OPI_Sec_B_VCF_Name: "",
-    OPI_Sec_B_VCF_PAN: "",
-    OPI_Sec_B_VCF_Group: "",
-    OPI_Sec_B_VCF_Activity: "",
-    OPI_Sec_B_VCF_Address: "",
-    OPI_Sec_B_VCF_City: "",
-    OPI_Sec_B_VCF_State: "",
-    OPI_Sec_B_VCF_PINCode: "",
-    OPI_Sec_B_VCF_ContactPerson: "",
-    OPI_Sec_B_VCF_Designation: "",
-    OPI_Sec_B_VCF_Telephone: "",
-    OPI_Sec_B_VCF_Email: "",
-    OPI_Sec_B_AIF_Name: "",
-    OPI_Sec_B_AIF_Date: "",
-    OPI_Sec_B_AIF_SEBILimit: "",
-    OPI_Sec_B_Equity1_USD: "",
-    OPI_Sec_B_Equity2_INR: "",
-    OPI_Sec_B_Equity3_USD: "",
-    OPI_Sec_B_Equity4_INR: "",
-    OPI_Sec_B_Equity5_USD: "",
-    OPI_Sec_B_Equity6_INR: "",
-    OPI_Sec_B_Equity7_USD: "",
-    OPI_Sec_B_Equity8_INR: "",
-    OPI_Sec_B_Equity9_USD: "",
-    OPI_Sec_B_Equity10_INR: "",
-    OPI_Sec_B_Equity11_USD: "",
-    OPI_Sec_B_Equity12_INR: "",
-    OPI_Sec_B_EquityLinked1_USD: "",
-    OPI_Sec_B_EquityLinked2_INR: "",
-    OPI_Sec_B_EquityLinked3_USD: "",
-    OPI_Sec_B_EquityLinked4_INR: "",
-    OPI_Sec_B_EquityLinked5_USD: "",
-    OPI_Sec_B_EquityLinked6_INR: "",
-    OPI_Sec_B_EquityLinked7_USD: "",
-    OPI_Sec_B_EquityLinked8_INR: "",
-    OPI_Sec_B_EquityLinked9_USD: "",
-    OPI_Sec_B_EquityLinked10_INR: "",
-    OPI_Sec_B_EquityLinked11_USD: "",
-    OPI_Sec_B_EquityLinked12_INR: "",
-    OPI_Sec_B_Permissible1_USD: "",
-    OPI_Sec_B_Permissible2_INR: "",
-    OPI_Sec_B_Permissible3_USD: "",
-    OPI_Sec_B_Permissible4_INR: "",
-    OPI_Sec_B_Permissible5_USD: "",
-    OPI_Sec_B_Permissible6_INR: "",
-    OPI_Sec_B_Permissible7_USD: "",
-    OPI_Sec_B_Permissible8_INR: "",
-    OPI_Sec_B_Permissible9_USD: "",
-    OPI_Sec_B_Permissible10_INR: "",
-    OPI_Sec_B_Permissible11_USD: "",
-    OPI_Sec_B_Permissible12_INR: "",
-    OPI_Sec_B_Total1_USD: "",
-    OPI_Sec_B_Total2_INR: "",
-    OPI_Sec_B_Total3_USD: "",
-    OPI_Sec_B_Total4_INR: "",
-    OPI_Sec_B_Total5_USD: "",
-    OPI_Sec_B_Total6_INR: "",
-    OPI_Sec_B_Total7_USD: "",
-    OPI_Sec_B_Total8_INR: "",
-    OPI_Sec_B_Total9_USD: "",
-    OPI_Sec_B_Total10_INR: "",
-    OPI_Sec_B_Total11_USD: "",
-    OPI_Sec_B_Total12_INR: "",
-    OPI_Sec_C_Signature: "",
-    OPI_Sec_C_Name: "",
-    OPI_Sec_C_Stamp: "",
-    OPI_Sec_C_Place: "",
-    OPI_Sec_C_Date: "",
-    OPI_Sec_C_Telephone: "",
-    OPI_Sec_C_EmailId: ""
-
-  }
   onSelected(event) {
     // this.fcFormlist.controls['BankName'].setValue(event.BankName);
   }
@@ -1139,6 +955,12 @@ export class FormFcComponent implements OnInit {
       if (Number(this.typeshow) == 3) {
         if (this.fcFormlist.controls["Restructingform"].invalid) {
           this.fcFormlist.controls["Restructingform"].markAllAsTouched();
+          return;
+        }
+      }
+      if (Number(this.typeshow) == 4) {
+        if (this.fcFormlist.controls["Disinvestmentform"].invalid) {
+          this.fcFormlist.controls["Disinvestmentform"].markAllAsTouched();
           return;
         }
       }
@@ -1170,28 +992,33 @@ export class FormFcComponent implements OnInit {
       const FinancialCommitmentArray: FormArray = this.fb.array(this.FinancialCommitmentArray);
       this.fcFormlist.setControl('FinancialCommitmentDetails', FinancialCommitmentArray);
 
+      const DisinvestmentMethodArray: FormArray = this.fb.array(this.DisinvestmentMethodArray);
+      this.fcFormlist.setControl('DisinvestmentMethodDetails', DisinvestmentMethodArray);
+      debugger
+
       this.dataModel['investorDetails'] = this.fcFormlist.value.investorForm;
       this.dataModel['JVWOSDetails'] = this.fcFormlist.value.JVWOSform;
       this.dataModel['DeclarationDetails'] = this.fcFormlist.value.Declarationform;
       this.dataModel['CertificateDetails'] = this.fcFormlist.value.Certificateform;
       this.dataModel['RestructuringDetails'] = this.fcFormlist.value.Restructingform;
+      this.dataModel['DisinvestmentDetails'] = this.fcFormlist.value.Disinvestmentform;
       this.dataModel = this.fcFormlist.value;
       console.log(this.dataModel);
 
       return this.apiService.createFormFC(this.dataModel).subscribe({
         complete: () => {
-          this.datalist = this.fcFormlist.value;
-          console.log(this.datalist);
+          this.sectionfData = this.fcFormlist.value.Restructingform;
+          this.dataList = this.fcFormlist.value.Restructingform;
           this.toastr.success("Data Save Successfully", 'Success', {
             closeButton: true,
             positionClass: 'toast-bottom-right'
           });
           this.btnShowNext = false;
-          if (Number(this.typeshow) == 1 || Number(this.typeshow) == 2) {
-            this.tabset.tabs[8].disabled = false;
-            this.tabset.tabs[8].active = true;
-            this.tabactive = true;
-          }
+
+          this.tabset.tabs[8].disabled = false;
+          this.tabset.tabs[8].active = true;
+          this.tabactive = true;
+
         },
         error: (e) => {
           console.log(e);
@@ -1310,6 +1137,8 @@ export class FormFcComponent implements OnInit {
     else if (type == 4) {
       this.tabset.tabs[7].disabled = false;
       this.tabset.tabs[7].active = true;
+      this.tabactive = false;
+      this.btnShowNext = false;
     }
     else {
       this.tabset.tabs[0].disabled = false;
@@ -1422,16 +1251,458 @@ export class FormFcComponent implements OnInit {
     });
     saveAs(converted, 'DebitAuthorityLetter.docx');
   }
+
   DownloadSACertificate() {
     const doc = new jsPDF();
     const pdfTable = this.pdfSACertificate.nativeElement;
-    var html = htmlToPdfmake(pdfTable.innerHTML);
+    var html = htmlToPdfmake(pdfTable);
     const documentDefinition = { content: html };
     pdfMake.createPdf(documentDefinition).open();
   }
   async ExportWordSACertificate() {
+    debugger;
+    console.log(this.dataList.restructing_AD_Email);
     const pdfTable = this.pdfSACertificate.nativeElement;
-    var converted = await asBlob(pdfTable.innerHTML, {
+    var converted = await asBlob( `<div _ngcontent-pqb-c541="" id="printMe" style="margin: 0px 0px;">
+
+    <!DOCTYPE html>
+    <html lang="en">
+       <head>
+          <meta charset="utf-8" />
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+          <title></title>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+       </head>
+       <body>
+          <div class="container">
+             <section>
+                <table width="640" style="border:1px solid #000;font-size: 15px;" cellpadding="5">
+                   <tbody>
+                   <tr style="text-align: center;">  <td colspan="18" width="640" style="border:1px solid #000;">
+                   <p style="margin:0;"><strong>Form FC - Section F</strong>
+                </td></tr>
+                      <tr style="text-align: center;">
+                         <td colspan="18" width="640" style="border:1px solid #000;">
+                            <p style="margin:0;"><strong>Reporting of restructuring of the balance sheet of the foreign entity involving diminution in the total value of the outstanding dues towards person resident in India on account of investment in equity and debt</strong>
+                         </td>
+                      </tr>
+                      <tr>
+                         <td colspan="18" width="640" style="border:1px solid #000;">
+                            <p style="margin:0;">Note: All amounts should be in a single foreign currency and in actuals</p>
+                         </td>
+                      </tr>
+                      <tr>
+                         <td colspan="18" width="640" style="border:1px solid #000;">
+                            <p style="margin:0;">13 digit Unique Identification Number allotted by the Reserve Bank</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="14" width="450" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Name, AD Code and branch of the designated AD bank</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">S. No.</p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Particulars</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>I</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">PAN and Name of the Indian Entity (IE)</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_PAN_IE + this.dataList.restructing_Name_IE + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>II</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Name of the foreign entity</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Name_FE + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>III&nbsp;</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">% Stake held by IE in the foreign entity</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Stake_FE + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>IV</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Total amount of Financial Commitment undertaken by IE in this UIN till date</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Total_Outstanding + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>&nbsp;</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">a) Equity</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Equity_FC + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>&nbsp;</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">b) Debt</p>
+                         </td>
+                         <td colspan="4" width="191" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">`+ this.dataList.restructing_Debt_FC + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>&nbsp;</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">c) Guarantee/ other non-fund based commitment</p>
+                         </td>
+                         <td colspan="4" width="191" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">`+ this.dataList.restructing_Guarantee_FC + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>V</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Total accumulated losses (based on latest audited financial statements)</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Total_ALosses + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>VI</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Proportionate amount of accumulated losses based on share of the IE</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Proportionate_Amount + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>VII</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Date of restructuring</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Date + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>VIII</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Total outstanding dues towards the IE as on date of restructuring</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Total_Outstanding + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>IX</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Amount of diminution in the total value of the outstanding dues</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;"></p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">a) Equity</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Equity_AD + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">&nbsp;</td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">b) Debt</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Debt_AD + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">&nbsp;</td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">c) Receivables</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Receivables_AD + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">&nbsp;</td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">(i) Interest</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_BDividend_AD + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">&nbsp;</td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">(ii) Dividend</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">.`+ this.dataList.restructing_BDividend_AD + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">&nbsp;</td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">(iii) Others (Specify)</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_COther_AD + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>X</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Date of the valuation certificate</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Valuation_Date + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>XI</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Total amount of financial commitment post restructuring</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>&nbsp;</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">a) Equity</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Equity_TotalFC + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>&nbsp;</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">b) Debt</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Debt_FC + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>&nbsp;</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">c) Guarantee/ other non-fund based commitment</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">`+ this.dataList.restructing_Guarantee_TotalFC + `</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="2" width="64" style="border-right: 1px solid #000;">
+                            <p style="margin:0;"><strong>XII</strong></p>
+                         </td>
+                         <td colspan="12" width="386" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">% stake held by IE post restructuring</p>
+                         </td>
+                         <td colspan="4" width="191">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="18" width="640">
+                            <p style="margin:0;text-align: center;"><strong>Declaration by the Indian Entity (IE)</strong></p>
+                            <p style="margin:0;text-align: center;">(Strike out whichever is not applicable)</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">a.&nbsp;&nbsp;&nbsp;&nbsp; The foreign entity has been incurring losses for last 2 years</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">b.&nbsp;&nbsp;&nbsp;&nbsp; The amount of original investment is less than USD 10 million</p>
+                            <p style="margin:0;text-align: center;">OR</p>
+                            <p style="margin:0;">The amount of original investment is more than USD 10 million and the diminution in value has been duly certified on an arm&rsquo;s length basis by a registered valuer as per the Companies Act, 2013 (18 of 2013) or corresponding valuer registered with the regulatory authority or certified public accountant in the host jurisdiction and the certificate is dated not more than six months before the date of restructuring</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The amount of diminution in value of the outstanding dues is less than twenty per cent of the total value of the outstanding dues towards the IE</p>
+                            <p style="margin:0;text-align: center;">OR</p>
+                            <p style="margin:0;">The amount of diminution in value of the outstanding dues is more than twenty per cent. of the total value of the outstanding dues towards the IE and the diminution in value has been duly certified on an arm&rsquo;s length basis by a registered valuer as per the Companies Act, 2013 (18 of 2013) or corresponding valuer registered with the regulatory authority or certified public accountant in the host jurisdiction and the certificate is dated not more than six months before the date of restructuring</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="18" width="640">
+                            <p style="margin:0;">I/ We hereby certify that the information furnished above are true and correct. <strong><u>I/We also duly acknowledge that if any information furnished by me/us is found to be false and/or incorrect, it shall be construed that the reporting requirements under FEMA, 1999, have not been complied with.</u></strong></p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="4" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Place&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                         </td>
+                         <td colspan="5" width="208" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                         <td colspan="3" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Place&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                         </td>
+                         <td colspan="6" width="244">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="4" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Date</p>
+                         </td>
+                         <td colspan="5" width="208" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                         <td colspan="3" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Date</p>
+                         </td>
+                         <td colspan="6" width="244">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="9" width="302" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">(Signature and seal of authorised official of the IE/ RI)</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                         <td colspan="9" width="338">
+                            <p style="margin:0;">(Signature and seal of authorised official of the AD)</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">&nbsp;</p>
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="4" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Name</p>
+                         </td>
+                         <td colspan="5" width="208" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                         <td colspan="3" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Name</p>
+                         </td>
+                         <td colspan="6" width="244">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="4" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Designation</p>
+                         </td>
+                         <td colspan="5" width="208" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                         <td colspan="3" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Designation</p>
+                         </td>
+                         <td colspan="6" width="244">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="4" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Tel. No.</p>
+                         </td>
+                         <td colspan="5" width="208" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                         <td colspan="3" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Tel. No.</p>
+                         </td>
+                         <td colspan="6" width="244">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                      <tr style="border-bottom: 1px solid #000;">
+                         <td colspan="4" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Email</p>
+                         </td>
+                         <td colspan="5" width="208" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                         <td colspan="3" width="94" style="border-right: 1px solid #000;">
+                            <p style="margin:0;">Email</p>
+                         </td>
+                         <td colspan="6" width="244">
+                            <p style="margin:0;">&nbsp;</p>
+                         </td>
+                      </tr>
+                   </tbody>
+                </table>
+                <p style="margin:0;">&nbsp;</p>
+                <p style="margin:0;">Note: AD bank may ensure that the certificate furnished is in accordance with Para 14 of FEM (Overseas Investment) Directions.&nbsp;</p>
+             </section>
+          </div>
+       </body>
+    </html>
+      `, {
       orientation: 'portrait',
       margins: { top: 720 },
     });
@@ -1465,8 +1736,63 @@ export class FormFcComponent implements OnInit {
     var restructing_COther_FC = this.fcFormlist.value.Restructingform.restructing_COther_FC;
     var restructing_COther_AD = this.fcFormlist.value.Restructingform.restructing_COther_AD;
     this.fcFormlist.controls["Restructingform"].get("restructing_COther_TotalFC").patchValue(restructing_COther_FC - restructing_COther_AD);
+  }
+  addDisinvestmentMethod() {
+    this.DisinvestmentMethod = { Method: "", Details: "" };
+    this.DisinvestmentMethodArray.push(this.DisinvestmentMethod);
+    console.log(this.DisinvestmentMethodArray);
+    this.DisinvestmentMethodlength = this.DisinvestmentMethodArray.length;
+    return true;
+  }
+  deleteDisinvestmentMethod(index) {
+    if (this.DisinvestmentMethodArray.length == 1) {
+      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+      return false;
+    } else {
+      this.DisinvestmentMethodArray.splice(index, 1);
+      this.DisinvestmentMethodlength = this.DisinvestmentMethodArray.length;
+      //this.toastr.warning('Row deleted successfully', 'Delete row');  
+      return true;
+    }
 
+  }
+  addDisinvestmentRemittance() {
+    this.DisinvestmentRemittance = { RemittanceDate: "", InvestmentMethod: "", InvestmentCategory: "", Amount: "" };
+    this.DisinvestmentRemittanceArray.push(this.DisinvestmentRemittance);
+    this.DisinvestmentRemittancelength = this.DisinvestmentRemittanceArray.length;
+    return true;
+  }
+  deleteDisinvestmentRemittance(index) {
+    if (this.DisinvestmentRemittanceArray.length == 1) {
+      //this.toastr.error("Can't delete the row when there is only one row", 'Warning');  
+      return false;
+    } else {
+      this.DisinvestmentRemittanceArray.splice(index, 1);
+      this.DisinvestmentRemittancelength = this.DisinvestmentRemittanceArray.length;
+      //this.toastr.warning('Row deleted successfully', 'Delete row');  
+      return true;
+    }
+  }
+  onBlurDI(values) {
+    var disinvestment_Equity_FC = this.fcFormlist.value.Disinvestmentform.disinvestment_Equity_FC;
+    var disinvestment_Equity_AD = this.fcFormlist.value.Disinvestmentform.disinvestment_Equity_AD;
+    var disinvestment_Equity_ADAPR = this.fcFormlist.value.Disinvestmentform.disinvestment_Equity_ADAPR;
+    this.fcFormlist.controls["Disinvestmentform"].get("disinvestment_Equity_WriteOff").patchValue(disinvestment_Equity_FC - disinvestment_Equity_AD - disinvestment_Equity_ADAPR);
 
+    var disinvestment_Loan_FC = this.fcFormlist.value.Disinvestmentform.disinvestment_Loan_FC;
+    var disinvestment_Loan_AD = this.fcFormlist.value.Disinvestmentform.disinvestment_Loan_AD;
+    var disinvestment_Loan_ADAPR = this.fcFormlist.value.Disinvestmentform.disinvestment_Loan_ADAPR;
+    this.fcFormlist.controls["Disinvestmentform"].get("disinvestment_Loan_WriteOff").patchValue(disinvestment_Loan_FC - disinvestment_Loan_AD - disinvestment_Loan_ADAPR);
+
+    var disinvestment_Issued_FC = this.fcFormlist.value.Disinvestmentform.disinvestment_Issued_FC;
+    var disinvestment_Issued_AD = this.fcFormlist.value.Disinvestmentform.disinvestment_Issued_AD;
+    var disinvestment_Issued_ADAPR = this.fcFormlist.value.Disinvestmentform.disinvestment_Issued_ADAPR;
+    this.fcFormlist.controls["Disinvestmentform"].get("disinvestment_Issued_WriteOff").patchValue(disinvestment_Issued_FC - disinvestment_Issued_AD - disinvestment_Issued_ADAPR);
+
+    var disinvestment_Invoked_FC = this.fcFormlist.value.Disinvestmentform.disinvestment_Invoked_FC;
+    var disinvestment_Invoked_AD = this.fcFormlist.value.Disinvestmentform.disinvestment_Invoked_AD;
+    var disinvestment_Invoked_ADAPR = this.fcFormlist.value.Disinvestmentform.disinvestment_Invoked_ADAPR;
+    this.fcFormlist.controls["Disinvestmentform"].get("disinvestment_Invoked_WriteOff").patchValue(disinvestment_Invoked_FC - disinvestment_Invoked_AD - disinvestment_Invoked_ADAPR);
   }
 
 }

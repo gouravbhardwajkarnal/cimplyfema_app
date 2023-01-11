@@ -27,4 +27,19 @@ div.input-block span.placeholder {
   background: transparent;
   pointer-events: none;
 } */
- 
+@page {
+    size: landscape;
+}
+.tblBorder{
+    border-top: 1px solid #000000; 
+    border-bottom: 1px solid #000000; 
+    border-left: 1px solid #000000; 
+    border-right: none; 
+    padding-top: 0.04in; 
+    padding-bottom: 0.04in; 
+    padding-left: 0.04in; 
+    padding-right: 0in
+}
+.tblBorder2{
+    border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in
+}

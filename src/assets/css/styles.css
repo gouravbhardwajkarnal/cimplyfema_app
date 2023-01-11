@@ -278,9 +278,9 @@ a {
 button, input, optgroup, select, textarea {
   outline: none !important;
 }
-/* .form-control, select, input[type="text"] {
+.form-control, select, input[type="text"] {
   min-height: 40px;
-} */
+}
 
 body {
   line-height: 1.4;

@@ -2476,989 +2476,802 @@
                         </div>
                     </tab>
                     <tab heading="Section G - Disinvestment" id="7" disabled="disabled">
-                        <div class="restructuring-form" formGroupName="Disinvestmentform">
-                            <mat-tab-group mat-align-tabs="center">
-                                <mat-tab label="Basic Details">
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>Name of the Indian Entity (IE)</mat-label>
-                                        <input type="text" matInput formControlName="disinvestment_Name_IE"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_Name_IE').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_Name_IE').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_Name_IE').touched)">
-                                        </mat-error>
-                                    </mat-form-field>                                    
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>PAN of IE</mat-label>
-                                        <input type="text" matInput formControlName="disinvestment_PAN_IE"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_PAN_IE').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_PAN_IE').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_PAN_IE').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>Date of Disinvestment</mat-label>
-                                        <input type="date" matInput formControlName="disinvestment_Date"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_Date').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_Date').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_Date').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>Disinvestment Route</mat-label>
-                                             <mat-select  formControlName="disinvestment_Route">
-                                                <mat-option value="option">--Please select--</mat-option>
-                                                <mat-option *ngFor="let types of Disinvestmentroutetypes" [value]="types.id">
-                                                  {{types.name}}
-                                                </mat-option>
-                                              </mat-select>
+                        <div formGroupName="Disinvestmentform">
+                            <tabset #tabsetdisinvestment>
+                                <tab heading="Basic Details">
 
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_Route').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_Route').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_Route').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>Disinvestment Type</mat-label>
-                                             <mat-select  formControlName="disinvestment_Type">
-                                                <mat-option value="option">--Please select--</mat-option>
-                                                <mat-option *ngFor="let types of disinvestmentmaintypes" [value]="types.id">
-                                                  {{types.name}}
-                                                </mat-option>
-                                              </mat-select>
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_Type').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_Type').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_Type').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                    
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>% Stake held at the time of disinvestment</mat-label>
-                                        <input type="text" matInput formControlName="disinvestment_Stake_Time"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_Stake_Time').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_Stake_Time').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_Stake_Time').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>% stake disinvested in case of partial disinvestment</mat-label>
-                                        <input type="text" matInput formControlName="disinvestment_Stake_Partial"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_Stake_Partial').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_Stake_Partial').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_Stake_Partial').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>Fair value of the total disinvestment</mat-label>
-                                        <input type="text" matInput formControlName="disinvestment_Total_Fair"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_Total_Fair').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_Total_Fair').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_Total_Fair').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>Date of valuation report, wherever applicable</mat-label>
-                                        <input type="date" matInput formControlName="disinvestment_ValuationDate"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_ValuationDate').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_ValuationDate').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_ValuationDate').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>Date of submission of last APR</mat-label>
-                                        <input type="date" matInput formControlName="disinvestment_SubmissionDate"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_SubmissionDate').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_SubmissionDate').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_SubmissionDate').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                    <mat-form-field class="restructuring-full-width" appearance="outline">
-                                        <mat-label>Period to which last APR relates</mat-label>
-                                        <input type="date" matInput formControlName="disinvestment_APRPeriod"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_APRPeriod').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_APRPeriod').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_APRPeriod').touched)">
-                                        </mat-error>
-                                    </mat-form-field>
-                                   <!-- app.component.html -->
-                                   <table mat-table [dataSource]="dataSource" formArrayName="dates">
-                                    <!-- Row definitions -->
-                                    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-                                    <tr mat-row *matRowDef="let row; let i = index; columns: displayColumns;"></tr>
-                                
-                                    <!-- Column definitions -->
-                                    <ng-container matColumnDef="from">
-                                      <th mat-header-cell *matHeaderCellDef> From </th>
-                                      <td mat-cell *matCellDef="let row; let index = index"  [formGroupName]="index"> 
-                                        <mat-select  formControlName="disinvestment_Type">
-                                            <mat-option value="option">--Please select--</mat-option>
-                                            <mat-option *ngFor="let types of disinvestmentmaintypes" [value]="types.id">
-                                              {{types.name}}
-                                            </mat-option>
-                                          </mat-select>
-                                    <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_Type').invalid &&
+                                    <div class="row g-4">
+                                        <div class="col-3 input-block mb-4">
+                                            <input type="text" id="disinvestment_Name_IE" spellcheck="false" required
+                                                class="form-control" formControlName="disinvestment_Name_IE"
+                                                [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Name_IE').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_Name_IE').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_Name_IE').touched)">
+                                            <span class="placeholder">Name of the Indian Entity</span>
+                                        </div>
+                                        <div class="col-3 input-block mb-4">
+                                            <input type="text" id="disinvestment_PAN_IE" spellcheck="false" required
+                                                class="form-control" formControlName="disinvestment_PAN_IE"
+                                                [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_PAN_IE').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_PAN_IE').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_PAN_IE').touched)">
+                                            <span class="placeholder">PAN of IE</span>
+                                        </div>
+                                        <div class="col-2 input-block mb-4">
+                                            <input type="date" id="disinvestment_Date" spellcheck="false" required
+                                                class="form-control" formControlName="disinvestment_Date"
+                                                [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Date').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_Date').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_Date').touched)">
+                                            <span class="placeholder">Date of Disinvestment</span>
+                                        </div>
+                                        <div class="col-2 input-block mb-4">
+                                            <select class="form-select" required #disinvestment_Route
+                                                formControlName="disinvestment_Route" [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Route').invalid &&
+                                (fcFormlist.get('Disinvestmentform.disinvestment_Route').dirty ||
+                                fcFormlist.get('Disinvestmentform.disinvestment_Route').touched)">
+                                                <option ng-option value="">--Please select--</option>
+                                                <option *ngFor=" let object of Disinvestmentroutetypes"
+                                                    value="{{object.id}}">
+                                                    {{object.name}}
+                                                </option>
+                                            </select>
+                                            <span class="placeholder">Disinvestment Route</span>
+                                        </div>
+                                        <div class="col-2 input-block mb-4">
+                                            <select class="form-select" required #disinvestment_Type
+                                                formControlName="disinvestment_Type" [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Type').invalid &&
                                 (fcFormlist.get('Disinvestmentform.disinvestment_Type').dirty ||
                                 fcFormlist.get('Disinvestmentform.disinvestment_Type').touched)">
-                                    </mat-error>
-                                      </td>
-                                    </ng-container>
-                                
-                                    <ng-container matColumnDef="to">
-                                      <th mat-header-cell *matHeaderCellDef> To </th>
-                                      <td mat-cell *matCellDef="let row; let index = index"  [formGroupName]="index">
-                                        <input type="date" matInput formControlName="disinvestment_APRPeriod"
-                                            placeholder="">
-                                        <mat-error *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_APRPeriod').invalid &&
-                                    (fcFormlist.get('Disinvestmentform.disinvestment_APRPeriod').dirty ||
-                                    fcFormlist.get('Disinvestmentform.disinvestment_APRPeriod').touched)">
-                                        </mat-error>
-                                      </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="Actions">
-                                        <th mat-header-cell *matHeaderCellDef> To </th>
-                                        <td mat-cell *matCellDef="let row; let index = index"  [formGroupName]="index">
-                                            
-                                            <button mat-icon-button matTooltip="Click to Add" (click)="addRow()" class="iconbutton" color="success">
-                                                <mat-icon aria-label="Add">add</mat-icon>
-                                              </button>
-                                            <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary">
-                                                <mat-icon aria-label="Edit">edit</mat-icon>
-                                              </button>
-                                            <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn">
-                                                <mat-icon aria-label="Delete">delete</mat-icon>
-                                              </button>
-                                        </td>
-                                      </ng-container>
-                                  </table>
+                                                <option ng-option value="">--Please select--</option>
+                                                <option *ngFor=" let object of disinvestmentmaintypes"
+                                                    value="{{object.id}}">
+                                                    {{object.name}}
+                                                </option>
+                                            </select>
+                                            <span class="placeholder">Disinvestment Type</span>
+                                        </div>
+                                        <div class="col-4 input-block mb-4">
+                                            <input type="text" id="disinvestment_Stake_Time" spellcheck="false" required
+                                                class="form-control" formControlName="disinvestment_Stake_Time"
+                                                [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Stake_Time').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_Stake_Time').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_Stake_Time').touched)">
+                                            <span class="placeholder">% Stake held at the time of disinvestment</span>
+                                        </div>
+                                        <div class="col-4 input-block mb-4">
+                                            <input type="text" id="disinvestment_Stake_Partial" spellcheck="false"
+                                                required class="form-control"
+                                                formControlName="disinvestment_Stake_Partial" [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Stake_Partial').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_Stake_Partial').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_Stake_Partial').touched)">
+                                            <span class="placeholder">% stake disinvested in case of partial
+                                                disinvestment</span>
+                                        </div>
+                                        <div class="col-4 input-block mb-4">
+                                            <input type="text" id="disinvestment_Total_Fair" spellcheck="false" required
+                                                class="form-control" formControlName="disinvestment_Total_Fair"
+                                                [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Total_Fair').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_Total_Fair').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_Total_Fair').touched)">
+                                            <span class="placeholder">Fair value of the total disinvestment</span>
+                                        </div>
+                                        <div class="col-4 input-block mb-4">
+                                            <input type="date" id="disinvestment_ValuationDate" spellcheck="false"
+                                                required class="form-control"
+                                                formControlName="disinvestment_ValuationDate" [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_ValuationDate').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_ValuationDate').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_ValuationDate').touched)">
+                                            <span class="placeholder">Date of valuation report, wherever
+                                                applicable</span>
+                                        </div>
+                                        <div class="col-4 input-block mb-4">
+                                            <input type="date" id="disinvestment_SubmissionDate" spellcheck="false"
+                                                required class="form-control"
+                                                formControlName="disinvestment_SubmissionDate" [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_SubmissionDate').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_SubmissionDate').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_SubmissionDate').touched)">
+                                            <span class="placeholder">Date of submission of last APR</span>
+                                        </div>
+                                        <div class="col-4 input-block mb-4">
+                                            <input type="date" id="disinvestment_APRPeriod" spellcheck="false" required
+                                                class="form-control" formControlName="disinvestment_APRPeriod"
+                                                [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_APRPeriod').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_APRPeriod').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_APRPeriod').touched)">
+                                            <span class="placeholder">Period to which last APR relates</span>
+                                        </div>
+                                    </div>
                                     <table class="table caption-top table-responsive">
-                                        <caption>Change in the share holding pattern during the reporting
-                                            year
-                                            (Furnish the
-                                            updated share holding pattern, if applicable, in the foreign
-                                            entity)
+                                        <thead>
+                                            <tr>
+
+                                                <th scope="col" width="40%">Method of Disinvestment
+                                                </th>
+                                                <th scope="col" width="50%">Details to be furnished as Annex to the Form
+                                                    FC Section G along with relevant documentary evidence
+                                                </th>
+                                                <th scope="col" width="10%">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dynamic of DisinvestmentMethodArray; let i = index;">
+
+                                                <td width="40%">
+                                                    <select class="form-select" required
+                                                        [(ngModel)]="DisinvestmentMethodArray[i].Method"
+                                                        [ngModelOptions]="{standalone: true}">
+                                                        <option ng-option value="">Select Investment Type</option>
+                                                        <option *ngFor=" let object of disinvestmentmethodtypes"
+                                                            value="{{object.id}}">
+                                                            {{object.name}}
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                                <td width="50%">
+                                                    <input [(ngModel)]="DisinvestmentMethodArray[i].Details"
+                                                        [ngModelOptions]="{standalone: true}" class="form-control"
+                                                        type="text" />
+                                                </td>
+                                                <td width="10%">
+                                                    <button type="button" (click)="addDisinvestmentMethod()"
+                                                        class="btn btn-outline-primary me-2">+</button>
+                                                    <button type="button" *ngIf="DisinvestmentMethodlength>1"
+                                                        (click)="deleteDisinvestmentMethod(i)"
+                                                        class="btn btn-outline-primary me-2">-</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </tab>
+                                <tab heading="Financial Committment">
+                                    <table class="table caption-top table-striped table-bordered table-responsive">
+                                        <caption>Financial Commitment
                                         </caption>
                                         <thead>
                                             <tr>
-
-                                                <th scope="col" width="37%"> Person resident in India
-                                                </th>
-                                                <th scope="col" width="10%">%stake
-                                                </th>
-                                                <th scope="col" width="37%">Foreign partner(s)
-                                                </th>
-                                                <th scope="col" width="8%">%stake
-                                                </th>
-                                                <th scope="col" width="8%">Total
-                                                </th>
+                                                <th scope="col">Serial No. </th>
+                                                <th scope="col">Type of Commitment</th>
+                                                <th scope="col">Financial Commitment</th>
+                                                <th scope="col">Amount repatriated on disinvestment</th>
+                                                <th scope="col">Amount repatriated since reporting of the last APR
+                                                    except the disinvestment proceeds</th>
+                                                <th scope="col">Write-off</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let dynamic of ShareHoldingFEArray; let i = index;">
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Equity</td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Equity_FC"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Equity_FC"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Equity_FC').invalid &&
+                        (fcFormlist.get('Disinvestmentform.disinvestment_Equity_FC').dirty ||
+                        fcFormlist.get('Disinvestmentform.disinvestment_Equity_FC').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Equity_AD"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Equity_AD"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Equity_AD').invalid &&
+                        (fcFormlist.get('Disinvestmentform.disinvestment_Equity_AD').dirty ||
+                        fcFormlist.get('Disinvestmentform.disinvestment_Equity_AD').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Equity_ADAPR"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Equity_ADAPR"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Equity_ADAPR').invalid &&
+                    (fcFormlist.get('Disinvestmentform.disinvestment_Equity_ADAPR').dirty ||
+                    fcFormlist.get('Disinvestmentform.disinvestment_Equity_ADAPR').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Equity_WriteOff"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Equity_WriteOff"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Equity_WriteOff').invalid &&
+                    (fcFormlist.get('Disinvestmentform.disinvestment_Equity_WriteOff').dirty ||
+                    fcFormlist.get('Disinvestmentform.disinvestment_Equity_WriteOff').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Loan</td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Loan_FC"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control" formControlName="disinvestment_Loan_FC"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Loan_FC').invalid &&
+                    (fcFormlist.get('Disinvestmentform.disinvestment_Loan_FC').dirty ||
+                    fcFormlist.get('Disinvestmentform.disinvestment_Loan_FC').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Loan_AD"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control" formControlName="disinvestment_Loan_AD"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Loan_AD').invalid &&
+                    (fcFormlist.get('Disinvestmentform.disinvestment_Loan_AD').dirty ||
+                    fcFormlist.get('Disinvestmentform.disinvestment_Loan_AD').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Loan_ADAPR"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Loan_ADAPR"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Loan_ADAPR').invalid &&
+                    (fcFormlist.get('Disinvestmentform.disinvestment_Loan_ADAPR').dirty ||
+                    fcFormlist.get('Disinvestmentform.disinvestment_Loan_ADAPR').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Loan_WriteOff"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Loan_WriteOff"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Loan_WriteOff').invalid &&
+                    (fcFormlist.get('Disinvestmentform.disinvestment_Loan_WriteOff').dirty ||
+                    fcFormlist.get('Disinvestmentform.disinvestment_Loan_WriteOff').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Guarantees issued/ other non-fund based financial commitment</td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Issued_FC"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Issued_FC"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Issued_FC').invalid &&
+                    (fcFormlist.get('Disinvestmentform.disinvestment_Issued_FC').dirty ||
+                    fcFormlist.get('Disinvestmentform.disinvestment_Issued_FC').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Issued_AD"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Issued_AD"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Issued_AD').invalid &&
+                    (fcFormlist.get('Disinvestmentform.disinvestment_Issued_AD').dirty ||
+                    fcFormlist.get('Disinvestmentform.disinvestment_Issued_AD').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Issued_ADAPR"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Issued_ADAPR"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Issued_ADAPR').invalid &&
+                    (fcFormlist.get('Disinvestmentform.disinvestment_Issued_ADAPR').dirty ||
+                    fcFormlist.get('Disinvestmentform.disinvestment_Issued_ADAPR').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Issued_WriteOff"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Issued_WriteOff"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Issued_WriteOff').invalid &&
+                (fcFormlist.get('Disinvestmentform.disinvestment_Issued_WriteOff').dirty ||
+                fcFormlist.get('Disinvestmentform.disinvestment_Issued_WriteOff').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Guarantee invoked/ Other fund based financial commitment</td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Invoked_FC"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Invoked_FC"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Invoked_FC').invalid &&
+                (fcFormlist.get('Disinvestmentform.disinvestment_Invoked_FC').dirty ||
+                fcFormlist.get('Disinvestmentform.disinvestment_Invoked_FC').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Invoked_AD"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Invoked_AD"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Invoked_AD').invalid &&
+                (fcFormlist.get('Disinvestmentform.disinvestment_Invoked_AD').dirty ||
+                fcFormlist.get('Disinvestmentform.disinvestment_Invoked_AD').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Invoked_ADAPR"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Invoked_ADAPR"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Invoked_ADAPR').invalid &&
+                (fcFormlist.get('Disinvestmentform.disinvestment_Invoked_ADAPR').dirty ||
+                fcFormlist.get('Disinvestmentform.disinvestment_Invoked_ADAPR').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-block mb-4">
+                                                        <input type="number" id="disinvestment_Invoked_WriteOff"
+                                                            spellcheck="false" (blur)="onBlurDI(this)" required
+                                                            class="form-control"
+                                                            formControlName="disinvestment_Invoked_WriteOff"
+                                                            [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_Invoked_WriteOff').invalid &&
+                (fcFormlist.get('Disinvestmentform.disinvestment_Invoked_WriteOff').dirty ||
+                fcFormlist.get('Disinvestmentform.disinvestment_Invoked_WriteOff').touched)">
+                                                        <span class="placeholder">Enter Amount</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                                <td width="37%">
-                                                    <input [(ngModel)]="ShareHoldingFEArray[i].Person"
-                                                        [ngModelOptions]="{standalone: true}"
-                                                        class="form-control" type="text" />
+                                        </tbody>
+                                    </table>
+                                    <table class="table caption-top table-responsive">
+                                        <caption>Date wise details of remittances/ transaction (attach separate sheet if
+                                            necessary)</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" width="20%">Date of remittance /transaction
+                                                </th>
+                                                <th scope="col" width="20%">Method of Investment
+                                                </th>
+                                                <th scope="col" width="20%">Category of investment
+                                                </th>
+                                                <th scope="col" width="20%">Amount
+                                                </th>
+                                                <th scope="col" width="10%">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dynamic of DisinvestmentRemittanceArray; let i = index;">
+                                                <td width="20%">
+                                                    <input [(ngModel)]="DisinvestmentRemittanceArray[i].RemittanceDate"
+                                                        [ngModelOptions]="{standalone: true}" class="form-control"
+                                                        type="date" />
+                                                </td>
+                                                <td width="20%">
+                                                    <select class="form-select" required
+                                                        [(ngModel)]="DisinvestmentRemittanceArray[i].InvestmentMethod"
+                                                        [ngModelOptions]="{standalone: true}">
+                                                        <option ng-option value="">Select Investment Type</option>
+                                                        <option *ngFor=" let object of disinvestmentmethodtypes"
+                                                            value="{{object.id}}">
+                                                            {{object.name}}
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                                <td width="20%">
+                                                    <input
+                                                        [(ngModel)]="DisinvestmentRemittanceArray[i].InvestmentCategory"
+                                                        [ngModelOptions]="{standalone: true}" class="form-control"
+                                                        type="text" />
+                                                </td>
+                                                <td width="20%">
+                                                    <input [(ngModel)]="DisinvestmentRemittanceArray[i].Amount"
+                                                        [ngModelOptions]="{standalone: true}" class="form-control"
+                                                        type="number" />
                                                 </td>
                                                 <td width="10%">
-                                                    <input [(ngModel)]="ShareHoldingFEArray[i].Pstake"
-                                                        [ngModelOptions]="{standalone: true}"
-                                                        class="form-control" type="number"
-                                                        (blur)="onBlur(ShareHoldingFEArray[i])" />
-                                                </td>
-                                                <td width="37%">
-                                                    <input
-                                                        [(ngModel)]="ShareHoldingFEArray[i].ForeignPartner"
-                                                        [ngModelOptions]="{standalone: true}"
-                                                        class="form-control" type="text" />
-                                                </td>
-                                                <td width="8%">
-                                                    <input [(ngModel)]="ShareHoldingFEArray[i].FPstake"
-                                                        [ngModelOptions]="{standalone: true}"
-                                                        (blur)="onBlur(ShareHoldingFEArray[i])"
-                                                        class="form-control" type="number" />
-                                                </td>
-                                                <td width="8%">
-                                                    <input [(ngModel)]="ShareHoldingFEArray[i].Total"
-                                                        [ngModelOptions]="{standalone: true}" disabled
-                                                        class="form-control" type="text" />
-                                                </td>
-
-                                                <td>
-                                                    <button type="button" (click)="addShareHoldingFE()"
+                                                    <button type="button" (click)="addDisinvestmentRemittance()"
                                                         class="btn btn-outline-primary me-2">+</button>
-                                                    <button type="button" *ngIf="ShareHoldingFElength>1"
-                                                        (click)="deleteShareHoldingFE(i)"
+                                                    <button type="button" *ngIf="DisinvestmentRemittancelength > 1"
+                                                        (click)="deleteDisinvestmentRemittance(i)"
                                                         class="btn btn-outline-primary me-2">-</button>
-
                                                 </td>
                                             </tr>
                                         </tbody>
-                                        <tfoot>
-                                            <td class="p-3">Total</td>
-                                            <td class="p-3">{{TotalPstake}}</td>
-                                            <td></td>
-                                            <td class="p-3">{{TotalFPstake}}</td>
-                                            <td class="p-3">{{Totalstake}}</td>
-                                        </tfoot>
                                     </table>
-                                </mat-tab>
-                                <mat-tab label="Financial Committment">Content 2</mat-tab>
-                                <mat-tab label="Declaration">Content 3</mat-tab>
-                            </mat-tab-group>
+                                </tab>
+                                <tab heading="Declaration">
+                                    <div class="container">
+                                        <h5 style="text-align: center;">Declaration by the Indian Entity (IE) <br>
+                                            (Strike out whichever is not applicable)
+                                        </h5>
+                                        <table class="table table-borderless">
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">A.</th>
+                                                    <td> The transfer is subject to a price arrived on an arm’s length
+                                                        basis. Copies of the necessary
+                                                        documents/ valuation as required by the AD bank have been
+                                                        furnished
+                                                        to the AD bank.
+                                                    </td>
+                                                    <td> <input type="checkbox" value="disinvestment_IE_A"
+                                                            class="form-check-input" id="disinvestment_IE_A"
+                                                            formControlName="disinvestment_IE_A" [class.is-invalid]="
+                                                    fcFormlist.get('Disinvestmentform.disinvestment_IE_A').invalid &&
+            (fcFormlist.get('Disinvestmentform.disinvestment_IE_A').dirty ||
+            fcFormlist.get('Disinvestmentform.disinvestment_IE_A').touched)">
+                                                        <div *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_IE_A').invalid &&
+                                            (fcFormlist.get('Disinvestmentform.disinvestment_IE_A').dirty ||
+                                            fcFormlist.get('Disinvestmentform.disinvestment_IE_A').touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="disinvestment_IE_A.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">B</th>
+                                                    <td>In case the transfer is on account of merger,
+                                                        amalgamation or demerger or on account of buyback of foreign
+                                                        securities, such transfer, or liquidation
+                                                        (in case of liquidation of the foreign entity), it has the
+                                                        approval
+                                                        of the competent authority as per
+                                                        the laws in India and/or the host country/jurisdiction, as the
+                                                        case
+                                                        may be
+                                                    </td>
+                                                    <td><input type="checkbox" value="disinvestment_IE_B"
+                                                            class="form-check-input" id="disinvestment_IE_B"
+                                                            formControlName="disinvestment_IE_B" [class.is-invalid]="
+                                                fcFormlist.get('Disinvestmentform.disinvestment_IE_B').invalid &&
+        (fcFormlist.get('Disinvestmentform.disinvestment_IE_B').dirty ||
+        fcFormlist.get('Disinvestmentform.disinvestment_IE_B').touched)">
+                                                        <div *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_IE_B').invalid &&
+                                        (fcFormlist.get('Disinvestmentform.disinvestment_IE_B').dirty ||
+                                        fcFormlist.get('Disinvestmentform.disinvestment_IE_B').touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="disinvestment_IE_B.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">C</th>
+                                                    <td> The transferor, in case of full disinvestment other than by way
+                                                        of
+                                                        liquidation,
+                                                        does not have any dues outstanding for receipt, which the
+                                                        transferor
+                                                        is entitled
+                                                        to receive from the foreign entity as an investor in equity
+                                                        capital
+                                                        and debt.
+
+                                                    </td>
+                                                    <td> <input type="checkbox" value="disinvestment_IE_C"
+                                                            class="form-check-input" id="disinvestment_IE_C"
+                                                            formControlName="disinvestment_IE_C" [class.is-invalid]="
+                                                fcFormlist.get('Disinvestmentform.disinvestment_IE_C').invalid &&
+        (fcFormlist.get('Disinvestmentform.disinvestment_IE_C').dirty ||
+        fcFormlist.get('Disinvestmentform.disinvestment_IE_C').touched)">
+                                                        <div *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_IE_C').invalid &&
+                                        (fcFormlist.get('Disinvestmentform.disinvestment_IE_C').dirty ||
+                                        fcFormlist.get('Disinvestmentform.disinvestment_IE_C').touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="disinvestment_IE_C.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">D</th>
+                                                    <td>The transferor has stayed invested for at least a year from the
+                                                        date of making ODI.
+                                                    </td>
+                                                    <td> <input type="checkbox" value="disinvestment_IE_D"
+                                                            class="form-check-input" id="disinvestment_IE_D"
+                                                            formControlName="disinvestment_IE_D" [class.is-invalid]="
+                                                fcFormlist.get('Disinvestmentform.disinvestment_IE_D').invalid &&
+        (fcFormlist.get('Disinvestmentform.disinvestment_IE_D').dirty ||
+        fcFormlist.get('Disinvestmentform.disinvestment_IE_D').touched)">
+                                                        <div *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_IE_D').invalid &&
+                                        (fcFormlist.get('Disinvestmentform.disinvestment_IE_D').dirty ||
+                                        fcFormlist.get('Disinvestmentform.disinvestment_IE_D').touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="disinvestment_IE_D.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">E</th>
+                                                    <td>All the remittances/ transactions have been reported to Reserve
+                                                        Bank
+                                                        and it
+                                                        reconciles with the remittances / transaction details reported
+                                                        to
+                                                        the Reserve
+                                                        Bank.
+
+                                                    </td>
+                                                    <td> <input type="checkbox" value="disinvestment_IE_E"
+                                                            class="form-check-input" id="disinvestment_IE_E"
+                                                            formControlName="disinvestment_IE_E"
+                                                             [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_IE_E').invalid &&
+        (fcFormlist.get('Disinvestmentform.disinvestment_IE_E').dirty ||
+        fcFormlist.get('Disinvestmentform.disinvestment_IE_E').touched)">
+                                                        <div *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_IE_E').invalid &&
+                                        (fcFormlist.get('Disinvestmentform.disinvestment_IE_E').dirty ||
+                                        fcFormlist.get('Disinvestmentform.disinvestment_IE_E').touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="disinvestment_IE_E.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">F</th>
+                                                    <td>All the guarantees issued on behalf of the foreign entity and
+                                                        its
+                                                        SDS are either novated to another entity or the guarantees are
+                                                        closed.
+
+                                                    </td>
+                                                    <td> <input type="checkbox" value="disinvestment_IE_F"
+                                                            class="form-check-input" id="disinvestment_IE_F"
+                                                            formControlName="disinvestment_IE_F" [class.is-invalid]="
+                                                fcFormlist.get('Disinvestmentform.disinvestment_IE_F').invalid &&
+        (fcFormlist.get('Disinvestmentform.disinvestment_IE_F').dirty ||
+        fcFormlist.get('Disinvestmentform.disinvestment_IE_F').touched)">
+                                                        <div *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_IE_F').invalid &&
+                                        (fcFormlist.get('Disinvestmentform.disinvestment_IE_F').dirty ||
+                                        fcFormlist.get('Disinvestmentform.disinvestment_IE_F').touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="disinvestment_IE_F.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">G</th>
+                                                    <td> In case any SDS has become the direct foreign entity as a
+                                                        result of
+                                                        disinvestment in the foreign entity then it is certified that
+                                                        relevant sections of the Form FC
+                                                        with respect to all such SDS are submitted to Reserve Bank
+                                                        through
+                                                        the AD bank for allotment of UIN.
+                                                    </td>
+                                                    <td> <input type="checkbox" value="disinvestment_IE_G"
+                                                            class="form-check-input" id="disinvestment_IE_G"
+                                                            formControlName="disinvestment_IE_G" [class.is-invalid]="
+                                                fcFormlist.get('Disinvestmentform.disinvestment_IE_G').invalid &&
+        (fcFormlist.get('Disinvestmentform.disinvestment_IE_G').dirty ||
+        fcFormlist.get('Disinvestmentform.disinvestment_IE_G').touched)">
+                                                        <div *ngIf="fcFormlist.get('Disinvestmentform.disinvestment_IE_G').invalid &&
+                                        (fcFormlist.get('Disinvestmentform.disinvestment_IE_G').dirty ||
+                                        fcFormlist.get('Disinvestmentform.disinvestment_IE_G').touched)"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="disinvestment_IE_G.errors?.['required']">
+                                                                This field is required.
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"></th>
+                                                    <td>
+                                                        <div class="row">
+                                                            I/ We hereby certify that the information furnished
+                                                            above are true
+                                                            and
+                                                            correct. <b>I/We also duly acknowledge that if any
+                                                                information
+                                                                furnished by
+                                                                me/us is found to be false and/or incorrect,
+                                                                it shall be construed that the reporting requirements
+                                                                under FEMA,
+                                                                1999,
+                                                                have
+                                                                not been complied with.</b>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_IE_Place"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_IE_Place"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_IE_Place').invalid &&
+                                            (fcFormlist.get('Disinvestmentform.disinvestment_IE_Place').dirty ||
+                                            fcFormlist.get('Disinvestmentform.disinvestment_IE_Place').touched)">
+                                                                    <span class="placeholder">Place</span>
+                                                                </div>
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_AD_Place"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_AD_Place"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_AD_Place').invalid &&
+                                            (fcFormlist.get('Disinvestmentform.disinvestment_AD_Place').dirty ||
+                                            fcFormlist.get('Disinvestmentform.disinvestment_AD_Place').touched)">
+                                                                    <span class="placeholder">Place</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="date" id="disinvestment_IE_Date"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_IE_Date"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_IE_Date').invalid &&
+                                        (fcFormlist.get('Disinvestmentform.disinvestment_IE_Date').dirty ||
+                                        fcFormlist.get('Disinvestmentform.disinvestment_IE_Date').touched)">
+                                                                    <span class="placeholder">Date</span>
+                                                                </div>
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="date" id="disinvestment_AD_Date"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_AD_Date"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_AD_Date').invalid &&
+                                        (fcFormlist.get('Disinvestmentform.disinvestment_AD_Date').dirty ||
+                                        fcFormlist.get('Disinvestmentform.disinvestment_AD_Date').touched)">
+                                                                    <span class="placeholder">Date</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_IE_Signature"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_IE_Signature"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_IE_Signature').invalid &&
+                                        (fcFormlist.get('Disinvestmentform.disinvestment_IE_Signature').dirty ||
+                                        fcFormlist.get('Disinvestmentform.disinvestment_IE_Signature').touched)">
+                                                                    <span class="placeholder">(Signature
+                                                                        and
+                                                                        seal of authorised official of the IE/
+                                                                        RI)</span>
+                                                                </div>
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_AD_Signature"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_AD_Signature"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_AD_Signature').invalid &&
+                                    (fcFormlist.get('Disinvestmentform.disinvestment_AD_Signature').dirty ||
+                                    fcFormlist.get('Disinvestmentform.disinvestment_AD_Signature').touched)">
+                                                                    <span class="placeholder">(Signature
+                                                                        and
+                                                                        seal of authorised official of the
+                                                                        AD)</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_IE_Name"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_IE_Name"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_IE_Name').invalid &&
+                                    (fcFormlist.get('Disinvestmentform.disinvestment_IE_Name').dirty ||
+                                    fcFormlist.get('Disinvestmentform.disinvestment_IE_Name').touched)">
+                                                                    <span class="placeholder">Name</span>
+                                                                </div>
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_AD_Name"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_AD_Name"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_AD_Name').invalid &&
+                                    (fcFormlist.get('Disinvestmentform.disinvestment_AD_Name').dirty ||
+                                    fcFormlist.get('Disinvestmentform.disinvestment_AD_Name').touched)">
+                                                                    <span class="placeholder">Name</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_IE_Designation"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_IE_Designation"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_IE_Designation').invalid &&
+                                    (fcFormlist.get('Disinvestmentform.disinvestment_IE_Designation').dirty ||
+                                    fcFormlist.get('Disinvestmentform.disinvestment_IE_Designation').touched)">
+                                                                    <span class="placeholder">Designation</span>
+                                                                </div>
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_AD_Designation"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_AD_Designation"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_AD_Designation').invalid &&
+                                    (fcFormlist.get('Disinvestmentform.disinvestment_AD_Designation').dirty ||
+                                    fcFormlist.get('Disinvestmentform.disinvestment_AD_Designation').touched)">
+                                                                    <span class="placeholder">Designation</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_IE_Telephone"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_IE_Telephone"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_IE_Telephone').invalid &&
+                                    (fcFormlist.get('Disinvestmentform.disinvestment_IE_Telephone').dirty ||
+                                    fcFormlist.get('Disinvestmentform.disinvestment_IE_Telephone').touched)">
+                                                                    <span class="placeholder">Tel. No.</span>
+                                                                </div>
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_AD_Telephone"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_AD_Telephone"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_AD_Telephone').invalid &&
+                                    (fcFormlist.get('Disinvestmentform.disinvestment_AD_Telephone').dirty ||
+                                    fcFormlist.get('Disinvestmentform.disinvestment_AD_Telephone').touched)">
+                                                                    <span class="placeholder">Tel. No.</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_IE_Email"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_IE_Email"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_IE_Email').invalid &&
+                                    (fcFormlist.get('Disinvestmentform.disinvestment_IE_Email').dirty ||
+                                    fcFormlist.get('Disinvestmentform.disinvestment_IE_Email').touched)">
+                                                                    <span class="placeholder">Email</span>
+                                                                </div>
+                                                                <div class="col-sm-12 col-xl-6 input-block mb-4">
+                                                                    <input type="text" id="disinvestment_AD_Email"
+                                                                        spellcheck="false" class="form-control"
+                                                                        formControlName="disinvestment_AD_Email"
+                                                                        [class.is-invalid]="fcFormlist.get('Disinvestmentform.disinvestment_AD_Email').invalid &&
+                                    (fcFormlist.get('Disinvestmentform.disinvestment_AD_Email').dirty ||
+                                    fcFormlist.get('Disinvestmentform.disinvestment_AD_Email').touched)">
+                                                                    <span class="placeholder">Email</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>Note: AD bank may ensure that the certificate
+                                                                furnished is in
+                                                                accordance
+                                                                with Para 14 of FEM (Overseas Investment)
+                                                                Directions. </h6>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </tab>
+                            </tabset>
+
                         </div>
-                        <!-- <tabset #tabsetdisinvestment>
-                            <tab heading="Basic Details">
-                                <h2>Basic Details</h2>
-                                <div class="row g-4">
-                                    <div class="col-2 input-block mb-4">
-                                        <input type="text" id="disinvestment_Name_IE" spellcheck="false" required
-                                            class="form-control" formControlName="restructing_Name_IE"
-                                            [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Name_IE').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Name_IE').dirty ||
-                fcFormlist.get('Restructingform.restructing_Name_IE').touched)">
-                                        <span class="placeholder">Name of the Indian Entity</span>
-                                    </div>
-                                    <div class="col-2 input-block mb-4">
-                                        <input type="text" id="restructing_PAN_IE" spellcheck="false" required
-                                            class="form-control" maxlength="10" formControlName="restructing_PAN_IE"
-                                            [class.is-invalid]="fcFormlist.get('Restructingform.restructing_PAN_IE').invalid &&
-                (fcFormlist.get('Restructingform.restructing_PAN_IE').dirty ||
-                fcFormlist.get('Restructingform.restructing_PAN_IE').touched)">
-                                        <span class="placeholder">PAN of Indian Entity(IE)</span>
-
-                                    </div>
-                                    <div class="col-2 input-block mb-4">
-                                        <input type="text" id="restructing_Name_FE" spellcheck="false" required
-                                            class="form-control" formControlName="restructing_Name_FE"
-                                            [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Name_FE').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Name_FE').dirty ||
-                fcFormlist.get('Restructingform.restructing_Name_FE').touched)">
-                                        <span class="placeholder">Name of Foreign Entity</span>
-
-                                    </div>
-                                    <div class="col-3 input-block mb-4">
-                                        <input type="date" id="restructing_Date" spellcheck="false" required
-                                            class="form-control" formControlName="restructing_Date"
-                                            [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Date').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Date').dirty ||
-                fcFormlist.get('Restructingform.restructing_Date').touched)">
-                                        <span class="placeholder">Date of restructuring</span>
-
-                                    </div>
-                                    <div class="col-3 input-block mb-4">
-                                        <input type="date" id="restructing_Valuation_Date" spellcheck="false"
-                                            required class="form-control"
-                                            formControlName="restructing_Valuation_Date" [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Valuation_Date').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Valuation_Date').dirty ||
-                fcFormlist.get('Restructingform.restructing_Valuation_Date').touched)">
-                                        <span class="placeholder">Date of the valuation certificate</span>
-
-                                    </div>
-                                    <div class="col-6 input-block mb-4">
-                                        <input type="number" id="restructing_Stake_FE" spellcheck="false"
-                                            required class="form-control" formControlName="restructing_Stake_FE"
-                                            [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Stake_FE').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Stake_FE').dirty ||
-                fcFormlist.get('Restructingform.restructing_Stake_FE').touched)">
-                                        <span class="placeholder"> % Stake held by IE in the foreign
-                                            entity</span>
-
-                                    </div>
-                                    <div class="col-6 input-block mb-4">
-                                        <input type="number" id="restructing_Stake_PostRestructing"
-                                            spellcheck="false" required class="form-control"
-                                            formControlName="restructing_Stake_PostRestructing"
-                                            [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Stake_PostRestructing').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Stake_PostRestructing').dirty ||
-                fcFormlist.get('Restructingform.restructing_Stake_PostRestructing').touched)">
-                                        <span class="placeholder"> % Stake held by IE post restructuring</span>
-
-                                    </div>
-                                    <div class="col-2 input-block mb-4">
-                                        <input type="number" id="restructing_Total_ALosses" spellcheck="false"
-                                            required class="form-control"
-                                            formControlName="restructing_Total_ALosses" [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Total_ALosses').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Total_ALosses').dirty ||
-                fcFormlist.get('Restructingform.restructing_Total_ALosses').touched)">
-                                        <span class="placeholder">Total accumulated losses</span>
-
-                                    </div>
-                                    <div class="col-5 input-block mb-4">
-                                        <input type="number" id="restructing_Proportionate_Amount"
-                                            spellcheck="false" required class="form-control"
-                                            formControlName="restructing_Proportionate_Amount"
-                                            [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Proportionate_Amount').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Proportionate_Amount').dirty ||
-                fcFormlist.get('Restructingform.restructing_Proportionate_Amount').touched)">
-                                        <span class="placeholder">Proportionate amount of accumulated losses
-                                            based on share of the IE</span>
-
-                                    </div>
-                                    <div class="col-5 input-block mb-4">
-                                        <input type="number" id="restructing_Total_Outstanding"
-                                            spellcheck="false" required class="form-control"
-                                            formControlName="restructing_Total_Outstanding" [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Total_Outstanding').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Total_Outstanding').dirty ||
-                fcFormlist.get('Restructingform.restructing_Total_Outstanding').touched)">
-                                        <span class="placeholder">Total outstanding dues towards the IE as on
-                                            date of restructuring</span>
-
-                                    </div>
-
-                                </div>
-                            </tab>
-                            <tab heading="Financial Committment">
-                                <table class="table caption-top table-striped table-bordered table-responsive">
-                                    <caption>Financial Commitment
-                                    </caption>
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Serial No. </th>
-                                            <th scope="col">Type of Commitment</th>
-                                            <th scope="col">Total amount of Financial Commitment undertaken by
-                                                IE in this UIN till date </th>
-                                            <th scope="col">Amount of diminution in the total value of the
-                                                outstanding dues</th>
-                                            <th scope="col">Total amount of financial commitment post
-                                                restructuring</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Equity</td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Equity_FC"
-                                                        spellcheck="false"  (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Equity_FC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Equity_FC').invalid &&
-                    (fcFormlist.get('Restructingform.restructing_Equity_FC').dirty ||
-                    fcFormlist.get('Restructingform.restructing_Equity_FC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Equity_AD"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Equity_AD"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Equity_AD').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Equity_AD').dirty ||
-                fcFormlist.get('Restructingform.restructing_Equity_AD').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Equity_TotalFC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Equity_TotalFC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Equity_TotalFC').invalid &&
-                    (fcFormlist.get('Restructingform.restructing_Equity_TotalFC').dirty ||
-                    fcFormlist.get('Restructingform.restructing_Equity_TotalFC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Debt</td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Debt_FC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Debt_FC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Debt_FC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Debt_FC').dirty ||
-                fcFormlist.get('Restructingform.restructing_Debt_FC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Debt_AD"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Debt_AD"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Debt_AD').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Debt_AD').dirty ||
-                fcFormlist.get('Restructingform.restructing_Debt_AD').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Debt_TotalFC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Debt_TotalFC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Debt_TotalFC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Debt_TotalFC').dirty ||
-                fcFormlist.get('Restructingform.restructing_Debt_TotalFC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Guarantee</td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Guarantee_FC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Guarantee_FC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Guarantee_FC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Guarantee_FC').dirty ||
-                fcFormlist.get('Restructingform.restructing_Guarantee_FC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Guarantee_AD"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Guarantee_AD"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Guarantee_AD').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Guarantee_AD').dirty ||
-                fcFormlist.get('Restructingform.restructing_Guarantee_AD').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Guarantee_TotalFC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Guarantee_TotalFC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Guarantee_TotalFC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Guarantee_TotalFC').dirty ||
-                fcFormlist.get('Restructingform.restructing_Guarantee_TotalFC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Receivables</td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Receivables_FC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Receivables_FC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Receivables_FC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Receivables_FC').dirty ||
-                fcFormlist.get('Restructingform.restructing_Receivables_FC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Receivables_AD"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Receivables_AD"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Receivables_AD').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Receivables_AD').dirty ||
-                fcFormlist.get('Restructingform.restructing_Receivables_AD').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Receivables_TotalFC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Receivables_TotalFC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Receivables_TotalFC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Receivables_TotalFC').dirty ||
-                fcFormlist.get('Restructingform.restructing_Receivables_TotalFC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>A. Interest</td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Ainterest_FC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Ainterest_FC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Ainterest_FC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Ainterest_FC').dirty ||
-                fcFormlist.get('Restructingform.restructing_Ainterest_FC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_Ainterest_AD"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_Ainterest_AD"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Ainterest_AD').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Ainterest_AD').dirty ||
-                fcFormlist.get('Restructingform.restructing_Ainterest_AD').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" (blur)="onBlur(this)" id="restructing_Ainterest_TotalFC"
-                                                        spellcheck="false" required class="form-control"
-                                                        formControlName="restructing_Ainterest_TotalFC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_Ainterest_TotalFC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_Ainterest_TotalFC').dirty ||
-                fcFormlist.get('Restructingform.restructing_Ainterest_TotalFC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>B. Dividend</td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_BDividend_FC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_BDividend_FC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_BDividend_FC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_BDividend_FC').dirty ||
-                fcFormlist.get('Restructingform.restructing_BDividend_FC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_BDividend_AD"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_BDividend_AD"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_BDividend_AD').invalid &&
-                (fcFormlist.get('Restructingform.restructing_BDividend_AD').dirty ||
-                fcFormlist.get('Restructingform.restructing_BDividend_AD').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_BDividend_TotalFC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_BDividend_TotalFC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_BDividend_TotalFC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_BDividend_TotalFC').dirty ||
-                fcFormlist.get('Restructingform.restructing_BDividend_TotalFC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>C. Other (Specify)</td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_COther_FC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_COther_FC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_COther_FC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_COther_FC').dirty ||
-                fcFormlist.get('Restructingform.restructing_COther_FC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_COther_AD"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_COther_AD"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_COther_AD').invalid &&
-                (fcFormlist.get('Restructingform.restructing_COther_AD').dirty ||
-                fcFormlist.get('Restructingform.restructing_COther_AD').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-block mb-4">
-                                                    <input type="number" id="restructing_COther_TotalFC"
-                                                        spellcheck="false" (blur)="onBlur(this)" required class="form-control"
-                                                        formControlName="restructing_COther_TotalFC"
-                                                        [class.is-invalid]="fcFormlist.get('Restructingform.restructing_COther_TotalFC').invalid &&
-                (fcFormlist.get('Restructingform.restructing_COther_TotalFC').dirty ||
-                fcFormlist.get('Restructingform.restructing_COther_TotalFC').touched)">
-                                                    <span class="placeholder">Enter Amount</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </tab>
-                            <tab heading="Declaration">
-                                <div class="container">
-                                    <h5 style="text-align: center;">Declaration by the Indian Entity (IE)<br>
-                                        (Strike out whichever is not applicable)
-                                    </h5>
-                                    <table class="table table-borderless">
-                                        <thead>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">A.</th>
-                                                <td> The foreign entity has been incurring losses for last 2
-                                                    years
-                                                </td>
-                                                <td> <input type="checkbox" value="restructing_IE_A"
-                                                        class="form-check-input" id="restructing_IE_A"
-                                                        formControlName="restructing_IE_A" [class.is-invalid]="
-                                                    fcFormlist.get('Restructingform.restructing_IE_A').invalid &&
-            (fcFormlist.get('Restructingform.restructing_IE_A').dirty ||
-            fcFormlist.get('Restructingform.restructing_IE_A').touched)">
-                                                    <div *ngIf="fcFormlist.get('Restructingform.restructing_IE_A').invalid &&
-                                            (fcFormlist.get('Restructingform.restructing_IE_A').dirty ||
-                                            fcFormlist.get('Restructingform.restructing_IE_A').touched)"
-                                                        class="invalid-feedback">
-                                                        <div *ngIf="restructing_IE_A.errors?.['required']">
-                                                            This field is required.
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">B</th>
-                                                <td>The amount of original investment is less than USD 10
-                                                    million
-
-
-                                                </td>
-                                                <td><input type="checkbox" value="restructing_IE_B"
-                                                        class="form-check-input" id="restructing_IE_B"
-                                                        formControlName="restructing_IE_B" [class.is-invalid]="
-                                                fcFormlist.get('Restructingform.restructing_IE_B').invalid &&
-        (fcFormlist.get('Restructingform.restructing_IE_B').dirty ||
-        fcFormlist.get('Restructingform.restructing_IE_B').touched)">
-                                                    <div *ngIf="fcFormlist.get('Restructingform.restructing_IE_B').invalid &&
-                                        (fcFormlist.get('Restructingform.restructing_IE_B').dirty ||
-                                        fcFormlist.get('Restructingform.restructing_IE_B').touched)"
-                                                        class="invalid-feedback">
-                                                        <div *ngIf="restructing_IE_B.errors?.['required']">
-                                                            This field is required.
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <td>
-                                                    OR
-
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <td> amount of original investment is more than USD 10
-                                                    million and the
-                                                    diminution
-                                                    in value has been duly certified on an arm’s length basis by
-                                                    a
-                                                    registered
-                                                    valuer
-                                                    as per the Companies Act, 2013 (18 of 2013) or corresponding
-                                                    valuer
-                                                    registered
-                                                    with the regulatory authority or certified public accountant
-                                                    in the host
-                                                    jurisdiction and the certificate is dated not more than six
-                                                    months
-                                                    before
-                                                    the
-                                                    date of restructuring
-
-                                                </td>
-                                                <td> <input type="checkbox" value="restructing_IE_B1"
-                                                        class="form-check-input" id="restructing_IE_B1"
-                                                        formControlName="restructing_IE_B1" [class.is-invalid]="
-                                                fcFormlist.get('Restructingform.restructing_IE_B1').invalid &&
-        (fcFormlist.get('Restructingform.restructing_IE_B1').dirty ||
-        fcFormlist.get('Restructingform.restructing_IE_B1').touched)">
-                                                    <div *ngIf="fcFormlist.get('Restructingform.restructing_IE_B1').invalid &&
-                                        (fcFormlist.get('Restructingform.restructing_IE_B1').dirty ||
-                                        fcFormlist.get('Restructingform.restructing_IE_B1').touched)"
-                                                        class="invalid-feedback">
-                                                        <div *ngIf="restructing_IE_B1.errors?.['required']">
-                                                            This field is required.
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">C</th>
-                                                <td>The amount of diminution in value of the outstanding dues is
-                                                    less than
-                                                    twenty
-                                                    per cent of the total value of the outstanding dues towards
-                                                    the IE
-
-
-                                                </td>
-                                                <td> <input type="checkbox" value="restructing_IE_C"
-                                                        class="form-check-input" id="restructing_IE_C"
-                                                        formControlName="restructing_IE_C" [class.is-invalid]="
-                                                fcFormlist.get('Restructingform.restructing_IE_C').invalid &&
-        (fcFormlist.get('Restructingform.restructing_IE_C').dirty ||
-        fcFormlist.get('Restructingform.restructing_IE_C').touched)">
-                                                    <div *ngIf="fcFormlist.get('Restructingform.restructing_IE_C').invalid &&
-                                        (fcFormlist.get('Restructingform.restructing_IE_C').dirty ||
-                                        fcFormlist.get('Restructingform.restructing_IE_C').touched)"
-                                                        class="invalid-feedback">
-                                                        <div *ngIf="restructing_IE_C.errors?.['required']">
-                                                            This field is required.
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <td>
-                                                    OR
-
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <td>
-                                                    The amount of diminution in value of the outstanding dues is
-                                                    more than
-                                                    twenty
-                                                    per cent. of the total value of the outstanding dues towards
-                                                    the IE and
-                                                    the
-                                                    diminution in value has been duly certified on an arm’s
-                                                    length basis by
-                                                    a
-                                                    registered valuer as per the Companies Act, 2013 (18 of
-                                                    2013) or
-                                                    corresponding
-                                                    valuer registered with the regulatory authority or certified
-                                                    public
-                                                    accountant
-                                                    in the host jurisdiction and the certificate is dated not
-                                                    more than six
-                                                    months
-                                                    before the date of restructuring
-
-                                                </td>
-                                                <td> <input type="checkbox" value="restructing_IE_C1"
-                                                        class="form-check-input" id="restructing_IE_C1"
-                                                        formControlName="restructing_IE_C1" [class.is-invalid]="
-                                                fcFormlist.get('Restructingform.restructing_IE_C1').invalid &&
-        (fcFormlist.get('Restructingform.restructing_IE_C1').dirty ||
-        fcFormlist.get('Restructingform.restructing_IE_C1').touched)">
-                                                    <div *ngIf="fcFormlist.get('Restructingform.restructing_IE_C1').invalid &&
-                                        (fcFormlist.get('Restructingform.restructing_IE_C1').dirty ||
-                                        fcFormlist.get('Restructingform.restructing_IE_C1').touched)"
-                                                        class="invalid-feedback">
-                                                        <div *ngIf="restructing_IE_C1.errors?.['required']">
-                                                            This field is required.
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <td>
-                                                    <div class="row">
-                                                        I/ We hereby certify that the information furnished
-                                                        above are true
-                                                        and
-                                                        correct. I/We also duly acknowledge that if any
-                                                        information
-                                                        furnished by
-                                                        me/us is found to be false and/or incorrect,
-                                                        it shall be construed that the reporting requirements
-                                                        under FEMA,
-                                                        1999,
-                                                        have
-                                                        not been complied with.
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-xl-6 mb-4">
-                                                                <label for="investment_Email"
-                                                                    class="form-label"> INDIAN ENTITY / RESIDENT
-                                                                    INDIVIDUAL
-                                                                </label>
-
-                                                            </div>
-                                                            <div class="col-sm-12 col-xl-6 mb-4">
-                                                                <label for="investment_Email"
-                                                                    class="form-label">
-                                                                    AUTHORISED DEALER
-                                                                </label>
-
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_IE_Place"
-                                                                    spellcheck="false" class="form-control"
-                                                                    formControlName="restructing_IE_Place"
-                                                                    [class.is-invalid]="fcFormlist.get('Restructingform.restructing_IE_Place').invalid &&
-                                            (fcFormlist.get('Restructingform.restructing_IE_Place').dirty ||
-                                            fcFormlist.get('Restructingform.restructing_IE_Place').touched)">
-                                                                <span class="placeholder">Place</span>
-                                                            </div>
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_AD_Place"
-                                                                    spellcheck="false" class="form-control"
-                                                                    formControlName="restructing_AD_Place"
-                                                                    [class.is-invalid]="fcFormlist.get('Restructingform.restructing_AD_Place').invalid &&
-                                            (fcFormlist.get('Restructingform.restructing_AD_Place').dirty ||
-                                            fcFormlist.get('Restructingform.restructing_AD_Place').touched)">
-                                                                <span class="placeholder">Place</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="date" id="restructing_IE_Date"
-                                                                    spellcheck="false" class="form-control"
-                                                                    formControlName="restructing_IE_Date"
-                                                                    [class.is-invalid]="fcFormlist.get('Restructingform.restructing_IE_Date').invalid &&
-                                        (fcFormlist.get('Restructingform.restructing_IE_Date').dirty ||
-                                        fcFormlist.get('Restructingform.restructing_IE_Date').touched)">
-                                                                <span class="placeholder">Date</span>
-                                                            </div>
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="date" id="restructing_AD_Date"
-                                                                    spellcheck="false" class="form-control"
-                                                                    formControlName="restructing_AD_Date"
-                                                                    [class.is-invalid]="fcFormlist.get('Restructingform.restructing_AD_Date').invalid &&
-                                        (fcFormlist.get('Restructingform.restructing_AD_Date').dirty ||
-                                        fcFormlist.get('Restructingform.restructing_AD_Date').touched)">
-                                                                <span class="placeholder">Date</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_IE_Signature"
-                                                                    spellcheck="false" class="form-control"
-                                                                    formControlName="restructing_IE_Signature"
-                                                                    [class.is-invalid]="fcFormlist.get('Restructingform.restructing_IE_Signature').invalid &&
-                                        (fcFormlist.get('Restructingform.restructing_IE_Signature').dirty ||
-                                        fcFormlist.get('Restructingform.restructing_IE_Signature').touched)">
-                                                                <span class="placeholder">(Signature
-                                                                    and
-                                                                    seal of authorised official of the IE/ RI)</span>
-                                                            </div>
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_AD_Signature"
-                                                                spellcheck="false" class="form-control"
-                                                                formControlName="restructing_AD_Signature"
-                                                                [class.is-invalid]="fcFormlist.get('Restructingform.restructing_AD_Signature').invalid &&
-                                    (fcFormlist.get('Restructingform.restructing_AD_Signature').dirty ||
-                                    fcFormlist.get('Restructingform.restructing_AD_Signature').touched)">
-                                                            <span class="placeholder">(Signature
-                                                                and
-                                                                seal of authorised official of the AD)</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_IE_Name"
-                                                                spellcheck="false" class="form-control"
-                                                                formControlName="restructing_IE_Name"
-                                                                [class.is-invalid]="fcFormlist.get('Restructingform.restructing_IE_Name').invalid &&
-                                    (fcFormlist.get('Restructingform.restructing_IE_Name').dirty ||
-                                    fcFormlist.get('Restructingform.restructing_IE_Name').touched)">
-                                                            <span class="placeholder">Name</span>
-                                                            </div>
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_AD_Name"
-                                                                spellcheck="false" class="form-control"
-                                                                formControlName="restructing_AD_Name"
-                                                                [class.is-invalid]="fcFormlist.get('Restructingform.restructing_AD_Name').invalid &&
-                                    (fcFormlist.get('Restructingform.restructing_AD_Name').dirty ||
-                                    fcFormlist.get('Restructingform.restructing_AD_Name').touched)">
-                                                            <span class="placeholder">Name</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_IE_Designation"
-                                                                spellcheck="false" class="form-control"
-                                                                formControlName="restructing_IE_Designation"
-                                                                [class.is-invalid]="fcFormlist.get('Restructingform.restructing_IE_Designation').invalid &&
-                                    (fcFormlist.get('Restructingform.restructing_IE_Designation').dirty ||
-                                    fcFormlist.get('Restructingform.restructing_IE_Designation').touched)">
-                                                            <span class="placeholder">Designation</span>
-                                                            </div>
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_AD_Designation"
-                                                                spellcheck="false" class="form-control"
-                                                                formControlName="restructing_AD_Designation"
-                                                                [class.is-invalid]="fcFormlist.get('Restructingform.restructing_AD_Designation').invalid &&
-                                    (fcFormlist.get('Restructingform.restructing_AD_Designation').dirty ||
-                                    fcFormlist.get('Restructingform.restructing_AD_Designation').touched)">
-                                                            <span class="placeholder">Designation</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_IE_Telephone"
-                                                                spellcheck="false" class="form-control"
-                                                                formControlName="restructing_IE_Telephone"
-                                                                [class.is-invalid]="fcFormlist.get('Restructingform.restructing_IE_Telephone').invalid &&
-                                    (fcFormlist.get('Restructingform.restructing_IE_Telephone').dirty ||
-                                    fcFormlist.get('Restructingform.restructing_IE_Telephone').touched)">
-                                                            <span class="placeholder">Tel. No.</span>
-                                                            </div>
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_AD_Telephone"
-                                                                spellcheck="false" class="form-control"
-                                                                formControlName="restructing_AD_Telephone"
-                                                                [class.is-invalid]="fcFormlist.get('Restructingform.restructing_AD_Telephone').invalid &&
-                                    (fcFormlist.get('Restructingform.restructing_AD_Telephone').dirty ||
-                                    fcFormlist.get('Restructingform.restructing_AD_Telephone').touched)">
-                                                            <span class="placeholder">Tel. No.</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_IE_Email"
-                                                                spellcheck="false" class="form-control"
-                                                                formControlName="restructing_IE_Email"
-                                                                [class.is-invalid]="fcFormlist.get('Restructingform.restructing_IE_Email').invalid &&
-                                    (fcFormlist.get('Restructingform.restructing_IE_Email').dirty ||
-                                    fcFormlist.get('Restructingform.restructing_IE_Email').touched)">
-                                                            <span class="placeholder">Email</span>
-                                                            </div>
-                                                            <div class="col-sm-12 col-xl-6 input-block mb-4">
-                                                                <input type="text" id="restructing_AD_Email"
-                                                                spellcheck="false" class="form-control"
-                                                                formControlName="restructing_AD_Email"
-                                                                [class.is-invalid]="fcFormlist.get('Restructingform.restructing_AD_Email').invalid &&
-                                    (fcFormlist.get('Restructingform.restructing_AD_Email').dirty ||
-                                    fcFormlist.get('Restructingform.restructing_AD_Email').touched)">
-                                                            <span class="placeholder">Email</span>
-                                                            </div>
-                                                        </div>
-                                                        <h6>Note: AD bank may ensure that the certificate
-                                                            furnished is in
-                                                            accordance
-                                                            with Para 14 of FEM (Overseas Investment)
-                                                            Directions. </h6>
-
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </tab>
-                        </tabset> -->
-                        <app-form-fc-disinvestment [reactiveForm]="reactiveForm"></app-form-fc-disinvestment>
+                        <!-- <app-form-fc-disinvestment [reactiveForm]="reactiveForm"></app-form-fc-disinvestment> -->
                     </tab>
                     <tab heading="Preview" id="8" disabled="disabled">
                         <div class="card p-4 rounded-0 border-info1">

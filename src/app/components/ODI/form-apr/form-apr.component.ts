@@ -957,6 +957,7 @@ export class FormAprComponent implements OnInit {
     pdfMake.createPdf(documentDefinition).open();
 
   }
+  
   async ExportWordpdfCAcertificateOld() {
     const pdfTable = this.pdfCAcertificateOld.nativeElement;
     var converted = await asBlob(pdfTable.innerHTML, {
@@ -974,7 +975,175 @@ export class FormAprComponent implements OnInit {
     pdfMake.createPdf(documentDefinition).open();
 
   }
+  text = `<div _ngcontent-pqb-c541="" id="printMe" style="margin: 0px 50px;">
 
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style type="text/css">
+      .style_14 { width: 7.115in;border-top: 1px solid #000000; 
+        border-bottom: 1px solid #000000; 
+        border-left: 1px solid #000000; 
+        border-right: none; 
+        padding-top: 0.04in; 
+        padding-bottom: 0.04in; 
+        padding-left: 0.04in; 
+        padding-right: 0in}
+      .style_13 { font-family: "Times New Roman"; font-size: 12pt; border-top: 1px solid #000000; 
+      border-bottom: 1px solid #000000; 
+      border-left: 1px solid #000000; 
+      border-right: none; 
+      padding-top: 0.04in; 
+      padding-bottom: 0.04in; 
+      padding-left: 0.04in; 
+      padding-right: 0in}
+      .style_15 { font-family: "Times New Roman"; font-style: italic; font-size: 12pt; border-top: 1px solid #000000; 
+      border-bottom: 1px solid #000000; 
+      border-left: 1px solid #000000; 
+      border-right: none; 
+      padding-top: 0.04in; 
+      padding-bottom: 0.04in; 
+      padding-left: 0.04in; 
+      padding-right: 0in}
+      .style_8 { font-family: "Times New Roman"; font-style: italic; font-size: 12pt; color: black; background-color: white;}
+      .style_9 { font-family: "Times New Roman"; font-weight: bold; font-size: 12pt;}
+      .style_6 { height: 0.396in; width: 7.135in;}
+      .style_7 { height: 0.396in;}
+      .style_0 { font-family: serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; color: black; text-indent: 0em; letter-spacing: normal; word-spacing: normal; text-transform: none; white-space: normal; line-height: normal;}
+      .style_10 { font-family: "Times New Roman"; font-size: 12pt; padding-top: 5pt;}
+      .style_12 { font-family: "Times New Roman"; font-size: 12pt; padding-top: 5pt;}
+      .style_11 { font-family: "Times New Roman"; font-size: 12pt; padding-top: 5pt;
+      border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in
+    }
+      .style_4 { font-size: 12pt;}
+      .style_5 { font-family: "Times New Roman"; font-size: 12pt;}
+      .style_2 { font-family: "Times New Roman";}
+      .style_3 { width: 7.135in;}
+  </style>
+  <script type="text/javascript">
+   //<![CDATA[
+     function redirect(target, url){
+         if (target =='_blank'){
+             open(url);
+         }
+         else if (target == '_top'){
+             window.top.location.href=url;
+         }
+         else if (target == '_parent'){
+             location.href=url;
+         }
+         else if (target == '_self'){
+             location.href =url;
+         }
+         else{
+             open(url);
+         }
+        }
+   //]]>
+  </script>
+  <div style="padding: 30px;font-family: Calibri; font-size: 11pt;">
+  <p>
+      To,<br>
+      [Bank Name]<br>'`+ "gourav" +`
+      [Bank Address]
+  </p>
+  <p>Dear Sir / Madam,</p>
+  <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+          <td style="width:40px;">
+              <h3 style="margin: 0px;">
+                  Sub:
+              </h3>
+          </td>
+          <td>
+              <h3 style="margin: 0px;">
+                  Filing of form ESOP for granting Employee Stock Option
+                  XXXXXXXXXXXXXXXXXXXXXXXX (“the company”)
+              </h3>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+
+  <p>With regards to the above cited subject <u>XXXXXXXXXXXXXXXXXXXXXXXX</u> (hereinafter referred to
+      the
+      “company”) had granted XXXXXXXX ESOPs under its Employee Stock Option Plan
+      (XXXXXXXXXXXXXXXXXXXXXXXX) at INR XXXXXX/- per option to its various employees who are resident
+      outside India (as per Annexure). The Board / EGM / Circular Resolution No: XXXXXXXXXX for
+      granting the said ESOPs was passed on <u>XX-XX-XXXX</u>.</p>
+  <p>Enclosed is the documentation for submission of ESOP:</p>
+
+  <table style=" width: 100%;" border="1" cellspacing="0" cellpadding="5">
+      <thead>
+          <th align="left">Sl. No.</th>
+          <th align="left">Documentation</th>
+      </thead>
+      <tbody>
+          <tr>
+              <td>1.</td>
+              <td>ESOP Scheme</td>
+          </tr>
+          <tr>
+              <td>2.</td>
+              <td>Resolution granting ESOPs</td>
+          </tr>
+          <tr>
+              <td>3.</td>
+              <td>Authorized Representative Declaration</td>
+          </tr>
+          <tr>
+              <td>4.</td>
+              <td>Certificate from the Practicing Company Secretary of the Indian company</td>
+          </tr>
+      </tbody>
+  </table>
+
+  <p>Kindly accept the same and oblige.</p>
+  <br>
+  <br>
+  <p>For XXXXXXXXXXXXXXXXXXXXXXXX</p>
+  <br>
+  <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+          <td colspan="3">
+              __________________________
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Name
+          </td>
+          <td style="width: 30px; text-align:center;">
+              :
+          </td>
+          <td>
+              XXXXXXXXXXX
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Designation
+          </td>
+          <td style="width: 30px; text-align:center;">
+              :
+          </td>
+          <td>
+              XXXXXXXXXXX
+          </td>
+      </tr>
+      <tr>
+          <td>
+              Date
+          </td>
+          <td style="width: 30px; text-align:center;">
+              :
+          </td>
+          <td>
+              XX-XX-XXXX
+          </td>
+      </tr>
+      </tbody>
+  </table>
+</div>`;
 
 }
 

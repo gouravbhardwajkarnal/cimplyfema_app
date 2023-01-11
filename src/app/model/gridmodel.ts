@@ -48,3 +48,11 @@ export class DisinvestmentMethodGrid
     Method:string;
     Details:string;
 }
+export class DisinvestmentRemittanceGrid
+{
+    RemittanceDate:Date;
+    InvestmentMethod:string;
+    InvestmentCategory:string;
+    Amount:number;
+    
+}
